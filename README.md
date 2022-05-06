@@ -116,7 +116,7 @@ The ui.frontend module has been commented out of the parent pom as it is not nec
 
 The /apps/solidigm/clientlibs directory will be left intact in case future iterations need to use the ui.frontend module.
 
-###UNUSED
+### UNUSED
 The ui.frontend module is made available using an [AEM ClientLib](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/clientlibs.html). When executing the NPM build script, the app is built and the [`aem-clientlib-generator`](https://github.com/wcm-io-frontend/aem-clientlib-generator) package takes the resulting build output and transforms it into such a ClientLib.
 
 A ClientLib will consist of the following files and directories:
