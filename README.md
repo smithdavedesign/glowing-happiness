@@ -1,17 +1,17 @@
-# Sample AEM project template
+# Solidigm AEM Project
 
-This is a project template for AEM-based applications. It is intended as a best-practice set of examples as well as a potential starting point to develop your own functionality.
+Maven project containing the Solidigm 2.0 site.
 
 ## Modules
 
-The main parts of the template are:
+The main parts of the project are:
 
 * core: Java bundle containing all core functionality like OSGi services, listeners or schedulers, as well as component-related Java code such as servlets or request filters.
 * it.tests: Java based integration tests
 * ui.apps: contains the /apps (and /etc) parts of the project, ie JS&CSS clientlibs, components, and templates
 * ui.content: contains sample content using the components from the ui.apps
 * ui.config: contains runmode specific OSGi configs for the project
-* ui.frontend: an optional dedicated front-end build mechanism (Angular, React or general Webpack project)
+* ui.frontend: UNUSED AT PRESENT. an optional dedicated front-end build mechanism (Angular, React or general Webpack project)
 * ui.tests: Selenium based UI tests
 * all: a single content package that embeds all of the compiled modules (bundles and content packages) including any vendor dependencies
 * analyse: this module runs analysis on the project which provides additional validation for deploying into AEMaaCS
@@ -109,7 +109,15 @@ Check README file in `ui.tests` module for more details.
 
 ## ClientLibs
 
-The frontend module is made available using an [AEM ClientLib](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/clientlibs.html). When executing the NPM build script, the app is built and the [`aem-clientlib-generator`](https://github.com/wcm-io-frontend/aem-clientlib-generator) package takes the resulting build output and transforms it into such a ClientLib.
+The ui.frontend module has been commented out of the parent pom as it is not necessary at present. Clientlibs are created in the code repository under 
+
+- Global or page level clientlibs: /apps/clientlibs
+- Component level clientlibs: /apps/solidigm/components/{component}/clientlibs
+
+The /apps/solidigm/clientlibs directory will be left intact in case future iterations need to use the ui.frontend module.
+
+###UNUSED
+The ui.frontend module is made available using an [AEM ClientLib](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/clientlibs.html). When executing the NPM build script, the app is built and the [`aem-clientlib-generator`](https://github.com/wcm-io-frontend/aem-clientlib-generator) package takes the resulting build output and transforms it into such a ClientLib.
 
 A ClientLib will consist of the following files and directories:
 
