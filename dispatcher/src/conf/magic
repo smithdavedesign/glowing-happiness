@@ -2,11 +2,11 @@
 # The module is described in /manual/mod/mod_mime_magic.html
 #
 # The format is 4-5 columns:
-#   Column #1: byte number to begin checking from, ">" indicates continuation
-#   Column #2: type of data to match
-#   Column #3: contents of data to match
-#   Column #4: MIME type of result
-#   Column #5: MIME encoding of result (optional)
+#    Column #1: byte number to begin checking from, ">" indicates continuation
+#    Column #2: type of data to match
+#    Column #3: contents of data to match
+#    Column #4: MIME type of result
+#    Column #5: MIME encoding of result (optional)
 
 #------------------------------------------------------------------------------
 # Localstuff:  file(1) magic for locally observed files
@@ -27,6 +27,7 @@
 #
 # from Jan Nicolai Langfeldt <janl@ifi.uio.no>,
 #
+
 # Sun/NeXT audio data
 0	string		.snd
 >12	belong		1		audio/basic
@@ -50,27 +51,27 @@
 >12	lelong		5		audio/x-dec-basic
 >12	lelong		6		audio/x-dec-basic
 >12	lelong		7		audio/x-dec-basic
-#                                      compressed (G.721 ADPCM)
+#                                       compressed (G.721 ADPCM)
 >12	lelong		23		audio/x-dec-adpcm
 
 # Bytes 0-3 of AIFF, AIFF-C, & 8SVX audio files are "FORM"
-# 			AIFF audio data
+#					AIFF audio data
 8	string		AIFF		audio/x-aiff	
-# 			AIFF-C audio data
+#					AIFF-C audio data
 8	string		AIFC		audio/x-aiff	
-# 			IFF/8SVX audio data
+#					IFF/8SVX audio data
 8	string		8SVX		audio/x-aiff	
 
 # Creative Labs AUDIO stuff
-# 			Standard MIDI data
+#					Standard MIDI data
 0	string	MThd			audio/unknown	
 #>9 	byte	>0			(format %d)
 #>11	byte	>1			using %d channels
-# 			Creative Music (CMF) data
+#					Creative Music (CMF) data
 0	string	CTMF			audio/unknown	
-# 			SoundBlaster instrument data
+#					SoundBlaster instrument data
 0	string	SBI			audio/unknown	
-# 			Creative Labs voice data
+#					Creative Labs voice data
 0	string	Creative\ Voice\ File	audio/unknown	
 ## is this next line right?  it came this way...
 #>19	byte	0x1A
@@ -78,16 +79,16 @@
 #>22	byte	>0			\b.%d
 
 # [GRR 950115:  is this also Creative Labs?  Guessing that first line
-# should be string instead of unknown-endian long...]
+#  should be string instead of unknown-endian long...]
 #0	long		0x4e54524b	MultiTrack sound data
 #0	string		NTRK		MultiTrack sound data
 #>4	long		x		- version %ld
 
 # Microsoft WAVE format (*.wav)
 # [GRR 950115:  probably all of the shorts and longs should be leshort/lelong]
-# 			Microsoft RIFF
+#					Microsoft RIFF
 0	string		RIFF		audio/unknown
-# 			- WAVE format
+#					- WAVE format
 >8	string		WAVE		audio/x-wav
 # MPEG audio.
 0   beshort&0xfff0  0xfff0  audio/mpeg
@@ -97,15 +98,16 @@
 #------------------------------------------------------------------------------
 # c-lang:  file(1) magic for C programs or various scripts
 #
+
 # XPM icons (Greg Roelofs, newt@uchicago.edu)
 # ideally should go into "images", but entries below would tag XPM as C source
 0	string		/*\ XPM		image/x-xbm	7bit
 
 # this first will upset you if you're a PL/1 shop... (are there any left?)
 # in which case rm it; ascmagic will catch real C programs
-# 			C or REXX program text
+#					C or REXX program text
 0	string		/*		text/plain
-# 			C++ program text
+#					C++ program text
 0	string		//		text/plain
 
 #------------------------------------------------------------------------------
@@ -143,7 +145,7 @@
 # These numbers were gleaned from the Unix versions of the programs to
 # handle these formats.  Note that I can only uncrunch, not crunch, and
 # I didn't have a crunched file handy, so the crunch number is untested.
-# 		Keith Waclena <keith@cerberus.uchicago.edu>
+#				Keith Waclena <keith@cerberus.uchicago.edu>
 #0	leshort		0x76FF		squeezed data (CP/M, DOS)
 #0	leshort		0x76FE		crunched data (CP/M, DOS)
 
@@ -199,21 +201,22 @@
 # XXX - byte order for GIF and TIFF fields?
 # [GRR:  TIFF allows both byte orders; GIF is probably little-endian]
 #
+
 # [GRR:  what the hell is this doing in here?]
 #0	string		xbtoa		btoa'd file
 
 # PBMPLUS
-# 			PBM file
+#					PBM file
 0	string		P1		image/x-portable-bitmap	7bit
-# 			PGM file
+#					PGM file
 0	string		P2		image/x-portable-greymap	7bit
-# 			PPM file
+#					PPM file
 0	string		P3		image/x-portable-pixmap	7bit
-# 			PBM "rawbits" file
+#					PBM "rawbits" file
 0	string		P4		image/x-portable-bitmap
-# 			PGM "rawbits" file
+#					PGM "rawbits" file
 0	string		P5		image/x-portable-greymap
-# 			PPM "rawbits" file
+#					PPM "rawbits" file
 0	string		P6		image/x-portable-pixmap
 
 # NIFF (Navy Interchange File Format, a modification of TIFF)
@@ -221,25 +224,25 @@
 0	string		IIN1		image/x-niff
 
 # TIFF and friends
-# 			TIFF file, big-endian
+#					TIFF file, big-endian
 0	string		MM		image/tiff
-# 			TIFF file, little-endian
+#					TIFF file, little-endian
 0	string		II		image/tiff
 
 # possible GIF replacements; none yet released!
 # (Greg Roelofs, newt@uchicago.edu)
 #
 # GRR 950115:  this was mine ("Zip GIF"):
-# 			ZIF image (GIF+deflate alpha)
+#					ZIF image (GIF+deflate alpha)
 0	string		GIF94z		image/unknown
 #
 # GRR 950115:  this is Jeremy Wohl's Free Graphics Format (better):
-# 			FGF image (GIF+deflate beta)
+#					FGF image (GIF+deflate beta)
 0	string		FGF95a		image/unknown
 #
 # GRR 950115:  this is Thomas Boutell's Portable Bitmap Format proposal
 # (best; not yet implemented):
-# 			PBF image (deflate compression)
+#					PBF image (deflate compression)
 0	string		PBF		image/unknown
 
 # GIF
@@ -293,6 +296,7 @@
 # Contributor claims:
 # Reversed-engineered MS Word magic numbers
 #
+
 0	string		\376\067\0\043			application/msword
 0	string		\333\245-\0\0\0			application/msword
 
@@ -305,6 +309,7 @@
 #------------------------------------------------------------------------------
 # printer:  file(1) magic for printer-formatted files
 #
+
 # PostScript
 0	string		%!		application/postscript
 0	string		\004%!		application/postscript
@@ -358,19 +363,19 @@
 # animation:  file(1) magic for animation/movie formats
 #
 # animation formats, originally from vax@ccwf.cc.utexas.edu (VaX#n8)
-# 				MPEG file
+#						MPEG file
 0	string		\000\000\001\263	video/mpeg
 #
 # The contributor claims:
-#  I couldn't find a real magic number for these, however, this
-#  -appears- to work.  Note that it might catch other files, too,
-#  so BE CAREFUL!
+#   I couldn't find a real magic number for these, however, this
+#   -appears- to work.  Note that it might catch other files, too,
+#   so BE CAREFUL!
 #
 # Note that title and author appear in the two 20-byte chunks
 # at decimal offsets 2 and 22, respectively, but they are XOR'ed with
 # 255 (hex FF)! DL format SUCKS BIG ROCKS.
 #
-# 				DL file version 1 , medium format (160x100, 4 images/screen)
+#						DL file version 1 , medium format (160x100, 4 images/screen)
 0	byte		1			video/unknown
 0	byte		2			video/unknown
 # Quicktime video, from Linus Walleij <triad@df.lth.se>
