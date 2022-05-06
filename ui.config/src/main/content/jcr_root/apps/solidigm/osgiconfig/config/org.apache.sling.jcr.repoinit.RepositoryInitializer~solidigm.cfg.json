@@ -1,0 +1,7 @@
+{
+    "scripts": [
+        "create path (sling:OrderedFolder) /content/dam/solidigm",
+        "create path (nt:unstructured) /content/dam/solidigm/jcr:content",
+        "set properties on /content/dam/solidigm/jcr:content\n  set cq:conf{String} to /conf/solidigm\n  set jcr:title{String} to \"Solidigm\"\nend"
+    ]
+}

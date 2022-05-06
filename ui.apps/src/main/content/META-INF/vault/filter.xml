@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/solidigm/clientlibs"/>
+    <filter root="/apps/solidigm/components"/>
+    <filter root="/apps/solidigm/i18n"/>
+</workspaceFilter>
