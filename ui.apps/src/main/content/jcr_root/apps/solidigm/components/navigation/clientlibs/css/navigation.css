@@ -1,0 +1,8 @@
+.navigation * {
+	color: black;
+    text-decoration: none;
+}
+
+.navigation .cmp-navigation__group {
+	list-style: none;
+}
