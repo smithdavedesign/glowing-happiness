@@ -120,12 +120,12 @@
             <version>${project.version}</version>
         </dependency>
 
-        <dependency>
+        <!-- <dependency>
             <groupId>com.solidigm</groupId>
             <artifactId>solidigm.ui.frontend</artifactId>
             <version>${project.version}</version>
             <type>zip</type>
-        </dependency>
+        </dependency> -->
 
         <dependency>
             <groupId>com.solidigm</groupId>
