@@ -1,0 +1,247 @@
+## SOL-90: redirect legacy blogs
+RewriteRule ^/en/about-us/newsroom/SK-hynix-and-Solidigm-introduce-first-collaborative-product.html$ https://news.solidigm.com/en-WW/213553-sk-hynix-and-solidigm-introduce-first-collaborative-product [L,R=301]
+RewriteRule ^/en/about-us/newsroom/Introducing-Solidigm-A-Market-Leader-in-NAND-Flash-Technology.html$ https://news.solidigm.com/en-WW/212941-introducing-solidigm-a-market-leader-in-nand-flash-technology [L,R=301]
+RewriteRule ^/en/about-us/newsroom/SK-hynix-completes-the-First-Phase-of-Intel-NAND-and-SSD-Business-Acquisition.html$ https://news.solidigm.com/en-WW/212943-sk-hynix-completes-the-first-phase-of-intel-nand-and-ssd-business-acquisition [L,R=301]
+
+## VYRKCIN-440 for 403.html requests to be handled at the Apache layer
+RewriteRule ^/403.html$ - [F]
+
+## SOL-3 Sitemap.xml
+RewriteRule ^/sitemap_index.xml$ /etc.clientlibs/newco-aem-site/clientlibs/clientlib-base/resources/sitemap_index.xml [PT,L]
+
+## SOL-4 Robots.txt
+RewriteRule ^/robots.txt$ /content/newco-aem-site/language-masters/en/_jcr_content.robots.txt [PT,L]
+
+## Map / to home page transparently to the language root
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.kr" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/ko.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.kr" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/ko.html [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.cn" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/zh.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.cn" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/zh.html [PT,L]
+
+## Map / to home page transparently to the language root
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.de" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/de.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.de" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/de.html [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.ru" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/ru.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.ru" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/ru.html [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.jp" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/ja.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigmtechnology\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigmtechnology\.jp" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/ja.html [PT,L]
+
+
+#Solidigm.com configurations
+
+## Map / to home page transparently to the language root
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.kr" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/ko.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.kr" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.kr" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/ko.html [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.cn" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/zh.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.cn" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.cn" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/zh.html [PT,L]
+
+## Map / to home page transparently to the language root
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.de" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/de.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.de" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.de" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/de.html [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.ru" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/ru.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.ru" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.ru" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/ru.html [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.jp" [NC]
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/ja.sitemap.xml [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.jp" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.jp" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/ja.html [PT,L]
+
+RewriteCond %{HTTP_HOST} "^www\.solidigm\.net" [NC,OR]
+RewriteCond %{HTTP_HOST} "^prod\.solidigm\.net" [NC,OR]
+RewriteCond %{HTTP_HOST} "^dev\.solidigm\.net" [NC,OR]
+RewriteCond %{HTTP_HOST} "^stage\.solidigm\.net" [NC,OR]
+RewriteCond %{HTTP_HOST} "^www-stage\.solidigm\.net" [NC]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/en.html [PT,L]
+
+
+RewriteRule ^/sitemap.xml$ /content/newco-aem-site/language-masters/en.sitemap.xml [PT,L]
+RewriteRule ^/([a-z]{2,3})/sitemap.xml$ /content/newco-aem-site/language-masters/$1.sitemap.xml [PT,L]
+RewriteRule ^/$ /content/newco-aem-site/language-masters/en.html [PT,L]
+
+## VYRKCIN-197 allow productcompare servlet requests through without any
+## mutation of the request.
+## IF request path contains /_jcr_content (i.e. is a selector servlet)
+## AND request path contains productcompare
+## AND request path contains .json
+## THEN consider this a request for selector servlet, so, let the request through without modification.
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{REQUEST_URI} .*/_jcr_content.*
+RewriteCond %{REQUEST_URI} .*productcompare.*
+RewriteCond %{REQUEST_URI} .*json.*
+RewriteRule ^/(.*)$ /$1 [PT,L]
+
+
+## VYRKCIN-368 mapping GET requests for newco-aem-site site content pages that use fully qualified content paths but
+## do not have the .html extensions present
+## VYRKCIN-409 ignore requests containing _jcr_content
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{REQUEST_URI} !^/.*.html$
+RewriteCond %{REQUEST_URI} !.*/_jcr_content.*
+RewriteCond %{REQUEST_URI} ^/content/newco-aem-site
+RewriteRule ^/(.*)$ /$1.html [PT,L]
+
+
+# VYRKCIN-368 account for shortened, extensionless page requests by adding the .html extension and
+# the /content/newco-aem-site/language-masters prefix here in the web server
+# is a GET request
+# is missing the .html extension
+# already shortend (meaning no /content/newco-aem-site/language-masters prefixes present)
+## VYRKCIN-409 ignore requests containing _jcr_content
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{REQUEST_URI} !^/.*.html$
+RewriteCond %{REQUEST_URI} !.*/_jcr_content.*
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/siteadmin
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/home
+RewriteCond %{REQUEST_URI} !^/content/dam
+RewriteCond %{REQUEST_URI} !^/author
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/conf
+RewriteRule ^/(.*)$ /content/newco-aem-site/language-masters/$1.html [PT,L]
+
+
+
+## VYRKCIN-368 mapping GET shortened path requests for site content pages with .html extensions present
+## from the shortened user-friendly paths expanded to full content paths internally.
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{REQUEST_URI} ^/.*.html$
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/crx
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/dispatcher
+RewriteRule ^/(.*)$ /content/newco-aem-site/language-masters/$1 [PT,L]
+
+## VYRKCIN-409 support expanding shortened image requests stored under _jcr_content
+## from the shortened user-friendly paths expanded to full content paths internally.
+## GET request
+## does not end with .html
+## does not start with /content
+## contains /_jcr_content
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{REQUEST_URI} !^/.*.html$
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} .*/_jcr_content.*
+RewriteRule ^/(.*)$ /content/newco-aem-site/language-masters/$1 [PT,L]
