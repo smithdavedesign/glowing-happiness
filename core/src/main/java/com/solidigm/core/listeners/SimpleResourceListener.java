@@ -24,6 +24,8 @@ import org.osgi.service.component.propertytypes.ServiceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * A service to demonstrate how changes in the resource tree
  * can be listened for. 
@@ -34,14 +36,13 @@ import org.slf4j.LoggerFactory;
            immediate = true
 )
 @ServiceDescription("Demo to listen on changes in the resource tree")
+@Slf4j
 public class SimpleResourceListener implements ResourceChangeListener {
-
-    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public void onChange(List<ResourceChange> changes) {
         changes.forEach(change -> {
-            logger.debug("Resource event: {} at: {} isExternal", change.getType(), change.getPath(), change.isExternal());
+            log.debug("Resource event: {} at: {} isExternal", change.getType(), change.getPath(), change.isExternal());
         });
         
     }
