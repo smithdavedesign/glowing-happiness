@@ -1,0 +1,28 @@
+# Use a skeleton to build, test and deploy using manual and parallel steps
+image: atlassian/default-image:3
+
+pipelines:
+  branches:
+      develop:
+        - step:
+           name: Sync develop with adobe branches
+           script:
+             - echo "Update adobe-develop branch with develop"
+             - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+             - git remote update
+             - git fetch
+             - git checkout adobe-develop
+             - git merge develop --log=9999
+             - echo "Push changes to adobe-develop"
+             - git push origin adobe-develop
+      adobe-develop:
+        - step:
+           name: Sync Bitbucket repo with AEM repo
+           script:
+             - echo "Add remote sync git URL"
+             - git remote add sync https://$CM_SYNC_USER_NAME:$CM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/newco/solidigm/
+             - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+             - git remote update
+             - git checkout adobe-develop
+             - echo "Push changes to Adobe Cloud Manager"
+             - git push -f -v sync adobe-develop
