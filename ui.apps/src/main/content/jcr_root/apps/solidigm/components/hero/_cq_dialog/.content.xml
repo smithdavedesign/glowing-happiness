@@ -122,6 +122,23 @@
                                                     </cui>
                                                 </uiSettings>
                                             </description>
+                                            <breadcrumb
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Show Breadcrumb"
+                                                    fieldDescription="Select whether to show or hide the breadcrumb"
+                                                    name="./breadcrumb"
+                                                    sling:orderBefore="startLevel" >
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <item_0 jcr:primaryType="nt:unstructured"
+                                                            text="Hide Breadcrumb"
+                                                            value="hide_breadcrumb"
+                                                            selected="{Boolean}true" />
+                                                    <item_1 jcr:primaryType="nt:unstructured"
+                                                            text="Show Breadcrumb"
+                                                            value="show_breadcrumb" />
+                                                </items>
+                                            </breadcrumb>
                                         </items>
                                     </column>
                                 </items>
@@ -284,7 +301,8 @@
                             jcr:title="Breadcrumb"
                             sling:resourceType="granite/ui/components/coral/foundation/container"
                             sling:resourceSuperType="solidigm/components/breadcrumb/cq:dialog/content/items/tabs/items/properties"
-                            margin="{Boolean}true">
+                            margin="{Boolean}true"
+                            sling:hideResource="{Boolean}true">
                         <items jcr:primaryType="nt:unstructured">
                             <columns
                                     jcr:primaryType="nt:unstructured">
@@ -292,26 +310,18 @@
                                     <column
                                             jcr:primaryType="nt:unstructured">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <breadcrumb
+                                            <startLevel
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                    fieldLabel="Show Breadcrumb"
-                                                    fieldDescription="Select whether to show or hide the breadcrumb"
-                                                    name="./breadcrumb"
-                                                    sling:orderBefore="startLevel" >
-                                                <items jcr:primaryType="nt:unstructured">
-                                                    <item_0 jcr:primaryType="nt:unstructured"
-                                                            text="Hide Breadcrumb"
-                                                            value="hide_breadcrumb"
-                                                            selected="{Boolean}true" />
-                                                    <item_1 jcr:primaryType="nt:unstructured"
-                                                            text="Show Breadcrumb"
-                                                            value="show_breadcrumb" />
-                                                </items>
-                                            </breadcrumb>
+                                                    value="2"/>
+                                            <hideCurrent
+                                                    jcr:primaryType="nt:unstructured"
+                                                    value="{Boolean}true"/>
+                                            <disableShadowing
+                                                    jcr:primaryType="nt:unstructured"
+                                                    value="{Boolean}true"/>
                                             <id
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:hideResource="{Boolean}true"/>
+                                                    value=""/>
                                         </items>
                                     </column>
                                 </items>
