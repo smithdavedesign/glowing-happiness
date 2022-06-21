@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Hero"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <text
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Text"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                    fieldLabel="Title"
+                                                    name="./title"
+                                                    useFixedInlineToolbar="{Boolean}true"
+                                                    externalStyleSheets="[]">
+                                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                                    <misctools
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*">
+                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                                            <chars jcr:primaryType="nt:unstructured">
+                                                                <item_0
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&#169;"
+                                                                        name="©" />
+                                                            </chars>
+                                                        </specialCharsConfig>
+                                                    </misctools>
+                                                </rtePlugins>
+                                                <uiSettings jcr:primaryType="nt:unstructured">
+                                                    <cui jcr:primaryType="nt:unstructured">
+                                                        <inline
+                                                                jcr:primaryType="nt:unstructured"
+                                                                toolbar="[misctools#specialchars,misctools#sourceedit]">
+                                                        </inline>
+                                                    </cui>
+                                                </uiSettings>
+                                            </title>
+                                            <subtitle
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                    fieldLabel="Subtitle"
+                                                    name="./subtitle"
+                                                    useFixedInlineToolbar="{Boolean}true"
+                                                    externalStyleSheets="[]">
+                                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                                    <misctools
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*">
+                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                                            <chars jcr:primaryType="nt:unstructured">
+                                                                <item_0
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&#169;"
+                                                                        name="©" />
+                                                            </chars>
+                                                        </specialCharsConfig>
+                                                    </misctools>
+                                                </rtePlugins>
+                                                <uiSettings jcr:primaryType="nt:unstructured">
+                                                    <cui jcr:primaryType="nt:unstructured">
+                                                        <inline
+                                                                jcr:primaryType="nt:unstructured"
+                                                                toolbar="[misctools#specialchars,misctools#sourceedit]">
+                                                        </inline>
+                                                    </cui>
+                                                </uiSettings>
+                                            </subtitle>
+                                            <description
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                                    fieldLabel="Description"
+                                                    name="./description"
+                                                    useFixedInlineToolbar="{Boolean}true"
+                                                    externalStyleSheets="[]">
+                                                <rtePlugins jcr:primaryType="nt:unstructured">
+                                                    <misctools
+                                                            jcr:primaryType="nt:unstructured"
+                                                            features="*">
+                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
+                                                            <chars jcr:primaryType="nt:unstructured">
+                                                                <item_0
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&#169;"
+                                                                        name="©" />
+                                                            </chars>
+                                                        </specialCharsConfig>
+                                                    </misctools>
+                                                </rtePlugins>
+                                                <uiSettings jcr:primaryType="nt:unstructured">
+                                                    <cui jcr:primaryType="nt:unstructured">
+                                                        <inline
+                                                                jcr:primaryType="nt:unstructured"
+                                                                toolbar="[misctools#specialchars,misctools#sourceedit]">
+                                                        </inline>
+                                                    </cui>
+                                                </uiSettings>
+                                            </description>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </text>
+                    <images
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Images"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <headingDesktopImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                    level="{Long}4"
+                                                    text="Desktop Image" />
+                                            <desktopImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fileNameParameter="./desktopImage"
+                                                    fileReferenceParameter="./desktopImageReference"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                    name="./desktopImage"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"
+                                                    required="{Boolean}true" />
+                                            <headingMobileImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                    level="{Long}4"
+                                                    text="Mobile Image" />
+                                            <mobileImage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                                    autoStart="{Boolean}false"
+                                                    class="cq-droptarget"
+                                                    fileNameParameter="./mobileImage"
+                                                    fileReferenceParameter="./mobileImageReference"
+                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                                    name="./mobileImage"
+                                                    uploadUrl="${suffix.path}"
+                                                    useHTML5="{Boolean}true"
+                                                    required="{Boolean}true" />
+                                            <filter
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Filter"
+                                                    fieldDescription="Select a filter for the hero image"
+                                                    name="./filter">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <item_0 jcr:primaryType="nt:unstructured"
+                                                            text="None"
+                                                            value=""
+                                                            selected="{Boolean}true" />
+                                                    <item_1 jcr:primaryType="nt:unstructured"
+                                                            text="Darken"
+                                                            value="darken" />
+                                                </items>
+                                            </filter>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </images>
+                    <links
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Links"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <cta1Text
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Button label for the first Call to Action"
+                                                    fieldLabel="CTA 1 Text"
+                                                    name="./cta1Text" />
+                                            <cta1Link
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    name="./cta1Link"
+                                                    fieldLabel="CTA 1 Link"
+                                                    fieldDescription="The link target for the first Call to Action"
+                                                    rootPath="/content" />
+                                            <cta2Text
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="The button label for the second Call to Action"
+                                                    fieldLabel="CTA 2 Text"
+                                                    name="./cta2Text" />
+                                            <cta2Link
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    name="./cta2Link"
+                                                    fieldLabel="CTA 2 Link"
+                                                    fieldDescription="The link target for the second Call to Action"
+                                                    rootPath="/content" />
+                                            <anchors
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Anchor Links"
+                                                    fieldDescription="List of buttons to anchors on the same page">
+                                                <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                        name="./anchors">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <anchorLabel
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Anchor Label"
+                                                                        name="./anchorLabel"
+                                                                        required="{Boolean}true" />
+                                                                <anchorId
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Must match an Anchor ID on the page (do not include '#' in ID)"
+                                                                        fieldLabel="Anchor ID"
+                                                                        name="./anchorID"
+                                                                        required="{Boolean}true" />
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </anchors>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </links>
+                    <breadcrumb
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Breadcrumb"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            sling:resourceSuperType="solidigm/components/breadcrumb/cq:dialog/content/items/tabs/items/properties"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <breadcrumb
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                    fieldLabel="Show Breadcrumb"
+                                                    fieldDescription="Select whether to show or hide the breadcrumb"
+                                                    name="./breadcrumb"
+                                                    sling:orderBefore="startLevel" >
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <item_0 jcr:primaryType="nt:unstructured"
+                                                            text="Hide Breadcrumb"
+                                                            value="hide_breadcrumb"
+                                                            selected="{Boolean}true" />
+                                                    <item_1 jcr:primaryType="nt:unstructured"
+                                                            text="Show Breadcrumb"
+                                                            value="show_breadcrumb" />
+                                                </items>
+                                            </breadcrumb>
+                                            <id
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:hideResource="{Boolean}true"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </breadcrumb>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
