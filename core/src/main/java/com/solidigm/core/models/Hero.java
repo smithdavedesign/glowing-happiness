@@ -126,6 +126,11 @@ public interface Hero extends ComponentExporter {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * Returns Boolean whether hero has content to display
+     *
+     * @return Boolean
+     */
     default Boolean isEmpty() {
         throw new UnsupportedOperationException();
     }
