@@ -18,8 +18,8 @@ import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Model(
-        adaptables = { Resource.class, SlingHttpServletRequest.class },
-        adapters = { Hero.class, ComponentExporter.class },
+        adaptables = {Resource.class, SlingHttpServletRequest.class},
+        adapters = {Hero.class, ComponentExporter.class},
         resourceType = HeroImpl.RESOURCE_TYPE,
         defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
 )
@@ -82,7 +82,7 @@ public class HeroImpl implements Hero {
     private String cta2Link;
 
     @Getter
-    @ChildResource(name="anchors")
+    @ChildResource(name = "anchors")
     private List<anchorLink> anchors;
 
     @Getter

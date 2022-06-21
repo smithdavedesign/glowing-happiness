@@ -1,7 +1,6 @@
 package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
-import com.adobe.cq.wcm.core.components.models.Component;
 import com.solidigm.core.beans.anchorLink;
 
 import java.util.List;
