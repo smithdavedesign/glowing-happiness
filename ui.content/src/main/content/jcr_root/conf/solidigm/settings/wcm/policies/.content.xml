@@ -422,7 +422,7 @@
                                         name="trademark"/>
                                     <item4
                                         jcr:primaryType="nt:unstructured"
-                                        entity="&amp;#9888;;"
+                                        entity="&amp;#9888;"
                                         name="caution"/>
                                 </chars>
                             </specialCharsConfig>
