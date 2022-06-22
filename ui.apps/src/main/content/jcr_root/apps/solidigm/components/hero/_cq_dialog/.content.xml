@@ -33,65 +33,17 @@
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
                                             <title
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                    fieldLabel="Title"
                                                     name="./title"
-                                                    useFixedInlineToolbar="{Boolean}true"
-                                                    externalStyleSheets="[]">
-                                                <rtePlugins jcr:primaryType="nt:unstructured">
-                                                    <misctools
-                                                            jcr:primaryType="nt:unstructured"
-                                                            features="*">
-                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
-                                                            <chars jcr:primaryType="nt:unstructured">
-                                                                <item_0
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        entity="&#169;"
-                                                                        name="©" />
-                                                            </chars>
-                                                        </specialCharsConfig>
-                                                    </misctools>
-                                                </rtePlugins>
-                                                <uiSettings jcr:primaryType="nt:unstructured">
-                                                    <cui jcr:primaryType="nt:unstructured">
-                                                        <inline
-                                                                jcr:primaryType="nt:unstructured"
-                                                                toolbar="[misctools#specialchars,misctools#sourceedit]">
-                                                        </inline>
-                                                    </cui>
-                                                </uiSettings>
-                                            </title>
+                                                    fieldLabel="Title"
+                                                    rows="{Long}3" />
                                             <subtitle
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="cq/gui/components/authoring/dialog/richtext"
-                                                    fieldLabel="Subtitle"
                                                     name="./subtitle"
-                                                    useFixedInlineToolbar="{Boolean}true"
-                                                    externalStyleSheets="[]">
-                                                <rtePlugins jcr:primaryType="nt:unstructured">
-                                                    <misctools
-                                                            jcr:primaryType="nt:unstructured"
-                                                            features="*">
-                                                        <specialCharsConfig jcr:primaryType="nt:unstructured">
-                                                            <chars jcr:primaryType="nt:unstructured">
-                                                                <item_0
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        entity="&#169;"
-                                                                        name="©" />
-                                                            </chars>
-                                                        </specialCharsConfig>
-                                                    </misctools>
-                                                </rtePlugins>
-                                                <uiSettings jcr:primaryType="nt:unstructured">
-                                                    <cui jcr:primaryType="nt:unstructured">
-                                                        <inline
-                                                                jcr:primaryType="nt:unstructured"
-                                                                toolbar="[misctools#specialchars,misctools#sourceedit]">
-                                                        </inline>
-                                                    </cui>
-                                                </uiSettings>
-                                            </subtitle>
+                                                    fieldLabel="Subtitle"
+                                                    rows="{Long}3" />
                                             <description
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="cq/gui/components/authoring/dialog/richtext"
@@ -132,7 +84,7 @@
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <item_0 jcr:primaryType="nt:unstructured"
                                                             text="Hide Breadcrumb"
-                                                            value="hide_breadcrumb"
+                                                            value=""
                                                             selected="{Boolean}true" />
                                                     <item_1 jcr:primaryType="nt:unstructured"
                                                             text="Show Breadcrumb"
@@ -202,7 +154,7 @@
                                                     name="./filter">
                                                 <items jcr:primaryType="nt:unstructured">
                                                     <item_0 jcr:primaryType="nt:unstructured"
-                                                            text="None"
+                                                            text="No Filter"
                                                             value=""
                                                             selected="{Boolean}true" />
                                                     <item_1 jcr:primaryType="nt:unstructured"
@@ -231,32 +183,62 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <cta1Text
+                                            <callToActions
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Button label for the first Call to Action"
-                                                    fieldLabel="CTA 1 Text"
-                                                    name="./cta1Text" />
-                                            <cta1Link
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Call-To-Action Links">
+                                                <field
                                                     jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    name="./cta1Link"
-                                                    fieldLabel="CTA 1 Link"
-                                                    fieldDescription="The link target for the first Call to Action"
-                                                    rootPath="/content" />
-                                            <cta2Text
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="The button label for the second Call to Action"
-                                                    fieldLabel="CTA 2 Text"
-                                                    name="./cta2Text" />
-                                            <cta2Link
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                    name="./cta2Link"
-                                                    fieldLabel="CTA 2 Link"
-                                                    fieldDescription="The link target for the second Call to Action"
-                                                    rootPath="/content" />
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./callToActions">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                        <items jcr:primaryType="nt:unstructured">
+                                                            <callToAction
+                                                                    jcr:primaryType="nt:unstructured"
+                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                                    jcr:title="Call-To-Action Button">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                    <buttonLabel
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                            fieldLabel="Button Label"
+                                                                            required="{Boolean}true"
+                                                                            name="./buttonLabel" />
+                                                                    <buttonLink
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                            name="./buttonLink"
+                                                                            fieldLabel="Button Link"
+                                                                            fieldDescription="The link target for this Call-To-Action Button"
+                                                                            rootPath="/content/solidigm"
+                                                                            required="{Boolean}true" />
+                                                                    <buttonStyle
+                                                                            jcr:primaryType="nt:unstructured"
+                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                            fieldLabel="Select Button Style"
+                                                                            fieldDescription="Select a Button Style from the available options"
+                                                                            name="./buttonStyle">
+                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                            <item_0 jcr:primaryType="nt:unstructured"
+                                                                                  text="Opaque"
+                                                                                  value=""
+                                                                                  selected="{Boolean}true" />
+                                                                            <item_1 jcr:primaryType="nt:unstructured"
+                                                                                  text="Transparent"
+                                                                                  value="transparent" />
+                                                                        </items>
+                                                                    </buttonStyle>
+                                                                </items>
+                                                            </callToAction>
+                                                        </items>
+                                                    </column>
+                                                </items>
+                                                </field>
+                                            </callToActions>
                                             <anchors
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
@@ -272,19 +254,26 @@
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container">
                                                             <items jcr:primaryType="nt:unstructured">
-                                                                <anchorLabel
+                                                                <fieldset
                                                                         jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldLabel="Anchor Label"
-                                                                        name="./anchorLabel"
-                                                                        required="{Boolean}true" />
-                                                                <anchorId
-                                                                        jcr:primaryType="nt:unstructured"
-                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                        fieldDescription="Must match an Anchor ID on the page (do not include '#' in ID)"
-                                                                        fieldLabel="Anchor ID"
-                                                                        name="./anchorID"
-                                                                        required="{Boolean}true" />
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                                        jcr:title="Anchor Button">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <anchorLabel
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Anchor Label"
+                                                                                required="{Boolean}true"
+                                                                                name="./anchorLabel" />
+                                                                        <anchorID
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldDescription="Must match an Anchor ID on the page (do not include &apos;#&apos; in ID)"
+                                                                                fieldLabel="Anchor ID"
+                                                                                required="{Boolean}true"
+                                                                                name="./anchorID" />
+                                                                    </items>
+                                                                </fieldset>
                                                             </items>
                                                         </column>
                                                     </items>

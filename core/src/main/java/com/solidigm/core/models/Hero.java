@@ -2,6 +2,7 @@ package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.solidigm.core.beans.anchorLink;
+import com.solidigm.core.beans.callToActionButton;
 
 import java.util.List;
 
@@ -82,38 +83,11 @@ public interface Hero extends ComponentExporter {
     }
 
     /**
-     * Returns string for the CTA 1 text
+     * Returns List of Call-to-Action Buttons
      *
-     * @return string
+     * @return List<callToActionButton>
      */
-    default String getCta1Text() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the CTA 1 Link
-     *
-     * @return string
-     */
-    default String getCta1Link() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the CTA 2 text
-     *
-     * @return string
-     */
-    default String getCta2Text() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the CTA 2 Link
-     *
-     * @return string
-     */
-    default String getCta2Link() {
+    default List<callToActionButton> getCallToActions() {
         throw new UnsupportedOperationException();
     }
 
@@ -131,7 +105,7 @@ public interface Hero extends ComponentExporter {
      *
      * @return Boolean
      */
-    default Boolean isEmpty() {
+    default Boolean hasContent() {
         throw new UnsupportedOperationException();
     }
 }

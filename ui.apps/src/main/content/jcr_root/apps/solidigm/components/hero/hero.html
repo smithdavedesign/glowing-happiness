@@ -1,27 +1,25 @@
 <sly data-sly-use.hero="com.solidigm.core.models.Hero"
      data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
-     data-sly-test.hasContent="${!hero.isEmpty}" >
+     data-sly-test.hasContent="${hero.hasContent}" >
     <div style="background-image: url('${hero.desktopImageReference ? hero.desktopImageReference : '' @ context='uri'}');">
         <div class="container cq-dd-image">
             <div>
                 <div id="heroGreetingTarget">Greeting current user</div>
                 <div data-sly-test="${hero.showBreadcrumb}"
                      data-sly-resource="${ '.' @ resourceType='solidigm/components/breadcrumb', wcmmode='disabled'}" />
-                <h1 data-sly-test="${hero.title}">${hero.title @ context='html'}</h1>
-                <h3 data-sly-test="${hero.subtitle}">${hero.subtitle @ context='html'}</h3>
+                <h1 data-sly-test="${hero.title}" style="white-space: pre-wrap; overflow-wrap: break-word;">${hero.title}</h1>
+                <h3 data-sly-test="${hero.subtitle}" style="white-space: pre-wrap; overflow-wrap: break-word;">${hero.subtitle}</h3>
                 <p  data-sly-test="${hero.description}">${hero.subtitle @ context='html'}</p>
-                <p data-sly-test="${hero.cta1Text && hero.cta1Link}">
-                    <a href="${hero.cta1Link}" role="button">${hero.cta1Text}</a>
-                </p>
-                <p data-sly-test="${hero.cta2Text && hero.cta2Link}">
-                    <a href="${hero.cta2Link}" role="button">${hero.cta2Text}</a>
-                </p>
+                <sly data-sly-list.callToAction="${hero.callToActions}">
+                    <a href="${callToAction.buttonLink}" role="button">${callToAction.buttonLabel} Style: ${callToAction.buttonStyle}</a>
+                </sly>
                 <ul data-sly-list.anchor="${hero.anchors}">
                     <li>
                         <a href="#${anchor.anchorID}" role="button">${anchor.anchorLabel}</a>
                     </li>
                 </ul>
                 <div data-sly-test="${hero.mobileImageReference}">Mobile Image Path: ${hero.mobileImageReference}</div>
+                <div data-sly-test="${hero.filter}">Image Filter: ${hero.filter}</div>
             </div>
         </div>
     </div>

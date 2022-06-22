@@ -3,6 +3,7 @@ package com.solidigm.core.models.impl;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.solidigm.core.beans.anchorLink;
+import com.solidigm.core.beans.callToActionButton;
 import com.solidigm.core.models.Hero;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
@@ -30,7 +31,9 @@ import java.util.List;
 public class HeroImpl implements Hero {
     static final String RESOURCE_TYPE = "solidigm/components/hero";
 
-    private static final String SHOW_BREADCRUMB = "show_breadcrumb";
+    private static final Boolean EMPTY_SELECTION_SHOW_BREADCRUMB = false;
+
+    private static final String EMPTY_SELECTION_FILTER = "no_filter";
 
     @Override
     public String getExportedType() {
@@ -51,10 +54,6 @@ public class HeroImpl implements Hero {
 
     @Getter
     @ValueMapValue
-    private String breadcrumb;
-
-    @Getter
-    @ValueMapValue
     private String desktopImageReference;
 
     @Getter
@@ -62,39 +61,32 @@ public class HeroImpl implements Hero {
     private String mobileImageReference;
 
     @Getter
-    @ValueMapValue
-    private String filter;
-
-    @Getter
-    @ValueMapValue
-    private String cta1Text;
-
-    @Getter
-    @ValueMapValue
-    private String cta1Link;
-
-    @Getter
-    @ValueMapValue
-    private String cta2Text;
-
-    @Getter
-    @ValueMapValue
-    private String cta2Link;
+    @ChildResource(name="callToActions")
+    private List<callToActionButton> callToActions;
 
     @Getter
     @ChildResource(name = "anchors")
     private List<anchorLink> anchors;
 
+    @ValueMapValue
+    private String breadcrumb;
+
+    @ValueMapValue(name = "filter")
+    private String filterSelected;
+
     @Getter
     private Boolean showBreadcrumb;
 
-    @Override
-    public Boolean isEmpty() {
-        return (StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
-    }
+    @Getter
+    private String filter;
+
+    @Getter
+    private Boolean hasContent;
 
     @PostConstruct
     private void initModel() {
-        showBreadcrumb = !StringUtils.isEmpty(breadcrumb) && breadcrumb.equals(SHOW_BREADCRUMB);
+        showBreadcrumb = StringUtils.isEmpty(breadcrumb) == EMPTY_SELECTION_SHOW_BREADCRUMB;
+        filter = StringUtils.isEmpty(filterSelected) ? EMPTY_SELECTION_FILTER : filterSelected;
+        hasContent= !(StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
     }
 }
