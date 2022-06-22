@@ -59,7 +59,15 @@
                                                                 <item_0
                                                                         jcr:primaryType="nt:unstructured"
                                                                         entity="&#169;"
-                                                                        name="©" />
+                                                                        name="copyright" />
+                                                                <item_1
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&#174;"
+                                                                        name="registered" />
+                                                                <item_2
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        entity="&#8482;"
+                                                                        name="trademark" />
                                                             </chars>
                                                         </specialCharsConfig>
                                                     </misctools>
