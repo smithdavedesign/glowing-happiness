@@ -49,8 +49,7 @@
                                                     sling:resourceType="cq/gui/components/authoring/dialog/richtext"
                                                     fieldLabel="Description"
                                                     name="./description"
-                                                    useFixedInlineToolbar="{Boolean}true"
-                                                    externalStyleSheets="[]">
+                                                    useFixedInlineToolbar="{Boolean}true">
                                                 <rtePlugins jcr:primaryType="nt:unstructured">
                                                     <misctools
                                                             jcr:primaryType="nt:unstructured"
@@ -69,8 +68,12 @@
                                                     <cui jcr:primaryType="nt:unstructured">
                                                         <inline
                                                                 jcr:primaryType="nt:unstructured"
-                                                                toolbar="[misctools#specialchars,misctools#sourceedit]">
+                                                                toolbar="[format#bold,format#italic,format#underline,#justify,#lists,links#modifylink,links#unlink,misctools#specialchars]">
                                                         </inline>
+                                                        <dialogFullScreen
+                                                                jcr:primaryType="nt:unstructured"
+                                                                toolbar="[format#bold,format#italic,format#underline,justify#justifyleft,justify#justifycenter,justify#justifyright,lists#unordered,lists#ordered,lists#outdent,lists#indent,links#modifylink,links#unlink,link#anchor,misctools#specialchars]">
+                                                        </dialogFullScreen>
                                                     </cui>
                                                 </uiSettings>
                                             </description>
