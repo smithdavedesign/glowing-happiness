@@ -16,3 +16,48 @@ $color-link:            #2020E0;
 $color-foreground-dark: invert($color-foreground);
 $color-background-dark: invert($color-background);
 $color-link-dark:       invert($color-link);
+
+// Breakpoints
+$smallMobile: 360px;
+$mobile: 640px;
+$tablet: 768px;
+$desktop: 1024px;
+
+// Fonts
+$heading-font: "Sora", "Arial";
+$body-font: "Noto Sans";
+
+// Font sizes
+$font-size-5xl: 5rem; // 80px
+$font-size-4xl: 3.125rem; // 50px
+$font-size-3xl: 3rem; // 48px
+$font-size-2xl: 2rem; // 32px
+$font-size-xl: 1.5rem; // 24px
+$font-size-lg: 1.25rem; // 20px
+$font-size-base: 0.9375rem; // 15px
+$font-size-sm: 0.8125rem; // 13px
+$font-size-xs: 0.6875rem; // 11px
+$font-size-2xs: 0.625rem; // 10px
+$font-size-3xs: 0.5625rem; // 9px
+
+// Border
+$border-radius-sm: 3px;
+$border-radius-md: 5px;
+
+// Colors
+$white: #ffffff;
+$black: #000000;
+
+$gray-300: #f5f3f1;
+$gray-400: #e1e1e1;
+$gray-500: #a5a29d;
+$gray-700: #52514f;
+$dark-gray: #21201f;
+
+$dark-blue: #00083f;
+$teal: #97f2e9;
+$orange: #ffa42c;
+
+$solidigm-purple: #4f00b5;
+$solidigm-purple-light: #6500e6;
+$darkPurple: #2f006b;
