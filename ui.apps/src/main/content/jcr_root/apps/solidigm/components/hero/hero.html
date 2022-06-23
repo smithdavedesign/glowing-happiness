@@ -19,7 +19,7 @@
             />
             <h2 class="cmp-hero__title" data-sly-test="${hero.title}">${hero.title}</h2>
             <h3 class="cmp-hero__subtitle" data-sly-test="${hero.subtitle}">${hero.subtitle}</h3>
-            <div class="cmp-hero__description" data-sly-text="${hero.description}">
+            <div class="cmp-hero__description" data-sly-test="${hero.description}">
                 ${hero.description @ context='html'}
             </div>
             <div data-sly-test="${hero.anchors}" class="cmp-hero__internal-links-list">
