@@ -42,11 +42,11 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="The title to be shown in the navigation bar"
                                                             fieldLabel="Nav Item Title"
-                                                            name="./navItemTitle" />
+                                                            name="./navItem1Title" />
                                                     <navItemLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            name="./navItemLink"
+                                                            name="./navItem1Link"
                                                             fieldLabel="Nav Item Link"
                                                             fieldDescription="Link to page"
                                                             rootPath="/content/solidigm/us/en"
@@ -359,11 +359,11 @@
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                         fieldDescription="Name of language to be shown in dropdown"
                                                                         fieldLabel="Language Label"
-                                                                        name="./langLabel" />
+                                                                        name="./languageTitle" />
                                                                 <langLink
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                        name="./langLink"
+                                                                        name="./languageLink"
                                                                         fieldLabel="Link to Homepage"
                                                                         fieldDescription="Link to other country&apos;s/language&apos;s homepage"
                                                                         rootPath="/content/solidigm"

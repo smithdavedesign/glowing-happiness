@@ -2,6 +2,7 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.solidigm.core.beans.headerNavItems;
 import com.solidigm.core.models.Header;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
@@ -10,6 +11,7 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
@@ -38,12 +40,8 @@ public class HeaderImpl implements Header {
     }
 
     @Getter
-    @ValueMapValue
-    private String title;
-
-    @Getter
-    @ValueMapValue
-    private String subtitle;
+    @ChildResource(name="navLinks")
+    private List<headerNavItems> navLinks;
 
     @Getter
     @ValueMapValue
