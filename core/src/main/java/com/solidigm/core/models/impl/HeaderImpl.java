@@ -2,10 +2,9 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.solidigm.core.beans.headerNavItems;
+import com.solidigm.core.beans.Link;
 import com.solidigm.core.models.Header;
 import lombok.Getter;
-import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -30,50 +29,89 @@ import java.util.List;
 public class HeaderImpl implements Header {
     static final String RESOURCE_TYPE = "solidigm/components/header";
 
-    private static final Boolean EMPTY_SELECTION_SHOW_BREADCRUMB = false;
-
-    private static final String EMPTY_SELECTION_FILTER = "no_filter";
-
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }
 
     @Getter
-    @ChildResource(name="navLinks")
-    private List<headerNavItems> navLinks;
+    @ValueMapValue
+    private String navItemTitle1;
 
     @Getter
     @ValueMapValue
-    private String description;
+    private String navItemTitle2;
 
     @Getter
     @ValueMapValue
-    private String desktopImageReference;
+    private String navItemTitle3;
 
     @Getter
     @ValueMapValue
-    private String mobileImageReference;
+    private String navItemTitle4;
 
+    @Getter
     @ValueMapValue
-    private String breadcrumb;
-
-    @ValueMapValue(name = "filter")
-    private String filterSelected;
+    private String navItemTitle5;
 
     @Getter
-    private Boolean showBreadcrumb;
+    @ValueMapValue
+    private String navItemLink1;
 
     @Getter
-    private String filter;
+    @ValueMapValue
+    private String navItemLink2;
 
     @Getter
-    private Boolean hasContent;
+    @ValueMapValue
+    private String navItemLink3;
+
+    @Getter
+    @ValueMapValue
+    private String navItemLink4;
+
+    @Getter
+    @ValueMapValue
+    private String navItemLink5;
+
+    @Getter
+    @ChildResource(name="subNavItems1")
+    private List<Link> subNavItems1;
+
+    @Getter
+    @ChildResource(name="subNavItems2")
+    private List<Link> subNavItems2;
+
+    @Getter
+    @ChildResource(name="subNavItems3")
+    private List<Link> subNavItems3;
+
+    @Getter
+    @ChildResource(name="subNavItems4")
+    private List<Link> subNavItems4;
+
+    @Getter
+    @ChildResource(name="subNavItems5")
+    private List<Link> subNavItems5;
+
+    @Getter
+    @ChildResource(name="languageInfo")
+    private List<Link> langItems;
+
+    @Getter
+    @ValueMapValue
+    private String greeting;
+
+    @Getter
+    @ValueMapValue
+    private String searchBarPlaceholder;
+
+    @Getter
+    @ValueMapValue
+    private String searchBarSearchResultsPage;
 
     @PostConstruct
     private void initModel() {
-        showBreadcrumb = StringUtils.isEmpty(breadcrumb) == EMPTY_SELECTION_SHOW_BREADCRUMB;
-        filter = StringUtils.isEmpty(filterSelected) ? EMPTY_SELECTION_FILTER : filterSelected;
-        hasContent= !(StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
+        String l = "hmm";
     }
 }

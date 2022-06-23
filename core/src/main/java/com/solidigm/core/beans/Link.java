@@ -4,13 +4,16 @@ import lombok.Getter;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.inject.Inject;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class headerNavItems {
+public class Link {
     @Getter
-    @ValueMapValue
-    private String navItem1Link;
+    @Inject
+    private String label;
+
+    @Getter
+    @Inject
+    private String link;
 }

@@ -42,11 +42,11 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="The title to be shown in the navigation bar"
                                                             fieldLabel="Nav Item Title"
-                                                            name="./navItem1Title" />
+                                                            name="./navItemTitle1" />
                                                     <navItemLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            name="./navItem1Link"
+                                                            name="./navItemLink1"
                                                             fieldLabel="Nav Item Link"
                                                             fieldDescription="Link to page"
                                                             rootPath="/content/solidigm/us/en"
@@ -60,7 +60,7 @@
                                                         <field
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                name="./subitems">
+                                                                name="./subNavItems1">
                                                             <items jcr:primaryType="nt:unstructured">
                                                                 <column
                                                                         jcr:primaryType="nt:unstructured"
@@ -71,12 +71,12 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Title of link to be shown in dropdown of main nav item"
                                                                                 fieldLabel="Sub Nav Title"
-                                                                                name="./subNavTitle" />
+                                                                                name="./label" />
                                                                         <subNavLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                 fieldDescription="If this link is authored, all configured sublink pages will be ignored"
-                                                                                name="./subNavLink"
+                                                                                name="./link"
                                                                                 fieldLabel="Sub Nav Link"
                                                                                 rootPath="/content/solidigm/us/en"
                                                                                 suffix=".html" />
@@ -97,11 +97,11 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="The title to be shown in the navigation bar"
                                                             fieldLabel="Nav Item Title"
-                                                            name="./navItemTitle" />
+                                                            name="./navItemTitle2" />
                                                     <navItemLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            name="./navItemLink"
+                                                            name="./navItemLink2"
                                                             fieldLabel="Nav Item Link"
                                                             fieldDescription="Link to page"
                                                             rootPath="/content/solidigm/us/en"
@@ -115,7 +115,7 @@
                                                         <field
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                name="./subitems">
+                                                                name="./subNavItems2">
                                                             <items jcr:primaryType="nt:unstructured">
                                                                 <column
                                                                         jcr:primaryType="nt:unstructured"
@@ -126,12 +126,12 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Title of link to be shown in dropdown of main nav item"
                                                                                 fieldLabel="Sub Nav Title"
-                                                                                name="./subNavTitle" />
+                                                                                name="./label" />
                                                                         <subNavLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                 fieldDescription="If this link is authored, all configured sublink pages will be ignored"
-                                                                                name="./subNavLink"
+                                                                                name="./link"
                                                                                 fieldLabel="Sub Nav Link"
                                                                                 rootPath="/content/solidigm/us/en"
                                                                                 suffix=".html" />
@@ -152,11 +152,11 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="The title to be shown in the navigation bar"
                                                             fieldLabel="Nav Item Title"
-                                                            name="./navItemTitle" />
+                                                            name="./navItemTitle3" />
                                                     <navItemLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            name="./navItemLink"
+                                                            name="./navItemLink3"
                                                             fieldLabel="Nav Item Link"
                                                             fieldDescription="If this link is authored, all configured sublink pages will be ignored"
                                                             rootPath="/content/solidigm/us/en"
@@ -170,7 +170,7 @@
                                                         <field
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                name="./subitems">
+                                                                name="./subNavItems3">
                                                             <items jcr:primaryType="nt:unstructured">
                                                                 <column
                                                                         jcr:primaryType="nt:unstructured"
@@ -206,11 +206,11 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="The title to be shown in the navigation bar"
                                                             fieldLabel="Nav Item Title"
-                                                            name="./navItemTitle" />
+                                                            name="./navItemTitle4" />
                                                     <navItemLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            name="./navItemLink"
+                                                            name="./navItemLink4"
                                                             fieldLabel="Nav Item Link"
                                                             fieldDescription="If this link is authored, all configured sublink pages will be ignored"
                                                             rootPath="/content/solidigm/us/en"
@@ -224,7 +224,7 @@
                                                         <field
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                name="./subitems">
+                                                                name="./subNavItems4">
                                                             <items jcr:primaryType="nt:unstructured">
                                                                 <column
                                                                         jcr:primaryType="nt:unstructured"
@@ -260,11 +260,11 @@
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                             fieldDescription="The title to be shown in the navigation bar"
                                                             fieldLabel="Nav Item Title"
-                                                            name="./navItemTitle" />
+                                                            name="./navItemTitle5" />
                                                     <navItemLink
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                            name="./navItemLink"
+                                                            name="./navItemLink5"
                                                             fieldLabel="Nav Item Link"
                                                             fieldDescription="If this link is authored, all configured sublink pages will be ignored"
                                                             rootPath="/content/solidigm/us/en"
@@ -278,7 +278,7 @@
                                                         <field
                                                                 jcr:primaryType="nt:unstructured"
                                                                 sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                name="./subitems">
+                                                                name="./subNavItems5">
                                                             <items jcr:primaryType="nt:unstructured">
                                                                 <column
                                                                         jcr:primaryType="nt:unstructured"
@@ -325,13 +325,21 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
-                                            <searchBar
+                                            <searchBarPlaceholder
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription="Placeholder text to display within search bar"
                                                     fieldLabel="Search Bar"
                                                     emptyText="Enter placeholder text here"
-                                                    name="./searchBar" />
+                                                    name="./searchBarPlaceholder" />
+                                            <searchBarSearchResults
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    name="./searchBarSearchResultsPage"
+                                                    fieldLabel="Search Results Page Link"
+                                                    fieldDescription="Link to search results page"
+                                                    rootPath="/content/solidigm"
+                                                    suffix=".html" />
                                             <greeting
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -359,11 +367,11 @@
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                         fieldDescription="Name of language to be shown in dropdown"
                                                                         fieldLabel="Language Label"
-                                                                        name="./languageTitle" />
+                                                                        name="./label" />
                                                                 <langLink
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                        name="./languageLink"
+                                                                        name="./link"
                                                                         fieldLabel="Link to Homepage"
                                                                         fieldDescription="Link to other country&apos;s/language&apos;s homepage"
                                                                         rootPath="/content/solidigm"
