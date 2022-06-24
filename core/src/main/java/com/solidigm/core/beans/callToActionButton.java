@@ -31,6 +31,6 @@ public class callToActionButton {
 
     @PostConstruct
     private void initModel() {
-        buttonStyle = StringUtils.isEmpty(buttonStyleSelection) ? EMPTY_SELECTION_BUTTON_STYLE : buttonStyle;
+        buttonStyle = StringUtils.isEmpty(buttonStyleSelection) ? EMPTY_SELECTION_BUTTON_STYLE : buttonStyleSelection;
     }
 }
