@@ -281,6 +281,23 @@
                                 resourceType="solidigm/components/contentfragment"/>
                         </assetToComponentMapping>
                     </cq:authoring>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Background"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1656041443180"
+                                    cq:styleLabel="none"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--gray-diagonal-line"
+                                    cq:styleId="1656041446035"
+                                    cq:styleLabel="Gray Line"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                 </policy_1574695586800>
                 <policy_1575040440977
                     jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
