@@ -336,7 +336,6 @@ Import-Package: javax.annotation;version=0.0.0,*
         <dependency>
             <groupId>xerces</groupId>
             <artifactId>xercesImpl</artifactId>
-            <version>2.12.2</version>
             <scope>test</scope>
         </dependency>
         <!-- Required to be able to support injection with @Self and @Via -->
