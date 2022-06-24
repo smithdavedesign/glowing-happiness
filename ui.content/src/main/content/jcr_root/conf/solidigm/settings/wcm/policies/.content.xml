@@ -211,6 +211,23 @@
                     jcr:title="Page Root"
                     sling:resourceType="wcm/core/components/policy/policy"
                     components="[group:Solidigm - Content,/apps/solidigm/components/form/container,group:Solidigm - Structure]">
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Layout"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1655788585517"
+                                    cq:styleLabel="blank"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="container--gray-diagonal-line"
+                                    cq:styleId="1655788593274"
+                                    cq:styleLabel="gray-diagonal-line"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -265,14 +282,6 @@
                         </assetToComponentMapping>
                     </cq:authoring>
                 </policy_1574695586800>
-                <policy_649128221558427
-                    cq:styleDefaultElement="main"
-                    jcr:description="Sets a &lt;main> element on the page content area."
-                    jcr:primaryType="nt:unstructured"
-                    jcr:title="Page Main"
-                    sling:resourceType="wcm/core/components/policy/policy">
-                    <jcr:content jcr:primaryType="nt:unstructured"/>
-                </policy_649128221558427>
                 <policy_1575040440977
                     jcr:description="Allows the template components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
                     jcr:primaryType="nt:unstructured"
