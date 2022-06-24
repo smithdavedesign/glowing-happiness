@@ -19,17 +19,18 @@
         border-radius: 0;
         margin-left: 6px;
         margin-right: 6px;
-        background: #cbcbcb;
+        background: $gray-450;
         position: relative;
         transform: skew(-45deg);
     }
 
+    $slides-threshold: 20%;
     &__slide.is-prev > * {
-        transform-origin: 80% 50%;
+        transform-origin: calc(100% - $slides-threshold) 50%;
     }
 
     &__slide.is-next > * {
-        transform-origin: 20% 50%;
+        transform-origin: $slides-threshold 50%;
     }
 
     &__pagination__page::before {
