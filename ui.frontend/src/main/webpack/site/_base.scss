@@ -35,21 +35,3 @@ body {
     overflow-x: hidden;
     background: transparent;
 }
-
-.container--gray-diagonal-line {
-    position: relative;
-    margin: auto;
-}
-
-.container--gray-diagonal-line::before {
-    content: '';
-    height: 1000px;
-    width: 40000px;
-    background: #bcbcbc;
-    position: absolute;
-    z-index: -10000;
-    transform-origin: 0 0;
-    transform: rotate(45deg) translateX(-50%);
-    top: 0;
-    left: 0;
-}

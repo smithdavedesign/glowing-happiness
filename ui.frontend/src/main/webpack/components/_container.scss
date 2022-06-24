@@ -1,1 +1,30 @@
-.cmp-container {}
+.cmp-container {
+    max-width: 1440px;
+    padding: 0 clamp(1rem, 3.5vw, 1.5rem);
+
+    &--no-padding {
+        padding: 0;
+    }
+
+    &--wide {
+        max-width: 2000px;
+    }
+
+    &--gray-diagonal-line {
+        position: relative;
+        margin: auto;
+
+        &::before {
+            content: '';
+            height: 1000px;
+            width: 40000px;
+            background: #bcbcbc;
+            position: absolute;
+            z-index: -10000;
+            transform-origin: 0 0;
+            transform: rotate(45deg) translateX(-50%);
+            top: 0;
+            left: 0;
+        }
+    }
+}
