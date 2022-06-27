@@ -111,7 +111,7 @@ public interface Footer extends ComponentExporter {
     }
 
     /**
-     * Returns Boolean whether hero has content to display
+     * Returns Boolean whether the footer has content to display
      *
      * @return Boolean
      */
