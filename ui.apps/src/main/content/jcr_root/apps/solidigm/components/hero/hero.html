@@ -1,0 +1,42 @@
+<sly data-sly-use.hero="com.solidigm.core.models.Hero"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${hero.hasContent}" >
+     <div 
+        class="cmp-hero ${hero.filter == 'darken' ? 'cmp-hero--with-overlay' : ''}"
+     >
+        <div class="cmp-hero__background-image cmp-hero__background-image--desktop">
+            <img src="${hero.desktopImageReference}" alt=""/>
+        </div>
+        <div class="cmp-hero__background-image cmp-hero__background-image--mobile">
+            <img src="${hero.mobileImageReference}" alt=""/>
+        </div>
+
+        <div class="cmp-hero__content">
+            <div id="heroGreetingTarget"></div>
+            <div 
+                data-sly-test="${hero.showBreadcrumb}"
+                data-sly-resource="${ '.' @ resourceType='solidigm/components/breadcrumb', wcmmode='disabled'}" 
+            />
+            <h2 class="cmp-hero__title" data-sly-test="${hero.title}">${hero.title}</h2>
+            <h3 class="cmp-hero__subtitle" data-sly-test="${hero.subtitle}">${hero.subtitle}</h3>
+            <div class="cmp-hero__description" data-sly-test="${hero.description}">
+                ${hero.description @ context='html'}
+            </div>
+            <div data-sly-test="${hero.anchors}" class="cmp-hero__internal-links-list">
+                <ul data-sly-list.anchor="${hero.anchors}">
+                    <li>
+                        <a href="#${anchor.anchorID}">${anchor.anchorLabel}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="cmp-hero__cta-container">
+                <sly data-sly-list.callToAction="${hero.callToActions}">
+                    <a href="${callToAction.buttonLink}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline'}">
+                        ${callToAction.buttonLabel}
+                    </a>
+                </sly>
+            </div>
+        </div>
+     </div>
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>

@@ -1,3 +1,35 @@
+@font-face {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../resources/fonts/Sora-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Sora';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../resources/fonts/Sora-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../resources/fonts/NotoSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../resources/fonts/NotoSans-Bold.ttf');
+}
+
 //== Base
 
 html,
@@ -15,19 +47,93 @@ body {
     }
 }
 
-
-a {
-    color: $color-link;
-
-    @media (prefers-color-scheme: dark) {
-        color: $color-link-dark;
-    }
-}
-
 button,
 input,
 optgroup,
 select,
 textarea {
     font: inherit;
+}
+
+body {
+    font-family: $body-font;
+    font-size: $font-size-base;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+    font-family: $heading-font;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1440px;
+    margin: auto;
+    padding: 1.5rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+// Used to hide things for all devices except screen readers
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+button {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.solidigm-btn {
+    border-radius: $border-radius-md;
+    border: 1px solid $solidigm-purple;
+    color: $white;
+    background: $solidigm-purple;
+    padding: 12px 24px;
+    display: inline-block;
+    transition: background 0.15s;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover,
+    &:focus {
+        background: $solidigm-purple-light;
+    }
+
+    &--outline {
+        border-color: $gray-400;
+        background: transparent;
+
+        &:hover,
+        &:focus {
+            background: $solidigm-purple;
+        }
+    }
+
+    &--full {
+        width: 100%;
+    }
 }
