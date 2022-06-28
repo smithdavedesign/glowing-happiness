@@ -339,9 +339,9 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </page>
-                        <hero jcr:primaryType="nt:unstructured">
+            <hero jcr:primaryType="nt:unstructured">
                 <policy_1655924066041
-                    jcr:lastModified="{Date}2022-06-22T15:12:15.318-04:00"
+                    jcr:lastModified="{Date}2022-06-23T11:05:46.214-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Hero"
@@ -397,6 +397,21 @@
                     </cq:styleGroups>
                 </policy_1655924066041>
             </hero>
+            <carousel jcr:primaryType="nt:unstructured">
+                <policy_1656427204082
+                    jcr:lastModified="{Date}2022-06-28T10:40:46.956-04:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Solidigm Carousel"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    autopauseDisabled="false"
+                    autoplay="false"
+                    components="[/apps/solidigm/components/hero,/apps/solidigm/components/image,/apps/solidigm/components/articleteaser]"
+                    controlsPrepended="false"
+                    delay="5000">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1656427204082>
+            </carousel>
         </components>
     </solidigm>
 </jcr:root>
