@@ -38,15 +38,6 @@ public interface Hero extends ComponentExporter {
     }
 
     /**
-     * Returns string for the breadcrumb selection
-     *
-     * @return string
-     */
-    default String getBreadcrumb() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
      * Returns boolean for whether to show the breadcrumb based on the breadcrumb selection
      *
      * @return Boolean
