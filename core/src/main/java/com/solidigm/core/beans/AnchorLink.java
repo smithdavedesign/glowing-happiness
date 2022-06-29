@@ -8,7 +8,7 @@ import org.apache.sling.models.annotations.Model;
 import javax.inject.Inject;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class anchorLink {
+public class AnchorLink {
     @Getter
     @Inject
     private String anchorLabel;

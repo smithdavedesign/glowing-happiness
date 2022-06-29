@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class callToActionButton {
+public class CallToActionButton {
     private static final String EMPTY_SELECTION_BUTTON_STYLE = "opaque";
 
     @Getter
@@ -29,8 +29,12 @@ public class callToActionButton {
     @Getter
     private String buttonStyle;
 
+    @Getter
+    private String target;
+
     @PostConstruct
     private void initModel() {
-        buttonStyle = StringUtils.isEmpty(buttonStyleSelection) ? EMPTY_SELECTION_BUTTON_STYLE : buttonStyle;
+        buttonStyle = StringUtils.isEmpty(buttonStyleSelection) ? EMPTY_SELECTION_BUTTON_STYLE : buttonStyleSelection;
+        target = buttonLink.startsWith("/") ? "internal" : "external";
     }
 }
