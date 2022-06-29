@@ -1,11 +1,14 @@
 package com.solidigm.core.beans;
 
+import com.adobe.xfa.ut.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 
@@ -17,15 +20,30 @@ public class Link {
     private String label;
 
     @Getter
-    @Setter
     @Inject
     private String link;
 
-    public String getTarget(){
-        if (link.startsWith("/")){
-            return "internal";
+    @Getter
+    private String target;
+
+    public void setLink(String link) {
+        this.link = link;
+        processLink();
+    }
+
+    @PostConstruct
+    private void initModel() {
+        processLink();
+    }
+
+    private void processLink() {
+        if (!StringUtils.isEmpty(link) && link.startsWith("/")){
+            target = "_self";
+            if (StringUtils.isEmpty(FilenameUtils.getExtension(link))) {
+                link = link.concat(".html");
+            }
         } else {
-            return "external";
+            target = "_blank";
         }
-    };
+    }
 }
