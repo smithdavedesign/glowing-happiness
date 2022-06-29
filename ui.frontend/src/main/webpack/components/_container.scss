@@ -3,7 +3,7 @@
 }
 
 .cmp-container {
-    max-width: 1440px;
+    max-width: $max-width-base;
     padding: 0 clamp(1rem, 3.5vw, 1.5rem);
 
     &--no-padding {
@@ -11,7 +11,7 @@
     }
 
     &--wide {
-        max-width: 2000px;
+        max-width: $max-width-lg;
     }
 
     &--gray-diagonal-line {
