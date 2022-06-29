@@ -13,7 +13,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,11 +113,6 @@ public class HeaderImpl implements Header {
     @Getter
     @ValueMapValue
     private String homepage;
-
-    @PostConstruct
-    private void initModel() {
-        String l = "hmm";
-    }
 
     public List<Link> getSubNavItems1() {
         return (navItemLink1 == null ? subNavItems1 : EMPTY_LIST);
