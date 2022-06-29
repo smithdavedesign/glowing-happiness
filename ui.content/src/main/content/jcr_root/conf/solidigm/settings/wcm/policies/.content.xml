@@ -223,7 +223,7 @@
                                 <item1
                                     cq:styleClasses="container--gray-diagonal-line"
                                     cq:styleId="1655788593274"
-                                    cq:styleLabel="gray-diagonal-line"
+                                    cq:styleLabel="Gray Line"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
