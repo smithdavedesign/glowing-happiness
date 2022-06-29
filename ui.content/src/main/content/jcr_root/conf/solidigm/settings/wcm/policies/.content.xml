@@ -339,6 +339,64 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy>
             </page>
+                        <hero jcr:primaryType="nt:unstructured">
+                <policy_1655924066041
+                    jcr:lastModified="{Date}2022-06-22T15:12:15.318-04:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Hero"
+                    sling:resourceType="wcm/core/components/policy/policy">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Overlap Content"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1655924161057"
+                                    cq:styleLabel="no"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-hero--with-overlap"
+                                    cq:styleId="1655924181433"
+                                    cq:styleLabel="yes"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Height"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-hero--md"
+                                    cq:styleId="1655924221055"
+                                    cq:styleLabel="standard"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-hero--sm"
+                                    cq:styleId="1655924263138"
+                                    cq:styleLabel="short"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Mobile Content Alignment"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1655924301105"
+                                    cq:styleLabel="center"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-hero--content-bottom-mobile"
+                                    cq:styleId="1655924301972"
+                                    cq:styleLabel="bottom"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                    </cq:styleGroups>
+                </policy_1655924066041>
+            </hero>
         </components>
     </solidigm>
 </jcr:root>
