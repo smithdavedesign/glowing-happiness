@@ -71,11 +71,13 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Title of link to be shown in dropdown of main nav item"
                                                                                 fieldLabel="Sub Nav Title"
+                                                                                required="{Boolean}true"
                                                                                 name="./label" />
                                                                         <subNavLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                 fieldDescription="If this link is authored, all configured sublink pages will be ignored"
+                                                                                required="{Boolean}true"
                                                                                 name="./link"
                                                                                 fieldLabel="Sub Nav Link"
                                                                                 rootPath="/content/solidigm/us/en"
@@ -126,11 +128,13 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Title of link to be shown in dropdown of main nav item"
                                                                                 fieldLabel="Sub Nav Title"
+                                                                                required="{Boolean}true"
                                                                                 name="./label" />
                                                                         <subNavLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                 fieldDescription="If this link is authored, all configured sublink pages will be ignored"
+                                                                                required="{Boolean}true"
                                                                                 name="./link"
                                                                                 fieldLabel="Sub Nav Link"
                                                                                 rootPath="/content/solidigm/us/en"
@@ -181,10 +185,12 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Title of link to be shown in dropdown of main nav item"
                                                                                 fieldLabel="Sub Nav Title"
+                                                                                required="{Boolean}true"
                                                                                 name="./subNavTitle" />
                                                                         <subNavLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                required="{Boolean}true"
                                                                                 name="./subNavLink"
                                                                                 fieldLabel="Sub Nav Link"
                                                                                 rootPath="/content/solidigm/us/en"
@@ -235,10 +241,12 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Title of link to be shown in dropdown of main nav item"
                                                                                 fieldLabel="Sub Nav Title"
+                                                                                required="{Boolean}true"
                                                                                 name="./subNavTitle" />
                                                                         <subNavLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                required="{Boolean}true"
                                                                                 name="./subNavLink"
                                                                                 fieldLabel="Sub Nav Link"
                                                                                 rootPath="/content/solidigm/us/en"
@@ -289,10 +297,12 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Title of link to be shown in dropdown of main nav item"
                                                                                 fieldLabel="Sub Nav Title"
+                                                                                required="{Boolean}true"
                                                                                 name="./subNavTitle" />
                                                                         <subNavLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                required="{Boolean}true"
                                                                                 name="./subNavLink"
                                                                                 fieldLabel="Sub Nav Link"
                                                                                 rootPath="/content/solidigm/us/en"

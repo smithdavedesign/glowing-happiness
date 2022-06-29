@@ -95,7 +95,7 @@ public class HeaderImpl implements Header {
     private List<Link> subNavItems5;
 
     @Getter
-    @ValueMapValue
+    @ChildResource(name="langItems")
     private List<Link> langItems;
 
     @Getter
