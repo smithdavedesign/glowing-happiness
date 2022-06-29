@@ -62,10 +62,24 @@ public class HeroTest {
     }
 
     @Test
+    void testGetDesktopAltEmpty(){
+        ctx.currentResource("/content/heroEmpty");
+        Hero hero = ctx.request().adaptTo(Hero.class);
+        assertTrue(StringUtils.isEmpty(hero.getDesktopAltText()));
+    }
+
+    @Test
     void testGetMobileImageReferenceEmpty() {
         ctx.currentResource("/content/heroEmpty");
         Hero hero = ctx.request().adaptTo(Hero.class);
         assertTrue(StringUtils.isEmpty(hero.getMobileImageReference()));
+    }
+
+    @Test
+    void testGetMobileAltEmpty(){
+        ctx.currentResource("/content/heroEmpty");
+        Hero hero = ctx.request().adaptTo(Hero.class);
+        assertTrue(StringUtils.isEmpty(hero.getMobileAltText()));
     }
 
     @Test
@@ -137,11 +151,27 @@ public class HeroTest {
     }
 
     @Test
+    void testGetDesktopAltAuthored(){
+        String expected = "Test Desktop Alt Text";
+        ctx.currentResource("/content/heroAuthored");
+        Hero hero = ctx.request().adaptTo(Hero.class);
+        assertEquals(expected, hero.getDesktopAltText());
+    }
+
+    @Test
     void testGetMobileImageReferenceAuthored() {
         String expected = "/mobile/image/reference";
         ctx.currentResource("/content/heroAuthored");
         Hero hero = ctx.request().adaptTo(Hero.class);
         assertEquals(expected, hero.getMobileImageReference());
+    }
+
+    @Test
+    void testGetMobileAltAuthored(){
+        String expected = "Test Mobile Alt Text";
+        ctx.currentResource("/content/heroAuthored");
+        Hero hero = ctx.request().adaptTo(Hero.class);
+        assertEquals(expected, hero.getMobileAltText());
     }
 
     @Test
@@ -190,5 +220,21 @@ public class HeroTest {
         ctx.currentResource("/content/heroAuthored");
         Hero hero = ctx.request().adaptTo(Hero.class);
         assertTrue(hero.hasContent());
+    }
+
+    @Test
+    void testGetDesktopAltFromDAM(){
+        String expected = "Test Desktop Alt from DAM";
+        ctx.currentResource("/content/heroAltTextFromDAM");
+        Hero hero = ctx.request().adaptTo(Hero.class);
+        assertEquals(expected, hero.getDesktopAltText());
+    }
+
+    @Test
+    void testGetMobileAltFromDAM(){
+        String expected = "Test Mobile Alt from DAM";
+        ctx.currentResource("/content/heroAltTextFromDAM");
+        Hero hero = ctx.request().adaptTo(Hero.class);
+        assertEquals(expected, hero.getMobileAltText());
     }
 }

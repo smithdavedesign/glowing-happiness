@@ -140,6 +140,13 @@
                                                     uploadUrl="${suffix.path}"
                                                     useHTML5="{Boolean}true"
                                                     required="{Boolean}true" />
+                                            <desktopAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Desktop Image Alt Text"
+                                                    emptyText="Leave blank to use Alt Text from DAM"
+                                                    fieldDescription="Set the image alt text for accessibility. Leave blank to use alt text from DAM"
+                                                    name="./desktopAltText" />
                                             <headingMobileImage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/heading"
@@ -157,6 +164,13 @@
                                                     uploadUrl="${suffix.path}"
                                                     useHTML5="{Boolean}true"
                                                     required="{Boolean}true" />
+                                            <mobileAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Mobile Image Alt Text"
+                                                    emptyText="Leave blank to use Alt Text from DAM"
+                                                    fieldDescription="Set the image alt text for accessibility. Leave blank to use alt text from DAM"
+                                                    name="./mobileAltText" />
                                             <filter
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
