@@ -1,44 +1,71 @@
-<sly data-sly-use.header="com.solidigm.core.models.Header"
+<div data-sly-use.header="com.solidigm.core.models.Header"
      data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html">
     <div>
+        <!-- Solidigm icon with link to homepage -->
+        <div><a href="${header.homepage}">Solidigm icon with link to homepage</a></div>
+
+        <!-- Top navigation items with dropdowns to subnavs if no topnav link was authored -->
         <div>
             <span>
-                <h3 href="${header.navItemLink1}">${header.navItemTitle1}</h3>
+                <h3> <a href="${header.navItemLink1}">${header.navItemTitle1}</a></h3>
                 <div data-sly-list.subNavItems1=${header.subNavItems1}>
-                    <span href="${subNavItems1.link}">${subNavItems1.label}</span>
+                    <span> <a href="${subNavItems1.link}">${subNavItems1.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3 href="${header.navItemLink2}">${header.navItemTitle2}</h3>
+                <h3> <a href="${header.navItemLink2}">${header.navItemTitle2}</a></h3>
                 <div data-sly-list.subNavItems2=${header.subNavItems2}>
-                    <span href="${subNavItems2.link}">${subNavItems2.label}</span>
+                    <span> <a href="${subNavItems2.link}">${subNavItems2.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3 href="${header.navItemLink3}">${header.navItemTitle3}</h3>
+                <h3> <a href="${header.navItemLink3}">${header.navItemTitle3}</a></h3>
                 <div data-sly-list.subNavItems3=${header.subNavItems3}>
-                    <span href="${subNavItems3.link}">${subNavItems3.label}</span>
+                    <span> <a href="${subNavItems3.link}">${subNavItems3.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3 href="${header.navItemLink4}">${header.navItemTitle4}</h3>
+                <h3> <a href="${header.navItemLink4}">${header.navItemTitle4}</a></h3>
                 <div data-sly-list.subNavItems4=${header.subNavItems4}>
-                    <span href="${subNavItems4.link}">${subNavItems4.label}</span>
+                    <span> <a href="${subNavItems4.link}">${subNavItems4.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3 href="${header.navItemLink5}">${header.navItemTitle5}</h3>
+                <h3><a href="${header.navItemLink5}">${header.navItemTitle5}</a></h3>
                 <div data-sly-list.subNavItems5=${header.subNavItems5}>
-                    <span href="${subNavItems5.link}">${subNavItems5.label}</span>
+                    <span> <a href="${subNavItems5.link}">${subNavItems5.label}</a></span>
                 </div>
             </span>
         </div>
 
+        <!-- Search bar -->
         <div>
-            <div> <p href="${header.searchBarSearchResultsPage}">${header.searchBarPlaceholder}</p> </div>
-            <div id="headerGreetingTarget">${header.greeting} current user</div>
+            <section class="cmp-search">
+                <form class="cmp-search__form"
+                      method="get"
+                      action="${header.searchResultsPage}.html">
+                    <div class="cmp-search__field">
+                        <i class="cmp-search__icon"
+                           data-cmp-hook-search="icon"></i>
+                        <input class="cmp-search__input"
+                               type="text"
+                               name="headerSearch" placeholder="${header.placeholderText}"
+                               required="required"/>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <!-- User account info -->
+        <div>
+            <div> ${header.greeting} <div id="headerGreetingTarget"></div></div>
+            <div> <a href="${header.dashboard}">Dashboard</a></div>
+        </div>
+
+        <!-- Language Info -->
+        <div>
             <div data-sly-list.languageItem=${header.langItems}>
-                <span href="${languageItem.link}">${languageItem.label}</span>
+                <span> <a href="${languageItem.link}">${languageItem.label}</a></span>
             </div>
         </div>
 

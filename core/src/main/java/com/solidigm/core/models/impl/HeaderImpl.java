@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Model(
@@ -28,6 +29,7 @@ import java.util.List;
 )
 public class HeaderImpl implements Header {
     static final String RESOURCE_TYPE = "solidigm/components/header";
+    static final List<Link> EMPTY_LIST = new ArrayList<>();
 
     @Override
     public String getExportedType() {
@@ -74,23 +76,18 @@ public class HeaderImpl implements Header {
     @ValueMapValue
     private String navItemLink5;
 
-    @Getter
     @ChildResource(name="subNavItems1")
     private List<Link> subNavItems1;
 
-    @Getter
     @ChildResource(name="subNavItems2")
     private List<Link> subNavItems2;
 
-    @Getter
     @ChildResource(name="subNavItems3")
     private List<Link> subNavItems3;
 
-    @Getter
     @ChildResource(name="subNavItems4")
     private List<Link> subNavItems4;
 
-    @Getter
     @ChildResource(name="subNavItems5")
     private List<Link> subNavItems5;
 
@@ -104,14 +101,43 @@ public class HeaderImpl implements Header {
 
     @Getter
     @ValueMapValue
-    private String searchBarPlaceholder;
+    private String placeholderText;
 
     @Getter
     @ValueMapValue
-    private String searchBarSearchResultsPage;
+    private String searchResultsPage;
+
+    @Getter
+    @ValueMapValue
+    private String dashboard;
+
+    @Getter
+    @ValueMapValue
+    private String homepage;
 
     @PostConstruct
     private void initModel() {
         String l = "hmm";
     }
+
+    public List<Link> getSubNavItems1() {
+        return (navItemLink1 == null ? subNavItems1 : EMPTY_LIST);
+    }
+
+    public List<Link> getSubNavItems2() {
+        return (navItemLink2 == null ? subNavItems2 : EMPTY_LIST);
+    }
+
+    public List<Link> getSubNavItems3() {
+        return (navItemLink3 == null ? subNavItems3 : EMPTY_LIST);
+    }
+
+    public List<Link> getSubNavItems4() {
+        return (navItemLink4 == null ? subNavItems4 : EMPTY_LIST);
+    }
+
+    public List<Link> getSubNavItems5() {
+        return (navItemLink5 == null ? subNavItems5 : EMPTY_LIST);
+    }
+
 }
