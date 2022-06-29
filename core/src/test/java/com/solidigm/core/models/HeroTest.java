@@ -20,7 +20,7 @@ public class HeroTest {
 
     @BeforeEach
     public void setUp() throws FileNotFoundException {
-        //Load ctx for FooterModel
+        //Load ctx for HeroModel
         ctx.addModelsForClasses(Hero.class);
         ctx.load().json("/com/solidigm/core/models/HeroTest.json", "/content");
     }

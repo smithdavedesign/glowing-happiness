@@ -1,11 +1,11 @@
 {
   "heroEmpty": {
     "jcr:primaryType": "nt:unstructured",
-    "sling:resourceType": "solidigm/components/footer"
+    "sling:resourceType": "solidigm/components/hero"
   },
   "heroAltTextFromDAM": {
     "jcr:primaryType": "nt:unstructured",
-    "sling:resourceType": "solidigm/components/footer",
+    "sling:resourceType": "solidigm/components/hero",
     "title": "Test Title",
     "desktopImageReference": "/content/desktopImage",
     "mobileImageReference": "/content/mobileImage"
