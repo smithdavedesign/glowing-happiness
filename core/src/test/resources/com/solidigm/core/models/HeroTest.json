@@ -42,7 +42,7 @@
         "jcr:primaryType": "nt:unstructured",
         "buttonLabel": "Second Button",
         "buttonStyle": "",
-        "buttonLink": "/second/link"
+        "buttonLink": "https://second/link"
       }
     },
     "anchors": {

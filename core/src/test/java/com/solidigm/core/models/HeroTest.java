@@ -183,9 +183,11 @@ public class HeroTest {
         assertEquals("First Button", callToActions.get(0).getButtonLabel());
         assertEquals("/first/link", callToActions.get(0).getButtonLink());
         assertEquals("transparent", callToActions.get(0).getButtonStyle());
+        assertEquals("internal", callToActions.get(0).getTarget());
         assertEquals("Second Button", callToActions.get(1).getButtonLabel());
-        assertEquals("/second/link", callToActions.get(1).getButtonLink());
+        assertEquals("https://second/link", callToActions.get(1).getButtonLink());
         assertEquals("opaque", callToActions.get(1).getButtonStyle());
+        assertEquals("external", callToActions.get(1).getTarget());
     }
 
     @Test

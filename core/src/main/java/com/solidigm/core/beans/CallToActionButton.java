@@ -29,8 +29,12 @@ public class CallToActionButton {
     @Getter
     private String buttonStyle;
 
+    @Getter
+    private String target;
+
     @PostConstruct
     private void initModel() {
         buttonStyle = StringUtils.isEmpty(buttonStyleSelection) ? EMPTY_SELECTION_BUTTON_STYLE : buttonStyleSelection;
+        target = buttonLink.startsWith("/") ? "internal" : "external";
     }
 }
