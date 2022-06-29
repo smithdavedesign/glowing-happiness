@@ -329,6 +329,32 @@
                         </assetToComponentMapping>
                     </cq:authoring>
                 </policy_1575040440977>
+                 <policy_67718747930984
+                    jcr:lastModified="{Date}2022-06-29T16:26:38.605-04:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Container"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    layoutDisabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Background Color"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1656534125942"
+                                    cq:styleLabel="None"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--gray-bg"
+                                    cq:styleId="1656534128714"
+                                    cq:styleLabel="Gray"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_67718747930984>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy_1575031387650
