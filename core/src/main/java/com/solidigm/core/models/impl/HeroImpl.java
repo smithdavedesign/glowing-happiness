@@ -2,8 +2,8 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.solidigm.core.beans.anchorLink;
-import com.solidigm.core.beans.callToActionButton;
+import com.solidigm.core.beans.AnchorLink;
+import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.models.Hero;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
@@ -62,11 +62,11 @@ public class HeroImpl implements Hero {
 
     @Getter
     @ChildResource(name="callToActions")
-    private List<callToActionButton> callToActions;
+    private List<CallToActionButton> callToActions;
 
     @Getter
     @ChildResource(name = "anchors")
-    private List<anchorLink> anchors;
+    private List<AnchorLink> anchors;
 
     @ValueMapValue
     private String breadcrumb;

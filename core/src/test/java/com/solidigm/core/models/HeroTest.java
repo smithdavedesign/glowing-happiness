@@ -2,8 +2,8 @@ package com.solidigm.core.models;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.solidigm.core.beans.anchorLink;
-import com.solidigm.core.beans.callToActionButton;
+import com.solidigm.core.beans.AnchorLink;
+import com.solidigm.core.beans.CallToActionButton;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.commons.lang.StringUtils;
@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 @ExtendWith(AemContextExtension.class)
@@ -149,7 +148,7 @@ public class HeroTest {
     void testGetCallToActionsAuthored() {
         ctx.currentResource("/content/heroAuthored");
         Hero hero = ctx.request().adaptTo(Hero.class);
-        List<callToActionButton> callToActions = hero.getCallToActions();
+        List<CallToActionButton> callToActions = hero.getCallToActions();
         assertEquals(2, callToActions.size());
         assertEquals("First Button", callToActions.get(0).getButtonLabel());
         assertEquals("/first/link", callToActions.get(0).getButtonLink());
@@ -163,7 +162,7 @@ public class HeroTest {
     void testGetAnchorsAuthored() {
         ctx.currentResource("/content/heroAuthored");
         Hero hero = ctx.request().adaptTo(Hero.class);
-        List<anchorLink> anchors = hero.getAnchors();
+        List<AnchorLink> anchors = hero.getAnchors();
         assertEquals(2, anchors.size());
         assertEquals("First Anchor", anchors.get(0).getAnchorLabel());
         assertEquals("firstAnchor", anchors.get(0).getAnchorID());

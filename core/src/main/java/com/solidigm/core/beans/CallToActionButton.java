@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
-public class callToActionButton {
+public class CallToActionButton {
     private static final String EMPTY_SELECTION_BUTTON_STYLE = "opaque";
 
     @Getter
