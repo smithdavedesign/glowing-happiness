@@ -1,3 +1,7 @@
+.root.container {
+    overflow: hidden;
+}
+
 .cmp-container {
     max-width: 1440px;
     padding: 0 clamp(1rem, 3.5vw, 1.5rem);
