@@ -80,13 +80,17 @@ public class HeroImpl implements Hero {
     @Getter
     private String filter;
 
-    @Getter
-    private Boolean hasContent;
+    @Override
+    public Boolean hasContent() {
+        return hasContentVal;
+    }
+
+    private Boolean hasContentVal;
 
     @PostConstruct
     private void initModel() {
         showBreadcrumb = StringUtils.isEmpty(breadcrumb) == EMPTY_SELECTION_SHOW_BREADCRUMB;
         filter = StringUtils.isEmpty(filterSelected) ? EMPTY_SELECTION_FILTER : filterSelected;
-        hasContent= !(StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
+        hasContentVal= !(StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
     }
 }
