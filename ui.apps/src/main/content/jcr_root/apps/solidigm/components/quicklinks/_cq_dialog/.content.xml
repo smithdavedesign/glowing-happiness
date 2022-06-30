@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Quick Links Component"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabview
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <tiles
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Tile Properties"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <title
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Optional title for tile group"
+                                                    fieldLabel="Title"
+                                                    name="./title" />
+                                            <linkLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Label for See More Link"
+                                                    fieldLabel="See More Label"
+                                                    name="./linkLabel" />
+                                            <link
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    name="./link"
+                                                    fieldLabel="See More Link"
+                                                    fieldDescription="Link to read more"
+                                                    rootPath="/content/solidigm"
+                                                    suffix=".html" />
+                                            <tileInfo
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Quick Links Tile Information"
+                                                    fieldDescription="Add quick link tiles here">
+                                                <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                        name="./tileInfo">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <tileTitle
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        name="./tileTitle"
+                                                                        fieldLabel="Tile Title"
+                                                                        fieldDescription="Title of this tile"
+                                                                        rows="{Long}5"
+                                                                        required="{Boolean}true"/>
+                                                                <subtitle
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Optional subtitle for tile"
+                                                                        fieldLabel="Tile Subtitle"
+                                                                        name="./subtitle" />
+                                                                <link
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                        name="./link"
+                                                                        fieldLabel="Link"
+                                                                        fieldDescription="Link to page"
+                                                                        rootPath="/content/solidigm"
+                                                                        suffix=".html"
+                                                                        required="{Boolean}true" />
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </tileInfo>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </tiles>
+                </items>
+            </tabview>
+        </items>
+    </content>
+</jcr:root>
