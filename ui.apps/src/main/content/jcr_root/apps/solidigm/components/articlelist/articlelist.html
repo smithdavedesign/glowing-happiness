@@ -1,0 +1,17 @@
+
+<div data-sly-use.articleList="com.solidigm.core.models.ArticleList"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${articleList.hasContent}">
+    <h1>${articleList.title}</h1>
+    <a      data-sly-test="${articleList.link && articleList.linkText}"
+            href="${articleList.link}">${articleList.linkText}</a>
+    <sly data-sly-list.article="${articleList.articles}">
+        <div>
+            <p>Article Title: ${article.title}</p>
+            <p>Article Image: ${article.image}</p>
+            <p>Article Category: ${article.category}</p>
+            <p>Article Path: ${article.path}</p>
+        </div>
+    </sly>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-title'}"></sly>

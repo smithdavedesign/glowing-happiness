@@ -1,5 +1,30 @@
-.cmp-breadcrumb {}
-.cmp-breadcrumb__list {}
-.cmp-breadcrumb__item {}
-.cmp-breadcrumb__item--active {}
-.cmp-breadcrumb__item-link {}
+.cmp-breadcrumb {
+    text-transform: uppercase;
+    font-size: $font-size-sm;
+    font-weight: 400;
+
+    &__list {
+        display: flex;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: 25px;
+        position: relative;
+
+        &::after {
+            content: "";
+            height: 70%;
+            top: 50%;
+            width: 1px;
+            background: $white;
+            left: calc(100% + 12px);
+            position: absolute;
+            transform: translateY(-50%) rotate(15deg);
+        }
+    }
+
+    &__item-link {
+        color: inherit;
+        display: inline-block;
+    }
+}
