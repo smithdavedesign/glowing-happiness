@@ -1,43 +1,43 @@
-<div class="cmp-blade">
-    <!-- Normal image example -->
-    <div class="cmp-blade__media media-with-corner"
+<div class="cmp-blade"
+     data-sly-use.blade="com.solidigm.core.models.Blade"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${blade.hasContent}">
+
+     <!-- Show either a video or an image -->
+
+    <!-- Video -->
+    <div class="cmp-blade__media cmp-blade__media--video media-with-corner"
+         data-sly-test.showVideo="${blade.showVideo}"
          data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}">
-        <img src="/path/to/image" alt="" />
+    </div>
+    <!-- Image -->
+    <div class="cmp-blade__media media-with-corner"
+         data-sly-test="${!showVideo}">
+        <img src="${blade.imageReference}" alt="blade.altText" />
     </div>
 
-    <!-- Example with video -->
-    <!-- <div class="cmp-blade__media cmp-blade__media--video media-with-corner">
-        <img src="/path/to/image" alt="" />
-        <button data-modal-target="blader-modal-1" aria-label="Play [video title] video"></button>
-    </div> -->
+    
 
     <div class="cmp-blade__content">
-        <h2 class="cmp-blade__title">Why Work Here</h2>
-        <p class="cmp-blade__description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras condimentum ipsum non urna
-            iaculis cursus vitae sit amet purus.
+        <h2 class="cmp-blade__title">${blade.title}</h2>
+        <p class="cmp-blade__description" style="white-space: pre-line; white-space: pre-wrap;">
+            ${blade.description}
         </p>
-        <ul class="cmp-blade__list">
+        <ul class="cmp-blade__list"
+            data-sly-list.bullet="${blade.bullets}">
             <li>
-                <a href="#">Title of Link 1 to Culture Article</a>
-            </li>
-            <li>
-                <a href="#">Title of Link 2 to Culture Article</a>
-            </li>
-            <li>
-                <a href="#">Title of Link 3 to Culture Article</a>
+                <a href="${bullet.link}" target="${bullet.target}">${bullet.label}</a>
             </li>
         </ul>
-        <div class="cmp-blade__cta-container">
-            <a href="#" class="solidigm-btn solidigm-btn--external">
-                <span> Cta 1 </span>
-            </a>
-            <a href="#" class="solidigm-btn">
-                <span> Cta 2 </span>
+        <div class="cmp-blade__cta-container"
+             data-sly-list.callToAction="${blade.callToActions}">
+            <a href="${callToAction.link}" target="${callToAction.target}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline'}">
+                ${callToAction.label}
             </a>
         </div>
     </div>
 </div>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
 
 <!-- Modal to show the video in case the current blade instance shows a video -->
 <!-- <dialog id="blader-modal-1" class="cmp-modal cmp-modal__video">

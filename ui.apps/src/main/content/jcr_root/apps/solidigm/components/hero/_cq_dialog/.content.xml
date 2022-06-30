@@ -328,8 +328,7 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <startLevel
                                                     jcr:primaryType="nt:unstructured"
-                                                    value="2"
-                                                    name='./whatrver'/>
+                                                    value="2" />
                                             <hideCurrent
                                                     jcr:primaryType="nt:unstructured"
                                                     value="{Boolean}true"/>
