@@ -20,8 +20,10 @@
     ${footer.disclaimer @ context='html'}
     ${footer.trademark @ context='html'}
     ${footer.copyright @ context='html'}
-    <a href="${footer.facebook}" role="button">Facebook</a>
-    <a href="${footer.linkedIn}" role="button">LinkedIn</a>
+    <a href="${footer.homePage.link}" target="${footer.homePage.target}" role="button">Solidigm</a>
+    <a href="${footer.facebook.link}" target="${footer.facebook.target}" role="button">Facebook</a>
+    <a href="${footer.linkedIn.link}" target="${footer.linkedIn.target}" role="button">LinkedIn</a>
+    <a href="${footer.trustArc.link}" target="${footer.trustArc.target}" role="button">TrustArc</a>
     <sly data-sly-list.link="${footer.links}">
         <a href="${link.link}" role="button">${link.label}</a>
     </sly>

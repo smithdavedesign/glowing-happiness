@@ -72,17 +72,35 @@ public class FooterTest {
     }
 
     @Test
-    void testFacebookEmpty() {
+    void testHomePageEmpty() {
+        Link expected = new Link();
         ctx.currentResource("/content/footerEmpty");
         Footer footer = ctx.request().adaptTo(Footer.class);
-        assertTrue(StringUtils.isEmpty(footer.getFacebook()));
+        assertEquals(expected.getLink(), footer.getHomePage().getLink());
+    }
+
+    @Test
+    void testFacebookEmpty() {
+        Link expected = new Link();
+        ctx.currentResource("/content/footerEmpty");
+        Footer footer = ctx.request().adaptTo(Footer.class);
+        assertEquals(expected.getLink(), footer.getFacebook().getLink());
     }
 
     @Test
     void testLinkedInEmpty() {
+        Link expected = new Link();
         ctx.currentResource("/content/footerEmpty");
         Footer footer = ctx.request().adaptTo(Footer.class);
-        assertTrue(StringUtils.isEmpty(footer.getLinkedIn()));
+        assertEquals(expected.getLink(), footer.getLinkedIn().getLink());
+    }
+
+    @Test
+    void testTrustArcEmpty() {
+        Link expected = new Link();
+        ctx.currentResource("/content/footerEmpty");
+        Footer footer = ctx.request().adaptTo(Footer.class);
+        assertEquals(expected.getLink(), footer.getTrustArc().getLink());
     }
 
     @Test
@@ -149,19 +167,43 @@ public class FooterTest {
     }
 
     @Test
-    void testFacebookAuthored() {
-        String expected = "Facebook";
+    void testHomePageAuthored() {
+        Link expected = new Link();
+        expected.setLink("/home/page");
         ctx.currentResource("/content/footerAuthored");
         Footer footer = ctx.request().adaptTo(Footer.class);
-        assertEquals(expected, footer.getFacebook());
+        assertEquals(expected.getLink(), footer.getHomePage().getLink());
+        assertEquals(expected.getTarget(), footer.getHomePage().getTarget());
+    }
+
+    @Test
+    void testFacebookAuthored() {
+        Link expected = new Link();
+        expected.setLink("https://facebook");
+        ctx.currentResource("/content/footerAuthored");
+        Footer footer = ctx.request().adaptTo(Footer.class);
+        assertEquals(expected.getLink(), footer.getFacebook().getLink());
+        assertEquals(expected.getTarget(), footer.getFacebook().getTarget());
     }
 
     @Test
     void testLinkedInAuthored() {
-        String expected = "LinkedIn";
+        Link expected = new Link();
+        expected.setLink("https://linkedin");
         ctx.currentResource("/content/footerAuthored");
         Footer footer = ctx.request().adaptTo(Footer.class);
-        assertEquals(expected, footer.getLinkedIn());
+        assertEquals(expected.getLink(), footer.getLinkedIn().getLink());
+        assertEquals(expected.getTarget(), footer.getLinkedIn().getTarget());
+    }
+
+    @Test
+    void testTrustArcAuthored(){
+        Link expected = new Link();
+        expected.setLink("https://trustarc");
+        ctx.currentResource("/content/footerAuthored");
+        Footer footer = ctx.request().adaptTo(Footer.class);
+        assertEquals(expected.getLink(), footer.getTrustArc().getLink());
+        assertEquals(expected.getTarget(), footer.getTrustArc().getTarget());
     }
 
     @Test

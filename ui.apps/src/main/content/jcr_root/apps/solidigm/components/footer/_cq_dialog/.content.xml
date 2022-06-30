@@ -228,6 +228,14 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/container">
                                         <items jcr:primaryType="nt:unstructured">
+                                            <homePage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    name="./homePage"
+                                                    fieldLabel="Home Page Link"
+                                                    fieldDescription="Link home page of current site"
+                                                    rootPath="/content/solidigm"
+                                                    required="{Boolean}true" />
                                             <facebook
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -242,6 +250,13 @@
                                                     fieldLabel="LinkedIn Link"
                                                     required="{Boolean}true"
                                                     name="./linkedIn" />
+                                            <trustArc
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="URL of external TrustArc page"
+                                                    fieldLabel="TrustArc Link"
+                                                    required="{Boolean}true"
+                                                    name="./trustArc" />
                                             <links
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

@@ -73,26 +73,52 @@ public class FooterImpl implements Footer{
     private String copyright;
 
     @Getter
-    @ValueMapValue
-    private String facebook;
-
-    @Getter
-    @ValueMapValue
-    private String linkedIn;
-
-    @Getter
     @ChildResource(name = "links")
     private List<Link> links;
 
+    @ValueMapValue(name = "homePage")
+    private String homePageLink;
+
+    @ValueMapValue(name = "facebook")
+    private String facebookLink;
+
+    @ValueMapValue(name = "linkedIn")
+    private String linkedInLink;
+
+    @ValueMapValue(name = "trustArc")
+    private String trustArcLink;
+
     @ValueMapValue
     private String[] searchTags;
+
+    @Getter
+    private Link homePage;
+
+    @Getter
+    private Link facebook;
+
+    @Getter
+    private Link linkedIn;
+
+    @Getter
+    private Link trustArc;
 
     @Getter
     private List<Link> searchTagsLinks;
 
     @PostConstruct
     private void initModel() {
+        //Initialize variables
         searchTagsLinks = new ArrayList<>();
+        homePage = new Link();
+        facebook = new Link();
+        linkedIn = new Link();
+        trustArc = new Link();
+
+        homePage.setLink(homePageLink);
+        facebook.setLink(facebookLink);
+        linkedIn.setLink(linkedInLink);
+        trustArc.setLink(trustArcLink);
 
         if (searchTags == null || searchTags.length == 0){
             return;

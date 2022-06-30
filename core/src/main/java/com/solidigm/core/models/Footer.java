@@ -73,23 +73,39 @@ public interface Footer extends ComponentExporter {
     }
 
     /**
-     * Returns string for the facebook link of the Footer
+     * Returns Link for the Home Page link of the Footer
      *
-     * @return string
+     * @return Link
      */
-    default String getFacebook() {
+    default Link getHomePage() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Returns string for the LinkedIn link of the footer
+     * Returns Link for the facebook link of the Footer
      *
-     * @return string
+     * @return Link
      */
-    default String getLinkedIn() {
-
+    default Link getFacebook() {
         throw new UnsupportedOperationException();
+    }
 
+    /**
+     * Returns Link for the LinkedIn link of the footer
+     *
+     * @return Link
+     */
+    default Link getLinkedIn() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns Link for the TrustArc link of the Footer
+     *
+     * @return Link
+     */
+    default Link getTrustArc() {
+        throw new UnsupportedOperationException();
     }
 
     /**
