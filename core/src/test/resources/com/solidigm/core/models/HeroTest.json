@@ -34,15 +34,15 @@
       "jcr:primaryType": "nt:unstructured",
       "item0": {
         "jcr:primaryType": "nt:unstructured",
-        "buttonLabel": "First Button",
+        "label": "First Button",
         "buttonStyle": "transparent",
-        "buttonLink": "/first/link"
+        "link": "/first/link"
       },
       "item1": {
         "jcr:primaryType": "nt:unstructured",
-        "buttonLabel": "Second Button",
+        "label": "Second Button",
         "buttonStyle": "",
-        "buttonLink": "https://second/link"
+        "link": "https://second/link"
       }
     },
     "anchors": {

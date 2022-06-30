@@ -180,14 +180,14 @@ public class HeroTest {
         Hero hero = ctx.request().adaptTo(Hero.class);
         List<CallToActionButton> callToActions = hero.getCallToActions();
         assertEquals(2, callToActions.size());
-        assertEquals("First Button", callToActions.get(0).getButtonLabel());
-        assertEquals("/first/link", callToActions.get(0).getButtonLink());
+        assertEquals("First Button", callToActions.get(0).getLabel());
+        assertEquals("/first/link.html", callToActions.get(0).getLink());
         assertEquals("transparent", callToActions.get(0).getButtonStyle());
-        assertEquals("internal", callToActions.get(0).getTarget());
-        assertEquals("Second Button", callToActions.get(1).getButtonLabel());
-        assertEquals("https://second/link", callToActions.get(1).getButtonLink());
+        assertEquals("_self", callToActions.get(0).getTarget());
+        assertEquals("Second Button", callToActions.get(1).getLabel());
+        assertEquals("https://second/link", callToActions.get(1).getLink());
         assertEquals("opaque", callToActions.get(1).getButtonStyle());
-        assertEquals("external", callToActions.get(1).getTarget());
+        assertEquals("_blank", callToActions.get(1).getTarget());
     }
 
     @Test
