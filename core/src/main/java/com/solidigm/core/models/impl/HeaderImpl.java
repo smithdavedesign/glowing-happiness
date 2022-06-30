@@ -2,9 +2,11 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.xfa.ut.StringUtils;
 import com.solidigm.core.beans.Link;
 import com.solidigm.core.models.Header;
 import lombok.Getter;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -13,6 +15,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,23 +58,18 @@ public class HeaderImpl implements Header {
     @ValueMapValue
     private String navItemTitle5;
 
-    @Getter
     @ValueMapValue
     private String navItemLink1;
 
-    @Getter
     @ValueMapValue
     private String navItemLink2;
 
-    @Getter
     @ValueMapValue
     private String navItemLink3;
 
-    @Getter
     @ValueMapValue
     private String navItemLink4;
 
-    @Getter
     @ValueMapValue
     private String navItemLink5;
 
@@ -102,17 +100,32 @@ public class HeaderImpl implements Header {
     @ValueMapValue
     private String placeholderText;
 
-    @Getter
     @ValueMapValue
     private String searchResultsPage;
 
-    @Getter
     @ValueMapValue
     private String dashboard;
 
-    @Getter
     @ValueMapValue
     private String homepage;
+
+    @Getter
+    private String target;
+
+    @PostConstruct
+    private void initModel() {
+        String test = "Testing";
+    }
+
+    public String getNavItemLink1() { return processLink(navItemLink1); }
+
+    public String getNavItemLink2() { return processLink(navItemLink2); }
+
+    public String getNavItemLink3() { return processLink(navItemLink3); }
+
+    public String getNavItemLink4() { return processLink(navItemLink4); }
+
+    public String getNavItemLink5() { return processLink(navItemLink5); }
 
     public List<Link> getSubNavItems1() {
         return (navItemLink1 == null ? subNavItems1 : EMPTY_LIST);
@@ -134,4 +147,25 @@ public class HeaderImpl implements Header {
         return (navItemLink5 == null ? subNavItems5 : EMPTY_LIST);
     }
 
+    public String getSearchResultsPage() { return processLink(searchResultsPage); }
+
+    public String getDashboard() { return processLink(dashboard); }
+
+    public String getHomepage() { return processLink(homepage); }
+
+    private String processLink(String link)  {
+        if (!StringUtils.isEmpty(link) && link.startsWith("/")){
+            target = "_self";
+            if (StringUtils.isEmpty(FilenameUtils.getExtension(link))) {
+                link = link.concat(".html");
+            }
+        }
+        else if (StringUtils.isEmpty(link)) {
+            target = "_self";
+        }
+        else {
+            target = "_blank";
+        }
+        return link;
+    }
 }

@@ -6,33 +6,33 @@
         <!-- Top navigation items with dropdowns to subnavs if no topnav link was authored -->
         <div>
             <span>
-                <h3> <a href="${header.navItemLink1}">${header.navItemTitle1}</a></h3>
+                <h3> <a href="${header.navItemLink1}" target="${header.target}">${header.navItemTitle1}</a></h3>
                 <div data-sly-list.subNavItems1=${header.subNavItems1}>
-                    <span> <a href="${subNavItems1.link}">${subNavItems1.label}</a></span>
+                    <span> <a href="${subNavItems1.link}" target="${subNavItems1.target}">${subNavItems1.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3> <a href="${header.navItemLink2}">${header.navItemTitle2}</a></h3>
+                <h3> <a href="${header.navItemLink2}" target="${header.target}">${header.navItemTitle2}</a></h3>
                 <div data-sly-list.subNavItems2=${header.subNavItems2}>
-                    <span> <a href="${subNavItems2.link}">${subNavItems2.label}</a></span>
+                    <span> <a href="${subNavItems2.link}" target="${subNavItems2.target}">${subNavItems2.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3> <a href="${header.navItemLink3}">${header.navItemTitle3}</a></h3>
+                <h3> <a href="${header.navItemLink3}" target="${header.target}">${header.navItemTitle3}</a></h3>
                 <div data-sly-list.subNavItems3=${header.subNavItems3}>
-                    <span> <a href="${subNavItems3.link}">${subNavItems3.label}</a></span>
+                    <span> <a href="${subNavItems3.link}" target="${subNavItems3.target}">${subNavItems3.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3> <a href="${header.navItemLink4}">${header.navItemTitle4}</a></h3>
+                <h3> <a href="${header.navItemLink4}" target="${header.target}">${header.navItemTitle4}</a></h3>
                 <div data-sly-list.subNavItems4=${header.subNavItems4}>
-                    <span> <a href="${subNavItems4.link}">${subNavItems4.label}</a></span>
+                    <span> <a href="${subNavItems4.link}" target="${subNavItems4.target}">${subNavItems4.label}</a></span>
                 </div>
             </span>
             <span>
-                <h3><a href="${header.navItemLink5}">${header.navItemTitle5}</a></h3>
+                <h3><a href="${header.navItemLink5}" target="${header.target}">${header.navItemTitle5}</a></h3>
                 <div data-sly-list.subNavItems5=${header.subNavItems5}>
-                    <span> <a href="${subNavItems5.link}">${subNavItems5.label}</a></span>
+                    <span> <a href="${subNavItems5.link}" target="${subNavItems5.target}">${subNavItems5.label}</a></span>
                 </div>
             </span>
         </div>
@@ -58,13 +58,13 @@
         <!-- User account info -->
         <div>
             <div> ${header.greeting} <div id="headerGreetingTarget"></div></div>
-            <div> <a href="${header.dashboard}">Dashboard</a></div>
+            <div> <a href="${header.dashboard}" target="${header.target}">Dashboard</a></div>
         </div>
 
         <!-- Language Info -->
         <div>
             <div data-sly-list.languageItem=${header.langItems}>
-                <span> <a href="${languageItem.link}">${languageItem.label}</a></span>
+                <span> <a href="${languageItem.link}" target="${languageItem.target}">${languageItem.label}</a></span>
             </div>
         </div>
 

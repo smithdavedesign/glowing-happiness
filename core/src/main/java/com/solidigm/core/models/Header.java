@@ -161,5 +161,11 @@ public interface Header extends ComponentExporter {
      */
     public String getHomepage();
 
+    /**
+     * Returns string of HTML target value; changes based on which link is being processed
+     *
+     * @return string
+     */
+    public String getTarget();
 }
 

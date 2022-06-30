@@ -58,24 +58,18 @@ public class HeaderTest {
     void testSubNavItemsEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        List<Link> subNavItems1 = header.getSubNavItems1();
-        List<Link> subNavItems2 = header.getSubNavItems2();
-        List<Link> subNavItems3 = header.getSubNavItems3();
-        List<Link> subNavItems4 = header.getSubNavItems4();
-        List<Link> subNavItems5 = header.getSubNavItems5();
-        assertEquals(0, subNavItems1.size());
-        assertEquals(0, subNavItems2.size());
-        assertEquals(0, subNavItems3.size());
-        assertEquals(0, subNavItems4.size());
-        assertEquals(0, subNavItems5.size());
+        assertNull(header.getSubNavItems1());
+        assertNull(header.getSubNavItems2());
+        assertNull(header.getSubNavItems3());
+        assertNull(header.getSubNavItems4());
+        assertNull(header.getSubNavItems5());
     }
 
     @Test
     void testLangItemsEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        List<Link> langItems = header.getLangItems();
-        assertEquals(0, langItems.size());
+        assertNull(header.getLangItems());
     }
 
     @Test
@@ -131,16 +125,20 @@ public class HeaderTest {
 
     @Test
     void testGetNavItemLinkAuthored() {
-        String expected1 = "/content/solidigm/us/en/link-one";
-        String expected2 = "/content/solidigm/us/en/link-two";
-        String expected3 = "/content/solidigm/us/en/link-three";
-        String expected4 = "/content/solidigm/us/en/link-four";
-        String expected5 = "/content/solidigm/us/en/link-five";
+        String expected1 = "/content/solidigm/us/en/link-one.html";
+        String expectedTarget1 = "_self";
+        String expected2 = "/content/solidigm/us/en/link-two.html";
+        String expected3 = "https://www.externalLink.com";
+        String expectedTarget3 = "_blank";
+        String expected4 = "/content/solidigm/us/en/link-four.html";
+        String expected5 = "/content/solidigm/us/en/link-five.html";
         ctx.currentResource("/content/headerAuthored");
         Header header = ctx.request().adaptTo(Header.class);
         assertEquals(expected1, header.getNavItemLink1());
+        assertEquals(expectedTarget1, header.getTarget());
         assertEquals(expected2, header.getNavItemLink2());
         assertEquals(expected3, header.getNavItemLink3());
+        assertEquals(expectedTarget3, header.getTarget());
         assertEquals(expected4, header.getNavItemLink4());
         assertEquals(expected5, header.getNavItemLink5());
     }
@@ -163,10 +161,133 @@ public class HeaderTest {
     void testSubNavItems2AuthoredNoTopNavLink() {
         ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
         Header header = ctx.request().adaptTo(Header.class);
-        List<Link> subNavItems2 = header.getSubNavItems1();
+        List<Link> subNavItems2 = header.getSubNavItems2();
         assertEquals(1, subNavItems2.size());
         assertEquals("SubItem1 of Nav2", subNavItems2.get(0).getLabel());
         assertEquals("https://www.externalLink.com", subNavItems2.get(0).getLink());
         assertEquals("_blank", subNavItems2.get(0).getTarget());
+    }
+
+    @Test
+    void testSubNavItems3AuthoredNoTopNavLink() {
+        ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> subNavItems3 = header.getSubNavItems3();
+        assertEquals(2, subNavItems3.size());
+        assertEquals("SubItem1 of Nav3", subNavItems3.get(0).getLabel());
+        assertEquals("/first/link.html", subNavItems3.get(0).getLink());
+        assertEquals("_self", subNavItems3.get(0).getTarget());
+        assertEquals("SubItem2 of Nav3", subNavItems3.get(1).getLabel());
+        assertEquals("/second/link.html", subNavItems3.get(1).getLink());
+        assertEquals("_self", subNavItems3.get(1).getTarget());
+    }
+
+    @Test
+    void testSubNavItems4AuthoredNoTopNavLink() {
+        ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> subNavItems4 = header.getSubNavItems4();
+        assertEquals(2, subNavItems4.size());
+        assertEquals("SubItem1 of Nav4", subNavItems4.get(0).getLabel());
+        assertEquals("/content/solidigm/us/en.html", subNavItems4.get(0).getLink());
+        assertEquals("_self", subNavItems4.get(0).getTarget());
+        assertEquals("SubItem2 of Nav4", subNavItems4.get(1).getLabel());
+        assertEquals("/content/solidigm/us/en.html", subNavItems4.get(1).getLink());
+        assertEquals("_self", subNavItems4.get(1).getTarget());
+    }
+
+    @Test
+    void testSubNavItems5AuthoredNoTopNavLink() {
+        ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> subNavItems5 = header.getSubNavItems5();
+        assertEquals(2, subNavItems5.size());
+        assertEquals("SubItem1 of Nav5", subNavItems5.get(0).getLabel());
+        assertEquals("/content/solidigm/us/en.html", subNavItems5.get(0).getLink());
+        assertEquals("_self", subNavItems5.get(0).getTarget());
+        assertEquals("SubItem2 of Nav5", subNavItems5.get(1).getLabel());
+        assertEquals("/content/solidigm/us/en.html", subNavItems5.get(1).getLink());
+        assertEquals("_self", subNavItems5.get(1).getTarget());
+    }
+
+    @Test
+    void testLangItems() {
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> langItems = header.getLangItems();
+        assertEquals(2, langItems.size());
+        assertEquals("English", langItems.get(0).getLabel());
+        assertEquals("/content/solidigm/us/en.html", langItems.get(0).getLink());
+        assertEquals("_self", langItems.get(0).getTarget());
+        assertEquals("Spanish", langItems.get(1).getLabel());
+        assertEquals("/content/solidigm/us/es.html", langItems.get(1).getLink());
+        assertEquals("_self", langItems.get(1).getTarget());
+    }
+
+    @Test
+    void testGetGreetingAuthored() {
+        String expected = "Greetings";
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected, header.getGreeting());
+    }
+
+    @Test
+    void testGetPlaceholderTextAuthored() {
+        String expected = "Search Here...";
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected, header.getPlaceholderText());
+    }
+
+    @Test
+    void testGetSearchResultsPageAuthored() {
+        String expected = "/content/solidigm/us/en/search-results.html";
+        String expectedTarget = "_self";
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected, header.getSearchResultsPage());
+        assertEquals(expectedTarget, header.getTarget());
+    }
+
+    @Test
+    void testGetDashboardAuthored() {
+        String expected = "/content/solidigm/us/en/customer-dashboard.html";
+        String expectedTarget = "_self";
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected, header.getDashboard());
+        assertEquals(expectedTarget, header.getTarget());
+    }
+
+    @Test
+    void testGetDashboardAuthoredExternal() {
+        String expected = "https://www.externalLink.com";
+        String expectedTarget = "_blank";
+        ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected, header.getDashboard());
+        assertEquals(expectedTarget, header.getTarget());
+    }
+
+    @Test
+    void testGetHomepageAuthored() {
+        String expected = "/content/solidigm/us/en.html";
+        String expectedTarget = "_self";
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected, header.getHomepage());
+        assertEquals(expectedTarget, header.getTarget());
+    }
+
+    @Test
+    void testSubNavItemsAuthoredTopNavLink() {
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertTrue(header.getSubNavItems1().isEmpty());
+        assertTrue(header.getSubNavItems2().isEmpty());
+        assertTrue(header.getSubNavItems3().isEmpty());
+        assertTrue(header.getSubNavItems4().isEmpty());
+        assertTrue(header.getSubNavItems5().isEmpty());
     }
 }
