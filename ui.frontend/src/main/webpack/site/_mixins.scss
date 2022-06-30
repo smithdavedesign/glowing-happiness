@@ -1,0 +1,3 @@
+@mixin svg_icon($id) {
+    background-image: url('../resources/images/icon-#{$id}.svg');
+}
