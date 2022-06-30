@@ -1,0 +1,41 @@
+{
+    "quicklinksEmpty": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "admin",
+        "jcr:lastModifiedBy": "admin",
+        "jcr:created": "Thu Jun 30 2022 23:26:25 GMT-0400",
+        "jcr:lastModified": "Thu Jun 30 2022 23:26:25 GMT-0400",
+        "sling:resourceType": "solidigm/components/quicklinks"
+    },
+    "quicklinksAuthored": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "admin",
+        "linkLabel": "See More Solutions",
+        "jcr:lastModifiedBy": "admin",
+        "jcr:created": "Thu Jun 30 2022 23:26:28 GMT-0400",
+        "link": "/content/solidigm/us/en",
+        "title": "Authored Title",
+        "jcr:lastModified": "Thu Jun 30 2022 23:29:52 GMT-0400",
+        "sling:resourceType": "solidigm/components/quicklinks",
+        "tileInfo": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "tileLink": "/content/solidigm/us/en",
+                "tileSubTitle": "Help Us to Help You",
+                "tileTitle": "Get Support"
+            },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "tileLink": "https://www.externalLink.com",
+                "tileSubTitle": "Visit news.solidigm.com",
+                "tileTitle": "Press Releases"
+            },
+            "item2": {
+                "jcr:primaryType": "nt:unstructured",
+                "tileLink": "/content/solidigm/us/en.html",
+                "tileTitle": "Join\r\nOur Team"
+            }
+        }
+   }
+}

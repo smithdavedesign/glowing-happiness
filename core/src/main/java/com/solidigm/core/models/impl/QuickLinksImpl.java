@@ -3,7 +3,6 @@ package com.solidigm.core.models.impl;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.solidigm.core.beans.QuickLinkTile;
-import com.solidigm.core.models.Hero;
 import com.solidigm.core.models.QuickLinks;
 import lombok.Getter;
 import org.apache.commons.io.FilenameUtils;
@@ -16,7 +15,6 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
-import javax.inject.Inject;
 import java.util.List;
 
 @Model(
@@ -65,5 +63,12 @@ public class QuickLinksImpl implements QuickLinks {
             target = "_blank";
         }
         return link;
+    }
+
+    public Boolean hasContent() {
+        if ((title == null) && (tileInfo == null)) {
+            return false;
+        }
+        return true;
     }
 }

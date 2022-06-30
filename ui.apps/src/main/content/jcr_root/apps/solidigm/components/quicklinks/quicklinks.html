@@ -1,39 +1,21 @@
-
-    <div class="cmp-quick-links" data-sly-use.quicklinks="com.solidigm.core.models.QuickLinks">
+<sly data-sly-use.quicklinks="com.solidigm.core.models.QuickLinks"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${quicklinks.hasContent}">
+    <div class="cmp-quick-links">
         <div class="section-title--with-link">
             <h2>${quicklinks.title}</h2>
-            <a href="#"> See More </a>
+            <a href="${quicklinks.link}" target="${quicklinks.target}"> ${quicklinks.linkLabel}</a>
         </div>
-        <ul class="cmp-quick-links__container">
+        <ul class="cmp-quick-links__container" data-sly-list.tile="${quicklinks.tileInfo}">
             <li>
-                <a href="#" class="cmp-quick-links__link">
+                <a href="${tile.tileLink}" target="${tile.target}" class="cmp-quick-links__link ${tile.linkType}">
                     <div class="cmp-quick-links__content">
-                        <span class="cmp-quick-links__link-title">Drivers & Downloads</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="cmp-quick-links__link cmp-quick-links__link--external">
-                    <div class="cmp-quick-links__content">
-                        <span class="cmp-quick-links__link-title">Solidigm Events</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="cmp-quick-links__link">
-                    <div class="cmp-quick-links__content">
-                        <span class="cmp-quick-links__link-title">Troubleshooting</span>
-                    </div>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="cmp-quick-links__link cmp-quick-links__link--external">
-                    <div class="cmp-quick-links__content">
-                        <span class="cmp-quick-links__link-title">Press Releases</span>
-                        <span class="cmp-quick-links__link-subtitle">Visit news.solidigm.com</span>
+                        <span class="cmp-quick-links__link-title">${tile.tileTitle}</span>
+                        <span class="cmp-quick-links__link-subtitle">${tile.tileSubTitle}</span>
                     </div>
                 </a>
             </li>
         </ul>
     </div>
-
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>

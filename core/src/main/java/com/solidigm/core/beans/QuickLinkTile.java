@@ -13,6 +13,8 @@ import javax.inject.Inject;
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class QuickLinkTile {
 
+    static final String EXTERNAL_STYLE_CLASS = "cmp-quick-links__link--external";
+
     @Getter
     @Inject
     private String tileTitle;
@@ -28,6 +30,9 @@ public class QuickLinkTile {
     @Getter
     private String target;
 
+    @Getter
+    private String linkType;
+
 
     @PostConstruct
     private void initModel() {
@@ -38,11 +43,13 @@ public class QuickLinkTile {
     private void processLink() {
         if (!StringUtils.isEmpty(tileLink) && tileLink.startsWith("/")){
             target = "_self";
+            linkType = "";
             if (StringUtils.isEmpty(FilenameUtils.getExtension(tileLink))) {
                 tileLink = tileLink.concat(".html");
             }
         } else {
             target = "_blank";
+            linkType = EXTERNAL_STYLE_CLASS;
         }
     }
 }
