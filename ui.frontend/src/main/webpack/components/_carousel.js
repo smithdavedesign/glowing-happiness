@@ -1,7 +1,7 @@
 import Splide from '@splidejs/splide';
 
 (function () {
-    const carousels = document.querySelectorAll('.splide');
+    const carousels = document.querySelectorAll('.splide.cmp-carousel');
 
     carousels.forEach((carousel) => {
         const duration = 1500;
