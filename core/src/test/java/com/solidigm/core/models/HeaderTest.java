@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 @ExtendWith(AemContextExtension.class)
@@ -34,161 +33,140 @@ public class HeaderTest {
     }
 
     @Test
-    void testGetTitleEmpty() {
-        ctx.currentResource("/content/heroEmpty");
-        Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getTitle()));
-    }
-
-    @Test
-    void testGetSubtitleEmpty() {
+    void testNavItemTitleEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getSubtitle()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemTitle1()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemTitle2()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemTitle3()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemTitle4()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemTitle5()));
     }
 
     @Test
-    void testGetDescriptionEmpty() {
-        ctx.currentResource("/content/headerEmpty");
-        Header hero = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(hero.getDescription()));
-    }
-
-    @Test
-    void testGetDesktopImageReferenceEmpty() {
+    void testNavItemLinkEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getDesktopImageReference()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemLink1()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemLink2()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemLink3()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemLink4()));
+        assertTrue(StringUtils.isEmpty(header.getNavItemLink5()));
     }
 
     @Test
-    void testGetMobileImageReferenceEmpty() {
-        ctx.currentResource("/content/heroEmpty");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertTrue(StringUtils.isEmpty(hero.getMobileImageReference()));
+    void testSubNavItemsEmpty() {
+        ctx.currentResource("/content/headerEmpty");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> subNavItems1 = header.getSubNavItems1();
+        List<Link> subNavItems2 = header.getSubNavItems2();
+        List<Link> subNavItems3 = header.getSubNavItems3();
+        List<Link> subNavItems4 = header.getSubNavItems4();
+        List<Link> subNavItems5 = header.getSubNavItems5();
+        assertEquals(0, subNavItems1.size());
+        assertEquals(0, subNavItems2.size());
+        assertEquals(0, subNavItems3.size());
+        assertEquals(0, subNavItems4.size());
+        assertEquals(0, subNavItems5.size());
     }
 
     @Test
-    void testGetCallToActionsEmpty() {
-        ctx.currentResource("/content/heroEmpty");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertNull(hero.getCallToActions());
+    void testLangItemsEmpty() {
+        ctx.currentResource("/content/headerEmpty");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> langItems = header.getLangItems();
+        assertEquals(0, langItems.size());
     }
 
     @Test
-    void testGetAnchorsEmpty() {
-        ctx.currentResource("/content/heroEmpty");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertNull(hero.getAnchors());
+    void testGreetingEmpty() {
+        ctx.currentResource("/content/headerEmpty");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertTrue(StringUtils.isEmpty(header.getGreeting()));
     }
 
     @Test
-    void testGetFilterEmpty() {
-        String expected = "no_filter";
-        ctx.currentResource("/content/heroEmpty");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertEquals(expected, hero.getFilter());
+    void testPlaceHolderTextEmpty() {
+        ctx.currentResource("/content/headerEmpty");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertTrue(StringUtils.isEmpty(header.getPlaceholderText()));
     }
 
     @Test
-    void testGetShowBreadcrumbEmpty() {
-        ctx.currentResource("/content/heroEmpty");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertFalse(hero.getShowBreadcrumb());
+    void testSearchResultsPageEmpty() {
+        ctx.currentResource("/content/headerEmpty");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertTrue(StringUtils.isEmpty(header.getSearchResultsPage()));
     }
 
     @Test
-    void testGetHasContentEmpty() {
-        ctx.currentResource("/content/heroEmpty");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertFalse(hero.hasContent());
+    void testDashboardEmpty() {
+        ctx.currentResource("/content/headerEmpty");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertTrue(StringUtils.isEmpty(header.getDashboard()));
     }
 
     @Test
-    void testGetTitleAuthored() {
-        String expected = "Test\r\nTitle";
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertEquals(expected, hero.getTitle());
+    void testHomepageEmpty() {
+        ctx.currentResource("/content/headerEmpty");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertTrue(StringUtils.isEmpty(header.getHomepage()));
     }
 
     @Test
-    void testGetSubtitleAuthored() {
-        String expected = "Test\r\nSubtitle";
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertEquals(expected, hero.getSubtitle());
+    void testGetNavItemTitleAuthored() {
+        String expected1 = "TopNav1 Title";
+        String expected2 = "TopNav2";
+        String expected3 = "TopNav3";
+        String expected4 = "TopNav4";
+        String expected5 = "TopNav5";
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected1, header.getNavItemTitle1());
+        assertEquals(expected2, header.getNavItemTitle2());
+        assertEquals(expected3, header.getNavItemTitle3());
+        assertEquals(expected4, header.getNavItemTitle4());
+        assertEquals(expected5, header.getNavItemTitle5());
     }
 
     @Test
-    void testGetDescriptionAuthored() {
-        String expected = "<p>Test Description</p>";
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertEquals(expected, hero.getDescription());
+    void testGetNavItemLinkAuthored() {
+        String expected1 = "/content/solidigm/us/en/link-one";
+        String expected2 = "/content/solidigm/us/en/link-two";
+        String expected3 = "/content/solidigm/us/en/link-three";
+        String expected4 = "/content/solidigm/us/en/link-four";
+        String expected5 = "/content/solidigm/us/en/link-five";
+        ctx.currentResource("/content/headerAuthored");
+        Header header = ctx.request().adaptTo(Header.class);
+        assertEquals(expected1, header.getNavItemLink1());
+        assertEquals(expected2, header.getNavItemLink2());
+        assertEquals(expected3, header.getNavItemLink3());
+        assertEquals(expected4, header.getNavItemLink4());
+        assertEquals(expected5, header.getNavItemLink5());
     }
 
     @Test
-    void testGetDesktopImageReferenceAuthored() {
-        String expected = "/desktop/image/reference";
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertEquals(expected, hero.getDesktopImageReference());
+    void testSubNavItems1AuthoredNoTopNavLink() {
+        ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> subNavItems1 = header.getSubNavItems1();
+        assertEquals(2, subNavItems1.size());
+        assertEquals("SubItem1 of Nav1", subNavItems1.get(0).getLabel());
+        assertEquals("/first/link.html", subNavItems1.get(0).getLink());
+        assertEquals("_self", subNavItems1.get(0).getTarget());
+        assertEquals("SubItem2 of Nav1", subNavItems1.get(1).getLabel());
+        assertEquals("/second/link.html", subNavItems1.get(1).getLink());
+        assertEquals("_self", subNavItems1.get(1).getTarget());
     }
 
     @Test
-    void testGetMobileImageReferenceAuthored() {
-        String expected = "/mobile/image/reference";
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertEquals(expected, hero.getMobileImageReference());
-    }
-
-    @Test
-    void testGetCallToActionsAuthored() {
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        List<callToActionButton> callToActions = hero.getCallToActions();
-        assertEquals(2, callToActions.size());
-        assertEquals("First Button", callToActions.get(0).getButtonLabel());
-        assertEquals("/first/link", callToActions.get(0).getButtonLink());
-        assertEquals("transparent", callToActions.get(0).getButtonStyle());
-        assertEquals("Second Button", callToActions.get(1).getButtonLabel());
-        assertEquals("/second/link", callToActions.get(1).getButtonLink());
-        assertEquals("opaque", callToActions.get(1).getButtonStyle());
-    }
-
-    @Test
-    void testGetAnchorsAuthored() {
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        List<anchorLink> anchors = hero.getAnchors();
-        assertEquals(2, anchors.size());
-        assertEquals("First Anchor", anchors.get(0).getAnchorLabel());
-        assertEquals("firstAnchor", anchors.get(0).getAnchorID());
-        assertEquals("Second Anchor", anchors.get(1).getAnchorLabel());
-        assertEquals("secondAnchor", anchors.get(1).getAnchorID());
-    }
-
-    @Test
-    void testGetFilterAuthored() {
-        String expected = "darken";
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertEquals(expected, hero.getFilter());
-    }
-
-    @Test
-    void testGetShowBreadcrumbAuthored() {
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertTrue(hero.getShowBreadcrumb());
-    }
-
-    @Test
-    void testGetHasContentAuthored() {
-        ctx.currentResource("/content/heroAuthored");
-        Hero hero = ctx.request().adaptTo(Hero.class);
-        assertTrue(hero.hasContent());
+    void testSubNavItems2AuthoredNoTopNavLink() {
+        ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
+        Header header = ctx.request().adaptTo(Header.class);
+        List<Link> subNavItems2 = header.getSubNavItems1();
+        assertEquals(1, subNavItems2.size());
+        assertEquals("SubItem1 of Nav2", subNavItems2.get(0).getLabel());
+        assertEquals("https://www.externalLink.com", subNavItems2.get(0).getLink());
+        assertEquals("_blank", subNavItems2.get(0).getTarget());
     }
 }
