@@ -5,10 +5,10 @@
         class="cmp-hero ${hero.filter == 'darken' ? 'cmp-hero--with-overlay' : ''}"
      >
         <div class="cmp-hero__background-image cmp-hero__background-image--desktop">
-            <img src="${hero.desktopImageReference}" alt=""/>
+            <img src="${hero.desktopImageReference}" alt="${hero.desktopAltText}"/>
         </div>
         <div class="cmp-hero__background-image cmp-hero__background-image--mobile">
-            <img src="${hero.mobileImageReference}" alt=""/>
+            <img src="${hero.mobileImageReference}" alt="${hero.mobileAltText}"/>
         </div>
 
         <div class="cmp-hero__content">
@@ -31,8 +31,8 @@
             </div>
             <div class="cmp-hero__cta-container">
                 <sly data-sly-list.callToAction="${hero.callToActions}">
-                    <a href="${callToAction.buttonLink}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline'}">
-                        ${callToAction.buttonLabel}
+                    <a href="${callToAction.link}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline'}">
+                        ${callToAction.label}
                     </a>
                 </sly>
             </div>
