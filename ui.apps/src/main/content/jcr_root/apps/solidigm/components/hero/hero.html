@@ -31,8 +31,8 @@
             </div>
             <div class="cmp-hero__cta-container">
                 <sly data-sly-list.callToAction="${hero.callToActions}">
-                    <a href="${callToAction.buttonLink}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline'}">
-                        ${callToAction.buttonLabel}
+                    <a href="${callToAction.link}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline'}">
+                        ${callToAction.label}
                     </a>
                 </sly>
             </div>

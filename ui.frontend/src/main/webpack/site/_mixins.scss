@@ -1,3 +1,30 @@
 @mixin svg_icon($id) {
     background-image: url('../resources/images/icon-#{$id}.svg');
 }
+
+@mixin media-with-corner($direction: right) {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        height: 60px;
+        width: 60px;
+        background: white;
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+        bottom: -1px;
+        right: -1px;
+    }
+
+    @media (min-width: $desktop) {
+        &::after {
+            height: 120px;
+            width: 120px;
+            @if $direction == left {
+                left: -1px;
+                transform: rotateY(180deg);
+                right: auto;
+            }
+        }
+    }
+}
