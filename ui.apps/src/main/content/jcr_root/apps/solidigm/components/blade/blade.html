@@ -3,24 +3,25 @@
      data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
      data-sly-test.hasContent="${blade.hasContent}">
 
-     <!-- Show either a video or an image -->
 
-    <!-- Video -->
+    <!--Video-->
     <div class="cmp-blade__media cmp-blade__media--video media-with-corner"
-         data-sly-test.showVideo="${blade.showVideo}"
-         data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}">
+         data-sly-test.showVideo="${blade.showVideo}">
+        <img src="${blade.imageReference}" alt="${blade.altText}" />
+        <button data-modal-target="blader-modal-1" aria-label="Play video"></button>
     </div>
+
     <!-- Image -->
     <div class="cmp-blade__media media-with-corner"
          data-sly-test="${!showVideo}">
-        <img src="${blade.imageReference}" alt="blade.altText" />
+        <img src="${blade.imageReference}" alt="${blade.altText}" />
     </div>
 
     
 
     <div class="cmp-blade__content">
         <h2 class="cmp-blade__title">${blade.title}</h2>
-        <p class="cmp-blade__description" style="white-space: pre-line; white-space: pre-wrap;">
+        <p class="cmp-blade__description" style="white-space: pre-line;">
             ${blade.description}
         </p>
         <ul class="cmp-blade__list"
@@ -39,32 +40,15 @@
 </div>
 <sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
 
-<!-- Modal to show the video in case the current blade instance shows a video -->
-<!-- <dialog id="blader-modal-1" class="cmp-modal cmp-modal__video">
+
+<dialog id="blader-modal-1" class="cmp-modal cmp-modal__video">
     <button
         class="cmp-modal__close-btn"
         aria-label="Close video modal"
         onclick="this.closest('dialog').close('close')"
     ></button>
-    <div class="cmp-modal__iframe-container">
-        <iframe
-            loading="lazy"
-            src="https://players.brightcove.net/1507807800001/rf1BTdKk6M_default/index.html?videoId=6116779877001&autoplay=mute"
-            allowfullscreen=""
-            allow="encrypted-media; autoplay"
-            width="100%"
-            height="100%"
-        ></iframe>
-
-        <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube-nocookie.com/embed/wzjWIxXBs_s?autoplay=1"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-        ></iframe>
+    <div class="cmp-modal__iframe-container"
+    data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}">
+        
     </div>
-</dialog> -->
+</dialog>
