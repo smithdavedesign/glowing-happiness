@@ -14,70 +14,91 @@ public interface Header extends ComponentExporter {
      *
      * @return string
      */
-    public String getNavItemTitle1();
+    default String getNavItemTitle1() {
+        throw new UnsupportedOperationException();
+    }
+
 
     /**
      * Returns string for the Navigation Title 2 that will be displayed in the Top navbar
      *
      * @return string
      */
-    public String getNavItemTitle2();
+    default String getNavItemTitle2() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 3 that will be displayed in the Top navbar
      *
      * @return string
      */
-    public String getNavItemTitle3();
+    default String getNavItemTitle3() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 1 that will be displayed in the Top navbar
      *
      * @return string
      */
-    public String getNavItemTitle4();
+    default String getNavItemTitle4() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 5 that will be displayed in the Top navbar
      *
      * @return string
      */
-    public String getNavItemTitle5();
+    default String getNavItemTitle5() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 1's link
      *
      * @return string
      */
-    public String getNavItemLink1();
+    default String getNavItemLink1() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 2's link
      *
      * @return string
      */
-    public String getNavItemLink2();
+    default String getNavItemLink2() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 3's link
      *
      * @return string
      */
-    public String getNavItemLink3();
+    default String getNavItemLink3() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 4's link
      *
      * @return string
      */
-    public String getNavItemLink4();
+    default String getNavItemLink4() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the Navigation Title 5's link
      *
      * @return string
      */
-    public String getNavItemLink5();
+    default String getNavItemLink5() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns list of title/links for the subnavigation items for Topnav item 1
@@ -85,7 +106,9 @@ public interface Header extends ComponentExporter {
      *
      * @return List<Link>
      */
-    public List<Link> getSubNavItems1();
+    default List<Link> getSubNavItems1() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns list of title/links for the subnavigation items for Topnav item 2
@@ -93,7 +116,9 @@ public interface Header extends ComponentExporter {
      *
      * @return List<Link>
      */
-    public List<Link> getSubNavItems2();
+    default List<Link> getSubNavItems2() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns list of title/links for the subnavigation items for Topnav item 3
@@ -101,7 +126,9 @@ public interface Header extends ComponentExporter {
      *
      * @return List<Link>
      */
-    public List<Link> getSubNavItems3();
+    default List<Link> getSubNavItems3() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns list of title/links for the subnavigation items for Topnav item 4
@@ -109,7 +136,9 @@ public interface Header extends ComponentExporter {
      *
      * @return List<Link>
      */
-    public List<Link> getSubNavItems4();
+    default List<Link> getSubNavItems4() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns list of title/links for the subnavigation items for Topnav item 5
@@ -117,55 +146,71 @@ public interface Header extends ComponentExporter {
      *
      * @return List<Link>
      */
-    public List<Link> getSubNavItems5();
+    default List<Link> getSubNavItems5() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns list of title/link for language homepages
      *
      * @return List<Link>
      */
-    public List<Link> getLangItems();
+    default List<Link> getLangItems() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string of the greeting words to address the user if logged in
      *
      * @return string
      */
-    public String getGreeting();
+    default String getGreeting() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the searchbar placeholder text, the text that is shown until the user clicks the searchbar
      *
      * @return string
      */
-    public String getPlaceholderText();
+    default String getPlaceholderText() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string of path to search results page
      *
      * @return string
      */
-    public String getSearchResultsPage();
+    default String getSearchResultsPage() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string of path to user dashboard
      *
      * @return string
      */
-    public String getDashboard();
+    default String getDashboard() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string of path to current language homepage
      *
      * @return string
      */
-    public String getHomepage();
+    default String getHomepage() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string of HTML target value; changes based on which link is being processed
      *
      * @return string
      */
-    public String getTarget();
+    default String getTarget() {
+        throw new UnsupportedOperationException();
+    }
 }
 
