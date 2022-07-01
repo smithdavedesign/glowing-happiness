@@ -15,11 +15,6 @@ $color-link: #2020e0;
 $color-foreground-dark: invert($color-foreground);
 $color-background-dark: invert($color-background);
 $color-link-dark: invert($color-link);
-$color-link-dark: invert($color-link);
-
-// Width
-$max-width-base: 1440px;
-$max-width-lg: 2000px;
 
 // Breakpoints
 $smallMobile: 360px;
@@ -54,6 +49,7 @@ $black: #000000;
 
 $gray-300: #f5f3f1;
 $gray-400: #e1e1e1;
+$gray-450: #cbcbcb;
 $gray-500: #a5a29d;
 $gray-700: #52514f;
 $dark-gray: #21201f;
