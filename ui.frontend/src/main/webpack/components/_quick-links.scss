@@ -1,0 +1,73 @@
+.cmp-quick-links {
+    &__container {
+        margin-top: 24px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 32px;
+    }
+
+    &__link {
+        height: 140px;
+        width: 100%;
+        background: url('../resources/images/quick-link-bg.svg') no-repeat right;
+        background-color: $solidigm-purple;
+        display: block;
+        color: white;
+        border-radius: $border-radius-md;
+        position: relative;
+        max-width: 320px;
+        margin: auto;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            background: url('../resources/images/white-arrow.svg') no-repeat center center;
+            background-size: cover;
+            height: 15px;
+            width: 35px;
+            right: 22px;
+        }
+
+        &--external::after {
+            background: url('../resources/images/new-tab-icon.svg') no-repeat center center;
+            background-size: cover;
+
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    &__content {
+        position: absolute;
+        left: 0;
+        padding-left: 22px;
+        bottom: 20px;
+        width: calc(100% - 100px);
+        box-sizing: border-box;
+    }
+
+    &__link-title {
+        font-size: 22px;
+        line-height: 28px;
+        display: block;
+    }
+
+    &__link-subtitle {
+        display: block;
+        margin-top: 6px;
+        font-size: $font-size-sm;
+    }
+
+    @media (min-width: $tablet) {
+        &__container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__container {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
