@@ -85,7 +85,7 @@ public class BladeImpl implements Blade {
 
     @PostConstruct
     private void initModel() {
-        hasContentValue = StringUtils.isEmpty(imageReference) || StringUtils.isEmpty(url);
+        hasContentValue = !StringUtils.isEmpty(imageReference) || !StringUtils.isEmpty(url);
         showVideoValue = !StringUtils.isEmpty(url);
         if (!StringUtils.isEmpty(imageReference) && StringUtils.isEmpty(altText)) {
             altText = ImageUtil.getAltTextFromDAM(request.getResourceResolver(), imageReference);
