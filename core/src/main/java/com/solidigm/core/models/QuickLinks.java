@@ -15,28 +15,36 @@ public interface QuickLinks extends ComponentExporter {
      *
      * @return string
      */
-    public String getTitle();
+    default String getTitle() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the label of the 'Read More' link
      *
      * @return string
      */
-    public String getLinkLabel();
+    default String getLinkLabel() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string for the "Read More" link
      *
      * @return string
      */
-    public String getLink();
+    default String getLink() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns all of the tiles & their respective title, subtitle, link, and target
      *
      * @return List<QuickLinkTile>
      */
-    public List<QuickLinkTile> getTileInfo();
+    default List<QuickLinkTile> getTileInfo() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns string of which frame to open link in
@@ -44,13 +52,17 @@ public interface QuickLinks extends ComponentExporter {
      *
      * @return String
      */
-    public String getTarget();
+    default String getTarget() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns true (component has content) if a title or at least 1 tile has been authored
      *
      * @return Boolean
      */
-    public Boolean hasContent();
+    default Boolean hasContent() {
+        throw new UnsupportedOperationException();
+    }
 
 }
