@@ -21,18 +21,21 @@
 
     <div class="cmp-blade__content">
         <h2 class="cmp-blade__title">${blade.title}</h2>
-        <p class="cmp-blade__description" style="white-space: pre-line;">
+        <p ata-sly-test.description="${blade.description}" class="cmp-blade__description" style="white-space: pre-line;">
             ${blade.description}
         </p>
         <ul class="cmp-blade__list"
             data-sly-list.bullet="${blade.bullets}">
             <li>
-                <a href="${bullet.link}" target="${bullet.target}">${bullet.label}</a>
+                <a data-sly-test.link="${bullet.link}" href="${bullet.link}" target="${bullet.target}">
+                    ${bullet.label}
+                </a>
+                <span data-sly-test.link="${!bullet.link}">${bullet.label}</span>
             </li>
         </ul>
         <div class="cmp-blade__cta-container"
              data-sly-list.callToAction="${blade.callToActions}">
-            <a href="${callToAction.link}" target="${callToAction.target}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline'}">
+            <a href="${callToAction.link}" target="${callToAction.target}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline solidigm-btn--outline-dark'}">
                 ${callToAction.label}
             </a>
         </div>
