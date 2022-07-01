@@ -1,0 +1,13 @@
+<svg class="header__new-window-icon" width="14px" height="14px" viewBox="0 0 14 14" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>iconNewWindow</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="NavMobile2" transform="translate(-126.000000, -603.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="iconNewWindow" transform="translate(126.000000, 603.000000)">
+                <path
+                    d="M7,0 L7,1.55555556 L1.55555556,1.55555556 L1.55555556,12.4444444 L12.4444444,12.4444444 L12.4444444,7 L14,7 L14,14 L0,14 L0,0 L7,0 Z M14,6.3504757e-14 L14,5.44444444 L12.4444444,5.44444444 L12.4444444,2.65222222 L8.82,6.27666667 L7.72333333,5.18 L11.3477778,1.55555556 L8.55555556,1.55555556 L8.55555556,6.3504757e-14 L14,6.3504757e-14 Z"
+                    id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

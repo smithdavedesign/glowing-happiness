@@ -2,17 +2,19 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.solidigm.core.beans.anchorLink;
-import com.solidigm.core.beans.callToActionButton;
+import com.solidigm.core.beans.AnchorLink;
+import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.models.Hero;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
@@ -35,58 +37,80 @@ public class HeroImpl implements Hero {
 
     private static final String EMPTY_SELECTION_FILTER = "no_filter";
 
+    @SlingObject
+    SlingHttpServletRequest request;
+    @Getter
+    @ValueMapValue
+    private String title;
+    @Getter
+    @ValueMapValue
+    private String subtitle;
+    @Getter
+    @ValueMapValue
+    private String description;
+    @Getter
+    @ValueMapValue
+    private String desktopImageReference;
+    @Getter
+    @ValueMapValue
+    private String mobileImageReference;
+    @Getter
+    @ChildResource(name = "callToActions")
+    private List<CallToActionButton> callToActions;
+    @Getter
+    @ChildResource(name = "anchors")
+    private List<AnchorLink> anchors;
+    @ValueMapValue
+    private String breadcrumb;
+    @Getter
+    @ValueMapValue
+    private String desktopAltText;
+    @Getter
+    @ValueMapValue
+    private String mobileAltText;
+    @ValueMapValue(name = "filter")
+    private String filterSelected;
+    private Boolean hasContentVal;
+    @Getter
+    private Boolean showBreadcrumb;
+    @Getter
+    private String filter;
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
     }
 
-    @Getter
-    @ValueMapValue
-    private String title;
-
-    @Getter
-    @ValueMapValue
-    private String subtitle;
-
-    @Getter
-    @ValueMapValue
-    private String description;
-
-    @Getter
-    @ValueMapValue
-    private String desktopImageReference;
-
-    @Getter
-    @ValueMapValue
-    private String mobileImageReference;
-
-    @Getter
-    @ChildResource(name="callToActions")
-    private List<callToActionButton> callToActions;
-
-    @Getter
-    @ChildResource(name = "anchors")
-    private List<anchorLink> anchors;
-
-    @ValueMapValue
-    private String breadcrumb;
-
-    @ValueMapValue(name = "filter")
-    private String filterSelected;
-
-    @Getter
-    private Boolean showBreadcrumb;
-
-    @Getter
-    private String filter;
-
-    @Getter
-    private Boolean hasContent;
+    @Override
+    public Boolean hasContent() {
+        return hasContentVal;
+    }
 
     @PostConstruct
     private void initModel() {
         showBreadcrumb = StringUtils.isEmpty(breadcrumb) == EMPTY_SELECTION_SHOW_BREADCRUMB;
         filter = StringUtils.isEmpty(filterSelected) ? EMPTY_SELECTION_FILTER : filterSelected;
-        hasContent= !(StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
+        hasContentVal = !(StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
+        if (hasContentVal) {
+            ResourceResolver resourceResolver = request.getResourceResolver();
+            if (StringUtils.isEmpty(desktopAltText)) {
+                Resource desktopImageResource =
+                        resourceResolver.getResource(
+                                desktopImageReference.concat("/jcr:content/metadata")
+                        );
+                if (desktopImageResource != null) {
+                    desktopAltText = desktopImageResource.getValueMap().get("dc:description", String.class);
+                }
+            }
+            if (StringUtils.isEmpty(mobileAltText)) {
+                Resource mobileImageResource =
+                        resourceResolver.getResource(
+                                mobileImageReference.concat("/jcr:content/metadata")
+                        );
+                if (mobileImageResource != null) {
+                    mobileAltText = mobileImageResource.getValueMap().get("dc:description", String.class);
+                }
+            }
+        }
     }
 }
