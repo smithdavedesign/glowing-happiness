@@ -41,7 +41,7 @@
                                             <linkLabel
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="Label for See More Link"
+                                                    fieldDescription="Label for See More Link; If left unauthored, read more link will not display"
                                                     fieldLabel="See More Label"
                                                     name="./linkLabel" />
                                             <link

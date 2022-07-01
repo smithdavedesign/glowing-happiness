@@ -37,5 +37,14 @@
                 "tileTitle": "Join\r\nOur Team"
             }
         }
-   }
+   },
+       "quicklinksExternal": {
+           "jcr:primaryType": "nt:unstructured",
+           "jcr:createdBy": "admin",
+           "jcr:lastModifiedBy": "admin",
+           "jcr:created": "Thu Jun 30 2022 23:26:25 GMT-0400",
+           "jcr:lastModified": "Thu Jun 30 2022 23:26:25 GMT-0400",
+           "link": "https://facebook.com",
+           "sling:resourceType": "solidigm/components/quicklinks"
+       }
 }
