@@ -1,3 +1,7 @@
+@mixin svg_icon($id) {
+    background-image: url('../resources/images/icon-#{$id}.svg');
+}
+
 @mixin media-with-corner($direction: right, $smallDesktop: false) {
     $small-size: 60px;
     $large-size: 120px;

@@ -41,10 +41,18 @@ body {
     color: $color-foreground;
     background: $color-background;
 
-    // @media (prefers-color-scheme: dark) {
-    //     color:       $color-foreground-dark;
-    //     background:  $color-background-dark;
-    // }
+    @media (prefers-color-scheme: dark) {
+        color: $color-foreground-dark;
+        background: $color-background-dark;
+    }
+}
+
+a {
+    color: $color-link;
+
+    @media (prefers-color-scheme: dark) {
+        color: $color-link-dark;
+    }
 }
 
 button,
@@ -56,6 +64,8 @@ textarea {
 }
 
 body {
+    overflow-x: hidden;
+    background: transparent;
     font-family: $body-font;
     font-size: $font-size-base;
     overflow-x: hidden;
@@ -136,5 +146,22 @@ button {
 
     &--full {
         width: 100%;
+    }
+
+    &--external {
+        span {
+            position: relative;
+            &::after {
+                content: '';
+                height: 14px;
+                width: 14px;
+                left: -24px;
+                top: 50%;
+                transform: translateY(-50%);
+                position: absolute;
+                background: url('../resources/images/icon-new-tab.svg');
+                background-size: contain;
+            }
+        }
     }
 }
