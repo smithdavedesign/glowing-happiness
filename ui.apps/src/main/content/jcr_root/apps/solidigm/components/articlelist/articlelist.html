@@ -1,0 +1,38 @@
+<div
+    data-sly-use.articleList="com.solidigm.core.models.ArticleList"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.hasContent="${articleList.hasContent}"
+    class="cmp-article-list"
+>
+    <div class="section-title--with-link">
+        <h2>${articleList.title}</h2>
+        <a data-sly-test="${articleList.link && articleList.linkText}" href="${articleList.link}">
+            ${articleList.linkText}</a
+        >
+    </div>
+
+    <div class="cmp-article-list__articles-container splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                <sly data-sly-list.article="${articleList.articles}">
+                    <li class="splide__slide">
+                        <div class="cmp-article-list__article">
+                            <div class="cmp-article-list__article-image media-with-corner">
+                                <img src="${article.image}" alt="" height="225" width="100%" />
+                            </div>
+                            <div class="cmp-article-list__article-content">
+                                <span class="cmp-article-list__article-category"
+                                    >${article.category}</span
+                                >
+                                <h3 class="cmp-article-list__article-title">
+                                    <a href="${article.path}"> ${article.title} </a>
+                                </h3>
+                            </div>
+                        </div>
+                    </li>
+                </sly>
+            </ul>
+        </div>
+    </div>
+</div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-title'}"></sly>

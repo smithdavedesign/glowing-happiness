@@ -1,0 +1,44 @@
+{
+  "articleListEmpty": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/articlelist"
+  },
+  "articleListAuthored": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:createdBy": "admin",
+    "jcr:lastModifiedBy": "admin",
+    "jcr:created": "Mon Jun 27 2022 11:41:22 GMT-0400",
+    "link": "/test/link",
+    "title": "Test Title",
+    "jcr:lastModified": "Mon Jun 27 2022 14:23:26 GMT-0400",
+    "linkText": "Test Link Text",
+    "sling:resourceType": "solidigm/components/articlelist",
+    "articles": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "article": "/content/article1"
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "article": "/content/article2"
+      }
+    }
+  },
+  "article1": {
+    "jcr:content": {
+      "jcr:primaryType": "nt:unstructured",
+      "pageTitle": "Test Page Title 1",
+      "teaserImage": "Test Teaser Image 1",
+      "teaserCategory": "Test Teaser Category 1"
+    }
+  },
+  "article2": {
+    "jcr:content": {
+      "jcr:primaryType": "nt:unstructured",
+      "pageTitle": "Test Page Title 2",
+      "teaserImage": "Test Teaser Image 2",
+      "teaserCategory": "Test Teaser Category 2"
+    }
+  }
+}
