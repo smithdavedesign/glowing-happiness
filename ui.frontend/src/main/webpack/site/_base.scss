@@ -147,4 +147,21 @@ button {
     &--full {
         width: 100%;
     }
+
+    &--external {
+        span {
+            position: relative;
+            &::after {
+                content: '';
+                height: 14px;
+                width: 14px;
+                left: -24px;
+                top: 50%;
+                transform: translateY(-50%);
+                position: absolute;
+                background: url('../resources/images/icon-new-tab.svg');
+                background-size: contain;
+            }
+        }
+    }
 }
