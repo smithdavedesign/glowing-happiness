@@ -1,1 +1,53 @@
-.cmp-container {}
+.root.container {
+    overflow: hidden;
+}
+
+.cmp-container {
+    max-width: $max-width-base;
+    padding: 0 clamp(1rem, 3.5vw, 1.5rem);
+    margin: auto;
+
+    &--no-padding {
+        padding: 0;
+    }
+
+    &--wide {
+        max-width: $max-width-lg;
+    }
+
+    &--gray-diagonal-line {
+        position: relative;
+        margin: auto;
+
+        &::before {
+            content: '';
+            height: 1000px;
+            width: 400vw;
+            //@TODO: define as a variable once merged with the other PRs containing other color definitions
+            background: #bcbcbc;
+            position: absolute;
+            z-index: -10000;
+            transform-origin: 0 0;
+            transform: rotate(45deg) translateX(-50%);
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &--gray-bg > & {
+        position: relative;
+
+        &::before {
+            content: '';
+            height: 100%;
+            width: 200vw;
+            left: 0;
+            top: 0;
+            //@TODO: define as a variable once merged with the other PRs containing other color definitions
+            background: #f2f2f5;
+            z-index: -1000;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+    }
+}
