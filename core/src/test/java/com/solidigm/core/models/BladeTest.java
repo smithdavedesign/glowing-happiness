@@ -1,6 +1,5 @@
 package com.solidigm.core.models;
 
-import com.solidigm.core.beans.AnchorLink;
 import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.beans.Link;
 import io.wcm.testing.mock.aem.junit5.AemContext;
