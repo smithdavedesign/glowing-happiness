@@ -40,11 +40,6 @@ body {
     line-height: $font-height;
     color:       $color-foreground;
     background:  $color-background;
-
-    @media (prefers-color-scheme: dark) {
-        color:       $color-foreground-dark;
-        background:  $color-background-dark;
-    }
 }
 
 button,
@@ -130,6 +125,13 @@ button {
         &:hover,
         &:focus {
             background: $solidigm-purple;
+        }
+    }
+
+    &--outline-dark{
+        color: $black;
+        &:hover{
+            color: $white;
         }
     }
 

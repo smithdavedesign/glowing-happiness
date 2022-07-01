@@ -4,6 +4,7 @@
     border-radius: $border-radius-md;
     overflow: hidden;
     box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.1);
+    background: $white;
 
     a:not(.solidigm-btn) {
         color: $solidigm-purple;
