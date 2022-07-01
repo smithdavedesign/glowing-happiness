@@ -35,16 +35,16 @@
 html,
 body {
     margin: 0;
-    font-size:   $font-size;
+    font-size: $font-size;
     font-family: $font-family;
     line-height: $font-height;
-    color:       $color-foreground;
-    background:  $color-background;
+    color: $color-foreground;
+    background: $color-background;
 
-    @media (prefers-color-scheme: dark) {
-        color:       $color-foreground-dark;
-        background:  $color-background-dark;
-    }
+    // @media (prefers-color-scheme: dark) {
+    //     color:       $color-foreground-dark;
+    //     background:  $color-background-dark;
+    // }
 }
 
 button,
@@ -58,6 +58,7 @@ textarea {
 body {
     font-family: $body-font;
     font-size: $font-size-base;
+    overflow-x: hidden;
 }
 
 h1,

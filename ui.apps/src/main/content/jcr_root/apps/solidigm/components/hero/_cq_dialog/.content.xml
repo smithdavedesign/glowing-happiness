@@ -140,6 +140,13 @@
                                                     uploadUrl="${suffix.path}"
                                                     useHTML5="{Boolean}true"
                                                     required="{Boolean}true" />
+                                            <desktopAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Desktop Image Alt Text"
+                                                    emptyText="Leave blank to use Alt Text from DAM"
+                                                    fieldDescription="Set the image alt text for accessibility. Leave blank to use alt text from DAM"
+                                                    name="./desktopAltText" />
                                             <headingMobileImage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/heading"
@@ -157,6 +164,13 @@
                                                     uploadUrl="${suffix.path}"
                                                     useHTML5="{Boolean}true"
                                                     required="{Boolean}true" />
+                                            <mobileAltText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Mobile Image Alt Text"
+                                                    emptyText="Leave blank to use Alt Text from DAM"
+                                                    fieldDescription="Set the image alt text for accessibility. Leave blank to use alt text from DAM"
+                                                    name="./mobileAltText" />
                                             <filter
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/select"
@@ -208,47 +222,47 @@
                                                         <column
                                                             jcr:primaryType="nt:unstructured"
                                                             sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                        <items jcr:primaryType="nt:unstructured">
-                                                            <callToAction
-                                                                    jcr:primaryType="nt:unstructured"
-                                                                    sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
-                                                                    jcr:title="Call-To-Action Button">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                    <buttonLabel
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                            fieldLabel="Button Label"
-                                                                            required="{Boolean}true"
-                                                                            name="./buttonLabel" />
-                                                                    <buttonLink
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                            name="./buttonLink"
-                                                                            fieldLabel="Button Link"
-                                                                            fieldDescription="The link target for this Call-To-Action Button"
-                                                                            rootPath="/content/solidigm"
-                                                                            required="{Boolean}true" />
-                                                                    <buttonStyle
-                                                                            jcr:primaryType="nt:unstructured"
-                                                                            sling:resourceType="granite/ui/components/coral/foundation/form/select"
-                                                                            fieldLabel="Select Button Style"
-                                                                            fieldDescription="Select a Button Style from the available options"
-                                                                            name="./buttonStyle">
-                                                                        <items jcr:primaryType="nt:unstructured">
-                                                                            <item_0 jcr:primaryType="nt:unstructured"
-                                                                                  text="Opaque"
-                                                                                  value=""
-                                                                                  selected="{Boolean}true" />
-                                                                            <item_1 jcr:primaryType="nt:unstructured"
-                                                                                  text="Transparent"
-                                                                                  value="transparent" />
-                                                                        </items>
-                                                                    </buttonStyle>
-                                                                </items>
-                                                            </callToAction>
-                                                        </items>
-                                                    </column>
-                                                </items>
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <callToAction
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                                        jcr:title="Call-To-Action Button">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <buttonLabel
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldLabel="Button Label"
+                                                                                required="{Boolean}true"
+                                                                                name="./label" />
+                                                                        <buttonLink
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                name="./link"
+                                                                                fieldLabel="Button Link"
+                                                                                fieldDescription="The link target for this Call-To-Action Button"
+                                                                                rootPath="/content/solidigm"
+                                                                                required="{Boolean}true" />
+                                                                        <buttonStyle
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                fieldLabel="Select Button Style"
+                                                                                fieldDescription="Select a Button Style from the available options"
+                                                                                name="./buttonStyle">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <item_0 jcr:primaryType="nt:unstructured"
+                                                                                    text="Opaque"
+                                                                                    value=""
+                                                                                    selected="{Boolean}true" />
+                                                                                <item_1 jcr:primaryType="nt:unstructured"
+                                                                                    text="Transparent"
+                                                                                    value="transparent" />
+                                                                            </items>
+                                                                        </buttonStyle>
+                                                                    </items>
+                                                                </callToAction>
+                                                            </items>
+                                                        </column>
+                                                    </items>
                                                 </field>
                                             </callToActions>
                                             <anchors
@@ -314,7 +328,8 @@
                                         <items jcr:primaryType="nt:unstructured">
                                             <startLevel
                                                     jcr:primaryType="nt:unstructured"
-                                                    value="2"/>
+                                                    value="2"
+                                                    name='./whatrver'/>
                                             <hideCurrent
                                                     jcr:primaryType="nt:unstructured"
                                                     value="{Boolean}true"/>

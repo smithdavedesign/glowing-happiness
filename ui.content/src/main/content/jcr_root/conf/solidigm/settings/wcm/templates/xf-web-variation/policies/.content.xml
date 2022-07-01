@@ -2,6 +2,8 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
+        cq:lastModified="{Date}2022-06-21T16:08:14.578-04:00"
+        cq:lastModifiedBy="admin"
         cq:policy="solidigm/components/page/policy"
         jcr:primaryType="nt:unstructured"
         sling:resourceType="wcm/core/components/policies/mappings">
@@ -33,6 +35,14 @@
                         sling:resourceType="wcm/core/components/policies/mapping"/>
                 </components>
             </mysite>
+            <solidigm jcr:primaryType="nt:unstructured">
+                <components jcr:primaryType="nt:unstructured">
+                    <banner
+                        cq:policy="solidigm/components/banner/policy_1655841585316"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="wcm/core/components/policies/mapping"/>
+                </components>
+            </solidigm>
         </root>
     </jcr:content>
 </jcr:root>

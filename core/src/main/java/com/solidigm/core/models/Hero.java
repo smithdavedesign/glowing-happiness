@@ -56,11 +56,31 @@ public interface Hero extends ComponentExporter {
     }
 
     /**
+     * Returns string for the alt text of the Desktop image, if no text is authored then the alt text from the DAM will
+     * be returned
+     *
+     * @return string
+     */
+    default String getDesktopAltText() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns string for the path to the mobile image reference
      *
      * @return string
      */
     default String getMobileImageReference() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns string for the alt text of the Mobile image, if no text is authored then the alt text from the DAM will
+     * be returned
+     *
+     * @return string
+     */
+    default String getMobileAltText() {
         throw new UnsupportedOperationException();
     }
 
