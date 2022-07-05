@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface QuickLinks extends ComponentExporter {
     /**
-     * Returns string for the title to be displayed before all the tiles
+     * Returns string for the title to be displayed before all the links
      *It is optional
      *
      * @return string
@@ -38,9 +38,9 @@ public interface QuickLinks extends ComponentExporter {
     }
 
     /**
-     * Returns all of the tiles & their respective title, subtitle, link, and target
+     * Returns all of the links & their respective title, subtitle, link, and target
      *
-     * @return List<QuickLinkTile>
+     * @return List<QuickLink>
      */
     default List<QuickLink> getLinkInfo() {
         throw new UnsupportedOperationException();
@@ -57,7 +57,7 @@ public interface QuickLinks extends ComponentExporter {
     }
 
     /**
-     * Returns true (component has content) if a title or at least 1 tile has been authored
+     * Returns true (component has content) if a title or at least 1 link has been authored
      *
      * @return Boolean
      */

@@ -6,8 +6,6 @@ import com.solidigm.core.beans.QuickLink;
 import com.solidigm.core.models.QuickLinks;
 import com.solidigm.core.utils.LinkUtil;
 import lombok.Getter;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
