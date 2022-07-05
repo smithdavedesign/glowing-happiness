@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Model(
@@ -42,15 +43,15 @@ public class QuickLinksImpl implements QuickLinks {
     @ValueMapValue
     private String linkLabel;
 
-    @ValueMapValue
+    @ValueMapValue(name = "link")
+    private String stringLink;
+
+    @Getter
     private Link link;
 
     @Getter
     @ChildResource(name = "linkInfo")
     private List<QuickLink> linkInfo;
-
-    @Getter
-    private String target;
 
 
     @Override
@@ -59,5 +60,12 @@ public class QuickLinksImpl implements QuickLinks {
             return false;
         }
         return true;
+    }
+
+    @PostConstruct
+    private void initModel() {
+        //Initialize variables
+        link = new Link();
+        link.setLink(stringLink);
     }
 }

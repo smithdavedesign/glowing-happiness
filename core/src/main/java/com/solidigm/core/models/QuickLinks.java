@@ -1,6 +1,7 @@
 package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
+import com.solidigm.core.beans.Link;
 import com.solidigm.core.beans.QuickLink;
 
 import java.util.List;
@@ -31,9 +32,9 @@ public interface QuickLinks extends ComponentExporter {
     /**
      * Returns string for the "Read More" link
      *
-     * @return string
+     * @return Link
      */
-    default String getLink() {
+    default Link getLink() {
         throw new UnsupportedOperationException();
     }
 

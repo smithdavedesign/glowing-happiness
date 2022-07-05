@@ -48,7 +48,7 @@ public class QuickLinksTest {
     void testGetLinkEmpty() {
         ctx.currentResource("/content/quicklinksEmpty");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertTrue(StringUtils.isEmpty(quicklinks.getLink()));
+        assertTrue(StringUtils.isEmpty(quicklinks.getLink().getLink()));
     }
 
     @Test
@@ -56,13 +56,6 @@ public class QuickLinksTest {
         ctx.currentResource("/content/quicklinksEmpty");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
         assertNull(quicklinks.getLinkInfo());
-    }
-
-    @Test
-    void testGetTargetEmpty() {
-        ctx.currentResource("/content/quicklinksEmpty");
-        QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertTrue(StringUtils.isEmpty(quicklinks.getTarget()));
     }
 
     @Test
@@ -94,8 +87,8 @@ public class QuickLinksTest {
         String expectedTarget = "_self";
         ctx.currentResource("/content/quicklinksAuthored");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertEquals(expected, quicklinks.getLink());
-        assertEquals(expectedTarget, quicklinks.getTarget());
+        assertEquals(expected, quicklinks.getLink().getLink());
+        assertEquals(expectedTarget, quicklinks.getLink().getTarget());
     }
 
     @Test
@@ -104,8 +97,8 @@ public class QuickLinksTest {
         String expectedTarget = "_blank";
         ctx.currentResource("/content/quicklinksExternal");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertEquals(expected, quicklinks.getLink());
-        assertEquals(expectedTarget, quicklinks.getTarget());
+        assertEquals(expected, quicklinks.getLink().getLink());
+        assertEquals(expectedTarget, quicklinks.getLink().getTarget());
     }
 
     @Test
