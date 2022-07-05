@@ -1,0 +1,75 @@
+<div data-sly-use.header="com.solidigm.core.models.Header">
+    <div>
+        <!-- Solidigm icon with link to homepage -->
+        <div><a href="${header.homepage}">Solidigm icon with link to homepage</a></div>
+
+        <!-- Top navigation items with dropdowns to subnavs if no topnav link was authored -->
+        <div>
+            <span>
+                <h3> <a href="${header.navItemLink1}" target="${header.target}">${header.navItemTitle1}</a></h3>
+                <div data-sly-list.subNavItems1=${header.subNavItems1}>
+                    <span> <a href="${subNavItems1.link}" target="${subNavItems1.target}">${subNavItems1.label}</a></span>
+                </div>
+            </span>
+            <span>
+                <h3> <a href="${header.navItemLink2}" target="${header.target}">${header.navItemTitle2}</a></h3>
+                <div data-sly-list.subNavItems2=${header.subNavItems2}>
+                    <span> <a href="${subNavItems2.link}" target="${subNavItems2.target}">${subNavItems2.label}</a></span>
+                </div>
+            </span>
+            <span>
+                <h3> <a href="${header.navItemLink3}" target="${header.target}">${header.navItemTitle3}</a></h3>
+                <div data-sly-list.subNavItems3=${header.subNavItems3}>
+                    <span> <a href="${subNavItems3.link}" target="${subNavItems3.target}">${subNavItems3.label}</a></span>
+                </div>
+            </span>
+            <span>
+                <h3> <a href="${header.navItemLink4}" target="${header.target}">${header.navItemTitle4}</a></h3>
+                <div data-sly-list.subNavItems4=${header.subNavItems4}>
+                    <span> <a href="${subNavItems4.link}" target="${subNavItems4.target}">${subNavItems4.label}</a></span>
+                </div>
+            </span>
+            <span>
+                <h3><a href="${header.navItemLink5}" target="${header.target}">${header.navItemTitle5}</a></h3>
+                <div data-sly-list.subNavItems5=${header.subNavItems5}>
+                    <span> <a href="${subNavItems5.link}" target="${subNavItems5.target}">${subNavItems5.label}</a></span>
+                </div>
+            </span>
+        </div>
+
+        <!-- Search bar -->
+        <div>
+            <section class="cmp-search">
+                <form class="cmp-search__form"
+                      method="get"
+                      action="${header.searchResultsPage}">
+                    <div class="cmp-search__field">
+                        <i class="cmp-search__icon"
+                           data-cmp-hook-search="icon"></i>
+                        <input class="cmp-search__input"
+                               type="text"
+                               name="headerSearch" placeholder="${header.placeholderText}"
+                               required="required"/>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+        <!-- User account info -->
+        <div>
+            <div> ${header.greeting} <div id="headerGreetingTarget"></div></div>
+            <div> <a href="${header.dashboard}" target="${header.target}">Dashboard</a></div>
+        </div>
+
+        <!-- Language Info -->
+        <div>
+            <div data-sly-list.languageItem=${header.langItems}>
+                <span> <a href="${languageItem.link}" target="${languageItem.target}">${languageItem.label}</a></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
