@@ -2,9 +2,9 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.solidigm.core.beans.Link;
 import com.solidigm.core.beans.QuickLink;
 import com.solidigm.core.models.QuickLinks;
-import com.solidigm.core.utils.LinkUtil;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -43,7 +43,7 @@ public class QuickLinksImpl implements QuickLinks {
     private String linkLabel;
 
     @ValueMapValue
-    private String link;
+    private Link link;
 
     @Getter
     @ChildResource(name = "linkInfo")
@@ -52,11 +52,6 @@ public class QuickLinksImpl implements QuickLinks {
     @Getter
     private String target;
 
-    public String getLink() {
-        link = LinkUtil.processLink(link);
-        target = LinkUtil.processTarget(link);
-        return link;
-    }
 
     @Override
     public Boolean hasContent() {
