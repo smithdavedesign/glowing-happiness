@@ -1,5 +1,6 @@
 package com.solidigm.core.beans;
 
+import com.solidigm.core.utils.LinkUtil;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,23 +28,14 @@ public class Link {
     private String target;
 
     public void setLink(String link) {
-        this.link = link;
-        processLink();
+        this.link = LinkUtil.processLink(link);
+        this.target = LinkUtil.processTarget(link);
+
     }
 
     @PostConstruct
     private void initModel() {
-        processLink();
-    }
-
-    private void processLink() {
-        if (!StringUtils.isEmpty(link) && link.startsWith("/")){
-            target = "_self";
-            if (StringUtils.isEmpty(FilenameUtils.getExtension(link))) {
-                link = link.concat(".html");
-            }
-        } else {
-            target = "_blank";
-        }
+        link = LinkUtil.processLink(link);
+        target = LinkUtil.processTarget(link);
     }
 }

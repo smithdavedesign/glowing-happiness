@@ -1,7 +1,7 @@
 package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
-import com.solidigm.core.beans.QuickLinkTile;
+import com.solidigm.core.beans.QuickLink;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public interface QuickLinks extends ComponentExporter {
      *
      * @return List<QuickLinkTile>
      */
-    default List<QuickLinkTile> getTileInfo() {
+    default List<QuickLink> getLinkInfo() {
         throw new UnsupportedOperationException();
     }
 

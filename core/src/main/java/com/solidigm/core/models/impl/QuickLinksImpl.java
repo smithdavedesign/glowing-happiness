@@ -2,8 +2,9 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
-import com.solidigm.core.beans.QuickLinkTile;
+import com.solidigm.core.beans.QuickLink;
 import com.solidigm.core.models.QuickLinks;
+import com.solidigm.core.utils.LinkUtil;
 import lombok.Getter;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
@@ -47,26 +48,21 @@ public class QuickLinksImpl implements QuickLinks {
     private String link;
 
     @Getter
-    @ChildResource(name = "tileInfo")
-    private List<QuickLinkTile> tileInfo;
+    @ChildResource(name = "linkInfo")
+    private List<QuickLink> linkInfo;
 
     @Getter
     private String target;
 
     public String getLink() {
-        if (!StringUtils.isEmpty(link) && link.startsWith("/")){
-            target = "_self";
-            if (StringUtils.isEmpty(FilenameUtils.getExtension(link))) {
-                link = link.concat(".html");
-            }
-        } else {
-            target = "_blank";
-        }
+        link = LinkUtil.processLink(link);
+        target = LinkUtil.processTarget(link);
         return link;
     }
 
+    @Override
     public Boolean hasContent() {
-        if ((title == null) && (tileInfo == null)) {
+        if ((title == null) && (linkInfo == null)) {
             return false;
         }
         return true;
