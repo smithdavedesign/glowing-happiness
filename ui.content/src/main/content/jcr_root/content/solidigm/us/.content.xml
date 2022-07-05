@@ -6,6 +6,6 @@
         cq:template="/conf/solidigm/settings/wcm/templates/page-content"
         jcr:primaryType="cq:PageContent"
         jcr:title="us"
-        sling:resourceType="solidigm/components/page"/>
+        sling:resourceType="solidigm/components/page/base"/>
     <en/>
 </jcr:root>
