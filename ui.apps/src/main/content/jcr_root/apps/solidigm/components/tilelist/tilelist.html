@@ -1,67 +1,19 @@
-<div class="cmp-tilelist">
-    <ul class="cmp-tilelist__grid">
-        <li class="cmp-tilelist__tile">
-            <div class="cmp-tilelist__icon icon--tools"></div>
-            <h2 class="cmp-tilelist__title">Support</h2>
-            <p class="cmp-tilelist__description">
-                Aliqua commodo velit labore nulla Lorem ullamco est duis magna reprehenderit anim
-                dolore elit reprehenderit. In enim aliquip excepteur eu dolor dolor ut labore do
-                incididunt sunt duis dolor ut labore do incididunt sunt duis dolor ut labore do
-                incididunt sunt duis. Proident.
-            </p>
-            <a href="#" class="solidigm-btn solidigm-btn--external">
-                <span> Launch Support </span>
-            </a>
-        </li>
-
-        <li class="cmp-tilelist__tile">
-            <div class="cmp-tilelist__icon icon--orders"></div>
-            <h2 class="cmp-tilelist__title">Orders</h2>
-            <p class="cmp-tilelist__description">
-                Aliqua commodo velit labore nulla Lorem ullamco est duis magna reprehenderitt.
-            </p>
-            <a href="#" class="solidigm-btn solidigm-btn--external">
-                <span> Launch Support </span>
-            </a>
-        </li>
-
-        <li class="cmp-tilelist__tile">
-            <div class="cmp-tilelist__icon icon--handshake"></div>
-            <h2 class="cmp-tilelist__title">Partners Program</h2>
-            <p class="cmp-tilelist__description">
-                Aliqua commodo velit labore nulla Lorem ullamco est duis magna reprehenderit anim
-                dolore elit reprehenderit. In enim aliquip excepteur eu dolor dolor ut labore do
-                incididunt sunt duis. Proident.
-            </p>
-            <a href="#" class="solidigm-btn solidigm-btn--external">
-                <span> Launch Support </span>
-            </a>
-        </li>
-
-        <li class="cmp-tilelist__tile">
-            <div class="cmp-tilelist__icon icon--calculator"></div>
-            <h2 class="cmp-tilelist__title">Pricing</h2>
-            <p class="cmp-tilelist__description">
-                Aliqua commodo velit labore nulla Lorem ullamco est duis magna reprehenderit anim
-                dolore elit reprehenderit. In enim aliquip excepteur eu dolor dolor ut labore do
-                incididunt sunt duis. Proident.
-            </p>
-            <a href="#" class="solidigm-btn solidigm-btn--external">
-                <span> Launch Support </span>
-            </a>
-        </li>
-
-        <li class="cmp-tilelist__tile">
-            <div class="cmp-tilelist__icon icon--documents"></div>
-            <h2 class="cmp-tilelist__title">Documents</h2>
-            <p class="cmp-tilelist__description">
-                Aliqua commodo velit labore nulla Lorem ullamco est duis magna reprehenderit anim
-                dolore elit reprehenderit. In enim aliquip excepteur eu dolor dolor ut labore do
-                incididunt sunt duis. Proident.
-            </p>
-            <a href="#" class="solidigm-btn solidigm-btn--external">
-                <span> Launch Support </span>
-            </a>
-        </li>
-    </ul>
-</div>
+<sly data-sly-use.tilelist="com.solidigm.core.models.TileList"
+data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html">
+    <div class="cmp-tilelist">
+        <ul class="cmp-tilelist__grid" data-sly-list.tileInfo="${tilelist.tileInfo}">
+            <li class="cmp-tilelist__tile">
+                <div class="cmp-tilelist__icon icon--${tileInfo.icon}"></div>
+                <h2 class="cmp-tilelist__title">${tileInfo.title}</h2>
+                <p class="cmp-tilelist__description">
+                    ${tileInfo.description}
+                </p>
+                <sly data-sly-test.hasLink="${tileInfo.link}">
+                <a href="${tileInfo.link}" target="${tileInfo.target}" class="solidigm-btn solidigm-btn--external">
+                    <span> ${tileInfo.label} ${tileInfo.title}</span>
+                </a>
+                </sly>
+            </li>
+        </ul>
+    </div>
+</sly>
