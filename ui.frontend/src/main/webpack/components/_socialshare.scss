@@ -36,6 +36,7 @@
     }
 
     @media (min-width: $tablet) {
+        flex-direction: row;
         &__icons {
             justify-content: flex-start;
             margin-left: $spacing-3xl;
