@@ -17,6 +17,10 @@
                 sling:resourceType="wcm/core/components/policies/mapping">
                 <solidigm jcr:primaryType="nt:unstructured">
                     <components jcr:primaryType="nt:unstructured">
+                        <carousel
+                            cq:policy="solidigm/components/carousel/policy_1656427204082"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
                         <hero
                             cq:policy="solidigm/components/hero/policy_1655924066041"
                             jcr:primaryType="nt:unstructured"
