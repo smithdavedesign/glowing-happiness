@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g id="IconLinked" transform="translate(0)">
+        <g id="IconLinked-2" data-name="IconLinked">
+            <path id="Shape" d="M.327,20V6.641h4.16V20ZM0,2.41A2.411,2.411,0,1,1,2.41,4.821,2.4,2.4,0,0,1,0,2.41Z"
+                fill="#4f00b5" />
+            <path id="Path"
+                d="M0,.336H3.981V2.164h.054A4.355,4.355,0,0,1,7.924,0c4.207,0,4.984,2.768,4.984,6.369V13.7H8.795V7.2c0-1.555,0-3.546-2.162-3.546S4.145,5.344,4.145,7.086V13.7H0Z"
+                transform="translate(7.092 6.305)" fill="#4f00b5" />
+        </g>
+    </g>
+</svg>
