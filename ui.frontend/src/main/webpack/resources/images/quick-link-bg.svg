@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="283.753" height="140"
+    viewBox="0 0 283.753 140">
+    <defs>
+        <clipPath id="clip-path">
+            <rect id="Mask" width="283.753" height="140" rx="5" fill="red" />
+        </clipPath>
+        <clipPath id="clip-path-2">
+            <rect id="Mask-2" data-name="Mask" width="198" height="142" fill="none" />
+        </clipPath>
+    </defs>
+    <g id="Group" clip-path="url(#clip-path)">
+        <g id="CornerSwipe" transform="translate(85.753)">
+            <g id="Group_1" data-name="Group 1">
+                <rect id="Mask-3" data-name="Mask" width="198" height="142" fill="none" />
+                <g id="Mask_Group_1" data-name="Mask Group 1" clip-path="url(#clip-path-2)">
+                    <g id="icon_logo" data-name="icon logo" transform="translate(-0.755 -182)" opacity="0.25">
+                        <path id="Path_458"
+                            d="M352.871,227.625V173.512L242.5,283.873H38.266V181.761l143.5-143.5h171.11V0H165.907L0,165.907V269.849l52.29,52.289H258.336Z"
+                            fill="black" />
+                        <path id="Path_459"
+                            d="M94.513,0,0,94.513v54.113L110.368,38.266H314.605V140.377L171.11,283.866H.022v38.266H186.986L352.893,156.225V52.29L300.6,0Z"
+                            transform="translate(128.683 109.869)" fill="black" />
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

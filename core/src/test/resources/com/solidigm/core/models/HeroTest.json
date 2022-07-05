@@ -1,7 +1,14 @@
 {
   "heroEmpty": {
     "jcr:primaryType": "nt:unstructured",
-    "sling:resourceType": "solidigm/components/footer"
+    "sling:resourceType": "solidigm/components/hero"
+  },
+  "heroAltTextFromDAM": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/hero",
+    "title": "Test Title",
+    "desktopImageReference": "/content/desktopImage",
+    "mobileImageReference": "/content/mobileImage"
   },
   "heroAuthored": {
     "jcr:primaryType": "nt:unstructured",
@@ -12,8 +19,10 @@
     "jcr:lastModifiedBy": "admin",
     "jcr:created": "Thu Jun 23 2022 10:57:01 GMT-0400",
     "desktopImageReference": "/desktop/image/reference",
+    "desktopAltText": "Test Desktop Alt Text",
     "title": "Test\r\nTitle",
     "mobileImageReference": "/mobile/image/reference",
+    "mobileAltText": "Test Mobile Alt Text",
     "jcr:lastModified": "Fri Jun 24 2022 15:05:08 GMT-0400",
     "breadcrumb": "show_breadcrumb",
     "sling:resourceType": "solidigm/components/hero",
@@ -25,15 +34,15 @@
       "jcr:primaryType": "nt:unstructured",
       "item0": {
         "jcr:primaryType": "nt:unstructured",
-        "buttonLabel": "First Button",
+        "label": "First Button",
         "buttonStyle": "transparent",
-        "buttonLink": "/first/link"
+        "link": "/first/link"
       },
       "item1": {
         "jcr:primaryType": "nt:unstructured",
-        "buttonLabel": "Second Button",
+        "label": "Second Button",
         "buttonStyle": "",
-        "buttonLink": "/second/link"
+        "link": "https://second/link"
       }
     },
     "anchors": {
@@ -47,6 +56,20 @@
         "jcr:primaryType": "nt:unstructured",
         "anchorLabel": "Second Anchor",
         "anchorID": "secondAnchor"
+      }
+    }
+  },
+  "desktopImage": {
+    "jcr:content": {
+      "metadata": {
+        "dc:description": "Test Desktop Alt from DAM"
+      }
+    }
+  },
+  "mobileImage": {
+    "jcr:content": {
+      "metadata": {
+        "dc:description": "Test Mobile Alt from DAM"
       }
     }
   }

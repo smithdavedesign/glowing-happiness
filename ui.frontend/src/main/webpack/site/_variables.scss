@@ -22,6 +22,10 @@ $mobile: 640px;
 $tablet: 768px;
 $desktop: 1024px;
 
+// Width
+$max-width-base: 1440px;
+$max-width-lg: 2000px;
+
 // Fonts
 $heading-font: 'Sora', 'Arial';
 $body-font: 'Noto Sans';
@@ -61,3 +65,13 @@ $orange: #ffa42c;
 $solidigm-purple: #4f00b5;
 $solidigm-purple-light: #6500e6;
 $darkPurple: #2f006b;
+
+// Spacing
+$spacing-3xs: 4px;
+$spacing-2xs: 8px;
+$spacing-xs: 10px;
+$spacing-sm: 12px;
+$spacing-base: 16px;
+$spacing-lg: 18px;
+$spacing-xl: 20px;
+$spacing-2xl: 24px;

@@ -1,8 +1,8 @@
 package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
-import com.solidigm.core.beans.anchorLink;
-import com.solidigm.core.beans.callToActionButton;
+import com.solidigm.core.beans.AnchorLink;
+import com.solidigm.core.beans.CallToActionButton;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface Hero extends ComponentExporter {
     /**
-     * Returns string for the title to be displayed on the hero with html flags
+     * Returns string for the title to be displayed on the hero
      *
      * @return string
      */
@@ -20,7 +20,7 @@ public interface Hero extends ComponentExporter {
     }
 
     /**
-     * Returns string for the subtitle to be displayed on the hero with html flags
+     * Returns string for the subtitle to be displayed on the hero
      *
      * @return string
      */
@@ -29,7 +29,7 @@ public interface Hero extends ComponentExporter {
     }
 
     /**
-     * Returns string for the description to be displayed on the hero with html flags
+     * Returns string for the description to be displayed on the hero as rich text
      *
      * @return string
      */
@@ -56,11 +56,31 @@ public interface Hero extends ComponentExporter {
     }
 
     /**
+     * Returns string for the alt text of the Desktop image, if no text is authored then the alt text from the DAM will
+     * be returned
+     *
+     * @return string
+     */
+    default String getDesktopAltText() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns string for the path to the mobile image reference
      *
      * @return string
      */
     default String getMobileImageReference() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns string for the alt text of the Mobile image, if no text is authored then the alt text from the DAM will
+     * be returned
+     *
+     * @return string
+     */
+    default String getMobileAltText() {
         throw new UnsupportedOperationException();
     }
 
@@ -78,7 +98,7 @@ public interface Hero extends ComponentExporter {
      *
      * @return List<callToActionButton>
      */
-    default List<callToActionButton> getCallToActions() {
+    default List<CallToActionButton> getCallToActions() {
         throw new UnsupportedOperationException();
     }
 
@@ -87,7 +107,7 @@ public interface Hero extends ComponentExporter {
      *
      * @return List<anchorLink>
      */
-    default List<anchorLink> getAnchors() {
+    default List<AnchorLink> getAnchors() {
         throw new UnsupportedOperationException();
     }
 
