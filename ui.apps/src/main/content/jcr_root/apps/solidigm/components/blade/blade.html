@@ -8,7 +8,7 @@
     <div class="cmp-blade__media cmp-blade__media--video media-with-corner"
          data-sly-test.showVideo="${blade.showVideo}">
         <img src="${blade.imageReference}" alt="${blade.altText}" />
-        <button data-modal-target="blader-modal-1" aria-label="Play video"></button>
+        <button data-modal-target="blade-modal-${blade.modalID}" aria-label="Play video"></button>
     </div>
 
     <!-- Image -->
@@ -44,7 +44,7 @@
 <sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
 
 
-<dialog id="blader-modal-1" class="cmp-modal cmp-modal__video">
+<dialog id="blade-modal-${blade.modalID}" class="cmp-modal cmp-modal__video">
     <button
         class="cmp-modal__close-btn"
         aria-label="Close video modal"

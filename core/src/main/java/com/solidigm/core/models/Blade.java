@@ -49,6 +49,13 @@ public interface Blade extends ComponentExporter {
     }
 
     /**
+     * Returns String for a unique ID number of this blade component
+     *
+     * @return String
+     */
+    default String getModalID(){ throw new UnsupportedOperationException(); }
+
+    /**
      * Returns List of Links for the bullet points to be displayed on the blade
      *
      * @return List<Link>

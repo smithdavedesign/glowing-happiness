@@ -53,6 +53,9 @@ public class BladeImpl implements Blade {
     private String altText;
 
     @Getter
+    private String modalID;
+
+    @Getter
     @ChildResource(name = "bullets")
     private List<Link> bullets;
 
@@ -84,6 +87,7 @@ public class BladeImpl implements Blade {
 
     @PostConstruct
     private void initModel() {
+        modalID = String.valueOf(Math.abs(request.getResource().getPath().hashCode()));
         hasContentValue = !StringUtils.isEmpty(imageReference);
         showVideoValue = !StringUtils.isEmpty(url);
         if (hasContentValue && StringUtils.isEmpty(altText)) {

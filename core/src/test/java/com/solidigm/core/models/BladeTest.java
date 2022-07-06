@@ -34,6 +34,13 @@ public class BladeTest {
     }
 
     @Test
+    void testGetId(){
+        ctx.currentResource("/content/bladeEmpty");
+        Blade blade = ctx.request().adaptTo(Blade.class);
+        assertFalse(StringUtils.isEmpty(blade.getModalID()));
+    }
+
+    @Test
     void testGetTitleEmpty() {
         ctx.currentResource("/content/bladeEmpty");
         Blade blade = ctx.request().adaptTo(Blade.class);
