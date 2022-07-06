@@ -1,0 +1,55 @@
+.cmp-social-share {
+    display: flex;
+    align-items: center;
+    margin-top: $spacing-sm;
+    flex-direction: column;
+
+    &__icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: $spacing-3xl;
+
+        & > *:not(:last-child) {
+            margin-right: $spacing-6xl;
+        }
+    }
+
+    &__icon {
+        height: 22px;
+        width: 22px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+    &__icon-facebook {
+        @include svg_icon(facebook);
+    }
+
+    &__icon-twitter {
+        @include svg_icon(twitter);
+    }
+
+    &__icon-linkedin {
+        @include svg_icon(linkedin);
+    }
+
+    @media (min-width: $tablet) {
+        flex-direction: row;
+        &__icons {
+            justify-content: flex-start;
+            margin-left: $spacing-3xl;
+            margin-top: 0;
+
+            & > *:not(:last-child) {
+                margin-right: $spacing-base;
+            }
+        }
+
+        &__icon {
+            height: 20px;
+            width: 20px;
+        }
+    }
+}
