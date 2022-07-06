@@ -41,22 +41,22 @@ public class QuickLinksImpl implements QuickLinks {
 
     @Getter
     @ValueMapValue
-    private String linkLabel;
+    private String seeMoreLinkLabel;
 
-    @ValueMapValue(name = "link")
+    @ValueMapValue(name = "seeMoreLink")
     private String stringLink;
 
     @Getter
-    private Link link;
+    private Link seeMoreLink;
 
     @Getter
-    @ChildResource(name = "linkInfo")
-    private List<QuickLink> linkInfo;
+    @ChildResource(name = "links")
+    private List<QuickLink> links;
 
 
     @Override
     public Boolean hasContent() {
-        if ((title == null) && (linkInfo == null)) {
+        if ((title == null) && (links == null)) {
             return false;
         }
         return true;
@@ -65,7 +65,7 @@ public class QuickLinksImpl implements QuickLinks {
     @PostConstruct
     private void initModel() {
         //Initialize variables
-        link = new Link();
-        link.setLink(stringLink);
+        seeMoreLink = new Link();
+        seeMoreLink.setLink(stringLink);
     }
 }

@@ -10,14 +10,14 @@
     "quicklinksAuthored": {
         "jcr:primaryType": "nt:unstructured",
         "jcr:createdBy": "admin",
-        "linkLabel": "See More Solutions",
+        "seeMoreLinkLabel": "See More Solutions",
         "jcr:lastModifiedBy": "admin",
         "jcr:created": "Thu Jun 30 2022 23:26:28 GMT-0400",
-        "link": "/content/solidigm/us/en",
+        "seeMoreLink": "/content/solidigm/us/en",
         "title": "Authored Title",
         "jcr:lastModified": "Thu Jun 30 2022 23:29:52 GMT-0400",
         "sling:resourceType": "solidigm/components/quicklinks",
-        "linkInfo": {
+        "links": {
             "jcr:primaryType": "nt:unstructured",
             "item0": {
                 "jcr:primaryType": "nt:unstructured",
@@ -44,7 +44,7 @@
            "jcr:lastModifiedBy": "admin",
            "jcr:created": "Thu Jun 30 2022 23:26:25 GMT-0400",
            "jcr:lastModified": "Thu Jun 30 2022 23:26:25 GMT-0400",
-           "link": "https://facebook.com",
+           "seeMoreLink": "https://facebook.com",
            "sling:resourceType": "solidigm/components/quicklinks"
        }
 }

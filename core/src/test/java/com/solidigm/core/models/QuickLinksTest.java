@@ -41,21 +41,21 @@ public class QuickLinksTest {
     void testGetLinkLabelEmpty() {
         ctx.currentResource("/content/quicklinksEmpty");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertTrue(StringUtils.isEmpty(quicklinks.getLinkLabel()));
+        assertTrue(StringUtils.isEmpty(quicklinks.getSeeMoreLinkLabel()));
     }
 
     @Test
     void testGetLinkEmpty() {
         ctx.currentResource("/content/quicklinksEmpty");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertTrue(StringUtils.isEmpty(quicklinks.getLink().getLink()));
+        assertTrue(StringUtils.isEmpty(quicklinks.getSeeMoreLink().getLink()));
     }
 
     @Test
     void testLinkInfoEmpty() {
         ctx.currentResource("/content/quicklinksEmpty");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertNull(quicklinks.getLinkInfo());
+        assertNull(quicklinks.getLinks());
     }
 
     @Test
@@ -78,7 +78,7 @@ public class QuickLinksTest {
         String expected = "See More Solutions";
         ctx.currentResource("/content/quicklinksAuthored");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertEquals(expected, quicklinks.getLinkLabel());
+        assertEquals(expected, quicklinks.getSeeMoreLinkLabel());
     }
 
     @Test
@@ -87,8 +87,8 @@ public class QuickLinksTest {
         String expectedTarget = "_self";
         ctx.currentResource("/content/quicklinksAuthored");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertEquals(expected, quicklinks.getLink().getLink());
-        assertEquals(expectedTarget, quicklinks.getLink().getTarget());
+        assertEquals(expected, quicklinks.getSeeMoreLink().getLink());
+        assertEquals(expectedTarget, quicklinks.getSeeMoreLink().getTarget());
     }
 
     @Test
@@ -97,32 +97,32 @@ public class QuickLinksTest {
         String expectedTarget = "_blank";
         ctx.currentResource("/content/quicklinksExternal");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertEquals(expected, quicklinks.getLink().getLink());
-        assertEquals(expectedTarget, quicklinks.getLink().getTarget());
+        assertEquals(expected, quicklinks.getSeeMoreLink().getLink());
+        assertEquals(expectedTarget, quicklinks.getSeeMoreLink().getTarget());
     }
 
     @Test
     void testLinkInfoAuthored() {
         ctx.currentResource("/content/quicklinksAuthored");
         QuickLinks quicklinks = ctx.request().adaptTo(QuickLinks.class);
-        assertEquals(3, quicklinks.getLinkInfo().size());
-        assertEquals("Get Support", quicklinks.getLinkInfo().get(0).getLinkTitle());
-        assertEquals("Help Us to Help You", quicklinks.getLinkInfo().get(0).getLinkSubTitle());
-        assertEquals("/content/solidigm/us/en.html", quicklinks.getLinkInfo().get(0).getLink());
-        assertEquals("_self", quicklinks.getLinkInfo().get(0).getTarget());
-        assertEquals("", quicklinks.getLinkInfo().get(0).getLinkType());
+        assertEquals(3, quicklinks.getLinks().size());
+        assertEquals("Get Support", quicklinks.getLinks().get(0).getLinkTitle());
+        assertEquals("Help Us to Help You", quicklinks.getLinks().get(0).getLinkSubTitle());
+        assertEquals("/content/solidigm/us/en.html", quicklinks.getLinks().get(0).getLink());
+        assertEquals("_self", quicklinks.getLinks().get(0).getTarget());
+        assertEquals("", quicklinks.getLinks().get(0).getLinkType());
 
-        assertEquals("Press Releases", quicklinks.getLinkInfo().get(1).getLinkTitle());
-        assertEquals("Visit news.solidigm.com", quicklinks.getLinkInfo().get(1).getLinkSubTitle());
-        assertEquals("https://www.externalLink.com", quicklinks.getLinkInfo().get(1).getLink());
-        assertEquals("_blank", quicklinks.getLinkInfo().get(1).getTarget());
-        assertEquals("cmp-quick-links__link--external", quicklinks.getLinkInfo().get(1).getLinkType());
+        assertEquals("Press Releases", quicklinks.getLinks().get(1).getLinkTitle());
+        assertEquals("Visit news.solidigm.com", quicklinks.getLinks().get(1).getLinkSubTitle());
+        assertEquals("https://www.externalLink.com", quicklinks.getLinks().get(1).getLink());
+        assertEquals("_blank", quicklinks.getLinks().get(1).getTarget());
+        assertEquals("cmp-quick-links__link--external", quicklinks.getLinks().get(1).getLinkType());
 
-        assertEquals("Join\r\nOur Team", quicklinks.getLinkInfo().get(2).getLinkTitle());
-        assertNull(quicklinks.getLinkInfo().get(2).getLinkSubTitle());
-        assertEquals("/content/solidigm/us/en.html", quicklinks.getLinkInfo().get(2).getLink());
-        assertEquals("_self", quicklinks.getLinkInfo().get(2).getTarget());
-        assertEquals("", quicklinks.getLinkInfo().get(2).getLinkType());
+        assertEquals("Join\r\nOur Team", quicklinks.getLinks().get(2).getLinkTitle());
+        assertNull(quicklinks.getLinks().get(2).getLinkSubTitle());
+        assertEquals("/content/solidigm/us/en.html", quicklinks.getLinks().get(2).getLink());
+        assertEquals("_self", quicklinks.getLinks().get(2).getTarget());
+        assertEquals("", quicklinks.getLinks().get(2).getLinkType());
     }
 
     @Test

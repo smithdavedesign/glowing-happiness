@@ -25,7 +25,7 @@ public interface QuickLinks extends ComponentExporter {
      *
      * @return string
      */
-    default String getLinkLabel() {
+    default String getSeeMoreLinkLabel() {
         throw new UnsupportedOperationException();
     }
 
@@ -34,7 +34,7 @@ public interface QuickLinks extends ComponentExporter {
      *
      * @return Link
      */
-    default Link getLink() {
+    default Link getSeeMoreLink() {
         throw new UnsupportedOperationException();
     }
 
@@ -43,7 +43,7 @@ public interface QuickLinks extends ComponentExporter {
      *
      * @return List<QuickLink>
      */
-    default List<QuickLink> getLinkInfo() {
+    default List<QuickLink> getLinks() {
         throw new UnsupportedOperationException();
     }
 
