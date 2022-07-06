@@ -120,7 +120,6 @@
                                                                                 fieldLabel="Title"
                                                                                 required="{Boolean}true"
                                                                                 name="./title" />
-
                                                                         <description
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
                                                                                 jcr:primaryType="nt:unstructured"
@@ -134,20 +133,16 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldDescription="Text to be displayed on button if link is authored; if no link is authored, no button will display"
                                                                                 fieldLabel="CTA Button Label"
-
-                                                                                name="./label"
-                                                                                value="Launch"/>
+                                                                                name="./label"/>
                                                                         <buttonLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                                                                 name="./link"
                                                                                 fieldLabel="CTA Button Link"
                                                                                 fieldDescription="If no link is authored, no button will display even if label has been authored"
-                                                                                rootPath="/content/solidigm"
-                                                                                suffix=".html" />
+                                                                                rootPath="/content/solidigm"/>
                                                                     </items>
                                                                 </fieldset>
-
                                                             </items>
                                                         </column>
                                                     </items>

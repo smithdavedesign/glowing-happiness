@@ -1,21 +1,20 @@
 package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
-import com.solidigm.core.beans.Link;
 import com.solidigm.core.beans.TileData;
 
 import java.util.List;
 
 /**
- * Defines the {@code Footer} Sling Model for the {@code /apps/solidigm/components/Footer} component.
+ * Defines the {@code TileList} Sling Model for the {@code /apps/solidigm/components/TileList} component.
  */
 public interface TileList extends ComponentExporter {
     /**
-     * Returns List of links for searching by tags
+     * Returns List of tiledata
      *
      * @return List<TileData>
      */
-    default List<TileData> tileInfo() {
+    default List<TileData> getTileInfo() {
         throw new UnsupportedOperationException();
     }
 
