@@ -55,8 +55,10 @@ $gray-300: #f5f3f1;
 $gray-400: #e1e1e1;
 $gray-450: #cbcbcb;
 $gray-500: #a5a29d;
+$gray-600: #5e5e5e;
 $gray-700: #52514f;
 $dark-gray: #21201f;
+$darker-gray: #111111;
 
 $dark-blue: #00083f;
 $teal: #97f2e9;
@@ -67,11 +69,20 @@ $solidigm-purple-light: #6500e6;
 $darkPurple: #2f006b;
 
 // Spacing
-$spacing-3xs: 4px;
-$spacing-2xs: 8px;
-$spacing-xs: 10px;
-$spacing-sm: 12px;
-$spacing-base: 16px;
-$spacing-lg: 18px;
-$spacing-xl: 20px;
-$spacing-2xl: 24px;
+$spacing-3xs: 5px;
+$spacing-2xs: 10px;
+$spacing-xs: 12.5px;
+$spacing-sm: 15px;
+$spacing-base: 20px;
+$spacing-lg: 25px;
+$spacing-xl: 27.5px;
+$spacing-2xl: 30px;
+$spacing-3xl: 35px;
+$spacing-4xl: 40px;
+$spacing-5xl: 45px;
+$spacing-6xl: 50px;
+$spacing-7xl: 60px;
+$spacing-8xl: 65px;
+
+// Line heights
+$line-height-base: 25px;
