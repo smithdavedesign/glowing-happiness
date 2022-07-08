@@ -35,16 +35,11 @@
 html,
 body {
     margin: 0;
-    font-size: $font-size;
+    font-size:   $font-size;
     font-family: $font-family;
     line-height: $font-height;
-    color: $color-foreground;
-    background: $color-background;
-
-    @media (prefers-color-scheme: dark) {
-        color: $color-foreground-dark;
-        background: $color-background-dark;
-    }
+    color:       $color-foreground;
+    background:  $color-background;
 }
 
 a {
@@ -141,6 +136,13 @@ button {
         &:hover,
         &:focus {
             background: $solidigm-purple;
+        }
+    }
+
+    &--outline-dark{
+        color: $black;
+        &:hover{
+            color: $white;
         }
     }
 

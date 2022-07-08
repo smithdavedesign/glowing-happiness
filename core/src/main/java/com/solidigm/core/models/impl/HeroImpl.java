@@ -5,6 +5,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.solidigm.core.beans.AnchorLink;
 import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.models.Hero;
+import com.solidigm.core.utils.ImageUtil;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -94,22 +95,10 @@ public class HeroImpl implements Hero {
         if (hasContentVal) {
             ResourceResolver resourceResolver = request.getResourceResolver();
             if (StringUtils.isEmpty(desktopAltText)) {
-                Resource desktopImageResource =
-                        resourceResolver.getResource(
-                                desktopImageReference.concat("/jcr:content/metadata")
-                        );
-                if (desktopImageResource != null) {
-                    desktopAltText = desktopImageResource.getValueMap().get("dc:description", String.class);
-                }
+                desktopAltText = ImageUtil.getAltTextFromDAM(resourceResolver, desktopImageReference);
             }
             if (StringUtils.isEmpty(mobileAltText)) {
-                Resource mobileImageResource =
-                        resourceResolver.getResource(
-                                mobileImageReference.concat("/jcr:content/metadata")
-                        );
-                if (mobileImageResource != null) {
-                    mobileAltText = mobileImageResource.getValueMap().get("dc:description", String.class);
-                }
+                mobileAltText = ImageUtil.getAltTextFromDAM(resourceResolver, mobileImageReference);
             }
         }
     }
