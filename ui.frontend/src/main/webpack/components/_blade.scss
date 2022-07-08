@@ -45,7 +45,7 @@
     }
 
     &__content {
-        padding: 24px;
+        padding: $spacing-2xl;
     }
 
     &__title {
@@ -54,14 +54,14 @@
 
     &__description {
         color: #5e5e5e;
-        margin-top: 12px;
+        margin-top: $spacing-sm;
         line-height: 25px;
     }
 
     &__list {
         margin-top: 18px;
         li {
-            margin-bottom: 12px;
+            margin-bottom: $spacing-sm;
             padding-left: 20px;
             position: relative;
 
@@ -71,8 +71,8 @@
                 left: 0;
                 top: 50%;
                 transform: translateY(-50%);
-                height: 12px;
-                width: 12px;
+                height: $spacing-sm;
+                width: $spacing-sm;
                 background: $solidigm-purple;
                 clip-path: polygon(100% 0, 0% 100%, 100% 100%);
             }
@@ -83,7 +83,7 @@
         margin-top: 28px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: $spacing-xs;
 
         .solidigm-btn {
             width: 100%;

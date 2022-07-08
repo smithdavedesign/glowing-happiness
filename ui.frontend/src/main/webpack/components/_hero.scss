@@ -10,7 +10,7 @@
     color: $white;
 
     &--with-overlay::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -66,7 +66,7 @@
         z-index: 2;
     }
 
-    @mixin breakNewlines(){
+    @mixin breakNewlines() {
         white-space: pre-wrap;
         overflow-wrap: break-word;
     }
@@ -124,13 +124,14 @@
             line-height: $internal-link-list-line-height;
 
             &::before {
-                content: "";
+                content: '';
                 height: $internal-link-list-line-height;
                 width: $internal-link-list-line-height;
                 position: absolute;
                 left: 0;
                 top: 3px;
-                background: $solidigm-purple url('../resources/images/arrow-down-white.svg') no-repeat center;
+                background: $solidigm-purple url('../resources/images/arrow-down-white.svg')
+                    no-repeat center;
                 background-size: 11px 8px;
                 border-radius: $border-radius-md;
             }
@@ -168,6 +169,10 @@
     }
 
     @media (min-width: $desktop) {
+        &__content {
+            min-width: 728px;
+        }
+
         &--with-overlap & {
             margin-bottom: -100px;
             padding-bottom: 154px;
@@ -182,12 +187,12 @@
             }
 
             & > a:not(:last-child) {
-                margin-bottom: 0px;
+                margin-bottom: 0;
                 margin-right: 30px;
             }
         }
 
-        &__internal-links-list li a::before{
+        &__internal-links-list li a::before {
             top: 0;
         }
     }
