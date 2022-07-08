@@ -36,22 +36,22 @@ public class HeaderTest {
     void testNavItemTitleEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getNavItemTitle1()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemTitle2()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemTitle3()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemTitle4()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemTitle5()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem1().getLabel()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem2().getLabel()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem3().getLabel()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem4().getLabel()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem5().getLabel()));
     }
 
     @Test
     void testNavItemLinkEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getNavItemLink1()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemLink2()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemLink3()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemLink4()));
-        assertTrue(StringUtils.isEmpty(header.getNavItemLink5()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem1().getLink()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem2().getLink()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem3().getLink()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem4().getLink()));
+        assertTrue(StringUtils.isEmpty(header.getNavItem5().getLink()));
     }
 
     @Test
@@ -90,21 +90,21 @@ public class HeaderTest {
     void testSearchResultsPageEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getSearchResultsPage()));
+        assertTrue(StringUtils.isEmpty(header.getSearchResultsPage().getLink()));
     }
 
     @Test
     void testDashboardEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getDashboard()));
+        assertTrue(StringUtils.isEmpty(header.getDashboard().getLink()));
     }
 
     @Test
     void testHomepageEmpty() {
         ctx.currentResource("/content/headerEmpty");
         Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(StringUtils.isEmpty(header.getHomepage()));
+        assertTrue(StringUtils.isEmpty(header.getHomepage().getLink()));
     }
 
     @Test
@@ -116,11 +116,11 @@ public class HeaderTest {
         String expected5 = "TopNav5";
         ctx.currentResource("/content/headerAuthored");
         Header header = ctx.request().adaptTo(Header.class);
-        assertEquals(expected1, header.getNavItemTitle1());
-        assertEquals(expected2, header.getNavItemTitle2());
-        assertEquals(expected3, header.getNavItemTitle3());
-        assertEquals(expected4, header.getNavItemTitle4());
-        assertEquals(expected5, header.getNavItemTitle5());
+        assertEquals(expected1, header.getNavItem1().getLabel());
+        assertEquals(expected2, header.getNavItem2().getLabel());
+        assertEquals(expected3, header.getNavItem3().getLabel());
+        assertEquals(expected4, header.getNavItem4().getLabel());
+        assertEquals(expected5, header.getNavItem5().getLabel());
     }
 
     @Test
@@ -134,13 +134,13 @@ public class HeaderTest {
         String expected5 = "/content/solidigm/us/en/link-five.html";
         ctx.currentResource("/content/headerAuthored");
         Header header = ctx.request().adaptTo(Header.class);
-        assertEquals(expected1, header.getNavItemLink1());
-        assertEquals(expectedTarget1, header.getTarget());
-        assertEquals(expected2, header.getNavItemLink2());
-        assertEquals(expected3, header.getNavItemLink3());
-        assertEquals(expectedTarget3, header.getTarget());
-        assertEquals(expected4, header.getNavItemLink4());
-        assertEquals(expected5, header.getNavItemLink5());
+        assertEquals(expected1, header.getNavItem1().getLink());
+        assertEquals(expectedTarget1, header.getNavItem1().getTarget());
+        assertEquals(expected2, header.getNavItem2().getLink());
+        assertEquals(expected3, header.getNavItem3().getLink());
+        assertEquals(expectedTarget3, header.getNavItem3().getTarget());
+        assertEquals(expected4, header.getNavItem4().getLink());
+        assertEquals(expected5, header.getNavItem5().getLink());
     }
 
     @Test
@@ -246,8 +246,8 @@ public class HeaderTest {
         String expectedTarget = "_self";
         ctx.currentResource("/content/headerAuthored");
         Header header = ctx.request().adaptTo(Header.class);
-        assertEquals(expected, header.getSearchResultsPage());
-        assertEquals(expectedTarget, header.getTarget());
+        assertEquals(expected, header.getSearchResultsPage().getLink());
+        assertEquals(expectedTarget, header.getSearchResultsPage().getTarget());
     }
 
     @Test
@@ -256,8 +256,8 @@ public class HeaderTest {
         String expectedTarget = "_self";
         ctx.currentResource("/content/headerAuthored");
         Header header = ctx.request().adaptTo(Header.class);
-        assertEquals(expected, header.getDashboard());
-        assertEquals(expectedTarget, header.getTarget());
+        assertEquals(expected, header.getDashboard().getLink());
+        assertEquals(expectedTarget, header.getDashboard().getTarget());
     }
 
     @Test
@@ -266,28 +266,19 @@ public class HeaderTest {
         String expectedTarget = "_blank";
         ctx.currentResource("/content/headerAuthoredNoTopNavLinks");
         Header header = ctx.request().adaptTo(Header.class);
-        assertEquals(expected, header.getDashboard());
-        assertEquals(expectedTarget, header.getTarget());
+        assertEquals(expected, header.getDashboard().getLink());
+        assertEquals(expectedTarget, header.getDashboard().getTarget());
     }
 
     @Test
     void testGetHomepageAuthored() {
         String expected = "/content/solidigm/us/en.html";
+        String expectedLabel = "Solidigm";
         String expectedTarget = "_self";
         ctx.currentResource("/content/headerAuthored");
         Header header = ctx.request().adaptTo(Header.class);
-        assertEquals(expected, header.getHomepage());
-        assertEquals(expectedTarget, header.getTarget());
-    }
-
-    @Test
-    void testSubNavItemsAuthoredTopNavLink() {
-        ctx.currentResource("/content/headerAuthored");
-        Header header = ctx.request().adaptTo(Header.class);
-        assertTrue(header.getSubNavItems1().isEmpty());
-        assertTrue(header.getSubNavItems2().isEmpty());
-        assertTrue(header.getSubNavItems3().isEmpty());
-        assertTrue(header.getSubNavItems4().isEmpty());
-        assertTrue(header.getSubNavItems5().isEmpty());
+        assertEquals(expectedLabel, header.getHomepage().getLabel());
+        assertEquals(expected, header.getHomepage().getLink());
+        assertEquals(expectedTarget, header.getHomepage().getTarget());
     }
 }
