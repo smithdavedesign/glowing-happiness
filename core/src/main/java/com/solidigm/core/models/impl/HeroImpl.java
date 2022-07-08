@@ -2,6 +2,8 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.adobe.cq.wcm.core.components.models.Breadcrumb;
+import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.solidigm.core.beans.AnchorLink;
 import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.models.Hero;
@@ -15,10 +17,12 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.Self;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Model(
@@ -40,6 +44,8 @@ public class HeroImpl implements Hero {
 
     @SlingObject
     SlingHttpServletRequest request;
+    @Self
+    private Breadcrumb breadcrumbModel;
     @Getter
     @ValueMapValue
     private String title;
@@ -76,6 +82,8 @@ public class HeroImpl implements Hero {
     private Boolean showBreadcrumb;
     @Getter
     private String filter;
+    @Getter
+    private List<NavigationItem> breadcrumbItems;
 
     @Override
     public String getExportedType() {
@@ -92,6 +100,13 @@ public class HeroImpl implements Hero {
         showBreadcrumb = StringUtils.isEmpty(breadcrumb) == EMPTY_SELECTION_SHOW_BREADCRUMB;
         filter = StringUtils.isEmpty(filterSelected) ? EMPTY_SELECTION_FILTER : filterSelected;
         hasContentVal = !(StringUtils.isEmpty(desktopImageReference) || StringUtils.isEmpty(mobileImageReference));
+        //Get breadcrumb pages and only use the top two if there are more
+        if (showBreadcrumb && breadcrumbModel != null) {
+            breadcrumbItems = new ArrayList<>(breadcrumbModel.getItems());
+            if (breadcrumbItems.size() > 2) {
+                breadcrumbItems = breadcrumbItems.subList(breadcrumbItems.size() - 2, breadcrumbItems.size());
+            }
+        }
         if (hasContentVal) {
             ResourceResolver resourceResolver = request.getResourceResolver();
             if (StringUtils.isEmpty(desktopAltText)) {
