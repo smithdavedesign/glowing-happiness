@@ -1,36 +1,36 @@
 <div data-sly-use.header="com.solidigm.core.models.Header">
     <div>
         <!-- Solidigm icon with link to homepage -->
-        <div><a href="${header.homepage}">Solidigm icon with link to homepage</a></div>
+        <div><a href="${header.homepage.link}">Link to homepage. In desktop view a clickable icon; in mobile view a text link will be displayed with the following authored text: ${header.homepage.label}</a></div>
 
         <!-- Top navigation items with dropdowns to subnavs if no topnav link was authored -->
         <div>
-            <span>
-                <h3> <a href="${header.navItemLink1}" target="${header.target}">${header.navItemTitle1}</a></h3>
+            <span data-sly-test="${header.navItem1.label}">
+                <h3> <a href="${header.navItem1.link}" target="${header.navItem1.target}">${header.navItem1.label}</a></h3>
                 <div data-sly-list.subNavItems1=${header.subNavItems1}>
                     <span> <a href="${subNavItems1.link}" target="${subNavItems1.target}">${subNavItems1.label}</a></span>
                 </div>
             </span>
-            <span>
-                <h3> <a href="${header.navItemLink2}" target="${header.target}">${header.navItemTitle2}</a></h3>
+            <span data-sly-test="${header.navItem2.label}">
+                <h3> <a href="${header.navItem2.link}" target="${header.navItem2.target}">${header.navItem2.label}</a></h3>
                 <div data-sly-list.subNavItems2=${header.subNavItems2}>
                     <span> <a href="${subNavItems2.link}" target="${subNavItems2.target}">${subNavItems2.label}</a></span>
                 </div>
             </span>
-            <span>
-                <h3> <a href="${header.navItemLink3}" target="${header.target}">${header.navItemTitle3}</a></h3>
+            <span data-sly-test="${header.navItem3.label}">
+                <h3> <a href="${header.navItem3.link}" target="${header.navItem3.target}">${header.navItem3.label}</a></h3>
                 <div data-sly-list.subNavItems3=${header.subNavItems3}>
                     <span> <a href="${subNavItems3.link}" target="${subNavItems3.target}">${subNavItems3.label}</a></span>
                 </div>
             </span>
-            <span>
-                <h3> <a href="${header.navItemLink4}" target="${header.target}">${header.navItemTitle4}</a></h3>
+            <span data-sly-test="${header.navItem4.label}">
+                <h3> <a href="${header.navItem4.link}" target="${header.navItem4.target}">${header.navItem4.label}</a></h3>
                 <div data-sly-list.subNavItems4=${header.subNavItems4}>
                     <span> <a href="${subNavItems4.link}" target="${subNavItems4.target}">${subNavItems4.label}</a></span>
                 </div>
             </span>
-            <span>
-                <h3><a href="${header.navItemLink5}" target="${header.target}">${header.navItemTitle5}</a></h3>
+            <span data-sly-test="${header.navItem5.label}">
+                <h3> <a href="${header.navItem5.link}" target="${header.navItem5.target}">${header.navItem5.label}</a></h3>
                 <div data-sly-list.subNavItems5=${header.subNavItems5}>
                     <span> <a href="${subNavItems5.link}" target="${subNavItems5.target}">${subNavItems5.label}</a></span>
                 </div>
@@ -42,13 +42,13 @@
             <section class="cmp-search">
                 <form class="cmp-search__form"
                       method="get"
-                      action="${header.searchResultsPage}">
+                      action="${header.searchResultsPage.link}">
                     <div class="cmp-search__field">
                         <i class="cmp-search__icon"
                            data-cmp-hook-search="icon"></i>
                         <input class="cmp-search__input"
                                type="text"
-                               name="headerSearch" placeholder="${header.placeholderText}"
+                               name="q" placeholder="${header.placeholderText}"
                                required="required"/>
                     </div>
                 </form>
@@ -58,7 +58,7 @@
         <!-- User account info -->
         <div>
             <div> ${header.greeting} <div id="headerGreetingTarget"></div></div>
-            <div> <a href="${header.dashboard}" target="${header.target}">Dashboard</a></div>
+            <div> <a href="${header.dashboard.link}" target="${header.dashboard.target}">Dashboard</a></div>
         </div>
 
         <!-- Language Info -->
