@@ -131,6 +131,13 @@ button {
         }
     }
 
+    &--outline-dark {
+        color: $black;
+        &:hover {
+            color: $white;
+        }
+    }
+
     &--full {
         width: 100%;
     }

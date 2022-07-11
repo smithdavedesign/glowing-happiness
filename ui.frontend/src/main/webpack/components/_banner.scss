@@ -1,0 +1,27 @@
+.cmp-banner {
+    background: $solidigm-purple;
+    border-radius: $border-radius-md;
+    text-align: center;
+    padding: 20px;
+    color: $white;
+
+    a:not(.solidigm-btn) {
+        color: $white;
+        font-weight: bold;
+    }
+
+    .solidigm-btn {
+        display: inline-block;
+        margin-left: 12px;
+        font-weight: normal;
+
+        a{
+            font-weight: normal;
+        }
+    }
+
+    &--large-text{
+        font-size: $font-size-xl;    
+        padding: 24px 0;
+    }
+}

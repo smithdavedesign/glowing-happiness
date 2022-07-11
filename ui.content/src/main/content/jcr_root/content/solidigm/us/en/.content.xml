@@ -7,8 +7,8 @@
         jcr:title="en"
         cq:contextHubPath="/etc/cloudsettings/default/contexthub"
         cq:contextHubSegmentsPath="/etc/segmentation/contexthub"
-        cq:template="/conf/solidigm/settings/wcm/templates/page-content"
-        sling:resourceType="solidigm/components/page"
+        cq:template="/conf/solidigm/settings/wcm/templates/flexible-content-page"
+        sling:resourceType="solidigm/components/page/flexibleContent"
     >
         <root
             jcr:primaryType="nt:unstructured"
