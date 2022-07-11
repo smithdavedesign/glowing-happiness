@@ -1,0 +1,25 @@
+.cmp-similar-products{
+    &__title{
+        text-align: center;
+        font-size: clamp($font-size-2xl, 4vw, $font-size-3xl);
+        color: $dark-blue;
+    }
+
+    &__cta-container{
+        margin-top: $spacing-7xl;
+        
+        .solidigm-btn{
+            margin: auto;
+            width: 100%;
+        }
+    }
+
+    @media (min-width: $desktop){
+        &__cta-container{
+            .solidigm-btn{
+                width: max-content;
+                margin: auto;
+            }
+        }
+    }
+}
