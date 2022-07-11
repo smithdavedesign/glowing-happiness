@@ -35,19 +35,11 @@
 html,
 body {
     margin: 0;
-    font-size:   $font-size;
+    font-size: $font-size;
     font-family: $font-family;
     line-height: $font-height;
-    color:       $color-foreground;
-    background:  $color-background;
-}
-
-a {
-    color: $color-link;
-
-    @media (prefers-color-scheme: dark) {
-        color: $color-link-dark;
-    }
+    color: $black;
+    background: $white;
 }
 
 button,
@@ -139,9 +131,9 @@ button {
         }
     }
 
-    &--outline-dark{
+    &--outline-dark {
         color: $black;
-        &:hover{
+        &:hover {
             color: $white;
         }
     }

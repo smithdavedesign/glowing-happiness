@@ -1,0 +1,40 @@
+.cmp-quote {
+    padding: 0 $spacing-4xl;
+
+    &__text {
+        font-size: clamp($font-size-lg, 5vw, $font-size-2xl);
+        line-height: clamp(30px, 5vw, 38px);
+        display: inline-block;
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            @include svg_icon(quote);
+            position: absolute;
+            height: 30px;
+            width: 35px;
+            left: 0;
+            transform: translate($spacing-4xl * -1, -25%);
+        }
+
+        &::after {
+            left: unset;
+            transform: translate($spacing-2xs, 50%) rotate(180deg);
+        }
+    }
+
+    &__attribution {
+        margin-top: $spacing-2xl;
+        color: $gray-600;
+    }
+
+    &__author,
+    &__author-title {
+        display: block;
+    }
+
+    &__author-title {
+        margin-top: $spacing-2xs;
+    }
+}
