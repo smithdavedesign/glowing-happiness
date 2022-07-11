@@ -4,7 +4,7 @@
     }
 
     &__article-image {
-        @include media-with-corner(right, true);
+        @include media-with-corner(right, small);
 
         img {
             width: 100%;

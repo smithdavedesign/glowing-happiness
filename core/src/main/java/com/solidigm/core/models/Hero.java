@@ -1,6 +1,7 @@
 package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.wcm.core.components.models.NavigationItem;
 import com.solidigm.core.beans.AnchorLink;
 import com.solidigm.core.beans.CallToActionButton;
 
@@ -108,6 +109,15 @@ public interface Hero extends ComponentExporter {
      * @return List<anchorLink>
      */
     default List<AnchorLink> getAnchors() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns List of Navigation Items for the breadcrumb, always a max of two
+     *
+     * @return List<NavigationItem>
+     */
+    default List<NavigationItem> getBreadcrumbItems() {
         throw new UnsupportedOperationException();
     }
 

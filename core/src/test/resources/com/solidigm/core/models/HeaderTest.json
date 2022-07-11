@@ -1,0 +1,198 @@
+{
+  "headerEmpty": {
+"jcr:primaryType": "nt:unstructured",
+"jcr:createdBy": "admin",
+"jcr:lastModifiedBy": "admin",
+"jcr:created": "Wed Jun 29 2022 16:20:57 GMT-0400",
+"jcr:lastModified": "Wed Jun 29 2022 16:20:57 GMT-0400",
+"sling:resourceType": "solidigm/components/header"
+  },
+  "headerAuthored": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:createdBy": "admin",
+    "jcr:lastModifiedBy": "admin",
+    "jcr:created": "Thu Jun 23 2022 10:57:01 GMT-0400",
+    "jcr:lastModified": "Fri Jun 24 2022 15:05:08 GMT-0400",
+    "sling:resourceType": "solidigm/components/header",
+    "dashboard": "/content/solidigm/us/en/customer-dashboard",
+    "greeting": "Greetings",
+    "homepage": "/content/solidigm/us/en",
+    "homepageLabel": "Solidigm",
+    "navItemTitle1": "TopNav1 Title",
+    "navItemTitle2": "TopNav2",
+    "navItemTitle3": "TopNav3",
+    "navItemTitle4": "TopNav4",
+    "navItemTitle5": "TopNav5",
+    "navItemLink1": "/content/solidigm/us/en/link-one",
+    "navItemLink2": "/content/solidigm/us/en/link-two",
+    "navItemLink3": "https://www.externalLink.com",
+    "navItemLink4": "/content/solidigm/us/en/link-four",
+    "navItemLink5": "/content/solidigm/us/en/link-five",
+    "placeholderText": "Search Here...",
+    "searchResultsPage": "/content/solidigm/us/en/search-results",
+    "subNavItems1": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem1 of Nav1"
+         },
+        "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem2 of Nav1"
+        }
+    },
+    "subNavItems2": {
+    "jcr:primaryType": "nt:unstructured",
+        "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem1 of Nav2"
+        }
+    },
+    "subNavItems3": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem1 of Nav3"
+         },
+        "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem2 of Nav3"
+        }
+    },
+    "subNavItems4": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem1 of Nav4"
+         },
+        "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem2 of Nav4"
+        }
+    },
+    "subNavItems5": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem1 of Nav5"
+         },
+        "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "SubItem2 of Nav5"
+        }
+    },
+    "langItems": {
+        "jcr:primaryType": "nt:unstructured",
+        "item0": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/en",
+            "label": "English"
+        },
+        "item1": {
+            "jcr:primaryType": "nt:unstructured",
+            "link": "/content/solidigm/us/es",
+            "label": "Spanish"
+        }
+    }
+  },
+  "headerAuthoredNoTopNavLinks": {
+      "jcr:primaryType": "nt:unstructured",
+      "jcr:createdBy": "admin",
+      "jcr:lastModifiedBy": "admin",
+      "jcr:created": "Thu Jun 23 2022 10:57:01 GMT-0400",
+      "jcr:lastModified": "Fri Jun 24 2022 15:05:08 GMT-0400",
+      "sling:resourceType": "solidigm/components/header",
+      "dashboard": "https://www.externalLink.com",
+      "greeting": "Greetings",
+      "homepage": "/content/solidigm/us/en",
+      "navItemTitle1": "TopNav1",
+      "navItemTitle2": "TopNav2",
+      "navItemTitle3": "TopNav3",
+      "navItemTitle4": "TopNav4",
+      "navItemTitle5": "TopNav5",
+      "placeholderText": "Search Here...",
+      "searchResultsPage": "/content/solidigm/us/en/search-results",
+        "subNavItems1": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/first/link",
+                "label": "SubItem1 of Nav1"
+             },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/second/link",
+                "label": "SubItem2 of Nav1"
+            }
+        },
+        "subNavItems2": {
+        "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "https://www.externalLink.com",
+                "label": "SubItem1 of Nav2"
+            }
+        },
+        "subNavItems3": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/first/link",
+                "label": "SubItem1 of Nav3"
+             },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/second/link",
+                "label": "SubItem2 of Nav3"
+            }
+        },
+        "subNavItems4": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/en.html",
+                "label": "SubItem1 of Nav4"
+             },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/en",
+                "label": "SubItem2 of Nav4"
+            }
+        },
+        "subNavItems5": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/en",
+                "label": "SubItem1 of Nav5"
+             },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/en",
+                "label": "SubItem2 of Nav5"
+            }
+        },
+        "langItems": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/en",
+                "label": "English"
+            },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/es",
+                "label": "Spanish"
+            }
+        }
+    }
+}
