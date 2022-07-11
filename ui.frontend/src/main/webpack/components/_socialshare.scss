@@ -3,12 +3,13 @@
     align-items: center;
     margin-top: $spacing-sm;
     flex-direction: column;
+    margin-bottom: 24px;
 
     &__icons {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: $spacing-3xl;
+        margin-top: $spacing-lg;
 
         & > *:not(:last-child) {
             margin-right: $spacing-6xl;
@@ -35,6 +36,49 @@
         @include svg_icon(linkedin);
     }
 
+    &__nav-links{
+        margin: auto;
+        display: flex;
+        gap: $spacing-lg;
+        margin-top: $spacing-3xl;
+        a{
+            color: $solidigm-purple;
+        }
+    }
+
+    $arrow-width: 25px;
+    $arrow-margin: $spacing-2xs;
+    &__prev{
+        position: relative;
+        display: flex;
+
+        &::before{
+            content: '';
+            width: $arrow-width;
+            @include svg_icon(arrow);
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+            margin-right: $arrow-margin;
+        }
+    }
+
+    &__next{
+        position: relative;
+        display: flex;
+
+        &::after{
+            content: '';
+            width: $arrow-width;
+            @include svg_icon(arrow);
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-left: $arrow-margin;
+        }
+    }
+
     @media (min-width: $tablet) {
         flex-direction: row;
         &__icons {
@@ -50,6 +94,11 @@
         &__icon {
             height: 20px;
             width: 20px;
+        }
+
+        &__nav-links{
+            margin-top: 0;
+            margin-right: 0;
         }
     }
 }
