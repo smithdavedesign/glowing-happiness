@@ -2,14 +2,24 @@
     background-image: url('../resources/images/icon-#{$id}.svg');
 }
 
-@mixin media-with-corner($direction: right, $smallDesktop: false) {
+@mixin media-with-corner($direction: right, $desktopSize: large) {
     $small-size: 60px;
+    $medium-size: 80px;
     $large-size: 120px;
+
+    $desktop-size: $small-size;
+    @if $desktopSize == small{
+        $desktop-size: $small-size;
+    } @else if $desktop-size == medium {
+        $desktop-size: $medium-size;
+    } @else if $desktop-size == large {
+        $desktop-size: $large-size;
+    }
 
     position: relative;
 
     &::after {
-        content: '';
+        content: "";
         position: absolute;
         height: $small-size;
         width: $small-size;
@@ -20,7 +30,6 @@
     }
 
     @media (min-width: $desktop) {
-        $desktop-size: if($smallDesktop==true, $small-size, $large-size);
         &::after {
             height: $desktop-size;
             width: $desktop-size;

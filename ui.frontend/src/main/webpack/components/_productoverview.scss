@@ -1,0 +1,93 @@
+.cmp-product-overview{
+    color: $darker-gray; 
+    &__title{
+        display: none;
+        font-size: $font-size-3xl;
+        line-height: calc($font-size-3xl + 10px);
+    }
+
+    &__description{
+        line-height: $line-height-base;
+        color: $gray-600;
+        margin-top: $spacing-3xs;
+    }
+
+    &__extra-info{
+        color: $gray-600;
+        font-size: $font-size-sm;
+        margin-top: $spacing-lg;
+    }
+
+    &__configuration-title{
+        margin-top: $spacing-5xl;
+    }
+
+    &__specs{
+        margin-top: $spacing-2xl;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: $spacing-3xs $spacing-2xl;
+        line-height: $line-height-base;
+
+        dd{
+            color: $gray-600
+        }
+    }
+
+    &__cta-container{
+        margin-top: $spacing-6xl;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xl;
+    }
+
+    &__actions-container{
+        margin-top: $spacing-4xl;
+        padding: $spacing-xl 0;
+        border: 1px solid $gray-400;
+        border-left: none;
+        border-right: none;
+        
+        a{
+            color: $solidigm-purple;
+            padding-left: $spacing-3xl;
+            position: relative;
+
+            &::before{
+                content: '?';
+                color: $white;
+                background: $solidigm-purple;
+                height: 20px;
+                width: 20px;
+                border-radius: $border-radius-sm;
+                position: absolute;
+                left: 0;
+                font-size: $font-size-base;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+
+    }
+
+    .solidigm-btn{
+        font-size: $font-size-sm;
+    }
+
+    @media (min-width: $tablet){
+        &__title{
+            display: block;
+        }
+
+        &__cta-container{
+            flex-direction: row;
+
+            & > *{
+                width: 50%;
+            }
+        }
+    }
+}

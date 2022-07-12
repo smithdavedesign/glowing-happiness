@@ -1,6 +1,6 @@
 {
   "mobile.resourceTypes": [
-    "solidigm/components/page"
+    "solidigm/components/page/base"
   ],
   "README": "Indicate which page resource types should display the mobile emulators."
 }

@@ -367,6 +367,13 @@
                                                     fieldLabel="HomePage"
                                                     fieldDescription="Path to the homepage."
                                                     rootPath="/content/solidigm"/>
+                                            <homePageLabel
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Label for the Home Page link text that shows up in mobile view."
+                                                    fieldLabel="Home Page Label"
+                                                    required="{Boolean}true"
+                                                    name="./homepageLabel" />
                                             <langLinks
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/multifield"

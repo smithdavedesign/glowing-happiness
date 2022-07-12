@@ -10,93 +10,48 @@ import java.util.List;
  */
 public interface Header extends ComponentExporter {
     /**
-     * Returns string for the Navigation Title 1 that will be displayed in the Top navbar
+     * Returns Link for the Navigation Item 1 that will be displayed in the Top navbar
      *
      * @return string
      */
-    default String getNavItemTitle1() {
+    default Link getNavItem1() {
         throw new UnsupportedOperationException();
     }
 
 
     /**
-     * Returns string for the Navigation Title 2 that will be displayed in the Top navbar
+     * Returns Link for the Navigation Item 2 that will be displayed in the Top navbar
      *
-     * @return string
+     * @return Link
      */
-    default String getNavItemTitle2() {
+    default Link getNavItem2() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Returns string for the Navigation Title 3 that will be displayed in the Top navbar
+     * Returns Link for the Navigation Item 3 that will be displayed in the Top navbar
      *
-     * @return string
+     * @return Link
      */
-    default String getNavItemTitle3() {
+    default Link getNavItem3() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Returns string for the Navigation Title 1 that will be displayed in the Top navbar
+     * Returns Link for the Navigation Item 1 that will be displayed in the Top navbar
      *
-     * @return string
+     * @return Link
      */
-    default String getNavItemTitle4() {
+    default Link getNavItem4() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Returns string for the Navigation Title 5 that will be displayed in the Top navbar
+     * Returns Link for the Navigation Item 5 that will be displayed in the Top navbar
      *
-     * @return string
+     * @return Link
      */
-    default String getNavItemTitle5() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the Navigation Title 1's link
-     *
-     * @return string
-     */
-    default String getNavItemLink1() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the Navigation Title 2's link
-     *
-     * @return string
-     */
-    default String getNavItemLink2() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the Navigation Title 3's link
-     *
-     * @return string
-     */
-    default String getNavItemLink3() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the Navigation Title 4's link
-     *
-     * @return string
-     */
-    default String getNavItemLink4() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string for the Navigation Title 5's link
-     *
-     * @return string
-     */
-    default String getNavItemLink5() {
+    default Link getNavItem5() {
         throw new UnsupportedOperationException();
     }
 
@@ -178,20 +133,20 @@ public interface Header extends ComponentExporter {
     }
 
     /**
-     * Returns string of path to search results page
+     * Returns Link of path to search results page
      *
-     * @return string
+     * @return Link
      */
-    default String getSearchResultsPage() {
+    default Link getSearchResultsPage() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Returns string of path to user dashboard
+     * Returns Link of path to user dashboard
      *
-     * @return string
+     * @return Link
      */
-    default String getDashboard() {
+    default Link getDashboard() {
         throw new UnsupportedOperationException();
     }
 
@@ -200,16 +155,7 @@ public interface Header extends ComponentExporter {
      *
      * @return string
      */
-    default String getHomepage() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * Returns string of HTML target value; changes based on which link is being processed
-     *
-     * @return string
-     */
-    default String getTarget() {
+    default Link getHomepage() {
         throw new UnsupportedOperationException();
     }
 }

@@ -1,0 +1,50 @@
+{   "tileListEmpty": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "admin",
+        "jcr:lastModifiedBy": "admin",
+        "jcr:created": "Tue Jul 05 2022 15:09:22 GMT-0400",
+        "jcr:lastModified": "Tue Jul 05 2022 15:27:19 GMT-0400",
+        "sling:resourceType": "solidigm/components/tilelist"
+    },
+    "tileListAuthored": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "admin",
+        "jcr:lastModifiedBy": "admin",
+        "jcr:created": "Wed Jul 06 2022 07:25:32 GMT-0400",
+        "jcr:lastModified": "Wed Jul 06 2022 07:28:21 GMT-0400",
+        "sling:resourceType": "solidigm/components/tilelist",
+        "tileInfo": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "description": "Description for Item 1",
+                "icon": "pto",
+                "link": "https://www.facebook.com",
+                "label": "Launch Title 1 External",
+                "title": "Title 1"
+            },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "description": "Description for Item 2",
+                "icon": "agility",
+                "link": "/content/solidigm/us/en",
+                "label": "Launch Title 2 Internal",
+                "title": "Title 2"
+            },
+            "item2": {
+                "jcr:primaryType": "nt:unstructured",
+                "description": "Description for Item 3",
+                "icon": "diamond",
+                "link": "/content/solidigm/us/en.html",
+                "label": "Launch Title 3 Internal Suffix",
+                "title": "Title 3"
+            },
+            "item3": {
+                "jcr:primaryType": "nt:unstructured",
+                "description": "Description for Item 4",
+                "icon": "people",
+                "title": "Title 4"
+            }
+        }
+    }
+}
