@@ -128,7 +128,7 @@
     }
 
     &__metric-title {
-        font-size: clamp($font-size-2xl, 7vw, $font-size-5xl);
+        font-size: clamp($font-size-4xl, 7vw, $font-size-5xl);
     }
 
     &__metric-subtitle {
@@ -168,6 +168,10 @@
 
         &__download-btn {
             display: block;
+        }
+
+        &__tab-btn {
+            min-width: 15%;
         }
     }
 }
