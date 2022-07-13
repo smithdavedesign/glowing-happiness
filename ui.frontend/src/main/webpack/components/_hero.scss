@@ -65,7 +65,7 @@
         width: 100%;
         z-index: 2;
 
-        &__breadcrumb {
+        .cmp-breadcrumb {
             filter: brightness(0) invert(1);
         }
     }
