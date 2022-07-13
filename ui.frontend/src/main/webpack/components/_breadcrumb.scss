@@ -8,8 +8,20 @@
         display: flex;
     }
 
-    &__item {
-        margin-right: $spacing-2xs;
+    &__item:not(:last-child) {
+        margin-right: $spacing-base;
+        position: relative;
+
+        &::after{
+            content: '';
+            position: absolute;
+            left: calc(100% + $spacing-base / 2);
+            top: 50%;
+            height: 90%;
+            width: 1px;
+            background: $solidigm-purple;
+            transform: translate(-50%, -50%) rotate(12.5deg);
+        }
     }
 
     &__item:last-child {
