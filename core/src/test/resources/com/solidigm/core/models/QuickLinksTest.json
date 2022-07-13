@@ -1,0 +1,50 @@
+{
+    "quicklinksEmpty": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "admin",
+        "jcr:lastModifiedBy": "admin",
+        "jcr:created": "Thu Jun 30 2022 23:26:25 GMT-0400",
+        "jcr:lastModified": "Thu Jun 30 2022 23:26:25 GMT-0400",
+        "sling:resourceType": "solidigm/components/quicklinks"
+    },
+    "quicklinksAuthored": {
+        "jcr:primaryType": "nt:unstructured",
+        "jcr:createdBy": "admin",
+        "seeMoreLinkLabel": "See More Solutions",
+        "jcr:lastModifiedBy": "admin",
+        "jcr:created": "Thu Jun 30 2022 23:26:28 GMT-0400",
+        "seeMoreLink": "/content/solidigm/us/en",
+        "title": "Authored Title",
+        "jcr:lastModified": "Thu Jun 30 2022 23:29:52 GMT-0400",
+        "sling:resourceType": "solidigm/components/quicklinks",
+        "links": {
+            "jcr:primaryType": "nt:unstructured",
+            "item0": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/en",
+                "linkSubTitle": "Help Us to Help You",
+                "linkTitle": "Get Support"
+            },
+            "item1": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "https://www.externalLink.com",
+                "linkSubTitle": "Visit news.solidigm.com",
+                "linkTitle": "Press Releases"
+            },
+            "item2": {
+                "jcr:primaryType": "nt:unstructured",
+                "link": "/content/solidigm/us/en.html",
+                "linkTitle": "Join\r\nOur Team"
+            }
+        }
+   },
+       "quicklinksExternal": {
+           "jcr:primaryType": "nt:unstructured",
+           "jcr:createdBy": "admin",
+           "jcr:lastModifiedBy": "admin",
+           "jcr:created": "Thu Jun 30 2022 23:26:25 GMT-0400",
+           "jcr:lastModified": "Thu Jun 30 2022 23:26:25 GMT-0400",
+           "seeMoreLink": "https://facebook.com",
+           "sling:resourceType": "solidigm/components/quicklinks"
+       }
+}

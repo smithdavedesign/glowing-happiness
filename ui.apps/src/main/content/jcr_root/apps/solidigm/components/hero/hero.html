@@ -13,10 +13,29 @@
 
         <div class="cmp-hero__content">
             <div id="heroGreetingTarget"></div>
-            <div 
-                data-sly-test="${hero.showBreadcrumb}"
-                data-sly-resource="${ '.' @ resourceType='solidigm/components/breadcrumb', wcmmode='disabled'}" 
-            />
+            <div data-sly-test="${hero.showBreadcrumb}">
+                <nav class="cmp-breadcrumb"
+                    aria-label="${'Breadcrumb' @ i18n}"
+                    data-sly-test="${hero.breadcrumbItems}">
+                    <ol class="cmp-breadcrumb__list"
+                        itemscope itemtype="http://schema.org/BreadcrumbList"
+                        data-sly-list.navItem="${hero.breadcrumbItems}">
+                        <li class="cmp-breadcrumb__item${navItem.active ? ' cmp-breadcrumb__item--active' : ''}"
+                            aria-current="${navItem.active ? 'page' : false}"
+                            data-cmp-data-layer="${navItem.data.json}"
+                            itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                            <a data-sly-attribute="${navItem.link.htmlAttributes}"
+                                class="cmp-breadcrumb__item-link"
+                                itemprop="item"
+                                data-cmp-clickable="${breadcrumb.data ? true : false}"
+                                data-sly-unwrap="${navItem.active || !navItem.link.valid}">
+                                <span itemprop="name">${navItem.title}</span>
+                            </a>
+                            <meta itemprop="position" content="${navItemList.count}" />
+                        </li>
+                    </ol>
+                </nav>
+            </div>
             <h2 class="cmp-hero__title" data-sly-test="${hero.title}">${hero.title}</h2>
             <h3 class="cmp-hero__subtitle" data-sly-test="${hero.subtitle}">${hero.subtitle}</h3>
             <div class="cmp-hero__description" data-sly-test="${hero.description}">

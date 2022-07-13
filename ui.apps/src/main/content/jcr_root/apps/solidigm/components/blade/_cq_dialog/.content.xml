@@ -69,13 +69,19 @@
                                                     sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
                                                     autoStart="{Boolean}false"
                                                     class="cq-droptarget"
-                                                    fileNameParameter="./fileName"
-                                                    fileReferenceParameter="./fileReference"
+                                                    fileNameParameter="./imageName"
+                                                    fileReferenceParameter="./imageReference"
                                                     mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
                                                     name="./image"
                                                     uploadUrl="${suffix.path}"
                                                     useHTML5="{Boolean}true"
                                                     required="{Boolean}true" />
+                                            <altText
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldLabel="Image Alt Text"
+                                                    emptyText="Leave blank to use the Alt Text stored in the DAM"
+                                                    name="./altText" />
                                             <video
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -166,11 +172,11 @@
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                                                 fieldLabel="Button Label"
                                                                                 required="{Boolean}true"
-                                                                                name="./buttonLabel" />
+                                                                                name="./label" />
                                                                         <buttonLink
                                                                                 jcr:primaryType="nt:unstructured"
                                                                                 sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                                                                                name="./buttonLink"
+                                                                                name="./link"
                                                                                 fieldLabel="Button Link"
                                                                                 fieldDescription="The link target for this Call-To-Action Button"
                                                                                 rootPath="/content/solidigm"

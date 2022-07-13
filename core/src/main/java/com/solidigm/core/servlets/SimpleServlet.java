@@ -38,7 +38,7 @@ import java.io.IOException;
  */
 @Component(service = { Servlet.class })
 @SlingServletResourceTypes(
-        resourceTypes="solidigm/components/page",
+        resourceTypes="solidigm/components/page/base",
         methods=HttpConstants.METHOD_GET,
         extensions="txt")
 @ServiceDescription("Simple Demo Servlet")
