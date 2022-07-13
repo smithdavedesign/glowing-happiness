@@ -85,33 +85,21 @@ public class ArticleListTest {
 
     @Test
     void testGetArticlesAuthored() {
-        List<ArticlePage> expected = new ArrayList<>();
-        expected.add(
-                new ArticlePage(
-                        "Test Page Title 1",
-                        "Test Teaser Image 1",
-                        "Test Teaser Category 1",
-                        "/content/article1"
-                )
-        );
-        expected.add(
-                new ArticlePage(
-                        "Test Page Title 2",
-                        "Test Teaser Image 2",
-                        "Test Teaser Category 2",
-                        "/content/article2"
-                )
-        );
         ctx.currentResource("/content/articleListAuthored");
         ArticleList articleList = ctx.request().adaptTo(ArticleList.class);
         List<ArticlePage> actual = articleList.getArticles();
-        assertEquals(expected.size(), actual.size());
-        for (int i = 0; i < expected.size(); i++ ) {
-            assertEquals(expected.get(i).getTitle(), actual.get(i).getTitle());
-            assertEquals(expected.get(i).getImage(), actual.get(i).getImage());
-            assertEquals(expected.get(i).getCategory(), actual.get(i).getCategory());
-            assertEquals(expected.get(i).getPath(), actual.get(i).getPath());
-        }
+        assertEquals(2, actual.size());
+        assertEquals("Test Page Title 1", actual.get(0).getArticleTitle());
+        assertEquals("Test Teaser Image 1", actual.get(0).getTeaserImage());
+        assertEquals("Alt Text 1", actual.get(0).getTeaserImageAltText());
+        assertEquals("Products", actual.get(0).getTeaserCategory());
+        assertEquals("/content/article1", actual.get(0).getPath());
+
+        assertEquals("Test Page Title 2", actual.get(1).getArticleTitle());
+        assertEquals("Test Teaser Image 2", actual.get(1).getTeaserImage());
+        assertEquals("Alt Text 2", actual.get(1).getTeaserImageAltText());
+        assertEquals("Innovation", actual.get(1).getTeaserCategory());
+        assertEquals("/content/article2", actual.get(1).getPath());
     }
 
     @Test

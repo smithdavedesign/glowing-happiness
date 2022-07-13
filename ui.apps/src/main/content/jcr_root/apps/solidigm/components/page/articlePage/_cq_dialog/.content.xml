@@ -29,9 +29,12 @@
                                     <articleCategory
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                            name="./articleCategory"
                                             fieldLabel="Article Category"
-                                            name="./articleCategory">
+                                            fieldDescription="Select the article category"
+                                            multiple="{Boolean}false"
+                                            rootPath="/content/cq:tags/solidigm">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
                                                 cq-msm-lockable="articleCategory"/>
