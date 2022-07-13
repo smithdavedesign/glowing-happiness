@@ -7,4 +7,14 @@ import com.adobe.cq.export.json.ComponentExporter;
  */
 public interface SocialShare extends ComponentExporter {
 
+
+    /**
+     * Returns the link to the next article
+     */
+    default String getNext() { throw new UnsupportedOperationException(); }
+
+    /**
+     * Returns the link to the previous article
+     */
+    default String getPrevious() { throw new UnsupportedOperationException(); }
 }

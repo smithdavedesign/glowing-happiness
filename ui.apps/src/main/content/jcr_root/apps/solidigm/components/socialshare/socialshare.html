@@ -1,8 +1,11 @@
-<div class="cmp-social-share">
+<div data-sly-use.socialShare="com.solidigm.core.models.SocialShare"
+     class="cmp-social-share">
     <span>${'Share' @ i18n}</span>
     <div class="cmp-social-share__icons">
-        <a aria-label="Share this article on Facebook" href="#" class="cmp-social-share__icon cmp-social-share__icon-facebook"></a>
-        <a aria-label="Share this article on Twitter" href="#" class="cmp-social-share__icon cmp-social-share__icon-twitter"></a>
-        <a aria-label="Share this article on Linkedin" href="#" class="cmp-social-share__icon cmp-social-share__icon-linkedin"></a>
+        <a aria-label="${'Share this article on Facebook' @ i18n}" href="#" class="cmp-social-share__icon cmp-social-share__icon-facebook"></a>
+        <a aria-label="${'Share this article on Twitter' @ i18n}" href="#" class="cmp-social-share__icon cmp-social-share__icon-twitter"></a>
+        <a aria-label="${'Share this article on Linkedin' @ i18n}" href="#" class="cmp-social-share__icon cmp-social-share__icon-linkedin"></a>
+        <a aria-label="${'Previous Article' @ i18n}" href="${socialShare.previous}">${Previous @ i18n}</a>
+        <a aria-label="${'Next Article' @ i18n}" href="${socialShare.next}">${Next @ i18n}</a>
     </div>
 </div>
