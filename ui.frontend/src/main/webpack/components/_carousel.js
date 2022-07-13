@@ -1,8 +1,7 @@
 import Splide from '@splidejs/splide';
 
 (function () {
-    const carousels = document.querySelectorAll('.splide.cmp-carousel');
-
+    const carousels = document.querySelectorAll('.cmp-carousel');
     carousels.forEach((carousel) => {
         const duration = 1500;
 
@@ -27,6 +26,7 @@ import Splide from '@splidejs/splide';
             },
         }).mount();
 
+        carousel.classList.add('cmp-carousel--initialized');
         carousel.style.setProperty('--slide-duration', `${duration}ms`);
     });
 })();
