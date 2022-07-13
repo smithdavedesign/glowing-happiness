@@ -28,17 +28,17 @@
   "article1": {
     "jcr:content": {
       "jcr:primaryType": "nt:unstructured",
-      "pageTitle": "Test Page Title 1",
+      "articleTitle": "Test Page Title 1",
       "teaserImage": "Test Teaser Image 1",
-      "teaserCategory": "Test Teaser Category 1"
+      "articleCategory": "Test Teaser Category 1"
     }
   },
   "article2": {
     "jcr:content": {
       "jcr:primaryType": "nt:unstructured",
-      "pageTitle": "Test Page Title 2",
+      "articleTitle": "Test Page Title 2",
       "teaserImage": "Test Teaser Image 2",
-      "teaserCategory": "Test Teaser Category 2"
+      "articleCategory": "Test Teaser Category 2"
     }
   }
 }

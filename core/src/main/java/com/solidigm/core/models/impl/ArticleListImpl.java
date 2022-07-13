@@ -93,9 +93,9 @@ public class ArticleListImpl implements ArticleList {
                 //TODO: ensure that these properties are getting the correct information for article pages once they have been implemented
                 articles.add(
                         new ArticlePage(
-                                articlePage.get("pageTitle", String.class),
+                                articlePage.get("articleTitle", String.class),
                                 articlePage.get("teaserImage", String.class),
-                                articlePage.get("teaserCategory", String.class),
+                                articlePage.get("articleCategory", String.class),
                                 pagePath)
                 );
             }
