@@ -1,0 +1,177 @@
+.cmp-product-tabs {
+    background: $dark-blue;
+    color: $white;
+    border-radius: $border-radius-md;
+    padding: $spacing-base;
+    position: relative;
+
+    button {
+        color: $white;
+    }
+
+    &__navigation {
+        $navigation-boder-size: 4px;
+        position: relative;
+        padding-bottom: $navigation-boder-size;
+        overflow-x: scroll;
+        // navigation's bottom track done using box shadow due to border causing
+        // vertical overflow on mobile.
+        box-shadow: inset 0px $navigation-boder-size * -1 0px 0px #ffffff19;
+    }
+
+    &__tablist {
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 60px);
+    }
+
+    &__tab-btn {
+        width: 100%;
+        padding: $spacing-lg 0;
+        min-width: 170px;
+        display: block;
+        position: relative;
+
+        &[aria-selected='true']::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: $solidigm-purple;
+        }
+
+        &[aria-selected='true']::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            height: 7px;
+            width: 15px;
+            background: $solidigm-purple;
+            transform: translateX(-50%);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+    }
+
+    &__download-btn {
+        @include svg_icon(download);
+        position: absolute;
+        right: 1px;
+        height: 20px;
+        width: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: none;
+    }
+
+    &__tab-panel {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+
+        &:not(:first-child) {
+            display: none;
+        }
+    }
+
+    &__side-panel {
+        gap: $spacing-4xl;
+        padding: $spacing-xl 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #ffffff33;
+        }
+
+        &--metric {
+            display: flex;
+        }
+    }
+
+    &__key-val {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-xs 0;
+
+        & > * {
+            gap: $spacing-3xs $spacing-2xl;
+            width: 50%;
+            line-height: $line-height-base;
+        }
+
+        a {
+            color: $white;
+            text-decoration: underline;
+            display: inline-block;
+            line-height: $font-size-base;
+            &:not(:last-child) {
+                margin-right: $spacing-xs;
+            }
+
+            &:last-child:not(:first-child) {
+                padding: 0;
+                padding-left: $spacing-xs;
+                border-left: 1px solid $white;
+            }
+        }
+    }
+
+    &__key-val-title {
+        font-weight: bold;
+        margin-bottom: $spacing-2xs;
+        display: block;
+    }
+
+    &__metric {
+        width: 50%;
+    }
+
+    &__metric-title {
+        font-size: clamp($font-size-4xl, 7vw, $font-size-5xl);
+    }
+
+    &__metric-subtitle {
+        font-size: clamp($font-size-lg, 7vw, $font-size-xl);
+        display: block;
+        margin-bottom: $spacing-2xs;
+    }
+
+    &__metric-body {
+        line-height: $line-height-base;
+    }
+
+    @media (min-width: $desktop) {
+        padding: $spacing-5xl $spacing-7xl;
+        padding-bottom: 0;
+
+        &__tab-panel {
+            flex-direction: row;
+            padding: $spacing-4xl 0;
+
+            & > * {
+                width: 50%;
+            }
+        }
+
+        &__navigation {
+            overflow: hidden;
+        }
+
+        &__side-panel {
+            padding: 0 $spacing-5xl;
+            &:not(:last-child) {
+                border-bottom: 0px;
+                border-right: 1px solid #ffffff33;
+            }
+        }
+
+        &__download-btn {
+            display: block;
+        }
+
+        &__tab-btn {
+            min-width: 15%;
+        }
+    }
+}
