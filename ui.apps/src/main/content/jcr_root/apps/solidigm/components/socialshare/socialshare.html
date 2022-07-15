@@ -5,11 +5,9 @@
         <a aria-label="${'Share this article on Facebook' @ i18n}" href="#" class="cmp-social-share__icon cmp-social-share__icon-facebook"></a>
         <a aria-label="${'Share this article on Twitter' @ i18n}" href="#" class="cmp-social-share__icon cmp-social-share__icon-twitter"></a>
         <a aria-label="${'Share this article on Linkedin' @ i18n}" href="#" class="cmp-social-share__icon cmp-social-share__icon-linkedin"></a>
-        <a aria-label="${'Previous Article' @ i18n}" href="${socialShare.previous}">${Previous @ i18n}</a>
-        <a aria-label="${'Next Article' @ i18n}" href="${socialShare.next}">${Next @ i18n}</a>
     </div>
     <nav class="cmp-social-share__nav-links">
-        <a href="#" class="cmp-social-share__nav-link cmp-social-share__prev">Previous</a>
-        <a href="#" class="cmp-social-share__nav-link cmp-social-share__next">Next</a>
+        <a href="${socialShare.previous @ extension = 'html'}" class="cmp-social-share__nav-link cmp-social-share__prev">${'Previous' @ i18n}</a>
+        <a href="${socialShare.next @ extension = 'html'}" class="cmp-social-share__nav-link cmp-social-share__next">${'Next' @ i18n}</a>
     </nav>
 </div>
