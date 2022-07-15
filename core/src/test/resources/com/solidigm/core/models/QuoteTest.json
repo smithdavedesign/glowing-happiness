@@ -1,0 +1,13 @@
+{
+  "quoteEmpty": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/quote"
+  },
+  "quoteAuthored": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/quote",
+    "quote": "Test Quote",
+    "name": "Test Name",
+    "title": "Test Title"
+  }
+}
