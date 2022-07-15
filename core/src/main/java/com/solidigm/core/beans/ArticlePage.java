@@ -1,24 +1,41 @@
 package com.solidigm.core.beans;
 
 import lombok.Getter;
+import lombok.Setter;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Model;
 
+import javax.inject.Inject;
+
+@Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticlePage {
+    @Inject
     @Getter
-    private String title;
+    private String articleTitle;
+
+    @Inject
+    @Getter
+    private String articleCategory;
+
+    @Inject
+    @Getter
+    private String articleDate;
+
+    @Inject
+    @Getter
+    private String teaserImage;
+
+    @Inject
+    @Getter
+    @Setter
+    private String teaserImageAltText;
 
     @Getter
-    private String image;
-
-    @Getter
-    private String category;
-
-    @Getter
+    @Setter
     private String path;
 
-    public ArticlePage(String title, String image, String category, String path) {
-        this.title = title;
-        this.image = image;
-        this.category = category;
-        this.path = path;
-    }
+    @Getter
+    @Setter
+    private String teaserCategory;
 }

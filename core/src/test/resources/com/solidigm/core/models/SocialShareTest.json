@@ -1,0 +1,42 @@
+{
+  "articlePage1": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Tue Jul 12 2022 11:33:27 GMT-0400",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Article Page Middle",
+      "cq:template": "/conf/solidigm/settings/wcm/templates/article-page",
+      "articleTitle": "Test Article Middle",
+      "cq:contextHubSegmentsPath": "/etc/segmentation/contexthub",
+      "jcr:created": "Tue Jul 12 2022 11:40:27 GMT-0400",
+      "cq:lastModified": "Wed Jul 13 2022 13:38:17 GMT-0400",
+      "teaserImageAltText": "Test Alt Middle",
+      "articleCategory": "solidigm:tag1",
+      "articleDate": "Mon Jul 02 2022 00:00:00 GMT-0400",
+      "sling:resourceType": "solidigm/components/page/articlePage",
+      "cq:contextHubPath": "/etc/cloudsettings/default/contexthub",
+      "teaserImage": "test/image/middle",
+      "cq:lastModifiedBy": "admin",
+      "root": {
+        "jcr:primaryType": "nt:unstructured",
+        "layout": "responsiveGrid",
+        "sling:resourceType": "solidigm/components/container",
+        "container": {
+          "jcr:primaryType": "nt:unstructured",
+          "layout": "responsiveGrid",
+          "sling:resourceType": "solidigm/components/container",
+          "socialshare": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:createdBy": "admin",
+            "jcr:lastModifiedBy": "admin",
+            "jcr:created": "Thu Jul 14 2022 09:23:29 GMT-0400",
+            "jcr:lastModified": "Thu Jul 14 2022 09:23:29 GMT-0400",
+            "sling:resourceType": "solidigm/components/socialshare"
+          }
+        }
+      }
+    }
+  }
+}
