@@ -1,5 +1,6 @@
 .cmp-breadcrumb {
     text-transform: uppercase;
+    font-family: $heading-font;
     font-size: $font-size-sm;
     font-weight: 400;
 
@@ -8,23 +9,40 @@
     }
 
     &__item:not(:last-child) {
-        margin-right: 25px;
+        margin-right: $spacing-base;
         position: relative;
 
-        &::after {
-            content: "";
-            height: 70%;
-            top: 50%;
-            width: 1px;
-            background: $white;
-            left: calc(100% + 12px);
+        &::after{
+            content: '';
             position: absolute;
-            transform: translateY(-50%) rotate(15deg);
+            left: calc(100% + $spacing-base / 2);
+            top: 50%;
+            height: 90%;
+            width: 1px;
+            background: $solidigm-purple;
+            transform: translate(-50%, -50%) rotate(12.5deg);
+        }
+    }
+
+    &__item:last-child {
+        margin-right: 0;
+
+        .cmp-breadcrumb__item-divider {
+            display: none;
         }
     }
 
     &__item-link {
-        color: inherit;
+        color: $solidigm-purple;
         display: inline-block;
+    }
+
+    &__item-divider {
+        color: $grey;
+        margin-left: $spacing-3xs;
+    }
+
+    @media (min-width: $desktop) {
+        font-family: $body-font;
     }
 }
