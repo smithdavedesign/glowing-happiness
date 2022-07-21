@@ -1,10 +1,6 @@
-.root.container {
-    overflow: hidden;
-}
-
 .cmp-container {
     max-width: $max-width-base;
-    padding: 0 clamp(1rem, 3.5vw, 1.5rem);
+    padding: 0 $spacing-2xl;
     margin: auto;
 
     &--no-padding {
@@ -49,5 +45,9 @@
             position: absolute;
             transform: translateX(-50%);
         }
+    }
+    
+    .cmp-container{
+        padding: 0;
     }
 }
