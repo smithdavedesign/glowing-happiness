@@ -2,6 +2,8 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
+        cq:lastModified="{Date}2022-07-22T12:49:29.843-04:00"
+        cq:lastModifiedBy="admin"
         cq:tags="[]"
         cq:template="/conf/solidigm/settings/wcm/templates/xf-web-variation"
         cq:xfMasterVariation="{Boolean}true"
@@ -13,22 +15,89 @@
             jcr:primaryType="nt:unstructured"
             sling:resourceType="solidigm/components/container"
             layout="simple">
-            <navigation
+            <logo/>
+            <header
+                jcr:created="{Date}2022-07-22T12:37:02.394-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-07-22T12:49:29.836-04:00"
+                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="solidigm/components/navigation"
-                collectAllPages="false"
-                navigationRoot="/content/solidigm/us/en"
-                skipNavigationRoot="false"
-                structureDepth="1"/>
-            <languagenavigation
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="solidigm/components/languagenavigation"
-                navigationRoot="/content/solidigm/us"
-                structureDepth="2"/>
-            <search
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="solidigm/components/search"
-                searchRoot="/content/solidigm/us"/>
+                sling:resourceType="solidigm/components/header"
+                dashboard="/content/solidigm/us/en"
+                greeting="Hi"
+                homepage="/content/solidigm/us/en"
+                homepageLabel="Home"
+                navItemLink1="/content/solidigm/us/en"
+                navItemLink2="/content/solidigm/us/en"
+                navItemLink3="/content/solidigm/us/en"
+                navItemLink4="/content/solidigm/us/en"
+                navItemTitle1="Products"
+                navItemTitle2="Support"
+                navItemTitle3="Partners"
+                navItemTitle4="About"
+                placeholderText="What are you searching for?"
+                searchResultsPage="/content/solidigm/us/en">
+                <subNavItems1 jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Data Center"
+                        link="/content/solidigm/us/en"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Client Solutions"
+                        link="/content/solidigm/us/en"/>
+                </subNavItems1>
+                <subNavItems2 jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Help Center"
+                        link="/content/solidigm/us/en"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Support Community"
+                        link="/content/solidigm/us/en"/>
+                </subNavItems2>
+                <subNavItems4 jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Who We Are"
+                        link="/content/solidigm/us/en"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Our Team"
+                        link="/content/solidigm/us/en"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        label="Careers"
+                        link="/content/solidigm/us/en"/>
+                    <item3
+                        jcr:primaryType="nt:unstructured"
+                        label="Content Hub"
+                        link="/content/solidigm/us/en"/>
+                </subNavItems4>
+                <langItems jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Chinese"
+                        link="/content/solidigm/us/en"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="English"
+                        link="/content/solidigm/us/en"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        label="German"
+                        link="/content/solidigm/us/en"/>
+                    <item3
+                        jcr:primaryType="nt:unstructured"
+                        label="Korean"
+                        link="/content/solidigm/us/en"/>
+                    <item4
+                        jcr:primaryType="nt:unstructured"
+                        label="Japanese"
+                        link="/content/solidigm/us/en"/>
+                </langItems>
+            </header>
         </root>
     </jcr:content>
 </jcr:root>
