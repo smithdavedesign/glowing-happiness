@@ -1,0 +1,16 @@
+<svg width="9px" height="6px" viewBox="0 0 9 6" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="NavMobile3" transform="translate(-324.000000, -221.000000)" fill="#111111" stroke="#111111"
+            stroke-width="0.5">
+            <g id="Group" transform="translate(325.000000, 222.000000)">
+                <g id="Path"
+                    transform="translate(3.444752, 2.000000) scale(1, -1) rotate(-180.000000) translate(-3.444752, -2.000000) ">
+                    <path
+                        d="M0.724566244,0.116905752 L3.44085633,2.89322434 L6.17215354,0.116905752 C6.5323246,-0.258272436 7.14761683,0.357019793 6.77243864,0.732197981 L3.69597749,3.89870189 C3.56091335,4.03376604 3.33580643,4.03376604 3.21574941,3.89870189 L0.109274015,0.732197981 C-0.250897046,0.357019793 0.364395183,-0.258272436 0.724566244,0.116905752 Z">
+                    </path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

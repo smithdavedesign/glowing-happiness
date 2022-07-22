@@ -1,0 +1,66 @@
+{
+  "articleTeaserEmpty": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/articleteaser"
+  },
+  "articleTeaserAuthored": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:createdBy": "admin",
+    "jcr:lastModifiedBy": "admin",
+    "jcr:created": "Mon Jun 27 2022 11:41:22 GMT-0400",
+    "jcr:lastModified": "Mon Jun 27 2022 14:23:26 GMT-0400",
+    "sling:resourceType": "solidigm/components/articleteaser",
+    "articlePagePath": "/content/article"
+  },
+  "article": {
+    "jcr:content": {
+      "jcr:primaryType": "nt:unstructured",
+      "articleTitle": "Test Page Title",
+      "teaserImage": "Test Teaser Image",
+      "teaserImageAltText": "Alt Text",
+      "articleCategory": "solidigm:products",
+      "jcr:description": "Test Description"
+    }
+  },
+  "cq:tags": {
+    "jcr:primaryType": "sling:Folder",
+    "jcr:mixinTypes": [
+      "sling:Redirect",
+      "rep:AccessControllable"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:title": "Tags",
+    "hidden": true,
+    "sling:target": "/tagging",
+    "jcr:created": "Thu Jun 02 2022 13:48:07 GMT-0400",
+    "sling:resourceType": "sling:redirect",
+    "languages": [
+      "en",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt_br",
+      "zh_cn",
+      "zh_tw",
+      "ja",
+      "ko_kr"
+    ],
+    "solidigm": {
+      "jcr:primaryType": "cq:Tag",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Solidigm",
+      "jcr:created": "Thu Jun 23 2022 13:04:46 GMT-0400",
+      "jcr:description": "",
+      "sling:resourceType": "cq/tagging/components/tag",
+      "products": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:createdBy": "admin",
+        "jcr:title": "Products",
+        "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
+        "jcr:description": "",
+        "sling:resourceType": "cq/tagging/components/tag"
+      }
+    }
+  }
+}

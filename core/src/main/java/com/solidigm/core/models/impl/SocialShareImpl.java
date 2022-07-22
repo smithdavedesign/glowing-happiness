@@ -10,6 +10,7 @@ import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.solidigm.core.models.SocialShare;
+import com.solidigm.core.services.SocialService;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
@@ -25,6 +26,9 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +53,9 @@ public class SocialShareImpl implements SocialShare {
     @SlingObject
     SlingHttpServletRequest request;
 
+    @OSGiService
+    SocialService socialService;
+
     @Inject
     private Resource resource;
 
@@ -61,6 +68,12 @@ public class SocialShareImpl implements SocialShare {
     }
 
     @Getter
+    private String twitterShare;
+
+    @Getter
+    private String linkedInShare;
+
+    @Getter
     private String next;
 
     @Getter
@@ -68,6 +81,18 @@ public class SocialShareImpl implements SocialShare {
 
     @PostConstruct
     private void initModel() {
+        //Process sharing links
+        String url = request.getRequestURL().toString();
+        try {
+            url = URLEncoder.encode(url, StandardCharsets.UTF_8.toString());
+            twitterShare = socialService.getTwitterShareUrl().concat(url);
+            linkedInShare = socialService.getLinkedInShareUrl().concat(url);
+        } catch (UnsupportedEncodingException e) {
+            //On encoding error: log and catch
+            log.error("Failed to encode request URL in social share", e);
+        }
+
+        //Process next and previous articles
         Page currentPage = request.getResourceResolver().adaptTo(PageManager.class).getContainingPage(resource);
 
         //Stop processing if current page is null

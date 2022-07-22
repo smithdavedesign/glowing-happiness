@@ -6,7 +6,15 @@ import com.adobe.cq.export.json.ComponentExporter;
  * Defines the {@code SocialShare} Sling Model for the {@code /apps/solidigm/components/socialshare} component.
  */
 public interface SocialShare extends ComponentExporter {
+    /**
+     * Returns the link to share the article on Twitter
+     */
+    default String getTwitterShare() { throw new UnsupportedOperationException(); }
 
+    /**
+     * Returns the link to share the article on LinkedIn
+     */
+    default String getLinkedInShare() { throw new UnsupportedOperationException(); }
 
     /**
      * Returns the link to the next article

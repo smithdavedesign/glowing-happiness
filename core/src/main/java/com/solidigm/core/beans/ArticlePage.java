@@ -33,6 +33,11 @@ public class ArticlePage {
     private String teaserImage;
 
     @Inject
+    @Named("jcr:description")
+    @Getter
+    private String description;
+
+    @Inject
     @Getter
     @Setter
     private String teaserImageAltText;

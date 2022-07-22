@@ -1,30 +1,166 @@
-<div data-sly-use.footer="com.solidigm.core.models.Footer">
-    <h1>${footer.searchTitle}</h1>
-    <section class="cmp-search">
-        <form class="cmp-search__form"
-            method="get"
-            action="${footer.searchResultsPage}.html">
-            <div class="cmp-search__field">
-                <i class="cmp-search__icon"
-                data-cmp-hook-search="icon"></i>
-                <input class="cmp-search__input"
-                    type="text"
-                    name="q" placeholder="${footer.placeholderText}"
-                    required="required"/>
+<footer class="footer" data-sly-use.footer="com.solidigm.core.models.Footer">
+    <!-- Search -->
+    <div class="search-component">
+        <h3 class="search-component__title">${footer.searchTitle}</h3>
+        <div class="search">
+            <form class="search-label" method="get" action="${footer.searchResultsPage}.html">
+                <label class="sr-only">Search</label>
+                <input class="search-input" type="text" placeholder="${footer.placeholderText}" />
+                <svg
+                    class="search-input-icon"
+                    width="16px"
+                    height="16px"
+                    viewBox="0 0 16 16"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g
+                            id="Search-Large"
+                            transform="translate(-394.000000, -16.000000)"
+                            fill="#111111"
+                            fill-rule="nonzero"
+                        >
+                            <path
+                                d="M405.515056,26.3054933 L410,30.7904374 L408.790437,32 L404.305493,27.5150559 C403.226289,28.3395793 401.877678,28.8293489 400.414674,28.8293489 C396.871948,28.8293489 394,25.9574013 394,22.4146744 C394,18.8719476 396.871948,16 400.414674,16 C403.957401,16 406.829349,18.8719476 406.829349,22.4146744 C406.829349,23.8776778 406.339579,25.2262895 405.515056,26.3054933 L405.515056,26.3054933 Z M400.414674,27.118769 C403.012674,27.118769 405.118769,25.0126741 405.118769,22.4146744 C405.118769,19.8166748 403.012674,17.7105799 400.414674,17.7105799 C397.816675,17.7105799 395.71058,19.8166748 395.71058,22.4146744 C395.71058,25.0126741 397.816675,27.118769 400.414674,27.118769 Z"
+                                id="Shape"
+                            ></path>
+                        </g>
+                    </g>
+                </svg>
+            </form>
+        </div>
+        <div class="search-component__suggestions">
+            <sly data-sly-list.searchTagLink="${footer.searchTagsLinks}">
+                <a class="search-component__suggestions__suggestion" href="${searchTagLink.link}"
+                    >${searchTagLink.label}</a
+                >
+            </sly>
+        </div>
+    </div>
+
+    <!-- End Search -->
+
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+        <div class="disclaimer__legal-text">${footer.disclaimer @ context='html'}</div>
+    </div>
+    <!-- End Disclaimer -->
+
+    <!-- Content -->
+
+    <div class="footer-content">
+        <div class="footer-content__left">
+            <a href="/" class="footer-content__logo" title="Back to homepage"></a>
+            <ul class="footer-content__social-icons">
+                <a
+                    aria-label="View in Linkedin"
+                    href="${footer.homePage.link}"
+                    target="${footer.homePage.target}"
+                    class="footer-content__facebook footer-content__social-icon"
+                >
+                    <svg
+                        class="header__mobile-footer-facebook"
+                        width="10px"
+                        height="22px"
+                        viewBox="0 0 10 22"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <title>facebook</title>
+                        <g
+                            id="Page-1"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="NavMobile2"
+                                transform="translate(-25.000000, -551.000000)"
+                                fill="#FFFFFF"
+                                fill-rule="nonzero"
+                            >
+                                <g id="facebook" transform="translate(10.000000, 542.000000)">
+                                    <path
+                                        d="M20.6130662,9.83234042 C19.116987,9.89957994 17.6713374,10.9754122 17.3519497,12.4883013 C17.0661817,13.8162818 17.2006608,15.1946919 17.167041,16.5394822 C16.4610261,16.5394822 15.771821,16.5394822 15.0658061,16.5394822 C15.0658061,17.5648848 15.0658061,18.5734776 15.0658061,19.5988802 C15.771821,19.5988802 16.4610261,19.5988802 17.167041,19.5988802 C17.167041,23.1289548 17.167041,26.6590295 17.167041,30.1891041 C18.4950215,30.1891041 19.8230019,30.1891041 21.1509824,30.1891041 C21.1509824,26.6590295 21.1509824,23.1289548 21.1509824,19.5988802 C22.1931949,19.5988802 23.2354074,19.5988802 24.2776199,19.5988802 C24.3448594,18.5734776 24.4289088,17.5648848 24.5129582,16.5562921 C23.3866963,16.5394822 22.2604344,16.5562921 21.1509824,16.5562921 C21.1509824,15.7662278 21.1341725,14.9761634 21.1509824,14.1860991 C21.1509824,13.7322324 21.5039898,13.3456052 21.9242368,13.2111261 C22.7479209,12.9589779 23.5884148,13.1943163 24.4120989,13.362415 C24.5633878,12.3033927 24.7819163,11.2611802 24.9332052,10.2021578 C23.5211753,9.8491503 22.0587158,9.76510091 20.6130662,9.83234042"
+                                        id="Path"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+                <a
+                    aria-label="View in Linkedin"
+                    href="${footer.linkedIn.link}"
+                    target="${footer.linkedIn.target}"
+                    class="footer-content__linkedin footer-content__social-icon"
+                >
+                    <svg
+                        class="header__mobile-footer-linkedin"
+                        width="22px"
+                        height="23px"
+                        viewBox="0 0 22 23"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <title>linked in</title>
+                        <g
+                            id="Page-1"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="NavMobile2"
+                                transform="translate(-88.000000, -549.000000)"
+                                fill="#FFFFFF"
+                                fill-rule="nonzero"
+                            >
+                                <g id="linked-in" transform="translate(79.000000, 542.000000)">
+                                    <path
+                                        d="M14.0627079,14.8438989 L14.0627079,29.2307692 L9.58251256,29.2307692 L9.58251256,14.8438989 L14.0627079,14.8438989 Z M25.4013705,14.4838085 C29.9318111,14.4838085 30.7692308,17.4650226 30.7692308,21.3422757 L30.7692308,29.2307692 L26.3392806,29.2307692 L26.3388067,21.9384187 C26.3312251,20.3186823 26.2023378,18.419681 24.0112539,18.419681 C21.6832271,18.419681 21.3315108,20.2368817 21.3315108,22.1127018 L21.3315108,29.2307692 L16.8680639,29.2307692 L16.8680639,14.8438989 L21.1556527,14.8438989 L21.1556527,16.8118352 L21.2142721,16.8118352 C22.0783979,15.3276737 23.6846803,14.4345807 25.4013705,14.4838085 Z M11.8267973,7.69232114 C13.2605291,7.69232114 14.4227984,8.85460401 14.4227984,10.2883358 C14.4227984,11.7220676 13.2605291,12.8843368 11.8267973,12.8843368 C10.3930656,12.8843368 9.23078268,11.7220676 9.23078268,10.2883358 C9.22856229,9.59915108 9.50135131,8.93754927 9.98868106,8.45021952 C10.4760108,7.96288977 11.1376126,7.69010075 11.8267973,7.69232114 Z"
+                                        id="Combined-Shape"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+            </ul>
+            <nav>
+                <ul class="footer-content__links">
+                    <sly data-sly-list.link="${footer.links}">
+                        <a class="footer-content__links__link" href="${link.link}" target="${link.target}">${link.label}</a>
+                    </sly>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer-content__right">
+            <div class="footer-content__text">
+                ${footer.trademark @ context='html'}
+                <br />
+                ${footer.copyright @ context='html'}
             </div>
-        </form>
-    </section>
-    <sly data-sly-list.searchTagLink="${footer.searchTagsLinks}">
-        <a href="${searchTagLink.link}" role="button">${searchTagLink.label}</a>
-    </sly>
-    ${footer.disclaimer @ context='html'}
-    ${footer.trademark @ context='html'}
-    ${footer.copyright @ context='html'}
-    <a href="${footer.homePage.link}" target="${footer.homePage.target}" role="button">Solidigm</a>
-    <a href="${footer.facebook.link}" target="${footer.facebook.target}" role="button">Facebook</a>
-    <a href="${footer.linkedIn.link}" target="${footer.linkedIn.target}" role="button">LinkedIn</a>
-    <a href="${footer.trustArc.link}" target="${footer.trustArc.target}" role="button">TrustArc</a>
-    <sly data-sly-list.link="${footer.links}">
-        <a href="${link.link}" role="button">${link.label}</a>
-    </sly>
-</div>
+            <a
+                href="${footer.trustArc.link}"
+                target="${footer.trustArc.target}"
+                class="footer-content__trustarc-logo"
+                aria-label="Visit Trust Arc Site"
+            ></a>
+        </div>
+    </div>
+
+    <!-- End Content -->
+
+    <!-- Scroll Up Button -->
+
+    <button class="scroll-up-button" aria-label="Scroll to top"></button>
+
+    <!-- End Scroll Up Button -->
+</footer>

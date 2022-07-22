@@ -1,75 +1,962 @@
-<div data-sly-use.header="com.solidigm.core.models.Header">
-    <div>
-        <!-- Solidigm icon with link to homepage -->
-        <div><a href="${header.homepage.link}">Link to homepage. In desktop view a clickable icon; in mobile view a text link will be displayed with the following authored text: ${header.homepage.label}</a></div>
+<header data-sly-use.header="com.solidigm.core.models.Header" class="header__navigation-bar">
+    <a href="${header.homepage.link}" class="header__logo" title="Back to homepage">
+        <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 960 184.2"
+            xml:space="preserve"
+            aria-labelledby="header-logo-title"
+        >
+            <title id="header-logo-title">Solidigm</title>
+            <style type="text/css">
+                .st0 {
+                    fill: #4f00b5;
+                }
+            </style>
+            <g>
+                <polygon
+                    class="st0"
+                    points="70.8,0 0,70.7 0,115.1 22.3,137.4 110.2,137.4 150.5,97.1 150.5,74 103.4,121 16.3,121 16.3,77.5 
+		77.5,16.3 150.5,16.3 150.5,0 	"
+                ></polygon>
+                <polygon
+                    class="st0"
+                    points="95.2,46.8 54.9,87.2 54.9,110.2 101.9,63.2 189,63.2 189,106.7 127.9,167.9 54.9,167.9 54.9,184.2 
+		134.6,184.2 205.4,113.5 205.4,69.2 183.1,46.8 	"
+                ></polygon>
+                <path
+                    class="st0"
+                    d="M389.8,43c-28.2,0-49.1,21-49.1,48.5s21,48.5,49.1,48.5S439,119,439,91.5S418,43,389.8,43 M389.8,125.6
+		c-19.6,0-33.4-13.8-33.4-34.1s13.8-34.1,33.4-34.1s33.4,13.8,33.4,34.1S409.5,125.6,389.8,125.6"
+                ></path>
+                <rect x="534.6" y="45.7" class="st0" width="15.1" height="91.7"></rect>
+                <path
+                    class="st0"
+                    d="M604,45.7h-10.7l-20,20v71.7H604c28.8,0,49.1-20.3,49.1-45.9S632.8,45.6,604,45.7 M604,122.9h-15.7V60.1H604
+		c20.3,0,33.4,13.1,33.4,31.4S624.3,123,604,122.9"
+                ></path>
+                <rect x="672.8" y="45.7" class="st0" width="15.1" height="91.7"></rect>
+                <path
+                    class="st0"
+                    d="M771.7,103.3h16.4v21c0,0-22.7-0.1-31.4-0.1c-19.7,0-33.4-12.9-33.4-32.6c0-20.3,13.8-34.1,33.4-34.1
+		c23.6,0,30.8,19,30.8,19h15.1c0,0-7.9-33.4-45.9-33.4c-27.5,0-49.1,20.3-49.1,48.5s20.2,47,49.1,47h26.5l20-20V88.9h-31.4V103.3z"
+                ></path>
+                <polygon
+                    class="st0"
+                    points="837.3,137.4 823.5,137.4 823.5,45.7 849.9,45.7 873.3,123.6 876.6,123.6 900,45.7 925.7,45.7 
+		925.7,137.4 912,137.4 912,73.2 912,60.7 909.2,60.7 886.4,137.4 862.8,137.4 840.1,60.7 837.3,60.7 	"
+                ></polygon>
+                <polygon
+                    class="st0"
+                    points="473.7,45.7 458.6,45.7 458.6,117.3 478.5,137.4 520.2,137.4 520.2,123 473.7,123 	"
+                ></polygon>
+                <path
+                    class="st0"
+                    d="M272.5,69.9c0-7.2,5.9-13.1,18.3-13.1c8.8-0.1,17,4.3,21.6,11.8l9.9-9.9c-4.6-7.4-13.7-15.6-31.5-15.6
+		c-21,0-34.1,13.1-34.1,27.5c0,32.8,55,22.3,55,41.9c0,7.9-5.9,13.8-20.3,13.8c-16.9,0-24.2-15.1-24.2-15.1L257,121.4
+		c4.7,8.5,14.4,18.6,34.5,18.6c22.9,0,36-13.1,36-28.2C327.5,79.7,272.5,89.5,272.5,69.9"
+                ></path>
+                <polygon
+                    class="st0"
+                    points="938,126.7 933.8,126.7 933.8,124.8 944.3,124.8 944.3,126.7 940.1,126.7 940.1,137.4 938,137.4 	"
+                ></polygon>
+                <polygon
+                    class="st0"
+                    points="946,124.8 949.2,124.8 952.8,135.5 953.2,135.5 956.8,124.8 960,124.8 960,137.4 957.9,137.4 
+		957.9,127.7 958,127 957.9,127 954.4,137.4 951.5,137.4 948,127 948,127 948,127.7 948,137.4 946,137.4 	"
+                ></polygon>
+            </g>
+        </svg>
+    </a>
+    <nav class="header__links-desktop" aria-label="desktop menu">
+        <ul>
+            <li
+                class="header__link-item ${header.subNavItems1 ? 'header__link-item--has-submenu' : ''}"
+                data-sly-test="${header.navItem1.label}"
+            >
+                <a
+                    href="${header.navItem1.link}"
+                    target="${header.navItem1.target}"
+                    data-sly-test="${!header.subNavItems1}"
+                >
+                    ${header.navItem1.label}
+                </a>
+                <button
+                    aria-expanded="false"
+                    class="header__link-item-trigger"
+                    aria-controls="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems1}"
+                >
+                    ${header.navItem1.label}
+                </button>
+                <div
+                    class="header__dropdown-container"
+                    id="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems1}"
+                >
+                    <ul
+                        class="header__dropdown header__sub-links"
+                        data-sly-list.subNavItems1="${header.subNavItems1}"
+                    >
+                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                            <a href="${subNavItems1.link}" target="${subNavItems1.target}"
+                                >${subNavItems1.label}</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
-        <!-- Top navigation items with dropdowns to subnavs if no topnav link was authored -->
-        <div>
-            <span data-sly-test="${header.navItem1.label}">
-                <h3> <a href="${header.navItem1.link}" target="${header.navItem1.target}">${header.navItem1.label}</a></h3>
-                <div data-sly-list.subNavItems1=${header.subNavItems1}>
-                    <span> <a href="${subNavItems1.link}" target="${subNavItems1.target}">${subNavItems1.label}</a></span>
+            <li
+                class="header__link-item ${header.subNavItems2 ? 'header__link-item--has-submenu' : ''}"
+                data-sly-test="${header.navItem2.label}"
+            >
+                <a
+                    href="${header.navItem2.link}"
+                    target="${header.navItem2.target}"
+                    data-sly-test="${!header.subNavItems2}"
+                >
+                    ${header.navItem2.label}
+                </a>
+                <button
+                    aria-expanded="false"
+                    class="header__link-item-trigger"
+                    aria-controls="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems2}"
+                >
+                    ${header.navItem2.label}
+                </button>
+                <div
+                    class="header__dropdown-container"
+                    id="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems2}"
+                >
+                    <ul
+                        class="header__dropdown header__sub-links"
+                        data-sly-list.subNavItems2="${header.subNavItems2}"
+                    >
+                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                            <a href="${subNavItems2.link}" target="${subNavItems2.target}"
+                                >${subNavItems2.label}</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-            </span>
-            <span data-sly-test="${header.navItem2.label}">
-                <h3> <a href="${header.navItem2.link}" target="${header.navItem2.target}">${header.navItem2.label}</a></h3>
-                <div data-sly-list.subNavItems2=${header.subNavItems2}>
-                    <span> <a href="${subNavItems2.link}" target="${subNavItems2.target}">${subNavItems2.label}</a></span>
+            </li>
+
+            <li
+                data-sly-test="${header.navItem3.label}"
+                class="header__link-item ${header.subNavItems3 ? 'header__link-item--has-submenu' : ''}"
+            >
+                <a
+                    href="${header.navItem3.link}"
+                    target="${header.navItem3.target}"
+                    data-sly-test="${!header.subNavItems3}"
+                >
+                    ${header.navItem3.label}
+                </a>
+                <button
+                    aria-expanded="false"
+                    class="header__link-item-trigger"
+                    aria-controls="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems3}"
+                >
+                    ${header.navItem3.label}
+                </button>
+                <div
+                    class="header__dropdown-container"
+                    id="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems3}"
+                >
+                    <ul
+                        class="header__dropdown header__sub-links"
+                        data-sly-list.subNavItems3="${header.subNavItems3}"
+                    >
+                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                            <a href="${subNavItems3.link}" target="${subNavItems3.target}"
+                                >${subNavItems3.label}</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-            </span>
-            <span data-sly-test="${header.navItem3.label}">
-                <h3> <a href="${header.navItem3.link}" target="${header.navItem3.target}">${header.navItem3.label}</a></h3>
-                <div data-sly-list.subNavItems3=${header.subNavItems3}>
-                    <span> <a href="${subNavItems3.link}" target="${subNavItems3.target}">${subNavItems3.label}</a></span>
+            </li>
+
+            <li
+                data-sly-test="${header.navItem4.label}"
+                class="header__link-item ${header.subNavItems4 ? 'header__link-item--has-submenu' : ''}"
+            >
+                <a
+                    href="${header.navItem4.link}"
+                    target="${header.navItem4.target}"
+                    data-sly-test="${!header.subNavItems4}"
+                >
+                    ${header.navItem4.label}
+                </a>
+                <button
+                    aria-expanded="false"
+                    class="header__link-item-trigger"
+                    aria-controls="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems4}"
+                >
+                    ${header.navItem4.label}
+                </button>
+                <div
+                    class="header__dropdown-container"
+                    id="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems4}"
+                >
+                    <ul
+                        class="header__dropdown header__sub-links"
+                        data-sly-list.subNavItems4="${header.subNavItems4}"
+                    >
+                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                            <a href="${subNavItems4.link}" target="${subNavItems4.target}"
+                                >${subNavItems4.label}</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-            </span>
-            <span data-sly-test="${header.navItem4.label}">
-                <h3> <a href="${header.navItem4.link}" target="${header.navItem4.target}">${header.navItem4.label}</a></h3>
-                <div data-sly-list.subNavItems4=${header.subNavItems4}>
-                    <span> <a href="${subNavItems4.link}" target="${subNavItems4.target}">${subNavItems4.label}</a></span>
+            </li>
+
+            <li
+                data-sly-test="${header.navItem5.label}"
+                class="header__link-item ${header.subNavItems5 ? 'header__link-item--has-submenu' : ''}"
+            >
+                <a
+                    href="${header.navItem5.link}"
+                    target="${header.navItem5.target}"
+                    data-sly-test="${!header.subNavItems5}"
+                >
+                    ${header.navItem5.label}
+                </a>
+                <button
+                    aria-expanded="false"
+                    class="header__link-item-trigger"
+                    aria-controls="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems5}"
+                >
+                    ${header.navItem5.label}
+                </button>
+                <div
+                    class="header__dropdown-container"
+                    id="desktop-menu-item-"
+                    data-sly-test="${header.subNavItems5}"
+                >
+                    <ul
+                        class="header__dropdown header__sub-links"
+                        data-sly-list.subNavItems5="${header.subNavItems5}"
+                    >
+                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                            <a href="${subNavItems5.link}" target="${subNavItems5.target}"
+                                >${subNavItems5.label}</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-            </span>
-            <span data-sly-test="${header.navItem5.label}">
-                <h3> <a href="${header.navItem5.link}" target="${header.navItem5.target}">${header.navItem5.label}</a></h3>
-                <div data-sly-list.subNavItems5=${header.subNavItems5}>
-                    <span> <a href="${subNavItems5.link}" target="${subNavItems5.target}">${subNavItems5.label}</a></span>
+            </li>
+        </ul>
+    </nav>
+    <nav class="header__icons-desktop">
+        <ul>
+            <li class="header__link-item">
+                <div class="header__search header__desktop-search hidden">
+                    <form
+                        class="header__search-label"
+                        method="get"
+                        action="${header.searchResultsPage.link}"
+                    >
+                        <label class="sr-only" for="search-desktop">Search</label>
+                        <input
+                            class="header__search-input"
+                            id="search-desktop"
+                            type="text"
+                            placeholder="${header.placeholderText}"
+                            name="q"
+                            required
+                        />
+                        <svg
+                            class="header__search-input-icon"
+                            width="18px"
+                            height="17px"
+                            viewBox="0 0 18 17"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                        >
+                            <title>Shape</title>
+                            <g
+                                id="Page-1"
+                                stroke="none"
+                                stroke-width="1"
+                                fill="none"
+                                fill-rule="evenodd"
+                            >
+                                <g
+                                    id="NavMobile2"
+                                    transform="translate(-316.000000, -65.000000)"
+                                    fill="#FFFFFF"
+                                    fill-rule="nonzero"
+                                    stroke="#4F00B5"
+                                >
+                                    <path
+                                        d="M328.515056,76.3054933 L333,80.7904374 L331.790437,82 L327.305493,77.5150559 C326.226289,78.3395793 324.877678,78.8293489 323.414674,78.8293489 C319.871948,78.8293489 317,75.9574013 317,72.4146744 C317,68.8719476 319.871948,66 323.414674,66 C326.957401,66 329.829349,68.8719476 329.829349,72.4146744 C329.829349,73.8776778 329.339579,75.2262895 328.515056,76.3054933 L328.515056,76.3054933 Z M323.414674,77.118769 C326.012674,77.118769 328.118769,75.0126741 328.118769,72.4146744 C328.118769,69.8166748 326.012674,67.7105799 323.414674,67.7105799 C320.816675,67.7105799 318.71058,69.8166748 318.71058,72.4146744 C318.71058,75.0126741 320.816675,77.118769 323.414674,77.118769 Z"
+                                        id="Shape"
+                                    ></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </form>
                 </div>
-            </span>
+                <button aria-label="Open search" class="header__search-btn">
+                    <svg
+                        class="header__search-icon"
+                        width="18px"
+                        height="18px"
+                        viewBox="0 0 18 18"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <g
+                            id="Symbols"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="Nav-White"
+                                transform="translate(-1256.000000, -41.000000)"
+                                fill="#111111"
+                                fill-rule="nonzero"
+                            >
+                                <g
+                                    id="Combined-Shape"
+                                    transform="translate(1256.000000, 41.250000)"
+                                >
+                                    <path
+                                        d="M6.96650875,0 C10.8140053,0 13.9330175,3.11901223 13.9330175,6.96650875 C13.9330175,8.51553989 13.4263716,9.98696116 12.5057818,11.1919046 L12.5057818,11.1919046 L12.3729588,11.3657543 L17.396,16.389 L16.389,17.396 L11.3657543,12.3729588 L11.1919046,12.5057818 L10.9474188,12.6843531 C9.79042673,13.4916726 8.41227115,13.9330175 6.96650875,13.9330175 C3.11901223,13.9330175 0,10.8140053 0,6.96650875 C0,3.11901223 3.11901223,0 6.96650875,0 Z M6.96650875,1.42440233 C3.90568792,1.42440233 1.42440233,3.90568792 1.42440233,6.96650875 C1.42440233,10.0273296 3.90568792,12.5086152 6.96650875,12.5086152 C10.0273296,12.5086152 12.5086152,10.0273296 12.5086152,6.96650875 C12.5086152,3.90568792 10.0273296,1.42440233 6.96650875,1.42440233 Z"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+            </li>
+            <li class="header__link-item">
+                <button aria-label="Sign In" class="header__profile-btn">
+                    <svg
+                        width="19px"
+                        height="18px"
+                        viewBox="0 0 19 18"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <title>iconUser</title>
+                        <g
+                            id="Symbols"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="Nav-White"
+                                transform="translate(-1304.000000, -41.000000)"
+                                fill="#111111"
+                                fill-rule="nonzero"
+                            >
+                                <g
+                                    id="noun-users-4767002"
+                                    transform="translate(1304.750000, 41.000000)"
+                                >
+                                    <path
+                                        d="M8.99948482,-6.66404151e-16 C4.03549111,-6.66404151e-16 0,4.03652153 0,9.00051524 C0,13.9645089 4.03549111,18 8.99948482,18 C13.9634825,18 17.9989676,13.9645089 17.9989676,9.00051524 C17.9989676,4.03652153 13.9634825,-6.66404151e-16 8.99948482,-6.66404151e-16 Z M8.99948482,1.05979398 C13.3912864,1.05979398 16.9402061,4.60871965 16.9402061,9.00051524 C16.9402061,10.9678353 16.2270448,12.7647983 15.0460157,14.1506124 C14.9363712,11.6551561 13.3161499,9.55409581 11.0766875,8.73685828 C11.9302677,8.10109238 12.4849267,7.08495417 12.4849267,5.94416339 C12.4849267,4.02679158 10.9168626,2.45872748 8.99948482,2.45872748 C7.08210701,2.45872748 5.51715017,4.02679158 5.51715017,5.94416339 C5.51715017,7.08473808 6.0711329,8.10003195 6.9233186,8.73582586 C4.68267565,9.55330549 3.06354083,11.6575931 2.95606123,14.1557805 C1.77272519,12.7693561 1.05876356,10.9699782 1.05876356,9.00051524 C1.05876356,4.60871965 4.60768923,1.05979398 8.99948482,1.05979398 L8.99948482,1.05979398 Z M8.99948482,3.51749098 C10.3446645,3.51749098 11.4261632,4.5989897 11.4261632,5.94416339 C11.4261632,7.28934308 10.3446645,8.36670413 8.99948482,8.36670413 C7.65430513,8.36670413 6.57694609,7.28934308 6.57694609,5.94416339 C6.57694609,4.5989897 7.65430513,3.51749098 8.99948482,3.51749098 L8.99948482,3.51749098 Z M8.99948482,9.42650405 C11.7741944,9.42650405 13.9934527,11.6457663 13.9934527,14.4204699 L13.9934527,15.1773229 C12.6300716,16.2801983 10.8933311,16.9412365 8.99948482,16.9412365 C7.10721119,16.9412365 5.37149108,16.2816549 4.00862021,15.1804242 L4.00862021,14.4204699 C4.00862021,11.6457663 6.22477922,9.42650405 8.99948482,9.42650405 L8.99948482,9.42650405 Z"
+                                        id="Shape"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </button>
+            </li>
+            <li class="header__link-item header__link-item--has-submenu">
+                <button
+                    aria-expanded="false"
+                    class="header__link-item-trigger header__link-item-trigger--no-arrow header__language-btn"
+                    for="desktop-languages"
+                    aria-label="change language"
+                >
+                    <svg
+                        class="header__language-icon"
+                        width="18px"
+                        height="18px"
+                        viewBox="0 0 18 18"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <title>iconLanguage</title>
+                        <g
+                            id="Symbols"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="Nav-White"
+                                transform="translate(-1354.000000, -41.000000)"
+                                fill="#111111"
+                                fill-rule="nonzero"
+                            >
+                                <g id="iconLanguage" transform="translate(1354.000000, 41.000000)">
+                                    <path
+                                        d="M15.7874318,14.8919318 C15.8023636,14.8806818 15.8123864,14.8641136 15.8254773,14.8502045 C17.1773182,13.2752045 18,11.2336364 18,9 C18,4.03731818 13.9626818,0 9,0 C6.56918182,0 4.36377273,0.972818182 2.74254545,2.54475 C2.72475,2.55743182 2.70981818,2.57236364 2.69447727,2.58852273 C1.03356818,4.22222727 0,6.49165909 0,9 C0,13.9626818 4.03731818,18 9,18 C11.7087955,18 14.1361364,16.7915455 15.7874318,14.8919318 Z M11.5459773,16.9142727 C12.1992955,15.99075 12.7217045,14.9903182 13.1136136,13.9391591 C13.1305909,13.9444773 13.14675,13.9483636 13.1637273,13.9538864 C13.8166364,14.166 14.4308864,14.4317045 15.0160909,14.7260455 C14.0690455,15.7205455 12.8826818,16.4830909 11.5459773,16.9142727 Z M15.4883864,14.1889091 C14.8270909,13.8448636 14.1197727,13.5458182 13.3774773,13.3046591 C13.3662273,13.3009773 13.3543636,13.2981136 13.3429091,13.2944318 C13.7475,12.0174545 13.9608409,10.6823864 13.9925455,9.34179545 L17.2990227,9.34179545 C17.2243636,11.1706364 16.5624545,12.8487273 15.4883864,14.1889091 Z M17.2990227,8.65820455 L13.9925455,8.65820455 C13.9559318,7.10406818 13.6671136,5.55995455 13.1291591,4.10297727 C13.7972045,3.90415909 14.4503182,3.65011364 15.0792955,3.34390909 C16.3896136,4.75118182 17.2151591,6.60845455 17.2990227,8.65820455 Z M14.5613864,2.83438636 C14.0187273,3.08536364 13.4574545,3.29481818 12.8839091,3.46295455 C12.5263636,2.62779545 12.0749318,1.83354545 11.5459773,1.08593182 C12.6773182,1.45063636 13.6986136,2.05547727 14.5613864,2.83438636 Z M9.34179545,0.700772727 C9.77195455,0.718363636 10.1951591,0.761522727 10.6058864,0.842318182 C10.6099773,0.909204545 10.6269545,0.975886364 10.6713409,1.03275 C11.2982727,1.83722727 11.8088182,2.71656818 12.2138182,3.64029545 C11.2720909,3.87225 10.3103182,4.00029545 9.342,4.02034091 L9.342,0.700772727 L9.34179545,0.700772727 Z M9.34179545,4.70393182 C10.39725,4.68327273 11.4459545,4.54111364 12.4690909,4.28134091 C12.99375,5.67940909 13.2762273,7.16379545 13.31325,8.658 L9.34179545,8.658 L9.34179545,4.70393182 Z M9.34179545,9.34179545 L13.31325,9.34179545 C13.2813409,10.6208182 13.077,11.8945227 12.68775,13.1119773 C11.5971136,12.8147727 10.4749773,12.6529773 9.34159091,12.6306818 L9.34159091,9.34179545 L9.34179545,9.34179545 Z M9.34179545,13.3152955 C10.3925455,13.3363636 11.4324545,13.4848636 12.4543636,13.7577273 C12.0205227,14.9023636 11.4328636,15.9901364 10.6711364,16.96725 C10.6269545,17.0241136 10.6097727,17.0907955 10.6056818,17.1576818 C10.1949545,17.2384773 9.77175,17.2816364 9.34159091,17.2992273 L9.34159091,13.3152955 L9.34179545,13.3152955 Z M6.45402273,1.08572727 C5.92997727,1.82638636 5.48284091,2.61327273 5.12693182,3.44004545 C4.74504545,3.29768182 4.16945455,3.04281818 3.54436364,2.73804545 C4.38484091,2.00515909 5.36911364,1.43570455 6.45402273,1.08572727 Z M3.01540909,3.23959091 C3.65829545,3.55888636 4.37911364,3.88984091 4.88025,4.07740909 C4.33636364,5.54195455 4.04447727,7.09527273 4.00725,8.65840909 L0.700977273,8.65840909 C0.786886364,6.55834091 1.64925,4.65831818 3.01540909,3.23959091 Z M2.52715909,14.2097727 C1.44368182,12.8663182 0.776045455,11.1798409 0.700772727,9.34179545 L4.00725,9.34179545 C4.03915909,10.6864773 4.25331818,12.0256364 4.66036364,13.3062955 C4.6485,13.3101818 4.63602273,13.3134545 4.62436364,13.3173409 C3.90109091,13.5546136 3.19806818,13.8563182 2.52715909,14.2097727 Z M2.99393182,14.7366818 C3.58629545,14.4345682 4.20361364,14.1745909 4.83913636,13.9663636 C4.85611364,13.9606364 4.8735,13.9551136 4.89027273,13.9495909 C5.28197727,14.9968636 5.80295455,15.9938182 6.45402273,16.9142727 C5.12181818,16.4847273 3.93913636,15.7260682 2.99393182,14.7366818 Z M8.65820455,17.2992273 C8.22825,17.2816364 7.80484091,17.2384773 7.39411364,17.1576818 C7.39002273,17.0907955 7.37304545,17.0241136 7.32865909,16.96725 C6.56856818,15.9921818 5.98152273,14.9066591 5.54788636,13.7644773 C6.54893182,13.4938636 7.59109091,13.3435227 8.658,13.3169318 L8.658,17.2992273 L8.65820455,17.2992273 Z M8.65820455,12.6366136 C7.51009091,12.6728182 6.38570455,12.8266364 5.3145,13.1199545 C4.92381818,11.9000455 4.71845455,10.6234773 4.68654545,9.34159091 L8.658,9.34159091 L8.658,12.6366136 L8.65820455,12.6366136 Z M8.65820455,8.65820455 L4.68675,8.65820455 C4.72397727,7.15990909 5.00768182,5.67122727 5.53540909,4.26988636 C6.54831818,4.53006818 7.59579545,4.66997727 8.65840909,4.69963636 L8.65840909,8.65820455 L8.65820455,8.65820455 Z M8.65820455,4.01665909 C7.68252273,3.98965909 6.72259091,3.86181818 5.79170455,3.62945455 C6.19568182,2.71002273 6.70418182,1.83415909 7.32886364,1.03295455 C7.37304545,0.976090909 7.39022727,0.909409091 7.39431818,0.842522727 C7.80504545,0.761727273 8.22845455,0.718568182 8.65840909,0.700977273 L8.65840909,4.01665909 L8.65820455,4.01665909 Z"
+                                        id="Shape"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <span>EN</span>
+                </button>
+                <div
+                    class="header__dropdown-container header__language-picker-options"
+                    id="desktop-languages"
+                >
+                    <ul
+                        class="header__dropdown header__sub-links"
+                        data-sly-list.languageItem="${header.langItems}"
+                    >
+                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                            <a href="${languageItem.link}" target="${languageItem.target}">
+                                ${languageItem.label}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <button class="header__mobile-open-close">
+        <svg
+            class="header__menu-icon"
+            width="18px"
+            height="17px"
+            viewBox="0 0 18 17"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+            <title>iconNav</title>
+            <g id="iconNav" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <rect id="Rectangle" fill="#111111" x="0" y="0" width="18" height="1"></rect>
+                <rect id="Rectangle" fill="#111111" x="0" y="8" width="18" height="1"></rect>
+                <rect id="Rectangle" fill="#111111" x="0" y="16" width="18" height="1"></rect>
+            </g>
+        </svg>
+        <svg
+            class="header__menu-close-icon hidden"
+            width="16px"
+            height="16px"
+            viewBox="0 0 16 16"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+            <title>x New</title>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g
+                    id="NavMobile2"
+                    transform="translate(-333.000000, -20.000000)"
+                    fill="#111111"
+                    fill-rule="nonzero"
+                >
+                    <g id="x-New" transform="translate(333.000000, 20.000000)">
+                        <path
+                            d="M14.8144416,0.470588235 C14.971014,0.470588235 15.1231596,0.52234774 15.2471679,0.61768093 L15.358748,0.71842976 C15.4555316,0.816506908 15.5294118,0.99886159 15.5294118,1.18555838 C15.5294118,1.37440602 15.4541795,1.55547344 15.3203529,1.68871708 L9.01099068,7.99999995 L15.318879,14.309812 C15.4541239,14.4444706 15.5294118,14.6255159 15.5294118,14.8144416 C15.5294118,14.971014 15.4776523,15.1231596 15.3823191,15.2471679 L15.2815702,15.358748 C15.1834931,15.4555316 15.0011384,15.5294118 14.8144416,15.5294118 C14.625594,15.5294118 14.4445266,15.4541795 14.3112829,15.3203529 L8.00000005,9.01099068 L1.69018801,15.318879 C1.55552945,15.4541239 1.37448415,15.5294118 1.18555838,15.5294118 C1.02898604,15.5294118 0.87684039,15.4776523 0.752832139,15.3823191 L0.64125201,15.2815702 C0.544468384,15.1834931 0.470588235,15.0011384 0.470588235,14.8144416 C0.470588235,14.625594 0.545820456,14.4445266 0.679647085,14.3112829 L6.98900932,8.00000005 L0.681121,1.69018801 C0.545876058,1.55552945 0.470588235,1.37448415 0.470588235,1.18555838 C0.470588235,1.02898604 0.52234774,0.87684039 0.61768093,0.752832139 L0.71842976,0.64125201 C0.816506908,0.544468384 0.99886159,0.470588235 1.18555838,0.470588235 C1.37440602,0.470588235 1.55547344,0.545820456 1.68871708,0.679647085 L7.99999995,6.98900932 L14.309812,0.681121 C14.4444706,0.545876058 14.6255159,0.470588235 14.8144416,0.470588235 Z"
+                            id="Combined-Shape"
+                        ></path>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </button>
+
+    <!-- Mobile Content -->
+
+    <div class="header__mobile-content hidden">
+        <div class="header__search">
+            <form class="header__search-label"
+                method="get"
+                action="${header.searchResultsPage.link}"
+            >
+                <label class="sr-only" for="header-search-mobile">Search</label>
+                <input
+                    id="header-search-mobile"
+                    class="header__search-input"
+                    type="text"
+                    placeholder="Type your search term here"
+                />
+                <svg
+                    class="header__search-input-icon"
+                    width="18px"
+                    height="17px"
+                    viewBox="0 0 18 17"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                    <title>Shape</title>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g
+                            id="NavMobile2"
+                            transform="translate(-316.000000, -65.000000)"
+                            fill="#FFFFFF"
+                            fill-rule="nonzero"
+                            stroke="#4F00B5"
+                        >
+                            <path
+                                d="M328.515056,76.3054933 L333,80.7904374 L331.790437,82 L327.305493,77.5150559 C326.226289,78.3395793 324.877678,78.8293489 323.414674,78.8293489 C319.871948,78.8293489 317,75.9574013 317,72.4146744 C317,68.8719476 319.871948,66 323.414674,66 C326.957401,66 329.829349,68.8719476 329.829349,72.4146744 C329.829349,73.8776778 329.339579,75.2262895 328.515056,76.3054933 L328.515056,76.3054933 Z M323.414674,77.118769 C326.012674,77.118769 328.118769,75.0126741 328.118769,72.4146744 C328.118769,69.8166748 326.012674,67.7105799 323.414674,67.7105799 C320.816675,67.7105799 318.71058,69.8166748 318.71058,72.4146744 C318.71058,75.0126741 320.816675,77.118769 323.414674,77.118769 Z"
+                                id="Shape"
+                            ></path>
+                        </g>
+                    </g>
+                </svg>
+            </form>
         </div>
+        <div class="header__mobile-icons">
+            <a href="${header.dashboard.link}" target="${header.dashboard.target}" aria-label="Go to dashboard">
+                <svg
+                    class="header__dashboard-icon"
+                    width="18px"
+                    height="18px"
+                    viewBox="0 0 18 18"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                    <title>icon Dashboard</title>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g
+                            id="NavMobile2"
+                            transform="translate(-25.000000, -128.000000)"
+                            fill="#111111"
+                            fill-rule="nonzero"
+                        >
+                            <g id="icon-Dashboard" transform="translate(25.000000, 128.000000)">
+                                <path
+                                    d="M7.71428571,0 L7.71428571,7.71428571 L0,7.71428571 L0,0 L7.71428571,0 Z M6.8139,0.9 L0.9,0.9 L0.9,6.8139 L6.8139,6.8139 L6.8139,0.9 Z"
+                                    id="Rectangle"
+                                ></path>
+                                <path
+                                    d="M18,0 L18,7.71428571 L10.2857143,7.71428571 L10.2857143,0 L18,0 Z M17.1,0.9 L11.1852,0.9 L11.1852,6.8139 L17.1,6.8139 L17.1,0.9 Z"
+                                    id="Rectangle"
+                                ></path>
+                                <path
+                                    d="M7.71428571,10.2857143 L7.71428571,18 L0,18 L0,10.2857143 L7.71428571,10.2857143 Z M6.8139,11.1852 L0.9,11.1852 L0.9,17.1 L6.8139,17.1 L6.8139,11.1852 Z"
+                                    id="Rectangle"
+                                ></path>
+                                <path
+                                    d="M18,10.2857143 L18,18 L10.2857143,18 L10.2857143,10.2857143 L18,10.2857143 Z M17.1,11.1852 L11.1852,11.1852 L11.1852,17.1 L17.1,17.1 L17.1,11.1852 Z"
+                                    id="Rectangle"
+                                ></path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </a>
+            <a href="#" aria-level="Log in" class="header__profile header__mobile-profile">
+                <svg
+                    width="19px"
+                    height="18px"
+                    viewBox="0 0 19 18"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                >
+                    <title>iconUser</title>
+                    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g
+                            id="Nav-White"
+                            transform="translate(-1304.000000, -41.000000)"
+                            fill="#111111"
+                            fill-rule="nonzero"
+                        >
+                            <g
+                                id="noun-users-4767002"
+                                transform="translate(1304.750000, 41.000000)"
+                            >
+                                <path
+                                    d="M8.99948482,-6.66404151e-16 C4.03549111,-6.66404151e-16 0,4.03652153 0,9.00051524 C0,13.9645089 4.03549111,18 8.99948482,18 C13.9634825,18 17.9989676,13.9645089 17.9989676,9.00051524 C17.9989676,4.03652153 13.9634825,-6.66404151e-16 8.99948482,-6.66404151e-16 Z M8.99948482,1.05979398 C13.3912864,1.05979398 16.9402061,4.60871965 16.9402061,9.00051524 C16.9402061,10.9678353 16.2270448,12.7647983 15.0460157,14.1506124 C14.9363712,11.6551561 13.3161499,9.55409581 11.0766875,8.73685828 C11.9302677,8.10109238 12.4849267,7.08495417 12.4849267,5.94416339 C12.4849267,4.02679158 10.9168626,2.45872748 8.99948482,2.45872748 C7.08210701,2.45872748 5.51715017,4.02679158 5.51715017,5.94416339 C5.51715017,7.08473808 6.0711329,8.10003195 6.9233186,8.73582586 C4.68267565,9.55330549 3.06354083,11.6575931 2.95606123,14.1557805 C1.77272519,12.7693561 1.05876356,10.9699782 1.05876356,9.00051524 C1.05876356,4.60871965 4.60768923,1.05979398 8.99948482,1.05979398 L8.99948482,1.05979398 Z M8.99948482,3.51749098 C10.3446645,3.51749098 11.4261632,4.5989897 11.4261632,5.94416339 C11.4261632,7.28934308 10.3446645,8.36670413 8.99948482,8.36670413 C7.65430513,8.36670413 6.57694609,7.28934308 6.57694609,5.94416339 C6.57694609,4.5989897 7.65430513,3.51749098 8.99948482,3.51749098 L8.99948482,3.51749098 Z M8.99948482,9.42650405 C11.7741944,9.42650405 13.9934527,11.6457663 13.9934527,14.4204699 L13.9934527,15.1773229 C12.6300716,16.2801983 10.8933311,16.9412365 8.99948482,16.9412365 C7.10721119,16.9412365 5.37149108,16.2816549 4.00862021,15.1804242 L4.00862021,14.4204699 C4.00862021,11.6457663 6.22477922,9.42650405 8.99948482,9.42650405 L8.99948482,9.42650405 Z"
+                                    id="Shape"
+                                ></path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span>Hi Sarah</span>
+            </a>
+            <div class="header__language-picker">
+                <div class="header__language-picker-button">
+                    <svg
+                        class="header__language-icon"
+                        width="18px"
+                        height="18px"
+                        viewBox="0 0 18 18"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <title>iconLanguage</title>
+                        <g
+                            id="Symbols"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="Nav-White"
+                                transform="translate(-1354.000000, -41.000000)"
+                                fill="#111111"
+                                fill-rule="nonzero"
+                            >
+                                <g id="iconLanguage" transform="translate(1354.000000, 41.000000)">
+                                    <path
+                                        d="M15.7874318,14.8919318 C15.8023636,14.8806818 15.8123864,14.8641136 15.8254773,14.8502045 C17.1773182,13.2752045 18,11.2336364 18,9 C18,4.03731818 13.9626818,0 9,0 C6.56918182,0 4.36377273,0.972818182 2.74254545,2.54475 C2.72475,2.55743182 2.70981818,2.57236364 2.69447727,2.58852273 C1.03356818,4.22222727 0,6.49165909 0,9 C0,13.9626818 4.03731818,18 9,18 C11.7087955,18 14.1361364,16.7915455 15.7874318,14.8919318 Z M11.5459773,16.9142727 C12.1992955,15.99075 12.7217045,14.9903182 13.1136136,13.9391591 C13.1305909,13.9444773 13.14675,13.9483636 13.1637273,13.9538864 C13.8166364,14.166 14.4308864,14.4317045 15.0160909,14.7260455 C14.0690455,15.7205455 12.8826818,16.4830909 11.5459773,16.9142727 Z M15.4883864,14.1889091 C14.8270909,13.8448636 14.1197727,13.5458182 13.3774773,13.3046591 C13.3662273,13.3009773 13.3543636,13.2981136 13.3429091,13.2944318 C13.7475,12.0174545 13.9608409,10.6823864 13.9925455,9.34179545 L17.2990227,9.34179545 C17.2243636,11.1706364 16.5624545,12.8487273 15.4883864,14.1889091 Z M17.2990227,8.65820455 L13.9925455,8.65820455 C13.9559318,7.10406818 13.6671136,5.55995455 13.1291591,4.10297727 C13.7972045,3.90415909 14.4503182,3.65011364 15.0792955,3.34390909 C16.3896136,4.75118182 17.2151591,6.60845455 17.2990227,8.65820455 Z M14.5613864,2.83438636 C14.0187273,3.08536364 13.4574545,3.29481818 12.8839091,3.46295455 C12.5263636,2.62779545 12.0749318,1.83354545 11.5459773,1.08593182 C12.6773182,1.45063636 13.6986136,2.05547727 14.5613864,2.83438636 Z M9.34179545,0.700772727 C9.77195455,0.718363636 10.1951591,0.761522727 10.6058864,0.842318182 C10.6099773,0.909204545 10.6269545,0.975886364 10.6713409,1.03275 C11.2982727,1.83722727 11.8088182,2.71656818 12.2138182,3.64029545 C11.2720909,3.87225 10.3103182,4.00029545 9.342,4.02034091 L9.342,0.700772727 L9.34179545,0.700772727 Z M9.34179545,4.70393182 C10.39725,4.68327273 11.4459545,4.54111364 12.4690909,4.28134091 C12.99375,5.67940909 13.2762273,7.16379545 13.31325,8.658 L9.34179545,8.658 L9.34179545,4.70393182 Z M9.34179545,9.34179545 L13.31325,9.34179545 C13.2813409,10.6208182 13.077,11.8945227 12.68775,13.1119773 C11.5971136,12.8147727 10.4749773,12.6529773 9.34159091,12.6306818 L9.34159091,9.34179545 L9.34179545,9.34179545 Z M9.34179545,13.3152955 C10.3925455,13.3363636 11.4324545,13.4848636 12.4543636,13.7577273 C12.0205227,14.9023636 11.4328636,15.9901364 10.6711364,16.96725 C10.6269545,17.0241136 10.6097727,17.0907955 10.6056818,17.1576818 C10.1949545,17.2384773 9.77175,17.2816364 9.34159091,17.2992273 L9.34159091,13.3152955 L9.34179545,13.3152955 Z M6.45402273,1.08572727 C5.92997727,1.82638636 5.48284091,2.61327273 5.12693182,3.44004545 C4.74504545,3.29768182 4.16945455,3.04281818 3.54436364,2.73804545 C4.38484091,2.00515909 5.36911364,1.43570455 6.45402273,1.08572727 Z M3.01540909,3.23959091 C3.65829545,3.55888636 4.37911364,3.88984091 4.88025,4.07740909 C4.33636364,5.54195455 4.04447727,7.09527273 4.00725,8.65840909 L0.700977273,8.65840909 C0.786886364,6.55834091 1.64925,4.65831818 3.01540909,3.23959091 Z M2.52715909,14.2097727 C1.44368182,12.8663182 0.776045455,11.1798409 0.700772727,9.34179545 L4.00725,9.34179545 C4.03915909,10.6864773 4.25331818,12.0256364 4.66036364,13.3062955 C4.6485,13.3101818 4.63602273,13.3134545 4.62436364,13.3173409 C3.90109091,13.5546136 3.19806818,13.8563182 2.52715909,14.2097727 Z M2.99393182,14.7366818 C3.58629545,14.4345682 4.20361364,14.1745909 4.83913636,13.9663636 C4.85611364,13.9606364 4.8735,13.9551136 4.89027273,13.9495909 C5.28197727,14.9968636 5.80295455,15.9938182 6.45402273,16.9142727 C5.12181818,16.4847273 3.93913636,15.7260682 2.99393182,14.7366818 Z M8.65820455,17.2992273 C8.22825,17.2816364 7.80484091,17.2384773 7.39411364,17.1576818 C7.39002273,17.0907955 7.37304545,17.0241136 7.32865909,16.96725 C6.56856818,15.9921818 5.98152273,14.9066591 5.54788636,13.7644773 C6.54893182,13.4938636 7.59109091,13.3435227 8.658,13.3169318 L8.658,17.2992273 L8.65820455,17.2992273 Z M8.65820455,12.6366136 C7.51009091,12.6728182 6.38570455,12.8266364 5.3145,13.1199545 C4.92381818,11.9000455 4.71845455,10.6234773 4.68654545,9.34159091 L8.658,9.34159091 L8.658,12.6366136 L8.65820455,12.6366136 Z M8.65820455,8.65820455 L4.68675,8.65820455 C4.72397727,7.15990909 5.00768182,5.67122727 5.53540909,4.26988636 C6.54831818,4.53006818 7.59579545,4.66997727 8.65840909,4.69963636 L8.65840909,8.65820455 L8.65820455,8.65820455 Z M8.65820455,4.01665909 C7.68252273,3.98965909 6.72259091,3.86181818 5.79170455,3.62945455 C6.19568182,2.71002273 6.70418182,1.83415909 7.32886364,1.03295455 C7.37304545,0.976090909 7.39022727,0.909409091 7.39431818,0.842522727 C7.80504545,0.761727273 8.22845455,0.718568182 8.65840909,0.700977273 L8.65840909,4.01665909 L8.65820455,4.01665909 Z"
+                                        id="Shape"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <label class="sr-only" for="mobile-language-select">Select a language</label>
+                    <select id="mobile-language-select">
+                        <option>English</option>
 
-        <!-- Search bar -->
-        <div>
-            <section class="cmp-search">
-                <form class="cmp-search__form"
-                      method="get"
-                      action="${header.searchResultsPage.link}">
-                    <div class="cmp-search__field">
-                        <i class="cmp-search__icon"
-                           data-cmp-hook-search="icon"></i>
-                        <input class="cmp-search__input"
-                               type="text"
-                               name="q" placeholder="${header.placeholderText}"
-                               required="required"/>
-                    </div>
-                </form>
-            </section>
-        </div>
+                        <option>Spanish</option>
 
-        <!-- User account info -->
-        <div>
-            <div> ${header.greeting} <div id="headerGreetingTarget"></div></div>
-            <div> <a href="${header.dashboard.link}" target="${header.dashboard.target}">Dashboard</a></div>
-        </div>
+                        <option>French</option>
 
-        <!-- Language Info -->
-        <div>
-            <div data-sly-list.languageItem=${header.langItems}>
-                <span> <a href="${languageItem.link}" target="${languageItem.target}">${languageItem.label}</a></span>
+                        <option>Chinese</option>
+
+                        <option>DUTCH</option>
+                    </select>
+                </div>
             </div>
         </div>
+        <nav class="header__mobile-links">
+            <ul>
+                <li
+                    data-sly-test="${header.navItem1.label}"
+                    class="header__link-item ${header.subNavItems1 ? 'header__link-item--has-submenu' : ''}"
+                >
+                    <a
+                        href="${header.navItem1.link}"
+                        target="${header.navItem1.target}"
+                        data-sly-test="${!header.subNavItems1}"
+                    >
+                        ${header.navItem1.label}
+                    </a>
+                    <button
+                        aria-expanded="false"
+                        class="header__link-item-trigger"
+                        aria-controls="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems1}"
+                    >
+                        ${header.navItem1.label}
+                    </button>
+                    <div
+                        class="header__dropdown-container"
+                        id="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems1}"
+                    >
+                        <ul
+                            class="header__dropdown header__sub-links"
+                            data-sly-list.subNavItems1="${header.subNavItems1}"
+                        >
+                            <li class="header__dropdown-item header__dropdown-item--subemenu">
+                                <a href="${subNavItems1.link}" target="${subNavItems1.target}"
+                                    >${subNavItems1.label}</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
 
+                <li
+                    data-sly-test="${header.navItem2.label}"
+                    class="header__link-item ${header.subNavItems2 ? 'header__link-item--has-submenu' : ''}"
+                >
+                    <a
+                        href="${header.navItem2.link}"
+                        target="${header.navItem2.target}"
+                        data-sly-test="${!header.subNavItems2}"
+                    >
+                        ${header.navItem2.label}
+                    </a>
+                    <button
+                        aria-expanded="false"
+                        class="header__link-item-trigger"
+                        aria-controls="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems2}"
+                    >
+                        ${header.navItem2.label}
+                    </button>
+                    <div
+                        class="header__dropdown-container"
+                        id="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems2}"
+                    >
+                        <ul
+                            class="header__dropdown header__sub-links"
+                            data-sly-list.subNavItems2="${header.subNavItems2}"
+                        >
+                            <li class="header__dropdown-item header__dropdown-item--subemenu">
+                                <a href="${subNavItems2.link}" target="${subNavItems2.target}"
+                                    >${subNavItems2.label}</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li
+                    data-sly-test="${header.navItem3.label}"
+                    class="header__link-item ${header.subNavItems3 ? 'header__link-item--has-submenu' : ''}"
+                >
+                    <a
+                        href="${header.navItem3.link}"
+                        target="${header.navItem3.target}"
+                        data-sly-test="${!header.subNavItems3}"
+                    >
+                        ${header.navItem3.label}
+                    </a>
+                    <button
+                        aria-expanded="false"
+                        class="header__link-item-trigger"
+                        aria-controls="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems3}"
+                    >
+                        ${header.navItem3.label}
+                    </button>
+                    <div
+                        class="header__dropdown-container"
+                        id="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems3}"
+                    >
+                        <ul
+                            class="header__dropdown header__sub-links"
+                            data-sly-list.subNavItems3="${header.subNavItems3}"
+                        >
+                            <li class="header__dropdown-item header__dropdown-item--subemenu">
+                                <a href="${subNavItems3.link}" target="${subNavItems3.target}"
+                                    >${subNavItems3.label}</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li
+                    data-sly-test="${header.navItem4.label}"
+                    class="header__link-item ${header.subNavItems4 ? 'header__link-item--has-submenu' : ''}"
+                >
+                    <a
+                        href="${header.navItem4.link}"
+                        target="${header.navItem4.target}"
+                        data-sly-test="${!header.subNavItems4}"
+                    >
+                        ${header.navItem4.label}
+                    </a>
+                    <button
+                        aria-expanded="false"
+                        class="header__link-item-trigger"
+                        aria-controls="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems4}"
+                    >
+                        ${header.navItem4.label}
+                    </button>
+                    <div
+                        class="header__dropdown-container"
+                        id="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems4}"
+                    >
+                        <ul
+                            class="header__dropdown header__sub-links"
+                            data-sly-list.subNavItems4="${header.subNavItems4}"
+                        >
+                            <li class="header__dropdown-item header__dropdown-item--subemenu">
+                                <a href="${subNavItems4.link}" target="${subNavItems4.target}"
+                                    >${subNavItems4.label}</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li
+                    data-sly-test="${header.navItem5.label}"
+                    class="header__link-item ${header.subNavItems5 ? 'header__link-item--has-submenu' : ''}"
+                >
+                    <a
+                        href="${header.navItem5.link}"
+                        target="${header.navItem5.target}"
+                        data-sly-test="${!header.subNavItems5}"
+                    >
+                        ${header.navItem5.label}
+                    </a>
+                    <button
+                        aria-expanded="false"
+                        class="header__link-item-trigger"
+                        aria-controls="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems5}"
+                    >
+                        ${header.navItem5.label}
+                    </button>
+                    <div
+                        class="header__dropdown-container"
+                        id="desktop-menu-item-"
+                        data-sly-test="${header.subNavItems5}"
+                    >
+                        <ul
+                            class="header__dropdown header__sub-links"
+                            data-sly-list.subNavItems5="${header.subNavItems5}"
+                        >
+                            <li class="header__dropdown-item header__dropdown-item--subemenu">
+                                <a href="${subNavItems5.link}" target="${subNavItems5.target}"
+                                    >${subNavItems5.label}</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="header__mobile-footer" style="display: none;">
+            <div class="header__mobile-footer-social-icons">
+                <a href="#" aria-label="Visit us on Facebook">
+                    <svg
+                        class="header__mobile-footer-facebook"
+                        width="10px"
+                        height="22px"
+                        viewBox="0 0 10 22"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <title>facebook</title>
+                        <g
+                            id="Page-1"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="NavMobile2"
+                                transform="translate(-25.000000, -551.000000)"
+                                fill="#FFFFFF"
+                                fill-rule="nonzero"
+                            >
+                                <g id="facebook" transform="translate(10.000000, 542.000000)">
+                                    <path
+                                        d="M20.6130662,9.83234042 C19.116987,9.89957994 17.6713374,10.9754122 17.3519497,12.4883013 C17.0661817,13.8162818 17.2006608,15.1946919 17.167041,16.5394822 C16.4610261,16.5394822 15.771821,16.5394822 15.0658061,16.5394822 C15.0658061,17.5648848 15.0658061,18.5734776 15.0658061,19.5988802 C15.771821,19.5988802 16.4610261,19.5988802 17.167041,19.5988802 C17.167041,23.1289548 17.167041,26.6590295 17.167041,30.1891041 C18.4950215,30.1891041 19.8230019,30.1891041 21.1509824,30.1891041 C21.1509824,26.6590295 21.1509824,23.1289548 21.1509824,19.5988802 C22.1931949,19.5988802 23.2354074,19.5988802 24.2776199,19.5988802 C24.3448594,18.5734776 24.4289088,17.5648848 24.5129582,16.5562921 C23.3866963,16.5394822 22.2604344,16.5562921 21.1509824,16.5562921 C21.1509824,15.7662278 21.1341725,14.9761634 21.1509824,14.1860991 C21.1509824,13.7322324 21.5039898,13.3456052 21.9242368,13.2111261 C22.7479209,12.9589779 23.5884148,13.1943163 24.4120989,13.362415 C24.5633878,12.3033927 24.7819163,11.2611802 24.9332052,10.2021578 C23.5211753,9.8491503 22.0587158,9.76510091 20.6130662,9.83234042"
+                                        id="Path"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Visit us on LinkedIn">
+                    <svg
+                        class="header__mobile-footer-linkedin"
+                        width="22px"
+                        height="23px"
+                        viewBox="0 0 22 23"
+                        version="1.1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                    >
+                        <title>linked in</title>
+                        <g
+                            id="Page-1"
+                            stroke="none"
+                            stroke-width="1"
+                            fill="none"
+                            fill-rule="evenodd"
+                        >
+                            <g
+                                id="NavMobile2"
+                                transform="translate(-88.000000, -549.000000)"
+                                fill="#FFFFFF"
+                                fill-rule="nonzero"
+                            >
+                                <g id="linked-in" transform="translate(79.000000, 542.000000)">
+                                    <path
+                                        d="M14.0627079,14.8438989 L14.0627079,29.2307692 L9.58251256,29.2307692 L9.58251256,14.8438989 L14.0627079,14.8438989 Z M25.4013705,14.4838085 C29.9318111,14.4838085 30.7692308,17.4650226 30.7692308,21.3422757 L30.7692308,29.2307692 L26.3392806,29.2307692 L26.3388067,21.9384187 C26.3312251,20.3186823 26.2023378,18.419681 24.0112539,18.419681 C21.6832271,18.419681 21.3315108,20.2368817 21.3315108,22.1127018 L21.3315108,29.2307692 L16.8680639,29.2307692 L16.8680639,14.8438989 L21.1556527,14.8438989 L21.1556527,16.8118352 L21.2142721,16.8118352 C22.0783979,15.3276737 23.6846803,14.4345807 25.4013705,14.4838085 Z M11.8267973,7.69232114 C13.2605291,7.69232114 14.4227984,8.85460401 14.4227984,10.2883358 C14.4227984,11.7220676 13.2605291,12.8843368 11.8267973,12.8843368 C10.3930656,12.8843368 9.23078268,11.7220676 9.23078268,10.2883358 C9.22856229,9.59915108 9.50135131,8.93754927 9.98868106,8.45021952 C10.4760108,7.96288977 11.1376126,7.69010075 11.8267973,7.69232114 Z"
+                                        id="Combined-Shape"
+                                    ></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <ul class="header__mobile-footer-links">
+                <li>
+                    <a
+                        class="header__mobile-footer-link header__mobile-footer-link--external"
+                        href="#"
+                    >
+                        Newsroom
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="header__mobile-footer-link">Terms of Use</a>
+                </li>
+                <li>
+                    <a href="#" class="header__mobile-footer-link">Privacy</a>
+                </li>
+                <li>
+                    <a href="#" class="header__mobile-footer-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!-- Sign In Modal -->
+
+<div class="header__login-modal-wrapper hidden">
+    <div class="header__login-modal">
+        <button class="header__login-close-icon" aria-label="Close login modal">
+            <svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>x New</title>
+                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="NavMobile2" transform="translate(-333.000000, -20.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                        <g id="x-New" transform="translate(333.000000, 20.000000)">
+                            <path d="M14.8144416,0.470588235 C14.971014,0.470588235 15.1231596,0.52234774 15.2471679,0.61768093 L15.358748,0.71842976 C15.4555316,0.816506908 15.5294118,0.99886159 15.5294118,1.18555838 C15.5294118,1.37440602 15.4541795,1.55547344 15.3203529,1.68871708 L9.01099068,7.99999995 L15.318879,14.309812 C15.4541239,14.4444706 15.5294118,14.6255159 15.5294118,14.8144416 C15.5294118,14.971014 15.4776523,15.1231596 15.3823191,15.2471679 L15.2815702,15.358748 C15.1834931,15.4555316 15.0011384,15.5294118 14.8144416,15.5294118 C14.625594,15.5294118 14.4445266,15.4541795 14.3112829,15.3203529 L8.00000005,9.01099068 L1.69018801,15.318879 C1.55552945,15.4541239 1.37448415,15.5294118 1.18555838,15.5294118 C1.02898604,15.5294118 0.87684039,15.4776523 0.752832139,15.3823191 L0.64125201,15.2815702 C0.544468384,15.1834931 0.470588235,15.0011384 0.470588235,14.8144416 C0.470588235,14.625594 0.545820456,14.4445266 0.679647085,14.3112829 L6.98900932,8.00000005 L0.681121,1.69018801 C0.545876058,1.55552945 0.470588235,1.37448415 0.470588235,1.18555838 C0.470588235,1.02898604 0.52234774,0.87684039 0.61768093,0.752832139 L0.71842976,0.64125201 C0.816506908,0.544468384 0.99886159,0.470588235 1.18555838,0.470588235 C1.37440602,0.470588235 1.55547344,0.545820456 1.68871708,0.679647085 L7.99999995,6.98900932 L14.309812,0.681121 C14.4444706,0.545876058 14.6255159,0.470588235 14.8144416,0.470588235 Z" id="Combined-Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </button>
+        <div class="header__login-modal-content">
+            <h2 class="header__login-title">Login</h2>
+            <label class="header__email-label">Email </label>
+            <input class="header__email-input" type="email"/>
+            <label class="header__password-label">Password </label>
+            <input class="header__password-input" type="password"/>
+            <a class="header__forgot-password" href="#">Forgot your password?</a>
+            <button class="header__login-button solidigm-btn solidigm-btn--outline">Login</button>
+        </div>
     </div>
 </div>
-
-
-
