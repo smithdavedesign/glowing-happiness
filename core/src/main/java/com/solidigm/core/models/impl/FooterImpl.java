@@ -10,6 +10,8 @@ import com.solidigm.core.models.Footer;
 
 import lombok.Getter;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,7 +133,8 @@ public class FooterImpl implements Footer{
         for (String searchTag : searchTags) {
             Tag tag = tagManager.resolve(searchTag);
             String tagLabel = tag.getTitle();
-            String tagLink = searchResultsPage.concat(".html?tag=").concat(tag.getTagID());
+            String tagLink = searchResultsPage.concat(".html?tag=")
+                                .concat(URLEncoder.encode(tag.getTagID(), StandardCharsets.UTF_8));
             Link link = new Link();
             link.setLink(tagLink);
             link.setLabel(tagLabel);

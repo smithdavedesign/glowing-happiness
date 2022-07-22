@@ -233,9 +233,9 @@ public class FooterTest {
         List<Link> expected = new ArrayList<>();
         Link link1 = new Link();
         Link link2 = new Link();
-        link1.setLink("/test/search/results/page.html?tag=solidigm:products");
+        link1.setLink("/test/search/results/page.html?tag=solidigm%3Aproducts");
         link1.setLabel("Products");
-        link2.setLink("/test/search/results/page.html?tag=solidigm:products/intel");
+        link2.setLink("/test/search/results/page.html?tag=solidigm%3Aproducts%2Fintel");
         link2.setLabel("Intel");
         expected.add(link1);
         expected.add(link2);

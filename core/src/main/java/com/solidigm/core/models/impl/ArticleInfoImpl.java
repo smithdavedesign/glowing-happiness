@@ -1,0 +1,97 @@
+package com.solidigm.core.models.impl;
+
+import com.adobe.cq.export.json.ComponentExporter;
+import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.tagging.TagManager;
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
+import com.solidigm.core.beans.ArticlePage;
+import com.solidigm.core.beans.Link;
+import com.solidigm.core.models.ArticleInfo;
+import lombok.Getter;
+import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.resource.Resource;
+import org.apache.sling.models.annotations.DefaultInjectionStrategy;
+import org.apache.sling.models.annotations.Exporter;
+import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.annotation.PostConstruct;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+@Model(
+        adaptables = {Resource.class, SlingHttpServletRequest.class},
+        adapters = {ArticleInfo.class, ComponentExporter.class},
+        resourceType = ArticleInfoImpl.RESOURCE_TYPE,
+        defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL
+)
+@Exporter( //Exporter annotation that serializes the model as JSON
+        name = ExporterConstants.SLING_MODEL_EXPORTER_NAME,
+        extensions = ExporterConstants.SLING_MODEL_EXTENSION
+)
+public class ArticleInfoImpl implements ArticleInfo{
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
+
+    static final String RESOURCE_TYPE = "solidigm/components/articleinfo";
+
+    @SlingObject
+    SlingHttpServletRequest request;
+
+    @ValueMapValue
+    private String taggedArticlesPage;
+
+    @Getter
+    private String date;
+
+    @Getter
+    private String author;
+
+    @Getter
+    private List<Link> tags;
+
+    @Override
+    public String getExportedType() {
+        return RESOURCE_TYPE;
+    }
+
+    @PostConstruct
+    private void initModel() {
+        try {
+            //Init variables
+            Resource resource = request.getResource();
+            TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+            Page currentPage = request.getResourceResolver().adaptTo(PageManager.class).getContainingPage(resource);
+            ArticlePage articlePage = currentPage.getContentResource().adaptTo(ArticlePage.class);
+
+            //Set author
+            author = articlePage.getArticleAuthor();
+
+            //Set date
+            SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd, yyyy");
+            date = formatter.format(articlePage.getArticleDate());
+
+            //Set tags
+            Link categoryTagLink = new Link();
+            categoryTagLink.setLink(taggedArticlesPage.concat(".html?tag=").concat(articlePage.getArticleCategory()));
+            categoryTagLink.setLabel(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+            tags = new ArrayList<>();
+            tags.add(categoryTagLink);
+            for (String tag : articlePage.getArticleTags()) {
+                Link link = new Link();
+                link.setLink(taggedArticlesPage.concat(".html?tag=")
+                        .concat(URLEncoder.encode(tag, StandardCharsets.UTF_8)));
+                link.setLabel(tagManager.resolve(tag).getTitle());
+                tags.add(link);
+            }
+        } catch (NullPointerException e) {
+            log.error("Error generating article info", e);
+        }
+    }
+}
