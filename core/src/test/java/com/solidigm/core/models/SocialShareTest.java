@@ -64,7 +64,7 @@ public class SocialShareTest {
         Mockito.when(secondHit.getPath()).thenReturn("/content/solidigm/articlePage2");
         ctx.registerService(QueryBuilder.class, queryBuilder);
 
-        //Load ctx for ArticleList Model
+        //Load ctx for SocialShare Model
         ctx.addModelsForClasses(SocialShare.class);
         ctx.load().json("/com/solidigm/core/models/SocialShareTest.json", "/content/solidigm");
     }

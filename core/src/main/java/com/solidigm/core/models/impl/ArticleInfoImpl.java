@@ -9,6 +9,7 @@ import com.solidigm.core.beans.ArticlePage;
 import com.solidigm.core.beans.Link;
 import com.solidigm.core.models.ArticleInfo;
 import lombok.Getter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -74,21 +75,25 @@ public class ArticleInfoImpl implements ArticleInfo{
             author = articlePage.getArticleAuthor();
 
             //Set date
-            SimpleDateFormat formatter = new SimpleDateFormat("MMMM dd, yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("MMMM d, yyyy");
             date = formatter.format(articlePage.getArticleDate());
 
             //Set tags
-            Link categoryTagLink = new Link();
-            categoryTagLink.setLink(taggedArticlesPage.concat(".html?tag=").concat(articlePage.getArticleCategory()));
-            categoryTagLink.setLabel(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
-            tags = new ArrayList<>();
-            tags.add(categoryTagLink);
-            for (String tag : articlePage.getArticleTags()) {
-                Link link = new Link();
-                link.setLink(taggedArticlesPage.concat(".html?tag=")
-                        .concat(URLEncoder.encode(tag, StandardCharsets.UTF_8)));
-                link.setLabel(tagManager.resolve(tag).getTitle());
-                tags.add(link);
+            if(StringUtils.isNotEmpty(taggedArticlesPage)) {
+                Link categoryTagLink = new Link();
+                categoryTagLink.setLink(taggedArticlesPage.concat(".html?tag=")
+                                                .concat(URLEncoder.encode(articlePage.getArticleCategory(),
+                                                                          StandardCharsets.UTF_8)));
+                categoryTagLink.setLabel(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+                tags = new ArrayList<>();
+                tags.add(categoryTagLink);
+                for (String tag : articlePage.getArticleTags()) {
+                    Link link = new Link();
+                    link.setLink(taggedArticlesPage.concat(".html?tag=")
+                            .concat(URLEncoder.encode(tag, StandardCharsets.UTF_8)));
+                    link.setLabel(tagManager.resolve(tag).getTitle());
+                    tags.add(link);
+                }
             }
         } catch (NullPointerException e) {
             log.error("Error generating article info", e);
