@@ -15,12 +15,14 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -45,6 +47,10 @@ public class ArticleInfoImpl implements ArticleInfo{
     @SlingObject
     SlingHttpServletRequest request;
 
+    @Inject
+    @Source("script-bindings")
+    Page currentPage;
+
     @ValueMapValue
     private String taggedArticlesPage;
 
@@ -66,9 +72,7 @@ public class ArticleInfoImpl implements ArticleInfo{
     private void initModel() {
         try {
             //Init variables
-            Resource resource = request.getResource();
             TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
-            Page currentPage = request.getResourceResolver().adaptTo(PageManager.class).getContainingPage(resource);
             ArticlePage articlePage = currentPage.getContentResource().adaptTo(ArticlePage.class);
 
             //Set author
