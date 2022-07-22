@@ -9,6 +9,8 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
+import com.solidigm.core.services.SocialService;
+import com.solidigm.core.services.impl.SocialServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import lombok.SneakyThrows;
@@ -22,7 +24,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //This unit test does not test the query performed by this component, to validate query logic got to:
 // (AEM)/libs/cq/search/content/querydebug.html
@@ -64,6 +68,12 @@ public class SocialShareTest {
         Mockito.when(secondHit.getPath()).thenReturn("/content/solidigm/articlePage2");
         ctx.registerService(QueryBuilder.class, queryBuilder);
 
+        //Configure and register SocialService
+        Map<String, Object> socialConfig = new HashMap<>();
+        socialConfig.put("getTwitterUrl", "https://twitter.com/test?page=");
+        socialConfig.put("getLinkedInUrl", "https://linkedin.com/test?page=");
+        ctx.registerInjectActivateService(new SocialServiceImpl(), socialConfig);
+
         //Load ctx for ArticleList Model
         ctx.addModelsForClasses(SocialShare.class);
         ctx.load().json("/com/solidigm/core/models/SocialShareTest.json", "/content/solidigm");
@@ -100,6 +110,22 @@ public class SocialShareTest {
         SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
         assertTrue(StringUtils.isEmpty(socialShare.getNext()));
         assertTrue(StringUtils.isEmpty(socialShare.getPrevious()));
+    }
+
+    @Test
+    public void testTwitterShare(){
+        String expected = "https://twitter.com/test?page=http%3A%2F%2Flocalhost%2F";
+        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
+        assertEquals(expected, socialShare.getTwitterShare());
+    }
+
+    @Test
+    public void testLinkedInShare(){
+        String expected = "https://linkedin.com/test?page=http%3A%2F%2Flocalhost%2F";
+        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
+        assertEquals(expected, socialShare.getLinkedInShare());
     }
 
     @Test
