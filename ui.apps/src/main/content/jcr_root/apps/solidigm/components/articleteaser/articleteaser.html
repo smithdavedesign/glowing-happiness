@@ -1,0 +1,23 @@
+<div data-sly-use.articleTeaser="com.solidigm.core.models.ArticleTeaser"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${articleTeaser.hasContent}">
+    <p>
+        Image: ${articleTeaser.article.teaserImage}
+    </p>
+    <p>
+        Alt Text: ${articleTeaser.article.teaserImageAltText}
+    </p>
+    <p>
+        Title: ${articleTeaser.article.articleTitle}
+    </p>
+    <p>
+        category: ${articleTeaser.article.teaserCategory}
+    </p>
+    <p>
+        description: ${articleTeaser.article.description}
+    </p>
+    <p>
+        <a href="${articleTeaser.article.path}.html" target="_self">Link to article: ${articleTeaser.article.path}</a>
+    </p>
+</div>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>

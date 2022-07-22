@@ -102,7 +102,7 @@ public class ArticleListTest {
     }
 
     @Test
-    void testNoContentAuthored(){
+    void testHasContentAuthored(){
         ctx.currentResource("/content/articleListAuthored");
         ArticleList articleList = ctx.request().adaptTo(ArticleList.class);
         assertTrue(articleList.hasContent());

@@ -7,6 +7,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticlePage {
@@ -25,6 +26,11 @@ public class ArticlePage {
     @Inject
     @Getter
     private String teaserImage;
+
+    @Inject
+    @Named("jcr:description")
+    @Getter
+    private String description;
 
     @Inject
     @Getter
