@@ -84,17 +84,14 @@ public class ArticleInfoImpl implements ArticleInfo{
 
             //Set tags
             if(StringUtils.isNotEmpty(taggedArticlesPage)) {
-                Link categoryTagLink = new Link();
-                categoryTagLink.setLink(taggedArticlesPage.concat(".html?tag=")
-                                                .concat(URLEncoder.encode(articlePage.getArticleCategory(),
-                                                                          StandardCharsets.UTF_8)));
-                categoryTagLink.setLabel(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
                 tags = new ArrayList<>();
-                tags.add(categoryTagLink);
                 for (String tag : articlePage.getArticleTags()) {
                     Link link = new Link();
-                    link.setLink(taggedArticlesPage.concat(".html?tag=")
-                            .concat(URLEncoder.encode(tag, StandardCharsets.UTF_8)));
+                    link.setLink(
+                        taggedArticlesPage.concat(".")
+                        .concat(URLEncoder.encode(tag, StandardCharsets.UTF_8))
+                        .concat(".html")
+                    );
                     link.setLabel(tagManager.resolve(tag).getTitle());
                     tags.add(link);
                 }

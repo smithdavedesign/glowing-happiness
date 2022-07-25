@@ -45,9 +45,9 @@ public class ArticleInfoTest {
         List<Link> actual = articleInfo.getTags();
         assertEquals(2, actual.size());
         assertEquals("Products", actual.get(0).getLabel());
-        assertEquals("/content/tagged/articles/page.html?tag=solidigm%3Aproducts", actual.get(0).getLink());
+        assertEquals("/content/tagged/articles/page.solidigm%3Aproducts.html", actual.get(0).getLink());
         assertEquals("Intel", actual.get(1).getLabel());
-        assertEquals("/content/tagged/articles/page.html?tag=solidigm%3Aproducts%2Fintel", actual.get(1).getLink());
+        assertEquals("/content/tagged/articles/page.solidigm%3Aproducts%2Fintel.html", actual.get(1).getLink());
     }
 
     @Test

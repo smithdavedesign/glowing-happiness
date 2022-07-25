@@ -17,6 +17,7 @@
       "articleAuthor": "Test Author",
       "articleDate": "2022-07-05T00:00:00.000-04:00",
       "cq:tags": [
+        "solidigm:products",
         "solidigm:products/intel"
       ],
       "sling:resourceType": "solidigm/components/page/articlePage",

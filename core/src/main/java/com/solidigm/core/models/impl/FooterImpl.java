@@ -133,8 +133,8 @@ public class FooterImpl implements Footer{
         for (String searchTag : searchTags) {
             Tag tag = tagManager.resolve(searchTag);
             String tagLabel = tag.getTitle();
-            String tagLink = searchResultsPage.concat(".html?tag=")
-                                .concat(URLEncoder.encode(tag.getTagID(), StandardCharsets.UTF_8));
+            String tagLink = searchResultsPage.concat(".")
+                    .concat(URLEncoder.encode(tag.getTagID(), StandardCharsets.UTF_8).concat(".html"));
             Link link = new Link();
             link.setLink(tagLink);
             link.setLabel(tagLabel);

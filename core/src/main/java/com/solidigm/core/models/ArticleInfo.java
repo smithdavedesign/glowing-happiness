@@ -28,8 +28,7 @@ public interface ArticleInfo extends ComponentExporter {
     }
 
     /**
-     * Returns List of Links for the tags of the article, always starting with the category tag,
-     * links to tagged articles page querying selected tag
+     * Returns List of Links for the tags of the article, links to tagged articles page querying selected tag
      *
      * @return List<Link>
      */
