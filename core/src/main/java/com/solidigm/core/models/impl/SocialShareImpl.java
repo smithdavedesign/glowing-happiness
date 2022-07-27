@@ -116,7 +116,7 @@ public class SocialShareImpl implements SocialShare {
         //Create the next article query params
         Map<String, String> nextMap = new HashMap<>();
         nextMap.put("orderby.sort", "asc");
-        nextMap.put("daterange.property", "@jcr:content/articleDate");
+        nextMap.put("daterange.property", "jcr:content/articleDate");
         nextMap.put("daterange.lowerBound", currentPage.getProperties().get("articleDate", String.class));
         nextMap.put("daterange.lowerOperation", ">=");
         nextMap.putAll(queryMap);
@@ -124,7 +124,7 @@ public class SocialShareImpl implements SocialShare {
         //Create the previous article query params
         Map<String, String> prevMap = new HashMap<>();
         prevMap.put("orderby.sort", "desc");
-        prevMap.put("daterange.property", "@jcr:content/articleDate");
+        prevMap.put("daterange.property", "jcr:content/articleDate");
         prevMap.put("daterange.upperBound", currentPage.getProperties().get("articleDate", String.class));
         prevMap.put("daterange.upperOperation", "<=");
         prevMap.putAll(queryMap);

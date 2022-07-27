@@ -1,9 +1,9 @@
 package com.solidigm.core.servlets;
 
 import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
+import com.day.cq.search.result.SearchResult;
 import com.day.cq.tagging.TagManager;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -86,32 +86,36 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         //Verify and set tag param
         String tag = tagParam == null ? "" : tagParam.getString();
 
-        //Build total articles query
+        //Build the articles query
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("path", "/content/solidigm");
         queryMap.put("type", "cq:Page");
-        queryMap.put("1_property", "jcr:content/cq:template");
-        queryMap.put("1_property.operation", "equals");
-        queryMap.put("1_property.value", ARTICLE_TEMPLATE);
-        queryMap.put("orderby", "@jcr:content/articleDate");
-        if(StringUtils.isNotEmpty(tag)) {
-            queryMap.put("2_property", "jcr:content/articleCategory");
-            queryMap.put("2_property.operation", "equals");
-            queryMap.put("2_property.value", tag);
-        }
-
-        //Execute the query and process the results
-        JsonArray articlesArray = new JsonArray();
-        Session session = resourceResolver.adaptTo(Session.class);
-        Query query = queryBuilder.createQuery(PredicateGroup.create(queryMap), session);
-        long totalMatches = query.getResult().getTotalMatches();
-        int totalPages = (int) Math.ceil((double)totalMatches / articlesPerPage);
-
-        //Modify the query and perform it for pagination; process the results
+        queryMap.put("property", "jcr:content/cq:template");
+        queryMap.put("property.operation", "equals");
+        queryMap.put("property.value", ARTICLE_TEMPLATE);
+        queryMap.put("orderby", "jcr:content/articleDate");
+        queryMap.put("orderby.sort", "desc");
         queryMap.put("p.limit", String.valueOf(articlesPerPage));
         queryMap.put("p.offset", String.valueOf(articlesPerPage * (page - 1)));
-        query = queryBuilder.createQuery(PredicateGroup.create(queryMap), session);
-        List<Hit> hits = query.getResult().getHits();
+        if(StringUtils.isNotEmpty(tag)) {
+            queryMap.put("group.p.or", "true");
+            queryMap.put("group.1_group.property", "jcr:content/articleCategory");
+            queryMap.put("group.1_group.property.operation", "equals");
+            queryMap.put("group.1_group.property.value", tag);
+            queryMap.put("group.2_group.property", "jcr:content/cq:tags");
+            queryMap.put("group.2_group.property.operation", "equals");
+            queryMap.put("group.2_group.property.value", tag);
+        }
+
+        //Execute the query and evaluate the results
+        Session session = resourceResolver.adaptTo(Session.class);
+        SearchResult result = queryBuilder.createQuery(PredicateGroup.create(queryMap), session).getResult();
+        long totalMatches = result.getTotalMatches();
+        int totalPages = (int) Math.ceil((double) totalMatches / articlesPerPage);
+
+        //Iterate through the hits, processing each article page and adding them to the JSON Array
+        List<Hit> hits = result.getHits();
+        JsonArray articlesArray = new JsonArray();
         for (Hit hit : hits) {
             try {
                 String articlePath = hit.getPath();
