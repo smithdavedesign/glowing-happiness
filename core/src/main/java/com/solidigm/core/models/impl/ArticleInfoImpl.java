@@ -4,10 +4,10 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 import com.solidigm.core.beans.ArticlePage;
 import com.solidigm.core.beans.Link;
 import com.solidigm.core.models.ArticleInfo;
+import com.solidigm.core.utils.TagUtil;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
@@ -23,8 +23,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +87,7 @@ public class ArticleInfoImpl implements ArticleInfo{
                     Link link = new Link();
                     link.setLink(
                         taggedArticlesPage.concat(".")
-                        .concat(URLEncoder.encode(tag, StandardCharsets.UTF_8))
+                        .concat(TagUtil.encodeID(tag))
                         .concat(".html")
                     );
                     link.setLabel(tagManager.resolve(tag).getTitle());

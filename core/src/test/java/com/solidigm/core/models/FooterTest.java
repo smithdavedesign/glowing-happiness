@@ -235,7 +235,7 @@ public class FooterTest {
         Link link2 = new Link();
         link1.setLink("/test/search/results/page.solidigm%3Aproducts.html");
         link1.setLabel("Products");
-        link2.setLink("/test/search/results/page.solidigm%3Aproducts%2Fintel.html");
+        link2.setLink("/test/search/results/page.solidigm%3Aproducts--intel.html");
         link2.setLabel("Intel");
         expected.add(link1);
         expected.add(link2);
