@@ -1,0 +1,13 @@
+<div data-sly-use.articleinfo="com.solidigm.core.models.ArticleInfo">
+    <p>
+        Author: ${articleinfo.author}
+    </p>
+    <p>
+        Date: ${articleinfo.date}
+    </p>
+    <ul data-sly-list.tag="${articleinfo.tags}">
+        <li>
+            Tag label: ${tag.label}
+            Tag link: ${tag.link}
+        </li>
+    </ul>

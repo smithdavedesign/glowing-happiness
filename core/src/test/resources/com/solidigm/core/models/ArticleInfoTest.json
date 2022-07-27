@@ -1,0 +1,105 @@
+{
+  "articlePage": {
+    "jcr:primaryType": "cq:Page",
+    "jcr:createdBy": "admin",
+    "jcr:created": "Tue Jul 12 2022 11:33:27 GMT-0400",
+    "jcr:content": {
+      "jcr:primaryType": "cq:PageContent",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Article Page",
+      "cq:template": "/conf/solidigm/settings/wcm/templates/article-page",
+      "articleTitle": "Test Article Title",
+      "cq:contextHubSegmentsPath": "/etc/segmentation/contexthub",
+      "jcr:created": "Tue Jul 12 2022 11:40:27 GMT-0400",
+      "cq:lastModified": "Wed Jul 13 2022 13:38:17 GMT-0400",
+      "teaserImageAltText": "Test Alt",
+      "articleCategory": "solidigm:products",
+      "articleAuthor": "Test Author",
+      "articleDate": "2022-07-05T00:00:00.000-04:00",
+      "cq:tags": [
+        "solidigm:products",
+        "solidigm:products/intel"
+      ],
+      "sling:resourceType": "solidigm/components/page/articlePage",
+      "cq:contextHubPath": "/etc/cloudsettings/default/contexthub",
+      "teaserImage": "test/image",
+      "cq:lastModifiedBy": "admin",
+      "root": {
+        "jcr:primaryType": "nt:unstructured",
+        "layout": "responsiveGrid",
+        "sling:resourceType": "solidigm/components/container",
+        "container": {
+          "jcr:primaryType": "nt:unstructured",
+          "layout": "responsiveGrid",
+          "sling:resourceType": "solidigm/components/container",
+          "articleinfo": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:createdBy": "admin",
+            "jcr:lastModifiedBy": "admin",
+            "jcr:created": "Thu Jul 14 2022 09:23:29 GMT-0400",
+            "jcr:lastModified": "Thu Jul 14 2022 09:23:29 GMT-0400",
+            "sling:resourceType": "solidigm/components/articleinfo",
+            "taggedArticlesPage": "/content/tagged/articles/page"
+          },
+          "articleinfoempty": {
+            "jcr:primaryType": "nt:unstructured",
+            "jcr:createdBy": "admin",
+            "jcr:lastModifiedBy": "admin",
+            "jcr:created": "Thu Jul 14 2022 09:23:29 GMT-0400",
+            "jcr:lastModified": "Thu Jul 14 2022 09:23:29 GMT-0400",
+            "sling:resourceType": "solidigm/components/articleinfo"
+          }
+        }
+      }
+    }
+  },
+  "cq:tags": {
+    "jcr:primaryType": "sling:Folder",
+    "jcr:mixinTypes": [
+      "sling:Redirect",
+      "rep:AccessControllable"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:title": "Tags",
+    "hidden": true,
+    "sling:target": "/tagging",
+    "jcr:created": "Thu Jun 02 2022 13:48:07 GMT-0400",
+    "sling:resourceType": "sling:redirect",
+    "languages": [
+      "en",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt_br",
+      "zh_cn",
+      "zh_tw",
+      "ja",
+      "ko_kr"
+    ],
+    "solidigm": {
+      "jcr:primaryType": "cq:Tag",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Solidigm",
+      "jcr:created": "Thu Jun 23 2022 13:04:46 GMT-0400",
+      "jcr:description": "",
+      "sling:resourceType": "cq/tagging/components/tag",
+      "products": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:createdBy": "admin",
+        "jcr:title": "Products",
+        "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
+        "jcr:description": "",
+        "sling:resourceType": "cq/tagging/components/tag",
+        "intel": {
+          "jcr:primaryType": "cq:Tag",
+          "jcr:createdBy": "admin",
+          "jcr:title": "Intel",
+          "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+          "jcr:description": "",
+          "sling:resourceType": "cq/tagging/components/tag"
+        }
+      }
+    }
+  }
+}

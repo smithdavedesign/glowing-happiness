@@ -8,6 +8,7 @@ import org.apache.sling.models.annotations.Model;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Date;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticlePage {
@@ -21,7 +22,11 @@ public class ArticlePage {
 
     @Inject
     @Getter
-    private String articleDate;
+    private Date articleDate;
+
+    @Inject
+    @Getter
+    private String articleAuthor;
 
     @Inject
     @Getter
@@ -36,6 +41,11 @@ public class ArticlePage {
     @Getter
     @Setter
     private String teaserImageAltText;
+
+    @Inject
+    @Named("cq:tags")
+    @Getter
+    private String[] articleTags;
 
     @Getter
     @Setter
