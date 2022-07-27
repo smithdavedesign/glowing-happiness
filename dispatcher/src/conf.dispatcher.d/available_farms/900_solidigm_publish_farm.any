@@ -7,7 +7,7 @@
 	}
 	## hostname globbing for farm selection (virtual domain addressing)
 	/virtualhosts {
-		$include "/etc/httpd/conf.dispatcher.d/vhosts/newco_publish_vhosts.any"
+		$include "/etc/httpd/conf.dispatcher.d/vhosts/solidigm_publish_vhosts.any"
 	}
 	## the load will be balanced among these render instances
 	/renders {
@@ -17,7 +17,7 @@
 	## the glob pattern is matched against the first request line
 	/filter {
     $include "/etc/httpd/conf.dispatcher.d/filters/ams_publish_filters.any"
-    $include "/etc/httpd/conf.dispatcher.d/filters/newco_publish_filters.any"
+    $include "/etc/httpd/conf.dispatcher.d/filters/solidigm_publish_filters.any"
 	}
 	## if the package is installed on publishers to generate a list of all content with a vanityurl attached
 	## this section will auto-allow the items to bypass the normal dispatcher filters
