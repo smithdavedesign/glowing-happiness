@@ -47,7 +47,7 @@ public class ArticleInfoTest {
         assertEquals("Products", actual.get(0).getLabel());
         assertEquals("/content/tagged/articles/page.solidigm%3Aproducts.html", actual.get(0).getLink());
         assertEquals("Intel", actual.get(1).getLabel());
-        assertEquals("/content/tagged/articles/page.solidigm%3Aproducts%2Fintel.html", actual.get(1).getLink());
+        assertEquals("/content/tagged/articles/page.solidigm%3Aproducts--intel.html", actual.get(1).getLink());
     }
 
     @Test
