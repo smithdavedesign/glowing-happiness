@@ -1,6 +1,12 @@
 <div data-sly-use.taggedArticles="com.solidigm.core.models.TaggedArticles">
     <h1>Tagged Articles</h1>
     <p>
-        Selector: ${taggedArticles.getSelectorTag}
+        Selector: ${taggedArticles.selectorTag}
     </p>
+    <ul data-sly-list.tag="${taggedArticles.dropdownTags}">
+        <li>
+            Tag: ${tag.title}
+            Tag ID: ${tag.tagID}
+        </li>
+    </ul>
 </div>
