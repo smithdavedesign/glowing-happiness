@@ -32,19 +32,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.solidigm.core.utils.SolidigmConstants.ARTICLE_TEMPLATE;
+
 /**
- * Servlet that takes the current page, articles per page, and selected tag of the taggedArticles component.
+ * Servlet that takes the root path, current page, results per page, and selected tag of the taggedArticles component.
  * It then returns any article pages matching that tag, offset by the current page * articles per page, only returns
  * an amount equal to articles per page of articles at a time.
+ *
+ * Parameters:
+ * rootPath (Required) {String}: the localized root path of the site to search on
+ * currentPage (Default: 0) {int}: the index of the current page of results
+ * resultsPerPage (Default: 10) {int}: the number of results to display on a single page of results
+ * tag (Optional) {String}: the tag to filter the results by
+ *
+ * Returns:
+ * rootPath {String}: copy of what was sent
+ * currentPage {int}: copy of what was sent
+ * resultsPerPage {int}: copy of what was sent
+ * tag {String}: copy of what was sent
+ * totalMatches {int}: the total number of matches the query found
+ * totalPages {int}: the total number of pages that the query would display given the provided results per page
+ * results {Array}: list of result objects with properties for image, title, link, tag, and alt text
  */
 @Component(service = { Servlet.class })
 @SlingServletPaths("/bin/solidigm/taggedArticles")
-@ServiceDescription("Simple Demo Servlet")
+@ServiceDescription("Tagged Articles Servlet Servlet")
 public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
     private static final int DEFAULT_PAGE = 1;
     private static final int DEFAULT_ARTICLES_PER_PAGE = 10;
-    private static final String ARTICLE_TEMPLATE = "/conf/solidigm/settings/wcm/templates/article-page";
 
     @Reference
     private QueryBuilder queryBuilder;
@@ -55,8 +71,9 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         ResourceResolver resourceResolver = req.getResourceResolver();
 
         //Get request params
+        RequestParameter rootPathParam = req.getRequestParameter("rootPath");
         RequestParameter pageParam = req.getRequestParameter("page");
-        RequestParameter articlesPerPageParam = req.getRequestParameter("articlesPerPage");
+        RequestParameter resultsPerPageParam = req.getRequestParameter("resultsPerPage");
         RequestParameter tagParam = req.getRequestParameter("tag");
 
         //Verify and process page param
@@ -71,15 +88,15 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
             }
         }
 
-        //Verify and process articlesPerPage param
-        int articlesPerPage = DEFAULT_ARTICLES_PER_PAGE;
-        if (articlesPerPageParam != null) {
+        //Verify and process resultsPerPage param
+        int resultsPerPage = DEFAULT_ARTICLES_PER_PAGE;
+        if (resultsPerPageParam != null) {
             try {
-                if(Integer.parseInt(articlesPerPageParam.getString()) > 0) {
-                    articlesPerPage = Integer.parseInt(articlesPerPageParam.getString());
+                if(Integer.parseInt(resultsPerPageParam.getString()) > 0) {
+                    resultsPerPage = Integer.parseInt(resultsPerPageParam.getString());
                 }
             } catch (NumberFormatException e) {
-                log.error("TaggedArticlesServlet: unable to convert requested articlesPerPage to integer", e);
+                log.error("TaggedArticlesServlet: unable to convert requested resultsPerPage to integer", e);
             }
         }
 
@@ -93,10 +110,10 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         queryMap.put("property", "jcr:content/cq:template");
         queryMap.put("property.operation", "equals");
         queryMap.put("property.value", ARTICLE_TEMPLATE);
-        queryMap.put("orderby", "jcr:content/articleDate");
+        queryMap.put("orderby", "@jcr:content/date");
         queryMap.put("orderby.sort", "desc");
-        queryMap.put("p.limit", String.valueOf(articlesPerPage));
-        queryMap.put("p.offset", String.valueOf(articlesPerPage * (page - 1)));
+        queryMap.put("p.limit", String.valueOf(resultsPerPage));
+        queryMap.put("p.offset", String.valueOf(resultsPerPage * (page - 1)));
         if(StringUtils.isNotEmpty(tag)) {
             queryMap.put("group.p.or", "true");
             queryMap.put("group.1_group.property", "jcr:content/articleCategory");
@@ -111,11 +128,11 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         Session session = resourceResolver.adaptTo(Session.class);
         SearchResult result = queryBuilder.createQuery(PredicateGroup.create(queryMap), session).getResult();
         long totalMatches = result.getTotalMatches();
-        int totalPages = (int) Math.ceil((double) totalMatches / articlesPerPage);
+        int totalPages = (int) Math.ceil((double) totalMatches / resultsPerPage);
 
         //Iterate through the hits, processing each article page and adding them to the JSON Array
         List<Hit> hits = result.getHits();
-        JsonArray articlesArray = new JsonArray();
+        JsonArray resultsArray = new JsonArray();
         for (Hit hit : hits) {
             try {
                 String articlePath = hit.getPath();
@@ -124,26 +141,26 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
                     if (articlePageResource != null) {
                         //Get article page properties and add to json array
                         ArticlePage articlePage = articlePageResource.adaptTo(ArticlePage.class);
-                        JsonObject articleProps = new JsonObject();
-                        articleProps.addProperty("teaserImage", articlePage.getTeaserImage());
-                        articleProps.addProperty("articleTitle", articlePage.getArticleTitle());
-                        articleProps.addProperty("articleLink", articlePath.concat(".html"));
+                        JsonObject resultProps = new JsonObject();
+                        resultProps.addProperty("teaserImage", articlePage.getTeaserImage());
+                        resultProps.addProperty("articleTitle", articlePage.getArticleTitle());
+                        resultProps.addProperty("articleLink", articlePath.concat(".html"));
 
                         //Resolve category tag title
                         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-                        articleProps.addProperty("categoryTag",
+                        resultProps.addProperty("categoryTag",
                                                  tagManager.resolve(articlePage.getArticleCategory()).getTitle());
 
                         //Get alt text from DAM if it is not set for page
                         if(StringUtils.isEmpty(articlePage.getTeaserImageAltText())
                             && StringUtils.isNotEmpty(articlePage.getTeaserImage())) {
-                            articleProps.addProperty("altText", ImageUtil.getAltTextFromDAM(resourceResolver,
+                            resultProps.addProperty("altText", ImageUtil.getAltTextFromDAM(resourceResolver,
                                                                                             articlePage.getTeaserImage()));
                         } else {
-                            articleProps.addProperty("altText", articlePage.getTeaserImageAltText());
+                            resultProps.addProperty("altText", articlePage.getTeaserImageAltText());
                         }
 
-                        articlesArray.add(articleProps);
+                        resultsArray.add(resultProps);
                     }
                 }
             } catch (RepositoryException e) {
@@ -154,11 +171,11 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         //Build response JSON
         JsonObject responseObject = new JsonObject();
         responseObject.addProperty("page", page);
-        responseObject.addProperty("articlesPerPage", articlesPerPage);
+        responseObject.addProperty("resultsPerPage", resultsPerPage);
         responseObject.addProperty("tag", tag);
         responseObject.addProperty("totalMatches", totalMatches);
         responseObject.addProperty("totalPages", totalPages);
-        responseObject.add("articles", articlesArray);
+        responseObject.add("results", resultsArray);
 
         resp.setContentType("application/json");
         resp.getWriter().write(responseObject.toString());

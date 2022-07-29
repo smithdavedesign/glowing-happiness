@@ -18,6 +18,8 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.solidigm.core.utils.SolidigmConstants.SOLIDIGM_ARTICLE_CATEGORY_TAGS;
+
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
         adapters = {TaggedArticles.class, ComponentExporter.class},
@@ -30,7 +32,6 @@ import java.util.List;
 )
 public class TaggedArticlesImpl implements TaggedArticles {
     static final String RESOURCE_TYPE = "solidigm/components/taggedarticles";
-    static final String SOLIDIGM_ARTICLE_CATEGORY_TAGS = "/content/cq:tags/solidigm/articles/categories";
 
     @SlingObject
     SlingHttpServletRequest request;

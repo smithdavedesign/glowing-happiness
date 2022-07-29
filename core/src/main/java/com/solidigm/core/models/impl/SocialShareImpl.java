@@ -32,6 +32,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.solidigm.core.utils.SolidigmConstants.*;
+
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
         adapters = {SocialShare.class, ComponentExporter.class},
@@ -46,12 +48,6 @@ public class SocialShareImpl implements SocialShare {
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
     static final String RESOURCE_TYPE = "solidigm/components/socialshare";
-
-    static final String ARTICLE_TEMPLATE = "/conf/solidigm/settings/wcm/templates/article-page";
-
-    static final String EVENT_TEMPLATE = "/conf/solidigm/settings/wcm/templates/event-page";
-
-    static final int HOME_NAVIGATION_LEVEL = 5;
 
     @SlingObject
     SlingHttpServletRequest request;
