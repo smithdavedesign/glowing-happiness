@@ -21,6 +21,7 @@ public class ArticlePage {
     private String articleCategory;
 
     @Inject
+    @Named("date")
     @Getter
     private Date articleDate;
 
