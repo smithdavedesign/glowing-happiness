@@ -42,7 +42,7 @@ import static com.solidigm.core.utils.SolidigmConstants.EVENT_TEMPLATE;
  *
  * Parameters:
  * rootPath (Required) {String}: the localized root path of the site to search on
- * currentPage (Default: 0) {int}: the index of the current page of results
+ * currentPage (Default: 1) {int}: the index of the current page of results
  * resultsPerPage (Default: 10) {int}: the number of results to display on a single page of results
  * tag (Optional) {String}: the tag to filter the results by
  *
