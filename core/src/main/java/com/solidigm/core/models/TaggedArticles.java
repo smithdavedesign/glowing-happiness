@@ -12,6 +12,15 @@ import java.util.List;
 public interface TaggedArticles extends ComponentExporter {
 
     /**
+     * Returns the root path for the localized site
+     *
+     * @return String
+     */
+    default String getRootPath() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns the queried tag in the selector if it exists
      *
      * @return String

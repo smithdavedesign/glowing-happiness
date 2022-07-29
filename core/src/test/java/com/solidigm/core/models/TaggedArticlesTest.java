@@ -25,7 +25,7 @@ public class TaggedArticlesTest {
     @Test
     void testGetSelectorTag() {
         String expected = "solidigm:products/intel";
-        ctx.currentResource("/content/taggedArticles");
+        ctx.currentResource("/content/solidigm/us/en/taggedArticles");
         ctx.requestPathInfo().setSelectorString("solidigm%3Aproducts--intel");
         TaggedArticles taggedArticles = ctx.request().adaptTo(TaggedArticles.class);
         assertEquals(expected, taggedArticles.getSelectorTag());
@@ -33,7 +33,7 @@ public class TaggedArticlesTest {
 
     @Test
     void testGetDropdownTags() {
-        ctx.currentResource("/content/taggedArticles");
+        ctx.currentResource("/content/solidigm/us/en/taggedArticles");
         TaggedArticles taggedArticles = ctx.request().adaptTo(TaggedArticles.class);
         List<Tag> actual = taggedArticles.getDropdownTags();
         assertEquals(2, actual.size());
@@ -46,7 +46,7 @@ public class TaggedArticlesTest {
     @Test
     void testGetExportedType() {
         String expected = "solidigm/components/taggedarticles";
-        ctx.currentResource("/content/taggedArticles");
+        ctx.currentResource("/content/solidigm/us/en/taggedArticles");
         TaggedArticles taggedArticles = ctx.request().adaptTo(TaggedArticles.class);
         assertEquals(expected, taggedArticles.getExportedType());
     }

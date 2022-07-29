@@ -1,7 +1,13 @@
 {
-  "taggedArticles": {
-    "jcr:primaryType": "nt:unstructured",
-    "sling:resourceType": "solidigm/components/taggedarticles"
+  "solidigm": {
+    "us": {
+      "en": {
+        "taggedArticles": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "solidigm/components/taggedarticles"
+        }
+      }
+    }
   },
   "cq:tags": {
     "jcr:primaryType": "sling:Folder",

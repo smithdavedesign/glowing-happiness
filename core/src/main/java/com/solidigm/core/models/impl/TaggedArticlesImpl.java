@@ -4,20 +4,25 @@ import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
+import com.day.cq.wcm.api.Page;
 import com.solidigm.core.models.TaggedArticles;
 import com.solidigm.core.utils.TagUtil;
 import lombok.Getter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.solidigm.core.utils.SolidigmConstants.HOME_NAVIGATION_LEVEL;
 import static com.solidigm.core.utils.SolidigmConstants.SOLIDIGM_ARTICLE_CATEGORY_TAGS;
 
 @Model(
@@ -36,6 +41,13 @@ public class TaggedArticlesImpl implements TaggedArticles {
     @SlingObject
     SlingHttpServletRequest request;
 
+    @Inject
+    @Source("script-bindings")
+    Page currentPage;
+
+    @Getter
+    private String rootPath;
+
     @Getter
     private String selectorTag;
 
@@ -51,6 +63,13 @@ public class TaggedArticlesImpl implements TaggedArticles {
     private void initModel() {
         //Init variables
         dropdownTags = new ArrayList<>();
+
+        //Set localized root path
+        if(currentPage != null){
+            rootPath = currentPage.getPath();
+            int endIndex = StringUtils.ordinalIndexOf(rootPath, "/", HOME_NAVIGATION_LEVEL);
+            rootPath = rootPath.substring(0, endIndex);
+        }
 
         //Decode the selector string if it exists
         String[] selectors = request.getRequestPathInfo().getSelectors();

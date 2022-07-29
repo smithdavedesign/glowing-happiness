@@ -33,6 +33,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.solidigm.core.utils.SolidigmConstants.ARTICLE_TEMPLATE;
+import static com.solidigm.core.utils.SolidigmConstants.EVENT_TEMPLATE;
 
 /**
  * Servlet that takes the root path, current page, results per page, and selected tag of the taggedArticles component.
@@ -76,6 +77,13 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         RequestParameter resultsPerPageParam = req.getRequestParameter("resultsPerPage");
         RequestParameter tagParam = req.getRequestParameter("tag");
 
+        //set root path; if one was not responded send an error and exit
+        String rootPath = rootPathParam.getString();
+        if(StringUtils.isEmpty(rootPath)) {
+            resp.sendError(400, "Bad request: missing root path");
+            return;
+        }
+
         //Verify and process page param
         int page = DEFAULT_PAGE;
         if (pageParam != null) {
@@ -107,21 +115,36 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("path", "/content/solidigm");
         queryMap.put("type", "cq:Page");
-        queryMap.put("property", "jcr:content/cq:template");
-        queryMap.put("property.operation", "equals");
-        queryMap.put("property.value", ARTICLE_TEMPLATE);
+        queryMap.put("group.p.or", "true");
+        queryMap.put("group.1_group.1_property", "jcr:content/cq:template");
+        queryMap.put("group.1_group.1_property.operation", "equals");
+        queryMap.put("group.1_group.1_property.value", ARTICLE_TEMPLATE);
+        queryMap.put("group.2_group.1_property", "jcr:content/cq:template");
+        queryMap.put("group.2_group.1_property.operation", "equals");
+        queryMap.put("group.2_group.1_property.value", EVENT_TEMPLATE);
         queryMap.put("orderby", "@jcr:content/date");
         queryMap.put("orderby.sort", "desc");
         queryMap.put("p.limit", String.valueOf(resultsPerPage));
         queryMap.put("p.offset", String.valueOf(resultsPerPage * (page - 1)));
         if(StringUtils.isNotEmpty(tag)) {
-            queryMap.put("group.p.or", "true");
-            queryMap.put("group.1_group.property", "jcr:content/articleCategory");
-            queryMap.put("group.1_group.property.operation", "equals");
-            queryMap.put("group.1_group.property.value", tag);
-            queryMap.put("group.2_group.property", "jcr:content/cq:tags");
-            queryMap.put("group.2_group.property.operation", "equals");
-            queryMap.put("group.2_group.property.value", tag);
+            queryMap.put("group.1_group.2_property", "jcr:content/articleCategory");
+            queryMap.put("group.1_group.2_property.operation", "equals");
+            queryMap.put("group.1_group.2_property.value", tag);
+            queryMap.put("group.2_group.2_property", "jcr:content/articleCategory");
+            queryMap.put("group.2_group.2_property.operation", "equals");
+            queryMap.put("group.2_group.2_property.value", tag);
+            queryMap.put("group.3_group.1_property", "jcr:content/cq:template");
+            queryMap.put("group.3_group.1_property.operation", "equals");
+            queryMap.put("group.3_group.1_property.value", ARTICLE_TEMPLATE);
+            queryMap.put("group.3_group.2_property", "jcr:content/cq:tags");
+            queryMap.put("group.3_group.2_property.operation", "equals");
+            queryMap.put("group.3_group.2_property.value", tag);
+            queryMap.put("group.4_group.1_property", "jcr:content/cq:template");
+            queryMap.put("group.4_group.1_property.operation", "equals");
+            queryMap.put("group.4_group.1_property.value", EVENT_TEMPLATE);
+            queryMap.put("group.4_group.2_property", "jcr:content/cq:tags");
+            queryMap.put("group.4_group.2_property.operation", "equals");
+            queryMap.put("group.4_group.2_property.value", tag);
         }
 
         //Execute the query and evaluate the results
