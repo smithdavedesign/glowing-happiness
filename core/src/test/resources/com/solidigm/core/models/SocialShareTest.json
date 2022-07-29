@@ -14,7 +14,7 @@
       "cq:lastModified": "Wed Jul 13 2022 13:38:17 GMT-0400",
       "teaserImageAltText": "Test Alt Middle",
       "articleCategory": "solidigm:tag1",
-      "articleDate": "Mon Jul 02 2022 00:00:00 GMT-0400",
+      "date": "Mon Jul 02 2022 00:00:00 GMT-0000",
       "sling:resourceType": "solidigm/components/page/articlePage",
       "cq:contextHubPath": "/etc/cloudsettings/default/contexthub",
       "teaserImage": "test/image/middle",

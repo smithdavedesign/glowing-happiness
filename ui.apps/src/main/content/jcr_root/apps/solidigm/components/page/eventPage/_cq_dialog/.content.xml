@@ -20,7 +20,7 @@
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
-                                            name="./startDate"
+                                            name="./date"
                                             fieldLabel="Start Date"
                                             emptyText="Choose a date"
                                             displayedFormat="YYYY-MM-DD"
