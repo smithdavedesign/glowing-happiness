@@ -20,13 +20,12 @@
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
-                                            name="./date"
+                                            name="./startDate"
                                             fieldLabel="Start Date"
                                             emptyText="Choose a date"
                                             displayedFormat="YYYY-MM-DD"
                                             startday="{Long}0"
                                             type="date"
-                                            required="{Boolean}true"
                                             typeHint="Date">
                                         <granite:data
                                             jcr:primaryType="nt:unstructured"
@@ -79,31 +78,58 @@
                                             jcr:primaryType="nt:unstructured"
                                             cq-msm-lockable="eventCategory"/>
                                     </endTime>
-                                    <eventTitle
+                                    <articleTitle
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                            fieldLabel="Event Title"
-                                            name="./eventTitle"
+                                            fieldLabel="Article Title"
+                                            name="./articleTitle"
                                             required="{Boolean}true">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
-                                                cq-msm-lockable="eventTitle"/>
-                                    </eventTitle>
-                                    <eventCategory
+                                                cq-msm-lockable="articleTitle"/>
+                                    </articleTitle>
+                                    <articleCategory
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="cq/gui/components/coral/common/form/tagfield"
-                                            name="./eventCategory"
-                                            fieldLabel="Event Category"
-                                            fieldDescription="Select the event category"
+                                            name="./articleCategory"
+                                            fieldLabel="Article Category"
+                                            fieldDescription="Select the article category"
                                             multiple="{Boolean}false"
                                             rootPath="/content/cq:tags/solidigm"
                                             required="{Boolean}true">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
-                                                cq-msm-lockable="eventCategory"/>
-                                    </eventCategory>
+                                                cq-msm-lockable="articleCategory"/>
+                                    </articleCategory>
+                                    <articleDate
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                            name="./date"
+                                            fieldLabel="Article Posted Date"
+                                            placeholder="Choose a date"
+                                            fieldDescription="The date the article was posted"
+                                            displayedFormat="YYYY-MM-DD"
+                                            startday="{Long}0"
+                                            type="date"
+                                            typeHint="Date"
+                                            required="{Boolean}true">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="articleDate"/>
+                                    </articleDate>
+                                    <eventLocation
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Event Location"
+                                            name="./eventLocation">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="eventLocation"/>
+                                    </eventLocation>
                                     <teaserImage
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"

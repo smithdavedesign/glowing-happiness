@@ -27,7 +27,27 @@ public class ArticlePage {
 
     @Inject
     @Getter
+    private Date startDate;
+
+    @Inject
+    @Getter
+    private Date startTime;
+
+    @Inject
+    @Getter
+    private Date endDate;
+
+    @Inject
+    @Getter
+    private Date endTime;
+
+    @Inject
+    @Getter
     private String articleAuthor;
+
+    @Inject
+    @Getter
+    private String eventLocation;
 
     @Inject
     @Getter

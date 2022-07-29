@@ -102,27 +102,21 @@ public class SocialShareImpl implements SocialShare {
 
         //Get current category
         String currentCategory = currentPage.getProperties().get("articleCategory", String.class);
-        if (StringUtils.isEmpty(currentCategory)) {
-            currentCategory = currentPage.getProperties().get("eventCategory", String.class);
-        }
 
         //Create the query params
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("path", rootPath);
         queryMap.put("type", "cq:Page");
         queryMap.put("group.p.or", "true");
-        queryMap.put("group.1_group.1_property", "jcr:content/cq:template");
-        queryMap.put("group.1_group.1_property.operation", "equals");
-        queryMap.put("group.1_group.1_property.value", ARTICLE_TEMPLATE);
-        queryMap.put("group.1_group.2_property", "jcr:content/articleCategory");
-        queryMap.put("group.1_group.2_property.operation", "equals");
-        queryMap.put("group.1_group.2_property.value", currentCategory);
-        queryMap.put("group.2_group.1_property", "jcr:content/cq:template");
-        queryMap.put("group.2_group.1_property.operation", "equals");
-        queryMap.put("group.2_group.1_property.value", EVENT_TEMPLATE);
-        queryMap.put("group.2_group.2_property", "jcr:content/eventCategory");
-        queryMap.put("group.2_group.2_property.operation", "equals");
-        queryMap.put("group.2_group.2_property.value", currentCategory);
+        queryMap.put("group.1_group.property", "jcr:content/cq:template");
+        queryMap.put("group.1_group.property.operation", "equals");
+        queryMap.put("group.1_group.property.value", ARTICLE_TEMPLATE);
+        queryMap.put("group.2_group.property", "jcr:content/cq:template");
+        queryMap.put("group.2_group.property.operation", "equals");
+        queryMap.put("group.2_group.property.value", EVENT_TEMPLATE);
+        queryMap.put("property", "jcr:content/articleCategory");
+        queryMap.put("property.operation", "equals");
+        queryMap.put("property.value", currentCategory);
         queryMap.put("orderby", "@jcr:content/date");
         queryMap.put("orderby.sort", "desc");
         queryMap.put("p.limit", "-1");
