@@ -53,7 +53,7 @@ import static com.solidigm.core.utils.SolidigmConstants.EVENT_TEMPLATE;
  * tag {String}: copy of what was sent
  * totalMatches {int}: the total number of matches the query found
  * totalPages {int}: the total number of pages that the query would display given the provided results per page
- * results {Array}: list of result objects with properties for image, title, link, tag, and alt text
+ * results {Array}: list of result objects with properties: teaserImage, articleTitle, articleLink, categoryTag, and altText
  */
 @Component(service = { Servlet.class })
 @SlingServletPaths("/bin/solidigm/taggedArticles")
