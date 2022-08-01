@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="nt:unstructured"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+    <content jcr:primaryType="nt:unstructured">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs jcr:primaryType="nt:unstructured">
+                <items jcr:primaryType="nt:unstructured">
+                    <event
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Event"
+                            sling:orderBefore="advanced"
+                            sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <startDate
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                            name="./startDate"
+                                            fieldLabel="Start Date"
+                                            emptyText="Choose a date"
+                                            displayedFormat="YYYY-MM-DD"
+                                            startday="{Long}0"
+                                            type="date"
+                                            typeHint="Date">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="eventCategory"/>
+                                    </startDate>
+                                    <startTime
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                            name="./startTime"
+                                            fieldLabel="Start Time"
+                                            emptyText="Choose a time; leave blank for all day events."
+                                            fieldDescription="Leave blank for an all day event."
+                                            displayedFormat="HH:mm"
+                                            startday="{Long}0"
+                                            type="time"
+                                            typeHint="Date">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="eventCategory"/>
+                                    </startTime>
+                                    <endDate
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                            name="./endDate"
+                                            fieldLabel="End Date"
+                                            emptyText="Choose a date; leave blank if it is the same as start date."
+                                            fieldDescription="Leave blank if end date is the same as start date."
+                                            displayedFormat="YYYY-MM-DD"
+                                            startday="{Long}0"
+                                            type="date"
+                                            typeHint="Date">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="eventCategory"/>
+                                    </endDate>
+                                    <endTime
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                            name="./endTime"
+                                            fieldLabel="End Time"
+                                            emptyText="Choose a time; optional."
+                                            displayedFormat="HH:mm"
+                                            startday="{Long}0"
+                                            type="time"
+                                            typeHint="Date">
+                                        <granite:data
+                                            jcr:primaryType="nt:unstructured"
+                                            cq-msm-lockable="eventCategory"/>
+                                    </endTime>
+                                    <articleTitle
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Article Title"
+                                            name="./articleTitle"
+                                            required="{Boolean}true">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="articleTitle"/>
+                                    </articleTitle>
+                                    <articleCategory
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                            name="./articleCategory"
+                                            fieldLabel="Article Category"
+                                            fieldDescription="Select the article category"
+                                            multiple="{Boolean}false"
+                                            rootPath="/content/cq:tags/solidigm"
+                                            required="{Boolean}true">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="articleCategory"/>
+                                    </articleCategory>
+                                    <articleDate
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
+                                            name="./date"
+                                            fieldLabel="Article Posted Date"
+                                            placeholder="Choose a date"
+                                            fieldDescription="The date the article was posted"
+                                            displayedFormat="YYYY-MM-DD"
+                                            startday="{Long}0"
+                                            type="date"
+                                            typeHint="Date"
+                                            required="{Boolean}true">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="articleDate"/>
+                                    </articleDate>
+                                    <eventLocation
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Event Location"
+                                            name="./eventLocation">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="eventLocation"/>
+                                    </eventLocation>
+                                    <teaserImage
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                            rootPath="/content/dam/solidigm"
+                                            fieldLabel="Teaser Image"
+                                            name="./teaserImage"
+                                            required="{Boolean}true">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="teaserImage"/>
+                                    </teaserImage>
+                                    <teaserImageAltText
+                                            cq:showOnCreate="{Boolean}true"
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Teaser Image Alternate Text"
+                                            name="./teaserImageAltText">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="teaserImageAltText"/>
+                                    </teaserImageAltText>
+                                </items>
+                            </column>
+                        </items>
+                    </event>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
