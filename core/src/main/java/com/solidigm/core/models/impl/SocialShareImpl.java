@@ -32,7 +32,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static com.solidigm.core.utils.SolidigmConstants.*;
+import static com.solidigm.core.utils.SolidigmConstants.ARTICLE_TEMPLATE;
+import static com.solidigm.core.utils.SolidigmConstants.EVENT_TEMPLATE;
+import static com.solidigm.core.utils.SolidigmConstants.HOME_NAVIGATION_LEVEL;
 
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},

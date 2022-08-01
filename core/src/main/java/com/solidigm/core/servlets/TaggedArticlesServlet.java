@@ -78,11 +78,11 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         RequestParameter tagParam = req.getRequestParameter("tag");
 
         //set root path; if one was not responded send an error and exit
-        String rootPath = rootPathParam.getString();
-        if(StringUtils.isEmpty(rootPath)) {
+        if(rootPathParam == null || StringUtils.isEmpty(rootPathParam.getString())) {
             resp.sendError(400, "Bad request: missing root path");
             return;
         }
+        String rootPath = rootPathParam.getString();
 
         //Verify and process page param
         int page = DEFAULT_PAGE;
@@ -113,7 +113,7 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
 
         //Build the articles query
         Map<String, String> queryMap = new HashMap<>();
-        queryMap.put("path", "/content/solidigm");
+        queryMap.put("path", rootPath);
         queryMap.put("type", "cq:Page");
         queryMap.put("group.p.or", "true");
         queryMap.put("group.1_group.1_property", "jcr:content/cq:template");
