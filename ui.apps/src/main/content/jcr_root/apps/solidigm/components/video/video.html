@@ -1,0 +1,14 @@
+<sly data-sly-use.embed="com.solidigm.core.models.Video"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${embed.hasContent}">
+    <div>
+        <p>
+            Thumbnail Image: ${embed.thumbnailImageReference}
+        </p>
+        <p>
+            thumbnail alt text: ${embed.thumbnailAltText}
+        </p>
+    </div>
+    <sly data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}"></sly>
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
