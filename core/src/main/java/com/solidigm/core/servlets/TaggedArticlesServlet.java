@@ -77,7 +77,7 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         RequestParameter resultsPerPageParam = req.getRequestParameter("resultsPerPage");
         RequestParameter tagParam = req.getRequestParameter("tag");
 
-        //set root path; if one was not responded send an error and exit
+        //set root path; if one was not provided send an error and exit
         if(rootPathParam == null || StringUtils.isEmpty(rootPathParam.getString())) {
             resp.sendError(400, "Bad request: missing root path");
             return;
