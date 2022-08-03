@@ -1,0 +1,29 @@
+<div data-sly-use.eventinfo="com.solidigm.core.models.EventInfo">
+    <p>
+        Posted Date: ${eventinfo.postedDate}
+    </p>
+    <p>
+        Start Date: ${eventinfo.startDate}
+    </p>
+    <p>
+        End Date: ${eventinfo.endDate}
+    </p>
+    <p>
+        Start Time: ${eventinfo.startTime}
+    </p>
+    <p>
+        End Time: ${eventinfo.endTime}
+    </p>
+    <p>
+        location: ${eventinfo.location}
+    </p>
+    <p>
+        event info: ${eventinfo.eventInfo}
+    </p>
+    <ul data-sly-list.tag="${eventinfo.tags}">
+        <li>
+            Tag label: ${tag.label}
+            Tag link: ${tag.link}
+        </li>
+    </ul>
+</div>
