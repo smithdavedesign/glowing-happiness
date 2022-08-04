@@ -1,0 +1,38 @@
+<sly data-sly-use.partnerList="com.solidigm.core.models.PartnerList"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${partnerList.hasContent}" >
+    <div>
+        <p>
+            Partner Type: ${partnerList.partnerType}
+        </p>
+    </div>
+    <div data-sly-list.partner="${partnerList.partners}">
+        <p>
+            -------------------------------------------------------------------
+        </p>
+        <p>
+            Company name: ${partner.companyName}
+        </p>
+        <p>
+            Country ID: ${partner.countryID}
+        </p>
+        <p>
+            Country Name: ${partner.countryName}
+        </p>
+        <p>
+            Additional Info: ${partner.additionalInfo}
+        </p>
+        <p>
+            Link: ${partner.link}
+        </p>
+        <p>
+            Products:
+        </p>
+        <div data-sly-list.product="${partner.products}">
+            <p>
+                ${product}
+            </p>
+        </div>
+    </div>
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
