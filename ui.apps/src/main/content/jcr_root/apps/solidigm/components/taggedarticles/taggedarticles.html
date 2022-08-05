@@ -1,0 +1,19 @@
+<div data-sly-use.taggedArticles="com.solidigm.core.models.TaggedArticles">
+    <h1>Tagged Articles</h1>
+    <p>
+        Selector: ${taggedArticles.selectorTag}
+    </p>
+    <p>
+        Localized Root Path (Required parameter for the TaggedArticlesServlet): ${taggedArticles.rootPath}
+    </p>
+    <ul data-sly-list.tag="${taggedArticles.dropdownTags}">
+        <li>
+            <p>
+                Tag: ${tag.title}
+            </p>
+            <p>
+                Tag ID (can be used for the tag parameter for the TaggedArticlesServlet): ${tag.tagID}
+            </p>
+        </li>
+    </ul>
+</div>

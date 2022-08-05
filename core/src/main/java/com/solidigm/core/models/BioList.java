@@ -12,10 +12,14 @@ public interface BioList extends ComponentExporter {
     /**
      * Returns List of BioItems to be displayed
      */
-    default List<BioItem> getBioItems() { throw new UnsupportedOperationException(); }
+    default List<BioItem> getBioItems() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Returns Boolean whether component has content to display
      */
-    default Boolean hasContent() { throw new UnsupportedOperationException(); }
+    default Boolean hasContent() {
+        throw new UnsupportedOperationException();
+    }
 }
