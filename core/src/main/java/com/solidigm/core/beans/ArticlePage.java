@@ -51,6 +51,10 @@ public class ArticlePage {
 
     @Inject
     @Getter
+    private String eventInfo;
+
+    @Inject
+    @Getter
     private String teaserImage;
 
     @Inject
