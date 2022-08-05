@@ -1,0 +1,95 @@
+.cmp-article-richtext {
+    color: $grey;
+    line-height: $line-height-base-mobile;
+
+    & > h2,
+    & > h3,
+    & > h4 {
+        color: $dark-blue;
+    }
+
+    & > h2 {
+        font-size: $font-size-2xl-mobile;
+        line-height: $line-height-2xl-mobile;
+        @media (min-width: $desktop) {
+            font-size: $font-size-2xl-desktop;
+            line-height: $line-height-2xl-desktop;
+        }
+    }
+
+    & > h3 {
+        font-size: $font-size-xl-mobile;
+        line-height: $line-height-xl-mobile;
+        @media (min-width: $desktop) {
+            font-size: $font-size-xl-desktop;
+            line-height: $line-height-xl-desktop;
+        }
+    }
+
+    & > h4 {
+        font-size: $font-size-xl;
+        line-height: $line-height-base-mobile;
+        @media (min-width: $desktop) {
+            font-size: $font-size-lg-desktop;
+            line-height: $line-height-base-desktop;
+        }
+    }
+
+    p > a,
+    li > a,
+    strong > a,
+    b > a,
+    i > a,
+    em > a {
+        color: $solidigm-purple;
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: vwMobile(185);
+
+        @media (min-width: $desktop) {
+            height: vwDesktop(550);
+        }
+    }
+
+    & > * + *,
+    & + *,
+    &:not(:first-child) {
+        margin-top: $spacing-2xl-mobile;
+        @media (min-width: $desktop) {
+            margin-top: $spacing-xl-desktop;
+        }
+    }
+
+    & > li {
+        margin-bottom: $spacing-2xs-mobile;
+        @media (min-width: $desktop) {
+            margin-bottom: $spacing-2xs-desktop;
+        }
+    }
+
+    & > ul li {
+        list-style: disc;
+        list-style-position: inside;
+    }
+
+    & > ol li {
+        list-style: decimal;
+        list-style-position: inside;
+    }
+
+    .paragraph-note {
+        background: $off-white;
+        padding: $spacing-base-mobile $spacing-sm-mobile;
+        color: $grey;
+        @media (min-width: $desktop) {
+            padding: $spacing-base-desktop $spacing-sm-desktop;
+        }
+    }
+
+    @media (min-width: $desktop) {
+        line-height: $line-height-base-desktop;
+    }
+}
