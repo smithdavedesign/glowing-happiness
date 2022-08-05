@@ -1,0 +1,77 @@
+{
+  "solidigm": {
+    "us": {
+      "en": {
+        "taggedArticles": {
+          "jcr:primaryType": "nt:unstructured",
+          "sling:resourceType": "solidigm/components/taggedarticles"
+        }
+      }
+    }
+  },
+  "cq:tags": {
+    "jcr:primaryType": "sling:Folder",
+    "jcr:mixinTypes": [
+      "sling:Redirect",
+      "rep:AccessControllable"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:title": "Tags",
+    "hidden": true,
+    "sling:target": "/tagging",
+    "jcr:created": "Thu Jun 02 2022 13:48:07 GMT-0400",
+    "sling:resourceType": "sling:redirect",
+    "languages": [
+      "en",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt_br",
+      "zh_cn",
+      "zh_tw",
+      "ja",
+      "ko_kr"
+    ],
+    "solidigm": {
+      "jcr:primaryType": "cq:Tag",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Solidigm",
+      "jcr:created": "Thu Jun 23 2022 13:04:46 GMT-0400",
+      "jcr:description": "",
+      "sling:resourceType": "cq/tagging/components/tag",
+      "articles": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:createdBy": "admin",
+        "jcr:title": "Articles",
+        "jcr:created": "Thu Jun 23 2022 13:04:46 GMT-0400",
+        "jcr:description": "",
+        "sling:resourceType": "cq/tagging/components/tag",
+        "categories": {
+          "jcr:primaryType": "cq:Tag",
+          "jcr:createdBy": "admin",
+          "jcr:title": "Categories",
+          "jcr:created": "Thu Jun 23 2022 13:04:46 GMT-0400",
+          "jcr:description": "",
+          "sling:resourceType": "cq/tagging/components/tag",
+          "innovation": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Innovation",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          },
+          "products": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Products",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          }
+        }
+      }
+    }
+  }
+}

@@ -21,7 +21,8 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Article Title"
-                                            name="./articleTitle">
+                                            name="./articleTitle"
+                                            required="{Boolean}true">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
                                                 cq-msm-lockable="articleTitle"/>
@@ -34,7 +35,8 @@
                                             fieldLabel="Article Category"
                                             fieldDescription="Select the article category"
                                             multiple="{Boolean}false"
-                                            rootPath="/content/cq:tags/solidigm">
+                                            rootPath="/content/cq:tags/solidigm"
+                                            required="{Boolean}true">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
                                                 cq-msm-lockable="articleCategory"/>
@@ -43,25 +45,38 @@
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/datepicker"
-                                            name="./articleDate"
+                                            name="./date"
                                             fieldLabel="Article Posted Date"
                                             placeholder="Choose a date"
                                             fieldDescription="The date the article was posted"
                                             displayedFormat="YYYY-MM-DD"
                                             startday="{Long}0"
                                             type="date"
-                                            typeHint="Date">
+                                            typeHint="Date"
+                                            required="{Boolean}true">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
                                                 cq-msm-lockable="articleDate"/>
                                     </articleDate>
+                                    <articleAuthor
+                                        cq:showOnCreate="{Boolean}true"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Article Author"
+                                        name="./articleAuthor"
+                                        required="{Boolean}true">
+                                        <granite:data
+                                                jcr:primaryType="nt:unstructured"
+                                                cq-msm-lockable="articleAuthor"/>
+                                    </articleAuthor>
                                     <teaserImage
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
                                             rootPath="/content/dam/solidigm"
                                             fieldLabel="Teaser Image"
-                                            name="./teaserImage">
+                                            name="./teaserImage"
+                                            required="{Boolean}true">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
                                                 cq-msm-lockable="teaserImage"/>

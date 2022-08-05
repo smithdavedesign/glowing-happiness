@@ -8,6 +8,7 @@ import org.apache.sling.models.annotations.Model;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.Date;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ArticlePage {
@@ -20,8 +21,37 @@ public class ArticlePage {
     private String articleCategory;
 
     @Inject
+    @Named("date")
     @Getter
-    private String articleDate;
+    private Date articleDate;
+
+    @Inject
+    @Getter
+    private Date startDate;
+
+    @Inject
+    @Getter
+    private Date startTime;
+
+    @Inject
+    @Getter
+    private Date endDate;
+
+    @Inject
+    @Getter
+    private Date endTime;
+
+    @Inject
+    @Getter
+    private String articleAuthor;
+
+    @Inject
+    @Getter
+    private String eventLocation;
+
+    @Inject
+    @Getter
+    private String eventInfo;
 
     @Inject
     @Getter
@@ -36,6 +66,11 @@ public class ArticlePage {
     @Getter
     @Setter
     private String teaserImageAltText;
+
+    @Inject
+    @Named("cq:tags")
+    @Getter
+    private String[] articleTags;
 
     @Getter
     @Setter

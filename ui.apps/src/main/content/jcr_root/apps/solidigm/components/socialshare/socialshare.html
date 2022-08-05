@@ -6,7 +6,14 @@
         <a aria-label="${'Share this article on Linkedin' @ i18n}" href="${socialShare.linkedInShare}" target="_blank" class="cmp-social-share__icon cmp-social-share__icon-linkedin"></a>
     </div>
     <nav class="cmp-social-share__nav-links">
-        <a href="${socialShare.previous @ extension = 'html'}" class="cmp-social-share__nav-link cmp-social-share__prev">${'Previous' @ i18n}</a>
-        <a href="${socialShare.next @ extension = 'html'}" class="cmp-social-share__nav-link cmp-social-share__next">${'Next' @ i18n}</a>
+        <a data-sly-test="${socialShare.previous}"
+           href="${socialShare.previous @ extension = 'html'}"
+           class="cmp-social-share__nav-link cmp-social-share__prev">
+            ${'Previous' @ i18n}
+        </a>
+        <a data-sly-test="${socialShare.next}"
+           href="${socialShare.next @ extension = 'html'}"
+           class="cmp-social-share__nav-link cmp-social-share__next"
+        >${'Next' @ i18n}</a>
     </nav>
 </div>

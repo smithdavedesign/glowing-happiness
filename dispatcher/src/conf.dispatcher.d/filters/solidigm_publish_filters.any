@@ -1,0 +1,8 @@
+## enabled additional file extensions
+## isolate specific filters into their own filter file
+# Allow ZIP file on the site.
+/0100 { /type "allow" /extension '(xsl|xlsx|zip|xml|txt)' /path "/content/*" }
+
+# allow product compare selector to pass through
+/0110 { /type "allow" /selectors '(productcompare)' /extension '(json)' }
+

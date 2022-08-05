@@ -40,7 +40,7 @@ PassEnv DISP_ID
 	ServerAlias prod.solidigmtechnology.com
 	ServerAlias www.solidigmtechnology.com
 
-	# VYRKCIN-456 - establish baseline support for known country domains (WIP)
+	# establish baseline support for known country domains (WIP)
 	ServerAlias dev.solidigmtechnology.kr
 	ServerAlias stage.solidigmtechnology.kr
 	ServerAlias www-stage.solidigmtechnology.kr
@@ -109,7 +109,7 @@ PassEnv DISP_ID
 	ErrorDocument 404 /content/solidigm/language-masters/en/404-page.html
 	## Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-      # VYRKCIN-444 force HttpOnly and Secure flags on cookies set by AEM
+      # force HttpOnly and Secure flags on cookies set by AEM
       Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
 	    Header set X-XSS-Protection: "1; mode=block"
 			Header always add X-Dispatcher ${DISP_ID}

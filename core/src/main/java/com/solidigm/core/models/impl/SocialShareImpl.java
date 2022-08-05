@@ -6,17 +6,17 @@ import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
-import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
 import com.solidigm.core.models.SocialShare;
 import com.solidigm.core.services.SocialService;
 import lombok.Getter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.slf4j.Logger;
@@ -26,12 +26,15 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.solidigm.core.utils.SolidigmConstants.ARTICLE_TEMPLATE;
+import static com.solidigm.core.utils.SolidigmConstants.EVENT_TEMPLATE;
+import static com.solidigm.core.utils.SolidigmConstants.HOME_NAVIGATION_LEVEL;
 
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
@@ -48,10 +51,12 @@ public class SocialShareImpl implements SocialShare {
 
     static final String RESOURCE_TYPE = "solidigm/components/socialshare";
 
-    static final String ARTICLE_TEMPLATE = "/conf/solidigm/settings/wcm/templates/article-page";
-
     @SlingObject
     SlingHttpServletRequest request;
+
+    @Inject
+    @Source("script-bindings")
+    Page currentPage;
 
     @OSGiService
     SocialService socialService;
@@ -83,78 +88,62 @@ public class SocialShareImpl implements SocialShare {
     private void initModel() {
         //Process sharing links
         String url = request.getRequestURL().toString();
-        try {
-            url = URLEncoder.encode(url, StandardCharsets.UTF_8.toString());
-            twitterShare = socialService.getTwitterShareUrl().concat(url);
-            linkedInShare = socialService.getLinkedInShareUrl().concat(url);
-        } catch (UnsupportedEncodingException e) {
-            //On encoding error: log and catch
-            log.error("Failed to encode request URL in social share", e);
-        }
-
-        //Process next and previous articles
-        Page currentPage = request.getResourceResolver().adaptTo(PageManager.class).getContainingPage(resource);
+        url = URLEncoder.encode(url, StandardCharsets.UTF_8);
+        twitterShare = socialService.getTwitterShareUrl().concat(url);
+        linkedInShare = socialService.getLinkedInShareUrl().concat(url);
 
         //Stop processing if current page is null
         if (currentPage == null){
             return;
         }
 
-        //Create the query params shared between the previous article and next article query
+        //Get localized root path
+        String rootPath = currentPage.getPath();
+        int endIndex = StringUtils.ordinalIndexOf(rootPath, "/", HOME_NAVIGATION_LEVEL);
+        rootPath = rootPath.substring(0, endIndex);
+
+        //Get current category
+        String currentCategory = currentPage.getProperties().get("articleCategory", String.class);
+
+        //Create the query params
         Map<String, String> queryMap = new HashMap<>();
-        queryMap.put("path", "/content/solidigm");
+        queryMap.put("path", rootPath);
         queryMap.put("type", "cq:Page");
-        queryMap.put("1_property", "jcr:content/cq:template");
-        queryMap.put("1_property.operation", "equals");
-        queryMap.put("1_property.value", ARTICLE_TEMPLATE);
-        queryMap.put("2_property", "jcr:content/articleCategory");
-        queryMap.put("2_property.operation", "equals");
-        queryMap.put("2_property.value", currentPage.getProperties().get("articleCategory", String.class));
-        queryMap.put("orderby", "@jcr:content/articleDate");
-        queryMap.put("p.limit", "2");
+        queryMap.put("group.p.or", "true");
+        queryMap.put("group.1_group.property", "jcr:content/cq:template");
+        queryMap.put("group.1_group.property.operation", "equals");
+        queryMap.put("group.1_group.property.value", ARTICLE_TEMPLATE);
+        queryMap.put("group.2_group.property", "jcr:content/cq:template");
+        queryMap.put("group.2_group.property.operation", "equals");
+        queryMap.put("group.2_group.property.value", EVENT_TEMPLATE);
+        queryMap.put("property", "jcr:content/articleCategory");
+        queryMap.put("property.operation", "equals");
+        queryMap.put("property.value", currentCategory);
+        queryMap.put("orderby", "@jcr:content/date");
+        queryMap.put("orderby.sort", "desc");
+        queryMap.put("p.limit", "-1");
 
-        //Create the next article query params
-        Map<String, String> nextMap = new HashMap<>();
-        nextMap.put("orderby.sort", "asc");
-        nextMap.put("daterange.property", "@jcr:content/articleDate");
-        nextMap.put("daterange.lowerBound", currentPage.getProperties().get("articleDate", String.class));
-        nextMap.put("daterange.lowerOperation", ">=");
-        nextMap.putAll(queryMap);
-
-        //Create the previous article query params
-        Map<String, String> prevMap = new HashMap<>();
-        prevMap.put("orderby.sort", "desc");
-        prevMap.put("daterange.property", "@jcr:content/articleDate");
-        prevMap.put("daterange.upperBound", currentPage.getProperties().get("articleDate", String.class));
-        prevMap.put("daterange.upperOperation", "<=");
-        prevMap.putAll(queryMap);
-
-        //Execute the query for the previous and next article
+        //Execute the query for the articles and events sorted by date
         Session session = request.getResourceResolver().adaptTo(Session.class);
-        Query nextQuery = queryBuilder.createQuery(PredicateGroup.create(nextMap), session);
-        Query prevQuery = queryBuilder.createQuery(PredicateGroup.create(prevMap), session);
-        SearchResult nextResult = nextQuery.getResult();
-        SearchResult prevResult = prevQuery.getResult();
-        List<Hit> nextHits = nextResult.getHits();
-        List<Hit> prevHits = prevResult.getHits();
+        Query query = queryBuilder.createQuery(PredicateGroup.create(queryMap), session);
+        List<Hit> hits = query.getResult().getHits();
 
-        //Get the path of the previous and next article, performing necessary logic to filter out the current page
+        //Get the path of the previous and next page, by finding the current page in the ordered results
         try {
-            for (Hit hit : nextHits){
-                if (!hit.getPath().equals(currentPage.getPath())){
-                    next = hit.getPath();
-                    break;
-                }
-            }
-            for (Hit hit : prevHits){
-                if (!hit.getPath().equals(currentPage.getPath())){
-                    previous = hit.getPath();
-                    break;
+            for (int i = 0; i < hits.size(); i++) {
+                Hit hit = hits.get(i);
+                if (hit.getPath().equals(currentPage.getPath())) {
+                    if(i > 0) {
+                        next = hits.get(i - 1).getPath();
+                    }
+                    if((i + 1) < hits.size()) {
+                        previous = hits.get(i + 1).getPath();
+                    }
                 }
             }
         } catch (RepositoryException e) {
             //On a repository error: log and catch
-            log.error("Repository error on Article Page query in Social Share", e);
+            log.error("Repository error on query in Social Share", e);
         }
     }
 }

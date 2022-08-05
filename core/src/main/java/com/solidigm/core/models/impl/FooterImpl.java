@@ -1,5 +1,6 @@
 package com.solidigm.core.models.impl;
 
+import com.solidigm.core.utils.TagUtil;
 import org.apache.sling.models.annotations.Model;
 
 import com.adobe.cq.export.json.ComponentExporter;
@@ -17,7 +18,6 @@ import javax.annotation.PostConstruct;
 
 import com.day.cq.tagging.Tag;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
@@ -131,7 +131,8 @@ public class FooterImpl implements Footer{
         for (String searchTag : searchTags) {
             Tag tag = tagManager.resolve(searchTag);
             String tagLabel = tag.getTitle();
-            String tagLink = searchResultsPage.concat(".html?tag=").concat(tag.getTagID());
+            String tagLink = searchResultsPage.concat(".")
+                    .concat(TagUtil.encodeID(tag.getTagID()).concat(".html"));
             Link link = new Link();
             link.setLink(tagLink);
             link.setLabel(tagLabel);

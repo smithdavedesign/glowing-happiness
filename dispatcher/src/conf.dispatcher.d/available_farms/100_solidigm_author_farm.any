@@ -8,7 +8,7 @@
 	## hostname globbing for farm selection (virtual domain addressing)
 	/virtualhosts {
 		$include "/etc/httpd/conf.dispatcher.d/vhosts/ams_author_vhosts.any"
-    $include "/etc/httpd/conf.dispatcher.d/vhosts/newco_author_vhosts.any"
+    $include "/etc/httpd/conf.dispatcher.d/vhosts/solidigm_author_vhosts.any"
 	}
 	## the load will be balanced among these render instances
 	/renders {

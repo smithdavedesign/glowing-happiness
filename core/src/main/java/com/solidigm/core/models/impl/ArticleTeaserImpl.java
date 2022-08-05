@@ -70,8 +70,8 @@ public class ArticleTeaserImpl implements ArticleTeaser {
                 article.setTeaserCategory(tagManager.resolve(article.getArticleCategory()).getTitle());
 
                 //If no image alt was authored find the alt text from the dam
-                if (StringUtils.isEmpty(article.getTeaserImageAltText()) &&
-                        !StringUtils.isEmpty(article.getTeaserImage())) {
+                if (StringUtils.isEmpty(article.getTeaserImageAltText())
+                        && !StringUtils.isEmpty(article.getTeaserImage())) {
                     article.setTeaserImageAltText(
                             ImageUtil.getAltTextFromDAM(resourceResolver, article.getTeaserImage())
                     );

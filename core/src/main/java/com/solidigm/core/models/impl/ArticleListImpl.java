@@ -92,8 +92,8 @@ public class ArticleListImpl implements ArticleList {
                         articlePage.setTeaserCategory(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
 
                         //If no image alt was authored find the alt text from the dam
-                        if (StringUtils.isEmpty(articlePage.getTeaserImageAltText()) &&
-                                !StringUtils.isEmpty(articlePage.getTeaserImage())) {
+                        if (StringUtils.isEmpty(articlePage.getTeaserImageAltText())
+                                && !StringUtils.isEmpty(articlePage.getTeaserImage())) {
                             articlePage.setTeaserImageAltText(
                                     ImageUtil.getAltTextFromDAM(resourceResolver, articlePage.getTeaserImage())
                             );
