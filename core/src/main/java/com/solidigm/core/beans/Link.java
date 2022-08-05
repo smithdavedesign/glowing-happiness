@@ -36,7 +36,9 @@ public class Link {
         processLink();
     }
 
-    public Link() { }
+    public Link() {
+
+    }
 
     public Link(String label, String link) {
         this.label = label;

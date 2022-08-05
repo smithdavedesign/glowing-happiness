@@ -9,7 +9,6 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
-import com.solidigm.core.services.SocialService;
 import com.solidigm.core.services.impl.SocialServiceImpl;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
@@ -44,7 +43,7 @@ public class SocialShareTest {
     private SearchResult searchResult;
 
     @Mock
-    private Hit firstHit;
+    private Hit selfHit;
 
     @Mock
     private Hit secondHit;
@@ -64,8 +63,8 @@ public class SocialShareTest {
         Mockito.when(queryBuilder.createQuery(any(PredicateGroup.class), eq(null))).thenReturn(query);
         Mockito.when(query.getResult()).thenReturn(searchResult);
         Mockito.when(searchResult.getHits()).thenReturn(queryHits);
-        Mockito.when(firstHit.getPath()).thenReturn("/content/solidigm/articlePage1");
-        Mockito.when(secondHit.getPath()).thenReturn("/content/solidigm/articlePage2");
+        Mockito.when(selfHit.getPath()).thenReturn("/content/solidigm/us/en/articlePage1");
+        Mockito.when(secondHit.getPath()).thenReturn("/content/solidigm/us/en/articlePage2");
         ctx.registerService(QueryBuilder.class, queryBuilder);
 
         //Configure and register SocialService
@@ -76,7 +75,7 @@ public class SocialShareTest {
 
         //Load ctx for ArticleList Model
         ctx.addModelsForClasses(SocialShare.class);
-        ctx.load().json("/com/solidigm/core/models/SocialShareTest.json", "/content/solidigm");
+        ctx.load().json("/com/solidigm/core/models/SocialShareTest.json", "/content/solidigm/us/en");
     }
 
     @AfterEach
@@ -86,19 +85,20 @@ public class SocialShareTest {
     }
 
     @Test
-    public void testTwoHits() {
-        queryHits.add(firstHit);
+    public void testPrevAndNext() {
         queryHits.add(secondHit);
-        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        queryHits.add(selfHit);
+        queryHits.add(secondHit);
+        ctx.currentResource("/content/solidigm/us/en/articlePage1/jcr:content/root/container/socialshare");
         SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
-        assertEquals("/content/solidigm/articlePage2", socialShare.getPrevious());
-        assertEquals("/content/solidigm/articlePage2", socialShare.getNext());
+        assertEquals("/content/solidigm/us/en/articlePage2", socialShare.getPrevious());
+        assertEquals("/content/solidigm/us/en/articlePage2", socialShare.getNext());
     }
 
     @Test
     public void testSelfHit() {
-        queryHits.add(firstHit);
-        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        queryHits.add(selfHit);
+        ctx.currentResource("/content/solidigm/us/en/articlePage1/jcr:content/root/container/socialshare");
         SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
         assertTrue(StringUtils.isEmpty(socialShare.getNext()));
         assertTrue(StringUtils.isEmpty(socialShare.getPrevious()));
@@ -106,7 +106,7 @@ public class SocialShareTest {
 
     @Test
     public void testNoHit() {
-        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        ctx.currentResource("/content/solidigm/us/en/articlePage1/jcr:content/root/container/socialshare");
         SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
         assertTrue(StringUtils.isEmpty(socialShare.getNext()));
         assertTrue(StringUtils.isEmpty(socialShare.getPrevious()));
@@ -115,7 +115,7 @@ public class SocialShareTest {
     @Test
     public void testTwitterShare(){
         String expected = "https://twitter.com/test?page=http%3A%2F%2Flocalhost%2F";
-        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        ctx.currentResource("/content/solidigm/us/en/articlePage1/jcr:content/root/container/socialshare");
         SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
         assertEquals(expected, socialShare.getTwitterShare());
     }
@@ -123,7 +123,7 @@ public class SocialShareTest {
     @Test
     public void testLinkedInShare(){
         String expected = "https://linkedin.com/test?page=http%3A%2F%2Flocalhost%2F";
-        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        ctx.currentResource("/content/solidigm/us/en/articlePage1/jcr:content/root/container/socialshare");
         SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
         assertEquals(expected, socialShare.getLinkedInShare());
     }
@@ -131,7 +131,7 @@ public class SocialShareTest {
     @Test
     void testGetExportedType() {
         String expected = "solidigm/components/socialshare";
-        ctx.currentResource("/content/solidigm/articlePage1/jcr:content/root/container/socialshare");
+        ctx.currentResource("/content/solidigm/us/en/articlePage1/jcr:content/root/container/socialshare");
         SocialShare socialShare = ctx.request().adaptTo(SocialShare.class);
         assertEquals(expected, socialShare.getExportedType());
     }

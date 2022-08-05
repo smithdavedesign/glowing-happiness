@@ -34,9 +34,9 @@
                     jcr:title="Content Image"
                     sling:resourceType="wcm/core/components/policy/policy"
                     allowedRenditionWidths="[320,480,600,800,1024,1200,1600]"
-                    disableLazyLoading="false"
                     allowUpload="false"
                     altValueFromDAM="true"
+                    disableLazyLoading="false"
                     displayPopupTitle="true"
                     isDecorative="false"
                     jpegQuality="{Long}85"
@@ -362,7 +362,7 @@
                         </assetToComponentMapping>
                     </cq:authoring>
                 </policy_1575040440977>
-                 <policy_67718747930984
+                <policy_67718747930984
                     jcr:lastModified="{Date}2022-06-29T16:26:38.605-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
@@ -636,143 +636,166 @@
             </hero>
             <banner jcr:primaryType="nt:unstructured">
                 <policy_1655841585316
-                        cq:styleDefaultClasses="solidigm-banner"
-                        jcr:lastModified="{Date}2022-06-21T16:02:02.556-04:00"
-                        jcr:lastModifiedBy="admin"
-                        jcr:primaryType="nt:unstructured"
-                        jcr:title="Solidigm Banner"
-                        sling:resourceType="wcm/core/components/policy/policy">
+                    cq:styleDefaultClasses="solidigm-banner"
+                    jcr:lastModified="{Date}2022-06-21T16:02:02.556-04:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Solidigm Banner"
+                    sling:resourceType="wcm/core/components/policy/policy">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <rtePlugins jcr:primaryType="nt:unstructured">
                         <paraformat
-                                jcr:primaryType="nt:unstructured"
-                                features="-">
+                            jcr:primaryType="nt:unstructured"
+                            features="-">
                             <formats
-                                    jcr:primaryType="nt:unstructured"
-                                    override="true">
+                                jcr:primaryType="nt:unstructured"
+                                override="true">
                                 <item0
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Paragraph"
-                                        tag="p"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Paragraph"
+                                    tag="p"/>
                                 <item1
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Heading 1"
-                                        tag="h1"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Heading 1"
+                                    tag="h1"/>
                                 <item2
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Heading 2"
-                                        tag="h2"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Heading 2"
+                                    tag="h2"/>
                                 <item3
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Heading 3"
-                                        tag="h3"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Heading 3"
+                                    tag="h3"/>
                                 <item4
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Heading 4"
-                                        tag="h4"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Heading 4"
+                                    tag="h4"/>
                                 <item5
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Heading 5"
-                                        tag="h5"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Heading 5"
+                                    tag="h5"/>
                                 <item6
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Heading 6"
-                                        tag="h6"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Heading 6"
+                                    tag="h6"/>
                                 <item7
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Quote"
-                                        tag="blockquote"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Quote"
+                                    tag="blockquote"/>
                                 <item8
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Horizontal Rule (visual line break)"
-                                        tag="hr"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Horizontal Rule (visual line break)"
+                                    tag="hr"/>
                                 <item9
-                                        jcr:primaryType="nt:unstructured"
-                                        description="Preformatted"
-                                        tag="pre"/>
+                                    jcr:primaryType="nt:unstructured"
+                                    description="Preformatted"
+                                    tag="pre"/>
                             </formats>
                         </paraformat>
                         <misctools
-                                jcr:primaryType="nt:unstructured"
-                                features="specialchars">
+                            jcr:primaryType="nt:unstructured"
+                            features="specialchars">
                             <specialCharsConfig jcr:primaryType="nt:unstructured">
                                 <chars
-                                        jcr:primaryType="nt:unstructured"
-                                        override="true">
+                                    jcr:primaryType="nt:unstructured"
+                                    override="true">
                                     <item0
-                                            jcr:primaryType="nt:unstructured"
-                                            entity="&amp;copy;"
-                                            name="copyright"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        entity="&amp;copy;"
+                                        name="copyright"/>
                                     <item1
-                                            jcr:primaryType="nt:unstructured"
-                                            entity="&amp;euro;"
-                                            name="euro"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        entity="&amp;euro;"
+                                        name="euro"/>
                                     <item2
-                                            jcr:primaryType="nt:unstructured"
-                                            entity="&amp;reg;"
-                                            name="registered"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        entity="&amp;reg;"
+                                        name="registered"/>
                                     <item3
-                                            jcr:primaryType="nt:unstructured"
-                                            entity="&amp;trade;"
-                                            name="trademark"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        entity="&amp;trade;"
+                                        name="trademark"/>
                                     <item4
-                                            jcr:primaryType="nt:unstructured"
-                                            entity="&amp;#9888;"
-                                            name="caution"/>
+                                        jcr:primaryType="nt:unstructured"
+                                        entity="&amp;#9888;"
+                                        name="caution"/>
                                 </chars>
                             </specialCharsConfig>
                         </misctools>
                         <edit
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <format
-                                jcr:primaryType="nt:unstructured"
-                                features="bold,italic,underline"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="bold,italic,underline"/>
                         <findreplace
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <undo
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <spellcheck
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <image
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <table
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <justify
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <subsuperscript
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <lists
-                                jcr:primaryType="nt:unstructured"
-                                features="-"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="-"/>
                         <links
-                                jcr:primaryType="nt:unstructured"
-                                features="modifylink,unlink,anchor"/>
+                            jcr:primaryType="nt:unstructured"
+                            features="modifylink,unlink,anchor"/>
                     </rtePlugins>
                 </policy_1655841585316>
             </banner>
             <carousel jcr:primaryType="nt:unstructured">
                 <policy_1656427204082
-                    jcr:lastModified="{Date}2022-06-28T10:40:46.956-04:00"
+                    jcr:lastModified="{Date}2022-08-01T15:27:49.405-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Solidigm Carousel"
                     sling:resourceType="wcm/core/components/policy/policy"
                     autopauseDisabled="false"
                     autoplay="false"
-                    components="[/apps/solidigm/components/hero,/apps/solidigm/components/image,/apps/solidigm/components/articleteaser]"
+                    components="[/apps/solidigm/components/articleteaser,/apps/solidigm/components/hero,/apps/solidigm/components/image]"
                     controlsPrepended="false"
                     delay="5000">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1656427204082>
             </carousel>
+            <video jcr:primaryType="nt:unstructured">
+                <policy_1659381859913
+                    jcr:lastModified="{Date}2022-08-01T15:26:59.277-04:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Solidigm Video"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    embeddablesDisabled="true"
+                    htmlDisabled="true"
+                    urlDisabled="false"
+                    youtubeAutoPlayDefaultValue="false"
+                    youtubeAutoPlayEnabled="false"
+                    youtubeLoopDefaultValue="false"
+                    youtubeLoopEnabled="false"
+                    youtubeMuteDefaultValue="false"
+                    youtubeMuteEnabled="false"
+                    youtubePlaysInlineDefaultValue="false"
+                    youtubePlaysInlineEnabled="false"
+                    youtubeRelatedVideosDefaultValue="true"
+                    youtubeRelatedVideosEnabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                </policy_1659381859913>
+            </video>
         </components>
     </solidigm>
 </jcr:root>
