@@ -4,18 +4,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 0 70px 0;
+    padding: $spacing-7xl-mobile 0 $spacing-9xl-mobile 0;
+
+    @media (min-width: $desktop) {
+        padding: vwDesktop(90);
+    }
 }
 
 .search-component__title {
     width: 65%;
     color: $dark-blue;
     font-family: $heading-font;
-    font-size: 24px;
-    letter-spacing: -0.3px;
-    line-height: 34px;
+    font-size: $font-size-xl-mobile;
+    letter-spacing: vwMobile(-0.3);
+    line-height: vwMobile(34);
     text-align: center;
     margin: 0;
+
+    @media (min-width: $desktop) {
+        font-size: $font-size-xl-desktop;
+        letter-spacing: vwDesktop(-0.3);
+        line-height: vwDesktop(34);
+    }
 }
 
 .search-component__suggestions {
@@ -23,33 +33,32 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
+    gap: $spacing-2xs-mobile;
+    margin-top: $spacing-2xl-mobile;
+
+    @media (min-width: $desktop) {
+        width: vwDesktop(350);
+        gap: $spacing-2xs-desktop $spacing-base-desktop;
+        margin-top: $spacing-2xl-desktop;
+    }
 }
 
 .search-component__suggestions__suggestion {
     color: $dark-grey;
     font-family: $body-font;
-    font-size: 11px;
+    font-size: $font-size-xs-mobile;
     letter-spacing: 0;
-    line-height: 15px;
-    border-radius: 5px;
+    line-height: vwMobile(15);
+    border-radius: $border-radius-md-mobile;
     background-color: $off-white;
-    padding: 10px;
-}
+    padding: $spacing-2xs-mobile;
 
-@media (min-width: 1024px) {
-    .search-component {
-        padding: 90px;
-    }
-
-    .search-component__suggestions {
-        width: 350px;
-        gap: 10px 20px;
-    }
-
-    .search-component__suggestions__suggestion {
-        padding: 10px 20px;
+    @media (min-width: $desktop) {
+        font-size: $font-size-xs-desktop;
+        letter-spacing: 0;
+        line-height: vwDesktop(15);
+        border-radius: $border-radius-md-desktop;
+        padding: $spacing-2xs-desktop $spacing-base-desktop;
     }
 }
 
@@ -59,11 +68,16 @@
 
 .disclaimer {
     background-color: $off-white;
-    padding: 35px 0 40px 0;
+    padding: $spacing-3xl-mobile 0 $spacing-4xl-mobile 0;
     position: relative;
 
-    &::before{
-        content: '';
+    @media (min-width: $desktop) {
+        padding: $spacing-6xl-desktop $spacing-4xl-desktop $spacing-7xl-desktop
+            $spacing-4xl-desktop;
+    }
+
+    &::before {
+        content: "";
         height: 100%;
         width: 200vw;
         background: $off-white;
@@ -78,14 +92,13 @@
 .disclaimer__legal-text {
     color: $grey;
     font-family: $body-font;
-    font-size: 13px;
+    font-size: $font-size-sm-mobile;
     letter-spacing: 0;
-    line-height: 23px;
-}
+    line-height: vwMobile(23);
 
-@media (min-width: 1024px) {
-    .disclaimer {
-        padding: 55px 40px 60px 40px;
+    @media (min-width: $desktop) {
+        font-size: $font-size-sm-desktop;
+        line-height: vwDesktop(23);
     }
 }
 
@@ -98,13 +111,19 @@
     background: $solidigm-purple;
     color: $white;
     width: 100%;
-    padding: 55px 0 65px 0;
+    padding: $spacing-6xl-mobile 0 $spacing-8xl-mobile 0;
     box-sizing: border-box;
 
     position: relative;
 
-    &::before{
-        content: '';
+    @media (min-width: $desktop) {
+        display: flex;
+        justify-content: space-between;
+        padding: vwDesktop(75) $spacing-4xl-desktop;
+    }
+
+    &::before {
+        content: "";
         height: 100%;
         width: 200vw;
         background: $solidigm-purple;
@@ -116,118 +135,145 @@
     }
 }
 
+.footer-content__left,
+.footer-content__right {
+    @media (min-width: $desktop) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
 .footer-content__logo {
     filter: brightness(0) invert(1);
-    height: 30px;
+    height: vwMobile(30);
     @include svg_icon(solidigm);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: left;
-    width: 156px;
+    width: vwMobile(156);
+
+    @media (min-width: $desktop) {
+        height: vwDesktop(30);
+        width: vwDesktop(156);
+    }
 }
 
 .footer-content__social-icons {
     display: flex;
-    gap: 40px;
-    margin-top: 35px;
+    gap: $spacing-4xl-mobile;
+    margin-top: $spacing-3xl-mobile;
+
+    @media (min-width: $desktop) {
+        gap: $spacing-5xl-desktop;
+        margin: 0;
+    }
+}
+
+.footer-content__social-icon {
+    svg {
+        width: auto;
+        height: vwMobile(22);
+        
+        @media (min-width: $desktop) {
+            height: vwDesktop(22);
+        }
+    }
 }
 
 .footer-content__links {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 45px;
+    gap: $spacing-base-mobile;
+    margin-top: $spacing-5xl-mobile;
+
+    @media (min-width: $desktop) {
+        flex-direction: row;
+        gap: $spacing-4xl-desktop;
+        margin: 0;
+    }
 }
 
 .footer-content__links__link {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: $spacing-sm-mobile;
     font-family: $heading-font;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    line-height: 15px;
+    font-size: $font-size-sm-mobile;
+    letter-spacing: vwMobile(0.5);
+    line-height: vwMobile(15);
     text-transform: uppercase;
     color: $white;
 
-    &[target="_blank"]{
+    @media (min-width: $desktop) {
+        gap: $spacing-sm-desktop;
+        font-size: $font-size-sm-desktop;
+        letter-spacing: vwDesktop(0.5);
+        line-height: vwDesktop(15);
+    }
+
+    &[target="_blank"] {
         position: relative;
-        margin-right: $spacing-2xl;
-        &::after{
-            content: '';
+        margin-right: $spacing-2xl-mobile;
+
+        @media (min-width: $desktop) {
+            margin-right: $spacing-2xl-desktop;
+        }
+
+        &::after {
+            content: "";
             position: absolute;
-            height: 14px;
-            width: 14px;
-            left: calc(100% + $spacing-xs);
+            height: vwMobile(14);
+            width: vwMobile(14);
+            left: calc(100% + $spacing-xs-mobile);
             top: 50%;
             transform: translateY(-50%);
             @include svg_icon(new-tab);
             background-repeat: no-repeat;
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(14);
+                width: vwDesktop(14);
+                left: calc(100% + $spacing-xs-desktop);
+            }
         }
     }
 }
 
 .footer-content__text {
     font-family: $body-font;
-    font-size: 13px;
+    font-size: $font-size-sm-mobile;
     letter-spacing: 0;
-    line-height: 23px;
+    line-height: vwMobile(23);
     margin: 0;
-    margin-top: 65px;
+    margin-top: $spacing-8xl-mobile;
+
+    @media (min-width: $desktop) {
+        font-family: $body-font;
+        font-size: $font-size-3xs-desktop;
+        line-height: vwDesktop(15);
+        text-align: right;
+        margin: 0;
+        margin-top: $spacing-8xl-desktop;
+        width: vwDesktop(425);
+    }
 }
 
 .footer-content__trustarc-logo {
-    margin-top: 50px;
+    margin-top: $spacing-6xl-mobile;
     display: block;
-    width: 78px;
-    height: 16px;
-    background-image: url('../resources/images/trustarc-logo.png');
+    width: vwMobile(78);
+    height: vwMobile(16);
+    background-image: url("../resources/images/trustarc-logo.png");
     background-position: right;
     background-size: contain;
     background-repeat: no-repeat;
-}
 
-@media (min-width: 1024px) {
-    .footer-content {
-        display: flex;
-        justify-content: space-between;
-        padding: 75px 40px;
-    }
-
-    .footer-content__left,
-    .footer-content__right {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .footer-content__social-icons {
-        gap: 45px;
-        margin: 0;
-    }
-
-    .footer-content__social-icon {
-        height: 15px;
-    }
-
-    .footer-content__links {
-        flex-direction: row;
-        gap: 40px;
-        margin: 0;
-    }
-
-    .footer-content__text {
-        font-family: $body-font;
-        font-size: 9px;
-        line-height: 15px;
-        text-align: right;
-        margin: 0;
-        width: 425px;
-    }
-
-    .footer-content__trustarc-logo {
-        margin-top: 40px;
+    @media (min-width: $desktop) {
+        margin-top: $spacing-4xl-desktop;
         margin-left: auto;
+        width: vwDesktop(78);
+        height: vwDesktop(16);
     }
 }
 
@@ -237,25 +283,28 @@
 
 .scroll-up-button {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
+    right: $spacing-base-mobile;
+    bottom: $spacing-base-mobile;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
-    border-radius: 3px;
+    width: vwMobile(40);
+    height: vwMobile(40);
+    border-radius: $border-radius-sm-mobile;
     background-color: $white;
     @include svg_icon(scroll-up);
-    background-repeat: no-repeat;
+    background-size: auto vwMobile(15);
     background-position: center;
-}
+    background-repeat: no-repeat;
 
-@media (min-width: $desktop) {
-    .scroll-up-button {
-        right: 35px;
-        bottom: 35px;
+    @media (min-width: $desktop) {
+        right: $spacing-3xl-desktop;
+        bottom: $spacing-3xl-desktop;
+        width: vwDesktop(40);
+        height: vwDesktop(40);
+        border-radius: $border-radius-sm-desktop;
+        background-size: auto vwDesktop(15);
     }
 }
 

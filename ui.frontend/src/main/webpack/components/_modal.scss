@@ -1,7 +1,11 @@
 .cmp-modal {
-    padding: 30px;
+    padding: $spacing-2xl-mobile;
     border: 0;
     background: transparent;
+
+    @media (min-width: $desktop) {
+        padding: $spacing-2xl-desktop;
+    }
 
     &::backdrop {
         background: #000000aa;
@@ -15,9 +19,14 @@
             right: 0;
             top: 0;
             background: $white;
-            height: 30px;
-            width: 30px;
+            height: vwMobile(30);
+            width: vwMobile(30);
             border-radius: 100%;
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(30);
+                width: vwDesktop(30);
+            }
         }
 
         .cmp-modal__iframe-container {
@@ -36,17 +45,28 @@
 
     &__close-btn {
         position: relative;
-        border: 2px solid $black;
+        border: vwMobile(2) solid $black;
+
+        @media (min-width: $desktop) {
+            border: vwDesktop(2) solid $black;
+        }
 
         &::after {
-            content: '×';
-            height: 24px;
-            width: 24px;
+            content: "×";
+            height: vwMobile(24);
+            width: vwMobile(24);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 24px;
-            line-height: 24px;
+            font-size: $font-size-xl-mobile;
+            line-height: vwMobile(24);
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(24);
+                width: vwDesktop(24);
+                font-size: $font-size-xl-desktop;
+                line-height: vwDesktop(24);
+            }
         }
     }
 }

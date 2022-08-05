@@ -1,93 +1,137 @@
-.cmp-product-overview{
-    color: $darker-gray; 
-    &__title{
+.cmp-product-overview {
+    color: $dark-grey;
+
+    &__title {
         display: none;
-        font-size: $font-size-3xl;
-        line-height: calc($font-size-3xl + 10px);
-    }
+        font-size: $font-size-2xl-mobile;
+        line-height: vwMobile(38);
 
-    &__description{
-        line-height: $line-height-base;
-        color: $gray-600;
-        margin-top: $spacing-3xs;
-    }
-
-    &__extra-info{
-        color: $gray-600;
-        font-size: $font-size-sm;
-        margin-top: $spacing-lg;
-    }
-
-    &__configuration-title{
-        margin-top: $spacing-5xl;
-    }
-
-    &__specs{
-        margin-top: $spacing-2xl;
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        gap: $spacing-3xs $spacing-2xl;
-        line-height: $line-height-base;
-
-        dd{
-            color: $gray-600
+        @media (min-width: $desktop) {
+            display: block;
+            font-size: $font-size-3xl-desktop;
+            line-height: vwDesktop(58);
         }
     }
 
-    &__cta-container{
-        margin-top: $spacing-6xl;
-        display: flex;
-        flex-direction: column;
-        gap: $spacing-xl;
+    &__description {
+        line-height: $line-height-base-mobile;
+        color: $grey;
+        margin-top: $spacing-3xs-mobile;
+
+        @media (min-width: $desktop) {
+            line-height: $line-height-base-desktop;
+            color: $grey;
+            margin-top: $spacing-3xs-desktop;
+        }
     }
 
-    &__actions-container{
-        margin-top: $spacing-4xl;
-        padding: $spacing-xl 0;
-        border: 1px solid $gray-400;
+    &__extra-info {
+        color: $grey;
+        font-size: $font-size-sm-mobile;
+        margin-top: $spacing-lg-mobile;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-sm-desktop;
+            margin-top: $spacing-lg-desktop;
+        }
+    }
+
+    &__configuration-title {
+        margin-top: $spacing-5xl-mobile;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-5xl-desktop;
+        }
+    }
+
+    &__specs {
+        margin-top: $spacing-2xl-mobile;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: $spacing-3xs-mobile $spacing-2xl-mobile;
+        line-height: $line-height-base-mobile;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-2xl-desktop;
+            gap: $spacing-3xs-desktop $spacing-2xl-desktop;
+            line-height: $line-height-base-desktop;
+        }
+
+        dd {
+            color: $grey;
+        }
+    }
+
+    &__cta-container {
+        margin-top: $spacing-6xl-mobile;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xl-mobile;
+
+        @media (min-width: $desktop) {
+            flex-direction: row;
+            margin-top: $spacing-6xl-desktop;
+            gap: $spacing-xl-desktop;
+
+            & > * {
+                width: 50%;
+            }
+        }
+    }
+
+    &__actions-container {
+        margin-top: $spacing-4xl-mobile;
+        padding: $spacing-xl-mobile 0;
+        border: vwMobile(1) solid $gray-400;
         border-left: none;
         border-right: none;
-        
-        a{
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-4xl-desktop;
+            padding: $spacing-xl-desktop 0;
+            border: vwDesktop(1) solid $gray-400;
+        }
+
+        a {
             color: $solidigm-purple;
-            padding-left: $spacing-3xl;
+            padding-left: $spacing-3xl-mobile;
             position: relative;
 
-            &::before{
-                content: '?';
+            @media (min-width: $desktop) {
+                padding-left: $spacing-3xl-desktop;
+            }
+
+            &::before {
+                content: "?";
                 color: $white;
                 background: $solidigm-purple;
-                height: 20px;
-                width: 20px;
-                border-radius: $border-radius-sm;
+                height: vwMobile(20);
+                width: vwMobile(20);
+                border-radius: $border-radius-sm-mobile;
                 position: absolute;
                 left: 0;
-                font-size: $font-size-base;
+                font-size: $font-size-base-mobile;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 top: 50%;
                 transform: translateY(-50%);
+
+                @media (min-width: $desktop) {
+                    height: vwDesktop(20);
+                    width: vwDesktop(20);
+                    border-radius: $border-radius-sm-desktop;
+                    font-size: $font-size-base-desktop;
+                }
             }
         }
-
     }
 
-    .solidigm-btn{
-        font-size: $font-size-sm;
-    }
+    .solidigm-btn {
+        font-size: $font-size-sm-mobile;
 
-    @media (min-width: $tablet){
-        &__title{
-            display: block;
-        }
-
-        &__cta-container{
-            flex-direction: row;
-
-            & > *{
-                width: 50%;
-            }
+        @media (min-width: $desktop) {
+            font-size: $font-size-sm-desktop;
         }
     }
 }

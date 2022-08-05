@@ -1,53 +1,135 @@
+@mixin flex-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2xl-mobile;
+    @media (min-width: $desktop) {
+        gap: $spacing-2xl-desktop;
+    }
+}
+
 .cmp-container {
-    max-width: $max-width-base;
-    padding: 0 $spacing-2xl;
     margin: auto;
+    box-sizing: border-box;
+    max-width: $max-width;
 
-    &--no-padding {
-        padding: 0;
-    }
-
-    &--wide {
-        max-width: $max-width-lg;
-    }
-
-    &--gray-diagonal-line {
+    &--divider & > *:not(:last-child) {
         position: relative;
-        margin: auto;
-
-        &::before {
-            content: '';
-            height: 1000px;
-            width: 400vw;
-            //@TODO: define as a variable once merged with the other PRs containing other color definitions
-            background: #bcbcbc;
+        &::after {
+            content: "";
             position: absolute;
-            z-index: -10000;
-            transform-origin: 0 0;
-            transform: rotate(45deg) translateX(-50%);
-            top: 0;
             left: 0;
+            width: 100%;
+            height: vwMobile(1);
+            top: calc(100% + $spacing-2xl-mobile/2);
+            transform: translateY(-50%);
+            background: $gray-400;
         }
     }
 
-    &--gray-bg > & {
-        position: relative;
+    &--bg-gray{
+        background: $gray-400;
+    }
+    // Horizontal padding
+    padding-left: $spacing-lg-mobile;
+    padding-right: $spacing-lg-mobile;
+    @media (min-width: $desktop) {
+        padding-left: $standard-padding-desktop;
+        padding-right: $standard-padding-desktop;
+    }
 
-        &::before {
-            content: '';
-            height: 100%;
-            width: 200vw;
-            left: 0;
-            top: 0;
-            //@TODO: define as a variable once merged with the other PRs containing other color definitions
-            background: #f2f2f5;
-            z-index: -1000;
-            position: absolute;
-            transform: translateX(-50%);
+    .root > &,
+    .cmp-experiencefragment > &,
+    &--no-horizontal-padding > & {
+        padding: 0;
+    }
+
+    &--small-horizontal-padding > & {
+        padding-left: $spacing-lg-mobile;
+        padding-right: $spacing-lg-mobile;
+        @media (min-width: $desktop) {
+            padding-left: $small-padding-desktop;
+            padding-right: $small-padding-desktop;
         }
     }
-    
-    .cmp-container{
-        padding: 0;
+
+    &--large-horizontal-padding > & {
+        padding-left: $spacing-lg-mobile;
+        padding-right: $spacing-lg-mobile;
+        @media (min-width: $desktop) {
+            padding-left: $large-padding-desktop;
+            padding-right: $large-padding-desktop;
+        }
+    }
+
+    // Vertical padding
+
+    // Default: medium external/internal vertical padding
+    //external
+    & > &:not(:last-child), 
+    // internal
+    & {
+        padding-bottom: $spacing-2xl-mobile;
+        @media (min-width: $desktop) {
+            padding-bottom: $spacing-7xl-desktop;
+        }
+    }
+
+    &--no-internal-vertical-padding > & > :not(:last-child),
+    &--no-external-vertical-padding > & {
+        padding-bottom: 0;
+    }
+
+    &--small-internal-vertical-padding > & > :not(:last-child),
+    &--small-external-vertical-padding > & {
+        padding-bottom: $spacing-base-mobile;
+        @media (min-width: $desktop) {
+            padding-bottom: $spacing-base-desktop;
+        }
+    }
+
+    @media (min-width: $tablet) {
+        &--t-two-columns > & {
+            @include flex-container();
+            flex-direction: row;
+        }
+
+        &--t-two-columns.cmp-container--divider > & > :not(:last-child) {
+            &::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                height: 100%;
+                width: vwMobile(1);
+                top: 0;
+                transform: translateX(-50%);
+            }
+        }
+
+        &--t-two-columns > & > * {
+            width: 50%;
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &--d-two-columns > & {
+            @include flex-container();
+            flex-direction: row;
+        }
+
+        &--d-two-columns.cmp-container--divider > & > :not(:last-child) {
+            &::after {
+                content: "";
+                position: absolute;
+                left: calc(100% + $spacing-2xl-desktop/2);
+                height: 100%;
+                width: vwDesktop(1);
+                top: 0;
+                transform: translateX(-50%);
+            }
+        }
+
+        &--d-two-columns > & > * {
+            width: 50%;
+        }
     }
 }

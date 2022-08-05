@@ -1,32 +1,57 @@
 .cmp-quote {
-    padding: 0 $spacing-4xl;
+    padding: 0 $spacing-4xl-mobile;
+
+    @media (min-width: $desktop) {
+        padding: 0 $spacing-4xl-desktop;
+    }
 
     &__text {
-        font-size: clamp($font-size-lg, 5vw, $font-size-2xl);
-        line-height: clamp(30px, 5vw, 38px);
+        font-size: $font-size-lg-mobile;
+        line-height: vwMobile(30);
         display: inline-block;
         position: relative;
+        color: $dark-blue;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-2xl-desktop;
+            line-height: vwDesktop(38);
+        }
 
         &::before,
         &::after {
-            content: '';
-            @include svg_icon(quote);
+            content: "";
+            background: url("../../assets/quote-icon.svg");
+            background-size: contain;
             position: absolute;
-            height: 30px;
-            width: 35px;
+            height: vwMobile(30);
+            width: vwMobile(35);
             left: 0;
-            transform: translate($spacing-4xl * -1, -25%);
+            transform: translate(calc($spacing-4xl-mobile * -1), -25%);
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(30);
+                width: vwDesktop(35);
+                transform: translate(calc($spacing-4xl-desktop * -1), -25%);
+            }
         }
 
         &::after {
             left: unset;
-            transform: translate($spacing-2xs, 50%) rotate(180deg);
+            transform: translate($spacing-2xs-mobile, 50%) rotate(180deg);
+
+            @media (min-width: $desktop) {
+                transform: translate($spacing-2xs-desktop, 50%) rotate(180deg);
+            }
         }
     }
 
     &__attribution {
-        margin-top: $spacing-2xl;
-        color: $gray-600;
+        margin-top: $spacing-2xl-mobile;
+        color: $grey;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-2xl-desktop;
+        }
     }
 
     &__author,
@@ -35,6 +60,10 @@
     }
 
     &__author-title {
-        margin-top: $spacing-2xs;
+        margin-top: $spacing-2xs-mobile;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-2xs-desktop;
+        }
     }
 }
