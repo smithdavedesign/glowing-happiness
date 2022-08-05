@@ -1,13 +1,182 @@
-<div data-sly-use.articleinfo="com.solidigm.core.models.ArticleInfo">
-    <p>
-        Author: ${articleinfo.author}
-    </p>
-    <p>
-        Date: ${articleinfo.date}
-    </p>
-    <ul data-sly-list.tag="${articleinfo.tags}">
-        <li>
-            Tag label: ${tag.label}
-            Tag link: ${tag.link}
-        </li>
-    </ul>
+<div class="partners-list">
+    <div class="partners-list__filters">
+        <label class="partners-list__filters__label">Filter by</label>
+        <select
+            class="partners-list__filters__filter"
+            id="partners-list__filters__country-filter"
+            name="countries"
+        >
+            <option value="" selected="">Country</option>
+            <option value="1">Canada</option>
+            <option value="2">Australia</option>
+            <option value="3">Belgium</option>
+            <option value="4">Cyprus</option>
+        </select>
+        <select
+            class="partners-list__filters__filter"
+            id="partners-list__filters__product-filter"
+            name="products"
+        >
+            <option value="" selected="">Product</option>
+            <option value="1">Product 1</option>
+            <option value="2">Product 2</option>
+        </select>
+    </div>
+    <table class="partners-list__partners">
+        <tbody>
+            <tr class="partners-list__partners__table-head">
+                <th>Authorized Distributor</th>
+                <th>Country</th>
+                <th class="partners-list__partners__website-column">Website</th>
+            </tr>
+
+            <tr
+                class="partners-list__partners__table-row"
+                data-partner-country="1"
+                data-partner-product="1"
+            >
+                <td>ASI</td>
+                <td>Canada</td>
+                <td class="partners-list__partners__website-column">
+                    <a
+                        class="partners-list__partners__website-column__link"
+                        href="https://solidigm.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    </a>
+                </td>
+            </tr>
+
+            <tr
+                class="partners-list__partners__table-row"
+                data-partner-country="2"
+                data-partner-product="1"
+            >
+                <td>Dicker Data</td>
+                <td>Australia</td>
+                <td class="partners-list__partners__website-column">
+                    <a
+                        class="partners-list__partners__website-column__link"
+                        href="https://solidigm.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    </a>
+                </td>
+            </tr>
+
+            <tr
+                class="partners-list__partners__table-row"
+                data-partner-country="3"
+                data-partner-product="1"
+            >
+                <td>Ingram Micro</td>
+                <td>Belgium (Country of Inc)</td>
+                <td class="partners-list__partners__website-column">
+                    <a
+                        class="partners-list__partners__website-column__link"
+                        href="https://solidigm.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    </a>
+                </td>
+            </tr>
+
+            <tr
+                class="partners-list__partners__table-row"
+                data-partner-country="1"
+                data-partner-product="2"
+            >
+                <td>Ingram Micro</td>
+                <td>Canada</td>
+                <td class="partners-list__partners__website-column">
+                    <a
+                        class="partners-list__partners__website-column__link"
+                        href="https://solidigm.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    </a>
+                </td>
+            </tr>
+
+            <tr
+                class="partners-list__partners__table-row"
+                data-partner-country="1"
+                data-partner-product="2"
+            >
+                <td>Synnex Corp</td>
+                <td>Canada</td>
+                <td class="partners-list__partners__website-column">
+                    <a
+                        class="partners-list__partners__website-column__link"
+                        href="https://solidigm.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                    </a>
+                </td>
+            </tr>
+
+            <tr
+                class="partners-list__partners__table-row"
+                data-partner-country="4"
+                data-partner-product="2"
+            >
+                <td>ASBIS</td>
+                <td>Cyprus</td>
+                <td class="partners-list__partners__website-column">
+                    <a
+                        class="partners-list__partners__website-column__link"
+                        href="https://solidigm.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    </a>
+                </td>
+            </tr>
+
+            <tr
+                class="partners-list__partners__table-row"
+                data-partner-country="4"
+                data-partner-product="2"
+            >
+                <td>Logicom</td>
+                <td>Cyprus</td>
+                <td class="partners-list__partners__website-column">
+                    <a
+                        class="partners-list__partners__website-column__link"
+                        href="https://solidigm.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="partners-list__no-results">No Results</p>
+</div>
+
+
+<div class="cmp-article-info" data-sly-use.articleinfo="com.solidigm.core.models.ArticleInfo">
+    <div class="cmp-article-info__publish-info">
+        <span>Posted on</span>
+        <date datetime="2022-02-10">${articleInfo.date}</date>
+        <span>by</span>
+        ${articleInfo.author}
+    </div>
+    <div class="cmp-article-info__tags">
+        <span>Tags:</span>
+        <nav>
+            <ul class="cmp-article-info__tags-list" data-sly-list.tag="${articleinfo.tags}">
+                <li>
+                    <a href="${tag.link}">${tag.label}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
