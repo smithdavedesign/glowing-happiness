@@ -60,6 +60,9 @@
     <property inherit="true" name="navItemTitle1" translate="true" updateDestinationLanguage="false"/>
     <property inherit="true" name="greeting" translate="true" updateDestinationLanguage="false"/>
     <property inherit="true" name="homepageLabel" translate="true" updateDestinationLanguage="false"/>
+    <property inherit="true" name="trademark" translate="true" updateDestinationLanguage="false"/>
+    <property inherit="true" name="disclaimer" translate="true" updateDestinationLanguage="false"/>
+    <property inherit="true" name="copyright" translate="true" updateDestinationLanguage="false"/>
     <filter/>
     <node pathContains="/cq:annotations">
       <property name="text" translate="false"/>
