@@ -2,6 +2,7 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.solidigm.core.beans.Partner;
 import com.solidigm.core.models.PartnerList;
@@ -18,6 +19,7 @@ import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Model(
@@ -32,6 +34,8 @@ import java.util.List;
 )
 public class PartnerListImpl implements PartnerList {
     static final String RESOURCE_TYPE = "solidigm/components/partnerlist";
+    private static final String COUNTRY_TAGS_ROOT = "/content/cq:tags/solidigm/partners/countries";
+    private static final String PRODUCT_TAGS_ROOT = "/content/cq:tags/solidigm/partners/products";
 
     @SlingObject
     ResourceResolver resourceResolver;
@@ -43,6 +47,12 @@ public class PartnerListImpl implements PartnerList {
     @ChildResource(name = "partners")
     @Getter
     private List<Partner> partners;
+
+    @Getter
+    private List<Tag> countries;
+
+    @Getter
+    private List<Tag> products;
 
     private Boolean hasContentVal;
 
@@ -60,11 +70,27 @@ public class PartnerListImpl implements PartnerList {
     private void initModel() {
         //Init Variables
         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+        countries = new ArrayList<>();
+        products = new ArrayList<>();
 
         //Set Country Name for partners
         if(partners != null) {
             for (Partner partner : partners) {
                 partner.setCountryName(tagManager.resolve(partner.getCountryID()).getTitle());
+            }
+        }
+
+        Resource countriesResource = resourceResolver.getResource(COUNTRY_TAGS_ROOT);
+        if(countriesResource != null) {
+            for(Resource country : countriesResource.getChildren()) {
+                countries.add(country.adaptTo(Tag.class));
+            }
+        }
+
+        Resource productResource = resourceResolver.getResource(PRODUCT_TAGS_ROOT);
+        if(productResource != null) {
+            for(Resource product : productResource.getChildren()) {
+                products.add(product.adaptTo(Tag.class));
             }
         }
 

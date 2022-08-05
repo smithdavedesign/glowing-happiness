@@ -87,7 +87,7 @@
                                                                         name="./country"
                                                                         fieldLabel="Country"
                                                                         required="{Boolean}true"
-                                                                        rootPath="/content/cq:tags/solidigm" />
+                                                                        rootPath="/content/cq:tags/solidigm/partners/countries" />
                                                                 <additionalInfo
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -102,7 +102,7 @@
                                                                         fieldDescription="Products associated with this partner, multiple can be selected"
                                                                         required="{Boolean}true"
                                                                         multiple="{Boolean}true"
-                                                                        rootPath="/content/cq:tags/solidigm" />
+                                                                        rootPath="/content/cq:tags/solidigm/partners/products" />
                                                                 <link
                                                                         jcr:primaryType="nt:unstructured"
                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

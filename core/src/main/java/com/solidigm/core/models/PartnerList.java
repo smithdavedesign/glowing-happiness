@@ -1,6 +1,7 @@
 package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
+import com.day.cq.tagging.Tag;
 import com.solidigm.core.beans.Partner;
 
 import java.util.List;
@@ -24,6 +25,24 @@ public interface PartnerList extends ComponentExporter {
      * @return List<Partner>
      */
     default List<Partner> getPartners() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns List of tags for filtering by locations tags
+     *
+     * @return List<Tag>
+     */
+    default List<Tag> getCountries() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns List of tags for filtering by product tags
+     *
+     * @return List<Tag>
+     */
+    default List<Tag> getProducts() {
         throw new UnsupportedOperationException();
     }
 

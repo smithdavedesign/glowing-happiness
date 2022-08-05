@@ -3,7 +3,42 @@
      data-sly-test.hasContent="${partnerList.hasContent}" >
     <div>
         <p>
+            Countries:
+        </p>
+    </div>
+    <div data-sly-list.country="${partnerList.countries}">
+        <p>
+            -----------------------
+        </p>
+        <p>
+            Country Name: ${country.title}
+        </p>
+        <p>
+            Country ID: ${country.tagID}
+        </p>
+    </div>
+    <div>
+        <p>
+            Products:
+        </p>
+    </div>
+    <div data-sly-list.product="${partnerList.products}">
+        <p>
+            -----------------------
+        </p>
+        <p>
+            product Name: ${product.title}
+        </p>
+        <p>
+            product ID: ${product.tagID}
+        </p>
+    </div>
+    <div>
+        <p>
             Partner Type: ${partnerList.partnerType}
+        </p>
+        <p>
+            Partners:
         </p>
     </div>
     <div data-sly-list.partner="${partnerList.partners}">

@@ -20,22 +20,22 @@
       "item0": {
         "jcr:primaryType": "nt:unstructured",
         "products": [
-          "solidigm:products/intel",
-          "solidigm:products"
+          "solidigm:partners/products/intel",
+          "solidigm:partners/products/consumer"
         ],
         "additionalInfo": "Test Additional Info",
         "companyName": "Test Company",
         "link": "https://test.com",
-        "country": "solidigm:products"
+        "country": "solidigm:partners/countries/usa"
       },
       "item1": {
         "jcr:primaryType": "nt:unstructured",
         "products": [
-          "solidigm:products"
+          "solidigm:partners/products/intel"
         ],
         "companyName": "Test Corporation",
         "link": "https://test2.com",
-        "country": "solidigm:products/intel"
+        "country": "solidigm:partners/countries/germany"
       }
     }
   },
@@ -70,20 +70,60 @@
       "jcr:created": "Thu Jun 23 2022 13:04:46 GMT-0400",
       "jcr:description": "",
       "sling:resourceType": "cq/tagging/components/tag",
-      "products": {
+      "partners": {
         "jcr:primaryType": "cq:Tag",
         "jcr:createdBy": "admin",
-        "jcr:title": "Products",
+        "jcr:title": "Partners",
         "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
         "jcr:description": "",
         "sling:resourceType": "cq/tagging/components/tag",
-        "intel": {
+        "products": {
           "jcr:primaryType": "cq:Tag",
           "jcr:createdBy": "admin",
-          "jcr:title": "Intel",
-          "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+          "jcr:title": "Products",
+          "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
           "jcr:description": "",
-          "sling:resourceType": "cq/tagging/components/tag"
+          "sling:resourceType": "cq/tagging/components/tag",
+          "intel": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Intel",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          },
+          "consumer": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Consumer",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          }
+        },
+        "countries": {
+          "jcr:primaryType": "cq:Tag",
+          "jcr:createdBy": "admin",
+          "jcr:title": "Products",
+          "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
+          "jcr:description": "",
+          "sling:resourceType": "cq/tagging/components/tag",
+          "usa": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "USA",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          },
+          "germany": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Germany",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          }
         }
       }
     }
