@@ -16,6 +16,19 @@
                                     jcr:primaryType="nt:unstructured"
                                     sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
+                                    <alerthint
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/alert"
+                                            jcr:title="Event Dates"
+                                            size="L"
+                                            text="For single day events please enter the event date in the
+                                            &quot;Start Date&quot; field and enter the start and end times of the event
+                                            in the respective fields. For multiday events please enter the starting day
+                                            and ending day of the event in the respective fields. It is recommended that
+                                            information about times for multiday events be provided in the
+                                            &quot;Event Info&quot; field rather than the &quot;Start Time&quot; and
+                                            &quot;End Time&quot; fields to improve information clarity to the attendees."
+                                            variant="info" />
                                     <startDate
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
@@ -130,6 +143,13 @@
                                                 jcr:primaryType="nt:unstructured"
                                                 cq-msm-lockable="eventLocation"/>
                                     </eventLocation>
+                                    <eventInfo
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                            jcr:primaryType="nt:unstructured"
+                                            name="./eventInfo"
+                                            fieldLabel="Event Info"
+                                            fieldDescription="Any additional info about the event that attendees should know about."
+                                            rows="{Long}3" />
                                     <teaserImage
                                             cq:showOnCreate="{Boolean}true"
                                             jcr:primaryType="nt:unstructured"
@@ -147,6 +167,7 @@
                                             jcr:primaryType="nt:unstructured"
                                             sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                             fieldLabel="Teaser Image Alternate Text"
+                                            emptyText="Leave blank to use the Alt Text stored in the DAM"
                                             name="./teaserImageAltText">
                                         <granite:data
                                                 jcr:primaryType="nt:unstructured"
