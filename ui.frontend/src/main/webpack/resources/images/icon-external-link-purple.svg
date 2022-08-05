@@ -1,0 +1,33 @@
+<svg
+    width="18px"
+    height="19px"
+    viewBox="0 0 18 19"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+    <g
+        id="Desktop"
+        stroke="none"
+        stroke-width="1"
+        fill="none"
+        fill-rule="evenodd"
+    >
+        <g
+            id="20_ChannelSuppliers"
+            transform="translate(-1168.000000, -812.000000)"
+            fill="#4F00B5"
+            fill-rule="nonzero"
+        >
+            <g
+                id="iconNewWindow"
+                transform="translate(1168.000000, 812.727441)"
+            >
+                <path
+                    d="M9,0 L9,2 L2,2 L2,16 L16,16 L16,9 L18,9 L18,18 L0,18 L0,0 L9,0 Z M18,8.17124146e-14 L18,7 L16,7 L16,3.41 L11.34,8.07 L9.93,6.66 L14.59,2 L11,2 L11,8.17124146e-14 L18,8.17124146e-14 Z"
+                    id="Combined-Shape"
+                ></path>
+            </g>
+        </g>
+    </g>
+</svg>
