@@ -28,6 +28,7 @@ import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,8 @@ import static com.solidigm.core.utils.SolidigmConstants.EVENT_TEMPLATE;
  * tag {String}: copy of what was sent
  * totalMatches {int}: the total number of matches the query found
  * totalPages {int}: the total number of pages that the query would display given the provided results per page
- * results {Array}: list of result objects with properties: teaserImage, articleTitle, articleLink, categoryTag, and altText
+ * results {Array}: list of result objects with properties: teaserImage, articleTitle, articleLink, categoryTag,
+ *                  altText, and articleDate(yyyy-MM-dd)
  */
 @Component(service = { Servlet.class })
 @SlingServletPaths("/bin/solidigm/taggedArticles")
@@ -182,6 +184,10 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
                         } else {
                             resultProps.addProperty("altText", articlePage.getTeaserImageAltText());
                         }
+
+                        //Add formatted date
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        resultProps.addProperty("articleDate", formatter.format(articlePage.getArticleDate()));
 
                         resultsArray.add(resultProps);
                     }
