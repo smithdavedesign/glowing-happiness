@@ -1,0 +1,131 @@
+{
+  "partnerListEmpty": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:createdBy": "admin",
+    "jcr:lastModifiedBy": "admin",
+    "jcr:created": "Thu Aug 04 2022 11:36:33 GMT-0400",
+    "jcr:lastModified": "Thu Aug 04 2022 12:30:30 GMT-0400",
+    "sling:resourceType": "solidigm/components/partnerlist"
+  },
+  "partnerListAuthored": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:createdBy": "admin",
+    "jcr:lastModifiedBy": "admin",
+    "jcr:created": "Thu Aug 04 2022 11:36:33 GMT-0400",
+    "jcr:lastModified": "Thu Aug 04 2022 12:30:30 GMT-0400",
+    "partnerType": "Test Partner Type",
+    "sling:resourceType": "solidigm/components/partnerlist",
+    "partners": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "products": [
+          "solidigm:partners/products/intel",
+          "solidigm:partners/products/consumer"
+        ],
+        "additionalInfo": "Test Additional Info",
+        "companyName": "Test Company",
+        "link": "https://test.com",
+        "country": "solidigm:partners/countries/usa"
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "products": [
+          "solidigm:partners/products/intel"
+        ],
+        "companyName": "Test Corporation",
+        "link": "https://test2.com",
+        "country": "solidigm:partners/countries/germany"
+      }
+    }
+  },
+  "cq:tags": {
+    "jcr:primaryType": "sling:Folder",
+    "jcr:mixinTypes": [
+      "sling:Redirect",
+      "rep:AccessControllable"
+    ],
+    "jcr:createdBy": "admin",
+    "jcr:title": "Tags",
+    "hidden": true,
+    "sling:target": "/tagging",
+    "jcr:created": "Thu Jun 02 2022 13:48:07 GMT-0400",
+    "sling:resourceType": "sling:redirect",
+    "languages": [
+      "en",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt_br",
+      "zh_cn",
+      "zh_tw",
+      "ja",
+      "ko_kr"
+    ],
+    "solidigm": {
+      "jcr:primaryType": "cq:Tag",
+      "jcr:createdBy": "admin",
+      "jcr:title": "Solidigm",
+      "jcr:created": "Thu Jun 23 2022 13:04:46 GMT-0400",
+      "jcr:description": "",
+      "sling:resourceType": "cq/tagging/components/tag",
+      "partners": {
+        "jcr:primaryType": "cq:Tag",
+        "jcr:createdBy": "admin",
+        "jcr:title": "Partners",
+        "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
+        "jcr:description": "",
+        "sling:resourceType": "cq/tagging/components/tag",
+        "products": {
+          "jcr:primaryType": "cq:Tag",
+          "jcr:createdBy": "admin",
+          "jcr:title": "Products",
+          "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
+          "jcr:description": "",
+          "sling:resourceType": "cq/tagging/components/tag",
+          "intel": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Intel",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          },
+          "consumer": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Consumer",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          }
+        },
+        "countries": {
+          "jcr:primaryType": "cq:Tag",
+          "jcr:createdBy": "admin",
+          "jcr:title": "Products",
+          "jcr:created": "Thu Jun 23 2022 13:05:10 GMT-0400",
+          "jcr:description": "",
+          "sling:resourceType": "cq/tagging/components/tag",
+          "usa": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "USA",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          },
+          "germany": {
+            "jcr:primaryType": "cq:Tag",
+            "jcr:createdBy": "admin",
+            "jcr:title": "Germany",
+            "jcr:created": "Thu Jun 23 2022 13:10:27 GMT-0400",
+            "jcr:description": "",
+            "sling:resourceType": "cq/tagging/components/tag"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Partner List"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabview
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <table
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Table"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <partnerType
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="Column label to display above the listed partners"
+                                                    fieldLabel="Partner Type"
+                                                    required="{Boolean}true"
+                                                    emptyText="e.g. Authorized Distributor"
+                                                    name="./partnerType" />
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </table>
+                    <partners
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Partners"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <partners
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Partners">
+                                                <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                        name="./partners">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <companyName
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldLabel="Company Name"
+                                                                        required="{Boolean}true"
+                                                                        name="./companyName" />
+                                                                <country
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                                        name="./country"
+                                                                        fieldLabel="Country"
+                                                                        required="{Boolean}true"
+                                                                        rootPath="/content/cq:tags/solidigm/partners/countries" />
+                                                                <additionalInfo
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Any additional information to be displayed beside the Country for a partner in parenthesis. For example: USA (Miami)"
+                                                                        fieldLabel="Additional Info"
+                                                                        name="./additionalInfo" />
+                                                                <products
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                                                                        name="./products"
+                                                                        fieldLabel="Products"
+                                                                        fieldDescription="Products associated with this partner, multiple can be selected"
+                                                                        required="{Boolean}true"
+                                                                        multiple="{Boolean}true"
+                                                                        rootPath="/content/cq:tags/solidigm/partners/products" />
+                                                                <link
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Link to the partner&apos;s site or social.,"
+                                                                        fieldLabel="Link"
+                                                                        required="{Boolean}true"
+                                                                        name="./link" />
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </partners>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </partners>
+                </items>
+            </tabview>
+        </items>
+    </content>
+</jcr:root>
