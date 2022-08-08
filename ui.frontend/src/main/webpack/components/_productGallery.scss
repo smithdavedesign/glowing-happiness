@@ -1,0 +1,118 @@
+.product-gallery__mobile-title {
+    color: $dark-blue;
+    font-family: $heading-font;
+    font-size: $font-size-2xl-mobile;
+    letter-spacing: vwMobile(-0.4);
+
+    @media (min-width: $desktop) {
+        display: none;
+        font-size: $font-size-2xl-desktop;
+        letter-spacing: vwDesktop(-0.4);
+    }
+}
+
+.product-gallery__content {
+    display: flex;
+    width: 100%;
+    margin-top: $spacing-lg-mobile;
+
+    @media (min-width: $desktop) {
+        width: auto;
+        margin-top: $spacing-lg-desktop;
+    }
+}
+
+.product-gallery__thumbnails {
+    display: flex;
+    flex-direction: column;
+    margin-right: $spacing-base-mobile;
+
+    @media (min-width: $desktop) {
+        margin-right: $spacing-2xl-desktop;
+    }
+
+    &__image-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 0;
+        margin-top: $spacing-3xs-mobile;
+        box-shadow: $box-shadow-mobile;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-2xs-desktop;
+            box-shadow: $box-shadow-desktop;
+        }
+    }
+
+    &__image-wrapper:first-child {
+        margin-top: 0;
+    }
+
+    &__image {
+        box-sizing: border-box;
+        height: vwMobile(45);
+        width: vwMobile(60);
+        border-radius: $border-radius-md-mobile;
+        background-color: #f9f9f9;
+        object-fit: contain;
+        object-position: center;
+
+        @media (min-width: $tablet) {
+            width: vwDesktop(80);
+            height: vwDesktop(60);
+            border-radius: $border-radius-md-desktop;
+        }
+    }
+
+    &__image--selected {
+        border: vwMobile(1) solid $dark-blue;
+
+        @media (min-width: $desktop) {
+            border: vwDesktop(1) solid $dark-blue;
+        }
+    }
+
+    &__show-more-tile {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+
+        display: none;
+    }
+
+    &__show-more-tile__text {
+        color: $grey;
+        font-family: $body-font;
+        font-size: $font-size-base-mobile;
+        letter-spacing: 0;
+        text-align: center;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-base-desktop;
+        }
+    }
+}
+
+.product-gallery__product-image {
+    width: 100%;
+    max-width: vwMobile(350);
+    height: vwMobile(250);
+    border-radius: $border-radius-md-mobile;
+    background-color: #f9f9f9;
+    object-fit: contain;
+    object-position: center;
+    box-shadow: $box-shadow-mobile;
+
+    @media (min-width: $desktop) {
+        width: vwDesktop(500);
+        max-width: unset;
+        height: vwDesktop(500);
+        border-radius: $border-radius-md-desktop;
+        box-shadow: $box-shadow-desktop;
+    }
+}
