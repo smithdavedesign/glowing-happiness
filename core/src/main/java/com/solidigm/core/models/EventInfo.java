@@ -10,7 +10,16 @@ import java.util.List;
  */
 public interface EventInfo extends ComponentExporter {
     /**
-     * Returns string for the date the article was posted
+     * Returns string for the date the article was posted, formatted to be used for SEO
+     *
+     * @return string
+     */
+    default String getDate() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns string for the date the article was posted, formatted to be displayed to the user
      *
      * @return string
      */

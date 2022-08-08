@@ -19,6 +19,15 @@ public interface ArticleInfo extends ComponentExporter {
     }
 
     /**
+     * Returns string for the date the article was posted, formatted to be displayed to user
+     *
+     * @return string
+     */
+    default String getFormattedDate() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns string for the Author's name
      *
      * @return string

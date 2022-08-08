@@ -54,6 +54,9 @@ public class EventInfoImpl implements EventInfo {
     private String taggedArticlesPage;
 
     @Getter
+    private String date;
+
+    @Getter
     private String postedDate;
 
     @Getter
@@ -88,6 +91,10 @@ public class EventInfoImpl implements EventInfo {
             //Init variables
             TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
             ArticlePage eventPage = currentPage.getContentResource().adaptTo(ArticlePage.class);
+
+            //Set date for SEO
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            date = formatter.format(eventPage.getArticleDate());
 
             //Set posted date, start and end dates
             SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM d, yyyy");

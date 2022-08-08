@@ -24,6 +24,14 @@ public class EventInfoTest {
     }
 
     @Test
+    void testGetDate(){
+        String expected = "2022-07-05";
+        ctx.currentResource("/content/eventPage/jcr:content/root/container/eventinfo");
+        EventInfo eventInfo = ctx.request().adaptTo(EventInfo.class);
+        assertEquals(expected, eventInfo.getDate());
+    }
+
+    @Test
     void testGetPostedDate(){
         String expected = "July 5, 2022";
         ctx.currentResource("/content/eventPage/jcr:content/root/container/eventinfo");
