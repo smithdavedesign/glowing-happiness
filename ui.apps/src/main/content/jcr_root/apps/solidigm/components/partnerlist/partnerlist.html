@@ -24,7 +24,7 @@
                 name="products"
             >
                 <option value="" selected="">Product</option>
-                <sly data-sly-list.country="${partnerList.products}">
+                <sly data-sly-list.product="${partnerList.products}">
                     <option value="${product.tagID}">${product.title}</option>
                 </sly>
             </select>
