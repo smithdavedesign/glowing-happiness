@@ -3,17 +3,14 @@ main {
 }
 
 .cmp-carousel {
-    // defaults to medium size slides
-    --carousel-slide-width: calc(
-        min(#{$max-width}, 100vw) - calc(#{$small-padding-desktop} * 2)
-    );
+    // defaults to standard size slides
+    --carousel-slide-width: calc(min(#{$max-width}, 100vw) - calc(#{$large-padding-desktop} * 2));
 
-    &--small-slides > & {
+    &--large-slides > & {
         --carousel-slide-width: calc(
-            min(#{$max-width}, 100vw) - calc(#{$large-padding-desktop} * 2)
+            min(#{$max-width}, 100vw) - calc(#{$small-padding-desktop} * 2)
         );
     }
-
 
     margin-bottom: $spacing-4xl-mobile;
     @media (min-width: $desktop) {
@@ -70,7 +67,7 @@ main {
     }
 
     .splide__pagination__page::before {
-        content: "";
+        content: '';
         position: absolute;
         left: 0;
         top: 0;
@@ -80,13 +77,11 @@ main {
 
     .splide__pagination__page.is-active::before {
         background: $solidigm-purple;
-        animation: carousel-pagination-animation var(--slide-duration, 5000ms)
-            linear forwards;
+        animation: carousel-pagination-animation var(--slide-duration, 5000ms) linear forwards;
         transform-origin: 0 0;
     }
 
-    &.splide[data-autoplay="false"]
-        .splide__pagination__page.is-active::before {
+    &.splide[data-autoplay='false'] .splide__pagination__page.is-active::before {
         animation: none;
         transform: scaleX(100%);
     }

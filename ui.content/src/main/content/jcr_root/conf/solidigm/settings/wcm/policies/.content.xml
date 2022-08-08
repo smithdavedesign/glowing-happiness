@@ -254,10 +254,13 @@
                 </policy_1574694950110>
                 <policy_1574695586800
                     jcr:description="Allows the page components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
+                    jcr:lastModified="{Date}2022-08-04T21:08:26.275-04:00"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Page Content"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[group:Solidigm - Content,/apps/solidigm/components/form/container]">
+                    components="[group:Solidigm - Content,/apps/solidigm/components/form/container]"
+                    layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -760,42 +763,45 @@
             </banner>
             <carousel jcr:primaryType="nt:unstructured">
                 <policy_1656427204082
-                    jcr:lastModified="{Date}2022-08-01T15:27:49.405-04:00"
+                    jcr:lastModified="{Date}2022-06-28T10:40:46.956-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Solidigm Carousel"
                     sling:resourceType="wcm/core/components/policy/policy"
                     autopauseDisabled="false"
                     autoplay="false"
-                    components="[/apps/solidigm/components/articleteaser,/apps/solidigm/components/hero,/apps/solidigm/components/image]"
+                    components="[/apps/solidigm/components/hero,/apps/solidigm/components/image,/apps/solidigm/components/articleteaser]"
                     controlsPrepended="false"
                     delay="5000">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1656427204082>
-            </carousel>
-            <video jcr:primaryType="nt:unstructured">
-                <policy_1659381859913
-                    jcr:lastModified="{Date}2022-08-01T15:26:59.277-04:00"
+                <policy_191395325378805
+                    jcr:lastModified="{Date}2022-08-06T21:50:47.419-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Solidigm Video"
+                    jcr:title="Carousel"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    embeddablesDisabled="true"
-                    htmlDisabled="true"
-                    urlDisabled="false"
-                    youtubeAutoPlayDefaultValue="false"
-                    youtubeAutoPlayEnabled="false"
-                    youtubeLoopDefaultValue="false"
-                    youtubeLoopEnabled="false"
-                    youtubeMuteDefaultValue="false"
-                    youtubeMuteEnabled="false"
-                    youtubePlaysInlineDefaultValue="false"
-                    youtubePlaysInlineEnabled="false"
-                    youtubeRelatedVideosDefaultValue="true"
-                    youtubeRelatedVideosEnabled="false">
+                    autoplay="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
-                </policy_1659381859913>
-            </video>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Size"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1659837027031"
+                                    cq:styleLabel="standard"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-carousel--large-slides"
+                                    cq:styleId="1659837027950"
+                                    cq:styleLabel="large"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_191395325378805>
+            </carousel>
         </components>
     </solidigm>
 </jcr:root>
