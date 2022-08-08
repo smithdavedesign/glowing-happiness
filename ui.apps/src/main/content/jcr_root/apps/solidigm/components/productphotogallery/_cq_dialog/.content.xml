@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Product Photo Gallery"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <images
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                    composite="{Boolean}true"
+                    fieldLabel="Product Photos">
+                <field
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        name="./images">
+                    <items jcr:primaryType="nt:unstructured">
+                        <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                            <items jcr:primaryType="nt:unstructured">
+                                <image
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fileNameParameter="./imageName"
+                                        fileReferenceParameter="./imageReference"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                        name="./image"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"
+                                        required="{Boolean}true" />
+                                <altText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="If left blank then the alt text stored in the DAM will be used."
+                                        fieldLabel="Alt Text"
+                                        emptyText="Leave blank to use alt text stored in DAM."
+                                        name="./altText" />
+                            </items>
+                        </column>
+                    </items>
+                </field>
+            </images>
+        </items>
+    </content>
+</jcr:root>

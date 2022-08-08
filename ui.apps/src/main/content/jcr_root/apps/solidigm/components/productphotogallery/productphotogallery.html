@@ -1,0 +1,16 @@
+<sly  data-sly-use.productPhotoGallery="com.solidigm.core.models.ProductPhotoGallery"
+      data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+      data-sly-test.hasContent="${productPhotoGallery.hasContent}">
+</sly>
+    <div data-sly-list.image="${productPhotoGallery.images}">
+        <p>
+            Image: ${image.imageReference}
+        </p>
+        <p>
+            Alt Text: ${image.altText}
+        </p>
+        <p>
+            =======================================================
+        </p>
+    </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-title'}"></sly>
