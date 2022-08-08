@@ -1,0 +1,28 @@
+{
+  "productPhotoGalleryEmpty": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/productphotogallery"
+  },
+  "productPhotoGalleryAuthored": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/productphotogallery",
+    "images": {
+      "item0": {
+        "imageReference": "/content/image1"
+      },
+      "item1": {
+        "imageReference": "/content/image2",
+        "altText": "Test Alt Text"
+      }
+    },
+    "thumbnailImageReference": "/content/image",
+    "thumbnailAltText": "Test Alt Text"
+  },
+  "image1": {
+    "jcr:content": {
+      "metadata": {
+        "dc:description": "Test Image Alt from DAM"
+      }
+    }
+  }
+}
