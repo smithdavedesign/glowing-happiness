@@ -56,6 +56,9 @@ public class ArticleInfoImpl implements ArticleInfo{
     private String date;
 
     @Getter
+    private String formattedDate;
+
+    @Getter
     private String author;
 
     @Getter
@@ -76,9 +79,13 @@ public class ArticleInfoImpl implements ArticleInfo{
             //Set author
             author = articlePage.getArticleAuthor();
 
-            //Set date
-            SimpleDateFormat formatter = new SimpleDateFormat("MMMM d, yyyy");
+            //Set Date
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             date = formatter.format(articlePage.getArticleDate());
+
+            //Set formatted date
+            SimpleDateFormat prettyFormatter = new SimpleDateFormat("MMMM d, yyyy");
+            formattedDate = prettyFormatter.format(articlePage.getArticleDate());
 
             //Set tags
             if(StringUtils.isNotEmpty(taggedArticlesPage)) {

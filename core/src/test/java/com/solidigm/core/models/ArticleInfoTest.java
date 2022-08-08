@@ -24,10 +24,18 @@ public class ArticleInfoTest {
 
     @Test
     void testGetDate(){
-        String expected = "July 5, 2022";
+        String expected = "2022-07-05";
         ctx.currentResource("/content/articlePage/jcr:content/root/container/articleinfo");
         ArticleInfo articleInfo = ctx.request().adaptTo(ArticleInfo.class);
         assertEquals(expected, articleInfo.getDate());
+    }
+
+    @Test
+    void testGetFormattedDate(){
+        String expected = "July 5, 2022";
+        ctx.currentResource("/content/articlePage/jcr:content/root/container/articleinfo");
+        ArticleInfo articleInfo = ctx.request().adaptTo(ArticleInfo.class);
+        assertEquals(expected, articleInfo.getFormattedDate());
     }
 
     @Test
