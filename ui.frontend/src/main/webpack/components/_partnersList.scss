@@ -23,41 +23,6 @@
                 line-height: vwDesktop(15);
             }
         }
-
-        &__filter {
-            height: vwMobile(48);
-            width: 100%;
-            border: vwMobile(1) solid $gray-400;
-            border-radius: $border-radius-md-mobile;
-            background-color: $white;
-            padding: vwMobile(15);
-
-            color: $dark-grey;
-            font-family: $body-font;
-            font-size: $font-size-sm-mobile;
-            letter-spacing: 0;
-            line-height: vwMobile(15);
-
-            appearance: none;
-            background-image: url("../../../assets/arrow-down.svg");
-            background-repeat: no-repeat;
-            background-size: vwMobile(10) vwMobile(6);
-            background-position: calc(100% - vwMobile(25)) 50%;
-
-            @media (min-width: $desktop) {
-                height: vwDesktop(48);
-                width: vwDesktop(220);
-                border-width: vwDesktop(1);
-                border-radius: $border-radius-md-desktop;
-                padding: vwDesktop(15);
-
-                font-size: $font-size-sm-desktop;
-                line-height: vwDesktop(15);
-
-                background-size: vwDesktop(10) vwDesktop(6);
-                background-position: calc(100% - vwDesktop(25)) 50%;
-            }
-        }
     }
 
     &__partners {
