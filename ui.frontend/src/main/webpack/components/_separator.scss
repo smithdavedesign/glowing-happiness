@@ -1,2 +1,13 @@
-.cmp-separator {}
-.cmp-separator__horizontal-rule {}
+.cmp-separator {
+    &__horizontal-rule{
+        background: $gray-400;
+        margin: $spacing-2xl-mobile 0;
+        width: 100%;
+        height: vwMobile(1);
+        border: 0;
+        @media (min-width: $desktop) {
+            margin: $spacing-2xl-desktop 0;
+            height: vwDesktop(1);
+        }
+    }
+}

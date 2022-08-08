@@ -1,19 +1,21 @@
-<div data-sly-use.taggedArticles="com.solidigm.core.models.TaggedArticles">
-    <h1>Tagged Articles</h1>
-    <p>
-        Selector: ${taggedArticles.selectorTag}
-    </p>
-    <p>
-        Localized Root Path (Required parameter for the TaggedArticlesServlet): ${taggedArticles.rootPath}
-    </p>
-    <ul data-sly-list.tag="${taggedArticles.dropdownTags}">
-        <li>
-            <p>
-                Tag: ${tag.title}
-            </p>
-            <p>
-                Tag ID (can be used for the tag parameter for the TaggedArticlesServlet): ${tag.tagID}
-            </p>
-        </li>
-    </ul>
+<div class="cmp-tagged-articles">
+    <div class="cmp-tagged-articles__filter" data-sly-test="${!taggedArticles.selectorTag}">
+        <span>Filter by</span>
+        <label for="tagged-articles-filter" class="sr-only">Filter</label>
+        <select
+            id="tagged-articles-filter"
+            class="solidigm-select"
+            data-servlet-path="${taggedArticles.rootPath}"
+        >
+            <option selected disabled>Chose a category...</option>
+            <sly data-sly-list.tag="${taggedArticles.dropdownTags}">
+                <option value="${tag.id}">${tag.title}</option>
+            </sly>
+        </select>
+    </div>
+    <div class="cmp-tagged-articles__title" data-sly-test="${taggedArticles.selectorTag}">
+        <h2>Posts Tagged “${taggedArticles.selectorTag}”</h2>
+    </div>
+    <div class="cmp-tagged-articles__articles-container"></div>
+    <button class="solidigm-btn cmp-tagged-articles__load-more-btn">Load More</button>
 </div>

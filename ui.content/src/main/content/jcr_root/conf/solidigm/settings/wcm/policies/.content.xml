@@ -254,10 +254,13 @@
                 </policy_1574694950110>
                 <policy_1574695586800
                     jcr:description="Allows the page components and defines the component mapping (this configures what components should be automatically created when authors drop assets from the content finder to the page editor)."
+                    jcr:lastModified="{Date}2022-08-04T21:08:26.275-04:00"
+                    jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Page Content"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    components="[group:Solidigm - Content,/apps/solidigm/components/form/container]">
+                    components="[group:Solidigm - Content,/apps/solidigm/components/form/container]"
+                    layoutDisabled="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:authoring jcr:primaryType="nt:unstructured">
                         <assetToComponentMapping jcr:primaryType="nt:unstructured">
@@ -297,6 +300,31 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
+                        <item1
+                            cq:styleGroupLabel="Horizontal Padding"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--no-horizontal-padding"
+                                    cq:styleId="1659661613380"
+                                    cq:styleLabel="None"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--small-horizontal-padding"
+                                    cq:styleId="1659661657471"
+                                    cq:styleLabel="Small"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleId="1659661673572"
+                                    cq:styleLabel="Medium"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-container--large-horizontal-padding"
+                                    cq:styleId="1659661691583"
+                                    cq:styleLabel="Large"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
                     </cq:styleGroups>
                 </policy_1574695586800>
                 <policy_649128221558427
@@ -363,6 +391,158 @@
                         </item0>
                     </cq:styleGroups>
                 </policy_67718747930984>
+                <policy_123853575836966
+                    jcr:lastModified="{Date}2022-08-04T22:08:29.706-04:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    jcr:title="Container"
+                    sling:resourceType="wcm/core/components/policy/policy"
+                    layoutDisabled="false">
+                    <jcr:content jcr:primaryType="nt:unstructured"/>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Page Background"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1659661961167"
+                                    cq:styleLabel="white"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--gray-bg"
+                                    cq:styleId="1659661962180"
+                                    cq:styleLabel="gray"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                        <item1
+                            cq:styleGroupLabel="Desktop Layout"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1659661994822"
+                                    cq:styleLabel="Full width"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--d-two-columns"
+                                    cq:styleId="1659661995868"
+                                    cq:styleLabel="50/50 columns"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
+                        <item2
+                            cq:styleGroupLabel="Tablet Layout"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1659662043446"
+                                    cq:styleLabel="Full Width"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--t-two-columns"
+                                    cq:styleId="1659662044179"
+                                    cq:styleLabel="50/50 columns"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
+                        <item3
+                            cq:styleGroupLabel="Mobile Layout"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1659662073195"
+                                    cq:styleLabel="Full Width"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--m-two-columns"
+                                    cq:styleId="1659662074005"
+                                    cq:styleLabel="50/50 Columns"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item3>
+                        <item4
+                            cq:styleGroupLabel="Separators"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--divider"
+                                    cq:styleId="1659662113194"
+                                    cq:styleLabel="Vertical (between columns)"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item4>
+                        <item5
+                            cq:styleGroupLabel="Internal Vertical Padding"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--no-internal-vertical-padding"
+                                    cq:styleId="1659664552433"
+                                    cq:styleLabel="None"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--small-internal-vertical-padding"
+                                    cq:styleId="1659665117863"
+                                    cq:styleLabel="Small"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleId="1659665136465"
+                                    cq:styleLabel="Medium"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item5>
+                        <item6
+                            cq:styleGroupLabel="External Vertical Padding"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--no-external-vertical-padding"
+                                    cq:styleId="1659665150353"
+                                    cq:styleLabel="None"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--small-external-vertical-padding"
+                                    cq:styleId="1659665151307"
+                                    cq:styleLabel="Small"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleId="1659665152482"
+                                    cq:styleLabel="Medium"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-container--large-external-vertical-padding"
+                                    cq:styleId="1659665153748"
+                                    cq:styleLabel="Large"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item6>
+                        <item7
+                            cq:styleGroupLabel="External Horizontal Padding"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-container--no-horizontal-padding"
+                                    cq:styleId="1659665244301"
+                                    cq:styleLabel="None"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-container--small-horizontal-padding"
+                                    cq:styleId="1659665245224"
+                                    cq:styleLabel="Small"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleId="1659665246037"
+                                    cq:styleLabel="Medium"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item3
+                                    cq:styleClasses="cmp-container--large-horizontal-padding"
+                                    cq:styleId="1659665247395"
+                                    cq:styleLabel="Large"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item7>
+                    </cq:styleGroups>
+                </policy_123853575836966>
             </container>
             <teaser jcr:primaryType="nt:unstructured">
                 <policy_1575031387650
@@ -583,42 +763,45 @@
             </banner>
             <carousel jcr:primaryType="nt:unstructured">
                 <policy_1656427204082
-                    jcr:lastModified="{Date}2022-08-01T15:27:49.405-04:00"
+                    jcr:lastModified="{Date}2022-06-28T10:40:46.956-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Solidigm Carousel"
                     sling:resourceType="wcm/core/components/policy/policy"
                     autopauseDisabled="false"
                     autoplay="false"
-                    components="[/apps/solidigm/components/articleteaser,/apps/solidigm/components/hero,/apps/solidigm/components/image]"
+                    components="[/apps/solidigm/components/hero,/apps/solidigm/components/image,/apps/solidigm/components/articleteaser]"
                     controlsPrepended="false"
                     delay="5000">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1656427204082>
-            </carousel>
-            <video jcr:primaryType="nt:unstructured">
-                <policy_1659381859913
-                    jcr:lastModified="{Date}2022-08-01T15:26:59.277-04:00"
+                <policy_191395325378805
+                    jcr:lastModified="{Date}2022-08-06T21:50:47.419-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
-                    jcr:title="Solidigm Video"
+                    jcr:title="Carousel"
                     sling:resourceType="wcm/core/components/policy/policy"
-                    embeddablesDisabled="true"
-                    htmlDisabled="true"
-                    urlDisabled="false"
-                    youtubeAutoPlayDefaultValue="false"
-                    youtubeAutoPlayEnabled="false"
-                    youtubeLoopDefaultValue="false"
-                    youtubeLoopEnabled="false"
-                    youtubeMuteDefaultValue="false"
-                    youtubeMuteEnabled="false"
-                    youtubePlaysInlineDefaultValue="false"
-                    youtubePlaysInlineEnabled="false"
-                    youtubeRelatedVideosDefaultValue="true"
-                    youtubeRelatedVideosEnabled="false">
+                    autoplay="false">
                     <jcr:content jcr:primaryType="nt:unstructured"/>
-                </policy_1659381859913>
-            </video>
+                    <cq:styleGroups jcr:primaryType="nt:unstructured">
+                        <item0
+                            cq:styleGroupLabel="Size"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1659837027031"
+                                    cq:styleLabel="standard"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-carousel--large-slides"
+                                    cq:styleId="1659837027950"
+                                    cq:styleLabel="large"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item0>
+                    </cq:styleGroups>
+                </policy_191395325378805>
+            </carousel>
         </components>
     </solidigm>
 </jcr:root>

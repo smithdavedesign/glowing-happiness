@@ -1,26 +1,23 @@
 .cmp-breadcrumb {
     text-transform: uppercase;
     font-family: $heading-font;
-    font-size: $font-size-sm;
+    font-size: $font-size-sm-mobile;
     font-weight: 400;
+
+    @media (min-width: $desktop) {
+        font-family: $body-font;
+        font-size: $font-size-sm-desktop;
+    }
 
     &__list {
         display: flex;
     }
 
-    &__item:not(:last-child) {
-        margin-right: $spacing-base;
-        position: relative;
+    &__item {
+        margin-right: $spacing-2xs-mobile;
 
-        &::after{
-            content: '';
-            position: absolute;
-            left: calc(100% + $spacing-base / 2);
-            top: 50%;
-            height: 90%;
-            width: 1px;
-            background: $solidigm-purple;
-            transform: translate(-50%, -50%) rotate(12.5deg);
+        @media (min-width: $desktop) {
+            margin-right: $spacing-2xs-desktop;
         }
     }
 
@@ -39,10 +36,10 @@
 
     &__item-divider {
         color: $grey;
-        margin-left: $spacing-3xs;
-    }
+        margin-left: $spacing-3xs-mobile;
 
-    @media (min-width: $desktop) {
-        font-family: $body-font;
+        @media (min-width: $desktop) {
+            margin-left: $spacing-3xs-desktop;
+        }
     }
 }

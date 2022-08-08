@@ -1,16 +1,20 @@
-$header-height: 60px;
-$header-height-desktop: 100px;
+$header-height: vwMobile(60);
+$header-height-desktop: vwDesktop(100);
 
 body {
     padding-top: $header-height;
+
+    @media (min-width: $desktop) {
+        padding-top: $header-height-desktop;
+    }
 }
 
 .header__navigation-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: $header-height;
-    padding: 0 25px;
+    padding: 0 $spacing-lg-mobile;
     width: 100%;
     box-sizing: border-box;
     background: $white;
@@ -18,18 +22,18 @@ body {
     position: fixed;
     top: 0;
     left: 50%;
-    font-size: $font-size-sm;
+    font-size: $font-size-sm-mobile;
     transition: top 0.2s ease-in-out;
 
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    max-width: $max-width-base;
+    max-width: vw(100);
     z-index: 99;
     transform: translateX(-50%);
 
-    &::before{
-        content: '';
+    &::before {
+        content: "";
         height: 100%;
         width: 200vw;
         background: white;
@@ -39,20 +43,42 @@ body {
         z-index: -1;
         transform: translateX(-50%);
     }
+
+    @media (min-width: $desktop) {
+        height: $header-height-desktop;
+        padding: 0 $spacing-4xl-desktop;
+        flex-direction: row;
+        align-items: center;
+
+        font-size: $font-size-sm-desktop;
+    }
 }
 
 .header__navigation-bar * {
     font-family: $heading-font;
-    font-size: $font-size-sm;
-    letter-spacing: 0.5px;
+    font-size: $font-size-sm-mobile;
+    letter-spacing: vwMobile(0.5);
+
+    @media (min-width: $desktop) {
+        font-size: $font-size-sm-desktop;
+        letter-spacing: vwDesktop(0.5);
+    }
 }
 
 .header--nav-up {
-    top: -$header-height;
+    top: calc($header-height * -1);
+
+    @media (min-width: $desktop) {
+        top: calc($header-height-desktop * -1);
+    }
 }
 
 .header__logo {
-    height: 30px;
+    height: vwMobile(30);
+
+    @media (min-width: $desktop) {
+        height: vwDesktop(30);
+    }
 
     & > svg {
         height: 100%;
@@ -60,9 +86,34 @@ body {
     }
 }
 
-.header__links-desktop,
+.header__links-desktop {
+    display: none;
+
+    @media (min-width: $desktop) {
+        display: block;
+        margin-right: auto;
+
+        & > ul {
+            display: flex;
+            gap: $spacing-2xl-desktop;
+            text-transform: uppercase;
+            margin-left: $spacing-2xl-desktop;
+        }
+    }
+}
+
 .header__icons-desktop {
     display: none;
+
+    @media (min-width: $desktop) {
+        display: block;
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: $spacing-2xl-desktop;
+        }
+    }
 }
 
 header {
@@ -76,18 +127,28 @@ header {
 
         .header__link-item-trigger:not(.header__link-item-trigger--no-arrow) {
             position: relative;
-            padding-right: 21px;
+            padding-right: $spacing-base-mobile;
+
+            @media (min-width: $desktop) {
+                padding-right: $spacing-base-desktop;
+            }
         }
 
         .header__link-item-trigger:not(.header__link-item-trigger--no-arrow)::before {
             content: "";
-            width: 9px;
-            height: 6px;
+            width: vwMobile(9);
+            height: vwMobile(6);
             position: absolute;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
-            background-image: url("../resources/images/icon-arrow-down.svg");
+            @include svg_icon(arrow-down);
+            background-size: contain;
+
+            @media (min-width: $desktop) {
+                width: vwDesktop(9);
+                height: vwDesktop(6);
+            }
         }
 
         &.header__link-item--has-submenu-active {
@@ -107,7 +168,11 @@ header {
 }
 
 .header__search {
-    width: calc(100% - 50px);
+    width: calc(100% - vwMobile(50));
+
+    @media (min-width: $desktop) {
+        width: vwDesktop(260);
+    }
 }
 
 .header__search-label {
@@ -116,14 +181,20 @@ header {
 
 .header__search-input {
     width: 100%;
-    height: 38px;
-    border-radius: 5px;
+    height: vwMobile(38);
+    border-radius: $border-radius-md-mobile;
     font-family: $body-font;
     color: $white;
     background-color: $solidigm-purple;
     border: none;
-    padding: 0 16px 0 20px;
+    padding: 0 $spacing-sm-mobile 0 $spacing-base-mobile;
     box-sizing: border-box;
+
+    @media (min-width: $desktop) {
+        height: vwDesktop(38);
+        border-radius: $border-radius-md-desktop;
+        padding: $spacing-lg-desktop $spacing-base-desktop;
+    }
 }
 
 .header__search-input::placeholder {
@@ -132,17 +203,27 @@ header {
 
 .header__search-input-icon {
     position: absolute;
-    right: 16px;
+    right: $spacing-sm-mobile;
     top: 0;
     height: 100%;
     pointer-events: none;
+    width: vwMobile(18);
+
+    @media (min-width: $desktop) {
+        right: $spacing-sm-desktop;
+        width: vwDesktop(18);
+    }
 }
 
 .header__language-picker-button {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: $spacing-2xs-mobile;
     cursor: pointer;
+
+    @media (min-width: $desktop) {
+        gap: $spacing-2xs-desktop;
+    }
 }
 
 .header__language-picker {
@@ -152,10 +233,22 @@ header {
 .header__language-picker-options {
     position: absolute;
     right: 0;
-    top: 34px;
-    width: 160px;
+    top: vwMobile(34);
+    width: vwMobile(160);
     text-transform: uppercase;
     z-index: 10;
+
+    @media (min-width: $desktop) {
+        top: vwDesktop(34);
+        width: vwDesktop(160);
+    }
+}
+
+.header__language-btn svg {
+    @media (min-width: $desktop) {
+        display: inline-block;
+        margin-right: $spacing-2xs-desktop;
+    }
 }
 
 .header__link-item,
@@ -163,18 +256,36 @@ header {
     background: transparent;
     border: none;
     text-transform: uppercase;
-    padding: 10px 0;
+    padding: $spacing-2xs-mobile 0;
     cursor: pointer;
     display: flex;
     align-items: center;
+
+    @media (min-width: $desktop) {
+        padding: $spacing-2xs-desktop 0;
+    }
+}
+
+.header__link-item {
+    padding: $spacing-sm-mobile 0;
+    border-bottom: vwMobile(1) solid $gray-400;
+
+    @media (min-width: $desktop) {
+        padding: 0;
+        border: none;
+    }
 }
 
 .header__link-item > button {
     padding: 0;
-}
 
-.header__link-item {
-    padding: 14px 0;
+    svg {
+        width: vwMobile(18);
+
+        @media (min-width: $desktop) {
+            width: vwDesktop(18);
+        }
+    }
 }
 
 .header__link-item-trigger {
@@ -185,44 +296,84 @@ header {
 
 .header__link-item-icon {
     margin-left: auto;
-    margin-right: 20px;
+    margin-right: $spacing-base-mobile;
+
+    @media (min-width: $desktop) {
+        margin-left: 12px;
+        margin-right: 0;
+    }
 }
 
 .header__sub-links {
     width: 100%;
-    gap: 20px;
+    gap: $spacing-base-mobile;
+
+    @media (min-width: $desktop) {
+        width: vwDesktop(187);
+        gap: $spacing-base-desktop;
+    }
 }
 
 .header__dropdown-container {
-    padding: 22px;
-    border-radius: 5px;
+    display: none;
+    position: relative;
+    top: 100%;
+    width: 100%;
+    margin-top: $spacing-2xs-mobile;
+    padding: $spacing-base-mobile;
+    border-radius: $border-radius-md-mobile;
     box-sizing: border-box;
     background: $solidigm-purple;
+
+    @media (min-width: $desktop) {
+        position: absolute;
+        width: auto;
+        margin-top: $spacing-2xs-desktop;
+        padding: $spacing-base-desktop;
+        border-radius: $border-radius-md-desktop;
+    }
 }
 
 .header__dropdown {
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: 52px;
-    max-height: 120px;
+    min-height: vwMobile(52);
+    max-height: vwMobile(120);
     color: $white;
     background: $solidigm-purple;
     overflow-y: auto;
+
+    @media (min-width: $desktop) {
+        min-height: vwDesktop(52);
+        max-height: vwDesktop(120);
+    }
 }
 
 .header__dropdown::-webkit-scrollbar {
-    width: 6px;
+    width: vwMobile(6);
+
+    @media (min-width: $desktop) {
+        width: vwDesktop(6);
+    }
 }
 
 .header__dropdown::-webkit-scrollbar-track {
     background-color: $dark-purple;
-    border-radius: 3px;
+    border-radius: $border-radius-sm-mobile;
+
+    @media (min-width: $desktop) {
+        border-radius: $border-radius-sm-desktop;
+    }
 }
 
 .header__dropdown::-webkit-scrollbar-thumb {
     background-color: $solidigm-purple-light;
-    border-radius: 3px;
+    border-radius: $border-radius-sm-mobile;
+
+    @media (min-width: $desktop) {
+        border-radius: $border-radius-sm-desktop;
+    }
 }
 
 /* Mobile Content */
@@ -233,9 +384,14 @@ header {
     align-items: center;
     position: absolute;
     left: 0;
-    background: white;
+    background: $white;
     top: 100%;
     width: 100%;
+    padding-top: $spacing-sm-mobile;
+
+    @media (min-width: $desktop) {
+        display: none;
+    }
 }
 
 .header__mobile-icons {
@@ -243,18 +399,22 @@ header {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-top: 16px;
-    padding: 16px 25px;
-    border-top: 1px solid $gray-400;
-    border-bottom: 1px solid $gray-400;
+    margin-top: $spacing-sm-mobile;
+    padding: $spacing-sm-mobile $spacing-lg-mobile;
+    border-top: vwMobile(1) solid $gray-400;
+    border-bottom: vwMobile(1) solid $gray-400;
     box-sizing: border-box;
     text-transform: uppercase;
+
+    svg {
+        width: vwMobile(18);
+    }
 }
 
 .header__mobile-profile {
     display: flex;
-    gap: 10px;
-    margin-left: 20px;
+    gap: $spacing-2xs-mobile;
+    margin-left: $spacing-base-mobile;
     margin-right: auto;
     align-items: center;
 }
@@ -262,7 +422,7 @@ header {
 .header__mobile-links {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 50px);
+    width: calc(100% - vwMobile(50));
 }
 
 .header__mobile-footer {
@@ -270,21 +430,25 @@ header {
     background: $solidigm-purple;
     color: $white;
     width: 100%;
-    margin-top: 20px;
-    padding: 36px 25px;
+    margin-top: $spacing-base-mobile;
+    padding: $spacing-3xl-mobile $spacing-lg-mobile;
     box-sizing: border-box;
 }
 
 .header__mobile-footer-social-icons {
     display: flex;
-    gap: 36px;
+    gap: $spacing-3xl-mobile;
 }
 
 .header__mobile-footer-links {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-top: 25px;
+    gap: $spacing-base-mobile;
+    margin-top: $spacing-lg-mobile;
+
+    a {
+        color: $white;
+    }
 }
 
 /* Login Modal */
@@ -296,8 +460,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100vw;
-    height: 100vh;
+    width: vw(100);
+    height: vh(100);
     background-color: #111111e5;
     z-index: 1000;
 }
@@ -309,26 +473,55 @@ header {
     justify-content: center;
     color: $white;
     background-color: $solidigm-purple;
-    width: 100vw;
-    height: 100vh;
+    width: vw(100);
+    height: vh(100);
+
+    @media (min-width: $desktop) {
+        position: relative;
+        max-width: vwDesktop(620);
+        max-height: vwDesktop(600);
+    }
 }
 
 .header__login-close-icon {
     position: absolute;
-    top: 25px;
-    right: 25px;
+    top: $spacing-lg-mobile;
+    right: $spacing-lg-mobile;
+
+    svg {
+        width: vwMobile(16);
+        height: auto;
+    }
+
+    @media (min-width: $desktop) {
+        top: $spacing-3xl-desktop;
+        right: $spacing-5xl-desktop;
+
+        svg {
+            width: vwDesktop(16);
+        }
+    }
 }
 
 .header__login-modal-content {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 50px);
+    width: calc(100% - vwMobile(50));
+
+    @media (min-width: $desktop) {
+        width: vwDesktop(350);
+    }
 }
 
 .header__login-title {
     font-family: $heading-font;
-    font-size: 32px;
-    letter-spacing: -0.4px;
+    font-size: $font-size-2xl-mobile;
+    letter-spacing: vwMobile(-0.4);
+
+    @media (min-width: $desktop) {
+        font-size: $font-size-2xl-desktop;
+        letter-spacing: vwDesktop(-0.4);
+    }
 }
 
 .header__email-label,
@@ -338,76 +531,88 @@ header {
 }
 
 .header__email-label {
-    margin-top: 30px;
+    margin-top: $spacing-2xl-mobile;
+
+    @media (min-width: $desktop) {
+        margin-top: $spacing-2xl-desktop;
+    }
 }
 
 .header__password-label {
-    margin-top: 15px;
+    margin-top: $spacing-sm-mobile;
+
+    @media (min-width: $desktop) {
+        margin-top: $spacing-sm-desktop;
+    }
 }
 
 .header__email-input,
 .header__password-input {
     width: 100%;
-    height: 50px;
+    height: vwMobile(50);
     box-sizing: border-box;
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid $gray-400;
+    margin-top: $spacing-2xs-mobile;
+    padding: $spacing-2xs-mobile;
+    border: vwMobile(1) solid $gray-400;
     background-color: $white;
+
+    @media (min-width: $desktop) {
+        height: vwDesktop(50);
+        margin-top: $spacing-2xs-desktop;
+        padding: $spacing-2xs-desktop;
+        border: vwDesktop(1) solid $gray-400;
+    }
 }
 
 .header__forgot-password {
     letter-spacing: 0;
     color: $white;
     text-decoration: none;
-    margin-top: 5px;
+    margin-top: $spacing-3xs-mobile;
     margin-left: auto;
+
+    @media (min-width: $desktop) {
+        margin-top: $spacing-3xs-desktop;
+    }
 }
 
 .header__login-button {
-    margin-top: 40px;
+    margin-top: $spacing-4xl-mobile;
+
+    @media (min-width: $desktop) {
+        margin-top: $spacing-4xl-desktop;
+    }
 }
 
 .header__language-picker-options .header__sub-links {
-    gap: 20px;
+    gap: $spacing-base-mobile;
     text-align: left;
     align-items: flex-start;
-}
 
-.header__mobile-content {
-    padding-top: 15px;
-}
-
-.header__mobile-footer-links a {
-    color: $white;
+    @media (min-width: $desktop) {
+        gap: $spacing-base-desktop;
+    }
 }
 
 .header__mobile-open-close {
     position: absolute;
-    right: 25px;
+    right: $spacing-lg-mobile;
     border: none;
     background: transparent;
+
+    svg {
+        width: vwMobile(18);
+        height: auto;
+    }
+
+    @media (min-width: $desktop) {
+        display: none;
+    }
 }
 
 .header__link-item--has-submenu {
     flex-direction: column;
     align-items: flex-start;
-}
-
-.header__link-item {
-    border-bottom: 1px solid $gray-400;
-}
-
-.header__navigation-bar {
-    justify-content: center;
-}
-
-.header__dropdown-container {
-    display: none;
-    position: relative;
-    top: 100%;
-    width: 100%;
-    margin-top: 12px;
 }
 
 .header__mobile-footer-link--external {
@@ -417,111 +622,17 @@ header {
 .header__mobile-footer-link--external::after {
     content: "";
     position: absolute;
-    left: calc(100% + 16px);
-    height: 14px;
-    width: 14px;
-    background: url("../resources/images/icon-new-tab.svg");
+    left: calc(100% + vwMobile(16));
+    height: vwMobile(14);
+    width: vwMobile(14);
+    @include svg-icon(new-tab);
+    background-size: contain;
     top: 50%;
     transform: translateY(-50%);
-}
 
-@media (min-width: $desktop) {
-    body {
-        padding-top: $header-height-desktop; /* Same as header height. */
-    }
-
-    .header__dropdown-container {
-        position: absolute;
-        width: auto;
-    }
-
-    .header__navigation-bar > * {
-        font-size: $font-size-sm;
-    }
-
-    .header__navigation-bar {
-        height: $header-height-desktop;
-        padding: 0 40px;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .header--nav-up {
-        top: -$header-height-desktop;
-    }
-
-    .header__links-desktop {
-        display: block;
-        margin-right: auto;
-        & > ul {
-            display: flex;
-            gap: 32px;
-            text-transform: uppercase;
-            margin-left: 30px;
-        }
-    }
-
-    .header__icons-desktop {
-        display: block;
-        ul {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
-    }
-
-    .header__language-btn svg {
-        display: inline-block;
-        margin-right: 10px;
-    }
-
-    .header__mobile-open-close,
-    .header__mobile-content {
-        display: none;
-    }
-
-    .header__search {
-        width: 260px;
-    }
-
-    .header__search-input {
-        padding: 25px 20px;
-    }
-
-    .header__link-item {
-        padding: 0;
-        border: none;
-    }
-
-    .header__link-item-icon {
-        margin-left: 12px;
-        margin-right: 0;
-    }
-
-    .header__sub-links {
-        width: 187px;
-    }
-
-    /* Login Modal */
-
-    .header__login-modal {
-        position: relative;
-        width: 80vw;
-        max-width: 620px;
-        height: 80vh;
-        max-height: 600px;
-    }
-
-    .header__login-modal-content {
-        width: 350px;
-    }
-
-    .header__login-close-icon {
-        top: 35px;
-        right: 45px;
-    }
-
-    .header__link-item {
-        border: none;
+    @media (min-width: $desktop) {
+        left: calc(100% + vwDesktop(16));
+        height: vwDesktop(14);
+        width: vwDesktop(14);
     }
 }

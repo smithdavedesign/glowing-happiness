@@ -1,26 +1,43 @@
 <sly data-sly-use.biolist="com.solidigm.core.models.BioList"
      data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
      data-sly-test.hasContent="${biolist.hasContent}">
-    <ul data-sly-list.bio="${biolist.bioItems}">
-        <li>
-            <p>
-                Image: ${bio.imageReference}
-            </p>
-            <p>
-                Image Alt Text: ${bio.imageAltText}
-            </p>
-            <p>
-                Name: ${bio.name}
-            </p>
-            <p>
-                Title: ${bio.title}
-            </p>
-            <p>
-                Description: ${bio.description}
-            </p>
-            <p>
-                id: ${bio.modalID}
-            </p>
+    <ul data-sly-list.bio="${biolist.bioItems}" class="cmp-bio-list">
+        <li class="cmp-bio-list__profile">
+            <div class="cmp-bio-list__profile-image">
+                <img src="${bio.imageReference}" alt="${bio.imageAltText}"/>
+            </div>
+            <div class="cmp-bio-list__profile-content">
+                <h3 class="cmp-bio-list__profile-name">
+                    ${bio.name}
+                </h3>
+                <p class="cmp-bio-list__profile-role">
+                    ${bio.title}
+                </p>
+                <button class="cmp-bio-list__profile-link solidigm-internal-link" data-profile-id="${bio.modalID}">
+                    View Bio
+                </button>
+                <div class="cmp-bio-list__profile__modal-wrapper" data-profile-id="${bio.modalID}">
+                    <div class="cmp-bio-list__profile__modal">
+                        <button class="cmp-bio-list__profile__modal__close" aria-label="Close Bio">
+                            Close
+                        </button>
+                        <div class="cmp-bio-list__profile-image">
+                            <img src="${bio.imageReference}" alt="${bio.imageAltText}"/>
+                        </div>
+                        <div class="cmp-bio-list__profile-content">
+                            <h3 class="cmp-bio-list__profile-name">
+                                ${bio.name}
+                            </h3>
+                            <p class="cmp-bio-list__profile-role">
+                                ${bio.title}
+                            </p>
+                            <p class="cmp-bio-list__profile-bio">
+                                ${bio.description}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </li>
     </ul>
 </sly>

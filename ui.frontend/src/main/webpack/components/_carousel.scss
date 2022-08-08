@@ -1,12 +1,30 @@
-@import '@splidejs/splide/dist/css/splide-core.min.css';
+main {
+    overflow: hidden !important;
+}
 
 .cmp-carousel {
-    margin-bottom: 40px;
+    // defaults to standard size slides
+    --carousel-slide-width: calc(min(#{$max-width}, 100vw) - calc(#{$large-padding-desktop} * 2));
+
+    &--large-slides > & {
+        --carousel-slide-width: calc(
+            min(#{$max-width}, 100vw) - calc(#{$small-padding-desktop} * 2)
+        );
+    }
+
+    margin-bottom: $spacing-4xl-mobile;
+    @media (min-width: $desktop) {
+        margin-bottom: $spacing-4xl-desktop;
+    }
 
     .splide__slide > * {
-        height: clamp(480px, 100vw, 680px);
+        height: vwMobile(480);
         transition-property: transform;
         transition-duration: 0;
+
+        @media (min-width: $desktop) {
+            height: vwDesktop(680);
+        }
 
         & > *,
         & > * > * {
@@ -15,18 +33,29 @@
     }
 
     .splide__pagination {
-        margin-top: 20px;
+        margin-top: $spacing-base-mobile;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-base-desktop;
+        }
     }
 
     .splide__pagination__page {
-        width: 74px;
-        height: 6px;
+        width: vwMobile(74);
+        height: vwMobile(6);
         border-radius: 0;
-        margin-left: 6px;
-        margin-right: 6px;
+        margin-left: vwMobile(6);
+        margin-right: vwMobile(6);
         background: #cbcbcb;
         position: relative;
         transform: skew(-45deg);
+
+        @media (min-width: $desktop) {
+            width: vwDesktop(74);
+            height: vwDesktop(6);
+            margin-left: vwDesktop(6);
+            margin-right: vwDesktop(6);
+        }
     }
 
     .splide__slide.is-prev > * {
@@ -52,7 +81,7 @@
         transform-origin: 0 0;
     }
 
-    &.splide:not([data-autoplay='true']) .splide__pagination__page.is-active::before {
+    &.splide[data-autoplay='false'] .splide__pagination__page.is-active::before {
         animation: none;
         transform: scaleX(100%);
     }
@@ -61,8 +90,8 @@
         transform: scale(0.85);
     }
 
-    &.splide.cmp-carousel--initialized .splide__slide > * {
-        transition-duration: 550ms;
+    .splide.cmp-carousel--initialized .splide__slide > * {
+        transition-duration: 350ms;
     }
 }
 

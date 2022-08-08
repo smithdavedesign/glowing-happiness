@@ -1,17 +1,19 @@
-<div data-sly-use.articleinfo="com.solidigm.core.models.ArticleInfo">
-    <p>
-        Author: ${articleinfo.author}
-    </p>
-    <p>
-        Date: ${articleinfo.date}
-    </p>
-    <p>
-        formatted Date: ${articleinfo.formattedDate}
-    </p>
-    <ul data-sly-list.tag="${articleinfo.tags}">
-        <li>
-            Tag label: ${tag.label}
-            Tag link: ${tag.link}
-        </li>
-    </ul>
+<div class="cmp-article-info" data-sly-use.articleinfo="com.solidigm.core.models.ArticleInfo">
+    <div class="cmp-article-info__publish-info">
+        <span>Posted on</span>
+        <!-- @TODO: get date in yyyy-mm-dd format for SEO -->
+        <date datetime="2022-02-10">${articleInfo.date}</date>
+        <span>by</span>
+        ${articleInfo.author}
+    </div>
+    <div class="cmp-article-info__tags">
+        <span>Tags:</span>
+        <nav>
+            <ul class="cmp-article-info__tags-list" data-sly-list.tag="${articleinfo.tags}">
+                <li>
+                    <a href="${tag.link}">${tag.label}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
