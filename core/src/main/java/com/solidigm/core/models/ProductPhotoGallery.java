@@ -19,6 +19,15 @@ public interface ProductPhotoGallery extends ComponentExporter {
     }
 
     /**
+     * Returns the first image in the product gallery
+     *
+     * @return Image
+     */
+    default Image getMainImage() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns Boolean whether component has content to display
      *
      * @return Boolean

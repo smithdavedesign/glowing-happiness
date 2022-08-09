@@ -68,7 +68,9 @@ public class TaggedArticlesImpl implements TaggedArticles {
         if(currentPage != null){
             rootPath = currentPage.getPath();
             int endIndex = StringUtils.ordinalIndexOf(rootPath, "/", HOME_NAVIGATION_LEVEL);
-            rootPath = rootPath.substring(0, endIndex);
+            if(endIndex != -1) {
+                rootPath = rootPath.substring(0, endIndex);
+            }
         }
 
         //Decode the selector string if it exists

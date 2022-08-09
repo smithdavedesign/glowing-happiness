@@ -40,6 +40,9 @@ public class ProductPhotoGalleryImpl implements ProductPhotoGallery{
     @Getter
     List<Image> images;
 
+    @Getter
+    private Image mainImage;
+
     @Override
     public Boolean hasContent() {
         return images != null && !images.isEmpty();
@@ -58,6 +61,7 @@ public class ProductPhotoGalleryImpl implements ProductPhotoGallery{
                     image.setAltText(ImageUtil.getAltTextFromDAM(request.getResourceResolver(), image.getImageReference()));
                 }
             }
+            mainImage = images.get(0);
         }
     }
 }

@@ -51,6 +51,14 @@ public class ProductPhotoGalleryTest {
     }
 
     @Test
+    void testGetMainImage() {
+        ctx.currentResource("/content/productPhotoGalleryAuthored");
+        ProductPhotoGallery productPhotoGallery = ctx.request().adaptTo(ProductPhotoGallery.class);
+        assertEquals("/content/image1", productPhotoGallery.getMainImage().getImageReference());
+        assertEquals("Test Image Alt from DAM", productPhotoGallery.getMainImage().getAltText());
+    }
+
+    @Test
     void testGetHasContentAuthored() {
         ctx.currentResource("/content/productPhotoGalleryAuthored");
         ProductPhotoGallery productPhotoGallery = ctx.request().adaptTo(ProductPhotoGallery.class);
