@@ -72,10 +72,12 @@
     }
 
     &__title {
-        font-size: $font-size-2xl-mobile;
+        font-size: $font-size-xl-mobile;
+        line-height: $line-height-xl-mobile;
 
         @media (min-width: $desktop) {
             font-size: $font-size-2xl-desktop;
+            line-height: $line-height-2xl-desktop;
         }
     }
 
