@@ -1,23 +1,25 @@
-<div data-sly-use.articleTeaser="com.solidigm.core.models.ArticleTeaser"
-     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
-     data-sly-test.hasContent="${articleTeaser.hasContent}">
-    <p>
-        Image: ${articleTeaser.article.teaserImage}
-    </p>
-    <p>
-        Alt Text: ${articleTeaser.article.teaserImageAltText}
-    </p>
-    <p>
-        Title: ${articleTeaser.article.articleTitle}
-    </p>
-    <p>
-        category: ${articleTeaser.article.teaserCategory}
-    </p>
-    <p>
-        description: ${articleTeaser.article.description}
-    </p>
-    <p>
-        <a href="${articleTeaser.article.path}.html" target="_self">Link to article: ${articleTeaser.article.path}</a>
-    </p>
+<div
+    data-sly-use.articleTeaser="com.solidigm.core.models.ArticleTeaser"
+    data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.hasContent="${articleTeaser.hasContent}"
+>
+    <div class="cmp-blade cmp-article-teaser">
+        <div class="cmp-blade__media media-with-corner">
+            <img
+                src="${articleTeaser.article.teaserImage}"
+                alt="${articleTeaser.article.teaserImageAltText}"
+            />
+        </div>
+        <div class="cmp-blade__content">
+            <span class="cmp-blade__category">${articleTeaser.article.teaserCategory}</span>
+            <h2 class="cmp-blade__title">${articleTeaser.article.articleTitle}</h2>
+            <p class="cmp-blade__description">${articleTeaser.article.description}</p>
+            <div class="cmp-blade__cta-container">
+                <a href="${articleTeaser.article.path}.html" target="_self" class="solidigm-btn">
+                    <span> Read Article </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
 </div>
-<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>
