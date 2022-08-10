@@ -776,7 +776,7 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                 </policy_1656427204082>
                 <policy_191395325378805
-                    jcr:lastModified="{Date}2022-08-06T21:50:47.419-04:00"
+                    jcr:lastModified="{Date}2022-08-10T09:43:29.806-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Carousel"
@@ -785,7 +785,7 @@
                     <jcr:content jcr:primaryType="nt:unstructured"/>
                     <cq:styleGroups jcr:primaryType="nt:unstructured">
                         <item0
-                            cq:styleGroupLabel="Size"
+                            cq:styleGroupLabel="Width"
                             jcr:primaryType="nt:unstructured">
                             <cq:styles jcr:primaryType="nt:unstructured">
                                 <item0
@@ -793,12 +793,32 @@
                                     cq:styleLabel="standard"
                                     jcr:primaryType="nt:unstructured"/>
                                 <item1
-                                    cq:styleClasses="cmp-carousel--large-slides"
+                                    cq:styleClasses="cmp-carousel--large-width"
                                     cq:styleId="1659837027950"
                                     cq:styleLabel="large"
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item0>
+                        <item1
+                            cq:styleGroupLabel="Height"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleId="1660138960889"
+                                    cq:styleLabel="auto"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item1
+                                    cq:styleClasses="cmp-carousel--standard-height"
+                                    cq:styleId="1660138963254"
+                                    cq:styleLabel="standard"
+                                    jcr:primaryType="nt:unstructured"/>
+                                <item2
+                                    cq:styleClasses="cmp-carousel--large-height"
+                                    cq:styleId="1660138964454"
+                                    cq:styleLabel="large"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item1>
                     </cq:styleGroups>
                 </policy_191395325378805>
             </carousel>

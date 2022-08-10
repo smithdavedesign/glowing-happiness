@@ -1,22 +1,32 @@
 @use "sass:math";
 
+$unitless-max-width: 1920;
+$max-width: $unitless-max-width + 0px;
+
+:root{
+    --max-width: #{$max-width};
+}
+
 $smallMobile: 360px;
 $mobile: 640px;
 $tablet: 768px;
 $desktop: 1024px;
 
 @function vw($vw) {
-  @return calc(var(--vw, 1vw) * $vw);
+    @return calc(var(--vw, 1vw) * $vw);
 }
 
 @function vh($vh) {
-  @return calc(var(--vh, 1vh) * $vh);
+    @return calc(var(--vh, 1vh) * $vh);
 }
 
 @function vwMobile($pixels) {
-  @return #{vw(math.div($pixels, 375) * 100)};
+    @return #{vw(math.div($pixels, 375) * 100)};
 }
 
 @function vwDesktop($pixels) {
-  @return #{vw(math.div($pixels, 1440) * 100)};
+    // Max width is 1920 but mocks are done with 1440, so pixels need to be scaled.
+    $scaledPixels: math.div($pixels * $unitless-max-width, 1440);
+
+    @return #{vw(math.div($scaledPixels, $unitless-max-width) * 100)};
 }

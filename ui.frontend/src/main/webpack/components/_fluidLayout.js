@@ -1,5 +1,5 @@
 const DESKTOP_WIDTH = 1024;
-const MAX_WIDTH = 1920;
+const MAX_WIDTH = Number.parseInt(getComputedStyle(document.body).getPropertyValue("--max-width").replace("px", ""));
 
 window.addEventListener("resize", handleResize);
 
