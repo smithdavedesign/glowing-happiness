@@ -1,0 +1,56 @@
+.cmp-blade.cmp-article-teaser {
+    .cmp-blade__category {
+        color: $solidigm-purple;
+        display: inline-block;
+        margin-bottom: $spacing-sm-mobile;
+        padding-left: $spacing-base-mobile;
+
+        position: relative;
+        @media (min-width: $desktop) {
+            padding-left: $spacing-base-desktop;
+            margin-bottom: $spacing-2xl-desktop;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: vwMobile(12);
+            width: vwMobile(12);
+            background: $solidigm-purple;
+            clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(12);
+                width: vwDesktop(12);
+            }
+        }
+    }
+
+    .cmp-blade__description,
+    .cmp-blade__cta-container {
+        display: none;
+    }
+
+    @media (min-width: $desktop) {
+        .cmp-blade__media {
+            width: 50%;
+        }
+
+        .cmp-blade__content {
+            width: 50%;
+            max-width: vwDesktop(400);
+        }
+
+        .solidigm-btn:only-child {
+            width: auto;
+        }
+
+        .cmp-blade__description,
+        .cmp-blade__cta-container {
+            display: flex;
+        }
+    }
+}
