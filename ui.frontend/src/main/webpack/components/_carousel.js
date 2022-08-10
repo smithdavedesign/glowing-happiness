@@ -1,3 +1,5 @@
+import Splide from '@splidejs/splide';
+
 (function () {
     const carousels = document.querySelectorAll(".cmp-carousel");
     carousels.forEach(carousel => {
