@@ -91,9 +91,17 @@
         font-size: $font-size-base-mobile;
         letter-spacing: 0;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        background: #ffffffcc;
+        border-radius: $border-radius-md-mobile;
 
         @media (min-width: $desktop) {
             font-size: $font-size-base-desktop;
+            border-radius: $border-radius-md-desktop;
         }
     }
 }
