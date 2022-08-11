@@ -1,11 +1,13 @@
-<div data-sly-use.taggedArticles="com.solidigm.core.models.TaggedArticles"
-     class="cmp-tagged-articles">
+<div
+    data-sly-use.taggedArticles="com.solidigm.core.models.TaggedArticles"
+    class="cmp-tagged-articles"
+>
     <div class="cmp-tagged-articles__filter" data-sly-test="${!taggedArticles.selectorTag}">
         <span>Filter by</span>
         <label for="tagged-articles-filter" class="sr-only">Filter</label>
         <select
             id="tagged-articles-filter"
-            class="solidigm-select"
+            class="solidigm-select cmp-tagged-articles__select"
             data-servlet-path="${taggedArticles.rootPath}"
         >
             <option selected disabled>Chose a category...</option>
@@ -14,7 +16,12 @@
             </sly>
         </select>
     </div>
-    <div class="cmp-tagged-articles__title" data-sly-test="${taggedArticles.selectorTag}">
+    <div
+        class="cmp-tagged-articles__title"
+        data-sly-test="${taggedArticles.selectorTag}"
+        data-servlet-path="${taggedArticles.rootPath}"
+        data-selector-tag="${taggedArticles.selectorTag}"
+    >
         <h2>Posts Tagged “${taggedArticles.selectorTag}”</h2>
     </div>
     <div class="cmp-tagged-articles__articles-container"></div>
