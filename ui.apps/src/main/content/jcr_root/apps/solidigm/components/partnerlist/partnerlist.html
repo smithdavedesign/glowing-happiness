@@ -6,28 +6,31 @@
     <div class="partners-list">
         <div class="partners-list__filters">
             <span class="partners-list__filters__label">Filter by</span>
-            <label class="sr-only" for="partners-list__filters__country-filter">Country</label>
-            <select
-                class="solidigm-select"
-                id="partners-list__filters__country-filter"
-                name="countries"
-            >
-                <option value="" selected="">Country</option>
-                <sly data-sly-list.country="${partnerList.countries}">
-                    <option value="${country.tagID}">${country.title}</option>
-                </sly>
-            </select>
-            <label for="partners-list__filters__product-filter">Product</label>
-            <select
-                class="solidigm-select"
-                id="partners-list__filters__product-filter"
-                name="products"
-            >
-                <option value="" selected="">Product</option>
-                <sly data-sly-list.product="${partnerList.products}">
-                    <option value="${product.tagID}">${product.title}</option>
-                </sly>
-            </select>
+            <sly
+                data-sly-use.component="solidigm/components/customselect/customselect.html"
+                data-sly-call="${component.customSelect @ 
+                                placeholder='Country',
+                                label='Country',
+                                id='partners-list__filters__country-filter',
+                                name='countries',
+                                valueId='tagID',
+                                labelId='title',
+                                srOnly=true,
+                                options=partnerList.countries}"
+            />
+            <span class="partners-list__filters__label">Product</span>
+            <sly
+                data-sly-use.component="solidigm/components/customselect/customselect.html"
+                data-sly-call="${component.customSelect @ 
+                                placeholder='Product',
+                                label='Product',
+                                id='partners-list__filters__product-filter',
+                                name='products',
+                                valueId='tagID',
+                                labelId='title',
+                                srOnly=true,
+                                options=partnerList.products}"
+            />
         </div>
         <table class="partners-list__partners">
             <tbody>
@@ -42,9 +45,7 @@
                         data-partner-country="${partner.countryID}"
                         data-partner-product="${partner.products}"
                     >
-                        <td>
-                            ${partner.companyName} ${partner.additionalInfo}
-                        </td>
+                        <td>${partner.companyName} ${partner.additionalInfo}</td>
                         <td>${partner.countryName}</td>
                         <td class="partners-list__partners__website-column">
                             <a
