@@ -1,0 +1,26 @@
+<template
+    data-sly-template.customSelect="${@ options, label, name, id, placeholder, srOnly ,valueId ,labelId}"
+>
+    <div class="cmp-custom-select">
+        <label for="${id}" class="${srOnly ? 'sr-only': ''}">${label}</label>
+        <div class="sr-only cmp-custom-select__status" aria-live="polite"></div>
+        <div class="cmp-custom-select__container">
+            <input
+                type="text"
+                id="custom-select-input"
+                class="cmp-custom-select__input"
+                readonly
+                placeholder="${placeholder}"
+            />
+            <ul class="cmp-custom-select__options" id="custom-select-list">
+                <li
+                    class="cmp-custom-select__option"
+                    data-sly-repeat.option="${options}"
+                    data-value="${option[valueId || 'value']}"
+                >
+                    ${option[labelId] ? option[labelId || 'label'] : option}
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
