@@ -15,7 +15,7 @@
     }
 
     &--with-overlay::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -104,10 +104,10 @@
             width: 42.5%;
             min-width: vwDesktop(728);
         }
+    }
 
-        &__breadcrumb {
-            filter: brightness(0) invert(1);
-        }
+    .cmp-breadcrumb {
+        filter: brightness(0) invert(1);
     }
 
     @mixin breakNewlines() {
@@ -219,15 +219,14 @@
             }
 
             &::before {
-                content: "";
+                content: '';
                 height: $internal-link-list-line-height;
                 width: $internal-link-list-line-height;
                 position: absolute;
                 left: 0;
                 top: vwMobile(3);
-                background: $solidigm-purple
-                    url("../resources/images/arrow-down-white.svg") no-repeat
-                    center;
+                background: $solidigm-purple url('../resources/images/arrow-down-white.svg')
+                    no-repeat center;
                 background-size: vwMobile(11) vwMobile(8);
                 border-radius: $border-radius-md-mobile;
 
