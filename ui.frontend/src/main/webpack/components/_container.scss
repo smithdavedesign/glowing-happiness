@@ -15,7 +15,7 @@
     &--divider & > *:not(:last-child) {
         position: relative;
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             left: 0;
             width: 100%;
@@ -26,7 +26,7 @@
         }
     }
 
-    &--bg-gray{
+    &--bg-gray {
         background: $gray-400;
     }
     // Horizontal padding
@@ -64,9 +64,9 @@
     // Vertical padding
 
     // Default: medium external/internal vertical padding
-    //external
-    & > &:not(:last-child), 
     // internal
+    & > :not(:last-child), 
+    //external
     & {
         padding-bottom: $spacing-2xl-mobile;
         @media (min-width: $desktop) {
@@ -95,7 +95,7 @@
 
         &--t-two-columns.cmp-container--divider > & > :not(:last-child) {
             &::after {
-                content: "";
+                content: '';
                 position: absolute;
                 left: 50%;
                 height: 100%;
@@ -118,7 +118,7 @@
 
         &--d-two-columns.cmp-container--divider > & > :not(:last-child) {
             &::after {
-                content: "";
+                content: '';
                 position: absolute;
                 left: calc(100% + $spacing-2xl-desktop/2);
                 height: 100%;
