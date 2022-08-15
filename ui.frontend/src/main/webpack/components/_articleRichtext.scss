@@ -2,13 +2,13 @@
     color: $grey;
     line-height: $line-height-base-mobile;
 
-    & > h2,
-    & > h3,
-    & > h4 {
+    & h2,
+    & h3,
+    & h4 {
         color: $dark-blue;
     }
 
-    & > h2 {
+    & h2 {
         font-size: $font-size-2xl-mobile;
         line-height: $line-height-2xl-mobile;
         @media (min-width: $desktop) {
@@ -17,7 +17,7 @@
         }
     }
 
-    & > h3 {
+    & h3 {
         font-size: $font-size-xl-mobile;
         line-height: $line-height-xl-mobile;
         @media (min-width: $desktop) {
@@ -26,7 +26,7 @@
         }
     }
 
-    & > h4 {
+    & h4 {
         font-size: $font-size-xl;
         line-height: $line-height-base-mobile;
         @media (min-width: $desktop) {
@@ -35,12 +35,12 @@
         }
     }
 
-    p > a,
-    li > a,
-    strong > a,
-    b > a,
-    i > a,
-    em > a {
+    p a,
+    li a,
+    strong a,
+    b a,
+    i a,
+    em a {
         color: $solidigm-purple;
     }
 
@@ -54,30 +54,36 @@
         }
     }
 
-    & > * + *,
-    & + *,
-    &:not(:first-child) {
+    & > * > * + *,
+    & + * {
         margin-top: $spacing-2xl-mobile;
         @media (min-width: $desktop) {
             margin-top: $spacing-xl-desktop;
         }
     }
 
-    & > li {
+    & li {
         margin-bottom: $spacing-2xs-mobile;
         @media (min-width: $desktop) {
             margin-bottom: $spacing-2xs-desktop;
         }
     }
 
-    & > ul li {
+    & ul li {
         list-style: disc;
         list-style-position: inside;
     }
 
-    & > ol li {
+    & ol li {
         list-style: decimal;
         list-style-position: inside;
+    }
+
+    p {
+        line-height: $line-height-base-mobile;
+        @media (min-width: $desktop) {
+            line-height: $line-height-base-desktop;
+        }
     }
 
     .paragraph-note {
