@@ -119,7 +119,6 @@
         border-radius: $border-radius-md-mobile;
         box-shadow: $box-shadow-mobile;
         padding: $spacing-lg-mobile;
-        width: 50%;
 
         @media (min-width: $desktop) {
             border-radius: $border-radius-md-desktop;
@@ -170,6 +169,10 @@
     &--text & &__link-subtitle {
         display: block;
         margin-top: $spacing-2xs-mobile;
+
+        &:empty{
+            display: none;
+        }
 
         @media (min-width: $desktop) {
             margin-top: $spacing-2xs-desktop;
