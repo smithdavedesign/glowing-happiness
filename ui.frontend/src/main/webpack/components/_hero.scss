@@ -100,7 +100,8 @@
         width: 100%;
         z-index: 2;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
+        justify-content: center;
 
         @media (min-width: $desktop) {
             width: 42.5%;
@@ -160,6 +161,9 @@
     }
 
     &__cta-container {
+        &:empty{
+            display: none;
+        }
         display: flex;
         flex-direction: column;
         margin-top: $spacing-4xl-mobile;
