@@ -29,6 +29,8 @@ window.addEventListener("DOMContentLoaded", function(){
                 },
                 767: {
                     perPage: 1,
+                    gap: '12px',
+                    padding: '1.5rem',
                 }
             }
         }).mount();
