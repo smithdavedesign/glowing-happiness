@@ -11,7 +11,7 @@
 
     @media (min-width: $desktop) {
         border-radius: $border-radius-md-desktop;
-        padding: vwDekstop(24) vwDekstop(82);
+        padding: vwDesktop(24) vwDesktop(82);
     }
 
     &--with-overlay::before {
@@ -48,7 +48,7 @@
         height: auto;
 
         @media (min-width: $desktop) {
-            min-height: vwDekstop(300);
+            min-height: vwDesktop(300);
         }
     }
 
@@ -58,8 +58,8 @@
         padding: vwMobile(54) vwMobile(24);
 
         @media (min-width: $desktop) {
-            min-height: vwDekstop(500);
-            padding: vwDekstop(54) vwDekstop(82);
+            min-height: vwDesktop(500);
+            padding: vwDesktop(54) vwDesktop(82);
         }
     }
 
@@ -238,11 +238,11 @@
                 border-radius: $border-radius-md-mobile;
 
                 @media (min-width: $desktop) {
-                    $internal-link-list-line-height: vwDekstop(26);
+                    $internal-link-list-line-height: vwDesktop(26);
                     height: $internal-link-list-line-height;
                     width: $internal-link-list-line-height;
                     top: 0;
-                    background-size: vwDekstop(11) vwDekstop(8);
+                    background-size: vwDesktop(11) vwDesktop(8);
                     border-radius: $border-radius-md-desktop;
                 }
             }
