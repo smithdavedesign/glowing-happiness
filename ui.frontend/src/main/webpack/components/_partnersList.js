@@ -1,23 +1,30 @@
-(function () {
-    $(".partners-list .solidigm-select").on("change", onFilterChange);
+import $ from 'jquery';
 
-    let productSelector = "", countrySelector = "";
+(function () {
+    $('.partners-list .solidigm-select').on('change', onFilterChange);
+
+    let productSelector = '',
+        countrySelector = '';
     function onFilterChange() {
-        if(this.name === 'countries'){
-            countrySelector = this.value === '' ? '' : "[data-partner-country='" + this.value + "']" 
-        } else if(this.name === 'products'){
-            productSelector = this.value === '' ? '' :  "[data-partner-product*='" + this.value + "']" 
+        if (this.name === 'countries') {
+            countrySelector =
+                this.value === '' ? '' : "[data-partner-country='" + this.value + "']";
+        } else if (this.name === 'products') {
+            productSelector =
+                this.value === '' ? '' : "[data-partner-product*='" + this.value + "']";
         }
 
-        $(".partners-list__partners__table-row").hide();
+        $('.partners-list__partners__table-row').hide();
 
-        const visibleRows = $(".partners-list__partners__table-row" + countrySelector + productSelector);
+        const visibleRows = $(
+            '.partners-list__partners__table-row' + countrySelector + productSelector
+        );
         visibleRows.show();
 
         if (visibleRows.length === 0) {
-            $(".partners-list__no-results").show();
+            $('.partners-list__no-results').show();
         } else {
-            $(".partners-list__no-results").hide();
+            $('.partners-list__no-results').hide();
         }
     }
 })();

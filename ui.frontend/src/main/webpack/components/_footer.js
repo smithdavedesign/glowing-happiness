@@ -1,6 +1,8 @@
+import $ from 'jquery';
+
 (function () {
     let didScroll = false;
-    const navbarHeight = $(".header__navigation-bar").outerHeight();
+    const navbarHeight = $('.header__navigation-bar').outerHeight();
 
     $(window).scroll(function () {
         didScroll = true;
@@ -17,18 +19,16 @@
     function hasScrolled() {
         const scrollTop = $(this).scrollTop();
 
-
-
         if (scrollTop > navbarHeight) {
-            if ($(".scroll-up-button").css("display") !== "none") return;
+            if ($('.scroll-up-button').css('display') !== 'none') return;
 
-            $(".scroll-up-button").css("display", "flex").hide().fadeIn();
+            $('.scroll-up-button').css('display', 'flex').hide().fadeIn();
         } else {
-            $(".scroll-up-button").fadeOut();
+            $('.scroll-up-button').fadeOut();
         }
     }
 
-    $(".scroll-up-button").click(function () {
-        $("html").animate({ scrollTop: 0 }, 500);
+    $('.scroll-up-button').click(function () {
+        $('html').animate({ scrollTop: 0 }, 500);
     });
 })();
