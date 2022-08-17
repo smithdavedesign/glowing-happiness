@@ -9,10 +9,14 @@ PassEnv DISP_ID
 	ServerAlias	${AUTHOR_DEFAULT_HOSTNAME}
 	ServerAlias author-dev.solidigmtechnology.com
   	ServerAlias author-stage.solidigmtechnology.com
+  	ServerAlias author-stage2.solidigmtechnology.com
   	ServerAlias author.solidigmtechnology.com
  	ServerAlias author-dev.solidigm.com
  	ServerAlias author-stage.solidigm.com
+ 	ServerAlias author-stage2.solidigm.com
   	ServerAlias author.solidigm.com
+  	ServerAlias author.beta.solidigm.com
+  	ServerAlias author-beta.solidigm.com
 
 
 	## Use a special doc root that doesn't overlap publish doc roots or it wont fetch from author each time and authors wont see their changes
