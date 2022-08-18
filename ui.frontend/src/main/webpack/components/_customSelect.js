@@ -8,13 +8,13 @@
 window.addEventListener('DOMContentLoaded', function () {
     const SELECT_STATES = {
         INITIAL: 'initial',
-        OPENED: 'open',
-        CLOSED: 'close',
+        OPENED: 'opened',
+        CLOSED: 'closed',
     };
 
     const SELECT_DROPDOWN_STATES = {
-        OPENED: 'open',
-        CLOSED: 'clsoed',
+        OPENED: 'opened',
+        CLOSED: 'closed',
     };
 
     const MOVE_DIRECTIONS = {
