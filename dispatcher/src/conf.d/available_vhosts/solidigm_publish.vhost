@@ -37,71 +37,97 @@ PassEnv DISP_ID
 	ServerAlias dev.solidigmtechnology.com
 	ServerAlias www-stage.solidigmtechnology.com
 	ServerAlias stage.solidigmtechnology.com
+	ServerAlias stage2.solidigmtechnology.com
 	ServerAlias prod.solidigmtechnology.com
+	ServerAlias beta.solidigmtechnology.com
 	ServerAlias www.solidigmtechnology.com
 
 	# establish baseline support for known country domains (WIP)
 	ServerAlias dev.solidigmtechnology.kr
 	ServerAlias stage.solidigmtechnology.kr
+	ServerAlias stage2.solidigmtechnology.kr
 	ServerAlias www-stage.solidigmtechnology.kr
 	ServerAlias www.solidigmtechnology.kr
 	ServerAlias prod.solidigmtechnology.kr
+	ServerAlias beta.solidigmtechnology.kr
 	ServerAlias dev.solidigmtechnology.cn
 	ServerAlias stage.solidigmtechnology.cn
+	ServerAlias stage2.solidigmtechnology.cn
 	ServerAlias www-stage.solidigmtechnology.cn
 	ServerAlias www.solidigmtechnology.cn
 	ServerAlias prod.solidigmtechnology.cn
+	ServerAlias beta.solidigmtechnology.cn
 	ServerAlias dev.solidigmtechnology.ru
 	ServerAlias stage.solidigmtechnology.ru
+	ServerAlias stage2.solidigmtechnology.ru
 	ServerAlias www-stage.solidigmtechnology.ru
 	ServerAlias www.solidigmtechnology.ru
 	ServerAlias prod.solidigmtechnology.ru
+	ServerAlias beta.solidigmtechnology.ru
 	ServerAlias dev.solidigmtechnology.jp
 	ServerAlias stage.solidigmtechnology.jp
+	ServerAlias stage2.solidigmtechnology.jp
 	ServerAlias www-stage.solidigmtechnology.jp
 	ServerAlias www.solidigmtechnology.jp
 	ServerAlias prod.solidigmtechnology.jp
+	ServerAlias beta.solidigmtechnology.jp
 	ServerAlias dev.solidigmtechnology.de
 	ServerAlias stage.solidigmtechnology.de
+	ServerAlias stage2.solidigmtechnology.de
 	ServerAlias www-stage.solidigmtechnology.de
 	ServerAlias www.solidigmtechnology.de
 	ServerAlias prod.solidigmtechnology.de
+	ServerAlias beta.solidigmtechnology.de
 
 	#Solidigm.com configurations
 	ServerAlias dev.solidigm.com
 	ServerAlias www-stage.solidigm.com
 	ServerAlias stage.solidigm.com
+	ServerAlias stage2solidigm.com
 	ServerAlias prod.solidigm.com
+	ServerAlias beta.solidigm.com
 	ServerAlias www.solidigm.com
 	ServerAlias dev.solidigm.kr
 	ServerAlias stage.solidigm.kr
+	ServerAlias stage2solidigm.kr
 	ServerAlias www-stage.solidigm.kr
 	ServerAlias www.solidigm.kr
 	ServerAlias prod.solidigm.kr
+	ServerAlias beta.solidigm.kr
 	ServerAlias dev.solidigm.cn
 	ServerAlias stage.solidigm.cn
+	ServerAlias stage2.solidigm.cn
 	ServerAlias www-stage.solidigm.cn
 	ServerAlias www.solidigm.cn
 	ServerAlias prod.solidigm.cn
+	ServerAlias beta.solidigm.cn
 	ServerAlias dev.solidigm.ru
 	ServerAlias stage.solidigm.ru
+	ServerAlias stage2.solidigm.ru
 	ServerAlias www-stage.solidigm.ru
 	ServerAlias www.solidigm.ru
 	ServerAlias prod.solidigm.ru
+	ServerAlias beta.solidigm.ru
 	ServerAlias dev.solidigm.jp
 	ServerAlias stage.solidigm.jp
+	ServerAlias stage2.solidigm.jp
 	ServerAlias www-stage.solidigm.jp
 	ServerAlias www.solidigm.jp
 	ServerAlias prod.solidigm.jp
+	ServerAlias beta.solidigm.jp
 	ServerAlias dev.solidigm.de
 	ServerAlias stage.solidigm.de
+	ServerAlias stage2.solidigm.de
 	ServerAlias www-stage.solidigm.de
 	ServerAlias www.solidigm.de
 	ServerAlias prod.solidigm.de
+	ServerAlias beta.solidigm.de
 	ServerAlias dev.solidigm.net
 	ServerAlias www-stage.solidigm.net
 	ServerAlias stage.solidigm.net
+	ServerAlias stage2.solidigm.net
 	ServerAlias prod.solidigm.net
+	ServerAlias beta.solidigm.net
 	ServerAlias www.solidigm.net
 
 	## Use a doc root that matches what's in the /etc/httpd/conf/publish-farm.any

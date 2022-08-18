@@ -1,12 +1,12 @@
 .cmp-social-share {
     display: flex;
     align-items: center;
-    margin-top: $spacing-sm-mobile;
+    padding: $spacing-3xl-mobile;
     flex-direction: column;
 
     @media (min-width: $desktop) {
+        padding: $spacing-3xl-desktop;
         flex-direction: row;
-        margin-top: $spacing-sm-desktop;
     }
 
     &__icons {
@@ -53,5 +53,64 @@
 
     &__icon-linkedin {
         @include svg_icon(linkedin);
+    }
+
+    &__nav-links {
+        margin: auto;
+        display: flex;
+        gap: $spacing-lg-mobile;
+        margin-top: $spacing-3xl-mobile;
+        a {
+            color: $solidigm-purple;
+        }
+
+        @media (min-width: $desktop) {
+            gap: $spacing-lg-desktop;
+            margin-top: 0;
+            margin-right: 0;
+        }
+    }
+
+    $arrow-width: 25px;
+    $arrow-margin: $spacing-2xs;
+    &__prev {
+        position: relative;
+        display: flex;
+
+        &::before {
+            content: '';
+            @include svg_icon(arrow);
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+
+            width: $spacing-lg-mobile;
+            margin-right: $spacing-2xs-mobile;
+            @media (min-width: $desktop) {
+                width: $spacing-lg-desktop;
+                margin-right: $spacing-2xs-desktop;
+            }
+        }
+    }
+
+    &__next {
+        position: relative;
+        display: flex;
+
+        &::after {
+            content: '';
+            @include svg_icon(arrow);
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            width: $spacing-lg-mobile;
+            margin-right: $spacing-2xs-mobile;
+            @media (min-width: $desktop) {
+                width: $spacing-lg-desktop;
+                margin-right: $spacing-2xs-desktop;
+            }
+        }
     }
 }

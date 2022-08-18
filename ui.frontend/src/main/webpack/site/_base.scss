@@ -152,6 +152,11 @@ button {
             }
         }
     }
+
+    &[disabled] {
+        opacity: 0.6;
+        pointer-events: none;
+    }
 }
 
 .solidigm-select {
@@ -196,4 +201,11 @@ b {
 em,
 i {
     font-style: italic;
+}
+
+.cmp-image--auto {
+    img.cmp-image__image {
+        height: auto;
+        object-fit: contain;
+    }
 }

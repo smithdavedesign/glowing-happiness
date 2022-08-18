@@ -1,8 +1,7 @@
 <div class="cmp-article-info" data-sly-use.articleinfo="com.solidigm.core.models.ArticleInfo">
     <div class="cmp-article-info__publish-info">
         <span>Posted on</span>
-        <!-- @TODO: get date in yyyy-mm-dd format for SEO -->
-        <date datetime="2022-02-10">${articleInfo.date}</date>
+        <date datetime="${articleInfo.date}">${articleInfo.formattedDate}</date>
         <span>by</span>
         ${articleInfo.author}
     </div>

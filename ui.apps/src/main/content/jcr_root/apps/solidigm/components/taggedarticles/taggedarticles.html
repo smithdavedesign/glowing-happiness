@@ -17,7 +17,12 @@
                                 options=taggedArticles.dropdownTags}"
         />
     </div>
-    <div class="cmp-tagged-articles__title" data-sly-test="${taggedArticles.selectorTag}">
+    <div
+        class="cmp-tagged-articles__title"
+        data-sly-test="${taggedArticles.selectorTag}"
+        data-servlet-path="${taggedArticles.rootPath}"
+        data-selector-tag="${taggedArticles.selectorTag}"
+    >
         <h2>Posts Tagged “${taggedArticles.selectorTag}”</h2>
     </div>
     <div class="cmp-tagged-articles__articles-container"></div>

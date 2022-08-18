@@ -6,11 +6,11 @@
         <div class="product-gallery__content">
             <div class="product-gallery__thumbnails"
                  data-sly-list.image="${productPhotoGallery.images}">
-                <button class="product-gallery__thumbnails__image-wrapper" data-index="${imageList.count}" aria-label="Go to image 1">
+                <button class="product-gallery__thumbnails__image-wrapper" data-index="${imageList.count}" aria-label="Go to image ${imageList.count}">
                     <div class="product-gallery__thumbnails__show-more-tile" style="display: none;">
-                        <span class="product-gallery__thumbnails__show-more-tile__text">+0</span>
+                        <span class="product-gallery__thumbnails__show-more-tile__text"></span>
                     </div>
-                    <img class="product-gallery__thumbnails__image product-gallery__thumbnails__image--selected" src="${image.imageReference}" alt="${image.altText}">
+                    <img class="product-gallery__thumbnails__image" src="${image.imageReference}" alt="${image.altText}">
                 </button>
             </div>
             <img class="product-gallery__product-image" src="${productPhotoGallery.mainImage.imageReference}" alt="${productPhotoGallery.mainImage.altText}">

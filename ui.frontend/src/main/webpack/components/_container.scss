@@ -7,6 +7,10 @@
     }
 }
 
+.root.container{
+    overflow: hidden;
+}
+
 .cmp-container {
     margin: auto;
     box-sizing: border-box;
@@ -15,7 +19,7 @@
     &--divider & > *:not(:last-child) {
         position: relative;
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             left: 0;
             width: 100%;
@@ -26,8 +30,19 @@
         }
     }
 
-    &--bg-gray{
-        background: $gray-400;
+    &--gray-bg & {
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            width: 300vw;
+            left: 50%;
+            transform: translate(-50%);
+            height: 100%;
+            background: $gray-400;
+            top: 0;
+            z-index: -100;
+        }
     }
     // Horizontal padding
     padding-left: $spacing-lg-mobile;
@@ -64,13 +79,13 @@
     // Vertical padding
 
     // Default: medium external/internal vertical padding
-    //external
-    & > &:not(:last-child), 
     // internal
+    & > :not(:last-child), 
+    //external
     & {
-        padding-bottom: $spacing-2xl-mobile;
+        margin-bottom: $spacing-2xl-mobile;
         @media (min-width: $desktop) {
-            padding-bottom: $spacing-7xl-desktop;
+            margin-bottom: $spacing-7xl-desktop;
         }
     }
 
@@ -95,7 +110,7 @@
 
         &--t-two-columns.cmp-container--divider > & > :not(:last-child) {
             &::after {
-                content: "";
+                content: '';
                 position: absolute;
                 left: 50%;
                 height: 100%;
@@ -118,7 +133,7 @@
 
         &--d-two-columns.cmp-container--divider > & > :not(:last-child) {
             &::after {
-                content: "";
+                content: '';
                 position: absolute;
                 left: calc(100% + $spacing-2xl-desktop/2);
                 height: 100%;
@@ -130,6 +145,27 @@
 
         &--d-two-columns > & > * {
             width: 50%;
+        }
+    }
+
+    &--gray-diagonal-line {
+        position: relative;
+        margin: auto;
+
+        &::before {
+            content: '';
+            height: vwMobile(1000);
+            width: 400vw;
+            background: $gray-350;
+            position: absolute;
+            z-index: -10000;
+            transform-origin: 0 0;
+            transform: rotate(45deg) translateX(-50%);
+            top: 0;
+            left: 0;
+            @media (min-width: $desktop){
+                height: vwDesktop(1000);
+            }
         }
     }
 }
