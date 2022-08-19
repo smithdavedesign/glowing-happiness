@@ -1,0 +1,92 @@
+.cmp-custom-select {
+    &__container {
+        position: relative;
+        flex: 1;
+    }
+
+    &__input {
+        cursor: default;
+        background-image: url('../resources/images/icon-arrow-down.svg');
+        font-weight: normal;
+        background-repeat: no-repeat;
+        background-size: vwMobile(10) vwMobile(6);
+        background-position: calc(100% - vwMobile(25)) 50%;
+        height: vwMobile(48);
+        width: 100%;
+        border: vwMobile(1) solid $gray-400;
+        border-radius: $border-radius-md-mobile;
+        background-color: $white;
+        padding: $spacing-sm-mobile;
+        color: $dark-grey;
+        font-family: $body-font;
+        font-size: $font-size-sm-mobile;
+        letter-spacing: 0;
+        line-height: vwMobile(15);
+        z-index: 10;
+        display: block;
+        box-sizing: border-box;
+        padding-right: $spacing-6xl-mobile;
+        &::-ms-expand {
+            display: none;
+        }
+
+        @media (min-width: $desktop) {
+            background-size: vwDesktop(10) vwDesktop(6);
+            background-position: calc(100% - vwDesktop(25)) 50%;
+            border-radius: $border-radius-md-desktop;
+            height: vwDesktop(48);
+            min-width: vwDesktop(220);
+            border-width: vwDesktop(1);
+            padding: $spacing-sm-desktop;
+
+            font-size: $font-size-sm-desktop;
+            line-height: vwDesktop(15);
+            padding-right: $spacing-6xl-desktop;
+        }
+    }
+
+    &__options {
+        position: absolute;
+        background: $solidigm-purple;
+        border-radius: $border-radius-md-mobile;
+        color: $white;
+        width: 100%;
+        cursor: pointer;
+        box-sizing: border-box;
+        z-index: 10;
+        top: calc(100% + #{$spacing-3xs-mobile});
+        padding: $spacing-2xs-mobile 0;
+        display: none;
+
+        @media (min-width: $desktop) {
+            border-radius: $border-radius-md-desktop;
+            top: calc(100% + #{$spacing-3xs-desktop});
+            padding: $spacing-2xs-desktop 0;
+        }
+
+        &--visible {
+            display: block;
+        }
+    }
+
+    &__option {
+        padding: $spacing-2xs-mobile $spacing-sm-mobile;
+        line-height: $line-height-base-mobile;
+        @media (min-width: $desktop) {
+            line-height: $line-height-base-desktop;
+            padding: $spacing-2xs-desktop $spacing-sm-desktop;
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: $dark-purple;
+            color: $white;
+        }
+
+        &--selected {
+            background: $white;
+            color: $solidigm-purple;
+        }
+    }
+}
