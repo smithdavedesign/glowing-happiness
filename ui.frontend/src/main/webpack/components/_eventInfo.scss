@@ -1,0 +1,48 @@
+.cmp-event-info {
+    color: $grey;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl-mobile;
+    line-height: $line-height-base-mobile;
+    @media (min-width: $desktop) {
+        gap: $spacing-xl-desktop;
+        line-height: $line-height-base-desktop;
+    }
+
+    &__tags {
+        font-size: $font-size-sm-mobile;
+        display: flex;
+        gap: vwMobile(3);
+        @media (min-width: $desktop) {
+            font-size: $font-size-sm-desktop;
+            gap: vwDesktop(3);
+        }
+    }
+
+    &__tags-list {
+        li {
+            display: inline-block;
+
+            &:not(:last-child) {
+                position: relative;
+                margin-right: vwMobile(2);
+
+                &::after {
+                    content: ',';
+                    position: absolute;
+                    left: 100%;
+                }
+            }
+
+            a {
+                color: $solidigm-purple;
+            }
+
+            @media (min-width: $desktop) {
+                &:not(:last-child) {
+                    margin-right: vwDesktop(2);
+                }
+            }
+        }
+    }
+}
