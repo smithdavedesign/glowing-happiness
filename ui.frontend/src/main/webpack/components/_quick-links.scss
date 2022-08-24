@@ -14,7 +14,7 @@
     :not(.cmp-quick-links--text) > & &__link {
         height: vwMobile(140);
         width: 100%;
-        background: url("../resources/images/quick-link-bg.svg") no-repeat right;
+        background: url('../resources/images/quick-link-bg.svg') no-repeat right;
         background-color: $solidigm-purple;
         display: block;
         color: $white;
@@ -30,11 +30,10 @@
         }
 
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             bottom: $spacing-base-mobile;
-            background: url("../resources/images/white-arrow.svg") no-repeat center
-                center;
+            background: url('../resources/images/white-arrow.svg') no-repeat center center;
             background-size: cover;
             height: $spacing-sm-mobile;
             width: $spacing-3xl-mobile;
@@ -49,8 +48,7 @@
         }
 
         &--external::after {
-            background: url("../resources/images/new-tab-icon.svg") no-repeat center
-                center;
+            background: url('../resources/images/new-tab-icon.svg') no-repeat center center;
             background-size: cover;
 
             width: $spacing-base-mobile;
@@ -140,14 +138,16 @@
         border-top: vwMobile(1) solid $gray-400;
         padding: $spacing-base-mobile 0;
         position: relative;
+        padding-right: vwMobile(35);
 
         @media (min-width: $desktop) {
             border-top: vwDesktop(1) solid $gray-400;
             padding: $spacing-base-desktop 0;
+            padding-right: vwDesktop(35);
         }
 
         &::after {
-            content: "";
+            content: '';
             height: vwMobile(10);
             width: vwMobile(25);
             @include svg_icon(arrow);
@@ -170,12 +170,59 @@
         display: block;
         margin-top: $spacing-2xs-mobile;
 
-        &:empty{
+        &:empty {
             display: none;
         }
 
         @media (min-width: $desktop) {
             margin-top: $spacing-2xs-desktop;
+        }
+    }
+
+    &--text &.cmp-quick-links--text-alternative {
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    &--text &.cmp-quick-links--text-alternative &__link-title {
+        color: $grey;
+    }
+
+    &--text &.cmp-quick-links--text-alternative li:last-child &__link {
+        border-bottom: vwMobile(1) solid $gray-400;
+
+        @media (min-width: $desktop) {
+            border-bottom: vwDesktop(1) solid $gray-400;
+        }
+    }
+
+    &--text &.cmp-quick-links--text-alternative &__link {
+        line-height: $line-height-base-mobile;
+        @media (min-width: $desktop) {
+            line-height: $line-height-base-desktop;
+        }
+
+        &::after {
+            content: attr(data-label);
+            position: relative;
+            top: 14px;
+            right: 0;
+            transform: translateY(-50%);
+            height: unset;
+            width: unset;
+            background: none;
+            font-size: $font-size-sm-mobile;
+            margin-top: $font-size-sm-mobile;
+            display: inline-block;
+
+            @media (min-width: $desktop) {
+                top: 50%;
+                margin-top: 0;
+                position: absolute;
+                font-size: $font-size-sm-desktop;
+            }
         }
     }
 }

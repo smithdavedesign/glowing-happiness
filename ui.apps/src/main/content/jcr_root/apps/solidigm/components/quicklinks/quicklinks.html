@@ -1,7 +1,7 @@
 <sly data-sly-use.quicklinks="com.solidigm.core.models.QuickLinks"
      data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
      data-sly-test.hasContent="${quicklinks.hasContent}">
-    <div class="cmp-quick-links">
+    <div class="cmp-quick-links ${quicklinks.linkText ? 'cmp-quick-links--text-alternative' : '' }">
         <div class="section-title--with-link">
             <h2>${quicklinks.title}</h2>
             <sly data-sly-test.hasSeeMoreLink="${quicklinks.seeMoreLinkLabel && quicklinks.seeMoreLink.link}">
@@ -10,7 +10,12 @@
         </div>
         <ul class="cmp-quick-links__container" data-sly-list.linkInfo="${quicklinks.links}">
             <li>
-                <a href="${linkInfo.link}" target="${linkInfo.target}" class="cmp-quick-links__link ${linkInfo.linkType}">
+                <a 
+                    href="${linkInfo.link}"
+                    target="${linkInfo.target}"
+                    class="cmp-quick-links__link ${linkInfo.linkType}"
+                    data-label="${quicklinks.linkText}"
+                >
                     <div class="cmp-quick-links__content">
                         <span class="cmp-quick-links__link-title">${linkInfo.linkTitle}</span>
                         <span class="cmp-quick-links__link-subtitle">${linkInfo.linkSubTitle}</span>
