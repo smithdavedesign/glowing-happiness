@@ -163,6 +163,7 @@
     <property inherit="true" name="toggleLabel" translate="true" updateDestinationLanguage="false"/>
     <property inherit="true" name="chartAlt" translate="true" updateDestinationLanguage="false"/>
     <property inherit="true" name="contentLabel" translate="true" updateDestinationLanguage="false"/>
+    <property inherit="true" name="extraInfo" translate="true" updateDestinationLanguage="false"/>
     <filter/>
     <node pathContains="/cq:annotations">
       <property name="text" translate="false"/>

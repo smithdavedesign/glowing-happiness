@@ -6,9 +6,9 @@ import com.day.cq.tagging.Tag;
 import com.day.cq.tagging.TagManager;
 import com.day.cq.wcm.api.Page;
 import com.solidigm.core.models.TaggedArticles;
+import com.solidigm.core.utils.SolidigmUtils;
 import com.solidigm.core.utils.TagUtil;
 import lombok.Getter;
-import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -22,7 +22,6 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.solidigm.core.utils.SolidigmConstants.HOME_NAVIGATION_LEVEL;
 import static com.solidigm.core.utils.SolidigmConstants.SOLIDIGM_ARTICLE_CATEGORY_TAGS;
 
 @Model(
@@ -66,11 +65,7 @@ public class TaggedArticlesImpl implements TaggedArticles {
 
         //Set localized root path
         if(currentPage != null){
-            rootPath = currentPage.getPath();
-            int endIndex = StringUtils.ordinalIndexOf(rootPath, "/", HOME_NAVIGATION_LEVEL);
-            if(endIndex != -1) {
-                rootPath = rootPath.substring(0, endIndex);
-            }
+            rootPath = SolidigmUtils.getSiteRoot(currentPage.getPath());
         }
 
         //Decode the selector string if it exists
