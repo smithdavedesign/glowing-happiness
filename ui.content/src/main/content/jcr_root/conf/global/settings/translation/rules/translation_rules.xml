@@ -206,4 +206,5 @@
   <assetNode assetReferenceAttribute="seeMoreLink" checkInChildNodes="false" resourceType=" solidigm/components/quicklinks"/>
   <assetNode assetReferenceAttribute="link" checkInChildNodes="true" resourceType=" solidigm/components/quicklinks"/>
   <assetNode assetReferenceAttribute="link" checkInChildNodes="true" resourceType=" solidigm/components/tilelist"/>
+  <assetNode assetReferenceAttribute="productPagePath" checkInChildNodes="true" resourceType=" solidigm/components/similarproducts"/>
 </nodelist>
