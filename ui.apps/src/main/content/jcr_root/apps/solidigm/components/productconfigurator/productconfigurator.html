@@ -1,4 +1,4 @@
-<div class="cmp-product-tabs">
+<div class="cmp-product-tabs" id="configurator" data-sly-use.productConfigurator="com.solidigm.core.models.ProductConfigurator">
     <div class="cmp-product-tabs__navigation">
         <div class="cmp-product-tabs__tablist" role="tablist" aria-label="Product Details">
             <button
@@ -62,7 +62,7 @@
                 Compliance
             </button>
         </div>
-        <a class="cmp-product-tabs__download-btn" href="#" aria-label="Download specs sheet"></a>
+        <a class="cmp-product-tabs__download-btn" href="${productConfigurator.downloadLink.link}" target="${productConfigurator.downloadLink.target}" aria-label="Download specs sheet"></a>
     </div>
     <div>
         <div
@@ -73,32 +73,18 @@
             id="panel-by-the-numbers"
         >
             <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>Product Family</dt>
-                    <dd>SSD D7 Series</dd>
-                    <dt>Form Factor</dt>
-                    <dd>U.2 15mm</dd>
-                    <dt>Capacity</dt>
-                    <dd>1.6 TB</dd>
-                    <dt>Weight</dt>
-                    <dd>142g</dd>
-                    <dt>Technology</dt>
-                    <dd>96-Layer TLC 3D NAND</dd>
-                    <dt>Availability</dt>
-                    <dd>Launched</dd>
+                <dl class="cmp-product-tabs__key-val"
+                    data-sly-list.attribute="${productConfigurator.attributes}">
+                    <dt>${attribute.attribute @ i18n}</dt>
+                    <dd>${attribute.attributeValue}</dd>
                 </dl>
             </div>
-            <div class="cmp-product-tabs__side-panel cmp-product-tabs__side-panel--metric">
+            <div class="cmp-product-tabs__side-panel cmp-product-tabs__side-panel--metric"
+                 data-sly-list.highlight="${productConfigurator.highlights}">
                 <div class="cmp-product-tabs__metric">
-                    <span class="cmp-product-tabs__metric-title">44%</span>
+                    <span class="cmp-product-tabs__metric-title">${highlight.heading}</span>
                     <p class="cmp-product-tabs__metric-body">
-                        Up to 44% higher random workload performance than prior gen.
-                    </p>
-                </div>
-                <div class="cmp-product-tabs__metric">
-                    <span class="cmp-product-tabs__metric-title">80%</span>
-                    <p class="cmp-product-tabs__metric-body">
-                        Up to 80% lower tail latency than prior gen.
+                        ${highlight.description}
                     </p>
                 </div>
             </div>
@@ -205,15 +191,12 @@
             id="panel-pcn-mdds"
         >
             <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>99AH2T</dt>
+                <dl class="cmp-product-tabs__key-val"
+                    data-sly-list.pcnmdds="${productConfigurator.pcnMddsEntries}">
+                    <dt>${pcnmdds.id}</dt>
                     <dd>
-                        <a href="#"> PCN </a>
-                        <a href="#"> MDDS </a>
-                    </dd>
-                    <dt>99AV73</dt>
-                    <dd>
-                        <a href="#"> PCN </a>
+                        <a data-sly-test="${pcnmdds.pcnLink}" href="${pcnmdds.pcnLink}" target="_blank"> PCN </a>
+                        <a data-sly-test="${pcnmdds.mddsLink}" href="${pcnmdds.mddsLink}" target="_blank"> MDDS </a>
                     </dd>
                 </dl>
             </div>
