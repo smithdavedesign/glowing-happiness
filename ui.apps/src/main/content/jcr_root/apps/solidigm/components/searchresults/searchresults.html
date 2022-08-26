@@ -1,0 +1,83 @@
+<div class="cmp-search-results">
+    <form id="search-form">
+        <label class="sr-only" for="search-bar">Search</label>
+        <input class="solidigm-input solidigm-input--underline" name="query" id="search-bar" />
+        <span class="cmp-search-results__filter-label">Filter by Type</span>
+        <div class="cmp-search-results__filters">
+            <input
+                class="cmp-search-results__filter cmp-search-results__filter--selected"
+                value="all"
+                name="filter"
+                type="checkbox"
+                id="search-all"
+            />
+            <label for="search-all">
+                <span>All (47)</span>
+            </label>
+
+            <input
+                class="cmp-search-results__filter"
+                value="products"
+                name="filter"
+                type="checkbox"
+                id="search-products"
+            />
+            <label for="search-products">
+                <span>Products (27)</span>
+            </label>
+
+            <input
+                class="cmp-search-results__filter"
+                value="support"
+                name="filter"
+                type="checkbox"
+                id="search-support"
+            />
+            <label for="search-support">
+                <span>Support (10)</span>
+            </label>
+
+            <input
+                class="cmp-search-results__filter"
+                value="posts"
+                name="filter"
+                type="checkbox"
+                id="search-posts"
+            />
+            <label for="search-posts">
+                <span>Posts (6)</span>
+            </label>
+        </div>
+    </form>
+    <div class="cmp-search-results__total">
+        <p data-results-template="Showing ${resultsPerPage} of ${totalResults} results"></p>
+    </div>
+    <ul class="cmp-search-results__results-container"></ul>
+    <nav
+        role="navigation"
+        aria-label="Pagination Navigation"
+        class="cmp-search-results__pagination"
+    >
+        <ul>
+            <li>
+                <button
+                    class="cmp-search-results__double-arrow cmp-search-results__first-page"
+                ></button>
+            </li>
+            <li>
+                <button
+                    class="cmp-search-results__arrow cmp-search-results__previous-page"
+                ></button>
+            </li>
+
+            <li>
+                <button class="cmp-search-results__arrow cmp-search-results__next-page"></button>
+            </li>
+            <li>
+                <button
+                    class="cmp-search-results__double-arrow cmp-search-results__last-page"
+                ></button>
+            </li>
+        </ul>
+    </nav>
+</div>
