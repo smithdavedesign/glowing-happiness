@@ -5,7 +5,7 @@
         cq:redirectTarget="/content/solidigm/us/en"
         cq:template="/conf/solidigm/settings/wcm/templates/page-content"
         jcr:primaryType="cq:PageContent"
-        jcr:title="us"
+        jcr:title="Language Masters"
         sling:resourceType="solidigm/components/page/base"/>
     <en/>
 </jcr:root>

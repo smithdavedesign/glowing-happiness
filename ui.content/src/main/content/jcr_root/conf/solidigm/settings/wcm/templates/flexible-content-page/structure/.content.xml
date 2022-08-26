@@ -36,7 +36,7 @@
                 jcr:lastModifiedBy="abcummins"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="solidigm/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/solidigm/language_masters/en/site/footer/master"/>
+                fragmentVariationPath="/content/experience-fragments/solidigm/language-masters/en/site/footer/master"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">

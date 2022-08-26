@@ -88,6 +88,12 @@
                                                                         fieldDescription="Link to page"
                                                                         rootPath="/content/solidigm"
                                                                         required="{Boolean}true" />
+                                                                <subtitle
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                        fieldDescription="Optional Text to be displayed instead of link icon on some styles."
+                                                                        fieldLabel="Link Text"
+                                                                        name="./linkText" />
                                                             </items>
                                                         </column>
                                                     </items>
