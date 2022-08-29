@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:lastModified="{Date}2022-07-05T15:18:28.704-04:00"
+        cq:lastModified="{Date}2022-08-29T12:42:12.595-04:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/solidigm/settings/wcm/templates/product-detail-page--pdp-"
         jcr:primaryType="cq:PageContent"
@@ -13,22 +13,67 @@
             sling:resourceType="solidigm/components/container"
             layout="responsiveGrid">
             <experiencefragment-header
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="solidigm/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/solidigm/us/en/site/header/master"/>
-            <container
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="solidigm/components/container"
-                editable="{Boolean}true"
-                layout="responsiveGrid"/>
-            <experiencefragment
-                jcr:created="{Date}2022-07-05T15:18:06.537-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2022-07-05T15:18:28.703-04:00"
+                jcr:lastModified="{Date}2022-08-29T10:17:00.221-04:00"
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="solidigm/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/solidigm/us/en/site/footer/master"/>
+                fragmentVariationPath="/content/experience-fragments/solidigm/language-masters/en/site/header/master"/>
+            <productphotogallery
+                jcr:created="{Date}2022-08-29T10:12:47.778-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:42:12.593-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/productphotogallery"
+                editable="{Boolean}true"/>
+            <productoverview
+                jcr:created="{Date}2022-08-29T10:12:52.762-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T10:12:52.762-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/productoverview"
+                editable="{Boolean}true"/>
+            <productconfigurator
+                jcr:created="{Date}2022-08-29T10:14:34.405-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T10:14:34.405-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/productconfigurator"
+                editable="{Boolean}true"/>
+            <similarproducts
+                jcr:created="{Date}2022-08-29T10:17:40.997-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T10:17:40.997-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/similarproducts"
+                editable="{Boolean}true"/>
+            <quicklinks
+                jcr:created="{Date}2022-08-29T10:18:40.069-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T10:21:56.164-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/quicklinks"
+                editable="{Boolean}true"/>
+            <articlelist
+                jcr:created="{Date}2022-08-29T10:22:21.615-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:41:26.126-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/articlelist"
+                editable="{Boolean}true"/>
+            <experiencefragment
+                jcr:created="{Date}2022-07-05T15:18:06.537-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T10:17:14.365-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/solidigm/language-masters/en/site/footer/master"/>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">
