@@ -87,7 +87,7 @@
                 <policy_76337259269419
                     cq:styleDefaultClasses="cmp-article-richtext"
                     jcr:lastModified="{Date}2022-08-17T21:30:41.896Z"
-                    jcr:lastModifiedBy="admin"
+                    jcr:lastModifiedBy="Ivan"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Article Image"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -208,7 +208,7 @@
                 <policy_75578235823341
                     cq:styleDefaultClasses="cmp-article-richtext"
                     jcr:lastModified="{Date}2022-08-17T14:53:04.458Z"
-                    jcr:lastModifiedBy="admin"
+                    jcr:lastModifiedBy="Ivan"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Article Text"
                     sling:resourceType="wcm/core/components/policy/policy">
@@ -594,7 +594,7 @@
                 </policy_67718747930984>
                 <policy_123853575836966
                     jcr:lastModified="{Date}2022-08-17T14:58:48.422Z"
-                    jcr:lastModifiedBy="admin"
+                    jcr:lastModifiedBy="Ivan"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Container"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -804,7 +804,7 @@
             <hero jcr:primaryType="nt:unstructured">
                 <policy_1655924066041
                     jcr:lastModified="{Date}2022-08-17T14:59:01.463Z"
-                    jcr:lastModifiedBy="admin"
+                    jcr:lastModifiedBy="Ivan"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Hero"
                     sling:resourceType="wcm/core/components/policy/policy">
@@ -1009,7 +1009,7 @@
                 </policy_1656427204082>
                 <policy_191395325378805
                     jcr:lastModified="{Date}2022-08-17T14:58:06.530Z"
-                    jcr:lastModifiedBy="admin"
+                    jcr:lastModifiedBy="Ivan"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Carousel"
                     sling:resourceType="wcm/core/components/policy/policy"
@@ -1061,7 +1061,7 @@
             </carousel>
             <blade jcr:primaryType="nt:unstructured">
                 <policy_1660594290567
-                    jcr:lastModified="{Date}2022-08-17T14:58:15.231Z"
+                    jcr:lastModified="{Date}2022-08-24T15:58:45.532-04:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Blade"
@@ -1103,13 +1103,24 @@
                                     jcr:primaryType="nt:unstructured"/>
                             </cq:styles>
                         </item1>
+                        <item2
+                            cq:styleGroupLabel="Desktop Layout"
+                            jcr:primaryType="nt:unstructured">
+                            <cq:styles jcr:primaryType="nt:unstructured">
+                                <item0
+                                    cq:styleClasses="cmp-blade--stacked"
+                                    cq:styleId="1661371111842"
+                                    cq:styleLabel="Stacked"
+                                    jcr:primaryType="nt:unstructured"/>
+                            </cq:styles>
+                        </item2>
                     </cq:styleGroups>
                 </policy_1660594290567>
             </blade>
             <quicklinks jcr:primaryType="nt:unstructured">
                 <policy_1660680414436
                     jcr:lastModified="{Date}2022-08-16T20:30:07.230Z"
-                    jcr:lastModifiedBy="admin"
+                    jcr:lastModifiedBy="Ivan"
                     jcr:primaryType="nt:unstructured"
                     jcr:title="Quick Links"
                     sling:resourceType="wcm/core/components/policy/policy">

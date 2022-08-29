@@ -1,71 +1,29 @@
-<div class="cmp-similar-products">
+<div class="cmp-similar-products"
+     data-sly-use.similarProducts="com.solidigm.core.models.SimilarProducts">
     <h2 class="cmp-similar-products__title">
-        Compare Similar Products
+        ${'Compare Similar Products' @ i18n}
     </h2>
-    <div class="cmp-product-cards__grid">
+    <div class="cmp-product-cards__grid"
+         data-sly-list.similarProduct="${similarProducts.similarProducts}">
         
-            <div class="cmp-product-cards__item  cmp-product-cards__item--with-label " data-label="This Model">
+            <div data-sly-attribute.class="cmp-product-cards__item  ${similarProductList.first ? 'cmp-product-cards__item--with-label' : ''} " data-sly-attribute.data-label="${similarProductList.first ? 'This Model' : ''}">
                 <div class="cmp-product-cards__img-container">
-                    <img src="image-url" alt="Product Image's Alt Text">
+                    <img src="${similarProduct.image}" alt="${similarProduct.altText}">
                 </div>
                 <div class="cmp-product-cards__item-content">
                     <h3 class="cmp-product-cards__item-title">
-                        D7-P5600
+                        ${similarProduct.name}
                     </h3>
                     <p class="cmp-product-cards__item-description">
-                        Balanced read/write performance for mixed workload applications. Available in 1.6 TB, 3.2 TB, and 6.4 TB capacities, the D7-P5600 is a strong blend of performance, endurance, and capacity.
+                        ${similarProduct.description}
                     </p>
                     <dl class="cmp-product-cards__item-specs">
-                        <dt>Interface:</dt>
-                        <dd>PCIE 4.0 X4, NVME</dd>
-                        <dt>Form Factor:</dt>
-                        <dd>U2 15MM</dd>
-                        <dt>Capacity:</dt>
-                        <dd>1.6TB - 6.4TB</dd>
-                    </dl>
-                </div>
-            </div>
-        
-            <div class="cmp-product-cards__item ">
-                <div class="cmp-product-cards__img-container">
-                    <img src="image-url" alt="Product Image's Alt Text">
-                </div>
-                <div class="cmp-product-cards__item-content">
-                    <h3 class="cmp-product-cards__item-title">
-                        D7-P5600
-                    </h3>
-                    <p class="cmp-product-cards__item-description">
-                        Balanced read/write performance for mixed workload applications. Available in 1.6 TB, 3.2 TB, and 6.4 TB capacities, the D7-P5600 is a strong blend of performance, endurance, and capacity.
-                    </p>
-                    <dl class="cmp-product-cards__item-specs">
-                        <dt>Interface:</dt>
-                        <dd>PCIE 4.0 X4, NVME</dd>
-                        <dt>Form Factor:</dt>
-                        <dd>U2 15MM</dd>
-                        <dt>Capacity:</dt>
-                        <dd>1.6TB - 6.4TB</dd>
-                    </dl>
-                </div>
-            </div>
-        
-            <div class="cmp-product-cards__item ">
-                <div class="cmp-product-cards__img-container">
-                    <img src="image-url" alt="Product Image's Alt Text">
-                </div>
-                <div class="cmp-product-cards__item-content">
-                    <h3 class="cmp-product-cards__item-title">
-                        D7-P5600
-                    </h3>
-                    <p class="cmp-product-cards__item-description">
-                        Balanced read/write performance for mixed workload applications. Available in 1.6 TB, 3.2 TB, and 6.4 TB capacities, the D7-P5600 is a strong blend of performance, endurance, and capacity.
-                    </p>
-                    <dl class="cmp-product-cards__item-specs">
-                        <dt>Interface:</dt>
-                        <dd>PCIE 4.0 X4, NVME</dd>
-                        <dt>Form Factor:</dt>
-                        <dd>U2 15MM</dd>
-                        <dt>Capacity:</dt>
-                        <dd>1.6TB - 6.4TB</dd>
+                        <dt>${'Interface' @ i18n}:</dt>
+                        <dd>${similarProduct.productInterface}</dd>
+                        <dt>${'Form Factor' @ i18n}:</dt>
+                        <dd>${similarProduct.formFactor}</dd>
+                        <dt>${'Capacity' @ i18n}:</dt>
+                        <dd>${similarProduct.capacity}</dd>
                     </dl>
                 </div>
             </div>
@@ -73,7 +31,7 @@
     </div>
     <div class="cmp-similar-products__cta-container">
         <a href="#" class="solidigm-btn solidigm-btn--lg-padding">
-            View Full Comparison
+            ${'View Full Comparison' @ i18n}
         </a>
     </div>
 </div>
