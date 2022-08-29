@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Tile List Component"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabview
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                    maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                            jcr:primaryType="nt:unstructured"
+                            jcr:title="Properties"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                    margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <tileInfo
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                    composite="{Boolean}true"
+                                                    fieldLabel="Tile Information"
+                                                    fieldDescription="Add tiles here">
+                                                <field
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                        name="./tileInfo">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <column
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                            <items jcr:primaryType="nt:unstructured">
+                                                                <fieldset
+                                                                        jcr:primaryType="nt:unstructured"
+                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                                        jcr:title="Tile Item">
+                                                                    <items jcr:primaryType="nt:unstructured">
+                                                                        <icon
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                fieldLabel="Icon"
+                                                                                fieldDescription="Choose which icon to display in tile"
+                                                                                name="./icon">
+                                                                            <items jcr:primaryType="nt:unstructured">
+                                                                                <item_0 jcr:primaryType="nt:unstructured"
+                                                                                        text="401K Icon"
+                                                                                        value="401"
+                                                                                        selected="{Boolean}true" />
+                                                                                <item_1 jcr:primaryType="nt:unstructured"
+                                                                                        text="Agile Methodology Icon"
+                                                                                        value="agility" />
+                                                                                <item_2 jcr:primaryType="nt:unstructured"
+                                                                                        text="Calculator Icon"
+                                                                                        value="calculator" />
+                                                                                <item_3 jcr:primaryType="nt:unstructured"
+                                                                                        text="Computer Icon"
+                                                                                        value="computer" />
+                                                                                <item_4 jcr:primaryType="nt:unstructured"
+                                                                                        text="Diamond Icon"
+                                                                                        value="diamond" />
+                                                                                <item_5 jcr:primaryType="nt:unstructured"
+                                                                                        text="Doctor's Stethescope Icon"
+                                                                                        value="doctor" />
+                                                                                <item_6 jcr:primaryType="nt:unstructured"
+                                                                                        text="Document Icon"
+                                                                                        value="documents" />
+                                                                                <item_7 jcr:primaryType="nt:unstructured"
+                                                                                        text="Pie Chart Equity Icon"
+                                                                                        value="equity" />
+                                                                                <item_8 jcr:primaryType="nt:unstructured"
+                                                                                        text="Holding Hands Icon"
+                                                                                        value="handshake" />
+                                                                                <item_9 jcr:primaryType="nt:unstructured"
+                                                                                        text="Inventions Icon"
+                                                                                        value="inventions" />
+                                                                                <item_10 jcr:primaryType="nt:unstructured"
+                                                                                         text="Openness Icon"
+                                                                                         value="openness" />
+                                                                                <item_11 jcr:primaryType="nt:unstructured"
+                                                                                         text="Clipboard Icon"
+                                                                                         value="orders" />
+                                                                                <item_12 jcr:primaryType="nt:unstructured"
+                                                                                         text="Handshake Icon"
+                                                                                         value="partnership" />
+                                                                                <item_13 jcr:primaryType="nt:unstructured"
+                                                                                         text="Group of People Icon"
+                                                                                         value="people" />
+                                                                                <item_14 jcr:primaryType="nt:unstructured"
+                                                                                         text="Beach Vacation Icon"
+                                                                                         value="pto" />
+                                                                                <item_15 jcr:primaryType="nt:unstructured"
+                                                                                         text="Tools icon"
+                                                                                         value="tools" />
+                                                                                <item_16 jcr:primaryType="nt:unstructured"
+                                                                                         text="Lifting Weight for Wellness Icon"
+                                                                                         value="wellness" />
+                                                                            </items>
+                                                                        </icon>
+                                                                        <title
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldDescription="Title of this tile"
+                                                                                fieldLabel="Title"
+                                                                                required="{Boolean}true"
+                                                                                name="./title" />
+                                                                        <description
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                name="./description"
+                                                                                fieldLabel="Description"
+                                                                                fieldDescription="Tile description"
+                                                                                required="{Boolean}true"
+                                                                                rows="{Long}5" />
+                                                                        <buttonLabel
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                fieldDescription="Text to be displayed on button if link is authored; if no link is authored, no button will display"
+                                                                                fieldLabel="CTA Button Label"
+                                                                                name="./label"/>
+                                                                        <buttonLink
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                name="./link"
+                                                                                fieldLabel="CTA Button Link"
+                                                                                fieldDescription="If no link is authored, no button will display even if label has been authored"
+                                                                                rootPath="/content/solidigm"/>
+                                                                    </items>
+                                                                </fieldset>
+                                                            </items>
+                                                        </column>
+                                                    </items>
+                                                </field>
+                                            </tileInfo>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabview>
+        </items>
+    </content>
+</jcr:root>

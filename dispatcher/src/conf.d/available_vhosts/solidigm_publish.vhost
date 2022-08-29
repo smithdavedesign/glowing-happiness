@@ -1,64 +1,199 @@
-# Collect any enviromental variables that are set in /etc/sysconfig/httpd
-# Collect the dispatchers number
+## Collect any enviromental variables that are set in /etc/sysconfig/httpd
+## Collect the dispatchers number
 PassEnv DISP_ID
 
 <VirtualHost *:80>
+	ServerName rootdomain
+	ServerAlias solidigmtechnology.com
+	ServerAlias solidigmtechnology.de
+	ServerAlias solidigmtechnology.ru
+	ServerAlias solidigmtechnology.jp
+	ServerAlias solidigmtechnology.cn
+	ServerAlias solidigmtechnology.kr
+
+	#Solidigm.com configurations
+	ServerAlias solidigm.com
+	ServerAlias solidigm.de
+	ServerAlias solidigm.ru
+	ServerAlias solidigm.jp
+	ServerAlias solidigm.cn
+	ServerAlias solidigm.kr
+	ServerAlias solidigm.net
+
+        <IfModule mod_rewrite.c>
+                ReWriteEngine   on
+                LogLevel warn rewrite:info
+		RewriteRule ^/(.*) https://www.%{HTTP_HOST}/$1 [NC,R=301,L]
+        </IfModule>
+
+</VirtualHost>
+
+<VirtualHost *:80>
+        ## allowing slashes in the URL to be encoded and still honored
+        AllowEncodedSlashes On
 	ServerName	publish
-	# Put names of which domains are used for your published site/content here
+	## Put names of which domains are used for your published site/content here
 	ServerAlias	${PUBLISH_DEFAULT_HOSTNAME}
-	# Use a doc root that matches what's in the /etc/httpd/conf/publish-farm.any
+	ServerAlias dev.solidigmtechnology.com
+	ServerAlias www-stage.solidigmtechnology.com
+	ServerAlias stage.solidigmtechnology.com
+	ServerAlias stage2.solidigmtechnology.com
+	ServerAlias prod.solidigmtechnology.com
+	ServerAlias beta.solidigmtechnology.com
+	ServerAlias www.solidigmtechnology.com
+
+	# establish baseline support for known country domains (WIP)
+	ServerAlias dev.solidigmtechnology.kr
+	ServerAlias stage.solidigmtechnology.kr
+	ServerAlias stage2.solidigmtechnology.kr
+	ServerAlias www-stage.solidigmtechnology.kr
+	ServerAlias www.solidigmtechnology.kr
+	ServerAlias prod.solidigmtechnology.kr
+	ServerAlias beta.solidigmtechnology.kr
+	ServerAlias dev.solidigmtechnology.cn
+	ServerAlias stage.solidigmtechnology.cn
+	ServerAlias stage2.solidigmtechnology.cn
+	ServerAlias www-stage.solidigmtechnology.cn
+	ServerAlias www.solidigmtechnology.cn
+	ServerAlias prod.solidigmtechnology.cn
+	ServerAlias beta.solidigmtechnology.cn
+	ServerAlias dev.solidigmtechnology.ru
+	ServerAlias stage.solidigmtechnology.ru
+	ServerAlias stage2.solidigmtechnology.ru
+	ServerAlias www-stage.solidigmtechnology.ru
+	ServerAlias www.solidigmtechnology.ru
+	ServerAlias prod.solidigmtechnology.ru
+	ServerAlias beta.solidigmtechnology.ru
+	ServerAlias dev.solidigmtechnology.jp
+	ServerAlias stage.solidigmtechnology.jp
+	ServerAlias stage2.solidigmtechnology.jp
+	ServerAlias www-stage.solidigmtechnology.jp
+	ServerAlias www.solidigmtechnology.jp
+	ServerAlias prod.solidigmtechnology.jp
+	ServerAlias beta.solidigmtechnology.jp
+	ServerAlias dev.solidigmtechnology.de
+	ServerAlias stage.solidigmtechnology.de
+	ServerAlias stage2.solidigmtechnology.de
+	ServerAlias www-stage.solidigmtechnology.de
+	ServerAlias www.solidigmtechnology.de
+	ServerAlias prod.solidigmtechnology.de
+	ServerAlias beta.solidigmtechnology.de
+
+	#Solidigm.com configurations
+	ServerAlias dev.solidigm.com
+	ServerAlias www-stage.solidigm.com
+	ServerAlias stage.solidigm.com
+	ServerAlias stage2solidigm.com
+	ServerAlias prod.solidigm.com
+	ServerAlias beta.solidigm.com
+	ServerAlias www.solidigm.com
+	ServerAlias dev.solidigm.kr
+	ServerAlias stage.solidigm.kr
+	ServerAlias stage2solidigm.kr
+	ServerAlias www-stage.solidigm.kr
+	ServerAlias www.solidigm.kr
+	ServerAlias prod.solidigm.kr
+	ServerAlias beta.solidigm.kr
+	ServerAlias dev.solidigm.cn
+	ServerAlias stage.solidigm.cn
+	ServerAlias stage2.solidigm.cn
+	ServerAlias www-stage.solidigm.cn
+	ServerAlias www.solidigm.cn
+	ServerAlias prod.solidigm.cn
+	ServerAlias beta.solidigm.cn
+	ServerAlias dev.solidigm.ru
+	ServerAlias stage.solidigm.ru
+	ServerAlias stage2.solidigm.ru
+	ServerAlias www-stage.solidigm.ru
+	ServerAlias www.solidigm.ru
+	ServerAlias prod.solidigm.ru
+	ServerAlias beta.solidigm.ru
+	ServerAlias dev.solidigm.jp
+	ServerAlias stage.solidigm.jp
+	ServerAlias stage2.solidigm.jp
+	ServerAlias www-stage.solidigm.jp
+	ServerAlias www.solidigm.jp
+	ServerAlias prod.solidigm.jp
+	ServerAlias beta.solidigm.jp
+	ServerAlias dev.solidigm.de
+	ServerAlias stage.solidigm.de
+	ServerAlias stage2.solidigm.de
+	ServerAlias www-stage.solidigm.de
+	ServerAlias www.solidigm.de
+	ServerAlias prod.solidigm.de
+	ServerAlias beta.solidigm.de
+	ServerAlias dev.solidigm.net
+	ServerAlias www-stage.solidigm.net
+	ServerAlias stage.solidigm.net
+	ServerAlias stage2.solidigm.net
+	ServerAlias prod.solidigm.net
+	ServerAlias beta.solidigm.net
+	ServerAlias www.solidigm.net
+
+	## Use a doc root that matches what's in the /etc/httpd/conf/publish-farm.any
 	DocumentRoot	${PUBLISH_DOCROOT}
-	# Add header breadcrumbs for help in troubleshooting
+	ErrorDocument 404 /content/solidigm/language-masters/en/404-page.html
+	## Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
-		Header always add X-Dispatcher ${DISP_ID}
-		Header always add X-Vhost "publish"
-		Header merge X-Frame-Options SAMEORIGIN "expr=%{resp:X-Frame-Options}!='SAMEORIGIN'"
-		Header merge X-Content-Type-Options nosniff "expr=%{resp:X-Content-Type-Options}!='nosniff'"
+      # force HttpOnly and Secure flags on cookies set by AEM
+      Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure
+	    Header set X-XSS-Protection: "1; mode=block"
+			Header always add X-Dispatcher ${DISP_ID}
+			Header always add X-Vhost "publish"
+			Header merge X-Frame-Options SAMEORIGIN "expr=%{resp:X-Frame-Options}!='SAMEORIGIN'"
+			Header merge X-Content-Type-Options nosniff "expr=%{resp:X-Content-Type-Options}!='nosniff'"
+		#### Make sure proxies don't deliver the wrong content
+		Header append Vary User-Agent env=!dont-vary
+		    ## Force SSL for author
+		    ## Add HSTS for avoiding man in the middle during browser redirect to SSL
+		    Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains;"
 	</IfModule>
-	<Directory "${PUBLISH_DOCROOT}">
-		# Update /etc/sysconfig/httpd with setting the PUBLISH_ALLOWLIST_ENABLED from 0 or 1 to enable or disable ip restriction rules
-		<If "${PUBLISH_ALLOWLIST_ENABLED} == 1">
-			Include conf.d/allowlists/*_allowlist.rules
+	<Directory />
+		## Update /etc/httpd/conf.d/variables/ams_default.vars with setting the PUBLISH_WHITELIST_ENABLED from 0 or 1 to enable or disable ip restriction rules
+		<If "${PUBLISH_WHITELIST_ENABLED} == 1">
+			Include /etc/httpd/conf.d/whitelists/*_whitelist.rules
 		</If>
 		<IfModule disp_apache2.c>
-			# Some items cache with the wrong mime type
-			# Use this option to use the name to auto-detect mime types when cached improperly
+			## Some items cache with the wrong mime type
+			## Use this option to use the name to auto-detect mime types when cached improperly
 			ModMimeUsePathInfo On
-			# Use this option to avoid cache poisioning
-			# Sling will return /content/image.jpg as well as /content/image.jpg/ but apache can't search /content/image.jpg/ as a file
-			# Apache will treat that like a directory.  This assures the last slash is never stored in cache
+			## Use this option to avoid cache poisioning
+			## Sling will return /content/image.jpg as well as /content/image.jpg/ but apache can't search /content/image.jpg/ as a file
+			## Apache will treat that like a directory.  This assures the last slash is never stored in cache
 			DirectorySlash Off
-			# Enable the dispatcher file handler for apache to fetch files from AEM
+			## Enable the dispatcher file handler for apache to fetch files from AEM
 			SetHandler dispatcher-handler
 		</IfModule>
 		Options FollowSymLinks
 		AllowOverride None
-		Require all granted
-		# Insert filter
+		#### Insert filter
 		SetOutputFilter DEFLATE
-		# Don't compress images
+		#### Don't compress images
 		SetEnvIfNoCase Request_URI \
 		\.(?:gif|jpe?g|png)$ no-gzip dont-vary
 	</Directory>
+	<Directory "${PUBLISH_DOCROOT}">
+		AllowOverride None
+		Require all granted
+	</Directory>
 	<IfModule disp_apache2.c>
-		# Enabled to allow rewrites to take affect and not be ignored by the dispatcher module
+		## Enabled to allow rewrites to take affect and not be ignored by the dispatcher module
 		DispatcherUseProcessedURL	1
-		# Default setting to allow all errors to come from the aem instance
-		DispatcherPassError		0
+		## Default setting to allow all errors to come from the aem instance
+		DispatcherPassError		1
 	</IfModule>
 	<IfModule mod_rewrite.c>
 		ReWriteEngine	on
 		LogLevel warn rewrite:info
-		# Global rewrite include
-		Include conf.d/rewrites/base_rewrite.rules
-		Include conf.d/rewrites/solidigm_rewrite.rules
-		# Update /etc/sysconfig/httpd with setting the PUBLISH_FORCE_SSL from 0 or 1 to enable or disable enforcing SSL
+		##Global rewrite include
+		Include /etc/httpd/conf.d/rewrites/base_rewrite.rules
+		##Solidigm-specific rewrites
+		Include /etc/httpd/conf.d/rewrites/domain_rewrite.rules
+		Include /etc/httpd/conf.d/rewrites/solidigm_rewrite.rules
+#		Include /etc/httpd/conf.d/rewrites/domain_rewrite.rules
+		## Update /etc/httpd/conf.d/variables/ams_default.vars with setting the PUBLISH_FORCE_SSL from 0 or 1 to enable or disable enforcing SSL
 		<If "${PUBLISH_FORCE_SSL} == 1">
-			Include conf.d/rewrites/xforwarded_forcessl_rewrite.rules
+			Include /etc/httpd/conf.d/rewrites/xforwarded_forcessl_rewrite.rules
 		</If>
-	</IfModule>
-	<IfModule mod_proxy.c>
-		SSLProxyEngine on
-		Include /etc/httpd/conf.d/proxy/*.proxy
 	</IfModule>
 </VirtualHost>

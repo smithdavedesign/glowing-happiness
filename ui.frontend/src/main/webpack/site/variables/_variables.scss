@@ -1,0 +1,13 @@
+@import './breakpoints';
+@import './colors';
+@import './spacing';
+@import './typography';
+
+$border-radius-sm-mobile: vwMobile(3);
+$border-radius-md-mobile: vwMobile(5);
+
+$border-radius-sm-desktop: vwDesktop(3);
+$border-radius-md-desktop: vwDesktop(5);
+
+$box-shadow-mobile: 0 vwMobile(10) vwMobile(40) 0 rgba(0, 0, 0, 0.1);
+$box-shadow-desktop: 0 vwDesktop(10) vwDesktop(40) 0 rgba(0, 0, 0, 0.1);

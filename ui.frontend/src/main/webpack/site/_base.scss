@@ -38,21 +38,8 @@ body {
     font-size: $font-size;
     font-family: $font-family;
     line-height: $font-height;
-    color: $color-foreground;
-    background: $color-background;
-
-    @media (prefers-color-scheme: dark) {
-        color: $color-foreground-dark;
-        background: $color-background-dark;
-    }
-}
-
-a {
-    color: $color-link;
-
-    @media (prefers-color-scheme: dark) {
-        color: $color-link-dark;
-    }
+    color: $black;
+    background: $white;
 }
 
 button,
@@ -85,12 +72,6 @@ h4,
 
 a {
     text-decoration: none;
-}
-
-.container {
-    max-width: 1440px;
-    margin: auto;
-    padding: 1.5rem;
 }
 
 .hidden {
@@ -144,6 +125,13 @@ button {
         }
     }
 
+    &--outline-dark {
+        color: $black;
+        &:hover {
+            color: $white;
+        }
+    }
+
     &--full {
         width: 100%;
     }
@@ -163,5 +151,61 @@ button {
                 background-size: contain;
             }
         }
+    }
+
+    &[disabled] {
+        opacity: 0.6;
+        pointer-events: none;
+    }
+}
+
+.solidigm-select {
+    height: vwMobile(48);
+    width: 100%;
+    border: vwMobile(1) solid $gray-400;
+    border-radius: $border-radius-md;
+    background-color: $white;
+    padding: vwMobile(15);
+
+    color: $dark-grey;
+    font-family: $body-font;
+    font-size: $font-size-sm-mobile;
+    letter-spacing: 0;
+    line-height: vwMobile(15);
+
+    appearance: none;
+    @include svg_icon(arrow-down);
+    background-repeat: no-repeat;
+    background-size: vwMobile(10) vwMobile(6);
+    background-position: calc(100% - vwMobile(25)) 50%;
+
+    @media (min-width: $desktop) {
+        height: vwDesktop(48);
+        width: vwDesktop(220);
+        border-width: vwDesktop(1);
+        padding: vwDesktop(15);
+
+        font-size: $font-size-sm-desktop;
+        line-height: vwDesktop(15);
+
+        background-size: vwDesktop(10) vwDesktop(6);
+        background-position: calc(100% - vwDesktop(25)) 50%;
+    }
+}
+
+strong,
+b {
+    font-weight: bold;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+.cmp-image--auto {
+    img.cmp-image__image {
+        height: auto;
+        object-fit: contain;
     }
 }

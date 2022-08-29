@@ -1,0 +1,24 @@
+{
+  "videoEmpty": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/video"
+  },
+  "videoAltTextFromDAM": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/video",
+    "thumbnailImageReference": "/content/image"
+  },
+  "videoAuthored": {
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/video",
+    "thumbnailImageReference": "/content/image",
+    "thumbnailAltText": "Test Alt Text"
+  },
+  "image": {
+    "jcr:content": {
+      "metadata": {
+        "dc:description": "Test Image Alt from DAM"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+$heading-font: "Sora", "Arial";
+$body-font: "Noto Sans";
+
+$font-size-5xl-mobile: vwMobile(80);
+$font-size-4xl-mobile: vwMobile(50);
+$font-size-3xl-mobile: vwMobile(48);
+$font-size-2xl-mobile: vwMobile(32);
+$font-size-xl-mobile: vwMobile(24);
+$font-size-lg-mobile: vwMobile(20);
+$font-size-base-mobile: vwMobile(15);
+$font-size-sm-mobile: vwMobile(13);
+$font-size-xs-mobile: vwMobile(11);
+$font-size-2xs-mobile: vwMobile(10);
+$font-size-3xs-mobile: vwMobile(9);
+
+$font-size-5xl-desktop: vwDesktop(80);
+$font-size-4xl-desktop: vwDesktop(50);
+$font-size-3xl-desktop: vwDesktop(48);
+$font-size-2xl-desktop: vwDesktop(32);
+$font-size-xl-desktop: vwDesktop(24);
+$font-size-lg-desktop: vwDesktop(20);
+$font-size-base-desktop: vwDesktop(15);
+$font-size-sm-desktop: vwDesktop(13);
+$font-size-xs-desktop: vwDesktop(11);
+$font-size-2xs-desktop: vwDesktop(10);
+$font-size-3xs-desktop: vwDesktop(9);
+
+$line-height-base-mobile: vwMobile(25);
+$line-height-xl-mobile: vwMobile(34);
+$line-height-2xl-mobile: vwMobile(38);
+
+$line-height-base-desktop: vwDesktop(25);
+$line-height-xl-desktop: vwDesktop(34);
+$line-height-2xl-desktop: vwDesktop(38);
+
+/** Legacy, remove when refactor is finished. **/
+
+$font-size-5xl: 5rem; // 80px
+$font-size-4xl: 3.125rem; // 50px
+$font-size-3xl: 3rem; // 48px
+$font-size-2xl: 2rem; // 32px
+$font-size-xl: 1.5rem; // 24px
+$font-size-lg: 1.25rem; // 20px
+$font-size-base: 0.9375rem; // 15px
+$font-size-sm: 0.8125rem; // 13px
+$font-size-xs: 0.6875rem; // 11px
+$font-size-2xs: 0.625rem; // 10px
+$font-size-3xs: 0.5625rem; // 9px
+
+// Line heights
+$line-height-base: 25px;

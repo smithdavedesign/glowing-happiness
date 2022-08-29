@@ -1,0 +1,116 @@
+.cmp-social-share {
+    display: flex;
+    align-items: center;
+    padding: $spacing-3xl-mobile;
+    flex-direction: column;
+
+    @media (min-width: $desktop) {
+        padding: $spacing-3xl-desktop;
+        flex-direction: row;
+    }
+
+    &__icons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: $spacing-3xl-mobile;
+
+        @media (min-width: $desktop) {
+            justify-content: flex-start;
+            margin-left: $spacing-3xl-desktop;
+            margin-top: 0;
+        }
+
+        & > *:not(:last-child) {
+            margin-right: $spacing-6xl-mobile;
+
+            @media (min-width: $desktop) {
+                margin-right: $spacing-base-desktop;
+            }
+        }
+    }
+
+    &__icon {
+        height: vwMobile(22);
+        width: vwMobile(22);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+
+        @media (min-width: $desktop) {
+            height: vwDesktop(20);
+            width: vwDesktop(20);
+        }
+    }
+
+    &__icon-facebook {
+        @include svg_icon(facebook);
+    }
+
+    &__icon-twitter {
+        @include svg_icon(twitter);
+    }
+
+    &__icon-linkedin {
+        @include svg_icon(linkedin);
+    }
+
+    &__nav-links {
+        margin: auto;
+        display: flex;
+        gap: $spacing-lg-mobile;
+        margin-top: $spacing-3xl-mobile;
+        a {
+            color: $solidigm-purple;
+        }
+
+        @media (min-width: $desktop) {
+            gap: $spacing-lg-desktop;
+            margin-top: 0;
+            margin-right: 0;
+        }
+    }
+
+    $arrow-width: 25px;
+    $arrow-margin: $spacing-2xs;
+    &__prev {
+        position: relative;
+        display: flex;
+
+        &::before {
+            content: '';
+            @include svg_icon(arrow);
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+
+            width: $spacing-lg-mobile;
+            margin-right: $spacing-2xs-mobile;
+            @media (min-width: $desktop) {
+                width: $spacing-lg-desktop;
+                margin-right: $spacing-2xs-desktop;
+            }
+        }
+    }
+
+    &__next {
+        position: relative;
+        display: flex;
+
+        &::after {
+            content: '';
+            @include svg_icon(arrow);
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            width: $spacing-lg-mobile;
+            margin-right: $spacing-2xs-mobile;
+            @media (min-width: $desktop) {
+                width: $spacing-lg-desktop;
+                margin-right: $spacing-2xs-desktop;
+            }
+        }
+    }
+}

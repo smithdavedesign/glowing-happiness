@@ -1,0 +1,311 @@
+/* Search Component */
+
+.search-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacing-7xl-mobile 0 $spacing-9xl-mobile 0;
+
+    @media (min-width: $desktop) {
+        padding: vwDesktop(90);
+    }
+}
+
+.search-component__title {
+    width: 65%;
+    color: $dark-blue;
+    font-family: $heading-font;
+    font-size: $font-size-xl-mobile;
+    letter-spacing: vwMobile(-0.3);
+    line-height: vwMobile(34);
+    text-align: center;
+    margin: 0;
+
+    @media (min-width: $desktop) {
+        font-size: $font-size-xl-desktop;
+        letter-spacing: vwDesktop(-0.3);
+        line-height: vwDesktop(34);
+    }
+}
+
+.search-component__suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2xs-mobile;
+    margin-top: $spacing-2xl-mobile;
+
+    @media (min-width: $desktop) {
+        width: vwDesktop(350);
+        gap: $spacing-2xs-desktop $spacing-base-desktop;
+        margin-top: $spacing-2xl-desktop;
+    }
+}
+
+.search-component__suggestions__suggestion {
+    color: $dark-grey;
+    font-family: $body-font;
+    font-size: $font-size-xs-mobile;
+    letter-spacing: 0;
+    line-height: vwMobile(15);
+    border-radius: $border-radius-md-mobile;
+    background-color: $off-white;
+    padding: $spacing-2xs-mobile;
+
+    @media (min-width: $desktop) {
+        font-size: $font-size-xs-desktop;
+        letter-spacing: 0;
+        line-height: vwDesktop(15);
+        border-radius: $border-radius-md-desktop;
+        padding: $spacing-2xs-desktop $spacing-base-desktop;
+    }
+}
+
+/* End Search Component */
+
+/* Disclaimer Component */
+
+.disclaimer {
+    background-color: $off-white;
+    padding: $spacing-3xl-mobile 0 $spacing-4xl-mobile 0;
+    position: relative;
+
+    @media (min-width: $desktop) {
+        padding: $spacing-6xl-desktop $spacing-4xl-desktop $spacing-7xl-desktop
+            $spacing-4xl-desktop;
+    }
+
+    &::before {
+        content: "";
+        height: 100%;
+        width: 200vw;
+        background: $off-white;
+        left: 0;
+        top: 0;
+        transform: translateX(-50%);
+        position: absolute;
+        z-index: -1;
+    }
+}
+
+.disclaimer__legal-text {
+    color: $grey;
+    font-family: $body-font;
+    font-size: $font-size-sm-mobile;
+    letter-spacing: 0;
+    line-height: vwMobile(23);
+
+    @media (min-width: $desktop) {
+        font-size: $font-size-sm-desktop;
+        line-height: vwDesktop(23);
+    }
+}
+
+/* End Disclaimer Component */
+
+/* Footer Content component */
+
+.footer-content {
+    flex-grow: 1;
+    background: $solidigm-purple;
+    color: $white;
+    width: 100%;
+    padding: $spacing-6xl-mobile 0 $spacing-8xl-mobile 0;
+    box-sizing: border-box;
+
+    position: relative;
+
+    @media (min-width: $desktop) {
+        display: flex;
+        justify-content: space-between;
+        padding: vwDesktop(75) $spacing-4xl-desktop;
+    }
+
+    &::before {
+        content: "";
+        height: 100%;
+        width: 200vw;
+        background: $solidigm-purple;
+        left: 0;
+        top: 0;
+        transform: translateX(-50%);
+        position: absolute;
+        z-index: -1;
+    }
+}
+
+.footer-content__left,
+.footer-content__right {
+    @media (min-width: $desktop) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.footer-content__logo {
+    filter: brightness(0) invert(1);
+    height: vwMobile(30);
+    @include svg_icon(solidigm);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    width: vwMobile(156);
+
+    @media (min-width: $desktop) {
+        height: vwDesktop(30);
+        width: vwDesktop(156);
+    }
+}
+
+.footer-content__social-icons {
+    display: flex;
+    gap: $spacing-4xl-mobile;
+    margin-top: $spacing-3xl-mobile;
+
+    @media (min-width: $desktop) {
+        gap: $spacing-5xl-desktop;
+        margin: 0;
+    }
+}
+
+.footer-content__social-icon {
+    svg {
+        width: auto;
+        height: vwMobile(22);
+        
+        @media (min-width: $desktop) {
+            height: vwDesktop(22);
+        }
+    }
+}
+
+.footer-content__links {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-base-mobile;
+    margin-top: $spacing-5xl-mobile;
+
+    @media (min-width: $desktop) {
+        flex-direction: row;
+        gap: $spacing-4xl-desktop;
+        margin: 0;
+    }
+}
+
+.footer-content__links__link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm-mobile;
+    font-family: $heading-font;
+    font-size: $font-size-sm-mobile;
+    letter-spacing: vwMobile(0.5);
+    line-height: vwMobile(15);
+    text-transform: uppercase;
+    color: $white;
+
+    @media (min-width: $desktop) {
+        gap: $spacing-sm-desktop;
+        font-size: $font-size-sm-desktop;
+        letter-spacing: vwDesktop(0.5);
+        line-height: vwDesktop(15);
+    }
+
+    &[target="_blank"] {
+        position: relative;
+        margin-right: $spacing-2xl-mobile;
+
+        @media (min-width: $desktop) {
+            margin-right: $spacing-2xl-desktop;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            height: vwMobile(14);
+            width: vwMobile(14);
+            left: calc(100% + $spacing-xs-mobile);
+            top: 50%;
+            transform: translateY(-50%);
+            @include svg_icon(new-tab);
+            background-repeat: no-repeat;
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(14);
+                width: vwDesktop(14);
+                left: calc(100% + $spacing-xs-desktop);
+            }
+        }
+    }
+}
+
+.footer-content__text {
+    font-family: $body-font;
+    font-size: $font-size-sm-mobile;
+    letter-spacing: 0;
+    line-height: vwMobile(23);
+    margin: 0;
+    margin-top: $spacing-8xl-mobile;
+
+    @media (min-width: $desktop) {
+        font-family: $body-font;
+        font-size: $font-size-3xs-desktop;
+        line-height: vwDesktop(15);
+        text-align: right;
+        margin: 0;
+        margin-top: $spacing-8xl-desktop;
+        width: vwDesktop(425);
+    }
+}
+
+.footer-content__trustarc-logo {
+    margin-top: $spacing-6xl-mobile;
+    display: block;
+    width: vwMobile(78);
+    height: vwMobile(16);
+    background-image: url("../resources/images/trustarc-logo.png");
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @media (min-width: $desktop) {
+        margin-top: $spacing-4xl-desktop;
+        margin-left: auto;
+        width: vwDesktop(78);
+        height: vwDesktop(16);
+    }
+}
+
+/* End Footer Content component */
+
+/* Scroll Up Button */
+
+.scroll-up-button {
+    position: fixed;
+    right: $spacing-base-mobile;
+    bottom: $spacing-base-mobile;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: vwMobile(40);
+    height: vwMobile(40);
+    border-radius: $border-radius-sm-mobile;
+    background-color: $white;
+    @include svg_icon(scroll-up);
+    background-size: auto vwMobile(15);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @media (min-width: $desktop) {
+        right: $spacing-3xl-desktop;
+        bottom: $spacing-3xl-desktop;
+        width: vwDesktop(40);
+        height: vwDesktop(40);
+        border-radius: $border-radius-sm-desktop;
+        background-size: auto vwDesktop(15);
+    }
+}
+
+/* End Scroll Up Button */

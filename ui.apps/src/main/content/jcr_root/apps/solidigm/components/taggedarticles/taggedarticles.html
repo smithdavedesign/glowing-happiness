@@ -1,0 +1,30 @@
+<div
+    data-sly-use.taggedArticles="com.solidigm.core.models.TaggedArticles"
+    class="cmp-tagged-articles"
+>
+    <div class="cmp-tagged-articles__filter" data-sly-test="${!taggedArticles.selectorTag}">
+        <span>Filter by</span>
+        <sly
+            data-sly-use.component="solidigm/components/customselect/customselect.html"
+            data-sly-call="${component.customSelect @ 
+                                placeholder='Chose a category...',
+                                label='Filter',
+                                id='tagged-articles-filter',
+                                name='filter',
+                                valueId='id',
+                                labelId='title',
+                                srOnly=true,
+                                options=taggedArticles.dropdownTags}"
+        />
+    </div>
+    <div
+        class="cmp-tagged-articles__title"
+        data-sly-test="${taggedArticles.selectorTag}"
+        data-servlet-path="${taggedArticles.rootPath}"
+        data-selector-tag="${taggedArticles.selectorTag}"
+    >
+        <h2>Posts Tagged “${taggedArticles.selectorTag}”</h2>
+    </div>
+    <div class="cmp-tagged-articles__articles-container"></div>
+    <button class="solidigm-btn cmp-tagged-articles__load-more-btn">Load More</button>
+</div>

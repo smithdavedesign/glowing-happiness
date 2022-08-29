@@ -1,0 +1,66 @@
+<sly
+    data-sly-use.partnerList="com.solidigm.core.models.PartnerList"
+    data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.hasContent="${partnerList.hasContent}"
+>
+    <div class="partners-list">
+        <div class="partners-list__filters">
+            <span class="partners-list__filters__label">Filter by</span>
+            <sly
+                data-sly-use.component="solidigm/components/customselect/customselect.html"
+                data-sly-call="${component.customSelect @ 
+                                placeholder='Country',
+                                label='Country',
+                                id='partners-list__filters__country-filter',
+                                name='countries',
+                                valueId='tagID',
+                                labelId='title',
+                                srOnly=true,
+                                options=partnerList.countries}"
+            />
+            <span class="partners-list__filters__label">Product</span>
+            <sly
+                data-sly-use.component="solidigm/components/customselect/customselect.html"
+                data-sly-call="${component.customSelect @ 
+                                placeholder='Product',
+                                label='Product',
+                                id='partners-list__filters__product-filter',
+                                name='products',
+                                valueId='tagID',
+                                labelId='title',
+                                srOnly=true,
+                                options=partnerList.products}"
+            />
+        </div>
+        <table class="partners-list__partners">
+            <tbody>
+                <tr class="partners-list__partners__table-head">
+                    <th>${partnerList.partnerType}</th>
+                    <th>Country</th>
+                    <th class="partners-list__partners__website-column">Website</th>
+                </tr>
+                <sly data-sly-list.partner="${partnerList.partners}">
+                    <tr
+                        class="partners-list__partners__table-row"
+                        data-partner-country="${partner.countryID}"
+                        data-partner-product="${partner.products}"
+                    >
+                        <td>${partner.companyName} ${partner.additionalInfo}</td>
+                        <td>${partner.countryName}</td>
+                        <td class="partners-list__partners__website-column">
+                            <a
+                                class="partners-list__partners__website-column__link"
+                                href="${partner.link}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                            </a>
+                        </td>
+                    </tr>
+                </sly>
+            </tbody>
+        </table>
+        <p class="partners-list__no-results">No Results</p>
+    </div>
+</sly>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>

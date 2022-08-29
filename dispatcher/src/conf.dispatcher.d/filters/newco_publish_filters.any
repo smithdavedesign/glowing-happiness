@@ -1,8 +1,0 @@
-## VYRKCIN-407 enabled additional file extensions
-## VYRKCIN-438 isolate newco specific filters into their own filter file
-# VYRKCIN-689  Allow ZIP file on the site.
-/0100 { /type "allow" /extension '(xsl|xlsx|zip|xml|txt)' /path "/content/*" }
-
-# VYRKCIN-197 allow product compare selector to pass through
-/0110 { /type "allow" /selectors '(productcompare)' /extension '(json)' }
-

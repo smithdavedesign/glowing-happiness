@@ -1,0 +1,51 @@
+.cmp-tagged-articles {
+    &__articles-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: $spacing-lg-mobile;
+    }
+
+    &__load-more-btn {
+        margin: auto;
+        width: 100%;
+        margin-top: vwMobile(55);
+        @media (min-width: $desktop) {
+            width: auto;
+            padding-left: $spacing-6xl-desktop;
+            padding-right: $spacing-6xl-desktop;
+            margin-top: vwDesktop(80);
+        }
+    }
+
+    &__filter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: $spacing-5xl-mobile;
+        gap: $spacing-xl-mobile;
+        @media (min-width: $desktop) {
+            flex-direction: row;
+            margin-bottom: $spacing-7xl-desktop;
+            gap: $spacing-sm-desktop;
+        }
+    }
+
+    &__title {
+        text-transform: capitalize;
+        color: $dark-blue;
+        font-size: $font-size-xl-mobile;
+        margin-bottom: $spacing-3xl-mobile;
+        @media (min-width: $desktop) {
+            font-size: $font-size-2xl-desktop;
+            margin-bottom: $spacing-5xl-desktop;
+        }
+    }
+
+    @media (min-width: $desktop) {
+        &__articles-container {
+            grid-template-columns: repeat(3, 1fr);
+            gap: $spacing-3xl-desktop;
+        }
+    }
+}

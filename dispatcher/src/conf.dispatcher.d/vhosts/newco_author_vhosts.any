@@ -1,9 +1,0 @@
-## VYRKCIN-438 NewCo hostnames for author.  First two likely redundant but last one for production is needed.
-"author-dev.solidigmtechnology.com"
-"author-stage.solidigmtechnology.com"
-"author.solidigmtechnology.com"
-
-#Solidigm.com configurations
-"author-dev.solidigm.com"
-"author-stage.solidigm.com"
-"author.solidigm.com"

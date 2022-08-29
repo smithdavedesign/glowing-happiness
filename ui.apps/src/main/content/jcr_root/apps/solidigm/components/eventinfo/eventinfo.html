@@ -1,0 +1,45 @@
+<div class="cmp-event-info" data-sly-use.eventinfo="com.solidigm.core.models.EventInfo">
+    <div class="cmp-event-info__publish-info" data-sly-test="${eventinfo.postedDate}">
+        <span>Posted on</span>
+        <date datetime="${eventinfo.date}">${eventinfo.postedDate}</date>
+    </div>
+    <div class="cmp-event-info__publish-info">Event Title: ${eventinfo.title}</div>
+    <div class="cmp-event-info__publish-info" data-sly-test="${eventinfo.location}">
+        Event Location: ${eventinfo.location}
+    </div>
+    <div class="cmp-event-info__publish-info" data-sly-test="${eventinfo.startDate}">
+        ${eventinfo.endDate ? 'Start Date' : 'Date' }: ${eventinfo.startDate}
+    </div>
+    <div class="cmp-event-info__publish-info" data-sly-test="${eventinfo.endDate}">
+        End Date: ${eventinfo.endDate}
+    </div>
+    <div class="cmp-event-info__publish-info" data-sly-test="${eventinfo.startTime}">
+        Time: ${eventinfo.startTime}
+        <span data-sly-test="${eventinfo.endTime}"> - ${eventinfo.endTime} </span>
+    </div>
+    <div class="cmp-event-info__publish-info" data-sly-test="${eventinfo.eventInfo}">
+        Additional Information: ${eventinfo.eventInfo}
+    </div>
+    <div class="cmp-event-info__tags">
+        <span>Tags:</span>
+        <nav>
+            <ul class="cmp-article-info__tags-list" data-sly-list.tag="${eventinfo.tags}">
+                <li>
+                    <a href="${tag.link}">${tag.label}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- <p>SEO posted date: ${eventinfo.date}</p>
+    <p>Posted Date: ${eventinfo.postedDate}</p>
+    <p>Start Date: ${eventinfo.startDate}</p>
+    <p>End Date: ${eventinfo.endDate}</p>
+    <p>Start Time: ${eventinfo.startTime}</p>
+    <p>End Time: ${eventinfo.endTime}</p>
+    <p>location: ${eventinfo.location}</p>
+    <p>event info: ${eventinfo.eventInfo}</p>
+    <ul data-sly-list.tag="${eventinfo.tags}">
+        <li>Tag label: ${tag.label} Tag link: ${tag.link}</li>
+    </ul> -->
+</div>

@@ -1,39 +1,91 @@
-@import '@splidejs/splide/dist/css/splide-core.min.css';
+@import '../../../../node_modules/@splidejs/splide/dist/css/splide-core.min.css';
+.cmp-carousel {
+    // defaults to standard width slides
+    --carousel-slide-width: calc(min(#{$max-width}, 100vw) - calc(#{$large-padding-desktop} * 2));
 
-.splide.cmp-carousel {
-    margin-bottom: 40px;
+    &--large-width > & {
+        --carousel-slide-width: calc(
+            min(#{$max-width}, 100vw) - calc(#{$standard-padding-desktop} * 2)
+        );
+    }
 
-    &__slide > * {
-        height: clamp(480px, 100vw, 680px);
+    margin-bottom: $spacing-4xl-mobile;
+    @media (min-width: $desktop) {
+        margin-bottom: $spacing-4xl-desktop;
+    }
+
+    .splide__slide > * {
+        height: 100%;
         transition-property: transform;
         transition-duration: 0;
+
+        & > *,
+        & > * > * {
+            height: 100%;
+        }
+
+        .cmp-image img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
     }
 
-    &__pagination {
-        margin-top: 20px;
+    &--standard-height > & .splide__slide > * {
+        height: vwMobile(185);
+        @media (min-width: $desktop) {
+            height: vwDesktop(530);
+        }
     }
 
-    &__pagination__page {
-        width: 74px;
-        height: 6px;
+    &--large-height > & .splide__slide > * {
+        height: vwMobile(480);
+        @media (min-width: $desktop) {
+            height: vwDesktop(680);
+        }
+    }
+
+    .splide__pagination {
+        margin-top: $spacing-base-mobile;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-base-desktop;
+        }
+    }
+
+    li[role=presentation]{
+        cursor: pointer;
+    }
+
+    .splide__pagination__page {
+        width: vwMobile(74);
+        height: vwMobile(6);
         border-radius: 0;
-        margin-left: 6px;
-        margin-right: 6px;
-        background: $gray-450;
+        margin-left: vwMobile(6);
+        margin-right: vwMobile(6);
+        background: #cbcbcb;
         position: relative;
         transform: skew(-45deg);
+        pointer-events: none;
+        opacity: 1;
+
+        @media (min-width: $desktop) {
+            width: vwDesktop(74);
+            height: vwDesktop(6);
+            margin-left: vwDesktop(6);
+            margin-right: vwDesktop(6);
+        }
     }
 
-    $slides-threshold: 20%;
-    &__slide.is-prev > * {
-        transform-origin: calc(100% - $slides-threshold) 50%;
+    .splide__slide.is-prev > * {
+        transform-origin: 80% 50%;
     }
 
-    &__slide.is-next > * {
-        transform-origin: $slides-threshold 50%;
+    .splide__slide.is-next > * {
+        transform-origin: 20% 50%;
     }
 
-    &__pagination__page::before {
+    .splide__pagination__page::before {
         content: '';
         position: absolute;
         left: 0;
@@ -42,22 +94,22 @@
         width: 100%;
     }
 
-    &__pagination__page.is-active::before {
+    .splide__pagination__page.is-active::before {
         background: $solidigm-purple;
         animation: carousel-pagination-animation var(--slide-duration, 5000ms) linear forwards;
         transform-origin: 0 0;
     }
 
-    &[data-autoplay='false'] &__pagination__page.is-active::before {
+    &.splide[data-autoplay='false'] .splide__pagination__page.is-active::before {
         animation: none;
         transform: scaleX(100%);
     }
 
-    &__slide:not(.is-active) > * {
+    .splide__slide:not(.is-active) > * {
         transform: scale(0.85);
     }
 
-    &.is-initialized &__slide > * {
+    &.splide.cmp-carousel--initialized .splide__slide > * {
         transition-duration: 350ms;
     }
 }

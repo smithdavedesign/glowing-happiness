@@ -4,56 +4,91 @@
     }
 
     &__article-image {
-        @include media-with-corner(right, true);
+        @include media-with-corner(right, small);
 
         img {
             width: 100%;
-            height: clamp(225px, 55.5vw, 300px);
+            height: vwMobile(225);
             object-fit: cover;
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(300);
+            }
         }
     }
 
     &__articles-container {
-        margin-top: clamp(16px, 5.5vw, 32px);
+        margin-top: vwMobile(16);
+
+        @media (min-width: $desktop) {
+            margin-top: vwDesktop(12);
+        }
     }
 
     &__article {
-        border-radius: $border-radius-md;
+        border-radius: $border-radius-md-mobile;
         overflow: hidden;
         transform: translateZ(0);
-        box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: $box-shadow-mobile;
         height: 100%;
-        background: $white;
+        cursor: pointer;
+
+        @media (min-width: $desktop) {
+            border-radius: $border-radius-md-desktop;
+            box-shadow: $box-shadow-desktop;
+        }
     }
 
     &__article-content {
-        padding: 26px 30px 40px;
+        background: $white;
+        padding: $spacing-lg-mobile $spacing-2xl-mobile $spacing-4xl-mobile;
+
+        @media (min-width: $desktop) {
+            padding: $spacing-lg-desktop $spacing-2xl-desktop
+                $spacing-4xl-desktop;
+        }
     }
 
     &__article-category {
         color: $solidigm-purple;
-        font-size: $font-size-sm;
+        font-size: $font-size-sm-mobile;
         position: relative;
-        padding-left: 18px;
+        padding-left: $spacing-base-mobile;
         display: inline-block;
 
+        @media (min-width: $desktop) {
+            font-size: $font-size-sm-desktop;
+            padding-left: $spacing-base-desktop;
+        }
+
         &::before {
-            content: '';
-            height: 12px;
-            width: 12px;
+            content: "";
+            height: vwMobile(12);
+            width: vwMobile(12);
             background: $solidigm-purple;
             top: 50%;
             transform: translateY(-50%);
             left: 0;
             position: absolute;
             clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(12);
+                width: vwDesktop(12);
+            }
         }
     }
 
     &__article-title {
-        font-size: $font-size-lg;
-        margin-top: 16px;
-        line-height: 30px;
+        font-size: $font-size-lg-mobile;
+        margin-top: $spacing-sm-mobile;
+        line-height: vwMobile(30);
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-lg-desktop;
+            margin-top: $spacing-sm-desktop;
+            line-height: vwDesktop(30);
+        }
 
         a {
             color: $dark-blue;
@@ -64,11 +99,21 @@
 .section-title--with-link {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: $spacing-xs-mobile;
+
+    @media (min-width: $desktop) {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: $spacing-xs-desktop;
+    }
 
     h2 {
         color: $dark-blue;
-        font-size: $font-size-2xl;
+        font-size: $font-size-2xl-mobile;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-2xl-desktop;
+        }
     }
 
     a {
@@ -78,17 +123,19 @@
         align-items: center;
 
         &::after {
-            content: '';
-            height: 10px;
-            width: 25px;
-            background: url('../resources/images/purple-arrow.svg');
+            content: "";
+            height: vwMobile(10);
+            width: vwMobile(25);
+            background: url("../resources/images/purple-arrow.svg");
+            background-size: contain;
             display: block;
-            margin-left: 10px;
-        }
-    }
+            margin-left: $spacing-2xs-mobile;
 
-    @media (min-width: $tablet) {
-        flex-direction: row;
-        justify-content: space-between;
+            @media (min-width: $desktop) {
+                height: vwDesktop(10);
+                width: vwDesktop(25);
+                margin-left: $spacing-2xs-desktop;
+            }
+        }
     }
 }

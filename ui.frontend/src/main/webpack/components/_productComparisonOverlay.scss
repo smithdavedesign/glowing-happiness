@@ -1,0 +1,346 @@
+.cmp-product-comparison-overlay {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 900;
+
+    &__content {
+        margin: auto;
+        background: $off-white;
+        padding-top: $spacing-xs-mobile;
+        box-shadow: $box-shadow-mobile;
+        box-sizing: border-box;
+
+        @media (min-width: $desktop) {
+            box-shadow: $box-shadow-desktop;
+        }
+    }
+
+    &__data--compact {
+        display: flex;
+        align-items: center;
+        padding: 0 $spacing-lg-mobile;
+
+        img {
+            height: vwMobile(40);
+            width: vwMobile(50);
+            border-radius: $border-radius-sm-mobile;
+            border: vwMobile(1) solid $gray-400;
+            display: block;
+            margin-right: $spacing-2xs-mobile;
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(40);
+                width: vwDesktop(50);
+                margin-right: $spacing-2xs-desktop;
+                border: vwDesktop(1) solid $gray-400;
+                border-radius: $border-radius-sm-desktop;
+            }
+        }
+
+        .solidigm-btn {
+            margin-left: auto;
+        }
+    }
+
+    &__data--expanded {
+        display: none;
+        position: relative;
+        max-height: 100vh;
+        flex-direction: column;
+    }
+
+    &__compact-title {
+        font-size: $font-size-base-mobile;
+        color: $dark-blue;
+        margin-bottom: $spacing-3xs-mobile;
+        @media (min-width: $desktop) {
+            font-size: $font-size-base-desktop;
+            margin-bottom: $spacing-3xs-desktop;
+        }
+    }
+
+    &__compact-subtitle {
+        display: none;
+    }
+
+    &__compact-subtitle {
+        color: $gray-600;
+        font-size: $font-size-sm-mobile;
+        @media (min-width: $desktop) {
+            font-size: $font-size-sm-desktop;
+        }
+    }
+
+    &__compact-cta {
+        color: $solidigm-purple;
+        padding: 0;
+    }
+
+    &__view-details-btn {
+        display: none;
+    }
+
+    &__btn-close {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: $spacing-lg-mobile;
+        @include svg_icon(close);
+        height: vwMobile(10);
+        width: vwMobile(10);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        @media (min-width: $desktop) {
+            top: 0;
+            transform: none;
+            height: vwDesktop(10);
+            width: vwDesktop(10);
+            right: $spacing-xs-desktop;
+        }
+    }
+
+    &__expanded-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        border-top: vwMobile(1) solid $gray-400;
+        flex: 1;
+        overflow-y: auto;
+
+        & > * {
+            padding: $spacing-xl-mobile $spacing-4xl-mobile;
+
+            &:not(:last-child) {
+                border-bottom: vwMobile(1) solid $gray-400;
+            }
+
+            &:nth-child(2) ~ *:not(:last-child) {
+                display: none;
+            }
+        }
+
+        @media (min-width: $desktop) {
+            border-top: vwDesktop(1) solid $gray-400;
+
+            & > * {
+                padding: $spacing-xl-desktop $spacing-4xl-desktop;
+
+                &:not(:last-child) {
+                    border-bottom: vwDesktop(1) solid $gray-400;
+                }
+            }
+        }
+    }
+
+    &__expanded-title-container {
+        position: relative;
+    }
+
+    &__expanded-title {
+        padding: $spacing-base-mobile $spacing-4xl-mobile;
+        color: $dark-blue;
+        font-size: $font-size-lg-mobile;
+
+        @media (min-width: $desktop) {
+            padding: 0 $spacing-xs-desktop;
+            padding-bottom: $spacing-base-desktop;
+            font-size: $font-size-lg-desktop;
+        }
+    }
+
+    &__product {
+        display: flex;
+        gap: $spacing-xs-mobile;
+        & > * {
+            width: 50%;
+        }
+
+        @media (min-width: $desktop) {
+            gap: $spacing-xs-desktop;
+        }
+    }
+
+    &__product-title {
+        font-size: $font-size-xl-mobile;
+        color: $dark-blue;
+        margin-bottom: $spacing-2xs-mobile;
+        @media (min-width: $desktop) {
+            font-size: $font-size-xl-desktop;
+            margin-bottom: $spacing-2xs-desktop;
+        }
+    }
+
+    &__product-image {
+        max-width: vwMobile(120);
+        width: 100%;
+        height: vwMobile(90);
+        border: vwMobile(1) solid $gray-400;
+        object-fit: contain;
+
+        @media (min-width: $desktop) {
+            max-width: vwDesktop(120);
+            height: vwDesktop(90);
+            border: vwDesktop(1) solid $gray-400;
+        }
+    }
+
+    &__product-remove {
+        color: $solidigm-purple;
+        padding-left: 0;
+        margin-top: $spacing-3xs-mobile;
+
+        @media (min-width: $desktop) {
+            margin-top: $spacing-3xs-desktop;
+        }
+    }
+
+    &__product-details {
+        dt {
+            font-size: $font-size-2xs-mobile;
+            margin-bottom: $spacing-3xs-mobile;
+            color: $gray-600;
+        }
+
+        dd {
+            color: $dark-grey;
+            margin-bottom: $spacing-xs-mobile;
+        }
+
+        @media (min-width: $desktop) {
+            dt {
+                font-size: $font-size-2xs-desktop;
+                margin-bottom: $spacing-3xs-desktop;
+            }
+
+            dd {
+                margin-bottom: $spacing-xs-desktop;
+            }
+        }
+    }
+
+    &__controls-title {
+        color: $grey;
+        line-height: vwMobile(25);
+        margin-bottom: $spacing-2xs-mobile;
+
+        br {
+            display: none;
+        }
+
+        @media (min-width: $desktop) {
+            line-height: vwDesktop(25);
+            margin-bottom: $spacing-2xs-desktop;
+        }
+    }
+
+    &__controls-remove-all {
+        color: $solidigm-purple;
+        padding: 0;
+        margin-top: $spacing-2xs-mobile;
+        display: inline-block;
+        @media (min-width: $desktop) {
+            margin-top: $spacing-2xs-desktop;
+        }
+    }
+
+    &__data--compact {
+        padding-bottom: $spacing-2xs-mobile;
+        @media (min-width: $desktop) {
+            padding-bottom: $spacing-2xs-desktop;
+        }
+    }
+
+    &__expanded-controls--desktop {
+        display: none;
+    }
+
+    &__expanded-controls--mobile {
+        padding: $spacing-xl-mobile $spacing-4xl-mobile;
+        border-top: vwMobile(1) solid $gray-400;
+        margin-top: vwMobile(-1);
+    }
+
+    @media (min-width: $desktop) {
+        bottom: $spacing-base-desktop;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &__expanded-controls--mobile {
+            display: none;
+        }
+
+        &__expanded-controls--desktop {
+            display: block;
+        }
+
+        &__content {
+            width: vwDesktop(475);
+            margin-right: 0;
+            border-radius: $border-radius-md-mobile;
+            padding-top: $spacing-2xl-desktop;
+
+            @media (min-width: $desktop) {
+                border-radius: $border-radius-md-desktop;
+            }
+        }
+
+        &__data--compact {
+            padding: 0 $spacing-lg-desktop;
+            padding-bottom: $spacing-2xl-desktop;
+        }
+
+        .cmp-product-comparison-overlay--expanded &__content {
+            width: 100%;
+        }
+
+        &__compact-subtitle {
+            display: block;
+        }
+
+        &__compact-cta {
+            display: none;
+        }
+
+        &__compare-btn {
+            display: none;
+        }
+
+        &__view-details-btn {
+            display: block;
+        }
+
+        &__expanded-grid {
+            grid-template-columns: repeat(4, 1fr);
+            padding: 0;
+            padding-top: $spacing-3xs-desktop;
+
+            & > * {
+                &:not(:last-child) {
+                    border-bottom: none;
+                    border-right: vwDesktop(1) solid $gray-400;
+                }
+
+                &:first-child {
+                    padding-left: $spacing-lg-desktop;
+                }
+
+                &:last-child {
+                    padding-right: $spacing-lg-desktop;
+                }
+
+                &:nth-child(2) ~ *:not(:last-child) {
+                    display: flex;
+                }
+            }
+        }
+
+        &__controls-title {
+            br {
+                display: block;
+            }
+        }
+    }
+}

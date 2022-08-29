@@ -1,0 +1,13 @@
+<figure  data-sly-use.quote="com.solidigm.core.models.Quote"
+         data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+         data-sly-test.hasContent="${quote.hasContent}"
+         class="cmp-quote">
+    <blockquote class="cmp-quote__text">
+        ${quote.quote}
+    </blockquote>
+    <figcaption class="cmp-quote__attribution">
+        <span class="cmp-quote__author">${quote.name}</span>
+        <span class="cmp-quote__author-title" data-sly-test="${quote.title}">${quote.title}</span>
+    </figcaption>
+</figure>
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>

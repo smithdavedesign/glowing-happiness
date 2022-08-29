@@ -36,6 +36,16 @@ public class Link {
         processLink();
     }
 
+    public Link() {
+
+    }
+
+    public Link(String label, String link) {
+        this.label = label;
+        this.link = link;
+        processLink();
+    }
+
     private void processLink() {
         if (!StringUtils.isEmpty(link) && link.startsWith("/")){
             target = "_self";

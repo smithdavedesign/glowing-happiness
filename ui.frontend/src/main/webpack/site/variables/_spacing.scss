@@ -1,0 +1,53 @@
+$spacing-3xs-mobile: vwMobile(5);
+$spacing-2xs-mobile: vwMobile(10);
+$spacing-xs-mobile: vwMobile(12.5);
+$spacing-sm-mobile: vwMobile(15);
+$spacing-base-mobile: vwMobile(20);
+$spacing-lg-mobile: vwMobile(25);
+$spacing-xl-mobile: vwMobile(27.5);
+$spacing-2xl-mobile: vwMobile(30);
+$spacing-3xl-mobile: vwMobile(35);
+$spacing-4xl-mobile: vwMobile(40);
+$spacing-5xl-mobile: vwMobile(45);
+$spacing-6xl-mobile: vwMobile(50);
+$spacing-7xl-mobile: vwMobile(60);
+$spacing-8xl-mobile: vwMobile(65);
+$spacing-9xl-mobile: vwMobile(70);
+
+$spacing-3xs-desktop: vwDesktop(5);
+$spacing-2xs-desktop: vwDesktop(10);
+$spacing-xs-desktop: vwDesktop(12.5);
+$spacing-sm-desktop: vwDesktop(15);
+$spacing-base-desktop: vwDesktop(20);
+$spacing-lg-desktop: vwDesktop(25);
+$spacing-xl-desktop: vwDesktop(27.5);
+$spacing-2xl-desktop: vwDesktop(30);
+$spacing-3xl-desktop: vwDesktop(35);
+$spacing-4xl-desktop: vwDesktop(40);
+$spacing-5xl-desktop: vwDesktop(45);
+$spacing-6xl-desktop: vwDesktop(50);
+$spacing-7xl-desktop: vwDesktop(60);
+$spacing-8xl-desktop: vwDesktop(65);
+$spacing-9xl-desktop: vwDesktop(70);
+
+$small-padding-desktop: vwDesktop(40);
+$standard-padding-desktop: vwDesktop(100);
+$large-padding-desktop: vwDesktop(250);
+
+/** Legacy, remove when refactor is finished. **/
+
+// Spacing
+$spacing-3xs: 5px;
+$spacing-2xs: 10px;
+$spacing-xs: 12.5px;
+$spacing-sm: 15px;
+$spacing-base: 20px;
+$spacing-lg: 25px;
+$spacing-xl: 27.5px;
+$spacing-2xl: 30px;
+$spacing-3xl: 35px;
+$spacing-4xl: 40px;
+$spacing-5xl: 45px;
+$spacing-6xl: 50px;
+$spacing-7xl: 60px;
+$spacing-8xl: 65px;

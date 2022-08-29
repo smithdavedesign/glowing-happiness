@@ -1,0 +1,18 @@
+<div class="cmp-article-info" data-sly-use.articleinfo="com.solidigm.core.models.ArticleInfo">
+    <div class="cmp-article-info__publish-info">
+        <span>Posted on</span>
+        <date datetime="${articleInfo.date}">${articleInfo.formattedDate}</date>
+        <span>by</span>
+        ${articleInfo.author}
+    </div>
+    <div class="cmp-article-info__tags">
+        <span>Tags:</span>
+        <nav>
+            <ul class="cmp-article-info__tags-list" data-sly-list.tag="${articleinfo.tags}">
+                <li>
+                    <a href="${tag.link}">${tag.label}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

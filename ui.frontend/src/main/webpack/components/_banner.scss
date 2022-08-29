@@ -1,0 +1,26 @@
+.cmp-banner {
+    background: $solidigm-purple;
+    border-radius: $border-radius-md-mobile;
+    text-align: center;
+    padding: $spacing-base-mobile;
+    color: $white;
+
+    @media (min-width: $desktop) {
+        border-radius: $border-radius-md-desktop;
+        padding: $spacing-base-desktop;
+    }
+
+    a:not(.solidigm-btn) {
+        color: $white;
+        font-weight: bold;
+    }
+
+    .solidigm-btn {
+        display: inline-block;
+        margin-left: vwMobile(12);
+
+        @media (min-width: $desktop) {
+            margin-left: vwDesktop(12);
+        }
+    }
+}

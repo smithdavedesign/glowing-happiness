@@ -2,14 +2,15 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.tagging.TagManager;
 import com.solidigm.core.beans.ArticlePage;
 import com.solidigm.core.models.ArticleList;
+import com.solidigm.core.utils.ImageUtil;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ValueMap;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -78,26 +79,28 @@ public class ArticleListImpl implements ArticleList {
             for (Resource articleResource : articlesResource.getChildren()) {
                 //Get article page path, if it is empty skip to next article
                 String pagePath = articleResource.getValueMap().get("article", String.class);
-                if (StringUtils.isEmpty(pagePath)) {
-                    continue;
-                }
+                if (!StringUtils.isEmpty(pagePath)) {
+                    //Get page properties of the article page, if it does not exist skip to the next article
+                    ArticlePage articlePage =
+                            resourceResolver.getResource(pagePath.concat("/jcr:content")).adaptTo(ArticlePage.class);
+                    if (articlePage != null) {
+                        //Set the article page path
+                        articlePage.setPath(pagePath);
 
-                //Get page properties of the article page, if it does not exist skip to the next article
-                Resource articlePageResource = resourceResolver.getResource(pagePath.concat("/jcr:content"));
-                if (articlePageResource == null) {
-                    continue;
-                }
-                ValueMap articlePage = articlePageResource.getValueMap();
+                        //Set the tag title for the teaser
+                        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+                        articlePage.setTeaserCategory(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
 
-                //Add the article page with the necessary properties to the list of articles
-                //TODO: ensure that these properties are getting the correct information for article pages once they have been implemented
-                articles.add(
-                        new ArticlePage(
-                                articlePage.get("pageTitle", String.class),
-                                articlePage.get("teaserImage", String.class),
-                                articlePage.get("teaserCategory", String.class),
-                                pagePath)
-                );
+                        //If no image alt was authored find the alt text from the dam
+                        if (StringUtils.isEmpty(articlePage.getTeaserImageAltText())
+                                && !StringUtils.isEmpty(articlePage.getTeaserImage())) {
+                            articlePage.setTeaserImageAltText(
+                                    ImageUtil.getAltTextFromDAM(resourceResolver, articlePage.getTeaserImage())
+                            );
+                        }
+                        articles.add(articlePage);
+                    }
+                }
             }
 
             hasContentValue = !StringUtils.isEmpty(title) && !articles.isEmpty();
