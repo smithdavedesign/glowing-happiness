@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2022-08-01T15:27:49.407-04:00"
-        cq:lastModifiedBy="admin"
+        cq:lastModified="{Date}2022-08-22T18:07:21.901Z"
+        cq:lastModifiedBy="Ivan"
+        cq:lastReplicated="{Date}2022-08-18T16:31:29.682Z"
+        cq:lastReplicatedBy="nkevin"
+        cq:lastReplicationAction="Activate"
         cq:policy="solidigm/components/page/policy"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus,mix:versionable]"
         jcr:primaryType="nt:unstructured"
+        jcr:uuid="efd1c6ff-7256-44d8-b04c-9faafcd552fd"
         sling:resourceType="wcm/core/components/policies/mappings">
         <root
             cq:policy="solidigm/components/container/policy_1574694950110"
@@ -29,12 +35,24 @@
                             cq:policy="solidigm/components/banner/policy_1655841585316"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
-                        <video
-                            cq:policy="solidigm/components/video/policy_1659381859913"
+                        <container
+                            cq:policy="solidigm/components/container/policy_123853575836966"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <blade
+                            cq:policy="solidigm/components/blade/policy_1660594290567"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <text
+                            cq:policy="solidigm/components/text/policy_75578235823341"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                         <carousel
-                            cq:policy="solidigm/components/carousel/policy_1656427204082"
+                            cq:policy="solidigm/components/carousel/policy_191395325378805"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="wcm/core/components/policies/mapping"/>
+                        <quicklinks
+                            cq:policy="solidigm/components/quicklinks/policy_1660680414436"
                             jcr:primaryType="nt:unstructured"
                             sling:resourceType="wcm/core/components/policies/mapping"/>
                     </components>

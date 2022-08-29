@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Product Configurator"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+        <content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                        <tabs
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                                maximized="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                        <byTheNumbers
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="By the Numbers"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                margin="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                        <columns
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                                                margin="{Boolean}true">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                        <attributes
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                                                composite="{Boolean}true"
+                                                                                                fieldLabel="Attributes"
+                                                                                                fieldDescription="List of product attributes.">
+                                                                                                <field
+                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                                                        name="./attributes">
+                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                <column
+                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                                <attribute
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                                                                                                        fieldLabel="Attribute"
+                                                                                                                                        fieldDescription="Select the attribute to display"
+                                                                                                                                        required="{Boolean}true"
+                                                                                                                                        name="./attribute">
+                                                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                                                <AdditionalInfoUrl jcr:primaryType="nt:unstructured"
+                                                                                                                                                                   value="AdditionalInfoUrl"
+                                                                                                                                                                   text="Additional Information"/>
+                                                                                                                                                <Ark_Page_refresh jcr:primaryType="nt:unstructured"
+                                                                                                                                                                  value="Ark_Page_refresh"
+                                                                                                                                                                  text="Ark Page Refresh"/>
+                                                                                                                                                <DriveCapacity jcr:primaryType="nt:unstructured"
+                                                                                                                                                               value="DriveCapacity"
+                                                                                                                                                               text="Capacity"/>
+                                                                                                                                                <CodeNameText jcr:primaryType="nt:unstructured"
+                                                                                                                                                              value="CodeNameText"
+                                                                                                                                                              text="Code Name"/>
+                                                                                                                                                <EndToEndDataProtection jcr:primaryType="nt:unstructured"
+                                                                                                                                                                        value="EndToEndDataProtection"
+                                                                                                                                                                        text="End-to-End Data Protection"/>
+                                                                                                                                                <EPLDP jcr:primaryType="nt:unstructured"
+                                                                                                                                                       value="EPLDP"
+                                                                                                                                                       text="Enhanced Power Loss Data Protection"/>
+                                                                                                                                                <SSDEnduranceRating jcr:primaryType="nt:unstructured"
+                                                                                                                                                                    value="SSDEnduranceRating"
+                                                                                                                                                                    text="Endurance Rating (Lifetime Writes)"/>
+                                                                                                                                                <Filter-Family jcr:primaryType="nt:unstructured"
+                                                                                                                                                               value="Filter-Family"
+                                                                                                                                                               text="Filter-Family"/>
+                                                                                                                                                <Filter-FormFactor jcr:primaryType="nt:unstructured"
+                                                                                                                                                                   value="Filter-FormFactor"
+                                                                                                                                                                   text="Filter-FormFactor"/>
+                                                                                                                                                <Filter-Interface jcr:primaryType="nt:unstructured"
+                                                                                                                                                                  value="Filter-Interface"
+                                                                                                                                                                  text="Filter-Interface"/>
+                                                                                                                                                <Filter-ProcessorGraphics jcr:primaryType="nt:unstructured"
+                                                                                                                                                                          value="Filter-ProcessorGraphics"
+                                                                                                                                                                          text="Filter-ProcessorGraphics"/>
+                                                                                                                                                <Filter-UseConditions jcr:primaryType="nt:unstructured"
+                                                                                                                                                                      value="Filter-UseConditions"
+                                                                                                                                                                      text="Filter-UseConditions"/>
+                                                                                                                                                <SSDFormFactor jcr:primaryType="nt:unstructured"
+                                                                                                                                                               value="SSDFormFactor"
+                                                                                                                                                               text="Form Factor"/>
+                                                                                                                                                <SSDHardwareEncryption jcr:primaryType="nt:unstructured"
+                                                                                                                                                                       value="SSDHardwareEncryption"
+                                                                                                                                                                       text="Hardware Encryption"/>
+                                                                                                                                                <SSDHighEnduranceTechnology jcr:primaryType="nt:unstructured"
+                                                                                                                                                                            value="SSDHighEnduranceTechnology"
+                                                                                                                                                                            text="High Endurance Technology (HET)"/>
+                                                                                                                                                <SSDInterface jcr:primaryType="nt:unstructured"
+                                                                                                                                                              value="SSDInterface"
+                                                                                                                                                              text="Interface"/>
+                                                                                                                                                <RapidStartTechVersion jcr:primaryType="nt:unstructured"
+                                                                                                                                                                       value="RapidStartTechVersion"
+                                                                                                                                                                       text="Intel® Rapid Start Technology"/>
+                                                                                                                                                <RemoteSecureEraseTechVersion jcr:primaryType="nt:unstructured"
+                                                                                                                                                                              value="RemoteSecureEraseTechVersion"
+                                                                                                                                                                              text="Intel® Remote Secure Erase"/>
+                                                                                                                                                <SmartResponseTechVersion jcr:primaryType="nt:unstructured"
+                                                                                                                                                                          value="SmartResponseTechVersion"
+                                                                                                                                                                          text="Intel® Smart Response Technology"/>
+                                                                                                                                                <LatencyRead jcr:primaryType="nt:unstructured"
+                                                                                                                                                             value="LatencyRead"
+                                                                                                                                                             text="Latency - Read"/>
+                                                                                                                                                <LatencyWrite jcr:primaryType="nt:unstructured"
+                                                                                                                                                              value="LatencyWrite"
+                                                                                                                                                              text="Latency - Write"/>
+                                                                                                                                                <BornOnDate jcr:primaryType="nt:unstructured"
+                                                                                                                                                            value="BornOnDate"
+                                                                                                                                                            text="Launch Date"/>
+                                                                                                                                                <LithographyType jcr:primaryType="nt:unstructured"
+                                                                                                                                                                 value="LithographyType"
+                                                                                                                                                                 text="Lithography Type"/>
+                                                                                                                                                <MTBF jcr:primaryType="nt:unstructured"
+                                                                                                                                                      value="MTBF"
+                                                                                                                                                      text="Mean Time Between Failures (MTBF)"/>
+                                                                                                                                                <OperatingTemperature jcr:primaryType="nt:unstructured"
+                                                                                                                                                                      value="OperatingTemperature"
+                                                                                                                                                                      text="Operating Temperature Range"/>
+                                                                                                                                                <OperatingTemperatureMax jcr:primaryType="nt:unstructured"
+                                                                                                                                                                         value="OperatingTemperatureMax"
+                                                                                                                                                                         text="Operating Temperature (Maximum)"/>
+                                                                                                                                                <OperatingTemperatureMin jcr:primaryType="nt:unstructured"
+                                                                                                                                                                         value="OperatingTemperatureMin"
+                                                                                                                                                                         text="Operating Temperature (Minimum)"/>
+                                                                                                                                                <SSDPowerActive jcr:primaryType="nt:unstructured"
+                                                                                                                                                                value="SSDPowerActive"
+                                                                                                                                                                text="Power - Active"/>
+                                                                                                                                                <SSDPowerIdle jcr:primaryType="nt:unstructured"
+                                                                                                                                                              value="SSDPowerIdle"
+                                                                                                                                                              text="Power - Idle"/>
+                                                                                                                                                <ProductGroup jcr:primaryType="nt:unstructured"
+                                                                                                                                                              value="ProductGroup"
+                                                                                                                                                              text="Product Collection"/>
+                                                                                                                                                <PCNMDDS1 jcr:primaryType="nt:unstructured"
+                                                                                                                                                          value="PCN-MDDS-INFO-1"
+                                                                                                                                                          text="PCN / MDDS Info 1"/>
+                                                                                                                                                <PCNMDDS2 jcr:primaryType="nt:unstructured"
+                                                                                                                                                          value="PCN-MDDS-INFO-2"
+                                                                                                                                                          text="PCN / MDDS Info 2"/>
+                                                                                                                                                <PCNMDDS3 jcr:primaryType="nt:unstructured"
+                                                                                                                                                          value="PCN-MDDS-INFO-3"
+                                                                                                                                                          text="PCN / MDDS Info 3"/>
+                                                                                                                                                <RandomRead100PctSpanValue jcr:primaryType="nt:unstructured"
+                                                                                                                                                                           value="RandomRead100PctSpanValue"
+                                                                                                                                                                           text="Random Read (100% Span)"/>
+                                                                                                                                                <RandomWrite100PctSpanValue jcr:primaryType="nt:unstructured"
+                                                                                                                                                                            value="RandomWrite100PctSpanValue"
+                                                                                                                                                                            text="Random Write (100% Span)"/>
+                                                                                                                                                <RetailSkuAvailable jcr:primaryType="nt:unstructured"
+                                                                                                                                                                    value="RetailSkuAvailable"
+                                                                                                                                                                    text="Retail Box"/>
+                                                                                                                                                <SequentialReadMB jcr:primaryType="nt:unstructured"
+                                                                                                                                                                  value="SequentialReadMB"
+                                                                                                                                                                  text="Sequential Bandwidth - 100% Read (up to)"/>
+                                                                                                                                                <SequentialWriteMB jcr:primaryType="nt:unstructured"
+                                                                                                                                                                   value="SequentialWriteMB"
+                                                                                                                                                                   text="Sequential Bandwidth - 100% Write (up to)"/>
+                                                                                                                                                <SSDShock jcr:primaryType="nt:unstructured"
+                                                                                                                                                          value="SSDShock"
+                                                                                                                                                          text="Shock (Operating and Non-Operating)"/>
+                                                                                                                                                <Sort_Change_Date jcr:primaryType="nt:unstructured"
+                                                                                                                                                                  value="Sort_Change_Date"
+                                                                                                                                                                  text="Sort Order Change Date"/>
+                                                                                                                                                <SortOrder jcr:primaryType="nt:unstructured"
+                                                                                                                                                           value="SortOrder"
+                                                                                                                                                           text="Sort Order"/>
+                                                                                                                                                <StatusCodeText jcr:primaryType="nt:unstructured"
+                                                                                                                                                                value="StatusCodeText"
+                                                                                                                                                                text="Status"/>
+                                                                                                                                                <SSDTemperatureMonitoring jcr:primaryType="nt:unstructured"
+                                                                                                                                                                          value="SSDTemperatureMonitoring"
+                                                                                                                                                                          text="Temperature Monitoring and Logging"/>
+                                                                                                                                                <TechnologyIndicatorList jcr:primaryType="nt:unstructured"
+                                                                                                                                                                         value="TechnologyIndicatorList"
+                                                                                                                                                                         text="Technology Indicators"/>
+                                                                                                                                                <UBER jcr:primaryType="nt:unstructured"
+                                                                                                                                                      value="UBER"
+                                                                                                                                                      text="Uncorrectable Bit Error Rate (UBER)"/>
+                                                                                                                                                <CertifiedUseConditions jcr:primaryType="nt:unstructured"
+                                                                                                                                                                        value="CertifiedUseConditions"
+                                                                                                                                                                        text="Use Conditions"/>
+                                                                                                                                                <VibrationNonOperating jcr:primaryType="nt:unstructured"
+                                                                                                                                                                       value="VibrationNonOperating"
+                                                                                                                                                                       text="Vibration - Non-Operating"/>
+                                                                                                                                                <VibrationOperating jcr:primaryType="nt:unstructured"
+                                                                                                                                                                    value="VibrationOperating"
+                                                                                                                                                                    text="Vibration - Operating"/>
+                                                                                                                                                <WarrantyLengthYears jcr:primaryType="nt:unstructured"
+                                                                                                                                                                     value="WarrantyLengthYears"
+                                                                                                                                                                     text="Warranty Period"/>
+                                                                                                                                                <SSDWeight jcr:primaryType="nt:unstructured"
+                                                                                                                                                           value="SSDWeight"
+                                                                                                                                                           text="Weight"/>
+                                                                                                                                        </items>
+                                                                                                                                </attribute>
+                                                                                                                                <attributeValue
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                                                        fieldDescription="If left blank will grab the attribute from product data"
+                                                                                                                                        fieldLabel="Attribute Value"
+                                                                                                                                        emptyText="Leave blank to automatically populate from product data"
+                                                                                                                                        name="./attributeValue" />
+                                                                                                                        </items>
+                                                                                                                </column>
+                                                                                                        </items>
+                                                                                                </field>
+                                                                                        </attributes>
+                                                                                        <highlights
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                                                composite="{Boolean}true"
+                                                                                                fieldLabel="Highlights">
+                                                                                                <field
+                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                                                        name="./highlights">
+                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                <column
+                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                                <heading
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                                                        fieldDescription="It is recommended to keep the heading extremely short."
+                                                                                                                                        fieldLabel="Heading"
+                                                                                                                                        required="{Boolean}true"
+                                                                                                                                        name="./heading" />
+                                                                                                                                <description
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        name="./description"
+                                                                                                                                        required="{Boolean}true"
+                                                                                                                                        fieldLabel="Description"
+                                                                                                                                        rows="{Long}2" />
+                                                                                                                        </items>
+                                                                                                                </column>
+                                                                                                        </items>
+                                                                                                </field>
+                                                                                        </highlights>
+                                                                                </items>
+                                                                        </column>
+                                                                </items>
+                                                        </columns>
+                                                </items>
+                                        </byTheNumbers>
+                                        <pcnmdds
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="PCN/MDDS"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                margin="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                        <columns
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                                                margin="{Boolean}true">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                        <pcnmddsEntries
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                                                composite="{Boolean}true"
+                                                                                                fieldLabel="PCN/MDDS Entries">
+                                                                                                <field
+                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                                                        name="./items">
+                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                <column
+                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                                <id
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                                                        fieldLabel="ID"
+                                                                                                                                        required="{Boolean}true"
+                                                                                                                                        name="./id" />
+                                                                                                                                <pcnLink
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                                                        fieldLabel="PCN Link"
+                                                                                                                                        name="./pcnLink" />
+                                                                                                                                <mddsLink
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                                                        fieldLabel="MDDS Link"
+                                                                                                                                        name="./mddsLink" />
+                                                                                                                        </items>
+                                                                                                                </column>
+                                                                                                        </items>
+                                                                                                </field>
+                                                                                        </pcnmddsEntries>
+                                                                                </items>
+                                                                        </column>
+                                                                </items>
+                                                        </columns>
+                                                </items>
+                                        </pcnmdds>
+                                        <download
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Download"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                margin="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                        <columns
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                                                margin="{Boolean}true">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                        <download
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                                name="./download"
+                                                                                                fieldLabel="Download Link"
+                                                                                                fieldDescription="Link or path to download resource"
+                                                                                                rootPath="/content/dam/solidigm"
+                                                                                                required="{Boolean}true" />
+                                                                                </items>
+                                                                        </column>
+                                                                </items>
+                                                        </columns>
+                                                </items>
+                                        </download>
+                                </items>
+                        </tabs>
+                </items>
+        </content>
+</jcr:root>
