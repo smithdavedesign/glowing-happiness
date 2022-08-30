@@ -163,6 +163,8 @@
     <property inherit="true" name="toggleLabel" translate="true" updateDestinationLanguage="false"/>
     <property inherit="true" name="chartAlt" translate="true" updateDestinationLanguage="false"/>
     <property inherit="true" name="contentLabel" translate="true" updateDestinationLanguage="false"/>
+    <property inherit="true" name="extraInfo" translate="true" updateDestinationLanguage="false"/>
+    <property inherit="true" name="attributeValue" translate="true" updateDestinationLanguage="false"/>
     <filter/>
     <node pathContains="/cq:annotations">
       <property name="text" translate="false"/>
@@ -205,4 +207,7 @@
   <assetNode assetReferenceAttribute="seeMoreLink" checkInChildNodes="false" resourceType=" solidigm/components/quicklinks"/>
   <assetNode assetReferenceAttribute="link" checkInChildNodes="true" resourceType=" solidigm/components/quicklinks"/>
   <assetNode assetReferenceAttribute="link" checkInChildNodes="true" resourceType=" solidigm/components/tilelist"/>
+  <assetNode assetReferenceAttribute="pcnLink" checkInChildNodes="true" resourceType=" solidigm/components/configurator"/>
+  <assetNode assetReferenceAttribute="mddsLink" checkInChildNodes="true" resourceType=" solidigm/components/configurator"/>
+  <assetNode assetReferenceAttribute="download" checkInChildNodes="false" resourceType=" solidigm/components/configurator"/>
 </nodelist>
