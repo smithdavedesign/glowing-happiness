@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/solidigm/settings/wcm/templates/product-detail-page--pdp-"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="solidigm/components/page/productDataPage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="solidigm/components/container"
+            layout="responsiveGrid">
+            <articlelist
+                jcr:created="{Date}2022-08-29T10:22:21.615-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:41:34.255-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/articlelist"
+                link="/content/solidigm/language-masters/en/blog"
+                linkText="All News"
+                title="Related Articles"/>
+            <quicklinks
+                jcr:created="{Date}2022-08-29T10:18:40.069-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:41:38.909-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/quicklinks"
+                seeMoreLink="/content/solidigm/language-masters/en/support/products"
+                seeMoreLinkLabel="All Product Support"
+                title="PRODUCT_NAME_HERE Product Support ">
+                <links jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        linkTitle="Drivers &amp; Downloads"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        link="/content/solidigm/language-masters/en/support"
+                        linkTitle="Warranties"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        linkTitle="Product Brief"/>
+                    <item3
+                        jcr:primaryType="nt:unstructured"
+                        linkTitle="Troubleshooting"/>
+                </links>
+            </quicklinks>
+            <similarproducts
+                jcr:created="{Date}2022-08-29T10:17:40.997-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:41:41.229-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/similarproducts"/>
+            <productconfigurator
+                jcr:created="{Date}2022-08-29T10:14:34.405-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:41:42.959-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/productconfigurator"/>
+            <productoverview
+                jcr:created="{Date}2022-08-29T10:12:52.762-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:41:45.190-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/productoverview"/>
+            <productphotogallery
+                jcr:created="{Date}2022-08-29T10:12:47.778-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-08-29T12:42:18.243-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/productphotogallery"/>
+        </root>
+    </jcr:content>
+</jcr:root>

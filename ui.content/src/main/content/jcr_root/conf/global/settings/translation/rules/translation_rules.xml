@@ -210,4 +210,5 @@
   <assetNode assetReferenceAttribute="pcnLink" checkInChildNodes="true" resourceType=" solidigm/components/configurator"/>
   <assetNode assetReferenceAttribute="mddsLink" checkInChildNodes="true" resourceType=" solidigm/components/configurator"/>
   <assetNode assetReferenceAttribute="download" checkInChildNodes="false" resourceType=" solidigm/components/configurator"/>
+  <assetNode assetReferenceAttribute="productPagePath" checkInChildNodes="true" resourceType=" solidigm/components/similarproducts"/>
 </nodelist>

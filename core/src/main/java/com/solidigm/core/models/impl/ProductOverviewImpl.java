@@ -48,7 +48,7 @@ public class ProductOverviewImpl implements ProductOverview {
     private String supportPage;
 
     @Getter
-    private String[] Interfaces;
+    private String[] interfaces;
 
     @Getter
     private String[] formFactors;
@@ -66,7 +66,7 @@ public class ProductOverviewImpl implements ProductOverview {
 
     @PostConstruct
     private void initModel() {
-        Interfaces = new String[]{"Test: PCIE 4.0 X4, NVME"};
+        interfaces = new String[]{"Test: PCIE 4.0 X4, NVME"};
         formFactors = new String[]{"Test: U2 15mm", "E1.L 9.5mm", "E1.L 18mm"};
         capacities = new String[]{"Test: 1.6TB", "3.2 TB", "6.4TB"};
 
