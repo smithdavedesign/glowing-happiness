@@ -335,7 +335,7 @@
                                                                                                 name="./download"
                                                                                                 fieldLabel="Download Link"
                                                                                                 fieldDescription="Link or path to download resource"
-                                                                                                rootPath="/content/dam/solidigm"
+                                                                                                rootPath="/content/solidigm"
                                                                                                 required="{Boolean}true" />
                                                                                 </items>
                                                                         </column>
