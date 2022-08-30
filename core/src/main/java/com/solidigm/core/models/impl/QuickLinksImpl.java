@@ -43,6 +43,10 @@ public class QuickLinksImpl implements QuickLinks {
     @ValueMapValue
     private String seeMoreLinkLabel;
 
+    @Getter
+    @ValueMapValue
+    private String linkText;
+
     @ValueMapValue(name = "seeMoreLink")
     private String stringLink;
 

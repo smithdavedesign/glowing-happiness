@@ -30,6 +30,15 @@ public interface QuickLinks extends ComponentExporter {
     }
 
     /**
+     * Returns string for the text to show on the quick link instead of an arrow
+     *
+     * @return string
+     */
+    default String getLinkText() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns string for the "Read More" link
      *
      * @return Link
