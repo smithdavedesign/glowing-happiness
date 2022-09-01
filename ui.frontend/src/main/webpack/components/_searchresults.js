@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', async function () {
     const searchResults = document.querySelectorAll('.cmp-search-results');
     for (const searchResult of searchResults) {
-        const RESULTS_PER_PAGE = 10;
+        const RESULTS_PER_PAGE = Number.parseInt(searchResult.querySelector("[data-results-per-page]")?.getAttribute("data-results-per-page") ) || 10;
 
         const resultsContainer = searchResult.querySelector(
             '.cmp-search-results__results-container'
