@@ -1,0 +1,104 @@
+.model-list {
+    &__title {
+        color: $dark-blue;
+        font-family: $heading-font;
+        font-size: $font-size-xl-mobile;
+        letter-spacing: vwMobile(-0.3);
+        line-height: vwMobile(34);
+        text-align: center;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-2xl-desktop;
+            letter-spacing: vwDesktop(-0.4);
+            line-height: vwDesktop(46);
+        }
+    }
+
+    &__filters {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: $spacing-base-mobile;
+        width: 100%;
+        margin-top: $spacing-sm-mobile;
+
+        @media (min-width: $desktop) {
+            flex-direction: row;
+            gap: $spacing-base-desktop;
+            margin-top: $spacing-3xl-desktop;
+        }
+
+        &__label {
+            color: $dark-grey;
+            font-size: $font-size-sm-mobile;
+            letter-spacing: 0;
+            line-height: vwMobile(15);
+
+            @media (min-width: $desktop) {
+                font-size: $font-size-sm-desktop;
+                line-height: vwDesktop(15);
+            }
+        }
+
+        &__bottom-row {
+            display: flex;
+            width: 100%;
+            gap: $spacing-base-mobile;
+
+            @media (min-width: $desktop) {
+                width: auto;
+                gap: $spacing-base-desktop;
+            }
+        }
+
+        &__filter {
+            height: vwMobile(48);
+            width: 100%;
+            border: vwMobile(1) solid $gray-400;
+            border-radius: $border-radius-md-mobile;
+            background-color: $white;
+            padding: $spacing-sm-mobile;
+
+            color: $dark-grey;
+            font-family: $body-font;
+            font-size: $font-size-sm-mobile;
+            letter-spacing: 0;
+            line-height: vwMobile(15);
+
+            appearance: none;
+            @include svg_icon(arrow-down);
+            background-repeat: no-repeat;
+            background-size: vwMobile(10) vwMobile(6);
+            background-position: calc(100% - vwMobile(25)) 50%;
+
+            @media (min-width: $desktop) {
+                height: vwDesktop(48);
+                width: vwDesktop(220);
+                border-width: vwDesktop(1);
+                border-radius: $border-radius-md-desktop;
+                padding: $spacing-sm-desktop;
+
+                font-size: $font-size-sm-desktop;
+                line-height: vwDesktop(15);
+
+                background-size: vwDesktop(10) vwDesktop(6);
+                background-position: calc(100% - vwDesktop(25)) 50%;
+            }
+        }
+    }
+
+    &__products {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-lg-mobile;
+        margin-top: $spacing-lg-mobile;
+
+        @media (min-width: $desktop) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: $spacing-3xl-desktop;
+            margin-top: $spacing-8xl-desktop;
+        }
+    }
+}
