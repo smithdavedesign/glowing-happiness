@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+        xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+        xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+        xmlns:cq="http://www.day.com/jcr/cq/1.0"
+        xmlns:jcr="http://www.jcp.org/jcr/1.0"
+        xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+        jcr:primaryType="nt:unstructured"
+        jcr:title="Model List"
+        sling:resourceType="cq/gui/components/authoring/dialog">
+        <content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                        <tabview
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                                maximized="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                        <properties
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Properties"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                margin="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                        <columns
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                                                margin="{Boolean}true">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                        <title
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                fieldLabel="Title"
+                                                                                                required="{Boolean}true"
+                                                                                                name="./title" />
+                                                                                        <link
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/fieldset"
+                                                                                                jcr:title="Link">
+                                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                                        <label
+                                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                                                                fieldLabel="Link Label"
+                                                                                                                fieldDescription="E.g. I'm looking for a legacy product."
+                                                                                                                name="./label" />
+                                                                                                        <link
+                                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                                                name="./link"
+                                                                                                                fieldLabel="Link Target"
+                                                                                                                rootPath="/content/solidigm" />
+                                                                                                </items>
+                                                                                        </link>
+                                                                                </items>
+                                                                        </column>
+                                                                </items>
+                                                        </columns>
+                                                </items>
+                                        </properties>
+                                        <featuredProducts
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Featured Products"
+                                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                margin="{Boolean}true">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                        <columns
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                                                margin="{Boolean}true">
+                                                                <items jcr:primaryType="nt:unstructured">
+                                                                        <column
+                                                                                jcr:primaryType="nt:unstructured"
+                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                <items jcr:primaryType="nt:unstructured">
+                                                                                        <featuredProducts
+                                                                                                jcr:primaryType="nt:unstructured"
+                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                                                                composite="{Boolean}true"
+                                                                                                fieldLabel="Featured Products"
+                                                                                                fieldDescription="Product Models to be displayed when there are no filters selected. If no models are selected all children of this page that are product models will be displayed.">
+                                                                                                <field
+                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                                                                        name="./featuredProducts">
+                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                <column
+                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                                                                                                        <items jcr:primaryType="nt:unstructured">
+                                                                                                                                <productPage
+                                                                                                                                        jcr:primaryType="nt:unstructured"
+                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                                                                                        name="./productPagePath"
+                                                                                                                                        fieldLabel="Product Page"
+                                                                                                                                        rootPath="/content/solidigm"
+                                                                                                                                        required="{Boolean}true" />
+                                                                                                                        </items>
+                                                                                                                </column>
+                                                                                                        </items>
+                                                                                                </field>
+                                                                                        </featuredProducts>
+                                                                                </items>
+                                                                        </column>
+                                                                </items>
+                                                        </columns>
+                                                </items>
+                                        </featuredProducts>
+                                </items>
+                        </tabview>
+                </items>
+        </content>
+</jcr:root>
