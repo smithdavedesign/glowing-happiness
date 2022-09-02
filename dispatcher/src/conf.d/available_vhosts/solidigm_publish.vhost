@@ -83,13 +83,13 @@ PassEnv DISP_ID
 	ServerAlias dev.solidigm.com
 	ServerAlias www-stage.solidigm.com
 	ServerAlias stage.solidigm.com
-	ServerAlias stage2solidigm.com
+	ServerAlias stage2.solidigm.com
 	ServerAlias prod.solidigm.com
 	ServerAlias beta.solidigm.com
 	ServerAlias www.solidigm.com
 	ServerAlias dev.solidigm.kr
 	ServerAlias stage.solidigm.kr
-	ServerAlias stage2solidigm.kr
+	ServerAlias stage2.solidigm.kr
 	ServerAlias www-stage.solidigm.kr
 	ServerAlias www.solidigm.kr
 	ServerAlias prod.solidigm.kr
