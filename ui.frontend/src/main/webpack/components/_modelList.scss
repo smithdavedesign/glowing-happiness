@@ -101,4 +101,48 @@
             margin-top: $spacing-8xl-desktop;
         }
     }
+
+    &__cta {
+        font-size: $font-size-xl-mobile;
+        margin-top: vwMobile(60);
+        display: flex;
+        justify-content: center;
+        a {
+            color: $dark-blue;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            line-height: $line-height-xl-mobile;
+        }
+
+        @media (min-width: $desktop) {
+            margin-top: vwDesktop(80);
+            font-size: $font-size-xl-desktop;
+            a {
+                display: inline-block;
+                line-height: $line-height-xl-desktop;
+            }
+        }
+    }
+
+    &__arrow-icon {
+        background-image: url('../resources/images/purple-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: vwMobile(41) vwMobile(16);
+        height: vwMobile(16);
+        width: vwMobile(41);
+        display: block;
+        margin-top: $spacing-lg-mobile;
+
+        @media (min-width: $desktop) {
+            background-size: vwDesktop(41) vwDesktop(16);
+            height: vwDesktop(16);
+            width: vwDesktop(41);
+            display: inline-block;
+            margin-top: 0;
+            margin-left: $spacing-base-desktop;
+        }
+    }
 }
