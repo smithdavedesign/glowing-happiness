@@ -1,5 +1,4 @@
-<div class="model-list"
-     data-sly-use.modelList="com.solidigm.core.models.ModelList">
+<div class="model-list" data-sly-use.modelList="com.solidigm.core.models.ModelList">
     <h3 class="model-list__title">${modelList.title}</h3>
     <div class="model-list__filters">
         <label class="model-list__filters__label">${'Configure by' @ i18n} by</label>
@@ -27,17 +26,46 @@
             </select>
         </div>
     </div>
-    <div>
-        <p>
-            current page: ${modelList.currentPagePath}
-        </p>
-        <p>
-            <a href="${modelList.link.link}" target="${modelList.link.target}">Link Label: ${modelList.link.label}</a>
-        </p>
+    <div data-sly-list.featuredProduct="${modelList.featuredProducts}" class="model-list__products">
+        <div class="cmp-product-cards__item model-list__products__product">
+            <div class="cmp-product-cards__img-container">
+                <img src="${featuredProduct.image}" alt="${featuredProduct.altText}" />
+            </div>
+            <div class="cmp-product-cards__item-content">
+                <h3 class="cmp-product-cards__item-title">${featuredProduct.name}</h3>
+                <p class="cmp-product-cards__item-description">${featuredProduct.description}</p>
+                <dl class="cmp-product-cards__item-specs">
+                    <dt>Interface:</dt>
+                    <dd>
+                        <span>${featuredProduct.productInterface}</span>
+                    </dd>
+                    <dt>Form Factor:</dt>
+                    <dd>
+                        <span>${featuredProduct.formFactor}</span>
+                    </dd>
+                    <dt>Capacity:</dt>
+                    <dd>
+                        <span>${featuredProduct.capacity}</span>
+                    </dd>
+                </dl>
+                <div class="cmp-product-cards__item-cta">
+                    <a href="${featuredProduct.productPagePath}" class="solidigm-btn">
+                        ${'View Details' @ i18n}
+                    </a>
+                    <a
+                        href="${featuredProduct.productPagePath}"
+                        class="solidigm-btn solidigm-btn--outline solidigm-btn--outline-dark"
+                    >
+                        ${'Configure' @ i18n}
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div data-sly-list.featuredProduct="${modelList.featuredProducts}">
-        <p>
-            ${featuredProduct.productPagePath}
-        </p>
+    <div class="model-list__cta">
+        <a href="${modelList.link.link}" target="${modelList.link.target}">
+            ${modelList.link.label}
+            <span class="model-list__arrow-icon"></span>
+        </a>
     </div>
 </div>
