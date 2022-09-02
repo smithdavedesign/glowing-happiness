@@ -1,13 +1,14 @@
-<div class="model-list">
-    <h3 class="model-list__title">What Solidigm Data Center SSD Is Right For You?</h3>
+<div class="model-list"
+     data-sly-use.modelList="com.solidigm.core.models.ModelList">
+    <h3 class="model-list__title">${modelList.title}</h3>
     <div class="model-list__filters">
-        <label class="model-list__filters__label">Configure by</label>
+        <label class="model-list__filters__label">${'Configure' @ i18n} by</label>
         <select
             class="model-list__filters__filter"
             id="model-list__filters__interface-filter"
             name="interfaces"
         >
-            <option value="" selected>Interface</option>
+            <option value="" selected>${'Any Interface' @ i18n}</option>
         </select>
         <div class="model-list__filters__bottom-row">
             <select
@@ -15,16 +16,28 @@
                 id="model-list__filters__form-factor-filter"
                 name="formFactors"
             >
-                <option value="" selected>Form Factor</option>
+                <option value="" selected>${'Any Form Factor' @ i18n}</option>
             </select>
             <select
                 class="model-list__filters__filter"
                 id="model-list__filters__capacity-filter"
                 name="capacities"
             >
-                <option value="" selected>Capacity</option>
+                <option value="" selected>${'Any Capacity' @ i18n}</option>
             </select>
         </div>
     </div>
-    <div class="model-list__products"></div>
+    <div>
+        <p>
+            current page: ${modelList.currentPagePath}
+        </p>
+        <p>
+            <a href="${modelList.link.link}" target="${modelList.link.target}">Link Label: ${modelList.link.label}</a>
+        </p>
+    </div>
+    <div data-sly-list.featuredProduct="${modelList.featuredProducts}">
+        <p>
+            ${featuredProduct.productPagePath}
+        </p>
+    </div>
 </div>
