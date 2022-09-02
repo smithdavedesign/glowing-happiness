@@ -1,0 +1,23 @@
+.cmp-search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        font-size: $font-size-xl-mobile;
+        color: $dark-blue;
+        text-align: center;
+        margin-bottom: $spacing-base-mobile;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-2xl-desktop;
+            margin-bottom: $spacing-base-desktop;
+        }
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+}
