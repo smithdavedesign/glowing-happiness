@@ -1,7 +1,7 @@
 {
   "&amp;copy; {0} Solidigm Site. All rights reserved." : "&amp;copy; {0} Solidigm Site. All rights reserved.",
   "Slide {0} of {1}": "Slide {0} of {1}",
-  "Breadcumb": "Breadcrumb",
+  "Breadcrumb": "Breadcrumb",
   "Share": "Share",
   "Share this article on Twitter": "Share this article on Twitter",
   "Share this article on LinkedIn": "Share this article on LinkedIn",
@@ -10,5 +10,11 @@
   "Search": "Search",
   "Filter by Type": "Filter by Type",
   "All ({0})": "All ({0})",
-  "Showing {0} of {1} results": "Showing {0} of {1} results"
+  "Showing {0} of {1} results": "Showing {0} of {1} results",
+  "Filter by": "Filter by",
+  "Department": "Department",
+  "Location": "Location",
+  "Job Title": "Job Title",
+  "Employment Type": "Employment Type",
+  "Published on": "Published on"
 }
