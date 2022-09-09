@@ -1,13 +1,10 @@
+
 {
-  "Products Selected": "Products Selected",
-  "Maximum of 3 Products": "Maximum of 3 Products",
-  "Maximum of 2 Products": "Maximum of 2 Products",
-  "View Details": "View Details",
-  "Compare": "Compare",
-  "Remove": "Remove",
+  "Available Configurations": "Available Configurations",
   "Interface": "Interface",
   "Form Factor": "Form Factor",
   "Capacity": "Capacity",
-  "Ready to compare these products?": "Ready to compare these products?",
-  "Remove All": "Remove All"
+  "Configure & Compare": "Configure & Compare",
+  "Find an Authorized Distributor": "Find an Authorized Distributor",
+  "Jump to {0} Product Support": "Jump to {0} Product Support"
 }
