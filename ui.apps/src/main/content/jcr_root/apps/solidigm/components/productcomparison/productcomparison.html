@@ -1,126 +1,321 @@
 <div class="cmp-product-comparison">
-    <h2 class="cmp-product-comparison__title">Comparing 3 Products</h2>
+    <h2 class="cmp-product-comparison__title">${'Comparing {0} Products' @ format=['3'], i18n}</h2>
 
     <div class="cmp-product-comparison__grid">
-            <div class="cmp-product-comparison__product">
-                <h3 class="cmp-product-comparison__product-title">D7-P5600</h3>
-                <img class="cmp-product-comparison__product-image" src="../../assets/product-image.png" alt="" />
-                <button class="cmp-product-comparison__remove-btn">remove</button>
-                <div class="cmp-custom-select">
-                    <label for="custom-select-input">User Type</label>
-                    <div class='sr-only cmp-custom-select__status' aria-live="polite"></div>
-                    <div class="cmp-custom-select__container">
-                        <input type="text" id="custom-select-input" class="cmp-custom-select__input" readonly placeholder="Select something" name>
-                        <ul class="cmp-custom-select__options" id="custom-select-list">
-                            <li class="cmp-custom-select__option">hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit nostrum sunt magnam soluta! Molestias tempore nihil beatae veniam, optio placeat natus eius fuga quas, tempora, labore eum! Nam, libero!</li>
-                            <li class="cmp-custom-select__option" data-value="EKIS DE">world</li>
-                            <li class="cmp-custom-select__option">test test test</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cmp-product-comparison__select">
-                    
-                </div>
-                <div class="cmp-product-comparison__product-section">
-                    <h3 class="cmp-product-comparison__product-section-title">By the numbers this is a very long title</h3>
-                    <dl class="cmp-product-comparison__specs-list">
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-                    </dl>
-                </div>
-                <div class="cmp-product-comparison__product-section">
-                    <h3 class="cmp-product-comparison__product-section-title">By the numbers this is a very long title</h3>
-                    <dl class="cmp-product-comparison__specs-list">
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-                    </dl>
+        <div class="cmp-product-comparison__product">
+            <h3 class="cmp-product-comparison__product-title">D7-P5600</h3>
+            <img class="cmp-product-comparison__product-image" src="../../assets/product-image.png" alt="" />
+            <button class="cmp-product-comparison__remove-btn">${'remove' @ i18n}</button>
+            <div class="cmp-custom-select">
+                <label for="custom-select-input">User Type</label>
+                <div class='sr-only cmp-custom-select__status' aria-live="polite"></div>
+                <div class="cmp-custom-select__container">
+                    <input type="text" id="custom-select-input" class="cmp-custom-select__input" readonly placeholder="Select something" name>
+                    <ul class="cmp-custom-select__options" id="custom-select-list">
+                        <li class="cmp-custom-select__option">hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit nostrum sunt magnam soluta! Molestias tempore nihil beatae veniam, optio placeat natus eius fuga quas, tempora, labore eum! Nam, libero!</li>
+                        <li class="cmp-custom-select__option" data-value="EKIS DE">world</li>
+                        <li class="cmp-custom-select__option">test test test</li>
+                    </ul>
                 </div>
             </div>
-            <div class="cmp-product-comparison__product">
-                <h3 class="cmp-product-comparison__product-title">D7-P5600</h3>
-                <img class="cmp-product-comparison__product-image" src="../../assets/product-image.png" alt="" />
-                <button class="cmp-product-comparison__remove-btn">remove</button>
-                <div class="cmp-custom-select">
-                    <label for="custom-select-input">User Type</label>
-                    <div class='sr-only cmp-custom-select__status' aria-live="polite"></div>
-                    <div class="cmp-custom-select__container">
-                        <input type="text" id="custom-select-input" class="cmp-custom-select__input" readonly placeholder="Select something" name>
-                        <ul class="cmp-custom-select__options" id="custom-select-list">
-                            <li class="cmp-custom-select__option">hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit nostrum sunt magnam soluta! Molestias tempore nihil beatae veniam, optio placeat natus eius fuga quas, tempora, labore eum! Nam, libero!</li>
-                            <li class="cmp-custom-select__option" data-value="EKIS DE">world</li>
-                            <li class="cmp-custom-select__option">test test test</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cmp-product-comparison__select">
-                    
-                </div>
-                <div class="cmp-product-comparison__product-section">
-                    <h3 class="cmp-product-comparison__product-section-title">By the numbers this is a very long title</h3>
-                    <dl class="cmp-product-comparison__specs-list">
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
+            <div class="cmp-product-comparison__select">
 
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-                    </dl>
-                </div>
-                <div class="cmp-product-comparison__product-section">
-                    <h3 class="cmp-product-comparison__product-section-title">By the numbers this is a very long title</h3>
-                    <dl class="cmp-product-comparison__specs-list">
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'By The Numbers' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Capacity' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
 
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-                    </dl>
+                    <dt>${'Form Factor' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Interface' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Technology' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Performance Specifications' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Sequential bandwidth - 100% read (up to)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Sequential bandwidth - 100% write (up to)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Random read (100% span)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Random write (100% span)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Latency - Read' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Latency - Write' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Power - Active' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Power - Idle' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Reliability' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Warranty Period' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Endurance Rating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Mean time between failures (MTBF)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Uncorrectable bit error rate (UBER)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Vibration - Operating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Vibration - non Operating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Shock' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Operating temp range' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Advanced Technology' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Hardware encryption' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Advanced power loss data protection' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'High endurance technology (HET)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="cmp-product-comparison__product">
+            <h3 class="cmp-product-comparison__product-title">D7-P5600</h3>
+            <img class="cmp-product-comparison__product-image" src="../../assets/product-image.png" alt="" />
+            <button class="cmp-product-comparison__remove-btn">${'remove' @ i18n}</button>
+            <div class="cmp-custom-select">
+                <label for="custom-select-input">User Type</label>
+                <div class='sr-only cmp-custom-select__status' aria-live="polite"></div>
+                <div class="cmp-custom-select__container">
+                    <input type="text" id="custom-select-input" class="cmp-custom-select__input" readonly placeholder="Select something" name>
+                    <ul class="cmp-custom-select__options" id="custom-select-list">
+                        <li class="cmp-custom-select__option">hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit nostrum sunt magnam soluta! Molestias tempore nihil beatae veniam, optio placeat natus eius fuga quas, tempora, labore eum! Nam, libero!</li>
+                        <li class="cmp-custom-select__option" data-value="EKIS DE">world</li>
+                        <li class="cmp-custom-select__option">test test test</li>
+                    </ul>
                 </div>
             </div>
-            <div class="cmp-product-comparison__product">
-                <h3 class="cmp-product-comparison__product-title">D7-P5600</h3>
-                <img class="cmp-product-comparison__product-image" src="../../assets/product-image.png" alt="" />
-                <button class="cmp-product-comparison__remove-btn">remove</button>
-                <div class="cmp-custom-select">
-                    <label for="custom-select-input">User Type</label>
-                    <div class='sr-only cmp-custom-select__status' aria-live="polite"></div>
-                    <div class="cmp-custom-select__container">
-                        <input type="text" id="custom-select-input" class="cmp-custom-select__input" readonly placeholder="Select something" name>
-                        <ul class="cmp-custom-select__options" id="custom-select-list">
-                            <li class="cmp-custom-select__option">hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit nostrum sunt magnam soluta! Molestias tempore nihil beatae veniam, optio placeat natus eius fuga quas, tempora, labore eum! Nam, libero!</li>
-                            <li class="cmp-custom-select__option" data-value="EKIS DE">world</li>
-                            <li class="cmp-custom-select__option">test test test</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="cmp-product-comparison__select">
-                    
-                </div>
-                <div class="cmp-product-comparison__product-section">
-                    <h3 class="cmp-product-comparison__product-section-title">By the numbers this is a very long title</h3>
-                    <dl class="cmp-product-comparison__specs-list">
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
+            <div class="cmp-product-comparison__select">
 
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-                    </dl>
-                </div>
-                <div class="cmp-product-comparison__product-section">
-                    <h3 class="cmp-product-comparison__product-section-title">By the numbers this is a very long title</h3>
-                    <dl class="cmp-product-comparison__specs-list">
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'By The Numbers' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Capacity' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
 
-                        <dt>Data Center SSD</dt>
-                        <dd>1.92 TB</dd>
-                    </dl>
+                    <dt>${'Form Factor' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Interface' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Technology' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Performance Specifications' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Sequential bandwidth - 100% read (up to)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Sequential bandwidth - 100% write (up to)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Random read (100% span)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Random write (100% span)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Latency - Read' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Latency - Write' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Power - Active' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Power - Idle' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Reliability' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Warranty Period' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Endurance Rating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Mean time between failures (MTBF)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Uncorrectable bit error rate (UBER)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Vibration - Operating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Vibration - non Operating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Shock' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Operating temp range' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Advanced Technology' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Hardware encryption' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Advanced power loss data protection' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'High endurance technology (HET)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="cmp-product-comparison__product">
+            <h3 class="cmp-product-comparison__product-title">D7-P5600</h3>
+            <img class="cmp-product-comparison__product-image" src="../../assets/product-image.png" alt="" />
+            <button class="cmp-product-comparison__remove-btn">${'remove' @ i18n}</button>
+            <div class="cmp-custom-select">
+                <label for="custom-select-input">User Type</label>
+                <div class='sr-only cmp-custom-select__status' aria-live="polite"></div>
+                <div class="cmp-custom-select__container">
+                    <input type="text" id="custom-select-input" class="cmp-custom-select__input" readonly placeholder="Select something" name>
+                    <ul class="cmp-custom-select__options" id="custom-select-list">
+                        <li class="cmp-custom-select__option">hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit nostrum sunt magnam soluta! Molestias tempore nihil beatae veniam, optio placeat natus eius fuga quas, tempora, labore eum! Nam, libero!</li>
+                        <li class="cmp-custom-select__option" data-value="EKIS DE">world</li>
+                        <li class="cmp-custom-select__option">test test test</li>
+                    </ul>
                 </div>
             </div>
+            <div class="cmp-product-comparison__select">
+
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'By The Numbers' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Capacity' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Form Factor' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Interface' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Technology' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Performance Specifications' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Sequential bandwidth - 100% read (up to)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Sequential bandwidth - 100% write (up to)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Random read (100% span)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Random write (100% span)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Latency - Read' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Latency - Write' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Power - Active' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Power - Idle' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Reliability' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Warranty Period' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Endurance Rating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Mean time between failures (MTBF)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Uncorrectable bit error rate (UBER)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Vibration - Operating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Vibration - non Operating' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Shock' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Operating temp range' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+            <div class="cmp-product-comparison__product-section">
+                <h3 class="cmp-product-comparison__product-section-title">${'Advanced Technology' @ i18n}</h3>
+                <dl class="cmp-product-comparison__specs-list">
+                    <dt>${'Hardware encryption' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'Advanced power loss data protection' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+
+                    <dt>${'High endurance technology (HET)' @ i18n}</dt>
+                    <dd>Test Attribute</dd>
+                </dl>
+            </div>
+        </div>
     </div>
 </div>
