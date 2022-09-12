@@ -1,0 +1,23 @@
+<div class="cmp-search-bar"
+     data-sly-use.search="com.solidigm.core.models.Search">
+    <h2 class="cmp-search-bar__title">${search.searchTitle}</h2>
+    <form>
+        <label for="search-bar-cmp" class="sr-only">Search</label>
+        <input
+            id="search-bar-cmp"
+            class="solidigm-input"
+            placeholder="${search.placeholderText}"
+        />
+    </form>
+    <div>
+        <p>
+            Applied Params:
+        </p>
+        <p data-sly-list.param="${search.params}">
+            &${param.parameterName}=${param.parameterValue}
+        </p>
+        <p>
+            Search Results page: ${search.searchResultsPage}
+        </p>
+    </div>
+</div>

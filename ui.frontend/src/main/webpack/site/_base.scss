@@ -209,3 +209,57 @@ i {
         object-fit: contain;
     }
 }
+
+.solidigm-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: $font-size-base-mobile;
+    color: $dark-grey;
+    background: $white;
+    border: vwMobile(1) solid $gray-400;
+    padding: $spacing-sm-mobile;
+    padding-right: $spacing-5xl-mobile;
+    @include svg_icon(search);
+    background-repeat: no-repeat;
+    background-position: calc(100% - vwMobile(20)) 50%;
+    background-size: vwMobile(16);
+
+    &::placeholder {
+        color: $dark-grey;
+    }
+
+    @media (min-width: $desktop) {
+        font-size: $font-size-base-desktop;
+        padding: $spacing-base-desktop;
+        padding-right: $spacing-5xl-desktop;
+        width: vwDesktop(430);
+        border: vwDesktop(1) solid $gray-400;
+        background-size: vwDesktop(16);
+        background-position: calc(100% - vwDesktop(20)) 50%;
+    }
+
+    &--underline {
+        background: transparent;
+        border: none;
+        border-bottom: vwMobile(1) solid $gray-400;
+        font-size: $font-size-xl-mobile;
+        caret-color: $solidigm-purple;
+        color: $dark-blue;
+        display: block;
+        font-weight: normal;
+        padding: $spacing-2xs-mobile 0;
+        padding-left: $spacing-4xl-mobile;
+        @include svg_icon(search);
+        background-position: 0 50%;
+        background-size: vwMobile(17) vwMobile(17);
+        background-repeat: no-repeat;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-xl-desktop;
+            padding: $spacing-2xs-desktop 0;
+            padding-left: $spacing-4xl-desktop;
+            background-size: vwDesktop(17) vwDesktop(17);
+            border-bottom: vwDesktop(1) solid $gray-400;
+        }
+    }
+}
