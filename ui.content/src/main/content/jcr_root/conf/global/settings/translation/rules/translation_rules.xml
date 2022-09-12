@@ -214,4 +214,5 @@
   <assetNode assetReferenceAttribute="productPagePath" checkInChildNodes="true" resourceType=" solidigm/components/modellist"/>
   <assetNode assetReferenceAttribute="link" checkInChildNodes="true" resourceType=" solidigm/components/modellist"/>
   <assetNode assetReferenceAttribute="filterPath" checkInChildNodes="true" resourceType=" solidigm/components/searchresults"/>
+  <assetNode assetReferenceAttribute="searchResultsPage" checkInChildNodes="false" resourceType=" solidigm/components/search"/>
 </nodelist>

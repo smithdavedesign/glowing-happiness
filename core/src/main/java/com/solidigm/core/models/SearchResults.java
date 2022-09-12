@@ -11,16 +11,16 @@ import java.util.List;
  */
 public interface SearchResults extends ComponentExporter {
     /**
-     * Returns string for the Quoted text; includes any authored line end characters
+     * Returns List of filters that were authored for the search results
      *
-     * @return string
+     * @return List<Filter>
      */
     default List<Filter> getFilters() {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Returns string for the Quoted text; includes any authored line end characters
+     * Returns List of Search Results
      *
      * @return string
      */
@@ -29,7 +29,7 @@ public interface SearchResults extends ComponentExporter {
     }
 
     /**
-     * Returns string for the Quoted text; includes any authored line end characters
+     * Returns string for the number of results per page
      *
      * @return string
      */
@@ -38,7 +38,7 @@ public interface SearchResults extends ComponentExporter {
     }
 
     /**
-     * Returns string for the Quoted text; includes any authored line end characters
+     * Returns string for the total number of search results
      *
      * @return string
      */
