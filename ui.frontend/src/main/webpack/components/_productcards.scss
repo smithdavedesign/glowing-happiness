@@ -18,6 +18,8 @@
         border-radius: $border-radius-md-mobile;
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
 
         @media (min-width: $desktop) {
             box-shadow: $box-shadow-desktop;
@@ -62,6 +64,9 @@
 
     &__item-content {
         padding: $spacing-2xl-mobile;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
 
         @media (min-width: $desktop) {
             padding: $spacing-4xl-desktop;
@@ -107,13 +112,14 @@
     }
 
     &__item-cta {
-        margin-top: $spacing-2xl-mobile;
+        padding-top: $spacing-2xl-mobile;
         display: flex;
         gap: $spacing-xs-mobile;
         align-items: center;
+        margin-top: auto;
 
         @media (min-width: $desktop) {
-            margin-top: $spacing-2xl-desktop;
+            padding-top: $spacing-2xl-desktop;
             gap: $spacing-xs-desktop;
         }
 
