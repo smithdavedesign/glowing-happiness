@@ -11,5 +11,5 @@ public @interface ProductServiceConfig {
     @AttributeDefinition(
             name = "Product Data Path",
             description = "Path to the product data stored in the JCR")
-    String getProductDataPath() default "/var/commerce/solidigm";
+    String getProductDataPath() default "/var/commerce/products/solidigm";
 }

@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component(immediate = true, service = ProductService.class)
-@Designate(ocd = ProductService.class)
+@Designate(ocd = ProductServiceConfig.class)
 public class ProductServiceImpl implements ProductService {
     protected final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -59,13 +59,13 @@ public class ProductServiceImpl implements ProductService {
     private String buildPath(String category, String series, String name) {
         String path = "";
         if (StringUtils.isNotEmpty(category)) {
-            path.concat("/").concat(category);
+            path = path.concat("/").concat(category);
         }
         if (StringUtils.isNotEmpty(series)) {
-            path.concat("/").concat(series);
+            path = path.concat("/").concat(series);
         }
         if (StringUtils.isNotEmpty(name)) {
-            path.concat("/").concat(name);
+            path = path.concat("/").concat(name);
         }
         return path;
     }
