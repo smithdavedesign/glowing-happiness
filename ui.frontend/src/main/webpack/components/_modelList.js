@@ -1,112 +1,165 @@
-(function () {
-    // @TODO get products from the API
-    const products = [];
+(async function () {
+    const modelLists = document.querySelectorAll('.model-list');
+    for (const modelList of modelLists) {
+        async function getData() {
+            // @TODO: change for the real endpoint once defined
+            const request = await fetch('http://localhost:3004/all');
+            const response = await request.json();
 
-    // Important: the filter name should be the same as the corresponding
-    // property name of the product, name of the select element and data-attribute name of the product element.
-    const filters = [
-        {
-            name: 'interfaces',
-            selected: '',
-            dropdownElement: $('#model-list__filters__interface-filter'),
-        },
-        {
-            name: 'formFactors',
-            selected: '',
-            dropdownElement: $('#model-list__filters__form-factor-filter'),
-        },
-        {
-            name: 'capacities',
-            selected: '',
-            dropdownElement: $('#model-list__filters__capacity-filter'),
-        },
-    ];
-
-    function setFilterSelected(filterName, value) {
-        filters.find((filter) => filter.name === filterName).selected = value;
-    }
-
-    $('.model-list__filters__filter').on('change', onFilterChange);
-
-    populateDropdowns();
-
-    function onFilterChange() {
-        setFilterSelected(this.name, this.value);
-
-        populateDropdowns();
-
-        updateProducts();
-    }
-
-    function populateDropdowns() {
-        for (const filter of filters) {
-            // The dropdown options are dynamically fetched from the products.
-            // The machingProducts are all products that match all OTHER filters (so not the current one).
-            const matchingProducts = getMatchingProducts(filter);
-
-            // From these products, we get the values for the specific filter.
-            const filterOptions = getFilterOptions(matchingProducts, filter.name);
-
-            populateDropdown(filter.dropdownElement, filterOptions);
-        }
-    }
-
-    function getMatchingProducts(filter) {
-        return products.filter((product) => {
-            const otherFilters = filters.filter((f) => f.name !== filter.name);
-
-            for (const otherFilter of otherFilters) {
-                if (!matchesFilter(product[otherFilter.name], otherFilter)) return false;
-            }
-
-            return true;
-        });
-    }
-
-    function matchesFilter(productValue, filter) {
-        return filter.selected === '' || productValue.includes(filter.selected);
-    }
-
-    function getFilterOptions(products, propertyName) {
-        const filterOptions = [];
-
-        for (const product of products) {
-            filterOptions.push(...product[propertyName]);
+            return response;
         }
 
-        return [...new Set(filterOptions)];
-    }
-
-    function populateDropdown(dropdownElement, filters) {
-        dropdownElement.find('option').not(':first, :selected').remove();
-
-        const selectedValue = dropdownElement.find(':selected').text();
-
-        for (const filter of filters) {
-            if (filter === selectedValue) continue;
-
-            dropdownElement.append($('<option />').val(filter).text(filter));
+        function setSelectOptions(optionsContainer, options) {
+            optionsContainer.innerHTML = '';
+            options.forEach((opt) => {
+                optionsContainer.innerHTML += `<li class='cmp-custom-select__option'>${opt}</li>`;
+            });
         }
-    }
 
-    function updateProducts() {
-        $('.model-list__products__product').each(function (index, element) {
-            if (productElementMatchesAllFilters(element)) {
-                $(element).show();
+        const productsContainer = modelList.querySelector('.model-list__products');
+        const productTemplate = modelList.querySelector('.model-list__template').innerHTML;
+        const featuredProducts = modelList.querySelectorAll(
+            '.model-list__products > .model-list__products__product'
+        );
+        const interfaceSelect = modelList.querySelector('#interface');
+        const interfaceOptionsContainer = modelList.querySelector('#interface + ul');
+        const interfaceData = {
+            key: 'interface',
+            element: interfaceSelect,
+            optionsContainer: interfaceOptionsContainer,
+            anyLabel: modelList.getAttribute('data-interface-any-label'),
+        };
+
+        const formFactorSelect = modelList.querySelector('#form-factor');
+        const formFactorOptionsContainer = modelList.querySelector('#form-factor + ul');
+
+        const formFactorData = {
+            key: 'formFactor',
+            element: formFactorSelect,
+            optionsContainer: formFactorOptionsContainer,
+            anyLabel: modelList.getAttribute('data-form-factor-any-label'),
+        };
+
+        const capacitySelect = modelList.querySelector('#capacity');
+        const capacityOptionsContainer = modelList.querySelector('#capacity + ul');
+        const capacityData = {
+            key: 'capacity',
+            element: capacitySelect,
+            optionsContainer: capacityOptionsContainer,
+            anyLabel: modelList.getAttribute('data-capacity-any-label'),
+        };
+
+        const data = await getData();
+        const {
+            allFilters: { interface: interfaces, formFactor: formFactors, capacity: capacities },
+        } = data;
+
+        setSelectOptions(interfaceOptionsContainer, interfaces);
+        setSelectOptions(formFactorOptionsContainer, formFactors);
+        setSelectOptions(capacityOptionsContainer, capacities);
+
+        function handleSelectChange(e) {
+            const interface = interfaceSelect.value || interfaceData.anyLabel;
+            const formFactor = formFactorSelect.value || formFactorData.anyLabel;
+            const capacity = capacitySelect.value || capacityData.anyLabel;
+            productsContainer.innerHTML = '';
+
+            if (
+                interface === interfaceData.anyLabel &&
+                formFactor === formFactorData.anyLabel &&
+                capacity === capacityData.anyLabel &&
+                !!featuredProducts.length
+            ) {
+                featuredProducts.forEach((featuredProduct) => {
+                    productsContainer.appendChild(featuredProduct);
+                });
             } else {
-                $(element).hide();
+                const products = data.products.filter((product) => {
+                    return (
+                        (product.interface === interface || interface === interfaceData.anyLabel) &&
+                        (product.formFactor === formFactor ||
+                            formFactor === formFactorData.anyLabel) &&
+                        (product.capacity === capacity || capacity === capacityData.anyLabel)
+                    );
+                });
+
+                products.forEach((product) => {
+                    const productDOM = new DOMParser().parseFromString(
+                        productTemplate,
+                        'text/html'
+                    );
+                    const productImage = productDOM.querySelector('img');
+                    productImage.setAttribute('src', product.image);
+                    productImage.setAttribute('alt', product.imageAlt);
+
+                    const productTitle = productDOM.querySelector('.cmp-product-cards__item-title');
+                    productTitle.textContent = product.title;
+
+                    const productDescription = productDOM.querySelector(
+                        '.cmp-product-cards__item-description'
+                    );
+                    productDescription.textContent = product.description;
+
+                    const productInterface = productDOM.querySelector(
+                        '.cmp-product-cards__interface'
+                    );
+                    productInterface.textContent = product.interface;
+
+                    const productFormFactor = productDOM.querySelector(
+                        '.cmp-product-cards__form-factor'
+                    );
+                    productFormFactor.textContent = product.formFactor;
+
+                    const productCapacity = productDOM.querySelector(
+                        '.cmp-product-cards__capacity'
+                    );
+                    productCapacity.textContent = product.capacity;
+
+                    const productConfigureBtn = productDOM.querySelector(
+                        '.cmp-product-cards__configure-btn'
+                    );
+                    productConfigureBtn.setAttribute('href', product.configureURL);
+
+                    const productDetailsBtn = productDOM.querySelector(
+                        '.cmp-product-cards__details-btn'
+                    );
+                    productDetailsBtn.setAttribute('href', product.detailsURL);
+
+                    productsContainer.appendChild(
+                        productDOM.querySelector('.cmp-product-cards__item')
+                    );
+                });
             }
-        });
-    }
-
-    function productElementMatchesAllFilters(productElement) {
-        for (const filter of filters) {
-            const dataString = $(productElement).data(filter.name.toLowerCase());
-            const productValue = dataString.split(',');
-
-            if (!matchesFilter(productValue, filter)) return false;
         }
 
-        return true;
+        interfaceSelect.addEventListener('change', handleSelectChange);
+        formFactorSelect.addEventListener('change', handleSelectChange);
+        capacitySelect.addEventListener('change', handleSelectChange);
+
+        function handleOpen(target, otherSelects) {
+            const validOptions = data.filters
+                .filter((combination) => {
+                    return otherSelects.reduce((acc, curr) => {
+                        if (!acc) return false;
+
+                        return combination[curr.key] === (curr.element.value || curr.anyLabel);
+                    }, true);
+                })
+                .map((combination) => combination[target.key]);
+
+            target.optionsContainer.querySelectorAll('li').forEach((option) => {
+                option.style.display = validOptions.includes(option.textContent) ? 'block' : 'none';
+            });
+        }
+
+        interfaceSelect.addEventListener('open', () =>
+            handleOpen(interfaceData, [formFactorData, capacityData])
+        );
+        formFactorSelect.addEventListener('open', () =>
+            handleOpen(formFactorData, [interfaceData, capacityData])
+        );
+        capacitySelect.addEventListener('open', () =>
+            handleOpen(capacityData, [interfaceData, formFactorData])
+        );
     }
 })();
