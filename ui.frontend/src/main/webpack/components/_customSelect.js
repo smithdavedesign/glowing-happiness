@@ -5,7 +5,7 @@
  * found here: https://24ways.org/2019/making-a-better-custom-select-element/
  */
 
-window.addEventListener('DOMContentLoaded', function () {
+function initCustomSelects() {
     const SELECT_STATES = {
         INITIAL: 'initial',
         OPENED: 'opened',
@@ -29,9 +29,9 @@ window.addEventListener('DOMContentLoaded', function () {
     customSelects.forEach((csElement) => {
         const csInput = csElement.querySelector('input');
         const csList = csElement.querySelector('ul');
-        const csOptions = csList.querySelectorAll('li');
+        let csOptions = csList.querySelectorAll('li');
         const csStatus = document.querySelector('.cmp-custom-select__status');
-        const optionsList = Array.from(csOptions);
+        let optionsList = Array.from(csOptions);
 
         let csState = SELECT_STATES.INITIAL;
         // inform assistive tech (screen readers) of the names & roles of the elements in our group
@@ -41,12 +41,43 @@ window.addEventListener('DOMContentLoaded', function () {
         csInput.setAttribute('aria-autocomplete', 'both');
         csInput.setAttribute('aria-controls', 'custom-select-list'); // ...but the input controls it
         csList.setAttribute('role', 'listbox');
-        csOptions.forEach(function (option) {
-            option.setAttribute('role', 'option');
-            option.setAttribute('tabindex', '-1'); // make li elements keyboard focusable by script only
+
+        function initOptions() {
+            csOptions = csList.querySelectorAll('li');
+            optionsList = Array.from(csOptions);
+            csOptions.forEach(function (option) {
+                option.setAttribute('role', 'option');
+                option.setAttribute('tabindex', '-1'); // make li elements keyboard focusable by script only
+            });
+            // set up a message to keep screen reader users informed of what the custom input is for/doing
+            csStatus.textContent = csOptions.length + ' options available. Arrow down to browse.';
+
+            const initiallySelectedOption = csList.querySelector(
+                '.cmp-custom-select__option--selected'
+            );
+
+            if (!!initiallySelectedOption) {
+                csInput.value =
+                    initiallySelectedOption.getAttribute('data-value') ||
+                    initiallySelectedOption.textContent;
+            }
+        }
+        initOptions();
+        const csOptionsContainer = csElement.querySelector('.cmp-custom-select__options');
+        const addedOptionsCallback = (mutationList, observer) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === 'childList') {
+                    initOptions();
+                }
+            }
+        };
+
+        const observer = new MutationObserver(addedOptionsCallback);
+        observer.observe(csOptionsContainer, {
+            attributes: true,
+            childList: true,
+            subtree: true,
         });
-        // set up a message to keep screen reader users informed of what the custom input is for/doing
-        csStatus.textContent = csOptions.length + ' options available. Arrow down to browse.';
 
         csElement.addEventListener('click', function (e) {
             const currentFocus = findFocus();
@@ -83,7 +114,10 @@ window.addEventListener('DOMContentLoaded', function () {
 
         // handle click outside
         document.addEventListener('click', function (e) {
-            if (!e.target.closest(csSelector)) {
+            const isClickInside = e.composedPath().find((el) => {
+                return el.nodeType && csElement.isEqualNode(el);
+            });
+            if (!isClickInside) {
                 toggleList(SELECT_DROPDOWN_STATES.CLOSED);
                 setState(SELECT_STATES.INITIAL);
             }
@@ -157,7 +191,7 @@ window.addEventListener('DOMContentLoaded', function () {
             csInput.value = selectedOption.getAttribute('data-value') || selectedOption.textContent;
 
             optionsList.forEach((option) => option.classList.remove(csActiveOptionClass));
-
+            csInput.dispatchEvent(new Event('change'));
             selectedOption.classList.add(csActiveOptionClass);
             moveFocus(document.activeElement, 'input');
         }
@@ -168,9 +202,11 @@ window.addEventListener('DOMContentLoaded', function () {
                     csState = SELECT_STATES.INITIAL;
                     break;
                 case SELECT_STATES.OPENED:
+                    csInput.dispatchEvent(new Event('open'));
                     csState = SELECT_STATES.OPENED;
                     break;
                 case SELECT_STATES.CLOSED:
+                    csInput.dispatchEvent(new Event('close'));
                     csState = SELECT_STATES.CLOSED;
             }
         }
@@ -225,4 +261,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-});
+}
+
+window.addEventListener('DOMContentLoaded', initCustomSelects);
+window.addEventListener('initCustomSelects', initCustomSelects);
