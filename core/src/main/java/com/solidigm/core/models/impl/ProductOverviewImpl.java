@@ -3,19 +3,27 @@ package com.solidigm.core.models.impl;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.wcm.api.Page;
+import com.solidigm.core.beans.ProductModel;
 import com.solidigm.core.models.ProductOverview;
+import com.solidigm.core.services.ProductService;
+import com.solidigm.core.services.SocialService;
 import com.solidigm.core.utils.SolidigmUtils;
 import lombok.Getter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Source;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.util.List;
+
+import static com.solidigm.core.utils.SolidigmConstants.HOME_NAVIGATION_LEVEL;
 
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
@@ -30,6 +38,9 @@ import javax.inject.Inject;
 public class ProductOverviewImpl implements ProductOverview {
     static final String RESOURCE_TYPE = "solidigm/components/productoverview";
     static final String DISTRIBUTOR_PAGE = "/authorized-distributors";
+
+    @OSGiService
+    ProductService productService;
 
     @Inject
     @Source("script-bindings")
@@ -48,13 +59,13 @@ public class ProductOverviewImpl implements ProductOverview {
     private String supportPage;
 
     @Getter
-    private String[] interfaces;
+    private List<String> interfaces;
 
     @Getter
-    private String[] formFactors;
+    private List<String> formFactors;
 
     @Getter
-    private String[] capacities;
+    private List<String> capacities;
 
     @Getter
     private String distributorPage;
@@ -66,9 +77,15 @@ public class ProductOverviewImpl implements ProductOverview {
 
     @PostConstruct
     private void initModel() {
-        interfaces = new String[]{"Test: PCIE 4.0 X4, NVME"};
-        formFactors = new String[]{"Test: U2 15mm", "E1.L 9.5mm", "E1.L 18mm"};
-        capacities = new String[]{"Test: 1.6TB", "3.2 TB", "6.4TB"};
+
+        //Retrieve product info from the Product Service
+        String pagePath = currentPage.getPath();
+        ProductModel product = productService.getProduct(SolidigmUtils.getProductCategoryFromPath(pagePath),
+                                                         SolidigmUtils.getProductSeriesFromPath(pagePath),
+                                                         SolidigmUtils.getProductNameFromPath(pagePath));
+        interfaces = product.getInterfaces();
+        formFactors = product.getFormFactors();
+        capacities = product.getCapacities();
 
         if(currentPage != null) {
             distributorPage = SolidigmUtils.getSiteRoot(currentPage.getPath()).concat(DISTRIBUTOR_PAGE);
