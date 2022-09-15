@@ -9,6 +9,7 @@ import com.solidigm.core.services.ProductService;
 import com.solidigm.core.services.SocialService;
 import com.solidigm.core.utils.SolidigmUtils;
 import lombok.Getter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
@@ -21,6 +22,8 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.List;
+
+import static com.solidigm.core.utils.SolidigmConstants.HOME_NAVIGATION_LEVEL;
 
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
@@ -74,7 +77,12 @@ public class ProductOverviewImpl implements ProductOverview {
 
     @PostConstruct
     private void initModel() {
-        ProductModel product = productService.getProduct("client", "d3", "S4510");
+
+        //Retrieve product info from the Product Service
+        String pagePath = currentPage.getPath();
+        ProductModel product = productService.getProduct(SolidigmUtils.getProductCategoryFromPath(pagePath),
+                                                         SolidigmUtils.getProductSeriesFromPath(pagePath),
+                                                         SolidigmUtils.getProductNameFromPath(pagePath));
         interfaces = product.getInterfaces();
         formFactors = product.getFormFactors();
         capacities = product.getCapacities();

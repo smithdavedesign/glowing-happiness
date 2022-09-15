@@ -34,8 +34,12 @@ public class ProductVariation {
     @Getter
     private String capacity;
 
+    @Getter
+    private int capacityRaw;
+
     @PostConstruct
     private void init() {
+        //Populate class with variation values based on child nodes and their content in the JCR
         if (resource != null) {
             variationID = resource.getName();
             Resource attributes = resource.getChild("attributes");
@@ -43,6 +47,7 @@ public class ProductVariation {
                 Resource driveCapacity = attributes.getChild("DriveCapacity");
                 if (driveCapacity != null) {
                     capacity = driveCapacity.getValueMap().get("value", String.class);
+                    capacityRaw = driveCapacity.getValueMap().get("rawValue", Integer.class);
                 }
                 Resource driveFormFactor = attributes.getChild("SSDFormFactor");
                 if (driveCapacity != null) {

@@ -39,7 +39,9 @@ public class ProductServiceImpl implements ProductService {
         products = new HashMap<>();
     }
 
+    //Returns product data from the JCR at the requested path
     private void resolveProduct(String path) {
+        //Log in user and get resource resolver if it does not exist
         if (resourceResolver == null) {
             Map<String, Object> param = new HashMap<>();
             param.put(ResourceResolverFactory.SUBSERVICE, "productServiceUser");
@@ -50,12 +52,15 @@ public class ProductServiceImpl implements ProductService {
                 return;
             }
         }
-        Resource productResource = resourceResolver.getResource(productDataPath.concat(path));
+
+        //Get product data from the JCR at the requested path
+        Resource productResource = resourceResolver.getResource(path);
         if (productResource != null) {
             products.put(path, productResource.adaptTo(ProductModel.class));
         }
     }
 
+    //Build path to product data based on configured root path and provided arguments
     private String buildPath(String category, String series, String name) {
         String path = "";
         if (StringUtils.isNotEmpty(category)) {
@@ -67,7 +72,7 @@ public class ProductServiceImpl implements ProductService {
         if (StringUtils.isNotEmpty(name)) {
             path = path.concat("/").concat(name);
         }
-        return path;
+        return productDataPath.concat(path);
     }
 
     @Override
