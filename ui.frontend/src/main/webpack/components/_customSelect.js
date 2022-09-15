@@ -5,7 +5,7 @@
  * found here: https://24ways.org/2019/making-a-better-custom-select-element/
  */
 
-window.addEventListener('DOMContentLoaded', function () {
+function initCustomSelects() {
     const SELECT_STATES = {
         INITIAL: 'initial',
         OPENED: 'opened',
@@ -51,6 +51,16 @@ window.addEventListener('DOMContentLoaded', function () {
             });
             // set up a message to keep screen reader users informed of what the custom input is for/doing
             csStatus.textContent = csOptions.length + ' options available. Arrow down to browse.';
+
+            const initiallySelectedOption = csList.querySelector(
+                '.cmp-custom-select__option--selected'
+            );
+
+            if (!!initiallySelectedOption) {
+                csInput.value =
+                    initiallySelectedOption.getAttribute('data-value') ||
+                    initiallySelectedOption.textContent;
+            }
         }
         initOptions();
         const csOptionsContainer = csElement.querySelector('.cmp-custom-select__options');
@@ -251,4 +261,7 @@ window.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-});
+}
+
+window.addEventListener('DOMContentLoaded', initCustomSelects);
+window.addEventListener('initCustomSelects', initCustomSelects);

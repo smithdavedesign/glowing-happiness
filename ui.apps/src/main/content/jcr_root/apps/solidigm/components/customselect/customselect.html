@@ -2,7 +2,7 @@
     data-sly-template.customSelect="${@ options, label, name, id, placeholder, srOnly ,valueId ,labelId}"
 >
     <div class="cmp-custom-select">
-        <label for="${id}" class="${srOnly ? 'sr-only': ''}">${label}</label>
+        <label for="${id}" class="${srOnly ? 'sr-only': ''}">${label @ i18n}</label>
         <div class="sr-only cmp-custom-select__status" aria-live="polite"></div>
         <div class="cmp-custom-select__container">
             <input

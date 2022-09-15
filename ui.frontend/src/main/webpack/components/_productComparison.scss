@@ -1,70 +1,71 @@
-.cmp-product-comparison{
+.cmp-product-comparison {
     $visible-columns: 2;
     --visible-columns: #{$visible-columns};
     overflow: hidden;
 
     position: relative;
-    
-    &__grid{
+
+    &__grid {
         display: flex;
         gap: $spacing-3xl-desktop;
 
         & > * {
             flex: 1;
             width: calc(50% - #{$spacing-3xl-mobile});
+            max-width: 50%;
         }
 
-        & > :not(:first-child) .cmp-product-comparison__product-section-title{
+        & > :not(:first-child) .cmp-product-comparison__product-section-title {
             visibility: hidden;
-
         }
 
         & > :nth-of-type(3) {
             display: none;
         }
-
     }
-    @media (min-width: $desktop){
-
-        &__grid{
+    @media (min-width: $desktop) {
+        &__grid {
             gap: $spacing-2xl-desktop;
             & > * {
                 flex: 1;
                 width: calc(33% - calc(#{$spacing-2xl-desktop} * 2));
+                max-width: calc(100% / 3);
             }
-    
+
             & > :nth-of-type(3) {
                 display: block;
             }
         }
     }
 
-    &__remove-btn{
+    &__remove-btn {
         color: $solidigm-purple;
         padding: 0;
         margin-top: $spacing-sm-mobile;
         display: inline-block;
-        @media (min-width: $desktop){
+        @media (min-width: $desktop) {
             margin-top: $spacing-sm-desktop;
         }
     }
 
-    &__title{
+    &__title {
         font-size: $font-size-2xl-mobile;
         text-align: center;
         color: $dark-blue;
         margin-bottom: $spacing-4xl-mobile;
         line-height: $line-height-2xl-mobile;
         text-align: left;
-        @media (min-width: $desktop){
+        padding-top: vwMobile(3);
+        @media (min-width: $desktop) {
             font-size: $font-size-3xl-desktop;
             margin-bottom: $spacing-6xl-desktop;
             line-height: $line-height-2xl-desktop;
             text-align: center;
+            padding-top: vwDesktop(3);
         }
     }
 
-    &__product-section-title{
+    &__product-section-title {
         margin-top: $spacing-5xl-mobile;
         font-size: $font-size-xl-mobile;
         margin-bottom: $spacing-sm-mobile;
@@ -74,7 +75,7 @@
         max-width: calc(100% * var(--visible-columns));
         line-height: $line-height-xl-mobile;
 
-        &::after{
+        &::after {
             content: '';
             width: 100%;
             height: vwMobile(1);
@@ -84,63 +85,70 @@
             margin-top: $spacing-4xl-mobile;
         }
 
-        @media (min-width: $desktop){
+        @media (min-width: $desktop) {
             margin-top: $spacing-5xl-desktop;
             font-size: $font-size-xl-desktop;
             margin-bottom: $spacing-xs-desktop;
             line-height: $line-height-xl-desktop;
 
-            &::after{
+            &::after {
                 height: vwDesktop(1);
                 margin-top: $spacing-3xl-desktop;
             }
         }
     }
 
-    &__product-title{
+    &__product-title {
         font-size: $font-size-xl-mobile;
         color: $dark-blue;
         margin-bottom: $spacing-sm-mobile;
 
-        @media (min-width: $desktop){
+        @media (min-width: $desktop) {
             font-size: $font-size-2xl-desktop;
             margin-bottom: $spacing-sm-desktop;
         }
     }
 
-    &__product-image{
+    &__product-image {
         width: 100%;
         height: vwMobile(115);
         object-fit: cover;
         border-radius: $border-radius-md-mobile;
         box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.1);
-        @media (min-width: $desktop){
+        @media (min-width: $desktop) {
             height: vwDesktop(292);
             border-radius: $border-radius-md-desktop;
         }
     }
 
-    &__specs-list{
+    &__specs-list {
         margin-top: $spacing-2xl-mobile;
         color: $grey;
 
-        dt{
+        dt {
             color: $dark-blue;
         }
 
-        dd{
+        dd {
             margin-top: $spacing-2xs-mobile;
             font-size: $font-size-lg-mobile;
             margin-bottom: $spacing-3xl-mobile;
         }
 
-        @media (min-width: $desktop){
+        @media (min-width: $desktop) {
             margin-top: $spacing-2xl-desktop;
-            dd{
+            dd {
                 margin-top: $spacing-2xs-desktop;
                 font-size: $font-size-lg-desktop;
                 margin-bottom: $spacing-3xl-desktop;
             }
+        }
+    }
+
+    .cmp-custom-select {
+        margin-top: $spacing-base-mobile;
+        @media (min-width: $desktop) {
+            margin-top: $spacing-base-desktop;
         }
     }
 }
