@@ -7,7 +7,7 @@ import org.apache.sling.models.annotations.Model;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.util.List;
+import javax.inject.Named;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductVariation {
@@ -26,38 +26,29 @@ public class ProductVariation {
     private String variationID;
 
     @Getter
+    @Inject
+    @Named("./attributes/SSDInterface/value")
     private String productInterface;
 
     @Getter
+    @Inject
+    @Named("./attributes/SSDFormFactor/value")
     private String formFactor;
 
     @Getter
+    @Inject
+    @Named("./attributes/DriveCapacity/value")
     private String capacity;
 
     @Getter
+    @Inject
+    @Named("./attributes/DriveCapacity/rawValue")
     private int capacityRaw;
 
     @PostConstruct
     private void init() {
-        //Populate class with variation values based on child nodes and their content in the JCR
         if (resource != null) {
             variationID = resource.getName();
-            Resource attributes = resource.getChild("attributes");
-            if (attributes != null) {
-                Resource driveCapacity = attributes.getChild("DriveCapacity");
-                if (driveCapacity != null) {
-                    capacity = driveCapacity.getValueMap().get("value", String.class);
-                    capacityRaw = driveCapacity.getValueMap().get("rawValue", Integer.class);
-                }
-                Resource driveFormFactor = attributes.getChild("SSDFormFactor");
-                if (driveCapacity != null) {
-                    formFactor = driveFormFactor.getValueMap().get("value", String.class);
-                }
-                Resource driveInterface = attributes.getChild("SSDInterface");
-                if (driveCapacity != null) {
-                    productInterface = driveInterface.getValueMap().get("value", String.class);
-                }
-            }
         }
     }
 }
