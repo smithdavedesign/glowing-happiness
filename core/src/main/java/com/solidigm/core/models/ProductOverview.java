@@ -2,6 +2,8 @@ package com.solidigm.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
 
+import java.util.List;
+
 /**
  * Defines the {@code ProductOverview} Sling Model for the {@code /apps/solidigm/components/productoverview} component.
  */
@@ -27,27 +29,27 @@ public interface ProductOverview extends ComponentExporter {
     /**
      * Returns string array for the product's interfaces
      *
-     * @return String[]
+     * @return List<String>
      */
-    default String[] getInterfaces() {
+    default List<String> getInterfaces() {
         throw new UnsupportedOperationException();
     }
 
     /**
      * Returns string array for the product's Form Factors
      *
-     * @return String[]
+     * @return List<String>
      */
-    default String[] getFormFactors() {
+    default List<String> getFormFactors() {
         throw new UnsupportedOperationException();
     }
 
     /**
      * Returns string array for the product's capacities
      *
-     * @return String[]
+     * @return List<String>
      */
-    default String[] getCapacities() {
+    default List<String> getCapacities() {
         throw new UnsupportedOperationException();
     }
 
