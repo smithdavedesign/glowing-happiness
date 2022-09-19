@@ -105,31 +105,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     function updateProductData(product) {
         // By the numbers
-        productConfigurator.querySelector('[data-name=product-family]').textContent =
-            product.byTheNumbers.productFamily;
-        productConfigurator.querySelector('[data-name=form-factor]').textContent =
-            product.byTheNumbers.formFactor;
-        productConfigurator.querySelector('[data-name=capacity]').textContent =
-            product.byTheNumbers.capacity;
-        productConfigurator.querySelector('[data-name=weight]').textContent =
-            product.byTheNumbers.weight;
-        productConfigurator.querySelector('[data-name=technology]').textContent =
-            product.byTheNumbers.technology;
-        productConfigurator.querySelector('[data-name=availability]').textContent =
-            product.byTheNumbers.availability;
-        productConfigurator.querySelector(
-            '#panel-by-the-numbers .cmp-product-tabs__side-panel--metric :nth-child(1) .cmp-product-tabs__metric-title'
-        ).textContent = product.byTheNumbers.percentages[0].title;
-        productConfigurator.querySelector(
-            '#panel-by-the-numbers .cmp-product-tabs__side-panel--metric :nth-child(1) .cmp-product-tabs__metric-body'
-        ).textContent = product.byTheNumbers.percentages[0].description;
-        productConfigurator.querySelector(
-            '#panel-by-the-numbers .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-title'
-        ).textContent = product.byTheNumbers.percentages[1].title;
-        productConfigurator.querySelector(
-            '#panel-by-the-numbers .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-body'
-        ).textContent = product.byTheNumbers.percentages[1].description;
-
+        Object.entries(product.byTheNumbers).forEach(([key, val]) => {
+            productConfigurator.querySelector(`[data-name=${key}]`).textContent = val;
+        });
         // Performance
         productConfigurator.querySelector('[data-name=random-read]').textContent =
             product.performance.randomRead;
@@ -187,16 +165,14 @@ window.addEventListener('DOMContentLoaded', async () => {
             product.orderingSpecs.rightTab.shippingMedia;
 
         // PCN/MDDS
-        productConfigurator.querySelector('[data-name=t99ah2t]').innerHTML = product.pcnmdds[
-            '99ah2t'
-        ]
-            .map((link) => `<a href=${link.url}>${link.label}</a>`)
-            .join('');
-        productConfigurator.querySelector('[data-name=t99av73]').innerHTML = product.pcnmdds[
-            '99av73'
-        ]
-            .map((link) => `<a href=${link.url}>${link.label}</a>`)
-            .join('');
+        const pcnmdds = document.querySelector('#panel-pcn-mdds .cmp-product-tabs__key-val');
+        pcnmdds.innerHTML = '';
+        product.pcnmdds.forEach((entry) => {
+            const links = entry.data
+                .map((link) => `<a href="${link.url}">${link.text}</a>`)
+                .join('');
+            pcnmdds.innerHTML += `<dt>${entry.label}</dt> <dd>${links}</dd>`;
+        });
 
         // Compliance
         productConfigurator.querySelector('[data-name=eccn]').textContent = product.compliance.eccn;
@@ -223,7 +199,6 @@ window.addEventListener('DOMContentLoaded', async () => {
                 );
             });
 
-            console.log(productResult);
             selectedProduct = data.results.find((result) => result.path === productResult.result);
             compareButton.removeAttribute('disabled');
             updateProductData(selectedProduct);
