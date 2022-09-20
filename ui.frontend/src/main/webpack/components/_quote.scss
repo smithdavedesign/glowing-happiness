@@ -19,9 +19,10 @@
 
         &::before,
         &::after {
-            content: "";
-            background: url("../../assets/quote-icon.svg");
+            content: '';
+            @include svg_icon('quote');
             background-size: contain;
+            background-repeat: no-repeat;
             position: absolute;
             height: vwMobile(30);
             width: vwMobile(35);
