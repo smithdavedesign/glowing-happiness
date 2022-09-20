@@ -122,7 +122,7 @@
                             data-sly-list.attribute="${productConfigurator.attributes}"
                         >
                             <dt>${attribute.attribute @ i18n}</dt>
-                            <dd data-name="${attribute.dataName}">${attribute.attributeValue}</dd>
+                            <dd data-name="${attribute.attribute}">${attribute.attributeValue ? attribute.attributeValue : ' - '}</dd>
                         </dl>
                     </div>
                     <div
@@ -145,26 +145,26 @@
                     <div class="cmp-product-tabs__side-panel">
                         <dl class="cmp-product-tabs__key-val">
                             <dt>${'RandomRead100PctSpanValue' @ i18n}</dt>
-                            <dd data-name="random-read">427000 IOPS (4K Blocks)</dd>
+                            <dd data-name="random-read"> - </dd>
                             <dt>${'RandomWrite100PctSpanValue' @ i18n}</dt>
-                            <dd data-name="random-write">36000 IOPS (4K Blocks)</dd>
+                            <dd data-name="random-write"> - </dd>
                             <dt>${'SSDPowerActive' @ i18n}</dt>
-                            <dd data-name="power-active">15W</dd>
+                            <dd data-name="power-active"> - </dd>
                             <dt>${'SSDPowerIdle' @ i18n}</dt>
-                            <dd data-name="power-idle">5W</dd>
+                            <dd data-name="power-idle"> - </dd>
                         </dl>
                     </div>
                     <div class="cmp-product-tabs__side-panel cmp-product-tabs__side-panel--metric">
                         <div class="cmp-product-tabs__metric">
-                            <span class="cmp-product-tabs__metric-title">3200</span>
-                            <span class="cmp-product-tabs__metric-subtitle">MB/s</span>
+                            <span class="cmp-product-tabs__metric-title"> - </span>
+                            <span class="cmp-product-tabs__metric-subtitle"></span>
                             <p class="cmp-product-tabs__metric-body">
                                 ${'SequentialReadMB' @ i18n}
                             </p>
                         </div>
                         <div class="cmp-product-tabs__metric">
-                            <span class="cmp-product-tabs__metric-title">1000</span>
-                            <span class="cmp-product-tabs__metric-subtitle">MB/s</span>
+                            <span class="cmp-product-tabs__metric-title"> - </span>
+                            <span class="cmp-product-tabs__metric-subtitle"></span>
                             <p class="cmp-product-tabs__metric-body">
                                 ${'SequentialWriteMB' @ i18n}
                             </p>
@@ -181,25 +181,25 @@
                     <div class="cmp-product-tabs__side-panel">
                         <dl class="cmp-product-tabs__key-val">
                             <dt>${'WarrantyLengthYears' @ i18n}</dt>
-                            <dd data-name="warranty-period">5 yrs</dd>
+                            <dd data-name="warranty-period"> - </dd>
                             <dt>${'SSDEnduranceRating' @ i18n}</dt>
-                            <dd data-name="endurance-rating">14.0 PBW</dd>
+                            <dd data-name="endurance-rating"> - </dd>
                             <dt>${'MTBF' @ i18n}Mean TIme Between Failures</dt>
-                            <dd data-name="mean-time-netween-failures">2 million hours</dd>
+                            <dd data-name="mean-time-netween-failures"> - </dd>
                             <dt>${'UBER' @ i18n}Uncorrectable Bit Error Rate (UBER)</dt>
-                            <dd data-name="uncorrectable-bit-error-rate">1 sector per 10^17 bits read</dd>
+                            <dd data-name="uncorrectable-bit-error-rate"> - </dd>
                         </dl>
                     </div>
                     <div class="cmp-product-tabs__side-panel">
                         <dl class="cmp-product-tabs__key-val">
                             <dt>${'VibrationOperating' @ i18n}</dt>
-                            <dd data-name="vibration-operating">2.17 GRMS (5 - 700 Hz) Max</dd>
+                            <dd data-name="vibration-operating"> - </dd>
                             <dt>${'VibrationNonOperating' @ i18n}</dt>
-                            <dd data-name="vibration-non-operating">1,000 G(Max) at 0.5 msec</dd>
+                            <dd data-name="vibration-non-operating"> - </dd>
                             <dt>${'SSDShock' @ i18n}</dt>
-                            <dd data-name="shock">3.13 GRMS (5 - 800 Hz) Max</dd>
+                            <dd data-name="shock"> - </dd>
                             <dt>${'OperatingTemperature' @ i18n}</dt>
-                            <dd data-name="operating-temperature-range">0ºC to 70ºC</dd>
+                            <dd data-name="operating-temperature-range"> - </dd>
                         </dl>
                     </div>
                 </div>
@@ -214,18 +214,18 @@
                         <span class="cmp-product-tabs__key-val-title">Single Pack Non-Opal</span>
                         <dl class="cmp-product-tabs__key-val">
                             <dt>${'Ordering Code' @ i18n}</dt>
-                            <dd data-name="non-opal-ordering-code">SSPDF2KX076T1N1</dd>
+                            <dd data-name="non-opal-ordering-code"> - </dd>
                             <dt>${'Shipping Media' @ i18n}</dt>
-                            <dd data-name="non-opal-shipping-media">Bulk</dd>
+                            <dd data-name="non-opal-shipping-media"> - </dd>
                         </dl>
                     </div>
                     <div class="cmp-product-tabs__side-panel">
                         <span class="cmp-product-tabs__key-val-title">Single Pack Opal</span>
                         <dl class="cmp-product-tabs__key-val">
                             <dt>${'Ordering Code' @ i18n}</dt>
-                            <dd data-name="opal-ordering-code">SSDPF2KX076T1OS</dd>
+                            <dd data-name="opal-ordering-code"> - </dd>
                             <dt>${'Shipping Media' @ i18n}</dt>
-                            <d data-name="opal-shipping-media">Bulk</dd>
+                            <d data-name="opal-shipping-media"> - </dd>
                         </dl>
                     </div>
                 </div>
@@ -239,9 +239,8 @@
                     <div class="cmp-product-tabs__side-panel">
                         <dl
                             class="cmp-product-tabs__key-val"
-                            data-sly-list.pcnmdds="${productConfigurator.pcnMddsEntries}"
                         >
-                            <dt>${pcnmdds.id}</dt>
+                            <!--<dt>${pcnmdds.id}</dt>
                             <dd data-name="${pcnmdds.dataName}">
                                 <a
                                     data-sly-test="${pcnmdds.pcnLink}"
@@ -257,7 +256,7 @@
                                 >
                                     MDDS
                                 </a>
-                            </dd>
+                            </dd>-->
                         </dl>
                     </div>
                 </div>
@@ -271,11 +270,11 @@
                     <div class="cmp-product-tabs__side-panel">
                         <dl class="cmp-product-tabs__key-val">
                             <dt>ECCN</dt>
-                            <dd data-name="eccn">5A992C</dd>
+                            <dd data-name="eccn"> - </dd>
                             <dt>CCATS</dt>
-                            <dd data-name="ccats">G162706L1</dd>
+                            <dd data-name="ccats"> - </dd>
                             <dt>CCATS</dt>
-                            <dd data-name="ushts">8523510000</dd>
+                            <dd data-name="ushts"> - </dd>
                         </dl>
                     </div>
                 </div>

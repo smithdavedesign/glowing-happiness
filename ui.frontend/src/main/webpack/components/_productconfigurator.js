@@ -106,7 +106,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     function updateProductData(product) {
         // By the numbers
         Object.entries(product.byTheNumbers).forEach(([key, val]) => {
-            productConfigurator.querySelector(`[data-name=${key}]`).textContent = val;
+            var attr = productConfigurator.querySelector(`[data-name=${key}]`);
+            if (attr != null) {
+                attr.textContent = val;
+            }
         });
         // Performance
         productConfigurator.querySelector('[data-name=random-read]').textContent =
@@ -124,17 +127,11 @@ window.addEventListener('DOMContentLoaded', async () => {
             '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(1) .cmp-product-tabs__metric-subtitle'
         ).textContent = product.performance.speeds[0].unit;
         productConfigurator.querySelector(
-            '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(1) .cmp-product-tabs__metric-body'
-        ).textContent = product.performance.speeds[0].description;
-        productConfigurator.querySelector(
             '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-title'
         ).textContent = product.performance.speeds[1].title;
         productConfigurator.querySelector(
             '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-subtitle'
         ).textContent = product.performance.speeds[1].unit;
-        productConfigurator.querySelector(
-            '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-body'
-        ).textContent = product.performance.speeds[1].description;
 
         // Reliability
         productConfigurator.querySelector('[data-name=warranty-period]').textContent =
@@ -212,7 +209,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     compareButton.addEventListener('click', function () {
         window.dispatchEvent(
             new CustomEvent('addProductToCompare', {
-                detail: { path: selectedProduct.path % 3 },
+                detail: { path: selectedProduct.productPagePath, variation: selectedProduct.path },
             })
         );
     });

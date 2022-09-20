@@ -59,12 +59,5 @@ public class ProductConfiguratorImpl implements ProductConfigurator {
     @PostConstruct
     private void initModel() {
         downloadLink = new Link("", download);
-        if (attributes != null) {
-            for (Attribute attribute : attributes) {
-                if (StringUtils.isEmpty(attribute.getAttributeValue())) {
-                    attribute.setAttributeValue("Placeholder Value from Product Data");
-                }
-            }
-        }
     }
 }
