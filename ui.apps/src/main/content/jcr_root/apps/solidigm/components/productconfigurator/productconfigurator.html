@@ -1,222 +1,284 @@
-<div class="cmp-product-tabs" id="configurator" data-sly-use.productConfigurator="com.solidigm.core.models.ProductConfigurator">
-    <div class="cmp-product-tabs__navigation">
-        <div class="cmp-product-tabs__tablist" role="tablist" aria-label="Product Details">
-            <button
-                class="cmp-product-tabs__tab-btn"
-                role="tab"
-                aria-selected="true"
-                aria-controls="panel-by-the-numbers"
-                id="tab-by-the-numbers"
-                tabindex="0"
-            >
-                ${'By the Numbers' @ i18n}
-            </button>
-            <button
-                class="cmp-product-tabs__tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="panel-performance"
-                id="tab-performance"
-                tabindex="0"
-            >
-                ${'Performance' @ i18n}
-            </button>
-            <button
-                class="cmp-product-tabs__tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="panel-reliability"
-                id="tab-reliability"
-                tabindex="0"
-            >
-                ${'Reliability' @ i18n}
-            </button>
-            <button
-                class="cmp-product-tabs__tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="panel-ordering-specs"
-                id="tab-ordering-specs"
-                tabindex="0"
-            >
-                ${'Ordering Specs' @ i18n}
-            </button>
-            <button
-                class="cmp-product-tabs__tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="panel-pcn-mdds"
-                id="tab-pcn-mdds"
-                tabindex="0"
-            >
-                PCN/MDDS
-            </button>
-            <button
-                class="cmp-product-tabs__tab-btn"
-                role="tab"
-                aria-selected="false"
-                aria-controls="panel-compliance"
-                id="tab-compliance"
-                tabindex="0"
-            >
-                ${'Compliance' @ i18n}
+<div class="cmp-product-configurator">
+    <div class="model-list__filters" style="margin-bottom: 1rem">
+        <span>${'Configure By' @ i18n}</span>
+        <sly
+            data-sly-use.component="solidigm/components/customselect/customselect.html"
+            data-sly-call="${component.customSelect @ 
+                                placeholder='Interface',
+                                label='Interface',
+                                id='interface',
+                                name='interface',
+                                srOnly=true}"
+        />
+        <div class="model-list__filters__bottom-row">
+            <sly
+                data-sly-use.component="solidigm/components/customselect/customselect.html"
+                data-sly-call="${component.customSelect @ 
+                                placeholder='Form Factor',
+                                label='Form Factor',
+                                id='form-factor',
+                                name='form-factor',
+                                srOnly=true}"
+            />
+            <sly
+                data-sly-use.component="solidigm/components/customselect/customselect.html"
+                data-sly-call="${component.customSelect @ 
+                                placeholder='Capacity',
+                                label='Capacity',
+                                id='capacity',
+                                name='capacity',
+                                srOnly=true}"
+            />
+            <button disabled class="solidigm-btn cmp-product-configurator__add-to-compare-btn">
+                ${'Add to Compare' @ i18n}
             </button>
         </div>
-        <a class="cmp-product-tabs__download-btn" href="${productConfigurator.downloadLink.link}" target="${productConfigurator.downloadLink.target}" aria-label="Download specs sheet"></a>
-    </div>
-    <div>
         <div
-            class="cmp-product-tabs__tab-panel"
-            role="tabpanel"
-            tabindex="0"
-            aria-labelledby="tab-by-the-numbers"
-            id="panel-by-the-numbers"
+            class="cmp-product-tabs"
+            id="configurator"
+            data-sly-use.productConfigurator="com.solidigm.core.models.ProductConfigurator"
         >
-            <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val"
-                    data-sly-list.attribute="${productConfigurator.attributes}">
-                    <dt>${attribute.attribute @ i18n}</dt>
-                    <dd>${attribute.attributeValue}</dd>
-                </dl>
-            </div>
-            <div class="cmp-product-tabs__side-panel cmp-product-tabs__side-panel--metric"
-                 data-sly-list.highlight="${productConfigurator.highlights}">
-                <div class="cmp-product-tabs__metric">
-                    <span class="cmp-product-tabs__metric-title">${highlight.heading}</span>
-                    <p class="cmp-product-tabs__metric-body">
-                        ${highlight.description}
-                    </p>
+            <div class="cmp-product-tabs__navigation">
+                <div class="cmp-product-tabs__tablist" role="tablist" aria-label="Product Details">
+                    <button
+                        class="cmp-product-tabs__tab-btn"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="panel-by-the-numbers"
+                        id="tab-by-the-numbers"
+                        tabindex="0"
+                    >
+                        ${'By the Numbers' @ i18n}
+                    </button>
+                    <button
+                        class="cmp-product-tabs__tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-performance"
+                        id="tab-performance"
+                        tabindex="0"
+                    >
+                        ${'Performance' @ i18n}
+                    </button>
+                    <button
+                        class="cmp-product-tabs__tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-reliability"
+                        id="tab-reliability"
+                        tabindex="0"
+                    >
+                        ${'Reliability' @ i18n}
+                    </button>
+                    <button
+                        class="cmp-product-tabs__tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-ordering-specs"
+                        id="tab-ordering-specs"
+                        tabindex="0"
+                    >
+                        ${'Ordering Specs' @ i18n}
+                    </button>
+                    <button
+                        class="cmp-product-tabs__tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-pcn-mdds"
+                        id="tab-pcn-mdds"
+                        tabindex="0"
+                    >
+                        PCN/MDDS
+                    </button>
+                    <button
+                        class="cmp-product-tabs__tab-btn"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="panel-compliance"
+                        id="tab-compliance"
+                        tabindex="0"
+                    >
+                        ${'Compliance' @ i18n}
+                    </button>
                 </div>
+                <a
+                    class="cmp-product-tabs__download-btn"
+                    href="${productConfigurator.downloadLink.link}"
+                    target="${productConfigurator.downloadLink.target}"
+                    aria-label="Download specs sheet"
+                ></a>
             </div>
-        </div>
-        <div
-            class="cmp-product-tabs__tab-panel"
-            role="tabpanel"
-            tabindex="0"
-            aria-labelledby="tab-performance"
-            id="panel-performance"
-        >
-            <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>${'RandomRead100PctSpanValue' @ i18n}</dt>
-                    <dd>427000 IOPS (4K Blocks)</dd>
-                    <dt>${'RandomWrite100PctSpanValue' @ i18n}</dt>
-                    <dd>36000 IOPS (4K Blocks)</dd>
-                    <dt>${'SSDPowerActive' @ i18n}</dt>
-                    <dd>15W</dd>
-                    <dt>${'SSDPowerIdle' @ i18n}</dt>
-                    <dd>5W</dd>
-                </dl>
-            </div>
-            <div class="cmp-product-tabs__side-panel cmp-product-tabs__side-panel--metric">
-                <div class="cmp-product-tabs__metric">
-                    <span class="cmp-product-tabs__metric-title">3200</span>
-                    <span class="cmp-product-tabs__metric-subtitle">MB/s</span>
-                    <p class="cmp-product-tabs__metric-body">
-                        ${'SequentialReadMB' @ i18n}
-                    </p>
+            <div>
+                <div
+                    class="cmp-product-tabs__tab-panel"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tab-by-the-numbers"
+                    id="panel-by-the-numbers"
+                >
+                    <div class="cmp-product-tabs__side-panel">
+                        <dl
+                            class="cmp-product-tabs__key-val"
+                            data-sly-list.attribute="${productConfigurator.attributes}"
+                        >
+                            <dt>${attribute.attribute @ i18n}</dt>
+                            <dd data-name="${attribute.dataName}">${attribute.attributeValue}</dd>
+                        </dl>
+                    </div>
+                    <div
+                        class="cmp-product-tabs__side-panel cmp-product-tabs__side-panel--metric"
+                        data-sly-list.highlight="${productConfigurator.highlights}"
+                    >
+                        <div class="cmp-product-tabs__metric">
+                            <span class="cmp-product-tabs__metric-title">${highlight.heading}</span>
+                            <p class="cmp-product-tabs__metric-body">${highlight.description}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="cmp-product-tabs__metric">
-                    <span class="cmp-product-tabs__metric-title">1000</span>
-                    <span class="cmp-product-tabs__metric-subtitle">MB/s</span>
-                    <p class="cmp-product-tabs__metric-body">
-                        ${'SequentialWriteMB' @ i18n}
-                    </p>
+                <div
+                    class="cmp-product-tabs__tab-panel"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tab-performance"
+                    id="panel-performance"
+                >
+                    <div class="cmp-product-tabs__side-panel">
+                        <dl class="cmp-product-tabs__key-val">
+                            <dt>${'RandomRead100PctSpanValue' @ i18n}</dt>
+                            <dd data-name="random-read">427000 IOPS (4K Blocks)</dd>
+                            <dt>${'RandomWrite100PctSpanValue' @ i18n}</dt>
+                            <dd data-name="random-write">36000 IOPS (4K Blocks)</dd>
+                            <dt>${'SSDPowerActive' @ i18n}</dt>
+                            <dd data-name="power-active">15W</dd>
+                            <dt>${'SSDPowerIdle' @ i18n}</dt>
+                            <dd data-name="power-idle">5W</dd>
+                        </dl>
+                    </div>
+                    <div class="cmp-product-tabs__side-panel cmp-product-tabs__side-panel--metric">
+                        <div class="cmp-product-tabs__metric">
+                            <span class="cmp-product-tabs__metric-title">3200</span>
+                            <span class="cmp-product-tabs__metric-subtitle">MB/s</span>
+                            <p class="cmp-product-tabs__metric-body">
+                                ${'SequentialReadMB' @ i18n}
+                            </p>
+                        </div>
+                        <div class="cmp-product-tabs__metric">
+                            <span class="cmp-product-tabs__metric-title">1000</span>
+                            <span class="cmp-product-tabs__metric-subtitle">MB/s</span>
+                            <p class="cmp-product-tabs__metric-body">
+                                ${'SequentialWriteMB' @ i18n}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div
-            class="cmp-product-tabs__tab-panel"
-            role="tabpanel"
-            tabindex="0"
-            aria-labelledby="tab-reliability"
-            id="panel-reliability"
-        >
-            <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>${'WarrantyLengthYears' @ i18n}</dt>
-                    <dd>5 yrs</dd>
-                    <dt>${'SSDEnduranceRating' @ i18n}</dt>
-                    <dd>14.0 PBW</dd>
-                    <dt>${'MTBF' @ i18n}Mean TIme Between Failures</dt>
-                    <dd>2 million hours</dd>
-                    <dt>${'UBER' @ i18n}Uncorrectable Bit Error Rate (UBER)</dt>
-                    <dd>1 sector per 10^17 bits read</dd>
-                </dl>
-            </div>
-            <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>${'VibrationOperating' @ i18n}</dt>
-                    <dd>2.17 GRMS (5 - 700 Hz) Max</dd>
-                    <dt>${'VibrationNonOperating' @ i18n}</dt>
-                    <dd>1,000 G(Max) at 0.5 msec</dd>
-                    <dt>${'SSDShock' @ i18n}</dt>
-                    <dd>3.13 GRMS (5 - 800 Hz) Max</dd>
-                    <dt>${'OperatingTemperature' @ i18n}</dt>
-                    <dd>0ºC to 70ºC</dd>
-                </dl>
-            </div>
-        </div>
-        <div
-            class="cmp-product-tabs__tab-panel"
-            role="tabpanel"
-            tabindex="0"
-            aria-labelledby="tab-ordering-specs"
-            id="panel-ordering-specs"
-        >
-            <div class="cmp-product-tabs__side-panel">
-                <span class="cmp-product-tabs__key-val-title">Single Pack Non-Opal</span>
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>${'Ordering Code' @ i18n}</dt>
-                    <dd>SSPDF2KX076T1N1</dd>
-                    <dt>${'Shipping Media' @ i18n}</dt>
-                    <dd>Bulk</dd>
-                </dl>
-            </div>
-            <div class="cmp-product-tabs__side-panel">
-                <span class="cmp-product-tabs__key-val-title">Single Pack Opal</span>
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>${'Ordering Code' @ i18n}</dt>
-                    <dd>SSDPF2KX076T1OS</dd>
-                    <dt>${'Shipping Media' @ i18n}</dt>
-                    <dd>Bulk</dd>
-                </dl>
-            </div>
-        </div>
-        <div
-            class="cmp-product-tabs__tab-panel"
-            role="tabpanel"
-            tabindex="0"
-            aria-labelledby="tab-pcn-mdds"
-            id="panel-pcn-mdds"
-        >
-            <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val"
-                    data-sly-list.pcnmdds="${productConfigurator.pcnMddsEntries}">
-                    <dt>${pcnmdds.id}</dt>
-                    <dd>
-                        <a data-sly-test="${pcnmdds.pcnLink}" href="${pcnmdds.pcnLink}" target="_blank"> PCN </a>
-                        <a data-sly-test="${pcnmdds.mddsLink}" href="${pcnmdds.mddsLink}" target="_blank"> MDDS </a>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-        <div
-            class="cmp-product-tabs__tab-panel"
-            role="tabpanel"
-            tabindex="0"
-            aria-labelledby="tab-compliance"
-            id="panel-compliance"
-        >
-            <div class="cmp-product-tabs__side-panel">
-                <dl class="cmp-product-tabs__key-val">
-                    <dt>ECCN</dt>
-                    <dd>5A992C</dd>
-                    <dt>CCATS</dt>
-                    <dd>G162706L1</dd>
-                    <dt>CCATS</dt>
-                    <dd>8523510000</dd>
-                </dl>
+                <div
+                    class="cmp-product-tabs__tab-panel"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tab-reliability"
+                    id="panel-reliability"
+                >
+                    <div class="cmp-product-tabs__side-panel">
+                        <dl class="cmp-product-tabs__key-val">
+                            <dt>${'WarrantyLengthYears' @ i18n}</dt>
+                            <dd data-name="warranty-period">5 yrs</dd>
+                            <dt>${'SSDEnduranceRating' @ i18n}</dt>
+                            <dd data-name="endurance-rating">14.0 PBW</dd>
+                            <dt>${'MTBF' @ i18n}Mean TIme Between Failures</dt>
+                            <dd data-name="mean-time-netween-failures">2 million hours</dd>
+                            <dt>${'UBER' @ i18n}Uncorrectable Bit Error Rate (UBER)</dt>
+                            <dd data-name="uncorrectable-bit-error-rate">1 sector per 10^17 bits read</dd>
+                        </dl>
+                    </div>
+                    <div class="cmp-product-tabs__side-panel">
+                        <dl class="cmp-product-tabs__key-val">
+                            <dt>${'VibrationOperating' @ i18n}</dt>
+                            <dd data-name="vibration-operating">2.17 GRMS (5 - 700 Hz) Max</dd>
+                            <dt>${'VibrationNonOperating' @ i18n}</dt>
+                            <dd data-name="vibration-non-operating">1,000 G(Max) at 0.5 msec</dd>
+                            <dt>${'SSDShock' @ i18n}</dt>
+                            <dd data-name="shock">3.13 GRMS (5 - 800 Hz) Max</dd>
+                            <dt>${'OperatingTemperature' @ i18n}</dt>
+                            <dd data-name="operating-temperature-range">0ºC to 70ºC</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div
+                    class="cmp-product-tabs__tab-panel"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tab-ordering-specs"
+                    id="panel-ordering-specs"
+                >
+                    <div class="cmp-product-tabs__side-panel">
+                        <span class="cmp-product-tabs__key-val-title">Single Pack Non-Opal</span>
+                        <dl class="cmp-product-tabs__key-val">
+                            <dt>${'Ordering Code' @ i18n}</dt>
+                            <dd data-name="non-opal-ordering-code">SSPDF2KX076T1N1</dd>
+                            <dt>${'Shipping Media' @ i18n}</dt>
+                            <dd data-name="non-opal-shipping-media">Bulk</dd>
+                        </dl>
+                    </div>
+                    <div class="cmp-product-tabs__side-panel">
+                        <span class="cmp-product-tabs__key-val-title">Single Pack Opal</span>
+                        <dl class="cmp-product-tabs__key-val">
+                            <dt>${'Ordering Code' @ i18n}</dt>
+                            <dd data-name="opal-ordering-code">SSDPF2KX076T1OS</dd>
+                            <dt>${'Shipping Media' @ i18n}</dt>
+                            <d data-name="opal-shipping-media">Bulk</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div
+                    class="cmp-product-tabs__tab-panel"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tab-pcn-mdds"
+                    id="panel-pcn-mdds"
+                >
+                    <div class="cmp-product-tabs__side-panel">
+                        <dl
+                            class="cmp-product-tabs__key-val"
+                            data-sly-list.pcnmdds="${productConfigurator.pcnMddsEntries}"
+                        >
+                            <dt>${pcnmdds.id}</dt>
+                            <dd data-name="${pcnmdds.dataName}">
+                                <a
+                                    data-sly-test="${pcnmdds.pcnLink}"
+                                    href="${pcnmdds.pcnLink}"
+                                    target="_blank"
+                                >
+                                    PCN
+                                </a>
+                                <a
+                                    data-sly-test="${pcnmdds.mddsLink}"
+                                    href="${pcnmdds.mddsLink}"
+                                    target="_blank"
+                                >
+                                    MDDS
+                                </a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div
+                    class="cmp-product-tabs__tab-panel"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tab-compliance"
+                    id="panel-compliance"
+                >
+                    <div class="cmp-product-tabs__side-panel">
+                        <dl class="cmp-product-tabs__key-val">
+                            <dt>ECCN</dt>
+                            <dd data-name="eccn">5A992C</dd>
+                            <dt>CCATS</dt>
+                            <dd data-name="ccats">G162706L1</dd>
+                            <dt>CCATS</dt>
+                            <dd data-name="ushts">8523510000</dd>
+                        </dl>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
