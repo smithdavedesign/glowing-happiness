@@ -1,4 +1,6 @@
-<div class="cmp-product-configurator">
+<div class="cmp-product-configurator"
+     data-sly-use.productConfigurator="com.solidigm.core.models.ProductConfigurator"
+     data-path="${productConfigurator.path}">
     <div class="model-list__filters" style="margin-bottom: 1rem">
         <span>${'Configure By' @ i18n}</span>
         <sly
@@ -33,10 +35,11 @@
                 ${'Add to Compare' @ i18n}
             </button>
         </div>
-        <div
+        
+    </div>
+    <div
             class="cmp-product-tabs"
             id="configurator"
-            data-sly-use.productConfigurator="com.solidigm.core.models.ProductConfigurator"
         >
             <div class="cmp-product-tabs__navigation">
                 <div class="cmp-product-tabs__tablist" role="tablist" aria-label="Product Details">
@@ -122,7 +125,7 @@
                             data-sly-list.attribute="${productConfigurator.attributes}"
                         >
                             <dt>${attribute.attribute @ i18n}</dt>
-                            <dd data-name="${attribute.attribute}">${attribute.attributeValue ? attribute.attributeValue : ' - '}</dd>
+                            <dd data-name="${attribute.attribute}" data-authored="${attribute.attributeValue}">${attribute.attributeValue ? attribute.attributeValue : ' - '}</dd>
                         </dl>
                     </div>
                     <div
@@ -280,5 +283,4 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>

@@ -13,6 +13,15 @@ import java.util.List;
  */
 public interface ProductConfigurator extends ComponentExporter {
     /**
+     * Returns the product page path of the current page
+     *
+     * @return String
+     */
+    default String getPath() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns list of attributes to display about the product
      *
      * @return List<Attribute>

@@ -59,7 +59,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         optionsContainer: capacityOptionsContainer,
     };
 
-    const request = await fetch('/bin/solidigm/productConfigurator');
+    const path = productConfigurator.getAttribute("data-path");
+    const request = await fetch(`/bin/solidigm/productConfigurator?path=${path}`);
     const data = await request.json();
     const {
         allFilters: { interface: interfaces, formFactor: formFactors, capacity: capacities },
@@ -76,7 +77,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const validOptions = data.filters
             .filter((combination) => {
                 return otherSelects.reduce((acc, curr) => {
-                    if (!acc) return false;
+                    if (!acc) { return false; }
 
                     return (
                         combination[curr.key] === curr.element.value || curr.element.value === ''
@@ -108,7 +109,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         Object.entries(product.byTheNumbers).forEach(([key, val]) => {
             var attr = productConfigurator.querySelector(`[data-name=${key}]`);
             if (attr != null) {
-                attr.textContent = val;
+                if (attr.attributes['data-authored'] == null) {
+                    attr.textContent = val;
+                }
             }
         });
         // Performance

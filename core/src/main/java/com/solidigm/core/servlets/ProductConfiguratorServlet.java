@@ -50,6 +50,9 @@ public class ProductConfiguratorServlet extends SlingSafeMethodsServlet {
     @Override
     protected void doGet(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
+        ProductModel product = productService.getProduct("client", "d3", "S4511");
+        String test = product.getVariations().get("0000000841").getAttributesJSON();
+
         ResourceResolver resourceResolver = req.getResourceResolver();
         String response = new String(resourceResolver.getResource("/var/configurator.json").adaptTo(InputStream.class).readAllBytes());
         resp.setContentType("application/json");
