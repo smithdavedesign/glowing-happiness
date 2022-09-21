@@ -6,3 +6,10 @@
 # allow product compare selector to pass through
 /0110 { /type "allow" /selectors '(productcompare)' /extension '(json)' }
 
+/0111 { /type "allow" /method "POST" /url "*/saml_login" }
+
+/0112 { /type "allow" /method "POST" /url "*/saml_logout" }
+
+/0113 { /type "allow" /method "GET" /url "/bin/solidigm/isSignedIn" }
+
+/0114 { /type "allow" /method "GET" /url "/bin/solidigm/signOut" }
