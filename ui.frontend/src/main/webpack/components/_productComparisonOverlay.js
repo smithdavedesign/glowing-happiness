@@ -157,4 +157,8 @@ window.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('removeSavedProduct', function (e) {
         removeProduct(e.detail.title);
     });
+
+    window.addEventListener("addProductToCompare", function (e) {
+        addProduct({ productPagePath: e.detail.path, variation: e.detail.variation });
+    });
 });

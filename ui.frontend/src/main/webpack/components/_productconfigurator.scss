@@ -1,3 +1,11 @@
+.cmp-product-configurator {
+    &__add-to-compare-btn {
+        @media (min-width: $desktop) {
+            margin-left: auto;
+        }
+    }
+}
+
 .cmp-product-tabs {
     background: $dark-blue;
     color: $white;
@@ -54,8 +62,8 @@
             min-width: 15%;
         }
 
-        &[aria-selected="true"]::after {
-            content: "";
+        &[aria-selected='true']::after {
+            content: '';
             position: absolute;
             top: 100%;
             left: 0;
@@ -68,8 +76,8 @@
             }
         }
 
-        &[aria-selected="true"]::before {
-            content: "";
+        &[aria-selected='true']::before {
+            content: '';
             position: absolute;
             bottom: vwMobile(-1);
             left: 50%;
