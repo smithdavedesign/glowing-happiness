@@ -1,0 +1,894 @@
+.srJobList.dataTable.no-footer {
+    line-height: 1.5;
+    color: #00083f;
+}
+.nwc-text-core {
+    font-size: 16px;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-weight: 400;
+    line-height: 2;
+}
+.nwc-text-h1 {
+    font-size: 2.8125rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 200;
+    line-height: 1.3333333333;
+}
+@media (min-width: 1024px) {
+    .nwc-text-h1 {
+        font-size: 5.625rem;
+        font-weight: 100;
+        line-height: 1.1111111111;
+    }
+}
+.nwc-text-h2 {
+    font-size: 2.5rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 100;
+    line-height: 1.125;
+}
+@media (min-width: 1024px) {
+    .nwc-text-h2 {
+        font-size: 4.6875rem;
+        line-height: 1.1333333333;
+    }
+}
+.nwc-text-h3 {
+    font-size: 2rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 200;
+    line-height: 1.40625;
+}
+@media (min-width: 1024px) {
+    .nwc-text-h3 {
+        font-size: 3.4375rem;
+        line-height: 1.0909090909;
+    }
+}
+.nwc-text-h4 {
+    font-size: 1.75rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 200;
+    line-height: 1.4285714286;
+}
+@media (min-width: 1024px) {
+    .nwc-text-h4 {
+        font-size: 2.875rem;
+        line-height: 1.3043478261;
+    }
+}
+.nwc-text-h5 {
+    font-size: 1.375rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 300;
+    line-height: 1.5;
+}
+@media (min-width: 1024px) {
+    .nwc-text-h5 {
+        font-size: 2rem;
+        line-height: 1.375;
+    }
+}
+.nwc-text-h6 {
+    font-size: 1.125rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    line-height: 1.6666666667;
+}
+@media (min-width: 1024px) {
+    .nwc-text-h6 {
+        font-size: 1.3125rem;
+        line-height: 1.8095238095;
+    }
+}
+.nwc-text-hero-home-title {
+    font-size: 3.125rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 100;
+    line-height: 1.2;
+}
+@media (min-width: 768px) {
+    .nwc-text-hero-home-title {
+        font-size: 2.8125em;
+        line-height: 1.2;
+    }
+}
+.nwc-text-hero-home-body {
+    font-size: 1.25rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 300;
+    line-height: 1.5;
+}
+@media (min-width: 768px) {
+    .nwc-text-hero-home-body {
+        font-size: 1.125rem;
+    }
+}
+@media (min-width: 1024px) {
+    .nwc-text-hero-home-body {
+        font-size: 1.25rem;
+    }
+}
+@media (min-width: 1300px) {
+    .nwc-text-hero-home-body {
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 1600px) {
+    .nwc-text-hero-home-body {
+        font-size: 2rem;
+    }
+}
+.nwc-text-hero-standard-title {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 100;
+    font-size: 2.5rem;
+    line-height: 1.125;
+}
+@media (min-width: 1600px) {
+    .nwc-text-hero-standard-title {
+        font-size: 4.6875rem;
+        line-height: 1.133;
+    }
+}
+.nwc-text-hero-standard-body {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-size: 1.125rem;
+    line-height: 1.44;
+}
+@media (min-width: 1600px) {
+    .nwc-text-hero-standard-body {
+        line-height: 2;
+    }
+}
+.nwc-text-hero-standard-bg-title {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 800;
+    font-size: 6rem;
+    line-height: 2.08;
+    letter-spacing: 1.92px;
+}
+@media (min-width: 1024px) {
+    .nwc-text-hero-standard-bg-title {
+        font-size: 11.25rem;
+        line-height: 1.08;
+        letter-spacing: 5.2px;
+    }
+}
+@media (min-width: 1600px) {
+    .nwc-text-hero-standard-bg-title {
+        font-size: 16.25rem;
+    }
+}
+.nwc-text-hero-standard-nomedia-title {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 100;
+    font-size: 2rem;
+    line-height: 1.406;
+}
+@media (min-width: 1600px) {
+    .nwc-text-hero-standard-nomedia-title {
+        font-size: 3.4375rem;
+        line-height: 1.0909090909;
+    }
+}
+.nwc-text-hero-standard-nomedia-bg-title {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.08;
+    letter-spacing: 1.92px;
+}
+@media (min-width: 1024px) {
+    .nwc-text-hero-standard-nomedia-bg-title {
+        font-size: 11.25rem;
+        line-height: 1.08;
+        letter-spacing: 5.2px;
+    }
+}
+@media (min-width: 1600px) {
+    .nwc-text-hero-standard-nomedia-bg-title {
+        font-size: 16.25rem;
+    }
+}
+.nwc-text-hero-pdp-title {
+    font-size: 2.125rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 600;
+    line-height: 1.1764705882;
+}
+@media (min-width: 1024px) {
+    .nwc-text-hero-pdp-title {
+        font-size: 3.4375rem;
+        line-height: 1.2727272727;
+    }
+}
+.nwc-text-hero-series-title {
+    font-size: 3.4375rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 800;
+    line-height: 1.0909090909;
+}
+@media (min-width: 1024px) {
+    .nwc-text-hero-series-title {
+        font-size: 6.25rem;
+        line-height: 1.2;
+    }
+}
+.nwc-text-title-primary {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 200;
+    font-size: 2.5rem;
+    line-height: 1.125;
+}
+@media (min-width: 1024px) {
+    .nwc-text-title-primary {
+        font-size: 4.6875rem;
+        line-height: 1.1333333333;
+    }
+}
+.nwc-text-title-secondary {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 200;
+    font-size: 2.5rem;
+    line-height: 1.125;
+}
+@media (min-width: 1024px) {
+    .nwc-text-title-secondary {
+        font-size: 4.375rem;
+        line-height: 1.2857142857;
+    }
+}
+.nwc-text-title-tertiary {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 200;
+    font-size: 2rem;
+    line-height: 1.25;
+}
+@media (min-width: 1024px) {
+    .nwc-text-title-tertiary {
+        font-size: 3.4375rem;
+        line-height: 1.2727272727;
+    }
+}
+.nwc-text-title-quaternary {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 1.4285714286;
+}
+@media (min-width: 1024px) {
+    .nwc-text-title-quaternary {
+        font-size: 2.625rem;
+        line-height: 1.1904761905;
+    }
+}
+.nwc-text-title-subtitle {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-weight: 200;
+    font-size: 1.375rem;
+    line-height: 1.3;
+}
+@media (min-width: 1024px) {
+    .nwc-text-title-subtitle {
+        font-size: 2rem;
+        line-height: 1.38;
+    }
+}
+.nwc-text-quote {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-size: 1.25rem;
+    line-height: 1.40625;
+    font-weight: 300;
+}
+@media (min-width: 768px) {
+    .nwc-text-quote {
+        font-size: 2.8125rem;
+    }
+}
+@media (min-width: 1024px) {
+    .nwc-text-quote {
+        font-size: 2.8125rem;
+        line-height: 1.49;
+    }
+}
+@media (min-width: 1600px) {
+    .nwc-text-quote {
+        font-size: 3.4375rem;
+    }
+}
+.nwc-text-quote-byline {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-size: 1rem;
+    line-height: 2.11;
+    text-transform: uppercase;
+}
+@media (min-width: 1024px) {
+    .nwc-text-quote-byline {
+        font-size: 1.125rem;
+        text-transform: uppercase;
+    }
+}
+.nwc-text-button {
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25;
+}
+@media (min-width: 768px) {
+    .nwc-text-button {
+        font-size: 1.125rem;
+    }
+}
+.nwc-text-body {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.875;
+}
+@media (min-width: 1024px) {
+    .nwc-text-body {
+        font-size: 1.125rem;
+        line-height: 2;
+    }
+}
+.nwc-text-body-label {
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.3333333333;
+}
+@media (min-width: 1024px) {
+    .nwc-text-body-label {
+        font-size: 2rem;
+        line-height: 1.25;
+    }
+}
+.nwc-text-body-md {
+    font-size: 1.125rem;
+    line-height: 2;
+}
+.nwc-text-body-lg {
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+@media (min-width: 1024px) {
+    .nwc-text-body-lg {
+        font-size: 1.375rem;
+        line-height: 1.8181818182;
+    }
+}
+.nwc-text-large-card-title {
+    font-weight: 200;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    font-size: 1.75rem;
+    line-height: 1.4285714286;
+}
+@media (min-width: 1024px) {
+    .nwc-text-large-card-title {
+        font-size: 2.625rem;
+        line-height: 1.3;
+    }
+}
+@media (min-width: 1600px) {
+    .nwc-text-large-card-title {
+        font-size: 2.875rem;
+    }
+}
+.nwc-text-large-card-subtitle {
+    font-weight: 600;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Helvetica, Arial,
+        'sans-serif';
+    text-transform: uppercase;
+    font-size: 1.1875rem;
+    line-height: 1.81;
+}
+@media (min-width: 1024px) {
+    .nwc-text-large-card-subtitle {
+        font-size: 1.3125rem;
+    }
+}
+.nwc-text-large-card-body {
+    font-size: 1rem;
+    line-height: 2;
+}
+@media (min-width: 1024px) {
+    .nwc-text-large-card-body {
+        font-size: 1.125rem;
+    }
+}
+.nwc-text-spec-label {
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 1.1428571429;
+}
+@media (min-width: 1600px) {
+    .nwc-text-spec-label {
+        font-size: 1.875rem;
+        line-height: 1.2666666667;
+    }
+}
+.nwc-text-spec {
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+@media (min-width: 1600px) {
+    .nwc-text-spec {
+        font-size: 1.625rem;
+        line-height: 1.3846153846;
+    }
+}
+.nwc-text-general-card-title {
+    font-weight: 200;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+@media (min-width: 1024px) {
+    .nwc-text-general-card-title {
+        font-size: 2rem;
+        line-height: 1.38;
+        letter-spacing: 0.64px;
+    }
+}
+@media (min-width: 1600px) {
+    .nwc-text-general-card-title {
+        font-size: 2.625rem;
+        letter-spacing: 0.84px;
+        line-height: 1.05;
+    }
+}
+.nwc-text-general-card-body {
+    font-weight: 400;
+    font-size: 1rem;
+}
+@media (min-width: 1024px) {
+    .nwc-text-general-card-body {
+        font-size: 1.125rem;
+    }
+}
+.nwc-text-long-card-title {
+    font-weight: 300;
+    font-size: 1.375rem;
+    line-height: 1.38;
+}
+@media (min-width: 1024px) {
+    .nwc-text-long-card-title {
+        font-size: 2rem;
+    }
+}
+.nwc-text-long-card-desc {
+    font-weight: 400;
+    font-size: 1rem;
+}
+@media (min-width: 1024px) {
+    .nwc-text-long-card-desc {
+        font-size: 1.125rem;
+    }
+}
+.nwc-text-compare-modal-base {
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+@media (max-width: 768px) {
+    table {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        width: 100% !important;
+    }
+    th {
+        padding: 10px;
+        display: block;
+        text-align: center;
+    }
+    th,
+    tr {
+        border: 1px solid grey;
+    }
+    td {
+        padding: 10px;
+        display: block;
+        text-align: center;
+    }
+    table thead tr th {
+        display: none;
+    }
+}
+@media (min-width: 769px) and (max-width: 1200px) {
+    table {
+        width: 30%;
+    }
+}
+.smartWidget *,
+.smartWidget :active,
+.smartWidget :focus {
+    outline: none;
+    outline: 0;
+    outline-offset: -2px;
+}
+.smartWidget ::-moz-focus-inner {
+    border: none;
+}
+nobr {
+    padding: 0 !important;
+    background: transparent none !important;
+}
+.srJobList .srJobListJobEve {
+    background-color: #f7f7f7;
+}
+.srJobList .srJobListJobEven:hover * {
+    border: none;
+    background-color: #4f00b5;
+    color: #fff;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+}
+tr.srJobListJobEven {
+    cursor: pointer;
+}
+.srJobList .srJobListJobOdd:hover * {
+    border: none;
+    background-color: #4f00b5;
+    color: #fff;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+}
+tr.srJobListJobOdd {
+    cursor: pointer;
+}
+.srPages,
+.srSearch {
+    margin: 0 0 1.5rem;
+    padding: 0.3125rem;
+    width: auto;
+    min-height: 1.5625rem;
+}
+.srSearch {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-column-gap: 0.625rem;
+    -moz-column-gap: 0.625rem;
+    column-gap: 0.625rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.srPages {
+    float: right;
+    margin: 0.5rem 0 0;
+    padding: 0.5rem;
+}
+.srSearchForm {
+    height: 2.1875rem;
+    margin: 0 -0.0625rem 0 0;
+    padding-left: 0.625rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.srSearchInput {
+    display: block;
+    float: left;
+    margin: 0;
+    padding: 0 0.125rem 0 0.3125rem;
+    border: 0.0625rem solid #4f00b5;
+    border-radius: 0.125rem 0 0 0.125rem;
+    min-width: 12.5rem;
+    width: inherit;
+    height: inherit;
+    background: #fff;
+    color: #4f00b5;
+    text-align: left;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4375rem;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-box-shadow: inset 0 1px 1px 0 #eee;
+    box-shadow: inset 0 1px 1px 0 #eee;
+}
+.srSearchInput:focus {
+    border: 1px solid #aaa;
+    -webkit-box-shadow: inset 0 0 0 0 #eee;
+    box-shadow: inset 0 0 0 0 #eee;
+}
+.srSearchButton {
+    display: block;
+    float: left;
+    margin: 0;
+    border: none;
+    height: inherit;
+    width: inherit;
+    background: #4f00b5;
+    color: #fff;
+    text-align: center;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-weight: 400;
+    line-height: 1.4375rem;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    cursor: pointer;
+}
+.srSearchButton:hover {
+    border: none;
+}
+.srSearchOption {
+    position: relative;
+    margin: 0;
+    height: 2.1875rem;
+    border: none;
+}
+@media (max-width: 768px) {
+    .srSearchOption {
+        margin: 0.625rem;
+    }
+}
+.srSearchForm,
+.srSearchOption {
+    border-bottom: none;
+    margin-bottom: -0.0625rem;
+    flex-shrink: 1;
+}
+.srSearchOption:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    margin: 0 -0.0625rem 0 0;
+    padding: 0;
+    width: 0;
+    height: 2.1875rem;
+}
+.srFilterRemote,
+.srPagesText,
+.srSearchOptionText {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0.3125rem 2.125rem 0.3125rem 0.625rem;
+    width: auto;
+    height: auto;
+    color: #272525;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 0.9375rem;
+    cursor: pointer;
+}
+.srFilterRemote,
+.srPagesText,
+.srSearchOptionText {
+    border: none;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-weight: 400;
+}
+.srSearchOptionText {
+    text-align: left;
+    padding-left: 1.25rem;
+    color: #fff;
+    background-color: #4f00b5;
+    font-size: 1rem;
+}
+.srFilterRemote,
+.srSearchOptionText {
+    min-width: 5.125rem;
+    width: auto;
+    text-align: left;
+    line-height: 2.1875rem;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.srSearchOptionText:before {
+    top: 0;
+    left: 0;
+    border-left: 0.0625rem solid #fff;
+    height: 2.1875rem;
+}
+.srSearchOptionText:after,
+.srSearchOptionText:before {
+    content: '';
+    position: absolute;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 0;
+}
+.srSearchOptionText:after {
+    top: 0.9375rem;
+    right: 0.5rem;
+    border-top: 0.3125rem solid #fff;
+    border-left: 0.3125rem solid transparent;
+    border-right: 0.3125rem solid transparent;
+    height: 0;
+}
+.srSearchOptionList {
+    position: absolute;
+    top: 1.9375rem;
+    left: 0;
+    display: none;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: 0.0625rem solid #ccc;
+    border-top: none;
+    width: 7.8125rem;
+    min-height: 1rem;
+    max-height: 15rem;
+    background: #fdfdfd none;
+    z-index: 1;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.srSearchOptionListElement,
+.srSearchOptionListElementChecked {
+    display: table;
+    float: left;
+    margin: 0;
+    padding: 0.25rem 0;
+    width: 7.8125rem;
+    min-height: 1.125rem;
+    vertical-align: middle;
+}
+.srSearchOptionListElement:hover,
+.srSearchOptionListElementChecked {
+    background: #f8f8f8 none;
+}
+.srSearchOptionListElementText {
+    display: table-cell;
+    margin: 0 0 0 0.5rem;
+    padding: 0.3125rem 1.0625rem 0.3125rem 0.3125rem;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-weight: 400;
+    color: #4f00b5;
+    text-align: left;
+    line-height: 0.9375rem;
+    vertical-align: middle;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+.srSearchOptionListElementChecked > .srSearchOptionListElementText {
+    color: #4f00b5;
+}
+.srPagesText {
+    padding: 0.1875rem 0.5rem;
+    cursor: default;
+}
+.srPagesTextCenter:before {
+    left: 0;
+    border-left: 0.0625rem solid #4f00b5;
+}
+.srPagesTextCenter:after,
+.srPagesTextCenter:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+    margin: -0.5rem 0 0;
+    padding: 0;
+    width: 0;
+    height: 2.1875rem;
+}
+.srPagesTextCenter:after {
+    right: 0;
+    border-right: 0.0625rem solid #4f00b5;
+}
+.srPagesTextNext,
+.srPagesTextPrevious {
+    cursor: pointer;
+}
+.srPagesTextPrevious:before {
+    right: 0.625rem;
+    border-right: 5px solid #4f00b5;
+}
+.srPagesTextNext:after,
+.srPagesTextPrevious:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+    margin: 0.3125rem 0 0;
+    padding: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+.srPagesTextNext:after {
+    left: 0.625rem;
+    border-left: 5px solid #4f00b5;
+}
+.none {
+    height: 0;
+    border: none;
+}
+.srFilterRemoteElement {
+    vertical-align: middle;
+}
+.srFilterRemoteElementText {
+    position: relative;
+    top: 0.0625rem;
+    padding-left: 0.1875rem;
+    color: #4f00b5;
+    font-family: Sora, Noto Sans, NOTO SANS JP, Noto Sans KR, Noto Sans TC, Open Sans,
+        Helvetica Neue, Helvetica, Arial, 'sans-serif';
+    font-size: 14px;
+}
+.srFilterRemoteElementText:after {
+    position: relative;
+    top: 0.125rem;
+}
+.srFilterRemoteElementText:after,
+.srRemoteLocation:after {
+    margin-left: 5px;
+    content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 22 22'%3E%3Cpath d='M17.9 17.39c-.26-.8-1.01-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41a7.984 7.984 0 012.9 12.8M11 19.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1c0 1.1.9 2 2 2m1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z'/%3E%3C/svg%3E");
+}
+.display--none {
+    display: none;
+}
+.dataTable {
+    border-collapse: collapse !important;
+    width: 100% !important;
+}
+table.dataTable tbody tr {
+    background-color: transparent;
+    border-bottom: 0.5px solid grey;
+}
+.dataTables_filter {
+    padding-bottom: 10px;
+}
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+    background-color: #fff !important;
+}
+
+#smartWidget0 {
+    width: auto;
+    height: auto;
+}
+
+#smartWidget0 .srJobList {
+    width: 100%;
+    height: auto;
+}
+
+tr:hover td::after {
+    filter: brightness(0) invert(1);
+}
