@@ -1,5 +1,8 @@
 {
   "resource.resolver.mapping": [
-    "/content/solidigm/</", "/:/"
+    "^/content/solidigm/en\\.html</",
+    "^/content/solidigm/en/(.+)\\.html</$1/",
+    "^/content/solidigm/(.+)\\.html</$1/",
+    "/:/"
   ]
 }
