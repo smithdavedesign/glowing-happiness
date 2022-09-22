@@ -31,14 +31,16 @@
         }
     }
 
-    &--standard-height > & .splide__slide > * {
+    &--standard-height > & .splide__slide > *,
+    &--standard-height > & .splide__slide > * > * {
         height: vwMobile(185);
         @media (min-width: $desktop) {
             height: vwDesktop(530);
         }
     }
 
-    &--large-height > & .splide__slide > * {
+    &--large-height > & .splide__slide > *,
+    &--large-height > & .splide__slide > * > * {
         height: vwMobile(480);
         @media (min-width: $desktop) {
             height: vwDesktop(680);
@@ -53,7 +55,7 @@
         }
     }
 
-    li[role=presentation]{
+    li[role='presentation'] {
         cursor: pointer;
     }
 
