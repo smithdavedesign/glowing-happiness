@@ -1,19 +1,15 @@
-<sly data-sly-use.tilelist="com.solidigm.core.models.TileList"
-     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
-     data-sly-test.hasContent="${tilelist.hasContent}">
+<sly
+    data-sly-use.tilelist="com.solidigm.core.models.TileList"
+    data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.hasContent="${tilelist.hasContent}"
+>
     <div class="cmp-tilelist">
         <ul class="cmp-tilelist__grid" data-sly-list.tileInfo="${tilelist.tileInfo}">
             <li class="cmp-tilelist__tile">
-                <div class="cmp-tilelist__icon icon--${tileInfo.icon}"></div>
-                <h2 class="cmp-tilelist__title">${tileInfo.title}</h2>
-                <p class="cmp-tilelist__description">
-                    ${tileInfo.description}
-                </p>
-                <sly data-sly-test.hasLink="${tileInfo.link}">
-                <a href="${tileInfo.link}" target="${tileInfo.target}" class="solidigm-btn ${tileInfo.linkType}">
-                    <span> ${tileInfo.label}</span>
-                </a>
-                </sly>
+                <sly
+                    data-sly-use.component="solidigm/components/icontile/icontile.html"
+                    data-sly-call="${component.iconTile @ tileInfo=tileInfo}"
+                />
             </li>
         </ul>
     </div>
