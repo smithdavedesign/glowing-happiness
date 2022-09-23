@@ -113,10 +113,14 @@
                                                 value="false"
                                                 name="./showHidden"/>
                                             <hideCurrent
-                                                jcr:primaryType="nt:unstructured"
-                                                sling:resourceType="/libs/granite/ui/components/coral/foundation/form/hidden"
-                                                value="true"
-                                                name="./hideCurrent"/>
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                                    checked="true"
+                                                    fieldDescription="Don't display the current page in the breadcrumb."
+                                                    name="./hideCurrent"
+                                                    text="Hide current page"
+                                                    uncheckedValue="false"
+                                                    value="true"/>
                                             <disableShadowing
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="/libs/granite/ui/components/coral/foundation/form/hidden"
