@@ -27,6 +27,7 @@ public class SignOutServlet extends SlingSafeMethodsServlet {
         if (req.getSession(false) != null) {
             req.getSession().invalidate();
         }
-        resp.sendRedirect("/");
+        String redirectUrl = "/";
+        resp.sendRedirect(redirectUrl);
     }
 }

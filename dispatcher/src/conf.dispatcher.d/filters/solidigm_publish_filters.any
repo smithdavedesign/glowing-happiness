@@ -13,3 +13,5 @@
 /0113 { /type "allow" /method "GET" /url "/bin/solidigm/isSignedIn" }
 
 /0114 { /type "allow" /method "GET" /url "/bin/solidigm/signOut" }
+
+/0115 { /type "allow" /method "GET" /url "/bin/solidigm/dynamicTilelist" }

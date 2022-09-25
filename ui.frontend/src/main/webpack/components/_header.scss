@@ -166,6 +166,7 @@ header {
     .header__dropdown-item--subemenu button {
         color: $white;
         text-transform: uppercase;
+        white-space: nowrap;
     }
 }
 
