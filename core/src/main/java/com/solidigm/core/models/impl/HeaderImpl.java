@@ -90,6 +90,9 @@ public class HeaderImpl implements Header {
     @ValueMapValue(name = "dashboard")
     private String dashboardPath;
 
+    @ValueMapValue(name = "settings")
+    private String settingsPath;
+
     @ValueMapValue(name = "homepage")
     private String homepagePath;
 
@@ -126,6 +129,9 @@ public class HeaderImpl implements Header {
     private Link dashboard;
 
     @Getter
+    private Link settings;
+
+    @Getter
     private Link homepage;
 
     @PostConstruct
@@ -138,6 +144,7 @@ public class HeaderImpl implements Header {
         navItem5 = new Link(navItemTitle5, navItemLink5);
         searchResultsPage = new Link("", searchResultsPagePath);
         dashboard = new Link("", dashboardPath);
+        settings = new Link("", settingsPath);
         homepage = new Link(homepageLabel, homepagePath);
     }
 }

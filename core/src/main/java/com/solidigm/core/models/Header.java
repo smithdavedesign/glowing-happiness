@@ -151,6 +151,15 @@ public interface Header extends ComponentExporter {
     }
 
     /**
+     * Returns Link of path to user settings
+     *
+     * @return Link
+     */
+    default Link getSettings() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns string of path to current language homepage
      *
      * @return string

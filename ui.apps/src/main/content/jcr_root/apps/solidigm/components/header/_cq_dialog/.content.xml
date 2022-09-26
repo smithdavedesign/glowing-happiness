@@ -359,6 +359,14 @@
                                                     fieldLabel="Dashboard Page"
                                                     fieldDescription="Path to the customer dashboard page."
                                                     rootPath="/content/solidigm"/>
+                                            <settingsPage
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                    required="{Boolean}true"
+                                                    name="./settings"
+                                                    fieldLabel="Settings Page"
+                                                    fieldDescription="Path to the customer account settings page."
+                                                    rootPath="/content/solidigm"/>
                                             <homePage
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
