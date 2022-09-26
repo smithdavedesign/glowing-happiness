@@ -83,7 +83,8 @@
     <div data-sly-list.featuredProduct="${modelList.featuredProducts}" class="model-list__products">
         <sly data-sly-call="${templateProduct @ product=featuredProduct}" />
     </div>
-    <div class="model-list__cta">
+    <div class="model-list__cta"
+         data-sly-test="${modelList.link.link}">
         <a href="${modelList.link.link}" target="${modelList.link.target}">
             ${modelList.link.label}
             <span class="model-list__arrow-icon"></span>
