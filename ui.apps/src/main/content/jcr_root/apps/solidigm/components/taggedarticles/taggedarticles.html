@@ -3,7 +3,7 @@
     class="cmp-tagged-articles"
 >
     <div class="cmp-tagged-articles__filter" data-sly-test="${!taggedArticles.selectorTag}">
-        <span>Filter by</span>
+        <span>${'Filter by'}</span>
         <sly
             data-sly-use.component="solidigm/components/customselect/customselect.html"
             data-sly-call="${component.customSelect @ 
@@ -23,8 +23,8 @@
         data-servlet-path="${taggedArticles.rootPath}"
         data-selector-tag="${taggedArticles.selectorTag}"
     >
-        <h2>Posts Tagged “${taggedArticles.selectorTag}”</h2>
+        <h2>${'Posts Tagged “{0}”' @ format[taggedArticles.selectorTag], i18n}</h2>
     </div>
     <div class="cmp-tagged-articles__articles-container"></div>
-    <button class="solidigm-btn cmp-tagged-articles__load-more-btn">Load More</button>
+    <button class="solidigm-btn cmp-tagged-articles__load-more-btn">${'Load More' @ i18n}</button>
 </div>
