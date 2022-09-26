@@ -1,4 +1,5 @@
 .series-list {
+    position: relative;
     @media (min-width: $desktop) {
         display: grid;
         justify-content: center;
@@ -12,6 +13,7 @@
         border-radius: $border-radius-sm-mobile;
         box-shadow: $box-shadow-mobile;
         overflow: hidden;
+        background: $white;
 
         @media (min-width: $desktop) {
             width: vwDesktop(555);
