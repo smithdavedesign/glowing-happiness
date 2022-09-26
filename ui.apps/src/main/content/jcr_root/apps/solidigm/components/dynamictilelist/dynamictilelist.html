@@ -1,0 +1,15 @@
+<div class="cmp-tilelist cmp-tilelist--dynamic"
+     data-sly-use.tilelist="com.solidigm.core.models.DynamicTileList"
+     data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"
+     data-sly-test.hasContent="${tilelist.hasContent}"
+     data-path="${tilelist.path}">
+    <template>
+        <sly
+            data-sly-use.component="solidigm/components/icontile/icontile.html"
+            data-sly-call="${component.iconTile @ showLink=true}"
+        />
+    </template>
+    <ul class="cmp-tilelist__grid"></ul>
+</div>
+
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!hasContent}"></sly>

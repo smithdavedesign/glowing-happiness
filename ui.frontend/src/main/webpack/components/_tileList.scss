@@ -1,4 +1,11 @@
 .cmp-tilelist {
+    &--dynamic .cmp-tilelist__grid:empty {
+        height: vwMobile(500);
+        @media (min-width: $desktop) {
+            height: vwDesktop(500);
+        }
+    }
+
     &__grid {
         display: grid;
         gap: $spacing-2xl-mobile;
@@ -23,23 +30,24 @@
         }
 
         $icons: (
-            "401",
-            "agility",
-            "calculator",
-            "computer",
-            "diamond",
-            "doctor",
-            "documents",
-            "equity",
-            "inventions",
-            "openness",
-            "orders",
-            "partnership",
-            "people",
-            "pto",
-            "handshake",
-            "tools",
-            "wellness"
+            '401',
+            'agility',
+            'calculator',
+            'computer',
+            'diamond',
+            'doctor',
+            'documents',
+            'equity',
+            'inventions',
+            'openness',
+            'orders',
+            'partnership',
+            'people',
+            'pto',
+            'handshake',
+            'tools',
+            'wellness',
+            'rma'
         );
 
         @each $icon in $icons {

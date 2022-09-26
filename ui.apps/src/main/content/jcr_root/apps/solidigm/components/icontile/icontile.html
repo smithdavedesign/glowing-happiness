@@ -1,0 +1,14 @@
+<template data-sly-template.iconTile="${@ tileInfo, showLink }">
+    <div class="cmp-tilelist__icon icon--${tileInfo.icon}"></div>
+    <h2 class="cmp-tilelist__title">${tileInfo.title}</h2>
+    <p class="cmp-tilelist__description">${tileInfo.description}</p>
+    <sly data-sly-test.hasLink="${tileInfo.link || showLink }">
+        <a
+            href="${tileInfo.link}"
+            target="${tileInfo.target}"
+            class="solidigm-btn ${tileInfo.linkType}"
+        >
+            <span> ${tileInfo.label}</span>
+        </a>
+    </sly>
+</template>

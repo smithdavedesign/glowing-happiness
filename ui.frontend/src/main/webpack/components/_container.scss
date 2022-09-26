@@ -7,8 +7,13 @@
     }
 }
 
-.root.container{
+.root.container {
     overflow: hidden;
+}
+
+.root.container > .cmp-container,
+.experiencefragment .cmp-container {
+    margin-bottom: 0;
 }
 
 .cmp-container {
@@ -32,7 +37,7 @@
 
     &--gray-bg & {
         position: relative;
-        &::before{
+        &::before {
             content: '';
             position: absolute;
             width: 300vw;
@@ -155,7 +160,7 @@
         &::before {
             content: '';
             height: vwMobile(1000);
-            width: 400vw;
+            width: 1000vw;
             background: $gray-350;
             position: absolute;
             z-index: -10000;
@@ -163,7 +168,7 @@
             transform: rotate(45deg) translateX(-50%);
             top: 0;
             left: 0;
-            @media (min-width: $desktop){
+            @media (min-width: $desktop) {
                 height: vwDesktop(1000);
             }
         }

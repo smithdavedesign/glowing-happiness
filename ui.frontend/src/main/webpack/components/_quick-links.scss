@@ -11,6 +11,14 @@
         }
     }
 
+    :not(.cmp-quick-links--text) > & &__container {
+        margin: vwMobile(30);
+
+        @media (min-width: $desktop) {
+            margin: vwDesktop(68);
+        }
+    }
+
     :not(.cmp-quick-links--text) > & &__link {
         height: vwMobile(140);
         width: 100%;

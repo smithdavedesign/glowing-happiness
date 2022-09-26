@@ -1,5 +1,14 @@
 /* Search Component */
 
+footer.footer{
+    padding-left: $spacing-lg-mobile;
+    padding-right: $spacing-lg-mobile;
+    @media (min-width: $desktop) {
+        padding-left: $standard-padding-desktop;
+        padding-right: $standard-padding-desktop;
+    }
+}
+
 .search-component {
     display: flex;
     flex-direction: column;
