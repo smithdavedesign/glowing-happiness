@@ -106,8 +106,8 @@ footer.footer{
     line-height: vwMobile(23);
 
     @media (min-width: $desktop) {
-        font-size: $font-size-sm-desktop;
-        line-height: vwDesktop(23);
+        font-size: $font-size-3xs-desktop;
+        line-height: vwDesktop(15);
     }
 }
 
