@@ -1,37 +1,42 @@
-<div class="cmp-similar-products"
-     data-sly-use.similarProducts="com.solidigm.core.models.SimilarProducts">
-    <h2 class="cmp-similar-products__title">
-        ${'Compare Similar Products' @ i18n}
-    </h2>
-    <div class="cmp-product-cards__grid"
-         data-sly-list.similarProduct="${similarProducts.similarProducts}">
-        
-            <div data-sly-attribute.class="cmp-product-cards__item  ${similarProductList.first ? 'cmp-product-cards__item--with-label' : ''} " data-sly-attribute.data-label="${similarProductList.first ? 'This Model' : ''}">
-                <div class="cmp-product-cards__img-container">
-                    <img src="${similarProduct.image}" alt="${similarProduct.altText}">
-                </div>
-                <div class="cmp-product-cards__item-content">
-                    <h3 class="cmp-product-cards__item-title">
-                        ${similarProduct.name}
-                    </h3>
-                    <p class="cmp-product-cards__item-description">
-                        ${similarProduct.description}
-                    </p>
-                    <dl class="cmp-product-cards__item-specs">
-                        <dt>${'Interface' @ i18n}:</dt>
-                        <dd>${similarProduct.productInterface}</dd>
-                        <dt>${'Form Factor' @ i18n}:</dt>
-                        <dd>${similarProduct.formFactor}</dd>
-                        <dt>${'Capacity' @ i18n}:</dt>
-                        <dd>${similarProduct.capacity}</dd>
-                    </dl>
+<div
+    class="cmp-similar-products"
+    data-sly-use.similarProducts="com.solidigm.core.models.SimilarProducts"
+>
+    <h2 class="cmp-similar-products__title">${'Compare Similar Products' @ i18n}</h2>
+    <div
+        class="cmp-product-cards__grid"
+        data-sly-list.similarProduct="${similarProducts.similarProducts}"
+    >
+        <div
+            data-sly-attribute.class="cmp-product-cards__item  ${similarProductList.first ? 'cmp-product-cards__item--with-label' : ''} "
+            data-sly-attribute.data-label="${similarProductList.first ? 'This Model' : ''}"
+        >
+            <div class="cmp-product-cards__img-container">
+                <img src="${similarProduct.image}" alt="${similarProduct.altText}" />
+            </div>
+            <div class="cmp-product-cards__item-content">
+                <h3 class="cmp-product-cards__item-title">${similarProduct.name}</h3>
+                <p class="cmp-product-cards__item-description">${similarProduct.description}</p>
+                <dl class="cmp-product-cards__item-specs">
+                    <dt>${'Interface' @ i18n}:</dt>
+                    <dd>${similarProduct.productInterface}</dd>
+                    <dt>${'Form Factor' @ i18n}:</dt>
+                    <dd>${similarProduct.formFactor}</dd>
+                    <dt>${'Capacity' @ i18n}:</dt>
+                    <dd>${similarProduct.capacity}</dd>
+                </dl>
+                <div class="cmp-product-cards__item-cta">
+                    <a href="${similarProduct.productPagePath}" class="solidigm-btn">
+                        ${'View Details' @ i18n}
+                    </a>
+                    <a
+                        href="${similarProduct.productPagePath}#configurator"
+                        class="solidigm-btn solidigm-btn--outline solidigm-btn--outline-dark"
+                    >
+                        ${'Configure' @ i18n}
+                    </a>
                 </div>
             </div>
-        
-    </div>
-    <div class="cmp-similar-products__cta-container">
-        <a href="#" class="solidigm-btn solidigm-btn--lg-padding">
-            ${'View Full Comparison' @ i18n}
-        </a>
+        </div>
     </div>
 </div>

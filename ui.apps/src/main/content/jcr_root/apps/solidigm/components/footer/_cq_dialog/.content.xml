@@ -255,7 +255,6 @@
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription="URL of external TrustArc page"
                                                     fieldLabel="TrustArc Link"
-                                                    required="{Boolean}true"
                                                     name="./trustArc" />
                                             <links
                                                     jcr:primaryType="nt:unstructured"
