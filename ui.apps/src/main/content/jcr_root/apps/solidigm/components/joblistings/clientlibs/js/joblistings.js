@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', async function () {
+    window.alert('test');
     async function getTranslations(path) {
         const request = await fetch('/bin/solidigm/jobListingsTranslation?path=' + path);
         const translation = await request.json();
