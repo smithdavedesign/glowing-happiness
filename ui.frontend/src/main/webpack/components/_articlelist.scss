@@ -32,6 +32,7 @@
         box-shadow: $box-shadow-mobile;
         height: 100%;
         cursor: pointer;
+        background: $white;
 
         @media (min-width: $desktop) {
             border-radius: $border-radius-md-desktop;
@@ -44,8 +45,7 @@
         padding: $spacing-lg-mobile $spacing-2xl-mobile $spacing-4xl-mobile;
 
         @media (min-width: $desktop) {
-            padding: $spacing-lg-desktop $spacing-2xl-desktop
-                $spacing-4xl-desktop;
+            padding: $spacing-lg-desktop $spacing-2xl-desktop $spacing-4xl-desktop;
         }
     }
 
@@ -62,7 +62,7 @@
         }
 
         &::before {
-            content: "";
+            content: '';
             height: vwMobile(12);
             width: vwMobile(12);
             background: $solidigm-purple;
@@ -123,10 +123,10 @@
         align-items: center;
 
         &::after {
-            content: "";
+            content: '';
             height: vwMobile(10);
             width: vwMobile(25);
-            background: url("../resources/images/purple-arrow.svg");
+            background: url('../resources/images/purple-arrow.svg');
             background-size: contain;
             display: block;
             margin-left: $spacing-2xs-mobile;
