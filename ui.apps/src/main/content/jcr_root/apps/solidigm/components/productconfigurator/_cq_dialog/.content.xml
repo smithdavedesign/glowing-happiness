@@ -62,10 +62,10 @@
                                                                                                                                                      value="DriveCapacity"
                                                                                                                                                      text="Capacity"/>
                                                                                                                                                 <EnduranceDWPD jcr:primaryType="nt:unstructured"
-                                                                                                                                                     value="Endurance(DWPD)"
+                                                                                                                                                     value="EnduranceDWPD"
                                                                                                                                                      text="Endurance Rating (Lifetime Writes)"/>
                                                                                                                                                 <EndurancePBW jcr:primaryType="nt:unstructured"
-                                                                                                                                                     value="Endurance(PBW)"
+                                                                                                                                                     value="EndurancePBW"
                                                                                                                                                      text="Endurance Rating (Lifetime Writes)"/>
                                                                                                                                                 <SSDEnduranceRating jcr:primaryType="nt:unstructured"
                                                                                                                                                      value="SSDEnduranceRating"
