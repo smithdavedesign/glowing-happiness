@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
             template.querySelector('.cmp-tilelist__description').textContent = data.description;
             const link = template.querySelector('.solidigm-btn');
             if (data.link) {
-                link.setAttribute('href', data.link.url);
+                link.setAttribute('href', data.link.link);
                 link.setAttribute('target', data.link.target);
                 data.link.linkType.length > 0 && link.classList.add(data.link.linkType);
                 link.querySelector('span').textContent = data.link.label;
