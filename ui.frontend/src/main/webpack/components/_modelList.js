@@ -2,8 +2,8 @@
     const modelLists = document.querySelectorAll('.model-list');
     for (const modelList of modelLists) {
         async function getData() {
-            // @TODO: change for the real endpoint once defined
-            const request = await fetch('http://localhost:3004/all');
+            const path = modelList.getAttribute("data-path");
+            const request = await fetch(`/bin/solidigm/modelList?path=${path}`);
             const response = await request.json();
 
             return response;

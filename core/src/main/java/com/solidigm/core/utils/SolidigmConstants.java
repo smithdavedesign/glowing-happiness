@@ -4,5 +4,6 @@ public class SolidigmConstants {
     public static final String SOLIDIGM_ARTICLE_CATEGORY_TAGS = "/content/cq:tags/solidigm/articles/categories";
     public static final String ARTICLE_TEMPLATE = "/conf/solidigm/settings/wcm/templates/article-page";
     public static final String EVENT_TEMPLATE = "/conf/solidigm/settings/wcm/templates/event-page";
+    public static final String PDP_TEMPLATE = "/conf/solidigm/settings/wcm/templates/product-detail-page--pdp-";
     public static final int HOME_NAVIGATION_LEVEL = 5;
 }

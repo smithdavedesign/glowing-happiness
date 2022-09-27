@@ -142,7 +142,7 @@ public class ProductConfiguratorServlet extends SlingSafeMethodsServlet {
         //Get request params
         RequestParameter pathParam = req.getRequestParameter("path");
 
-        //Get tile list path parameter, if it wasn't sent or is empty send an error.
+        //Get the path parameter, if it wasn't sent or is empty send an error.
         if(pathParam == null || StringUtils.isEmpty(pathParam.getString())) {
             resp.sendError(400, "Bad request: missing path");
             return;
@@ -154,7 +154,7 @@ public class ProductConfiguratorServlet extends SlingSafeMethodsServlet {
                                                          SolidigmUtils.getProductSeriesFromPath(path),
                                                          SolidigmUtils.getProductNameFromPath(path));
 
-        //Serialized product data to JSON structure
+        //Serialize product data to JSON structure
         Gson gson = new Gson();
         List<String> interfaces = new ArrayList<>();
         List<String> formFactors = new ArrayList<>();

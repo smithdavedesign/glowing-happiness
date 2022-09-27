@@ -28,6 +28,9 @@ public class ProductPage {
     private String productPagePath;
 
     @Getter
+    private Link productPageLink;
+
+    @Getter
     private String name;
 
     @Getter
@@ -60,6 +63,7 @@ public class ProductPage {
     @PostConstruct
     private void init() {
         if (productPagePath != null) {
+            productPageLink = new Link("", productPagePath);
             Resource productPageResource = resourceResolver.getResource(productPagePath);
             if (productPageResource != null) {
                 //Set teaser information from the page properties
