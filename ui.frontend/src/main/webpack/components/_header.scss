@@ -346,14 +346,12 @@ header {
     display: flex;
     flex-direction: column;
     width: 100%;
-    min-height: vwMobile(52);
     max-height: vwMobile(120);
     color: $white;
     background: $solidigm-purple;
     overflow-y: auto;
 
     @media (min-width: $desktop) {
-        min-height: vwDesktop(52);
         max-height: vwDesktop(120);
     }
 }
@@ -740,13 +738,22 @@ header {
     left: 0;
 }
 
-// .header__search-icon {
-//     width: vwMobile(18);
-//     height: vwMobile(17);
-//     @include svg_icon(header-search);
+.header__log-out-btn {
+    padding: 0;
+}
 
-//     @media (min-width: $desktop) {
-//         width: vwDesktop(18);
-//         height: vwDesktop(17);
-//     }
-// }
+.header__user-settings:not(.header__user-settings--initialized) {
+    pointer-events: none;
+}
+
+.header__auth-item {
+    display: none;
+}
+
+.header__navigation-bar--signed-in .header__auth-item.header__auth-item--signed-in {
+    display: block;
+}
+
+.header__navigation-bar--not-signed-in .header__auth-item.header__auth-item--not-signed-in {
+    display: block;
+}

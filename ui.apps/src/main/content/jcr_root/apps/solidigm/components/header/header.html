@@ -346,7 +346,7 @@
                     </svg>
                 </button>
             </li>
-            <li class="header__link-item">
+            <li class="header__link-item header__auth-item--signed-in">
                 <a
                     href="${header.dashboard.link}"
                     target="${header.dashboard.target}"
@@ -355,7 +355,7 @@
                 >
                 </a>
             </li>
-            <li class="header__link-item header__link-item--has-submenu header__user-settings hidden">
+            <li class="header__link-item header__link-item--has-submenu header__user-settings">
                 <button
                     aria-label="${'Sign In' @ i18n}"
                     class="aheader__profile-btn header__link-item-trigger header__link-item-trigger--no-arrow"
@@ -367,15 +367,24 @@
                     id="desktop-user-settings"
                 >
                     <ul class="header__dropdown header__sub-links">
-                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                        <li
+                            class="header__dropdown-item header__dropdown-item--subemenu header__auth-item header__auth-item--not-signed-in"
+                        >
+                            <a href="${header.dashboard.link}" target="${header.dashboard.link}">
+                                ${'Log In' @ i18n}
+                            </a>
+                        </li>
+                        <li
+                            class="header__dropdown-item header__dropdown-item--subemenu header__auth-item header__auth-item--signed-in"
+                        >
                             <a href="${header.settings.link}" target="${header.settings.target}">
                                 ${'Settings' @ i18n}
                             </a>
                         </li>
-                        <li class="header__dropdown-item header__dropdown-item--subemenu">
-                            <button class="header__log-out-btn">
-                                ${'Log Out' @ i18n}
-                            </button>
+                        <li
+                            class="header__dropdown-item header__dropdown-item--subemenu header__auth-item header__auth-item--signed-in"
+                        >
+                            <button class="header__log-out-btn">${'Log Out' @ i18n}</button>
                         </li>
                     </ul>
                 </div>
@@ -461,10 +470,12 @@
                 href="${header.dashboard.link}"
                 target="${header.dashboard.target}"
                 aria-label="Go to dashboard"
-                class="header__icon header__dashboard-icon"
+                class="header__icon header__dashboard-icon header__auth-item--signed-in"
             >
             </a>
-            <div class="header__link-item header__link-item--has-submenu header__login header__user-settings hidden">
+            <div
+                class="header__link-item header__link-item--has-submenu header__login header__user-settings"
+            >
                 <button
                     aria-label="Sign In"
                     class="aheader__profile-btn header__link-item-trigger header__link-item-trigger--no-arrow"
@@ -477,15 +488,24 @@
                     id="mobile-user-settings"
                 >
                     <ul class="header__dropdown header__sub-links">
-                        <li class="header__dropdown-item header__dropdown-item--subemenu">
+                        <li
+                            class="header__dropdown-item header__dropdown-item--subemenu header__auth-item header__auth-item--not-signed-in"
+                        >
+                            <a href="${header.dashboard.link}" target="${header.dashboard.link}">
+                                ${'Log In' @ i18n}
+                            </a>
+                        </li>
+                        <li
+                            class="header__dropdown-item header__dropdown-item--subemenu header__auth-item header__auth-item--signed-in"
+                        >
                             <a href="${header.settings.link}" target="${header.settings.target}">
                                 ${'Settings' @ i18n}
                             </a>
                         </li>
-                        <li class="header__dropdown-item header__dropdown-item--subemenu">
-                            <button class="header__log-out-btn">
-                                ${'Log Out' @ i18n}
-                            </button>
+                        <li
+                            class="header__dropdown-item header__dropdown-item--subemenu header__auth-item header__auth-item--signed-in"
+                        >
+                            <button class="header__log-out-btn">${'Log Out' @ i18n}</button>
                         </li>
                     </ul>
                 </div>
