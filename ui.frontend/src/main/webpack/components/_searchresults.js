@@ -1,7 +1,12 @@
 window.addEventListener('DOMContentLoaded', async function () {
     const searchResults = document.querySelectorAll('.cmp-search-results');
     for (const searchResult of searchResults) {
-        const RESULTS_PER_PAGE = Number.parseInt(searchResult.querySelector("[data-results-per-page]")?.getAttribute("data-results-per-page") ) || 10;
+        const RESULTS_PER_PAGE =
+            Number.parseInt(
+                searchResult
+                    .querySelector('[data-results-per-page]')
+                    ?.getAttribute('data-results-per-page')
+            ) || 10;
 
         const resultsContainer = searchResult.querySelector(
             '.cmp-search-results__results-container'
@@ -15,37 +20,18 @@ window.addEventListener('DOMContentLoaded', async function () {
             Number.parseInt(new URLSearchParams(window.location.search).get('page')) || 1;
         let totalPages = null;
 
-        // @TODO: update this function once the endpoint is ready
-        async function fetchResults(page = 1, filter) {
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    resolve({
-                        totalItems: 102,
-                        items: Array.from(new Array(page === 11 ? 2 : 10)).map((_) => {
-                            return {
-                                title: `This is a result that does not have an image or could be a press release ${page}`,
-                                url: 'https://wwww.example.com',
-                                description:
-                                    'Meta page description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris auctor diam non ipsum gravida, nec.',
-                                tags: [
-                                    {
-                                        text: 'Product Series',
-                                        url: 'https://tag1.com',
-                                    },
-                                    {
-                                        text: 'Product Detail',
-                                        url: 'https://tag2.com',
-                                    },
-                                ],
-                                image: {
-                                    url: 'https://picsum.photos/500/500',
-                                    altText: 'Some Alt text',
-                                },
-                            };
-                        }),
-                    });
-                }, 1);
-            });
+        async function fetchResults(
+            rootPath,
+            query = '',
+            currentPage = 1,
+            filter = '',
+            resultsPerPage = 10
+        ) {
+            const request = await fetch(
+                `http://localhost:3004/all?rootPath=${rootPath}&query=${query}&currentPage=${currentPage}&resultsPerPage=${resultsPerPage}&=filter=${filter}`
+            );
+            const response = await request.json();
+            return response;
         }
 
         function resultToHtml(result) {
@@ -141,8 +127,12 @@ window.addEventListener('DOMContentLoaded', async function () {
             });
         }
 
+        const rootPath = searchResult.getAttribute('data-path');
         async function preparePage(page) {
-            const results = await fetchResults(page);
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('query');
+
+            const results = await fetchResults(rootPath, query, page, '');
             totalPages = Math.ceil(results.totalItems / RESULTS_PER_PAGE);
             updateTotalIndicator(results.items.length, results.totalItems);
             generatePagination(currentPage, totalPages);

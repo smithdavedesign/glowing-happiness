@@ -97,6 +97,7 @@
 
     &__download-btn {
         @include svg_icon(download);
+        background-repeat: no-repeat;
         position: absolute;
         right: vwMobie(1);
         height: vwMobie(20);
@@ -228,6 +229,7 @@
         @media (min-width: $desktop) {
             font-size: $font-size-5xl-desktop;
             letter-spacing: vwMobile(-1);
+            line-height: vwDesktop(70);
         }
     }
 
