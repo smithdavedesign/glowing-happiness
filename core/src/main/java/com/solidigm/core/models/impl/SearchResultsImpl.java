@@ -8,12 +8,14 @@ import com.solidigm.core.models.SearchResults;
 import com.solidigm.core.utils.SolidigmUtils;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
+import org.apache.sling.api.request.RequestParameter;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -32,6 +34,9 @@ import java.util.List;
 public class SearchResultsImpl implements SearchResults {
     static final String RESOURCE_TYPE = "solidigm/components/searchresults";
 
+    @SlingObject
+    SlingHttpServletRequest request;
+
     @Inject
     @Source("script-bindings")
     Page currentPage;
@@ -43,6 +48,9 @@ public class SearchResultsImpl implements SearchResults {
     @Getter
     private String rootPath;
 
+    @Getter
+    private String query;
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
@@ -53,6 +61,12 @@ public class SearchResultsImpl implements SearchResults {
         //Set localized root path
         if(currentPage != null){
             rootPath = SolidigmUtils.getSiteRoot(currentPage.getPath());
+        }
+
+        //Get query param if provided
+        RequestParameter queryParameter = request.getRequestParameterMap().getValue("query");
+        if (queryParameter != null) {
+            query = queryParameter.toString();
         }
     }
 }

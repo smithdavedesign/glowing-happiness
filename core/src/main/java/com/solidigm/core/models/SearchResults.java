@@ -19,11 +19,20 @@ public interface SearchResults extends ComponentExporter {
     }
 
     /**
-     * Returns string for the number of results per page
+     * Returns string for the site root to search on
      *
      * @return string
      */
     default String getRootPath() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns string for the search query
+     *
+     * @return string
+     */
+    default String getQuery() {
         throw new UnsupportedOperationException();
     }
 }
