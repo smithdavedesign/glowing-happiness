@@ -23,6 +23,14 @@
         width: 100%;
         margin-top: $spacing-sm-mobile;
 
+        & > .cmp-custom-select {
+            width: 100%;
+
+            @media (min-width: $desktop) {
+                width: auto;
+            }
+        }
+
         @media (min-width: $desktop) {
             flex-direction: row;
             gap: $spacing-base-desktop;
