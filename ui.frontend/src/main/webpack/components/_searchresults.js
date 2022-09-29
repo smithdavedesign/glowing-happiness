@@ -28,23 +28,25 @@ window.addEventListener('DOMContentLoaded', async function () {
             resultsPerPage = 10
         ) {
             const request = await fetch(
-                `http://localhost:3004/all?rootPath=${rootPath}&query=${query}&currentPage=${currentPage}&resultsPerPage=${resultsPerPage}&=filter=${filter}`
+                `/bin/solidigm/search?rootPath=${rootPath}&query=${query}&currentPage=${currentPage}&resultsPerPage=${resultsPerPage}&filter=${filter}`
             );
             const response = await request.json();
             return response;
         }
 
         function resultToHtml(result) {
-            const tagsHtml = result.tags
-                .map(
-                    (tag) => `
-                    <li>
-                        <a href="${tag.url}">${tag.text}</a>
-                    </li>
-                `
-                )
-                .join('');
+            // const tagsHtml = result.tags
+            //     .map(
+            //         (tag) => `
+            //         <li>
+            //             <a href="${tag.url}">${tag.text}</a>
+            //         </li>
+            //     `
+            //     )
+            //     .join('');
 
+            //TODO: replace with real link
+            var tagsHtml = "";
             return `
             <li class="cmp-search-results__result">
             <div class="cmp-search-results__result-img">
@@ -52,11 +54,11 @@ window.addEventListener('DOMContentLoaded', async function () {
             </div>
             <div>
                 <h2 class="cmp-search-results__result-title">${result.title}</h2>
-                <a href="${result.url}">${result.url}</a>
+                <a href="${result.url}">${result.urlLabel}</a>
                 <p class="cmp-search-results__result-description">
                     ${result.description}
                 </p>
-                <div class="cmp-search-results__tags">
+                <div class="cmp-search-results__tags hidden">
                     <span>Tags:</span>
                     <ul>
                         ${tagsHtml}
@@ -71,8 +73,8 @@ window.addEventListener('DOMContentLoaded', async function () {
             const template = totalResultsContainer.getAttribute('data-results-template');
 
             totalResultsContainer.innerHTML = template
-                .replace('${resultsPerPage}', resultsInCurrentPage)
-                .replace('${totalResults}', totalResults);
+                .replace('{0}', resultsInCurrentPage)
+                .replace('{1}', totalResults);
         }
 
         function insertAfter(newNode, referenceNode) {

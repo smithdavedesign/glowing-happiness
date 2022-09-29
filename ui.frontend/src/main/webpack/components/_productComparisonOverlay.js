@@ -35,10 +35,10 @@ window.addEventListener('DOMContentLoaded', function () {
         const savedProducts = getSavedProducts();
         if (savedProducts.length < maxProducts) {
             const request = await fetch(
-                `/bin/solidigm/productComparisonOverlay?productPagePath=${product.path}&variation=${product.variation}`
+                `/bin/solidigm/productComparisonOverlay?productPagePath=${product.productPagePath}&variation=${product.variation}`
             );
             const productDetails = await request.json();
-            const product = {
+            const productToSave = {
                 title: productDetails.name,
                 image: productDetails.image,
                 altText: productDetails.altText,
@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function () {
             };
 
             const products = getSavedProducts();
-            products.push(product);
+            products.push(productToSave);
             window.localStorage.setItem(savedCompareProductsKey, JSON.stringify(products));
             productOverlay.dispatchEvent(new Event('change'));
         }
