@@ -60,9 +60,11 @@
 
         function handleSelectChange(e) {
             const interface = interfaceSelect.value || interfaceData.anyLabel;
-            const formFactor = formFactorSelect.value || formFactorData.anyLabel;
+            const formFactor =
+                formFactorSelect.value || formFactorData.anyLabel;
             const capacity = capacitySelect.value || capacityData.anyLabel;
-            productsContainer.innerHTML = '';
+
+            productsContainer.innerHTML = "";
 
             if (
                 interface === interfaceData.anyLabel &&
@@ -70,65 +72,78 @@
                 capacity === capacityData.anyLabel &&
                 !!featuredProducts.length
             ) {
-                featuredProducts.forEach((featuredProduct) => {
+                featuredProducts.forEach(featuredProduct => {
                     productsContainer.appendChild(featuredProduct);
                 });
             } else {
-                const products = data.products.filter((product) => {
+                const selectedCombination = data.filters.find(combination => {
                     return (
-                        (product.interface === interface || interface === interfaceData.anyLabel) &&
-                        (product.formFactor === formFactor ||
-                            formFactor === formFactorData.anyLabel) &&
-                        (product.capacity === capacity || capacity === capacityData.anyLabel)
+                        combination.interface === interface &&
+                        combination.formFactor === formFactor &&
+                        combination.capacity === capacity
                     );
                 });
 
-                products.forEach((product) => {
-                    const productDOM = new DOMParser().parseFromString(
-                        productTemplate,
-                        'text/html'
+                if (selectedCombination && selectedCombination.products) {
+                    const products = data.products.filter(product =>
+                        selectedCombination.products.includes(product.title)
                     );
-                    const productImage = productDOM.querySelector('img');
-                    productImage.setAttribute('src', product.image);
-                    productImage.setAttribute('alt', product.imageAlt);
 
-                    const productTitle = productDOM.querySelector('.cmp-product-cards__item-title');
-                    productTitle.textContent = product.title;
+                    products.forEach(product => {
+                        const productDOM = new DOMParser().parseFromString(
+                            productTemplate,
+                            "text/html"
+                        );
+                        const productImage = productDOM.querySelector("img");
+                        productImage.setAttribute("src", product.image);
+                        productImage.setAttribute("alt", product.imageAlt);
 
-                    const productDescription = productDOM.querySelector(
-                        '.cmp-product-cards__item-description'
-                    );
-                    productDescription.textContent = product.description;
+                        const productTitle = productDOM.querySelector(
+                            ".cmp-product-cards__item-title"
+                        );
+                        productTitle.textContent = product.title;
 
-                    const productInterface = productDOM.querySelector(
-                        '.cmp-product-cards__interface'
-                    );
-                    productInterface.textContent = product.interface;
+                        const productDescription = productDOM.querySelector(
+                            ".cmp-product-cards__item-description"
+                        );
+                        productDescription.textContent = product.description;
 
-                    const productFormFactor = productDOM.querySelector(
-                        '.cmp-product-cards__form-factor'
-                    );
-                    productFormFactor.textContent = product.formFactor;
+                        const productInterface = productDOM.querySelector(
+                            ".cmp-product-cards__interface"
+                        );
+                        productInterface.textContent = product.interface;
 
-                    const productCapacity = productDOM.querySelector(
-                        '.cmp-product-cards__capacity'
-                    );
-                    productCapacity.textContent = product.capacity;
+                        const productFormFactor = productDOM.querySelector(
+                            ".cmp-product-cards__form-factor"
+                        );
+                        productFormFactor.textContent = product.formFactor;
 
-                    const productConfigureBtn = productDOM.querySelector(
-                        '.cmp-product-cards__configure-btn'
-                    );
-                    productConfigureBtn.setAttribute('href', product.configureURL);
+                        const productCapacity = productDOM.querySelector(
+                            ".cmp-product-cards__capacity"
+                        );
+                        productCapacity.textContent = product.capacity;
 
-                    const productDetailsBtn = productDOM.querySelector(
-                        '.cmp-product-cards__details-btn'
-                    );
-                    productDetailsBtn.setAttribute('href', product.detailsURL);
+                        const productConfigureBtn = productDOM.querySelector(
+                            ".cmp-product-cards__configure-btn"
+                        );
+                        productConfigureBtn.setAttribute(
+                            "href",
+                            product.configureURL
+                        );
 
-                    productsContainer.appendChild(
-                        productDOM.querySelector('.cmp-product-cards__item')
-                    );
-                });
+                        const productDetailsBtn = productDOM.querySelector(
+                            ".cmp-product-cards__details-btn"
+                        );
+                        productDetailsBtn.setAttribute(
+                            "href",
+                            product.detailsURL
+                        );
+
+                        productsContainer.appendChild(
+                            productDOM.querySelector(".cmp-product-cards__item")
+                        );
+                    });
+                }
             }
         }
 
