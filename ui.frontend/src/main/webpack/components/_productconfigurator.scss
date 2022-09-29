@@ -1,6 +1,34 @@
 .cmp-product-configurator {
-    &__add-to-compare-btn {
+    .cmp-custom-select {
+        width: 100%;
+
         @media (min-width: $desktop) {
+            width: auto;
+        }
+    }
+
+    .model-list__filters__bottom-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        .cmp-custom-select {
+            width: 100%;
+
+            @media (min-width: $desktop) {
+                width: auto;
+            }
+        }
+
+        @media (min-width: $desktop) {
+            display: flex;
+            flex: 1;
+        }
+    }
+
+    &__add-to-compare-btn {
+        grid-column: span 2 / span 2;
+        @media (min-width: $desktop) {
+            margin-left: auto;
             margin-left: auto;
         }
     }
