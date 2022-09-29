@@ -48,6 +48,7 @@ public class ProductServiceImpl implements ProductService {
         if (resourceResolver == null) {
             Map<String, Object> param = new HashMap<>();
             param.put(ResourceResolverFactory.SUBSERVICE, "productServiceUser");
+            log.debug("Successfully signed in Product Service user");
             try {
                 resourceResolver = resourceResolverFactory.getServiceResourceResolver(param);
             } catch (LoginException e) {
@@ -57,9 +58,12 @@ public class ProductServiceImpl implements ProductService {
         }
 
         //Get product data from the JCR at the requested path
+        log.debug("Getting product resource at: ".concat(path));
         Resource productResource = resourceResolver.getResource(path);
         if (productResource != null) {
             products.put(path, productResource.adaptTo(ProductModel.class));
+            log.debug("Resolved to product: ".concat(productResource.toString()));
+            log.debug("Resulting product".concat(productResource.adaptTo(ProductModel.class).toString()));
         }
     }
 
@@ -86,12 +90,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductModel getProduct(String category, String series, String name) {
         if (!enableCaching) {
+            log.debug("caching disabled, clearing cache");
             reset();
         }
         String path = buildPath(category, series, name);
         if (!products.containsKey(path)) {
+            log.debug("Product at path: ".concat(path).concat("not found... resolving"));
             resolveProduct(path);
         }
+        log.debug("product at path: ".concat(path).concat("Found: ").concat(products.get(path).toString()));
         return products.get(path);
     }
 }
