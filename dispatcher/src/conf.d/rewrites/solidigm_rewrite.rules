@@ -1,17 +1,11 @@
 # handled 404 at the Apache layer
 RewriteRule ^/403-page.html$ - [F]
 
-RewriteCond %{REQUEST_METHOD} ^GET$
-RewriteCond %{REQUEST_URI} .*/_jcr_content.*
-RewriteCond %{REQUEST_URI} .*productcompare.*
-RewriteCond %{REQUEST_URI} .*json.*
-RewriteRule ^/(.*)$ /$1 [PT,L]
-
 # ignore requests containing _jcr_content
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteCond %{REQUEST_URI} !^/.*.html$
 RewriteCond %{REQUEST_URI} !.*/_jcr_content.*
-RewriteCond %{REQUEST_URI} ^/content/newco-aem-site
+RewriteCond %{REQUEST_URI} ^/content/solidigm
 RewriteRule ^/(.*)$ /$1.html [PT,L]
 
 ## from the shortened user-friendly paths expanded to full content paths internally.
