@@ -1,30 +1,13 @@
-<div class="series-list" id="series-list">
-    <a class="series-list__serie" href="/content/solidigm/us/en/products/data-center/ssd-d7-series.html">
-        <img class="series-list__serie__image" src="/content/dam/solidigm/d7-series-marquee@2x.png" alt="alt text" />
+<div class="series-list"
+     id="series-list"
+     data-sly-use.seriesList="com.solidigm.core.models.SeriesList"
+     data-sly-list.seriesPage="${seriesList.seriesPages}">
+    <a class="series-list__serie" href="${seriesPage.seriesPageLink.link}">
+        <img class="series-list__serie__image" src="${seriesPage.image}" alt="${seriesPage.altText}" />
         <div class="series-list__serie__text">
-            <h3 class="series-list__serie__text__title">SSD D7 Series</h3>
+            <h3 class="series-list__serie__text__title">${seriesPage.name}</h3>
             <p class="series-list__serie__text__description">
-                Our highest-performing SSDs, engineered for the most demanding workloads.
-            </p>
-        </div>
-    </a>
-
-    <a class="series-list__serie" href="/content/solidigm/us/en/products/data-center/ssd-d5-series.html">
-        <img class="series-list__serie__image" src="/content/dam/solidigm/d5-series-marquee@2x.png" alt="alt text" />
-        <div class="series-list__serie__text">
-            <h3 class="series-list__serie__text__title">SSD D5 Series</h3>
-            <p class="series-list__serie__text__description">
-                Hyper-dense, cost-efficient SSDs optimized for read intensive workloads.
-            </p>
-        </div>
-    </a>
-
-    <a class="series-list__serie" href="/content/solidigm/us/en/products/data-center/ssd-d3-series.html">
-        <img class="series-list__serie__image" src="/content/dam/solidigm/d3-series-marquee@2x.png" alt="alt text" />
-        <div class="series-list__serie__text">
-            <h3 class="series-list__serie__text__title">SSD D3 Series</h3>
-            <p class="series-list__serie__text__description">
-                SSDs designed to improve storage performance and costs on legacy SATA infrastructure.
+                ${seriesPage.description}
             </p>
         </div>
     </a>

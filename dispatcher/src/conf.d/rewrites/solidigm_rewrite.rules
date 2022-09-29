@@ -1,21 +1,21 @@
-# rewrite for root redirect
-RewriteRule ^/?$ /content/solidigm/us/en.html [PT,L]
-# RewriteRule ^/403.html$ - [F]
-#
+# handled 404 at the Apache layer
+RewriteRule ^/403-page.html$ - [F]
+
+# ignore requests containing _jcr_content
 RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteCond %{REQUEST_URI} !^/.*.html$
 RewriteCond %{REQUEST_URI} !.*/_jcr_content.*
 RewriteCond %{REQUEST_URI} ^/content/solidigm
 RewriteRule ^/(.*)$ /$1.html [PT,L]
-#
-# RewriteCond %{REQUEST_METHOD} ^GET$
+
+## from the shortened user-friendly paths expanded to full content paths internally.
+RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteCond %{REQUEST_URI} !^/.*.html$
 RewriteCond %{REQUEST_URI} !.*/_jcr_content.*
 RewriteCond %{REQUEST_URI} !^/etc
 RewriteCond %{REQUEST_URI} !^/var
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/siteadmin
-RewriteCond %{REQUEST_URI} !^/saml_login
 RewriteCond %{REQUEST_URI} !^/bin
 RewriteCond %{REQUEST_URI} !^/libs
 RewriteCond %{REQUEST_URI} !^/home
@@ -23,7 +23,7 @@ RewriteCond %{REQUEST_URI} !^/content/dam
 RewriteCond %{REQUEST_URI} !^/author
 RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/conf
-# RewriteRule ^/(.*)$ /content/solidigm/$1.html [PT,L]
+RewriteRule ^/(.*)$ /content/solidigm/language-masters/$1.html [PT,L]
 
 ## from the shortened user-friendly paths expanded to full content paths internally.
 RewriteCond %{REQUEST_METHOD} ^GET$
@@ -37,8 +37,15 @@ RewriteCond %{REQUEST_URI} !^/tmp
 RewriteCond %{REQUEST_URI} !^/var
 RewriteCond %{REQUEST_URI} !^/crx
 RewriteCond %{REQUEST_URI} !^/system
-RewriteCond %{REQUEST_URI} !^/home
-RewriteCond %{REQUEST_URI} !^/saml_login
 RewriteCond %{REQUEST_URI} !^/dispatcher
-RewriteCond %{REQUEST_URI} (.html|.jpe?g|.png|.svg)$
-RewriteRule ^/(.*)$ /content/solidigm/$1 [PT,L]
+RewriteRule ^/(.*)$ /content/solidigm/language-masters/$1 [PT,L]
+
+## GET request
+## does not end with .html
+## does not start with /content
+## contains /_jcr_content
+RewriteCond %{REQUEST_METHOD} ^GET$
+RewriteCond %{REQUEST_URI} !^/.*.html$
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} .*/_jcr_content.*
+RewriteRule ^/(.*)$ /content/solidigm/language-masters/$1 [PT,L]
