@@ -4,14 +4,12 @@ import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
-import com.day.cq.wcm.api.Page;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.solidigm.core.beans.OrderingSpec;
+import com.solidigm.core.beans.CapacitySortable;
 import com.solidigm.core.beans.ProductModel;
 import com.solidigm.core.beans.ProductPage;
-import com.solidigm.core.beans.ProductVariation;
 import com.solidigm.core.services.ProductService;
 import com.solidigm.core.utils.SolidigmConstants;
 import com.solidigm.core.utils.SolidigmUtils;
@@ -19,7 +17,6 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.request.RequestParameter;
-import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
@@ -145,6 +142,7 @@ public class ModelListServlet extends SlingSafeMethodsServlet {
         formFactors.put("Any Form Factor", new HashSet<>());
         Map<String, HashSet<String>> capacities = new HashMap<>();
         capacities.put("Any Capacity", new HashSet<>());
+        HashMap<String, CapacitySortable> capacitiesSortable = new HashMap<>();
         JsonArray products = new JsonArray();
         for (Hit hit : result.getHits()) {
             try {
@@ -175,6 +173,9 @@ public class ModelListServlet extends SlingSafeMethodsServlet {
                     }
                     capacities.get("Any Capacity").add(productPage.getName());
                     capacities.get(capacity).add(productPage.getName());
+                }
+                for (CapacitySortable capacitySortable : productData.getCapacitiesSortable()) {
+                    capacitiesSortable.put(capacitySortable.getCapacity(), new CapacitySortable(capacitySortable.getRawCapacity(), capacitySortable.getCapacity()));
                 }
 
                 //Serialize product data to JSON
@@ -221,13 +222,22 @@ public class ModelListServlet extends SlingSafeMethodsServlet {
         //Create JSON data for all unique interfaces, form factors and capacities
         interfaces.keySet().remove("Any Interface");
         List<String> interfacesList = new ArrayList<>(interfaces.keySet());
+        Collections.sort(interfacesList);
         interfacesList.add(0, "Any Interface");
+
         formFactors.keySet().remove("Any Form Factor");
         List<String> formFactorsList = new ArrayList<>(formFactors.keySet());
+        Collections.sort(formFactorsList);
         formFactorsList.add(0, "Any Form Factor");
-        capacities.keySet().remove("Any Capacity");
-        List<String>capacitiesList = new ArrayList<>(capacities.keySet());
+
+        List<CapacitySortable>capacitiesSortableList = new ArrayList<>(capacitiesSortable.values());
+        capacitiesSortableList.sort(new CapacitySortable.SortCapacities());
+        List<String> capacitiesList = new ArrayList<>();
+        for (CapacitySortable capacitySortable : capacitiesSortableList) {
+            capacitiesList.add(capacitySortable.getCapacity());
+        }
         capacitiesList.add(0, "Any Capacity");
+
         JsonObject allFilters = new JsonObject();
         allFilters.add("interface", gson.toJsonTree(interfacesList));
         allFilters.add("formFactor", gson.toJsonTree(formFactorsList));
