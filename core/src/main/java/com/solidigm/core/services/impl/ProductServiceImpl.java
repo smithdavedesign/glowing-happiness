@@ -26,6 +26,8 @@ public class ProductServiceImpl implements ProductService {
 
     private String productDataPath;
 
+    private boolean enableCaching;
+
     private Map<String, ProductModel> products;
 
     @Reference
@@ -36,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
     @Activate
     public void activate(ProductServiceConfig config) {
         productDataPath = config.getProductDataPath();
+        enableCaching = config.getEnableCaching();
         products = new HashMap<>();
     }
 
@@ -82,6 +85,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductModel getProduct(String category, String series, String name) {
+        if (!enableCaching) {
+            reset();
+        }
         String path = buildPath(category, series, name);
         if (!products.containsKey(path)) {
             resolveProduct(path);

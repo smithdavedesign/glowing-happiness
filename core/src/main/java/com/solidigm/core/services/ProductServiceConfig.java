@@ -1,6 +1,7 @@
 package com.solidigm.core.services;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 @ObjectClassDefinition(
@@ -12,4 +13,11 @@ public @interface ProductServiceConfig {
             name = "Product Data Path",
             description = "Path to the product data stored in the JCR")
     String getProductDataPath() default "/var/commerce/products/solidigm";
+
+    @AttributeDefinition(
+            name = "Enable Caching",
+            description = "Enable caching of product data, can save on expensive calls to the JCR database.",
+            type = AttributeType.BOOLEAN)
+    boolean getEnableCaching() default true;
+
 }
