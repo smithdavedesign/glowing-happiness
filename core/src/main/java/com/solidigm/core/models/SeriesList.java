@@ -6,7 +6,7 @@ import com.solidigm.core.beans.ProductSeriesPage;
 import java.util.List;
 
 /**
- * Defines the {@code Quote} Sling Model for the {@code /apps/solidigm/components/quote} component.
+ * Defines the {@code SeriesList} Sling Model for the {@code /apps/solidigm/components/serieslist} component.
  */
 public interface SeriesList extends ComponentExporter {
     /**
