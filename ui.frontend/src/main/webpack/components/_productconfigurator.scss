@@ -229,6 +229,7 @@
         @media (min-width: $desktop) {
             font-size: $font-size-5xl-desktop;
             letter-spacing: vwMobile(-1);
+            line-height: vwDesktop(70);
         }
     }
 
