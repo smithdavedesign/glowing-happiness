@@ -34,7 +34,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
         const savedProducts = getSavedProducts();
         if (savedProducts.length < maxProducts) {
-            console.log(product);
             const request = await fetch(
                 `/bin/solidigm/productComparisonOverlay?productPagePath=${product.productPagePath}&variation=${product.variation}`
             );
