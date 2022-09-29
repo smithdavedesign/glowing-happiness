@@ -29,6 +29,7 @@ public class SearchResultItem {
     @Getter
     private String altText;
 
+
     public SearchResultItem(String pagePath, ResourceResolver resourceResolver) {
         this.pagePath = pagePath;
         if (pagePath != null) {
@@ -36,6 +37,9 @@ public class SearchResultItem {
             Page resultPage = resultResource.adaptTo(Page.class);
             title = resultPage.getTitle();
             description = resultPage.getDescription();
+            if (description == null) {
+                description = "";
+            }
             url = new Link("", pagePath).getLink();
             tags = resultPage.getTags();
 
@@ -48,6 +52,9 @@ public class SearchResultItem {
                 } else {
                     altText = productImage.getValueMap().get("alt", String.class);
                 }
+            }
+            if (altText == null) {
+                altText = "";
             }
         }
     }

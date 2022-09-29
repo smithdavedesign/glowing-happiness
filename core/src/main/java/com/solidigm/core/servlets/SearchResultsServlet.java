@@ -1,6 +1,5 @@
 package com.solidigm.core.servlets;
 
-import com.day.cq.tagging.Tag;
 import com.day.cq.search.PredicateGroup;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
@@ -128,6 +127,13 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
         queryMap.put("path", rootPath);
         queryMap.put("type", "cq:Page");
         queryMap.put("fulltext", queryText);
+        queryMap.put("group.p.or", "true");
+        queryMap.put("group.1_property", "jcr:content/hideInNav");
+        queryMap.put("group.1_property.operation", "unequals");
+        queryMap.put("group.1_property.value", "true");
+        queryMap.put("group.2_property", "jcr:content/hideInNav");
+        queryMap.put("group.2_property.operation", "exists");
+        queryMap.put("group.2_property.value", "false");
         queryMap.put("p.limit", String.valueOf(resultsPerPage));
         queryMap.put("p.offset", String.valueOf(resultsPerPage * (page - 1)));
 
@@ -143,9 +149,12 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
             try {
                 SearchResultItem resultPage = new SearchResultItem(hit.getPath(), req.getResourceResolver());
                 JsonObject resultObject = new JsonObject();
+
+                //Serialize search result to JSON
                 resultObject.addProperty("title", resultPage.getTitle());
                 resultObject.addProperty("description", resultPage.getDescription());
                 resultObject.addProperty("url", resultPage.getUrl());
+                resultObject.addProperty("urlLabel", resourceResolver.map(hit.getPath()));
 
                 JsonObject imageProps = new JsonObject();
                 imageProps.addProperty("url", resultPage.getImage());
