@@ -15,21 +15,3 @@
 /0114 { /type "allow" /method "GET" /url "/bin/solidigm/signOut" }
 
 /0115 { /type "allow" /method "GET" /url "/bin/solidigm/dynamicTilelist" }
-
-/0116 {
-    /auth_checker {
-        /url "/bin/solidigm/permissionCheck"
-        /filter {
-            /0000 { /glob "*" /type "deny" }
-            /0001 { /glob "/content/solidigm/language-masters/en/my-solidigm" /type "allow" }
-            /0002 { /glob "/content/solidigm/language-masters/de/my-solidigm" /type "allow" }
-            /0003 { /glob "/content/solidigm/language-masters/kr/my-solidigm" /type "allow" }
-            /0004 { /glob "/content/solidigm/language-masters/ja/my-solidigm" /type "allow" }
-            /0005 { /glob "/content/solidigm/language-masters/zn/my-solidigm" /type "allow" }
-        }
-        /headers {
-            /0000 { /glob "*" /type "deny" }
-            /0001 { /glob "Set-Cookie:*" /type "allow" }
-        }
-    }
-}
