@@ -97,7 +97,7 @@ window.addEventListener('DOMContentLoaded', async function () {
             return response;
         }
 
-        products = await Promise.all(savedProducts.map((product) => getProducts(product.path)));
+        products = await Promise.all(savedProducts.map((product) => getProducts(product.productPagePath)));
         updateSectionTitle();
         renderProductData();
     }
