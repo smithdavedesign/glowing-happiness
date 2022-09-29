@@ -29,18 +29,23 @@ window.addEventListener('DOMContentLoaded', function () {
         renderOverlay(products);
     }
 
-    function addProduct(productInfo) {
+    async function addProduct(product) {
         const maxProducts = isMobile.matches ? MAX_PRODUCTS_MOBILE : MAX_PRODUCTS_DESKTOP;
 
         const savedProducts = getSavedProducts();
         if (savedProducts.length < maxProducts) {
+            const request = await fetch(
+                `/bin/solidigm/productComparisonOverlay?productPagePath=${product.path}&variation=${product.variation}`
+            );
+            const productDetails = await request.json();
             const product = {
-                title: `D7-P5600-${productInfo.path}`,
-                image: `../../assets/product-image.png`,
-                interface: 'Interface 1',
-                formFactor: 'FormFactor 1',
-                capacity: 'Capacity 1',
-                ...productInfo,
+                title: productDetails.name,
+                image: productDetails.image,
+                altText: productDetails.altText,
+                interface: productDetails.productInterface,
+                formFactor: productDetails.formFactor,
+                capacity: productDetails.capacity,
+                ...product,
             };
 
             const products = getSavedProducts();
@@ -158,7 +163,7 @@ window.addEventListener('DOMContentLoaded', function () {
         removeProduct(e.detail.title);
     });
 
-    window.addEventListener("addProductToCompare", function (e) {
+    window.addEventListener('addProductToCompare', function (e) {
         addProduct({ productPagePath: e.detail.path, variation: e.detail.variation });
     });
 });
