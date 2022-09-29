@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', async function () {
             resultsPerPage = 10
         ) {
             const request = await fetch(
-                `http://localhost:3004/all?rootPath=${rootPath}&query=${query}&currentPage=${currentPage}&resultsPerPage=${resultsPerPage}&=filter=${filter}`
+                `/bin/solidigm/search?rootPath=${rootPath}&query=${query}&currentPage=${currentPage}&resultsPerPage=${resultsPerPage}&filter=${filter}`
             );
             const response = await request.json();
             return response;

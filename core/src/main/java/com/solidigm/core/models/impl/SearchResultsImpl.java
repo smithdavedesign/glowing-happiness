@@ -2,19 +2,21 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.wcm.api.Page;
 import com.solidigm.core.beans.Filter;
-import com.solidigm.core.beans.SearchResult;
 import com.solidigm.core.models.SearchResults;
+import com.solidigm.core.utils.SolidigmUtils;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
+import javax.inject.Inject;
 import java.util.List;
 
 @Model(
@@ -30,18 +32,16 @@ import java.util.List;
 public class SearchResultsImpl implements SearchResults {
     static final String RESOURCE_TYPE = "solidigm/components/searchresults";
 
+    @Inject
+    @Source("script-bindings")
+    Page currentPage;
+
     @ChildResource
     @Getter
     private List<Filter> filters;
 
     @Getter
-    private List<SearchResult> searchResults;
-
-    @Getter
-    private String resultsPerPage;
-
-    @Getter
-    private String totalResults;
+    private String rootPath;
 
     @Override
     public String getExportedType() {
@@ -50,14 +50,9 @@ public class SearchResultsImpl implements SearchResults {
 
     @PostConstruct
     private void initModel() {
-         searchResults = new ArrayList<>();
-         for(int i = 0; i < 40; i++) {
-             searchResults.add(
-                     new SearchResult("/content/solidigm/language-masters/en", "Test Title", "Test Description",
-                                      "https://google.com",
-                                      "/content/dam/solidigm/master/products/d3/s4520/d3-s4520.png", "Test Alt Text"));
-         }
-         resultsPerPage = "10";
-         totalResults = "40";
+        //Set localized root path
+        if(currentPage != null){
+            rootPath = SolidigmUtils.getSiteRoot(currentPage.getPath());
+        }
     }
 }
