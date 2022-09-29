@@ -151,32 +151,35 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    document.querySelectorAll(".header__log-out-btn").forEach(logOutBtn => {
-        logOutBtn.addEventListener("click", async function(){
+    document.querySelectorAll('.header__log-out-btn').forEach((logOutBtn) => {
+        logOutBtn.addEventListener('click', async function () {
             try {
-                await fetch("/bin/solidigm/signOut");
+                await fetch('/bin/solidigm/signOut');
             } catch (error) {
                 console.log(error);
             }
-            window.location.replace("/");
+            window.location.replace('/');
         });
     });
 
-    async function isSignedIn(){
-        const request = await fetch("/bin/solidigm/isSignedIn");
+    async function isSignedIn() {
+        const request = await fetch('/bin/solidigm/isSignedIn');
         const response = await request.json();
 
         return response;
     }
 
-    isSignedIn()
-        .then(response => {
-            if (response.isSignedIn) {
-                const userIcons = document.querySelectorAll(".header__user-settings");
+    isSignedIn().then((response) => {
+        const userIcons = document.querySelectorAll('.header__user-settings');
+        const header = document.querySelector('.header__navigation-bar');
+        if (response.isSignedIn) {
+            header.classList.add('header__navigation-bar--signed-in');
+        } else {
+            header.classList.add('header__navigation-bar--not-signed-in');
+        }
 
-                for (const userIcon of userIcons) {
-                    userIcon.classList.remove("hidden");
-                }
-            }
-        });
+        for (const userIcon of userIcons) {
+            userIcon.classList.add('header__user-settings--initialized');
+        }
+    });
 });

@@ -100,7 +100,6 @@
                                                                         name="./products"
                                                                         fieldLabel="Products"
                                                                         fieldDescription="Products associated with this partner, multiple can be selected"
-                                                                        required="{Boolean}true"
                                                                         multiple="{Boolean}true"
                                                                         rootPath="/content/cq:tags/solidigm/partners/products" />
                                                                 <link

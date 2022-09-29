@@ -23,6 +23,9 @@ public class ProductModel {
     private String brand;
 
     @Getter
+    private String productGroup;
+
+    @Getter
     private List<String> capacities;
 
     @Getter
@@ -52,6 +55,9 @@ public class ProductModel {
                 }
                 if (StringUtils.isEmpty(brand)) {
                     brand = variation.getBrand();
+                }
+                if (StringUtils.isEmpty(productGroup)){
+                    productGroup = variation.getProductGroup();
                 }
 
                 //Add form factors and interfaces for the model if they haven't already been added

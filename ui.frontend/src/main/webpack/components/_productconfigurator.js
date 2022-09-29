@@ -59,7 +59,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         optionsContainer: capacityOptionsContainer,
     };
 
-    const request = await fetch('/bin/solidigm/productConfigurator');
+    const path = productConfigurator.getAttribute("data-path");
+    const request = await fetch(`/bin/solidigm/productConfigurator?path=${path}`);
     const data = await request.json();
     const {
         allFilters: { interface: interfaces, formFactor: formFactors, capacity: capacities },
@@ -76,7 +77,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         const validOptions = data.filters
             .filter((combination) => {
                 return otherSelects.reduce((acc, curr) => {
-                    if (!acc) return false;
+                    if (!acc) { return false; }
 
                     return (
                         combination[curr.key] === curr.element.value || curr.element.value === ''
@@ -105,74 +106,54 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     function updateProductData(product) {
         // By the numbers
-        Object.entries(product.byTheNumbers).forEach(([key, val]) => {
-            productConfigurator.querySelector(`[data-name=${key}]`).textContent = val;
+        Object.entries(product.attributes).forEach(([key, val]) => {
+            var attr = productConfigurator.querySelector(`[data-name=${key}]`);
+            if (attr != null) {
+                if (attr.attributes['data-authored'] == null) {
+                    attr.textContent = val;
+                }
+            }
         });
         // Performance
         productConfigurator.querySelector('[data-name=random-read]').textContent =
-            product.performance.randomRead;
+            product.attributes.RandomRead100PctSpanValue;
         productConfigurator.querySelector('[data-name=random-write]').textContent =
-            product.performance.randomWrite;
+            product.attributes.RandomWrite100PctSpanValue;
         productConfigurator.querySelector('[data-name=power-active]').textContent =
-            product.performance.powerActive;
+            product.attributes.SSDPowerActive;
         productConfigurator.querySelector('[data-name=power-idle]').textContent =
-            product.performance.powerIdle;
+            product.attributes.SSDPowerIdle;
+        const regex = /\D*/gm;
         productConfigurator.querySelector(
             '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(1) .cmp-product-tabs__metric-title'
-        ).textContent = product.performance.speeds[0].title;
-        productConfigurator.querySelector(
-            '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(1) .cmp-product-tabs__metric-subtitle'
-        ).textContent = product.performance.speeds[0].unit;
-        productConfigurator.querySelector(
-            '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(1) .cmp-product-tabs__metric-body'
-        ).textContent = product.performance.speeds[0].description;
+        ).textContent = product.attributes.SequentialReadMB.replace(regex, '');
         productConfigurator.querySelector(
             '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-title'
-        ).textContent = product.performance.speeds[1].title;
-        productConfigurator.querySelector(
-            '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-subtitle'
-        ).textContent = product.performance.speeds[1].unit;
-        productConfigurator.querySelector(
-            '#panel-performance .cmp-product-tabs__side-panel--metric :nth-child(2) .cmp-product-tabs__metric-body'
-        ).textContent = product.performance.speeds[1].description;
+        ).textContent = product.attributes.SequentialWriteMB.replace(regex, '');
 
         // Reliability
         productConfigurator.querySelector('[data-name=warranty-period]').textContent =
-            product.reliability.warrantyPeriod;
+            product.attributes.WarrantyLengthYears;
         productConfigurator.querySelector('[data-name=endurance-rating]').textContent =
-            product.reliability.enduranceRating;
+            product.attributes.SSDEnduranceRating;
         productConfigurator.querySelector('[data-name=mean-time-netween-failures]').textContent =
-            product.reliability.meanTimeBetweenFailures;
+            product.attributes.MTBF;
         productConfigurator.querySelector('[data-name=uncorrectable-bit-error-rate]').textContent =
-            product.reliability.uncorrectableBitErrorRate;
+            product.attributes.UBER;
         productConfigurator.querySelector('[data-name=vibration-operating]').textContent =
-            product.reliability.vibrationOperating;
+            product.attributes.VibrationOperating;
         productConfigurator.querySelector('[data-name=vibration-non-operating]').textContent =
-            product.reliability.vibrationNonOperating;
+            product.attributes.vibrationNonOperating;
         productConfigurator.querySelector('[data-name=shock]').textContent =
-            product.reliability.shock;
+            product.attributes.SSDShock;
         productConfigurator.querySelector('[data-name=operating-temperature-range]').textContent =
-            product.reliability.operatingTemperatureRange;
+            product.attributes.OperatingTemperature;
 
         // Ordering Specs
         productConfigurator.querySelector('[data-name=non-opal-ordering-code]').textContent =
-            product.orderingSpecs.leftTab.orderingCode;
+            product.orderingSpecs.orderingCode;
         productConfigurator.querySelector('[data-name=non-opal-shipping-media]').textContent =
-            product.orderingSpecs.leftTab.shippingMedia;
-        productConfigurator.querySelector('[data-name=opal-ordering-code]').textContent =
-            product.orderingSpecs.rightTab.orderingCode;
-        productConfigurator.querySelector('[data-name=opal-shipping-media]').textContent =
-            product.orderingSpecs.rightTab.shippingMedia;
-
-        // PCN/MDDS
-        const pcnmdds = document.querySelector('#panel-pcn-mdds .cmp-product-tabs__key-val');
-        pcnmdds.innerHTML = '';
-        product.pcnmdds.forEach((entry) => {
-            const links = entry.data
-                .map((link) => `<a href="${link.url}">${link.text}</a>`)
-                .join('');
-            pcnmdds.innerHTML += `<dt>${entry.label}</dt> <dd>${links}</dd>`;
-        });
+            product.orderingSpecs.shippingMedia;
 
         // Compliance
         productConfigurator.querySelector('[data-name=eccn]').textContent = product.compliance.eccn;
@@ -212,7 +193,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     compareButton.addEventListener('click', function () {
         window.dispatchEvent(
             new CustomEvent('addProductToCompare', {
-                detail: { path: selectedProduct.path % 3 },
+                detail: { path: selectedProduct.productPagePath, variation: selectedProduct.path },
             })
         );
     });

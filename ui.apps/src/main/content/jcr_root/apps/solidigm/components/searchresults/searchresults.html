@@ -1,12 +1,13 @@
-<div class="cmp-search-results"
-     data-sly-use.searchResults="com.solidigm.core.models.SearchResults">
-    <form id="search-form"
-        data-results-per-page="10"
-    >
+<div
+    class="cmp-search-results"
+    data-sly-use.searchResults="com.solidigm.core.models.SearchResults"
+    data-path="/test/path"
+>
+    <form id="search-form" data-results-per-page="10">
         <label class="sr-only" for="search-bar">${'Search' @ i18n}</label>
         <input class="solidigm-input solidigm-input--underline" name="query" id="search-bar" />
-        <span class="cmp-search-results__filter-label">${'Filter by Type' @ i18n}</span>
-        <div class="cmp-search-results__filters">
+        <span class="cmp-search-results__filter-label hidden">${'Filter by Type' @ i18n}</span>
+        <div class="cmp-search-results__filters hidden">
             <input
                 class="cmp-search-results__filter cmp-search-results__filter--selected"
                 value="all"
@@ -53,32 +54,22 @@
         </div>
     </form>
     <div class="cmp-search-results__total">
-        <p data-results-template="${'Showing {0} of {1} results' @ format=[searchResults.resultsPerPage, searchResults.totalResults],i18n}"></p>
+        <p
+            data-results-template="${'Showing {0} of {1} results' @ format=[searchResults.resultsPerPage, searchResults.totalResults],i18n}"
+        ></p>
     </div>
-    <ul class="cmp-search-results__results-container"
-        data-sly-list.result="${searchResults.searchResults}">
+    <ul
+        class="cmp-search-results__results-container"
+        data-sly-list.result="${searchResults.searchResults}"
+    >
         <li>
-            <p>
-                ${result.pagePath}
-            </p>
-            <p>
-                ${result.title}
-            </p>
-            <p>
-                ${result.description}
-            </p>
-            <p>
-                ${result.url}
-            </p>
-            <p>
-                ${result.image}
-            </p>
-            <p>
-                ${result.altText}
-            </p>
-            <p>
-                ------------------------------------------------
-            </p>
+            <p>${result.pagePath}</p>
+            <p>${result.title}</p>
+            <p>${result.description}</p>
+            <p>${result.url}</p>
+            <p>${result.image}</p>
+            <p>${result.altText}</p>
+            <p>------------------------------------------------</p>
         </li>
     </ul>
     <nav
