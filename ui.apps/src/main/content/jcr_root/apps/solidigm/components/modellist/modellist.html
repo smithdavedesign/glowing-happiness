@@ -22,13 +22,13 @@
             </dl>
             <div class="cmp-product-cards__item-cta">
                 <a
-                    href="${product.productPagePath}"
+                    href="${product.productPageLink.link}"
                     class="solidigm-btn cmp-product-cards__details-btn"
                 >
                     ${'View Details' @ i18n}
                 </a>
                 <a
-                    href="${product.productPagePath}#configurator"
+                    href="${product.productPageLink.link}#configurator"
                     class="solidigm-btn solidigm-btn--outline solidigm-btn--outline-dark cmp-product-cards__configure-btn"
                 >
                     ${'Configure' @ i18n}
@@ -41,6 +41,7 @@
 <div
     class="model-list"
     data-sly-use.modelList="com.solidigm.core.models.ModelList"
+    data-path="${modelList.currentPagePath}"
     data-interface-any-label="${'Any Interface' @ i18n}"
     data-form-factor-any-label="${'Any Form Factor' @ i18n}"
     data-capacity-any-label="${'Any Capacity' @ i18n}"
