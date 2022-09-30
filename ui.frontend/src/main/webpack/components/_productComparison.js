@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', async function () {
             product.variants.forEach((opt) => {
                 optionsContainer.innerHTML += `<li class='cmp-custom-select__option ${
                     opt.variationID === variant.variationID && 'cmp-custom-select__option--selected'
-                }'>${opt.variationID}</li>`;
+                }'>${opt.capacity}, ${opt.formFactor}, ${opt.interface}</li>`;
             });
 
             selectInput.addEventListener('change', function (e) {
@@ -97,7 +97,9 @@ window.addEventListener('DOMContentLoaded', async function () {
             return response;
         }
 
-        products = await Promise.all(savedProducts.map((product) => getProducts(product.productPagePath)));
+        products = await Promise.all(
+            savedProducts.map((product) => getProducts(product.productPagePath))
+        );
         updateSectionTitle();
         renderProductData();
     }
