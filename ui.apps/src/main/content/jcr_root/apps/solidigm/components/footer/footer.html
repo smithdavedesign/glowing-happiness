@@ -129,8 +129,8 @@
                 </a>
             </ul>
             <nav>
-                <ul class="footer-content__links">
-                    <sly data-sly-list.link="${footer.links}" id="icpLI">
+                <ul class="footer-content__links" id="icpLI">
+                    <sly data-sly-list.link="${footer.links}">
                         <a class="footer-content__links__link" href="${link.link}" target="${link.target}">${link.label}</a>
                     </sly>
                 </ul>
