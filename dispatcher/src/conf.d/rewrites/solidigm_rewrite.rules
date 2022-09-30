@@ -1,3 +1,6 @@
 # rewrite for root redirect
 RewriteCond %{REQUEST_URI} ^/$
 RewriteRule (.*) /content/solidigm/us/en/homepage.html [PT,L]
+
+# handle incoming urls and map back to long form
+RewriteRule ^/(.*)$ /content/solidigm/$1 [PT,L]
