@@ -188,7 +188,6 @@ PassEnv DISP_ID
 		##Global rewrite include
 		Include /etc/httpd/conf.d/rewrites/base_rewrite.rules
 		##Solidigm-specific rewrites
-		Include /etc/httpd/conf.d/rewrites/domain_rewrite.rules
 		Include /etc/httpd/conf.d/rewrites/solidigm_rewrite.rules
 #		Include /etc/httpd/conf.d/rewrites/domain_rewrite.rules
 		## Update /etc/httpd/conf.d/variables/ams_default.vars with setting the PUBLISH_FORCE_SSL from 0 or 1 to enable or disable enforcing SSL

@@ -1,0 +1,12 @@
+# force all inbound traffic to lowercase
+RewriteCond $1 [A-Z]
+RewriteRule ^(.*)$ /${lowercase:$1} [R=301,L]
+
+RewriteMap lowercase int:tolower
+
+# rewrite for root redirect
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule (.*) /content/solidigm/us/en/homepage.html [PT,L]
+
+# handle inbound urls and map back to long form
+RewriteRule ^/(.*)$ /content/solidigm/language-masters/$1 [PT,L]
