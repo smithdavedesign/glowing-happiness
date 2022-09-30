@@ -6,6 +6,8 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductVariation {
+    protected final Logger log = LoggerFactory.getLogger(this.getClass());
     @Inject
     private Resource resource;
 
@@ -179,6 +182,9 @@ public class ProductVariation {
 
     @PostConstruct
     private void init() {
+        log.debug("This should be the product capacity:".concat(capacity));
+        log.debug("this should be the product capacity from the JCR:".concat(resource.getChild("attributes").getChild("DriveCapacity").getValueMap().toString()));
+        log.debug("this should be the product capacity from the JCR:".concat(resource.getChild("attributes").getChild("DriveCapacity").getValueMap().get("value", String.class)));
         if (resource != null) {
             variationID = resource.getName();
         }
