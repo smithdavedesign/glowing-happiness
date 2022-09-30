@@ -1,5 +1,6 @@
 {
   "resource.resolver.mapping": [
-    "/content/solidigm/(.*)</$1"
+    "/content/solidigm/language-masters/</",
+    "/:/"
   ]
 }
