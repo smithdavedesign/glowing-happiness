@@ -757,3 +757,7 @@ header {
 .header__navigation-bar--not-signed-in .header__auth-item.header__auth-item--not-signed-in {
     display: block;
 }
+
+.header__language-label {
+    text-transform: uppercase;
+}
