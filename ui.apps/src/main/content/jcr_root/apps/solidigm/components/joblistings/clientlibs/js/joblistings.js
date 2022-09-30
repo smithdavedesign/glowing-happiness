@@ -6,8 +6,113 @@ window.addEventListener('DOMContentLoaded', async function () {
         return translation;
     }
 
-    const path = document.querySelector('.cmp-joblistings').getAttribute('data-path');
-    const translation = await getTranslations(path);
+    // const path = document.querySelector('.cmp-joblistings').getAttribute('data-path');
+    // const translation = await getTranslations(path);
+    let translation = {
+        de: {
+            job_title: "Stellenbezeichnung",
+            company_name: "Unternehmen",
+            type_of_employment: "Art der BeschÃ¤ftigung",
+            department: "Abteilung",
+            location: "Standort",
+            occupational_area: "Berufsfeld",
+            published_since: "VerÃ¶ffentlichungsdatum",
+            search_button: "Suchen",
+            view_all: "Alle anzeigen",
+            filter_by: "Nach Bezeichnung, Wissen filtern",
+            ref_number: "REF-Code",
+            remote_info:
+                "Mitarbeiter kÃ¶nnen im Homeoffice arbeiten"
+        },
+        en: {
+            job_title: "Job Title",
+            company_name: "Company",
+            type_of_employment: "Type of Employment",
+            department: "Group",
+            location: "Location",
+            occupational_area: "Occupational Area",
+            published_since: "Published Since",
+            search_button: "Search",
+            view_all: "View all",
+            filter_by: "Filter by title, expertise",
+            ref_number: "REF code",
+            remote_info: "Employees can work remotely"
+        },
+        ja: {
+            job_title: "å‹Ÿé›†è·ç¨®",
+            company_name: "ä¼šç¤¾",
+            type_of_employment: "é›‡ç"¨ã‚¿ã‚¤ãƒ—",
+            department: "éƒ¨ç½²",
+            location: "å‹¤å‹™åœ°",
+            occupational_area: "å°‚é–€åˆ†é‡Ž",
+            published_since: "æŽ²è¼‰æ—¥",
+            search_button: "æ¤œç´¢",
+            view_all: "ã™ã¹ã¦è¡¨ç¤º",
+            filter_by: "è·ç¨®ã€å°‚é–€åˆ†é‡Žã§çµžã‚Šè¾¼ã¿",
+            ref_number: "REF ã‚³ãƒ¼ãƒ‰",
+            remote_info:
+                "å¾"æ¥å"¡ã¯ãƒªãƒ¢ãƒ¼ãƒˆãƒ¯ãƒ¼ã‚¯ãŒã§ãã¾ã™"
+        },
+        ko: {
+            job_title: "ì§ì±…",
+            company_name: "íšŒì‚¬",
+            type_of_employment: "ê³ ìš© í˜•íƒœ",
+            department: "ë¶€ì„œ",
+            location: "ì§€ì—",
+            occupational_area: "ì§ì—…êµ°",
+            published_since: "ìµœì´ˆ ê²Œì‹œì¼",
+            search_button: "ê²€ìƒ‰",
+            view_all: "ëª¨ë' ë³´ê¸°",
+            filter_by: "ì§í•¨, ì „ë¬¸ì„±ë³„ë¡œ í•„í„°ë§",
+            ref_number: "ì°¸ì¡° ë²ˆí˜¸",
+            remote_info:
+                "ì§ì›ì€ ì›ê²©ìœ¼ë¡œ ìž'ì—… í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤"
+        },
+        ru: {
+            job_title: "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð²Ð°ÐºÐ°Ð½ÑÐ¸Ð¸",
+            company_name: "ÐšÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ñ",
+            type_of_employment: "Ð'Ð¸Ð´ Ð·Ð°Ð½ÑÑ‚Ð¾ÑÑ‚Ð¸",
+            department: "ÐžÑ‚Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ",
+            location: "ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ",
+            occupational_area: "ÐžÐ±Ð»Ð°ÑÑ‚ÑŒ Ð·Ð°Ð½ÑÑ‚Ð¸Ð¹",
+            published_since: "ÐžÐ¿ÑƒÐ±Ð»Ð¸ÐºÐ¾Ð²Ð°Ð½Ð¾ Ñ",
+            search_button: "ÐŸÐ¾Ð¸ÑÐº",
+            view_all: "ÐŸÑ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð²ÑÐµ",
+            filter_by:
+                "Ð¤Ð¸Ð»ÑŒÑ‚Ñ€ Ð¿Ð¾ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸ÑŽ, ÑÐºÑÐ¿ÐµÑ€Ñ‚Ð¸Ð·Ðµ",
+            ref_number: "REF-ÐºÐ¾Ð´",
+            remote_info:
+                "Ð¡Ð¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ¸ Ð¼Ð¾Ð³ÑƒÑ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ð¾"
+        },
+        "zh-cn": {
+            job_title: "èŒä½",
+            company_name: "å…¬å¸",
+            type_of_employment: "èŒä½ç±»åž‹",
+            department: "éƒ¨é—¨",
+            location: "åœ°ç‚¹",
+            occupational_area: "èŒä¸šé¢†åŸŸ",
+            published_since: "å'å¸ƒæ—¥æœŸ",
+            search_button: "æœç´¢",
+            view_all: "æŸ¥çœ‹å…¨éƒ¨",
+            filter_by: "æŒ‰å¤´è¡"ã€ä¸"ä¸šçŸ¥è¯†ç›é€‰",
+            ref_number: "å‚è€ƒä»£ç ",
+            remote_info: "å'˜å·¥å¯ä»¥è¿œç¨‹å·¥ä½œ"
+        },
+        "zh-tw": {
+            job_title: "è·ç¨±",
+            company_name: "å…¬å¸",
+            type_of_employment: "è˜åƒ±é¡žåž‹",
+            department: "éƒ¨é–€",
+            location: "æ‰€åœ¨åœ°é»ž",
+            occupational_area: "å°ˆæ¥é ˜åŸŸ",
+            published_since: "åˆŠç™»æ™‚é–"",
+            search_button: "æœå°‹",
+            view_all: "æª¢è¦–å…¨éƒ¨",
+            filter_by: "ä¾è·ç¨±å'Œå°ˆæ¥ç¯©é¸",
+            ref_number: "åƒç…§ä»£ç¢¼",
+            remote_info: "å"¡å·¥å¯ä»¥é è·å·¥ä½œ"
+        }
+    };
 
     window.JobWidget = window.JobWidget || {};
 
