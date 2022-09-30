@@ -6,12 +6,12 @@ RewriteRule (.*) https://%1solidigm.com [L,R=301]
 ## Redirect all requests ending in /ko.html that are not on .kr
 RewriteCond %{HTTP_HOST} !^(.*\.)?(solidigm|solidigmtechnology).kr [NC]
 RewriteCond %{REQUEST_URI} ^/ko.html$
-RewriteRule (.*) https://%1solidigm.kr [L,R=301]
+RewriteRule (.*) https://%1solidigmtechnology.kr [L,R=301]
 
 ## Redirect all requests ending in /ja.html that are not on .ja
 RewriteCond %{HTTP_HOST} !^(.*\.)?(solidigm|solidigmtechnology).jp [NC]
 RewriteCond %{REQUEST_URI} ^/ja.html$
-RewriteRule (.*) https://%1solidigm.jp [L,R=301]
+RewriteRule (.*) https://%1solidigmtechnology.jp [L,R=301]
 
 ## Redirect all requests ending in /de.html that are not on .de
 RewriteCond %{HTTP_HOST} !^(.*\.)?(solidigm|solidigmtechnology).de [NC]
@@ -21,5 +21,5 @@ RewriteRule (.*) https://%1solidigm.de [L,R=301]
 ## Redirect all requests ending in /cn.html that are not on .cn
 RewriteCond %{HTTP_HOST} !^(.*\.)?(solidigm|solidigmtechnology).cn [NC]
 RewriteCond %{REQUEST_URI} ^/zh.html$
-RewriteRule (.*) https://%1solidigm.cn [L,R=301]
+RewriteRule (.*) https://%1solidigmtechnology.cn [L,R=301]
 
