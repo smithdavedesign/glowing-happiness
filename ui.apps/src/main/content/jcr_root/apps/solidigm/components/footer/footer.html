@@ -130,7 +130,7 @@
             </ul>
             <nav>
                 <ul class="footer-content__links">
-                    <sly data-sly-list.link="${footer.links}">
+                    <sly data-sly-list.link="${footer.links}" id="icpLI">
                         <a class="footer-content__links__link" href="${link.link}" target="${link.target}">${link.label}</a>
                     </sly>
                 </ul>
@@ -166,3 +166,10 @@
 
     <!-- End Scroll Up Button -->
 </footer>
+
+<script>
+    $("#icpLI").append('<div class="footer-content__links__link" id="teconsent"></div>');
+    if(window.location.href.includes('solidigmtech.com.cn')){
+    $("#icpLI").append('<a href="https://beian.miit.gov.cn" class="footer-content__links__link"> 沪ICP备2022022278号-1 </a><a  href=http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011202014403 class="footer-content__links__link"  style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src=https://www.solidigmtech.com.cn/content/dam/newco-aem-site/master/general/police_bureau_icon.png style="float:left;"/><p>沪公网安备 31011202014403号</p></a>');
+ }
+</script>
