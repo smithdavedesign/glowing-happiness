@@ -183,8 +183,6 @@ public class ProductVariation {
     @PostConstruct
     private void init() {
         log.debug("This should be the product capacity:".concat(capacity));
-        log.debug("this should be the product capacity from the JCR:".concat(resource.getChild("attributes").getChild("DriveCapacity").getValueMap().toString()));
-        log.debug("this should be the product capacity from the JCR:".concat(resource.getChild("attributes").getChild("DriveCapacity").getValueMap().get("value", String.class)));
         if (resource != null) {
             variationID = resource.getName();
         }

@@ -62,8 +62,6 @@ public class ProductServiceImpl implements ProductService {
         Resource productResource = resourceResolver.getResource(path);
         if (productResource != null) {
             products.put(path, productResource.adaptTo(ProductModel.class));
-            log.debug("Resolved to product: ".concat(productResource.toString()));
-            log.debug("Resulting product".concat(productResource.adaptTo(ProductModel.class).toString()));
         }
     }
 
@@ -98,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
             log.debug("Product at path: ".concat(path).concat("not found... resolving"));
             resolveProduct(path);
         }
-        log.debug("product at path: ".concat(path).concat("Found: ").concat(products.get(path).toString()));
+        log.debug("product at path: ".concat(path).concat("Found"));
         return products.get(path);
     }
 }
