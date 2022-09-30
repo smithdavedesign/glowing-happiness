@@ -122,7 +122,7 @@
             /0002 { /glob "/content/solidigm/language-masters/de/my-solidigm" /type "allow" }
             /0003 { /glob "/content/solidigm/language-masters/kr/my-solidigm" /type "allow" }
             /0004 { /glob "/content/solidigm/language-masters/ja/my-solidigm" /type "allow" }
-            /0005 { /glob "/content/solidigm/language-masters/zn/my-solidigm" /type "allow" }
+            /0005 { /glob "/content/solidigm/language-masters/zh/my-solidigm" /type "allow" }
         }
         /headers {
             /0000 { /glob "*" /type "deny" }
