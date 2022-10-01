@@ -53,4 +53,6 @@ RewriteCond %{REQUEST_URI} !^/var
 RewriteCond %{REQUEST_URI} !^/crx
 RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/dispatcher
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/saml_logout
 RewriteRule ^/(.*)$ /content/solidigm/$1 [PT,L]
