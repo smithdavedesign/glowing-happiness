@@ -80,25 +80,28 @@ public class ArticleListImpl implements ArticleList {
                 //Get article page path, if it is empty skip to next article
                 String pagePath = articleResource.getValueMap().get("article", String.class);
                 if (!StringUtils.isEmpty(pagePath)) {
-                    //Get page properties of the article page, if it does not exist skip to the next article
-                    ArticlePage articlePage =
-                            resourceResolver.getResource(pagePath.concat("/jcr:content")).adaptTo(ArticlePage.class);
-                    if (articlePage != null) {
-                        //Set the article page path
-                        articlePage.setPath(pagePath);
+                    String contentPath = pagePath.concat("/jcr:content");
+                    if (contentPath != null) {
+                        //Get page properties of the article page, if it does not exist skip to the next article
+                        ArticlePage articlePage =
+                                resourceResolver.getResource(contentPath).adaptTo(ArticlePage.class);
+                        if (articlePage != null) {
+                            //Set the article page path
+                            articlePage.setPath(pagePath);
 
-                        //Set the tag title for the teaser
-                        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-                        articlePage.setTeaserCategory(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+                            //Set the tag title for the teaser
+                            TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+                            articlePage.setTeaserCategory(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
 
-                        //If no image alt was authored find the alt text from the dam
-                        if (StringUtils.isEmpty(articlePage.getTeaserImageAltText())
-                                && !StringUtils.isEmpty(articlePage.getTeaserImage())) {
-                            articlePage.setTeaserImageAltText(
-                                    ImageUtil.getAltTextFromDAM(resourceResolver, articlePage.getTeaserImage())
-                            );
+                            //If no image alt was authored find the alt text from the dam
+                            if (StringUtils.isEmpty(articlePage.getTeaserImageAltText())
+                                    && !StringUtils.isEmpty(articlePage.getTeaserImage())) {
+                                articlePage.setTeaserImageAltText(
+                                        ImageUtil.getAltTextFromDAM(resourceResolver, articlePage.getTeaserImage())
+                                );
+                            }
+                            articles.add(articlePage);
                         }
-                        articles.add(articlePage);
                     }
                 }
             }
