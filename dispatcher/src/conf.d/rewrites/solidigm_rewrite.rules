@@ -1,12 +1,20 @@
-# force all inbound traffic to lowercase
-RewriteCond $1 [A-Z]
-RewriteRule ^(.*)$ /${lowercase:$1} [R=301,L]
+# handle multi language mySolidigm dashboard
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /content/solidigm/us/en/my-solidigm.html [PT,L]
 
-RewriteMap lowercase int:tolower
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.kr$
+RewriteRule ^.*$ /content/solidigm/kr/ko/my-solidigm.html [PT,L]
 
-# rewrite for root redirect
-# RewriteCond %{REQUEST_URI} ^/$
-# RewriteRule (.*) /content/solidigm/us/en/homepage.html [PT,L]
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.cn$
+RewriteRule ^.*$ /content/solidigm/cn/zh/my-solidigm.html [PT,L]
 
-# handle inbound urls and map back to long form
-# RewriteRule ^/(.*)$ /content/solidigm/language-masters/$1 [PT,L]
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /content/solidigm/jp/ja/my-solidigm.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.de$
+RewriteRule ^.*$ /content/solidigm/de/de/my-solidigm.html [PT,L]
