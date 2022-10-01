@@ -1,4 +1,39 @@
-# handle multi language mySolidigm dashboard
+RewriteCond $1 [A-Z]
+RewriteRule ^(.*)$ /${lowercase:$1} [R=301,L]
+
+RewriteMap lowercase int:tolower
+
+# rewrite for root redirect
+# RewriteCond %{REQUEST_URI} ^/$
+# RewriteRule (.*) /content/solidigm/us/en/homepage.html [PT,L]
+
+# handle inbound urls and map back to long form
+# RewriteRule ^/(.*)$ /content/solidigm/language-masters/$1 [PT,L]
+
+
+# root redirects
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /content/solidigm/us/en/homepage.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.kr$
+RewriteRule ^.*$ /content/solidigm/kr/ko/homepage.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.cn$
+RewriteRule ^.*$ /content/solidigm/cn/zh/homepage.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /content/solidigm/jp/ja/homepage.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.de$
+RewriteRule ^.*$ /content/solidigm/de/de/homepage.html [PT,L]
+
+
+# my-solidigm redirects after Okta login
 RewriteCond %{REQUEST_URI} ^/my-solidigm$
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /content/solidigm/us/en/my-solidigm.html [PT,L]
@@ -18,3 +53,17 @@ RewriteRule ^.*$ /content/solidigm/jp/ja/my-solidigm.html [PT,L]
 RewriteCond %{REQUEST_URI} ^/my-solidigm$
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/my-solidigm.html [PT,L]
+
+
+# reconstitute shortened URLs
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/crx
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/dispatcher
+RewriteRule ^/(.*)$ /content/solidigm/$1 [PT,L]
