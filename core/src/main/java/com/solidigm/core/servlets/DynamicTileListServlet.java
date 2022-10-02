@@ -115,8 +115,12 @@ public class DynamicTileListServlet extends SlingSafeMethodsServlet {
         //Get the groups the current user is a member of
         ResourceResolver resourceResolver = req.getResourceResolver();
         Session session = req.getResourceResolver().adaptTo(Session.class);
-        String userID = session.getUserID();
         UserManager userManager = resourceResolver.adaptTo(UserManager.class);
+        if (session == null || userManager == null) {
+            resp.sendError(400, "Bad request: missing session params");
+            return;
+        }
+        String userID = session.getUserID();
         Set<String> groups = new HashSet<>();
         if(StringUtils.isNotEmpty(userID) && !userID.equals("anonymous")) {
             try {
@@ -142,14 +146,18 @@ public class DynamicTileListServlet extends SlingSafeMethodsServlet {
             Resource tiles = tileList.getChild("tileInfo");
             if (tiles != null) {
                 for (Resource tile : tiles.getChildren()) {
-                    Set<String> visibleTo = new HashSet<>(
-                            Arrays.asList(tile.getValueMap().get("groups", String[].class)));
-                    if (visibleTo.contains("everyone")) {
-                        responseJson.add(tileToJson(tile.adaptTo(TileData.class)));
-                    } else {
-                        visibleTo.retainAll(groups);
-                        if (!visibleTo.isEmpty()) {
-                            responseJson.add(tileToJson(tile.adaptTo(TileData.class)));
+                    TileData tileData = tile.adaptTo(TileData.class);
+                    String[] tileGroups = tile.getValueMap().get("groups", String[].class);
+                    if (tileData != null && tileGroups != null) {
+                        Set<String> visibleTo = new HashSet<>(
+                                Arrays.asList(tileGroups));
+                        if (visibleTo.contains("everyone")) {
+                            responseJson.add(tileToJson(tileData));
+                        } else {
+                            visibleTo.retainAll(groups);
+                            if (!visibleTo.isEmpty()) {
+                                responseJson.add(tileToJson(tileData));
+                            }
                         }
                     }
                 }

@@ -54,30 +54,33 @@ public class ProductModel {
         if (resource != null) {
             for (Resource variationResource : resource.getChildren()) {
                 ProductVariation variation = variationResource.adaptTo(ProductVariation.class);
-                //Set model wide values
-                if (StringUtils.isEmpty(name)) {
-                    name = variation.getName();
-                }
-                if (StringUtils.isEmpty(brand)) {
-                    brand = variation.getBrand();
-                }
-                if (StringUtils.isEmpty(productGroup)){
-                    productGroup = variation.getProductGroup();
-                }
+                if (variation != null) {
+                    //Set model wide values
+                    if (StringUtils.isEmpty(name)) {
+                        name = variation.getName();
+                    }
+                    if (StringUtils.isEmpty(brand)) {
+                        brand = variation.getBrand();
+                    }
+                    if (StringUtils.isEmpty(productGroup)) {
+                        productGroup = variation.getProductGroup();
+                    }
 
-                //Add form factors and interfaces for the model if they haven't already been added
-                if (!formFactors.contains(variation.getFormFactor())) {
-                    formFactors.add(variation.getFormFactor());
-                }
-                if (!interfaces.contains(variation.getProductInterface())) {
-                    interfaces.add(variation.getProductInterface());
-                }
+                    //Add form factors and interfaces for the model if they haven't already been added
+                    if (!formFactors.contains(variation.getFormFactor())) {
+                        formFactors.add(variation.getFormFactor());
+                    }
+                    if (!interfaces.contains(variation.getProductInterface())) {
+                        interfaces.add(variation.getProductInterface());
+                    }
 
-                //Add capacity to list to be sorted
-                unsortedCapacities.put(variation.getCapacity(), new CapacitySortable(variation.getCapacityRaw(), variation.getCapacity()));
+                    //Add capacity to list to be sorted
+                    unsortedCapacities.put(variation.getCapacity(),
+                                           new CapacitySortable(variation.getCapacityRaw(), variation.getCapacity()));
 
-                //Add variation to product model map of variations
-                variations.put(variation.getVariationID(), variation);
+                    //Add variation to product model map of variations
+                    variations.put(variation.getVariationID(), variation);
+                }
             }
         }
 

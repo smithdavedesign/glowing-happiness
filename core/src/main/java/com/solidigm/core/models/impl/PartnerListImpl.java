@@ -74,7 +74,7 @@ public class PartnerListImpl implements PartnerList {
         products = new ArrayList<>();
 
         //Set Country Name for partners
-        if(partners != null) {
+        if(partners != null && tagManager != null) {
             for (Partner partner : partners) {
                 partner.setCountryName(tagManager.resolve(partner.getCountryID()).getTitle());
             }

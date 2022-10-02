@@ -92,34 +92,36 @@ public class EventInfoImpl implements EventInfo {
             TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
             ArticlePage eventPage = currentPage.getContentResource().adaptTo(ArticlePage.class);
 
-            //Set date for SEO
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            date = formatter.format(eventPage.getArticleDate());
+            if (eventPage != null) {
+                //Set date for SEO
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                date = formatter.format(eventPage.getArticleDate());
 
-            //Set posted date, start and end dates
-            SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM d, yyyy");
-            postedDate = dateFormatter.format(eventPage.getArticleDate());
-            startDate = dateFormatter.format(eventPage.getStartDate());
-            endDate = dateFormatter.format(eventPage.getEndDate());
+                //Set posted date, start and end dates
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMMM d, yyyy");
+                postedDate = dateFormatter.format(eventPage.getArticleDate());
+                startDate = dateFormatter.format(eventPage.getStartDate());
+                endDate = dateFormatter.format(eventPage.getEndDate());
 
-            //Set the start and end times
-            SimpleDateFormat timeFormatter = new SimpleDateFormat("h:mm a");
-            startTime = timeFormatter.format(eventPage.getStartTime());
-            endTime = timeFormatter.format(eventPage.getEndTime());
+                //Set the start and end times
+                SimpleDateFormat timeFormatter = new SimpleDateFormat("h:mm a");
+                startTime = timeFormatter.format(eventPage.getStartTime());
+                endTime = timeFormatter.format(eventPage.getEndTime());
 
-            //Set location and info
-            location = eventPage.getEventLocation();
-            eventInfo = eventPage.getEventInfo();
+                //Set location and info
+                location = eventPage.getEventLocation();
+                eventInfo = eventPage.getEventInfo();
+            }
 
-            //Set tags
-            if(StringUtils.isNotEmpty(taggedArticlesPage)) {
+            if (eventPage != null && tagManager != null && StringUtils.isNotEmpty(taggedArticlesPage)) {
+                //Set tags
                 tags = new ArrayList<>();
                 for (String tag : eventPage.getArticleTags()) {
                     Link link = new Link();
                     link.setLink(
-                        taggedArticlesPage.concat(".")
-                        .concat(TagUtil.encodeID(tag))
-                        .concat(".html")
+                            taggedArticlesPage.concat(".")
+                                    .concat(TagUtil.encodeID(tag))
+                                    .concat(".html")
                     );
                     link.setLabel(tagManager.resolve(tag).getTitle());
                     tags.add(link);

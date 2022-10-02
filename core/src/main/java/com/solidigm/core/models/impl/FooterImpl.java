@@ -128,15 +128,17 @@ public class FooterImpl implements Footer{
         TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
 
         //Resolve tags by their shorthand path to get their titles and add the title + shorthand path to a list of links
-        for (String searchTag : searchTags) {
-            Tag tag = tagManager.resolve(searchTag);
-            String tagLabel = tag.getTitle();
-            String tagLink = new Link("", searchResultsPage).getLink().concat("?query=")
-                    .concat(tagLabel);
-            Link link = new Link();
-            link.setLink(tagLink);
-            link.setLabel(tagLabel);
-            searchTagsLinks.add(link);
+        if (tagManager != null) {
+            for (String searchTag : searchTags) {
+                Tag tag = tagManager.resolve(searchTag);
+                String tagLabel = tag.getTitle();
+                String tagLink = new Link("", searchResultsPage).getLink().concat("?query=")
+                        .concat(tagLabel);
+                Link link = new Link();
+                link.setLink(tagLink);
+                link.setLabel(tagLabel);
+                searchTagsLinks.add(link);
+            }
         }
     }
 }

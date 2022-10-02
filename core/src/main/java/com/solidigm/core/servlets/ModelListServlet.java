@@ -152,30 +152,34 @@ public class ModelListServlet extends SlingSafeMethodsServlet {
                                                                  SolidigmUtils.getProductNameFromPath(hit.getPath()));
                 ProductPage productPage = new ProductPage(hit.getPath(), resourceResolver, productService);
 
-                //Populate interface, form factor, and capacity maps with the information from this product.
-                for (String productInterface : productData.getInterfaces()) {
-                    if (!interfaces.containsKey(productInterface)) {
-                        interfaces.put(productInterface, new HashSet<>());
+                if (productData != null) {
+                    //Populate interface, form factor, and capacity maps with the information from this product.
+                    for (String productInterface : productData.getInterfaces()) {
+                        if (!interfaces.containsKey(productInterface)) {
+                            interfaces.put(productInterface, new HashSet<>());
+                        }
+                        interfaces.get("Any Interface").add(productPage.getName());
+                        interfaces.get(productInterface).add(productPage.getName());
                     }
-                    interfaces.get("Any Interface").add(productPage.getName());
-                    interfaces.get(productInterface).add(productPage.getName());
-                }
-                for (String formFactor : productData.getFormFactors()) {
-                    if (!formFactors.containsKey(formFactor)) {
-                        formFactors.put(formFactor, new HashSet<>());
+                    for (String formFactor : productData.getFormFactors()) {
+                        if (!formFactors.containsKey(formFactor)) {
+                            formFactors.put(formFactor, new HashSet<>());
+                        }
+                        formFactors.get("Any Form Factor").add(productPage.getName());
+                        formFactors.get(formFactor).add(productPage.getName());
                     }
-                    formFactors.get("Any Form Factor").add(productPage.getName());
-                    formFactors.get(formFactor).add(productPage.getName());
-                }
-                for (String capacity : productData.getCapacities()) {
-                    if (!capacities.containsKey(capacity)) {
-                        capacities.put(capacity, new HashSet<>());
+                    for (String capacity : productData.getCapacities()) {
+                        if (!capacities.containsKey(capacity)) {
+                            capacities.put(capacity, new HashSet<>());
+                        }
+                        capacities.get("Any Capacity").add(productPage.getName());
+                        capacities.get(capacity).add(productPage.getName());
                     }
-                    capacities.get("Any Capacity").add(productPage.getName());
-                    capacities.get(capacity).add(productPage.getName());
-                }
-                for (CapacitySortable capacitySortable : productData.getCapacitiesSortable()) {
-                    capacitiesSortable.put(capacitySortable.getCapacity(), new CapacitySortable(capacitySortable.getRawCapacity(), capacitySortable.getCapacity()));
+                    for (CapacitySortable capacitySortable : productData.getCapacitiesSortable()) {
+                        capacitiesSortable.put(capacitySortable.getCapacity(),
+                                               new CapacitySortable(capacitySortable.getRawCapacity(),
+                                                                    capacitySortable.getCapacity()));
+                    }
                 }
 
                 //Serialize product data to JSON

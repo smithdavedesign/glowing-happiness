@@ -77,28 +77,30 @@ public class ArticleInfoImpl implements ArticleInfo{
             ArticlePage articlePage = currentPage.getContentResource().adaptTo(ArticlePage.class);
 
             //Set author
-            author = articlePage.getArticleAuthor();
+            if (articlePage != null) {
+                author = articlePage.getArticleAuthor();
 
-            //Set Date
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            date = formatter.format(articlePage.getArticleDate());
+                //Set Date
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                date = formatter.format(articlePage.getArticleDate());
 
-            //Set formatted date
-            SimpleDateFormat prettyFormatter = new SimpleDateFormat("MMMM d, yyyy");
-            formattedDate = prettyFormatter.format(articlePage.getArticleDate());
+                //Set formatted date
+                SimpleDateFormat prettyFormatter = new SimpleDateFormat("MMMM d, yyyy");
+                formattedDate = prettyFormatter.format(articlePage.getArticleDate());
 
-            //Set tags
-            if(StringUtils.isNotEmpty(taggedArticlesPage)) {
-                tags = new ArrayList<>();
-                for (String tag : articlePage.getArticleTags()) {
-                    Link link = new Link();
-                    link.setLink(
-                        taggedArticlesPage.concat(".")
-                        .concat(TagUtil.encodeID(tag))
-                        .concat(".html")
-                    );
-                    link.setLabel(tagManager.resolve(tag).getTitle());
-                    tags.add(link);
+                //Set tags
+                if (StringUtils.isNotEmpty(taggedArticlesPage) && tagManager != null) {
+                    tags = new ArrayList<>();
+                    for (String tag : articlePage.getArticleTags()) {
+                        Link link = new Link();
+                        link.setLink(
+                                taggedArticlesPage.concat(".")
+                                        .concat(TagUtil.encodeID(tag))
+                                        .concat(".html")
+                        );
+                        link.setLabel(tagManager.resolve(tag).getTitle());
+                        tags.add(link);
+                    }
                 }
             }
         } catch (NullPointerException e) {

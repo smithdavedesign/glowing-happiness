@@ -21,6 +21,10 @@ public class IsSignedInServlet extends SlingSafeMethodsServlet {
                          final SlingHttpServletResponse resp) throws ServletException, IOException {
         //Get current user
         Session session = req.getResourceResolver().adaptTo(Session.class);
+        if (session == null) {
+            resp.sendError(400, "400 Bad Request: missing user session.");
+            return;
+        }
         String userID = session.getUserID();
 
         //Check if user is anonymous (not signed in) and write the response
