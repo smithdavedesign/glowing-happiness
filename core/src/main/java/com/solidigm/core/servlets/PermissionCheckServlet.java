@@ -25,6 +25,10 @@ public class PermissionCheckServlet extends SlingSafeMethodsServlet {
             String uri = request.getParameter("uri");
             //obtain the session from the request
             Session session = request.getResourceResolver().adaptTo(javax.jcr.Session.class);
+            if (session == null) {
+                response.sendError(400, "400 Bad Request: missing user session.");
+                return;
+            }
             //perform the permissions check
             try {
              session.checkPermission(uri, Session.ACTION_READ);

@@ -84,8 +84,11 @@ public class ArticleListImpl implements ArticleList {
                     String contentPath = pagePath.concat("/jcr:content");
                     if (contentPath != null) {
                         //Get page properties of the article page, if it does not exist skip to the next article
-                        ArticlePage articlePage =
-                                Objects.requireNonNull(resourceResolver.getResource(contentPath)).adaptTo(ArticlePage.class);
+                        Resource articlePageResource = resourceResolver.getResource(contentPath);
+                        ArticlePage articlePage = null;
+                        if (articlePageResource != null) {
+                            articlePage = articlePageResource.adaptTo(ArticlePage.class);
+                        }
                         if (articlePage != null) {
                             //Set the article page path
                             articlePage.setPath(pagePath);

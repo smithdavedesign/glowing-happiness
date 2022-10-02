@@ -166,30 +166,34 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
                     if (articlePageResource != null) {
                         //Get article page properties and add to json array
                         ArticlePage articlePage = articlePageResource.adaptTo(ArticlePage.class);
-                        JsonObject resultProps = new JsonObject();
-                        resultProps.addProperty("teaserImage", articlePage.getTeaserImage());
-                        resultProps.addProperty("articleTitle", articlePage.getArticleTitle());
-                        resultProps.addProperty("articleLink", articlePath.concat(".html"));
+                        if (articlePage != null) {
+                            JsonObject resultProps = new JsonObject();
+                            resultProps.addProperty("teaserImage", articlePage.getTeaserImage());
+                            resultProps.addProperty("articleTitle", articlePage.getArticleTitle());
+                            resultProps.addProperty("articleLink", articlePath.concat(".html"));
 
-                        //Resolve category tag title
-                        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-                        resultProps.addProperty("categoryTag",
-                                                 tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+                            //Resolve category tag title
+                            TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
+                            if (tagManager != null) {
+                                resultProps.addProperty("categoryTag",
+                                                        tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+                            }
 
-                        //Get alt text from DAM if it is not set for page
-                        if(StringUtils.isEmpty(articlePage.getTeaserImageAltText())
-                            && StringUtils.isNotEmpty(articlePage.getTeaserImage())) {
-                            resultProps.addProperty("altText", ImageUtil.getAltTextFromDAM(resourceResolver,
-                                                                                            articlePage.getTeaserImage()));
-                        } else {
-                            resultProps.addProperty("altText", articlePage.getTeaserImageAltText());
+                            //Get alt text from DAM if it is not set for page
+                            if (StringUtils.isEmpty(articlePage.getTeaserImageAltText())
+                                    && StringUtils.isNotEmpty(articlePage.getTeaserImage())) {
+                                resultProps.addProperty("altText", ImageUtil.getAltTextFromDAM(resourceResolver,
+                                                                                               articlePage.getTeaserImage()));
+                            } else {
+                                resultProps.addProperty("altText", articlePage.getTeaserImageAltText());
+                            }
+
+                            //Add formatted date
+                            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                            resultProps.addProperty("articleDate", formatter.format(articlePage.getArticleDate()));
+
+                            resultsArray.add(resultProps);
                         }
-
-                        //Add formatted date
-                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                        resultProps.addProperty("articleDate", formatter.format(articlePage.getArticleDate()));
-
-                        resultsArray.add(resultProps);
                     }
                 }
             } catch (RepositoryException e) {

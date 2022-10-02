@@ -7,6 +7,8 @@ import lombok.Getter;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
+import java.util.Objects;
+
 public class SearchResultItem {
     @Getter
     private String pagePath;
@@ -34,27 +36,33 @@ public class SearchResultItem {
         this.pagePath = pagePath;
         if (pagePath != null) {
             Resource resultResource = resourceResolver.getResource(pagePath);
-            Page resultPage = resultResource.adaptTo(Page.class);
-            title = resultPage.getTitle();
-            description = resultPage.getDescription();
-            if (description == null) {
-                description = "";
-            }
-            url = new Link("", pagePath).getLink();
-            tags = resultPage.getTags();
+            if (resultResource != null) {
+                Page resultPage = resultResource.adaptTo(Page.class);
+                if (resultPage != null) {
+                    title = resultPage.getTitle();
+                    description = resultPage.getDescription();
+                    if (description == null) {
+                        description = "";
+                    }
+                    url = new Link("", pagePath).getLink();
+                    tags = resultPage.getTags();
 
-            //Set Teaser image and alt text
-            Resource productImage = resultResource.getChild("jcr:content").getChild("cq:featuredimage");
-            if (productImage != null) {
-                image = productImage.getValueMap().get("fileReference", String.class);
-                if (Boolean.TRUE.equals(productImage.getValueMap().get("altValueFromDAM", Boolean.class)) && image != null) {
-                    altText = ImageUtil.getAltTextFromDAM(resourceResolver, image);
-                } else {
-                    altText = productImage.getValueMap().get("alt", String.class);
+                    //Set Teaser image and alt text
+                    Resource productImage = Objects.requireNonNull(resultResource.getChild("jcr:content"))
+                            .getChild("cq:featuredimage");
+                    if (productImage != null) {
+                        image = productImage.getValueMap().get("fileReference", String.class);
+                        if (Boolean.TRUE.equals(
+                                productImage.getValueMap().get("altValueFromDAM", Boolean.class)) && image != null) {
+                            altText = ImageUtil.getAltTextFromDAM(resourceResolver, image);
+                        } else {
+                            altText = productImage.getValueMap().get("alt", String.class);
+                        }
+                    }
+                    if (altText == null) {
+                        altText = "";
+                    }
                 }
-            }
-            if (altText == null) {
-                altText = "";
             }
         }
     }

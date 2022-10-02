@@ -59,15 +59,20 @@ public class ArticleTeaserImpl implements ArticleTeaser {
 
         if (!StringUtils.isEmpty(articlePagePath)) {
             //Get page properties of the article page
-            article =
-                    resourceResolver.getResource(articlePagePath.concat("/jcr:content")).adaptTo(ArticlePage.class);
+            article = null;
+            Resource articleResource = resourceResolver.getResource(articlePagePath.concat("/jcr:content"));
+            if (articleResource != null) {
+                article = articleResource.adaptTo(ArticlePage.class);
+            }
             if (article != null) {
                 //Set the article page path
                 article.setPath(articlePagePath);
 
                 //Set the tag title for the teaser
                 TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-                article.setTeaserCategory(tagManager.resolve(article.getArticleCategory()).getTitle());
+                if (tagManager != null) {
+                    article.setTeaserCategory(tagManager.resolve(article.getArticleCategory()).getTitle());
+                }
 
                 //If no image alt was authored find the alt text from the dam
                 if (StringUtils.isEmpty(article.getTeaserImageAltText())

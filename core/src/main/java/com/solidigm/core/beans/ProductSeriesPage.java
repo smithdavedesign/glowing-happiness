@@ -6,6 +6,8 @@ import lombok.Getter;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 
+import java.util.Objects;
+
 public class ProductSeriesPage {
     @Getter
     private String seriesPagePath;
@@ -33,17 +35,20 @@ public class ProductSeriesPage {
             if (seriesPageResource != null) {
                 //Set teaser information from the page properties
                 Page seriesPage = seriesPageResource.adaptTo(Page.class);
-                name = seriesPage.getTitle();
-                description = seriesPage.getDescription();
+                if (seriesPage != null) {
+                    name = seriesPage.getTitle();
+                    description = seriesPage.getDescription();
 
-                //Set Teaser image and alt text
-                Resource seriesImage = seriesPageResource.getChild("jcr:content").getChild("cq:featuredimage");
-                if (seriesImage != null) {
-                    image = seriesImage.getValueMap().get("fileReference", String.class);
-                    if (Boolean.TRUE.equals(seriesImage.getValueMap().get("altValueFromDAM", Boolean.class))) {
-                        altText = ImageUtil.getAltTextFromDAM(resourceResolver, image);
-                    } else {
-                        altText = seriesImage.getValueMap().get("alt", String.class);
+                    //Set Teaser image and alt text
+                    Resource seriesImage = Objects.requireNonNull(seriesPageResource.getChild("jcr:content"))
+                            .getChild("cq:featuredimage");
+                    if (seriesImage != null) {
+                        image = seriesImage.getValueMap().get("fileReference", String.class);
+                        if (Boolean.TRUE.equals(seriesImage.getValueMap().get("altValueFromDAM", Boolean.class))) {
+                            altText = ImageUtil.getAltTextFromDAM(resourceResolver, image);
+                        } else {
+                            altText = seriesImage.getValueMap().get("alt", String.class);
+                        }
                     }
                 }
             }
