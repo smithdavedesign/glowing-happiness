@@ -14,6 +14,7 @@ import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Objects;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductPage {
@@ -68,31 +69,37 @@ public class ProductPage {
             if (productPageResource != null) {
                 //Set teaser information from the page properties
                 Page productPage = productPageResource.adaptTo(Page.class);
-                name = productPage.getTitle();
-                description = productPage.getDescription();
+                if (productPage != null) {
+                    name = productPage.getTitle();
+                    description = productPage.getDescription();
 
-                //Set Teaser image and alt text
-                Resource productImage = productPageResource.getChild("jcr:content").getChild("cq:featuredimage");
-                if (productImage != null) {
-                    image = productImage.getValueMap().get("fileReference", String.class);
-                    if (Boolean.TRUE.equals(productImage.getValueMap().get("altValueFromDAM", Boolean.class))) {
-                        altText = ImageUtil.getAltTextFromDAM(resourceResolver, image);
-                    } else {
-                        altText = productImage.getValueMap().get("alt", String.class);
+                    //Set Teaser image and alt text
+                    Resource productImage = Objects.requireNonNull(productPageResource.getChild("jcr:content"))
+                            .getChild("cq:featuredimage");
+                    if (productImage != null) {
+                        image = productImage.getValueMap().get("fileReference", String.class);
+                        if (Boolean.TRUE.equals(productImage.getValueMap().get("altValueFromDAM", Boolean.class))) {
+                            altText = ImageUtil.getAltTextFromDAM(resourceResolver, image);
+                        } else {
+                            altText = productImage.getValueMap().get("alt", String.class);
+                        }
                     }
-                }
 
+                }
                 //Set teaser product info
-                ProductModel productProperties = productService.getProduct(SolidigmUtils.getProductCategoryFromPath(productPagePath),
-                                                                           SolidigmUtils.getProductSeriesFromPath(productPagePath),
-                                                                           SolidigmUtils.getProductNameFromPath(productPagePath));
-                productInterface = String.join(" / ", productProperties.getInterfaces());
-                formFactor = String.join(" / ", productProperties.getFormFactors());
-                List<String> capacities = productProperties.getCapacities();
-                if (capacities.size() > 1) {
-                    capacity = capacities.get(0).concat(" - ").concat(capacities.get(capacities.size() - 1));
-                } else if (!capacities.isEmpty()) {
-                    capacity = capacities.get(0);
+                ProductModel productProperties = productService.getProduct(
+                        SolidigmUtils.getProductCategoryFromPath(productPagePath),
+                        SolidigmUtils.getProductSeriesFromPath(productPagePath),
+                        SolidigmUtils.getProductNameFromPath(productPagePath));
+                if (productProperties != null) {
+                    productInterface = String.join(" / ", productProperties.getInterfaces());
+                    formFactor = String.join(" / ", productProperties.getFormFactors());
+                    List<String> capacities = productProperties.getCapacities();
+                    if (capacities.size() > 1) {
+                        capacity = capacities.get(0).concat(" - ").concat(capacities.get(capacities.size() - 1));
+                    } else if (!capacities.isEmpty()) {
+                        capacity = capacities.get(0);
+                    }
                 }
             }
         }
