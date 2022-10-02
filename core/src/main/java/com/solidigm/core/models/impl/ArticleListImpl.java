@@ -20,6 +20,7 @@ import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
@@ -84,14 +85,17 @@ public class ArticleListImpl implements ArticleList {
                     if (contentPath != null) {
                         //Get page properties of the article page, if it does not exist skip to the next article
                         ArticlePage articlePage =
-                                resourceResolver.getResource(contentPath).adaptTo(ArticlePage.class);
+                                Objects.requireNonNull(resourceResolver.getResource(contentPath)).adaptTo(ArticlePage.class);
                         if (articlePage != null) {
                             //Set the article page path
                             articlePage.setPath(pagePath);
 
                             //Set the tag title for the teaser
                             TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
-                            articlePage.setTeaserCategory(tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+                            if (tagManager != null) {
+                                articlePage.setTeaserCategory(
+                                        tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+                            }
 
                             //If no image alt was authored find the alt text from the dam
                             if (StringUtils.isEmpty(articlePage.getTeaserImageAltText())

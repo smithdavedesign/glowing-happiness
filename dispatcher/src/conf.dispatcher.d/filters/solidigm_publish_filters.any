@@ -16,4 +16,16 @@
 
 /0115 { /type "allow" /method "GET" /url "/bin/solidigm/dynamicTilelist" }
 
-/0116 { /type "allow" /method "GET" /url "/bin/solidigm/modelList" }
+/0116 { /type "allow" /method "GET" /url "/bin/solidigm/permissionCheck" }
+
+/0117 { /type "allow" /method "GET" /url "/bin/solidigm/productComparisonOverlay" }
+
+/0118 { /type "allow" /method "GET" /url "/bin/solidigm/productComparison" }
+
+/0119 { /type "allow" /method "GET" /url "/bin/solidigm/productConfigurator" }
+
+/0120 { /type "allow" /method "GET" /url "/bin/solidigm/search" }
+
+/0121 { /type "allow" /method "GET" /url "/bin/solidigm/taggedArticles" }
+
+/0122 { /type "allow" /method "GET" /url "/bin/solidigm/modelList" }
