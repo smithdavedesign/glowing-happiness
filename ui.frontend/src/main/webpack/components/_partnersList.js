@@ -1,17 +1,22 @@
 import $ from 'jquery';
 
 (function () {
-    $('.partners-list .solidigm-select').on('change', onFilterChange);
+    $('.partners-list .cmp-custom-select__input').on('change', onFilterChange);
 
     let productSelector = '',
         countrySelector = '';
     function onFilterChange() {
+        const currentValue = this.value;
+        const option = [...this.parentElement.querySelectorAll('.cmp-custom-select__options li')]
+            .find((item) => {
+                return currentValue === item.textContent.trim();
+            })
+            ?.getAttribute('data-value');
+
         if (this.name === 'countries') {
-            countrySelector =
-                this.value === '' ? '' : "[data-partner-country='" + this.value + "']";
+            countrySelector = option === '' ? '' : "[data-partner-country='" + option + "']";
         } else if (this.name === 'products') {
-            productSelector =
-                this.value === '' ? '' : "[data-partner-product*='" + this.value + "']";
+            productSelector = option === '' ? '' : "[data-partner-product*='" + option + "']";
         }
 
         $('.partners-list__partners__table-row').hide();
