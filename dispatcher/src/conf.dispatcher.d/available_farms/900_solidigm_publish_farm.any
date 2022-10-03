@@ -120,11 +120,11 @@
         /url "/bin/solidigm/permissionCheck"
         /filter {
             /0000 { /glob "*" /type "deny" }
-            /0001 { /glob "/content/solidigm/language-masters/en/my-solidigm" /type "allow" }
-            /0002 { /glob "/content/solidigm/language-masters/de/my-solidigm" /type "allow" }
-            /0003 { /glob "/content/solidigm/language-masters/kr/my-solidigm" /type "allow" }
-            /0004 { /glob "/content/solidigm/language-masters/ja/my-solidigm" /type "allow" }
-            /0005 { /glob "/content/solidigm/language-masters/zh/my-solidigm" /type "allow" }
+            /0001 { /glob "/content/solidigm/us/en/my-solidigm.html" /type "allow" }
+            /0002 { /glob "/content/solidigm/de/de/my-solidigm.html" /type "allow" }
+            /0003 { /glob "/content/solidigm/kr/ko/my-solidigm.html" /type "allow" }
+            /0004 { /glob "/content/solidigm/jp/ja/my-solidigm.html" /type "allow" }
+            /0005 { /glob "/content/solidigm/cn/zh/my-solidigm.html" /type "allow" }
         }
         /headers {
             /0000 { /glob "*" /type "deny" }
