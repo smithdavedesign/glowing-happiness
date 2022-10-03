@@ -7,4 +7,4 @@
 ##        : *.html        -> all .html files
 
 ## Don't allow dashboard to be cached
-/00002  { /glob "/my-solidigm" /type "deny" }
+/00002  { /glob "*/my-solidigm*" /type "deny" }
