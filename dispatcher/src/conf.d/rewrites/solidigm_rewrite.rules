@@ -19,6 +19,27 @@ RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/homepage.html [PT,L]
 
+# domain language redirects
+RewriteCond %{REQUEST_URI} ^/kr/ko/(.*).html
+RewriteCond %{HTTP_HOST} ^(www|www-stage|prod|beta|stage|dev).
+RewriteRule (.*) https://%1.solidigmtechnology.kr/$1 [L,R=301]
+
+RewriteCond %{REQUEST_URI} ^/jp/ja/(.*).html
+RewriteCond %{HTTP_HOST} ^(www|www-stage|prod|beta|stage|dev).
+RewriteRule (.*) https://%1.solidigmtechnology.jp/$1 [L,R=301]
+
+RewriteCond %{REQUEST_URI} ^/cn/zh/(.*).html
+RewriteCond %{HTTP_HOST} ^(www|www-stage|prod|beta|stage|dev).
+RewriteRule (.*) https://%1.solidigmtechnology.cn/$1 [L,R=301]
+
+RewriteCond %{REQUEST_URI} ^/de/de/(.*).html
+RewriteCond %{HTTP_HOST} ^(www|www-stage|prod|beta|stage|dev).
+RewriteRule (.*) https://%1.solidigm.de/$1 [L,R=301]
+
+RewriteCond %{REQUEST_URI} ^/us/en/(.*).html
+RewriteCond %{HTTP_HOST} ^(www|www-stage|prod|beta|stage|dev).
+RewriteRule (.*) https://%1.solidigm.com/$1 [L,R=301]
+
 
 # my-solidigm redirects after Okta login
 RewriteCond %{REQUEST_URI} ^/my-solidigm$

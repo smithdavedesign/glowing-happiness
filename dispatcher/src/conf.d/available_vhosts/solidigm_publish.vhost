@@ -183,7 +183,6 @@ PassEnv DISP_ID
 	ServerAlias www-stage.solidigm.net
 	## Use a doc root that matches what's in the /etc/httpd/conf/publish-farm.any
 	DocumentRoot	${PUBLISH_DOCROOT}
-	ErrorDocument 404 /content/solidigm/language-masters/en/404-page.html
 	## Add header breadcrumbs for help in troubleshooting
 	<IfModule mod_headers.c>
       # force HttpOnly and Secure flags on cookies set by AEM
