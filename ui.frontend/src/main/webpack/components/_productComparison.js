@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', async function () {
             product.variants.forEach((opt) => {
                 optionsContainer.innerHTML += `<li class='cmp-custom-select__option ${
                     opt.variationID === variant.variationID && 'cmp-custom-select__option--selected'
-                }'>${opt.capacity}, ${opt.formFactor}, ${opt.interface}</li>`;
+                }'>${opt.specsList[0]}, ${opt.specsList[1]}, ${opt.specsList[2]}</li>`;
             });
 
             selectInput.addEventListener('change', function (e) {
