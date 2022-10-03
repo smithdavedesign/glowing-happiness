@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 (function () {
-    $('.partners-list .solidigm-select').on('change', onFilterChange);
+    $('.partners-list .cmp-custom-select__input').on('change', onFilterChange);
 
     let productSelector = '',
         countrySelector = '';
