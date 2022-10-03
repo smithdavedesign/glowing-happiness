@@ -66,13 +66,12 @@ public class SeriesListImpl implements SeriesList {
     @PostConstruct
     private void initModel() {
         if (currentPage != null) {
-            //Execute query to get child pages that are product series pages
+            //Execute query to get all immediate child pages
+            //TODO: this should only grab series pages, update with authoring on site has been corrected
             Map<String, String> queryMap = new HashMap<>();
             queryMap.put("path", currentPage.getPath());
+            queryMap.put("path.flat", "true");
             queryMap.put("type", "cq:Page");
-            queryMap.put("property", "jcr:content/cq:template");
-            queryMap.put("property.operation", "equals");
-            queryMap.put("property.value", SolidigmConstants.PRODUCT_SERIES_TEMPLATE);
             Session session = request.getResourceResolver().adaptTo(Session.class);
             Query query = queryBuilder.createQuery(PredicateGroup.create(queryMap), session);
             List<Hit> hits = query.getResult().getHits();
