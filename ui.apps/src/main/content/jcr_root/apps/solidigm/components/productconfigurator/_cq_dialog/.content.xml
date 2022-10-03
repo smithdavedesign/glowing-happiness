@@ -220,62 +220,6 @@
                                                         </columns>
                                                 </items>
                                         </byTheNumbers>
-                                        <pcnmdds
-                                                jcr:primaryType="nt:unstructured"
-                                                jcr:title="PCN/MDDS"
-                                                sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                margin="{Boolean}true">
-                                                <items jcr:primaryType="nt:unstructured">
-                                                        <columns
-                                                                jcr:primaryType="nt:unstructured"
-                                                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                                                margin="{Boolean}true">
-                                                                <items jcr:primaryType="nt:unstructured">
-                                                                        <column
-                                                                                jcr:primaryType="nt:unstructured"
-                                                                                sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                                <items jcr:primaryType="nt:unstructured">
-                                                                                        <pcnmddsEntries
-                                                                                                jcr:primaryType="nt:unstructured"
-                                                                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
-                                                                                                composite="{Boolean}true"
-                                                                                                fieldLabel="PCN/MDDS Entries">
-                                                                                                <field
-                                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container"
-                                                                                                        name="./items">
-                                                                                                        <items jcr:primaryType="nt:unstructured">
-                                                                                                                <column
-                                                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                                                                        <items jcr:primaryType="nt:unstructured">
-                                                                                                                                <id
-                                                                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                                                                        fieldLabel="ID"
-                                                                                                                                        required="{Boolean}true"
-                                                                                                                                        name="./id" />
-                                                                                                                                <pcnLink
-                                                                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                                                                        fieldLabel="PCN Link"
-                                                                                                                                        name="./pcnLink" />
-                                                                                                                                <mddsLink
-                                                                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                                                                                                        fieldLabel="MDDS Link"
-                                                                                                                                        name="./mddsLink" />
-                                                                                                                        </items>
-                                                                                                                </column>
-                                                                                                        </items>
-                                                                                                </field>
-                                                                                        </pcnmddsEntries>
-                                                                                </items>
-                                                                        </column>
-                                                                </items>
-                                                        </columns>
-                                                </items>
-                                        </pcnmdds>
                                         <download
                                                 jcr:primaryType="nt:unstructured"
                                                 jcr:title="Download"
@@ -297,8 +241,7 @@
                                                                                                 name="./download"
                                                                                                 fieldLabel="Download Link"
                                                                                                 fieldDescription="Link or path to download resource"
-                                                                                                rootPath="/content/dam/solidigm"
-                                                                                                required="{Boolean}true" />
+                                                                                                rootPath="/content/dam/solidigm" />
                                                                                 </items>
                                                                         </column>
                                                                 </items>
