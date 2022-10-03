@@ -1,3 +1,24 @@
+# temp fix for issue with blog.html in nav links
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /us/en/homepage.html [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{SERVER_NAME} ^.*\.kr$
+RewriteRule ^.*$ /kr/ko/homepage.html [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{SERVER_NAME} ^.*\.cn$
+RewriteRule ^.*$ /cn/zh/homepage.html [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /jp/ja/homepage.html [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{SERVER_NAME} ^.*\.de$
+RewriteRule ^.*$ /de/de/homepage.html [R=301,L]
+
 # root redirects
 RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.com$
@@ -18,6 +39,48 @@ RewriteRule ^.*$ /content/solidigm/jp/ja/homepage.html [PT,L]
 RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/homepage.html [PT,L]
+
+# my-solidigm redirects after Okta login
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /content/solidigm/us/en/my-solidigm.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.kr$
+RewriteRule ^.*$ /content/solidigm/kr/ko/my-solidigm.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.cn$
+RewriteRule ^.*$ /content/solidigm/cn/zh/my-solidigm.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /content/solidigm/jp/ja/my-solidigm.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/my-solidigm$
+RewriteCond %{SERVER_NAME} ^.*\.de$
+RewriteRule ^.*$ /content/solidigm/de/de/my-solidigm.html [PT,L]
+
+# support page redirects to country specific
+RewriteCond %{REQUEST_URI} ^/support$
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /content/solidigm/us/en/support-page.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/support$
+RewriteCond %{SERVER_NAME} ^.*\.kr$
+RewriteRule ^.*$ /content/solidigm/kr/ko/support-page.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/support$
+RewriteCond %{SERVER_NAME} ^.*\.cn$
+RewriteRule ^.*$ /content/solidigm/cn/zh/support-page.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/support$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /content/solidigm/jp/ja/support-page.html [PT,L]
+
+RewriteCond %{REQUEST_URI} ^/support$
+RewriteCond %{SERVER_NAME} ^.*\.de$
+RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 
 # reconstitute shortened URLs
 RewriteCond %{REQUEST_URI} !^/apps
