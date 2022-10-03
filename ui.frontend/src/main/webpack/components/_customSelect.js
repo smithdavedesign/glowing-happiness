@@ -188,7 +188,7 @@ function initCustomSelects() {
         }
 
         function makeChoice(selectedOption) {
-            csInput.value = selectedOption.getAttribute('data-value') || selectedOption.textContent;
+            csInput.value = selectedOption.textContent.trim();
 
             optionsList.forEach((option) => option.classList.remove(csActiveOptionClass));
             csInput.dispatchEvent(new Event('change'));
