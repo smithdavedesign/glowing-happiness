@@ -29,3 +29,6 @@
 /0121 { /type "allow" /method "GET" /url "/bin/solidigm/taggedArticles" }
 
 /0122 { /type "allow" /method "GET" /url "/bin/solidigm/modelList" }
+
+# Allow AEM WCM Core Components sitemaps
+/0123 { /type "allow" /method "GET" /path "/content/*" /selectors '(sitemap-index|sitemap)' /extension "xml" }
