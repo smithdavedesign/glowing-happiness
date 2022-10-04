@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         optionsContainer: capacityOptionsContainer,
     };
 
-    const path = productConfigurator.getAttribute("data-path");
+    const path = productConfigurator.getAttribute('data-path');
     const request = await fetch(`/bin/solidigm/productConfigurator?path=${path}`);
     const data = await request.json();
     const {
@@ -77,7 +77,9 @@ window.addEventListener('DOMContentLoaded', async () => {
         const validOptions = data.filters
             .filter((combination) => {
                 return otherSelects.reduce((acc, curr) => {
-                    if (!acc) { return false; }
+                    if (!acc) {
+                        return false;
+                    }
 
                     return (
                         combination[curr.key] === curr.element.value || curr.element.value === ''
@@ -150,17 +152,43 @@ window.addEventListener('DOMContentLoaded', async () => {
             product.attributes.OperatingTemperature;
 
         // Ordering Specs
-        productConfigurator.querySelector('[data-name=non-opal-ordering-code]').textContent =
-            product.orderingSpecs.orderingCode;
-        productConfigurator.querySelector('[data-name=non-opal-shipping-media]').textContent =
-            product.orderingSpecs.shippingMedia;
+        const orderingSpecsPanel = productConfigurator.querySelector('#panel-ordering-specs');
+        const orderingSpecsTemplate = productConfigurator.querySelector(
+            '#panel-ordering-specs template'
+        ).innerHTML;
+
+        orderingSpecsPanel.innerHTML = '';
+        product.orderingSpecs.forEach((orderingSpec) => {
+            const orderingSpecsPanelDOM = new DOMParser().parseFromString(
+                orderingSpecsTemplate,
+                'text/html'
+            );
+            orderingSpecsPanelDOM.querySelector('.cmp-product-tabs__key-val-title').textContent =
+                orderingSpec.name;
+
+            orderingSpecsPanelDOM.querySelector(
+                "[data-name='non-opal-ordering-code']"
+            ).textContent = orderingSpec.orderingCode;
+
+            orderingSpecsPanelDOM.querySelector(
+                "[data-name='non-opal-shipping-media']"
+            ).textContent = orderingSpec.shippingMedia;
+
+            orderingSpecsPanel.appendChild(
+                orderingSpecsPanelDOM.querySelector('.cmp-product-tabs__side-panel')
+            );
+        });
 
         // Compliance
-        productConfigurator.querySelector('[data-name=eccn]').textContent = product.compliance.eccn;
-        productConfigurator.querySelector('[data-name=ccats]').textContent =
-            product.compliance.ccats;
-        productConfigurator.querySelector('[data-name=ushts]').textContent =
-            product.compliance.ushts;
+        productConfigurator.querySelector('[data-name=eccn]').textContent = Array.from(
+            new Set(product.orderingSpecs.map((specs) => specs.eccn))
+        ).join(', ');
+        productConfigurator.querySelector('[data-name=ccats]').textContent = Array.from(
+            new Set(product.orderingSpecs.map((specs) => specs.ccats))
+        ).join(', ');
+        productConfigurator.querySelector('[data-name=ushts]').textContent = Array.from(
+            new Set(product.orderingSpecs.map((specs) => specs.ushts))
+        ).join(', ');
     }
 
     let selectedProduct;
