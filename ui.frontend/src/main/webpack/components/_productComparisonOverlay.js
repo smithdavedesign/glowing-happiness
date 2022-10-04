@@ -2,6 +2,23 @@ window.addEventListener('DOMContentLoaded', function () {
     const MAX_PRODUCTS_DESKTOP = 3;
     const MAX_PRODUCTS_MOBILE = 2;
     const savedCompareProductsKey = 'compare-products';
+
+    // Updates the product comparison overlay links to point to the comparison page
+    // by modifying the productPagePath.
+    function updateOverlayURLS(product) {
+        const { productPagePath } = product;
+        if (productPagePath) {
+            const updatedPath = productPagePath.split('/products/')[0] + '/products/compare.html';
+
+            const compareOverlayLinks = document.querySelectorAll(
+                ".cmp-product-comparison-overlay a[href='#']"
+            );
+            compareOverlayLinks.forEach((link) => {
+                link.setAttribute('href', updatedPath);
+            });
+        }
+    }
+
     function getSavedProducts() {
         return JSON.parse(window.localStorage.getItem(savedCompareProductsKey)) || [];
     }
@@ -10,6 +27,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const productOverlay = document.querySelector('.cmp-product-comparison-overlay');
     const products = getSavedProducts();
+    products.length > 0 && updateOverlayURLS(products[0]);
     const compactDataContainer = productOverlay.querySelector(
         '.cmp-product-comparison-overlay__data--compact'
     );
@@ -30,6 +48,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     async function addProduct(product) {
+        updateOverlayURLS(product);
         const maxProducts = isMobile.matches ? MAX_PRODUCTS_MOBILE : MAX_PRODUCTS_DESKTOP;
 
         const savedProducts = getSavedProducts();
