@@ -83,25 +83,25 @@ RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 
 # AEM Core Component XML sitemap
-RewriteCond %{REQUEST_URI} ^sitemap\.xml$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^/sitemap.xml$ /content/solidigm/us/en.sitemap.xml [NC,PT,L]
+RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^sitemap\.xml$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
 RewriteCond %{SERVER_NAME} ^.*\.kr$
-RewriteRule ^/sitemap.xml$ /content/solidigm/kr/ko.sitemap.xml [NC,PT,L]
+RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^sitemap\.xml$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
 RewriteCond %{SERVER_NAME} ^.*\.cn$
-RewriteRule ^/sitemap.xml$ /content/solidigm/cn/zh.sitemap.xml [NC,PT,L]
+RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^sitemap\.xml$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
 RewriteCond %{SERVER_NAME} ^.*\.jp$
-RewriteRule ^/sitemap.xml$ /content/solidigm/jp/ja.sitemap.xml [NC,PT,L]
+RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^sitemap\.xml$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
 RewriteCond %{SERVER_NAME} ^.*\.de$
-RewriteRule ^/sitemap.xml$ /content/solidigm/de/de.sitemap.xml [NC,PT,L]
+RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
 
 # reconstitute shortened URLs
 RewriteCond %{REQUEST_URI} !^/apps
