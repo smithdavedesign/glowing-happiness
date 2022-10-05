@@ -47,21 +47,26 @@
     <meta itemprop="name" content="${page.title}" />
     <meta
         itemprop="image"
-        content="/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-fb-image.jpg"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}"
     />
 
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:title" content="${page.title}" />
     <meta
-        itemprop="twitter:image"
-        content="/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg"
+        name="twitter:image"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}"
+    />
+
+    <meta
+        property="og:image"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-fb-image.jpg' @ join = ''}"
     />
 
     <meta property="og:title" content="${page.title}" />
     <meta property="og:type" content="website" />
     <meta
         property="og:image"
-        content="/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-fb-image.jpg"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}"
     />
 
     <sly data-sly-test="${pwa.enabled}">
