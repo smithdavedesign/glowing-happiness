@@ -26,3 +26,15 @@ pipelines:
              - git checkout adobe-develop
              - echo "Push changes to Adobe Cloud Manager"
              - git push -f -v sync adobe-develop
+      adobe-stage:
+        - step:
+           name: Sync adobe-stage with adobe branches
+           script:
+             - echo "Add remote sync git URL"
+             - git remote add sync https://$CM_SYNC_USER_NAME:$CM_SYNC_USER_ACCESS_TOKEN@git.cloudmanager.adobe.com/newco/solidigm/
+             - echo "Update adobe-develop branch with develop"
+             - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+             - git remote update
+             - git checkout adobe-develop
+             - echo "Push changes to Adobe Cloud Manager"
+             - git push -f -v sync adobe-stage
