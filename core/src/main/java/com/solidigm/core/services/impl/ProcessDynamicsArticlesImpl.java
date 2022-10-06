@@ -4,7 +4,7 @@ import com.solidigm.core.beans.KnowledgeArticle;
 import com.solidigm.core.services.ProcessDynamicsArticles;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
-//import com.microsoft.aad.msal4j.*;
+import com.microsoft.aad.msal4j.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -41,17 +41,17 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
     public String aquireToken(
     ) throws UnsupportedEncodingException {
 
-        String authority = "https://login.microsoftonline.com/384d6e8a-e8dc-4413-a070-844690b1baa0/oauth2/v2.0/token";
-        String clientId = "b5408c7b-266b-4c2a-8e13-e9854a83c04f";
-        String clientSecret = "MKw8Q~pud0-KiGKFtu5r5bBtX6Yqwx~o-V1ltan9";
-        Set<String> SCOPE = Collections.singleton("https://org9bb5e15d.api.crm8.dynamics.com/.default");
-        //IAuthenticationResult result = null;
+        String authority = "https://login.microsoftonline.com/4bb44aac-867a-4be0-aa34-30794e8470dd/oauth2/v2.0/token";
+        String clientId = "cb76104c-f2ae-4118-9a64-397aab69f9c0";
+        String clientSecret = "cxxIW7y__z4lUV2.UHk6n7x27l-869J~gF";
+        Set<String> SCOPE = Collections.singleton("https://nandqa.api.crm.dynamics.com/api/data/v9.2/knowledgearticles/.default");
+        IAuthenticationResult result = null;
         String accessToken = null;
 
         try {
 
             // This is the secret that is created in the Azure portal when registering the application
-            /* IClientCredential credential = ClientCredentialFactory.createFromSecret(clientSecret);
+            IClientCredential credential = ClientCredentialFactory.createFromSecret(clientSecret);
             ConfidentialClientApplication cca =
                     ConfidentialClientApplication
                             .builder(clientId, credential)
@@ -66,15 +66,16 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
             ClientCredentialParameters parameters =
                     ClientCredentialParameters
                             .builder(SCOPE)
+                            .skipCache(true)
                             .build();
 
             result = cca.acquireToken(parameters).join();
-            accessToken = result.accessToken(); */
+            accessToken = result.accessToken();
 
         } catch (Exception e) {
             logger.error("LoginException {}", e);
         }
-        return "no worky";
+        return accessToken;
     }
 
     public String fetchArticles(String accessToken){
@@ -82,7 +83,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         String articleJson = null;
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
-            HttpGet request = new HttpGet("https://org9bb5e15d.crm8.dynamics.com/api/data/v9.2/knowledgearticles");
+            HttpGet request = new HttpGet("https://nandqa.api.crm.dynamics.com/api/data/v9.2/knowledgearticles");
 
             // add request headers
             request.addHeader("Authorization", "Bearer " + accessToken.trim());
