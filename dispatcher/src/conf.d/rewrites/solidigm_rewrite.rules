@@ -124,6 +124,22 @@ RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/products/client/synergy.html [PT,L]
 
+# Redirect Japanese sites
+# https://www.solidigmtechnology.jp/ja.html --> redirect Japanese homepage
+RewriteCond %{REQUEST_URI} ^/ja(\.html)?$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /jp/ja/homepage.html [R=301,L]
+
+# https://www.solidigmtechnology.jp/ja/products/client-products.html --> https://www.solidigmtechnology.jp/jp/ja/products/client.html
+RewriteCond %{REQUEST_URI} ^/ja/products/client-products(\.html)?$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /jp/ja/products/client.html [R=301,L]
+
+# https://www.solidigm.com/en/support.html -- > https://www.solidigm.com/us/en/support-page.html
+RewriteCond %{REQUEST_URI} ^/en/support(\.html)?$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /us/en/support-page.html [R=301,L]
+
 # reconstitute shortened URLs
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/content
