@@ -1,10 +1,14 @@
 package com.solidigm.core.services.impl;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.solidigm.core.beans.KnowledgeArticle;
 import com.solidigm.core.services.ProcessDynamicsArticles;
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
 import com.microsoft.aad.msal4j.*;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -25,6 +29,7 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
@@ -44,7 +49,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         String authority = "https://login.microsoftonline.com/4bb44aac-867a-4be0-aa34-30794e8470dd/oauth2/v2.0/token";
         String clientId = "cb76104c-f2ae-4118-9a64-397aab69f9c0";
         String clientSecret = "cxxIW7y__z4lUV2.UHk6n7x27l-869J~gF";
-        Set<String> SCOPE = Collections.singleton("https://nandqa.api.crm.dynamics.com/api/data/v9.2/knowledgearticles/.default");
+        Set<String> SCOPE = Collections.singleton("https://nandqa.api.crm.dynamics.com/.default");
         IAuthenticationResult result = null;
         String accessToken = null;
 
@@ -83,7 +88,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         String articleJson = null;
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
-            HttpGet request = new HttpGet("https://nandqa.api.crm.dynamics.com/api/data/v9.2/knowledgearticles");
+            HttpGet request = new HttpGet("https://nandqa.api.crm.dynamics.com/api/data/v9.2/knowledgearticles?$filter=(statuscode%20eq%207)");
 
             // add request headers
             request.addHeader("Authorization", "Bearer " + accessToken.trim());
@@ -101,7 +106,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         }catch(Exception e){
             logger.error("LoginException {}", e);
         }
-        return "no worky";
+        return articleJson;
     }
 
     public List<KnowledgeArticle> parseKnowledgeArticleResponse(String articleJson)
@@ -113,22 +118,26 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         try {
 
             if(articleJson!=null) {
-                String jsonString = articleJson;
-                jsonString = "{\n  \"@odata.context\": \"https://org9bb5e15d.api.crm8.dynamics.com/api/data/v9.2/$metadata#knowledgearticles\",\n  \"value\": [\n    {\n      \"@odata.etag\": \"W/\\\"3035244\\\"\",\n      \"isrootarticle\": false,\n      \"msdyn_isingestedarticle\": false,\n      \"statecode\": 3,\n      \"islatestversion\": true,\n      \"knowledgearticleviews_state\": 1,\n      \"statuscode\": 7,\n      \"description\": \"Troubleshooting and Service Fixes: Coffee Grounds\",\n      \"setproductassociations\": false,\n      \"knowledgearticleviews\": 0,\n      \"importsequencenumber\": 105,\n      \"rating_state\": 1,\n      \"minorversionnumber\": 0,\n      \"readyforreview\": false,\n      \"_rootarticleid_value\": \"4d30deaa-b4df-ec11-bb3d-6045bdac6c5f\",\n      \"_ownerid_value\": \"282587a0-e18d-eb11-b1ac-000d3ae92b46\",\n      \"modifiedon\": \"2022-05-30T01:07:02Z\",\n      \"msdyn_keywordsdescsuggestioncontrol\": false,\n      \"rating_date\": \"2022-06-07T12:43:13Z\",\n      \"title\": \"Why Are There Coffee Grounds in My Cup After Brewing?\",\n      \"rating_count\": 0,\n      \"majorversionnumber\": 1,\n      \"versionnumber\": 3035244,\n      \"rating_sum\": 0.0000000000,\n      \"createdon\": \"2022-05-30T01:06:04Z\",\n      \"isprimary\": true,\n      \"content\": \"<p><u><span style=\\\"font-size:18px;\\\"><span style=\\\"font-family:'Segoe UI','Helvetica Neue',sans-serif;\\\">You love coffee, but who wants to drink the grounds? Not you.</span></span></u></p>\\n\\n<p style=\\\"font-family:Segoe UI,sans-serif;font-size:12.5pt;background:white;color:black;\\\">Check your filter baskets. If there are any dents, Please change same. Your&#160;machine works off of pressure, and a dented filter basket will not be able to hold the pressure needed to brew the espresso properly.</p>\\n\\n<p style=\\\"font-family:Segoe UI,sans-serif;font-size:12.5pt;background:white;color:black;\\\">Also, check the group seals. These do not last forever. They have to be replaced sometimes, usually about yearly. Yours may be worn out. The group seals need to be cleaned off with a brush between uses too.</p>\\n\\n<p style=\\\"font-family:Segoe UI,sans-serif;font-size:12.5pt;background:white;color:black;\\\">If there are grounds on the rim of the filter basket, your machine will not seal properly for brewing, causing grounds to end up in your cup of espresso.</p>\\n\\n<p>.</p>\\n\\n<p>&#160;</p>\\n\\n<p>&#160;</p>\\n\\n<p>&#160;</p>\\n\\n<p>&#160;</p>\\n\\n\\n\",\n      \"knowledgearticleviews_date\": \"2022-06-07T12:43:13Z\",\n      \"updatecontent\": false,\n      \"_languagelocaleid_value\": \"56940b3e-300f-4070-a559-5a6a4d11a8a3\",\n      \"articlepublicnumber\": \"KA-01002\",\n      \"_modifiedby_value\": \"b88225d8-30df-ec11-bb3d-6045bdac6c5f\",\n      \"msdyn_iscontentsyncedtostore\": false,\n      \"knowledgearticleid\": \"31993caf-b90e-ea11-a813-000d3a1b1223\",\n      \"_createdby_value\": \"b88225d8-30df-ec11-bb3d-6045bdac6c5f\",\n      \"_owningbusinessunit_value\": \"c67b25d8-30df-ec11-bb3d-6045bdac6c5f\",\n      \"_parentarticlecontentid_value\": \"4d30deaa-b4df-ec11-bb3d-6045bdac6c5f\",\n      \"isinternal\": false,\n      \"rating\": 0.0000000000,\n      \"_owninguser_value\": \"282587a0-e18d-eb11-b1ac-000d3ae92b46\",\n      \"keywords\": \"Coffee Grounds\",\n      \"setcategoryassociations\": false,\n      \"_primaryauthorid_value\": null,\n      \"expirationdate\": null,\n      \"scheduledstatusid\": null,\n      \"stageid\": null,\n      \"_modifiedonbehalfby_value\": null,\n      \"processid\": null,\n      \"msdyn_contentstore_name\": null,\n      \"expiredreviewoptions\": null,\n      \"utcconversiontimezonecode\": null,\n      \"traversedpath\": null,\n      \"_createdonbehalfby_value\": null,\n      \"expirationstatusid\": null,\n      \"msdyn_retrycountformigrationtocontentstore\": null,\n      \"_owningteam_value\": null,\n      \"expirationstateid\": null,\n      \"msdyn_ingestedarticleurl\": null,\n      \"publishstatusid\": null,\n      \"_previousarticlecontentid_value\": null,\n      \"exchangerate\": null,\n      \"publishon\": null,\n      \"msdyn_contentstore\": null,\n      \"timezoneruleversionnumber\": null,\n      \"overriddencreatedon\": null,\n      \"_transactioncurrencyid_value\": null,\n      \"_subjectid_value\": null,\n      \"review\": null\n    },\n    {\n      \"@odata.etag\": \"W/\\\"3035252\\\"\",\n      \"isrootarticle\": false,\n      \"msdyn_isingestedarticle\": false,\n      \"statecode\": 3,\n      \"islatestversion\": true,\n      \"knowledgearticleviews_state\": 1,\n      \"statuscode\": 7,\n      \"description\": \"Returns and Warranty: Return and Exchange\",\n      \"setproductassociations\": true,\n      \"knowledgearticleviews\": 0,\n      \"importsequencenumber\": 105,\n      \"rating_state\": 1,\n      \"minorversionnumber\": 0,\n      \"readyforreview\": false,\n      \"_rootarticleid_value\": \"5730deaa-b4df-ec11-bb3d-6045bdac6c5f\",\n      \"_ownerid_value\": \"282587a0-e18d-eb11-b1ac-000d3ae92b46\",\n      \"modifiedon\": \"2022-05-30T01:07:03Z\",\n      \"msdyn_keywordsdescsuggestioncontrol\": false,\n      \"rating_date\": \"2022-06-07T12:43:13Z\",\n      \"title\": \"Return and Exchange\",\n      \"rating_count\": 0,\n      \"majorversionnumber\": 1,\n      \"versionnumber\": 3035252,\n      \"rating_sum\": 0.0000000000,\n      \"createdon\": \"2022-05-30T01:06:05Z\",\n      \"isprimary\": true,\n      \"content\": \"<p><span style=\\\"font-family:Segoe UI,sans-serif;font-size:12.5pt;background:white;color:black;\\\">\\n<strong>Returns and Exchanges</strong>\\n<br>Pressure - For purchases made directly from the any of our physical stores, we offer a 30-day return for exchange/credit from date of purchase, if for any reason you are dissatisfied with a purchase other than the Exceptions below.\\n\\n<br><br><strong>Exceptions</strong>\\n<br>Unless the product arrives damaged or defective, our 30-day return policy excludes the following since we cannot restock these items for resale:\\n<br>Closeout and refurbished products\\n<br>Software downloads\\n\\n<br><br><strong>Return Instructions</strong>\\n<br>All merchandise for return must be in new condition, with its original packaging. Any accompanying manuals, and/or or supplies must be returned with the product. If product returned to us is incomplete or in less than original condition, we reserve the right to assess a 10% service charge and bill it directly to your credit card.\\n<br><br>To return a package, follow the return instructions given by the return representative. Return the package within 7 days to our Indiana facility, via prepaid, insured, traceable method to ensure a safe and documented delivery to us. Contoso&#160;cannot be responsible for goods lost or damaged in transit to our warehouse. Note: For damaged, defective or incorrect product, Contoso will cover the cost of the return shipping through issuance of a FedEx call tag.\\n</span></p>\",\n      \"knowledgearticleviews_date\": \"2022-06-07T12:43:13Z\",\n      \"updatecontent\": false,\n      \"_languagelocaleid_value\": \"56940b3e-300f-4070-a559-5a6a4d11a8a3\",\n      \"articlepublicnumber\": \"KA-01005\",\n      \"_modifiedby_value\": \"b88225d8-30df-ec11-bb3d-6045bdac6c5f\",\n      \"msdyn_iscontentsyncedtostore\": false,\n      \"knowledgearticleid\": \"37993caf-b90e-ea11-a813-000d3a1b1223\",\n      \"_createdby_value\": \"b88225d8-30df-ec11-bb3d-6045bdac6c5f\",\n      \"_owningbusinessunit_value\": \"c67b25d8-30df-ec11-bb3d-6045bdac6c5f\",\n      \"_parentarticlecontentid_value\": \"5730deaa-b4df-ec11-bb3d-6045bdac6c5f\",\n      \"isinternal\": false,\n      \"rating\": 0.0000000000,\n      \"_owninguser_value\": \"282587a0-e18d-eb11-b1ac-000d3ae92b46\",\n      \"keywords\": \"Pressure\",\n      \"setcategoryassociations\": false,\n      \"_primaryauthorid_value\": null,\n      \"expirationdate\": null,\n      \"scheduledstatusid\": null,\n      \"stageid\": null,\n      \"_modifiedonbehalfby_value\": null,\n      \"processid\": null,\n      \"msdyn_contentstore_name\": null,\n      \"expiredreviewoptions\": null,\n      \"utcconversiontimezonecode\": null,\n      \"traversedpath\": null,\n      \"_createdonbehalfby_value\": null,\n      \"expirationstatusid\": 10,\n      \"msdyn_retrycountformigrationtocontentstore\": null,\n      \"_owningteam_value\": null,\n      \"expirationstateid\": 4,\n      \"msdyn_ingestedarticleurl\": null,\n      \"publishstatusid\": null,\n      \"_previousarticlecontentid_value\": null,\n      \"exchangerate\": null,\n      \"publishon\": null,\n      \"msdyn_contentstore\": null,\n      \"timezoneruleversionnumber\": 0,\n      \"overriddencreatedon\": null,\n      \"_transactioncurrencyid_value\": null,\n      \"_subjectid_value\": null,\n      \"review\": 0\n    }]\n}";
+                Map<String, Object> param = new HashMap<>();
+                param.put(ResourceResolverFactory.SUBSERVICE, "knowledgeArticlesServiceUser");
+                ResourceResolver resolver = resolverFactory.getServiceResourceResolver(param);
+                //articleJson = new String(resolver.getResource("/var/dynamicarticles.json").adaptTo(InputStream.class).readAllBytes());
 
-                JSONObject jsonObject = new JSONObject(jsonString);
-                JSONArray knowledgeArticles = (JSONArray) jsonObject.get("value");
+                Gson gson = new Gson();
+                JsonObject jsonObject = gson.fromJson(articleJson, JsonObject.class);
+                JsonArray knowledgeArticles = jsonObject.getAsJsonArray("value");
 
                 knowledgeArticleList = new ArrayList<>();
 
-                for (int i = 0; i < knowledgeArticles.length(); i++) {
+                for (int i = 0; i < knowledgeArticles.size(); i++) {
                     KnowledgeArticle knowledgeArticle = new KnowledgeArticle();
-                    knowledgeArticle.setArticleId(knowledgeArticles.getJSONObject(i).getString("knowledgearticleid"));
-                    knowledgeArticle.setTitle(knowledgeArticles.getJSONObject(i).getString("title"));
-                    knowledgeArticle.setDescription(knowledgeArticles.getJSONObject(i).getString("description"));
-                    knowledgeArticle.setContent(knowledgeArticles.getJSONObject(i).getString("content"));
-                    knowledgeArticle.setCreatedOn(knowledgeArticles.getJSONObject(i).getString("createdon"));
-                    knowledgeArticle.setModifiedOn(knowledgeArticles.getJSONObject(i).getString("modifiedon"));
+                    JsonObject article = knowledgeArticles.get(i).getAsJsonObject();
+                    knowledgeArticle.setArticleId(article.get("knowledgearticleid").getAsString());
+                    knowledgeArticle.setTitle(article.get("title").getAsString());
+                    knowledgeArticle.setDescription(article.get("description").getAsString());
+                    knowledgeArticle.setContent(StringEscapeUtils.unescapeJava(article.get("content").getAsString().replaceAll("\"", "'")));
+                    knowledgeArticle.setCreatedOn(article.get("createdon").getAsString());
+                    knowledgeArticle.setModifiedOn(article.get("modifiedon").getAsString());
 
                     knowledgeArticleList.add(knowledgeArticle);
                 }
@@ -151,19 +160,13 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         Session session = resolver.adaptTo(Session.class);
 
         try {
-
-            /*Add or modify article pages */
-            for (KnowledgeArticle knowledgeArticle : knowledgeArticleList) {
-                addKnowledgeArticleNode(resolverFactory, knowledgeArticle);
-            }
-
             String path = "/content/solidigm/language-masters/en/support";
             Resource resource = resolver.getResource(path);
             Node jcrContent = resource.adaptTo(Node.class);
 
-            /*Delete article pages */
-            List<String> removeArticleNodeList = buildArticleNodeList(resource);
-            if (!removeArticleNodeList.isEmpty() && !knowledgeArticleList.isEmpty()) {
+            /*Delete article pages that no longer exist in dynamics */
+            List<String> removeArticleNodeList = buildArticleNodeList(resource.adaptTo(Page.class));
+            /* if (!removeArticleNodeList.isEmpty() && !knowledgeArticleList.isEmpty()) {
                 for (int i = 0; i < removeArticleNodeList.size(); i++) {
                     for (KnowledgeArticle knowledgeArticle : knowledgeArticleList) {
                         if (removeArticleNodeList.get(i).equals(knowledgeArticle.getArticleId())) {
@@ -171,11 +174,10 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                         }
                     }
                 }
-            }
-
+            } */
+            //TODO: uncommment above to not totally rewrite all articles
             if (!removeArticleNodeList.isEmpty()) {
                 for (String articleNode : removeArticleNodeList) {
-
                     Node removeArticleNode = jcrContent.getNode(articleNode);
                     if (removeArticleNode != null) {
                         removeKnowledgeArticleNode(session, removeArticleNode);
@@ -183,6 +185,11 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                 }
             }
 
+            /*Add or modify article pages */
+            for (KnowledgeArticle knowledgeArticle : knowledgeArticleList) {
+                addKnowledgeArticleNode(resolverFactory, knowledgeArticle);
+            }
+            session.save();
             session.logout();
         } catch (Exception e) {
             logger.error("LoginException {}", e);
@@ -229,12 +236,12 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                             if (articleJcrNode != null && articleJcrNode.isNode()) {
 
                                 /* Add/update the article page properties as per the design */
-                                articleJcrNode.setProperty("articleId", knowledgeArticle.getArticleId().toString());
-                                articleJcrNode.setProperty("title", knowledgeArticle.getTitle().toString());
-                                articleJcrNode.setProperty("jcr:description", knowledgeArticle.getDescription().toString());
-                                articleJcrNode.setProperty("content", knowledgeArticle.getContent().toString());
-                                articleJcrNode.setProperty("articleCreatedOn", knowledgeArticle.getCreatedOn().toString());
-                                articleJcrNode.setProperty("articleModifiedOn", knowledgeArticle.getModifiedOn().toString());
+                                articleJcrNode.setProperty("articleId", knowledgeArticle.getArticleId());
+                                articleJcrNode.setProperty("title", knowledgeArticle.getTitle());
+                                articleJcrNode.setProperty("jcr:description", knowledgeArticle.getDescription());
+                                articleJcrNode.setProperty("content", knowledgeArticle.getContent());
+                                articleJcrNode.setProperty("articleCreatedOn", knowledgeArticle.getCreatedOn());
+                                articleJcrNode.setProperty("articleModifiedOn", knowledgeArticle.getModifiedOn());
 
                                 session.save();
                                 session.refresh(true);
@@ -243,32 +250,17 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
 
                             /* Used standard parsys with content-page type */
                             Node responsiveNode = articleJcrNode.getNode("root/container/container");
-                            Node titleNode = null;
                             Node textNode = null;
 
                             /* Set Article Title */
                             if (!responsiveNode.hasNode("title")) {
-                                titleNode = responsiveNode.addNode("title");
+                                textNode = responsiveNode.addNode("title");
                             }
 
-                            titleNode = responsiveNode.getNode("title");
-                            titleNode.setProperty("sling:resourceType", "solidigm/components/title");
+                            textNode = responsiveNode.getNode("title");
+                            textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
 
-                            titleNode.setProperty("jcr:title", knowledgeArticle.getTitle().toString());
-                            titleNode.setProperty("type", "h1");
-
-                            /*Set Article Details*/
-                            if (!responsiveNode.hasNode("articleDetails")) {
-                                textNode = responsiveNode.addNode("articleDetails");
-                            }
-
-                            textNode = responsiveNode.getNode("articleDetails");
-
-                            String articleDetails = "<h2>Article ID: " + knowledgeArticle.getArticleId().toString() + "</h2> <b> </b> <h5> Modified On: " + knowledgeArticle.getModifiedOn() + "</h5>";
-
-                            textNode.setProperty("sling:resourceType", "solidigm/components/text");
-                            textNode.setProperty("text", articleDetails);
-                            textNode.setProperty("textIsRich", "true");
+                            textNode.setProperty("text", "<h2>" + knowledgeArticle.getTitle().toString() + "<h2>");
 
                             /*Set Article Description*/
                             if (!responsiveNode.hasNode("articleDescription")) {
@@ -277,9 +269,8 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
 
                             textNode = responsiveNode.getNode("articleDescription");
 
-                            textNode.setProperty("sling:resourceType", "solidigm/components/text");
-                            textNode.setProperty("text", "<h2>" + knowledgeArticle.getDescription().toString() + "<h2>");
-                            textNode.setProperty("textIsRich", "true");
+                            textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
+                            textNode.setProperty("text", "<h3>" + knowledgeArticle.getDescription().toString() + "<h3>");
 
                             /*Set Article Content*/
                             if (!responsiveNode.hasNode("articleContent")) {
@@ -288,9 +279,8 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
 
                             textNode = responsiveNode.getNode("articleContent");
 
-                            textNode.setProperty("sling:resourceType", "solidigm/components/text");
+                            textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
                             textNode.setProperty("text", knowledgeArticle.getContent().toString());
-                            textNode.setProperty("textIsRich", "true");
 
                             session.save();
                             session.refresh(true);
@@ -309,16 +299,14 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         return null;
     }
 
-    public List<String> buildArticleNodeList(Resource resource) {
+    public List<String> buildArticleNodeList(Page rootPage) {
         List<String> articleNodeList = new ArrayList<>();
 
         try {
-            if (resource != null) {
-
-                Iterator<Resource> iterator = resource.getChildren().iterator();
-                while (iterator.hasNext()) {
-                    Resource articleResource = iterator.next();
-                    articleNodeList.add(articleResource.getName());
+            if (rootPage != null) {
+                for (Iterator<Page> it = rootPage.listChildren(); it.hasNext(); ) {
+                    Page articlePage = it.next();
+                    articleNodeList.add(articlePage.getName());
                 }
             }
         } catch (Exception e) {
@@ -358,11 +346,10 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                 Node pageNode = articlePage.adaptTo(Node.class);
 
                 Node jcrNode = null;
-                if (articlePage.hasContent()) {
-                    jcrNode = articlePage.getContentResource().adaptTo(Node.class);
-                } else {
-                    jcrNode = pageNode.addNode("jcr:content", "cq:PageContent");
+                if (!articlePage.hasContent()) {
+                    pageNode.addNode("jcr:content", "cq:PageContent");
                 }
+                jcrNode = articlePage.getContentResource().adaptTo(Node.class);
                 jcrNode.setProperty("sling:resourceType", renderer);
 
                 session.save();
