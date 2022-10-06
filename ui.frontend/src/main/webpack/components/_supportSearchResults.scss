@@ -1,0 +1,47 @@
+.cmp-support-search-results {
+    .cmp-custom-select {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: vwMobile(18);
+
+        @media (min-width: $desktop) {
+            flex-direction: row;
+            gap: vwDesktop(18);
+        }
+
+        &__input,
+        &__options {
+            width: 100%;
+            @media (min-width: $desktop) {
+                width: vwDesktop(221);
+            }
+        }
+    }
+
+    .cmp-quick-links {
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+
+        &__link-title {
+            color: $dark-blue;
+            font-size: $font-size-lg-mobile;
+            line-height: $line-height-lg-mobile;
+
+            @media (min-width: $desktop) {
+                font-size: $font-size-xl-desktop;
+                line-height: $line-height-xl-desktop;
+            }
+        }
+
+        &__link {
+            border-top: 0px !important;
+            border-bottom: vwMobile(1) solid $gray-400;
+            @media (min-width: $desktop) {
+                border-bottom: vwDesktop(1) solid $gray-400;
+            }
+        }
+    }
+}
