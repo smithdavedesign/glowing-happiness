@@ -39,6 +39,6 @@ pipelines:
              - echo "Update aem adobe-stage branch with bitbucket adobe-develop"
              - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
              - git remote update
-             - git checkout --track origin/adobe-stage
+             - git checkout origin adobe-stage
              - echo "Push changes to Adobe Cloud Manager"
              - git push -f -v sync adobe-stage
