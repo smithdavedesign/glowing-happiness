@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', async function () {
             let totalItems = data.totalItems;
             let items = data.items;
             if (filter) {
-                items = data.items.filter((item) => item.tags.includes(filter));
+                items = data.items.filter((item) => item.models.includes(filter));
                 totalItems = items.length;
             }
 
