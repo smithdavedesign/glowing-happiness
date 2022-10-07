@@ -29,6 +29,31 @@
         }
     }
 
+    &__item:not(:last-child) {
+        margin-right: $spacing-base-mobile;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: calc(100% + $spacing-base-mobile / 2);
+            top: 50%;
+            height: 70%;
+            width: vwMobile(1);
+            background: $solidigm-purple;
+            transform: translate(-50%, -50%) rotate(12.5deg);
+        }
+
+        @media (min-width: $desktop) {
+            margin-right: $spacing-base-desktop;
+
+            &::after {
+                left: calc(100% + $spacing-base-desktop / 2);
+                width: vwDesktop(1);
+            }
+        }
+    }
+
     &__item-link {
         color: $solidigm-purple;
         display: inline-block;
