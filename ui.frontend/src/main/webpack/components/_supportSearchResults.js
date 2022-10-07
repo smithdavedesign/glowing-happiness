@@ -1,14 +1,14 @@
 window.addEventListener('DOMContentLoaded', async function () {
-    async function fetchData() {
-        // @TODO update endpoint once real url is defined
-        const request = await fetch(`http://localhost:3004/all/`);
+    async function fetchData(path) {
+        const request = await fetch(`/bin/solidigm/supportArticlesServlet?path=${path}`);
         const response = await request.json();
 
         return response;
     }
-    const data = await fetchData();
 
     const supportSearchResults = document.querySelectorAll('.cmp-support-search-results');
+    const path = document.querySelector('.cmp-support-search-results').getAttribute('data-path');
+    const data = await fetchData(path);
     for (const supportSearchResult of supportSearchResults) {
         const RESULTS_PER_PAGE = 10;
 
@@ -52,7 +52,7 @@ window.addEventListener('DOMContentLoaded', async function () {
         function resultToHtml(result) {
             return `
              <li>
-                <a href="${result.url}" class="cmp-quick-links__link cmp-quick-links__link--external" data-label="${viewArticleLabel} ${result.title}">
+                <a href="${result.url}.html" class="cmp-quick-links__link cmp-quick-links__link--external" data-label="${viewArticleLabel} ${result.title}">
                     <div class="cmp-quick-links__content">
                         <span class="cmp-quick-links__link-title">${result.title}</span>
                     </div>
