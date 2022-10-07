@@ -35,6 +35,11 @@
         }
     }
 
+    &--with-overlap + * {
+        position: relative;
+        z-index: 2;
+    }
+
     &--content-bottom-mobile & {
         align-items: flex-end;
 
@@ -162,7 +167,7 @@
     }
 
     &__cta-container {
-        &:empty{
+        &:empty {
             display: none;
         }
         display: flex;
