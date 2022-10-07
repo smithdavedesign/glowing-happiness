@@ -212,14 +212,14 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                 /* Change the article page name and path as per the actual site's structure */
                 Resource resource = resolver.getResource("/content/solidigm/language-masters/en/support-page");
                 Map<String, String> articleCategories = new HashMap<>();
-                articleCategories.put("971470000", "support--index---business-process-");
+                //articleCategories.put("971470000", "support--index---business-process-");
                 articleCategories.put("971470001", "support--index---performance-");
                 articleCategories.put("971470002", "support--index---warranty---rma-");
                 articleCategories.put("971470003", "support--index---product-doc---cert--");
                 articleCategories.put("971470004", "support--index---trouble----error-msgs-");
                 articleCategories.put("971470005", "support--index---installation---compatibility-");
                 articleCategories.put("971470006", "support--index---maintenance---tools-");
-                articleCategories.put("971470007", "support--index---drivers---firmware-");
+                //articleCategories.put("971470007", "support--index---drivers---firmware-");
 
                 if (resource != null) {
                     Node jcrContent = resource.adaptTo(Node.class);
