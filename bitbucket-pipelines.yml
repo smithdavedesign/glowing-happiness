@@ -35,6 +35,6 @@ pipelines:
              - echo "Update adobe-develop branch with develop"
              - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
              - git remote update
-             - git checkout adobe-develop
+             - git checkout adobe-stage
              - echo "Push changes to Adobe Cloud Manager"
              - git push -f -v sync adobe-stage
