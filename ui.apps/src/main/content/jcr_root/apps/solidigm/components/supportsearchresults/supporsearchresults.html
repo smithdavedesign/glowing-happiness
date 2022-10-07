@@ -1,0 +1,50 @@
+<div
+    class="cmp-search-results cmp-support-search-results"
+    data-view-article-label="${'View' @ i18n}"
+>
+    <!-- @TODO unhide this once the filtering by model is enabled -->
+    <div class="hidden">
+        <sly
+            data-sly-use.component="solidigm/components/customselect/customselect.html"
+            data-sly-call="${component.customSelect @
+                                placeholder='Model',
+                                label='Model',
+                                id='support-search-results-filter',
+                                name='support-search-results-filter',
+                                options=supportsearchresults.options,
+                                srOnly=true}"
+        />
+    </div>
+    <div class="cmp-quick-links--text">
+        <div class="cmp-quick-links">
+            <ul class="cmp-quick-links__container"></ul>
+        </div>
+    </div>
+    <nav
+        role="navigation"
+        aria-label="Pagination Navigation"
+        class="cmp-search-results__pagination"
+    >
+        <ul>
+            <li>
+                <button
+                    class="cmp-search-results__double-arrow cmp-search-results__first-page"
+                ></button>
+            </li>
+            <li>
+                <button
+                    class="cmp-search-results__arrow cmp-search-results__previous-page"
+                ></button>
+            </li>
+
+            <li>
+                <button class="cmp-search-results__arrow cmp-search-results__next-page"></button>
+            </li>
+            <li>
+                <button
+                    class="cmp-search-results__double-arrow cmp-search-results__last-page"
+                ></button>
+            </li>
+        </ul>
+    </nav>
+</div>

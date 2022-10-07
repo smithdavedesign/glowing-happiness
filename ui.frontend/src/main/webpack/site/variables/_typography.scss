@@ -1,5 +1,5 @@
-$heading-font: "Sora", "Arial";
-$body-font: "Noto Sans";
+$heading-font: 'Sora', 'Arial';
+$body-font: 'Noto Sans';
 
 $font-size-5xl-mobile: vwMobile(80);
 $font-size-4xl-mobile: vwMobile(50);
@@ -26,10 +26,12 @@ $font-size-2xs-desktop: vwDesktop(10);
 $font-size-3xs-desktop: vwDesktop(9);
 
 $line-height-base-mobile: vwMobile(25);
+$line-height-lg-mobile: vwMobile(30);
 $line-height-xl-mobile: vwMobile(34);
 $line-height-2xl-mobile: vwMobile(38);
 
 $line-height-base-desktop: vwDesktop(25);
+$line-height-lg-desktop: vwDesktop(30);
 $line-height-xl-desktop: vwDesktop(34);
 $line-height-2xl-desktop: vwDesktop(38);
 
