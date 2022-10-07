@@ -1,13 +1,13 @@
 package com.solidigm.core.services.impl;
 
+import com.day.cq.wcm.api.Page;
+import com.day.cq.wcm.api.PageManager;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.microsoft.aad.msal4j.*;
 import com.solidigm.core.beans.KnowledgeArticle;
 import com.solidigm.core.services.ProcessDynamicsArticles;
-import com.day.cq.wcm.api.Page;
-import com.day.cq.wcm.api.PageManager;
-import com.microsoft.aad.msal4j.*;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -19,7 +19,6 @@ import org.apache.sling.api.resource.LoginException;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.resource.ResourceResolverFactory;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -29,7 +28,6 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
@@ -47,9 +45,9 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
     ) throws UnsupportedEncodingException {
 
         String authority = "https://login.microsoftonline.com/4bb44aac-867a-4be0-aa34-30794e8470dd/oauth2/v2.0/token";
-        String clientId = "cb76104c-f2ae-4118-9a64-397aab69f9c0";
-        String clientSecret = "cxxIW7y__z4lUV2.UHk6n7x27l-869J~gF";
-        Set<String> SCOPE = Collections.singleton("https://nandqa.api.crm.dynamics.com/.default");
+        String clientId = "15f378d9-a589-4b3c-a376-17ed6d19cb35";
+        String clientSecret = "jvWWmvXelW3~Zm7.EKk50Z3v7.imK6_~1n";
+        Set<String> SCOPE = Collections.singleton("https://nand.crm.dynamics.com/.default");
         IAuthenticationResult result = null;
         String accessToken = null;
 
@@ -88,7 +86,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         String articleJson = null;
         try {
             CloseableHttpClient httpClient = HttpClients.createDefault();
-            HttpGet request = new HttpGet("https://nandqa.api.crm.dynamics.com/api/data/v9.2/knowledgearticles?$filter=(statuscode%20eq%207)");
+            HttpGet request = new HttpGet("https://nand.crm.dynamics.com/api/data/v9.2/knowledgearticles?$filter=(statuscode%20eq%207)");
 
             // add request headers
             request.addHeader("Authorization", "Bearer " + accessToken.trim());
@@ -130,16 +128,19 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                 knowledgeArticleList = new ArrayList<>();
 
                 for (int i = 0; i < knowledgeArticles.size(); i++) {
-                    KnowledgeArticle knowledgeArticle = new KnowledgeArticle();
                     JsonObject article = knowledgeArticles.get(i).getAsJsonObject();
-                    knowledgeArticle.setArticleId(article.get("knowledgearticleid").getAsString());
-                    knowledgeArticle.setTitle(article.get("title").getAsString());
-                    knowledgeArticle.setDescription(article.get("description").getAsString());
-                    knowledgeArticle.setContent(StringEscapeUtils.unescapeJava(article.get("content").getAsString().replaceAll("\"", "'")));
-                    knowledgeArticle.setCreatedOn(article.get("createdon").getAsString());
-                    knowledgeArticle.setModifiedOn(article.get("modifiedon").getAsString());
-
-                    knowledgeArticleList.add(knowledgeArticle);
+                    for (String categoryCode : article.get("nand_articlecontenttypecode").getAsString().split(",")) {
+                        KnowledgeArticle knowledgeArticle = new KnowledgeArticle();
+                        knowledgeArticle.setArticleId(article.get("knowledgearticleid").getAsString());
+                        knowledgeArticle.setTitle(article.get("title").getAsString());
+                        knowledgeArticle.setDescription(article.get("description").getAsString());
+                        knowledgeArticle.setContent(StringEscapeUtils.unescapeJava(
+                                article.get("content").getAsString().replaceAll("\"", "'")));
+                        knowledgeArticle.setCreatedOn(article.get("createdon").getAsString());
+                        knowledgeArticle.setModifiedOn(article.get("modifiedon").getAsString());
+                        knowledgeArticle.setCategoryCode(categoryCode);
+                        knowledgeArticleList.add(knowledgeArticle);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -160,12 +161,11 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         Session session = resolver.adaptTo(Session.class);
 
         try {
-            String path = "/content/solidigm/language-masters/en/support";
+            String path = "/content/solidigm/language-masters/en/support-page";
             Resource resource = resolver.getResource(path);
-            Node jcrContent = resource.adaptTo(Node.class);
 
             /*Delete article pages that no longer exist in dynamics */
-            List<String> removeArticleNodeList = buildArticleNodeList(resource.adaptTo(Page.class));
+            List<Resource> removeArticleNodeList = buildArticleNodeList(resource.adaptTo(Page.class));
             /* if (!removeArticleNodeList.isEmpty() && !knowledgeArticleList.isEmpty()) {
                 for (int i = 0; i < removeArticleNodeList.size(); i++) {
                     for (KnowledgeArticle knowledgeArticle : knowledgeArticleList) {
@@ -177,8 +177,8 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
             } */
             //TODO: uncommment above to not totally rewrite all articles
             if (!removeArticleNodeList.isEmpty()) {
-                for (String articleNode : removeArticleNodeList) {
-                    Node removeArticleNode = jcrContent.getNode(articleNode);
+                for (Resource articleResource : removeArticleNodeList) {
+                    Node removeArticleNode = articleResource.adaptTo(Node.class);
                     if (removeArticleNode != null) {
                         removeKnowledgeArticleNode(session, removeArticleNode);
                     }
@@ -210,81 +210,95 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
             if (session != null) {
 
                 /* Change the article page name and path as per the actual site's structure */
-                Resource resource = resolver.getResource("/content/solidigm/language-masters/en/support");
+                Resource resource = resolver.getResource("/content/solidigm/language-masters/en/support-page");
+                Map<String, String> articleCategories = new HashMap<>();
+                articleCategories.put("971470000", "support--index---business-process-");
+                articleCategories.put("971470001", "support--index---performance-");
+                articleCategories.put("971470002", "support--index---warranty---rma-");
+                articleCategories.put("971470003", "support--index---product-doc---cert--");
+                articleCategories.put("971470004", "support--index---trouble----error-msgs-");
+                articleCategories.put("971470005", "support--index---installation---compatibility-");
+                articleCategories.put("971470006", "support--index---maintenance---tools-");
+                articleCategories.put("971470007", "support--index---drivers---firmware-");
+
                 if (resource != null) {
                     Node jcrContent = resource.adaptTo(Node.class);
 
                     if (knowledgeArticle != null) {
+                        String articleCategory = articleCategories.get(knowledgeArticle.getCategoryCode());
+                        if (jcrContent.hasNode(articleCategory)) {
+                            jcrContent = jcrContent.getNode(articleCategory);
+                            String knowledgeArticleName = knowledgeArticle.getTitle().replaceAll("[^a-zA-Z0-9]", "-").toLowerCase();
+                            Node articleNode = null;
+                            if (!jcrContent.hasNode(knowledgeArticleName)) {
+                                String pagePath = jcrContent.getPath();
+                                String pageName = knowledgeArticleName;
+                                String pageTitle = knowledgeArticle.getTitle();
+                                String template = "/conf/solidigm/settings/wcm/templates/flexible-content-page";
+                                String renderer = "solidigm/components/page/flexibleContent";
 
-                        Node articleNode = null;
-                        if (!jcrContent.hasNode(knowledgeArticle.getArticleId())) {
-                            String pagePath = jcrContent.getPath();
-                            String pageName = knowledgeArticle.getArticleId();
-                            String pageTitle = knowledgeArticle.getTitle();
-                            String template = "/conf/solidigm/settings/wcm/templates/flexible-content-page";
-                            String renderer = "solidigm/components/page/flexibleContent";
+                                createKnowledgeArticlePage(resolver, pagePath, pageName, pageTitle, template, renderer);
+                            }
 
-                            createKnowledgeArticlePage(resolver, pagePath, pageName, pageTitle, template, renderer);
-                        }
+                            articleNode = jcrContent.getNode(knowledgeArticleName);
+                            if (articleNode != null && articleNode.isNode()) {
 
-                        String articleNodeName = knowledgeArticle.getArticleId();
-                        articleNode = jcrContent.getNode(articleNodeName);
-                        if (articleNode != null && articleNode.isNode()) {
+                                String nodePath = knowledgeArticleName + "/jcr:content";
+                                Node articleJcrNode = jcrContent.getNode(nodePath);
+                                if (articleJcrNode != null && articleJcrNode.isNode()) {
 
-                            String nodePath = articleNodeName + "/jcr:content";
-                            Node articleJcrNode = jcrContent.getNode(nodePath);
-                            if (articleJcrNode != null && articleJcrNode.isNode()) {
+                                    /* Add/update the article page properties as per the design */
+                                    articleJcrNode.setProperty("articleId", knowledgeArticle.getArticleId());
+                                    articleJcrNode.setProperty("title", knowledgeArticle.getTitle());
+                                    articleJcrNode.setProperty("jcr:description", knowledgeArticle.getDescription());
+                                    articleJcrNode.setProperty("content", knowledgeArticle.getContent());
+                                    articleJcrNode.setProperty("articleCreatedOn", knowledgeArticle.getCreatedOn());
+                                    articleJcrNode.setProperty("articleModifiedOn", knowledgeArticle.getModifiedOn());
 
-                                /* Add/update the article page properties as per the design */
-                                articleJcrNode.setProperty("articleId", knowledgeArticle.getArticleId());
-                                articleJcrNode.setProperty("title", knowledgeArticle.getTitle());
-                                articleJcrNode.setProperty("jcr:description", knowledgeArticle.getDescription());
-                                articleJcrNode.setProperty("content", knowledgeArticle.getContent());
-                                articleJcrNode.setProperty("articleCreatedOn", knowledgeArticle.getCreatedOn());
-                                articleJcrNode.setProperty("articleModifiedOn", knowledgeArticle.getModifiedOn());
+                                    session.save();
+                                    session.refresh(true);
+
+                                }
+
+                                /* Used standard parsys with content-page type */
+                                Node responsiveNode = articleJcrNode.getNode("root/container/container");
+                                Node textNode = null;
+
+                                /* Set Article Title */
+                                if (!responsiveNode.hasNode("title")) {
+                                    textNode = responsiveNode.addNode("title");
+                                }
+
+                                textNode = responsiveNode.getNode("title");
+                                textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
+
+                                textNode.setProperty("text", "<h2>" + knowledgeArticle.getTitle().toString() + "<h2>");
+
+                                /*Set Article Description*/
+                                if (!responsiveNode.hasNode("articleDescription")) {
+                                    textNode = responsiveNode.addNode("articleDescription");
+                                }
+
+                                textNode = responsiveNode.getNode("articleDescription");
+
+                                textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
+                                textNode.setProperty("text",
+                                                     "<h3>" + knowledgeArticle.getDescription().toString() + "<h3>");
+
+                                /*Set Article Content*/
+                                if (!responsiveNode.hasNode("articleContent")) {
+                                    textNode = responsiveNode.addNode("articleContent");
+                                }
+
+                                textNode = responsiveNode.getNode("articleContent");
+
+                                textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
+                                textNode.setProperty("text", knowledgeArticle.getContent().toString());
 
                                 session.save();
                                 session.refresh(true);
 
                             }
-
-                            /* Used standard parsys with content-page type */
-                            Node responsiveNode = articleJcrNode.getNode("root/container/container");
-                            Node textNode = null;
-
-                            /* Set Article Title */
-                            if (!responsiveNode.hasNode("title")) {
-                                textNode = responsiveNode.addNode("title");
-                            }
-
-                            textNode = responsiveNode.getNode("title");
-                            textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
-
-                            textNode.setProperty("text", "<h2>" + knowledgeArticle.getTitle().toString() + "<h2>");
-
-                            /*Set Article Description*/
-                            if (!responsiveNode.hasNode("articleDescription")) {
-                                textNode = responsiveNode.addNode("articleDescription");
-                            }
-
-                            textNode = responsiveNode.getNode("articleDescription");
-
-                            textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
-                            textNode.setProperty("text", "<h3>" + knowledgeArticle.getDescription().toString() + "<h3>");
-
-                            /*Set Article Content*/
-                            if (!responsiveNode.hasNode("articleContent")) {
-                                textNode = responsiveNode.addNode("articleContent");
-                            }
-
-                            textNode = responsiveNode.getNode("articleContent");
-
-                            textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
-                            textNode.setProperty("text", knowledgeArticle.getContent().toString());
-
-                            session.save();
-                            session.refresh(true);
-
                         }
                     }
                 }
@@ -299,14 +313,17 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
         return null;
     }
 
-    public List<String> buildArticleNodeList(Page rootPage) {
-        List<String> articleNodeList = new ArrayList<>();
+    public List<Resource> buildArticleNodeList(Page rootPage) {
+        List<Resource> articleNodeList = new ArrayList<>();
 
         try {
             if (rootPage != null) {
-                for (Iterator<Page> it = rootPage.listChildren(); it.hasNext(); ) {
-                    Page articlePage = it.next();
-                    articleNodeList.add(articlePage.getName());
+                for (Iterator<Page> categoryIterator = rootPage.listChildren(); categoryIterator.hasNext(); ) {
+                    Page categoryPage = categoryIterator.next();
+                    for (Iterator<Page> articleIterator = categoryPage.listChildren(); articleIterator.hasNext(); ) {
+                        Page articlePage = articleIterator.next();
+                        articleNodeList.add(articlePage.adaptTo(Resource.class));
+                    }
                 }
             }
         } catch (Exception e) {

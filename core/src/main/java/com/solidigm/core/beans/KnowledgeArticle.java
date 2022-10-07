@@ -11,6 +11,7 @@ public class KnowledgeArticle {
     private String languagelocaleIdValue;
     private String createdOn;
     private String modifiedOn;
+    private String categoryCode;
 
     public String getArticleId() {
         return articleId;
@@ -68,4 +69,11 @@ public class KnowledgeArticle {
         this.modifiedOn = modifiedOn;
     }
 
+    public String getCategoryCode() {
+        return categoryCode;
+    }
+
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
+    }
 }
