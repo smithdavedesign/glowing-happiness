@@ -1,21 +1,21 @@
 # temp fix for issue with blog.html in nav links
-RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /us/en/homepage.html [R=301,L]
 
-RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
 RewriteRule ^.*$ /kr/ko/homepage.html [R=301,L]
 
-RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.cn$
 RewriteRule ^.*$ /cn/zh/homepage.html [R=301,L]
 
-RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
 RewriteRule ^.*$ /jp/ja/homepage.html [R=301,L]
 
-RewriteCond %{REQUEST_URI} ^.*/blog\.html$
+RewriteCond %{REQUEST_URI} ^.*/blog\.html$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /de/de/homepage.html [R=301,L]
 
@@ -41,102 +41,102 @@ RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/homepage.html [PT,L]
 
 # my-solidigm redirects after Okta login
-RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$
+RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /content/solidigm/us/en/my-solidigm.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$
+RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
 RewriteRule ^.*$ /content/solidigm/kr/ko/my-solidigm.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$
+RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.cn$
 RewriteRule ^.*$ /content/solidigm/cn/zh/my-solidigm.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$
+RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
 RewriteRule ^.*$ /content/solidigm/jp/ja/my-solidigm.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$
+RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/my-solidigm.html [PT,L]
 
 # support page redirects to country specific
-RewriteCond %{REQUEST_URI} ^/support(\.html)?$
+RewriteCond %{REQUEST_URI} ^/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /content/solidigm/us/en/support-page.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/support(\.html)?$
+RewriteCond %{REQUEST_URI} ^/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
 RewriteRule ^.*$ /content/solidigm/kr/ko/support-page.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/support(\.html)?$
+RewriteCond %{REQUEST_URI} ^/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.cn$
 RewriteRule ^.*$ /content/solidigm/cn/zh/support-page.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/support(\.html)?$
+RewriteCond %{REQUEST_URI} ^/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
 RewriteRule ^.*$ /content/solidigm/jp/ja/support-page.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/support(\.html)?$
+RewriteCond %{REQUEST_URI} ^/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 
 # AEM Core Component XML sitemap
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
 RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.cn$
 RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
 RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$
+RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
 
 # Synergy Page Rules /Synergy.html
-RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$
+RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /content/solidigm/us/en/products/client/synergy.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$
+RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
 RewriteRule ^.*$ /content/solidigm/kr/ko/products/client/synergy.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$
+RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.cn$
 RewriteRule ^.*$ /content/solidigm/cn/zh/products/client/synergy.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$
+RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
 RewriteRule ^.*$ /content/solidigm/jp/ja/products/client/synergy.html [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$
+RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/products/client/synergy.html [PT,L]
 
 # Redirect Japanese sites
 # https://www.solidigmtechnology.jp/ja.html --> redirect Japanese homepage
-RewriteCond %{REQUEST_URI} ^/ja(\.html)?$
+RewriteCond %{REQUEST_URI} ^/ja(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
 RewriteRule ^.*$ /jp/ja/homepage.html [R=301,L]
 
 # https://www.solidigmtechnology.jp/ja/products/client-products.html --> https://www.solidigmtechnology.jp/jp/ja/products/client.html
-RewriteCond %{REQUEST_URI} ^/ja/products/client-products(\.html)?$
+RewriteCond %{REQUEST_URI} ^/ja/products/client-products(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
 RewriteRule ^.*$ /jp/ja/products/client.html [R=301,L]
 
 # https://www.solidigm.com/en/support.html -- > https://www.solidigm.com/us/en/support-page.html
-RewriteCond %{REQUEST_URI} ^/en/support(\.html)?$
+RewriteCond %{REQUEST_URI} ^/en/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /us/en/support-page.html [R=301,L]
 
