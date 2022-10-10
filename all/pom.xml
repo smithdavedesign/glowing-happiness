@@ -55,11 +55,6 @@
                     <skipSubPackageValidation>true</skipSubPackageValidation>
                     <embeddeds>
                         <embedded>
-                            <groupId>com.microsoft.azure</groupId>
-                            <artifactId>msal4j</artifactId>
-                            <target>/apps/solidigm-packages/application/install</target>
-                        </embedded>
-                        <embedded>
                             <groupId>com.solidigm</groupId>
                             <artifactId>solidigm.ui.apps</artifactId>
                             <type>zip</type>
