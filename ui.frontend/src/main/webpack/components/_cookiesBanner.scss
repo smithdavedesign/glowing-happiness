@@ -1,0 +1,90 @@
+#consent_blackbar {
+    position: fixed !important;
+    bottom: $spacing-base-mobile;
+    max-width: $max-width;
+    margin: auto;
+    box-sizing: border-box;
+
+    padding-left: $spacing-lg-mobile;
+    padding-right: $spacing-lg-mobile;
+    @media (min-width: $desktop) {
+        bottom: $spacing-base-desktop;
+        padding-left: $small-padding-desktop;
+        padding-right: $small-padding-desktop;
+    }
+}
+
+#truste-consent-buttons {
+    display: flex;
+    width: 100% !important;
+    flex-direction: column;
+    gap: $spacing-xs-mobile;
+    margin-top: $spacing-base-desktop;
+
+    @media (min-width: $desktop) {
+        flex-direction: row;
+        margin-top: $spacing-base-desktop;
+        gap: $spacing-base-desktop;
+    }
+}
+
+#truste-show-consent {
+    color: $white !important;
+    margin-bottom: 0px !important;
+    margin: 0px !important;
+    margin-right: auto !important;
+    transition: background 0.15s;
+
+    &:hover,
+    &:focus {
+        background: $solidigm-purple-light !important;
+        border-color: $solidigm-purple-light !important;
+        color: $white !important;
+    }
+}
+
+#truste-consent-button,
+#truste-consent-required {
+    background: $white !important;
+    color: $solidigm-purple !important;
+    margin-bottom: 0px !important;
+    margin-right: 0px !important;
+    transition: background 0.15s;
+
+    &:hover,
+    &:focus {
+        background: $solidigm-purple-light !important;
+        border-color: $solidigm-purple-light !important;
+        color: $white !important;
+    }
+}
+
+.truste-consent-track-class {
+    background: $solidigm-purple !important;
+    color: $white !important;
+    border-radius: $border-radius-md-mobile;
+
+    @media (min-width: $desktop) {
+        border-radius: $border-radius-md-desktop;
+    }
+}
+
+#truste-consent-text {
+    color: $white !important;
+    font-size: $font-size-sm-mobile !important;
+    line-height: vwMobile(23);
+
+    @media (min-width: $desktop) {
+        line-height: vwDesktop(23);
+        font-size: $font-size-sm-desktop !important;
+    }
+}
+
+a.truste-cookie-link {
+    color: $white !important;
+    text-decoration: underline !important;
+}
+
+#truste-consent-track {
+    padding: 0 !important;
+}
