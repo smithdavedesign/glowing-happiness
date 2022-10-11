@@ -56,6 +56,11 @@
                     <embeddeds>
                         <embedded>
                             <groupId>com.solidigm</groupId>
+                            <artifactId>solidigm.auth</artifactId>
+                            <target>/apps/solidigm-packages/application/install</target>
+                        </embedded>
+                        <embedded>
+                            <groupId>com.solidigm</groupId>
                             <artifactId>solidigm.ui.apps</artifactId>
                             <type>zip</type>
                             <target>/apps/solidigm-packages/application/install</target>
