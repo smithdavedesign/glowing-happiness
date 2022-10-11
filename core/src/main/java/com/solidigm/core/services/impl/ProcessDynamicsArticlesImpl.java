@@ -262,7 +262,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                                 }
 
                                 /* Used standard parsys with content-page type */
-                                Node responsiveNode = articleJcrNode.getNode("root/container/container");
+                                Node responsiveNode = articleJcrNode.getNode("root/container");
                                 Node textNode = null;
 
                                 /* Set Article Title */
