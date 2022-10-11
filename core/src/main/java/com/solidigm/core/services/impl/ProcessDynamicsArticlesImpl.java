@@ -228,7 +228,8 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                         String articleCategory = articleCategories.get(knowledgeArticle.getCategoryCode());
                         if (jcrContent.hasNode(articleCategory)) {
                             jcrContent = jcrContent.getNode(articleCategory);
-                            String knowledgeArticleName = knowledgeArticle.getTitle().replaceAll("[^a-zA-Z0-9]", "-").toLowerCase();
+                            String knowledgeArticleName = knowledgeArticle.getTitle().replaceAll("[^a-zA-Z\\d\\s]", "").toLowerCase();
+                            knowledgeArticleName = knowledgeArticleName.replaceAll("\\s", "-");
                             Node articleNode = null;
                             if (!jcrContent.hasNode(knowledgeArticleName)) {
                                 String pagePath = jcrContent.getPath();
@@ -358,6 +359,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
             if (session != null) {
 
                 // Create Page
+                logger.info("Creating new page: " + pageName + "; at: " + path);
                 PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
                 articlePage = pageManager.create(path, pageName, template, pageTitle);
                 Node pageNode = articlePage.adaptTo(Node.class);

@@ -42,6 +42,8 @@ public class ProcessDynamicsArticles extends SlingAllMethodsServlet {
 
                 String articleJson = processDynamicsArticles.fetchArticles(accessToken);
                 if(articleJson!=null) {
+                    response.getWriter().println("Received these knowledge articles:");
+                    response.getWriter().println(articleJson);
                     processDynamicsArticles.processArticles(articleJson);
                     response.getWriter().println("Successfully processed Dynamics article pages");
                 }
