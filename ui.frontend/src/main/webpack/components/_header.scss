@@ -339,6 +339,7 @@ header {
         margin-top: $spacing-2xs-desktop;
         padding: $spacing-base-desktop;
         border-radius: $border-radius-md-desktop;
+        box-shadow: 0px 0px vwDesktop(32) vwDesktop(20) rgba(0, 0, 0, 0.2);
     }
 }
 
