@@ -144,6 +144,8 @@ header {
             transform: translateY(-50%);
             @include svg_icon(arrow-down);
             background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
 
             @media (min-width: $desktop) {
                 width: vwDesktop(9);
