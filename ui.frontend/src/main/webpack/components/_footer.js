@@ -1,34 +1,19 @@
-import $ from 'jquery';
+window.addEventListener("DOMContentLoaded", function () {
+    const LIMIT = 100;
+    const scrollToTopButton = document.querySelector(".scroll-up-button");
 
-(function () {
-    let didScroll = false;
-    const navbarHeight = $('.header__navigation-bar').outerHeight();
-
-    $(window).scroll(function () {
-        didScroll = true;
-    });
-
-    setInterval(function () {
-        if (didScroll) {
-            hasScrolled();
-
-            didScroll = false;
-        }
-    }, 250);
-
-    function hasScrolled() {
-        const scrollTop = $(this).scrollTop();
-
-        if (scrollTop > navbarHeight) {
-            if ($('.scroll-up-button').css('display') !== 'none') return;
-
-            $('.scroll-up-button').css('display', 'flex').hide().fadeIn();
+    function handleScroll() {
+        if (window.scrollY > LIMIT) {
+            scrollToTopButton.classList.add("scroll-up-button--visible");
         } else {
-            $('.scroll-up-button').fadeOut();
+            scrollToTopButton.classList.remove("scroll-up-button--visible");
         }
     }
 
-    $('.scroll-up-button').click(function () {
-        $('html').animate({ scrollTop: 0 }, 500);
+    document.addEventListener("scroll", handleScroll, { passive: true });
+    scrollToTopButton.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     });
-})();
+
+    handleScroll();
+});
