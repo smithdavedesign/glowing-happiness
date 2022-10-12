@@ -144,6 +144,8 @@ header {
             transform: translateY(-50%);
             @include svg_icon(arrow-down);
             background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
 
             @media (min-width: $desktop) {
                 width: vwDesktop(9);
@@ -339,6 +341,7 @@ header {
         margin-top: $spacing-2xs-desktop;
         padding: $spacing-base-desktop;
         border-radius: $border-radius-md-desktop;
+        box-shadow: 0px 0px vwDesktop(32) vwDesktop(20) rgba(0, 0, 0, 0.2);
     }
 }
 
