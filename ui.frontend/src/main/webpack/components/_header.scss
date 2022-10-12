@@ -346,13 +346,13 @@ header {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-height: vwMobile(120);
+    max-height: vwMobile(200);
     color: $white;
     background: $solidigm-purple;
     overflow-y: auto;
 
     @media (min-width: $desktop) {
-        max-height: vwDesktop(120);
+        max-height: vwDesktop(200);
     }
 }
 
