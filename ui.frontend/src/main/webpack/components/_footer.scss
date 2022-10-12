@@ -306,6 +306,9 @@ footer.footer{
     background-size: auto vwMobile(15);
     background-position: center;
     background-repeat: no-repeat;
+    transition: opacity 250ms;
+    opacity: 0;
+    pointer-events: none;
 
     @media (min-width: $desktop) {
         right: $spacing-3xl-desktop;
@@ -314,6 +317,11 @@ footer.footer{
         height: vwDesktop(40);
         border-radius: $border-radius-sm-desktop;
         background-size: auto vwDesktop(15);
+    }
+
+    &--visible {
+        opacity: 1;
+        pointer-events: initial;
     }
 }
 
