@@ -112,6 +112,7 @@ button {
 
     &:hover,
     &:focus {
+        border-color: $solidigm-purple-light;
         background: $solidigm-purple-light;
     }
 
@@ -121,7 +122,8 @@ button {
 
         &:hover,
         &:focus {
-            background: $solidigm-purple;
+            border-color: $solidigm-purple-light;
+            background: $solidigm-purple-light;
         }
     }
 
@@ -129,6 +131,8 @@ button {
         color: $black;
         &:hover {
             color: $white;
+            border-color: $solidigm-purple-light;
+            background: $solidigm-purple-light;
         }
     }
 
