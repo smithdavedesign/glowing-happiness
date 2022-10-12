@@ -77,7 +77,7 @@ body {
     height: vwMobile(30);
 
     @media (min-width: $desktop) {
-        height: vwDesktop(30);
+        height: vwDesktop(37.5);
     }
 
     & > svg {
