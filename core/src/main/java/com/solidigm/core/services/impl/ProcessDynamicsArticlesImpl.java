@@ -170,7 +170,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
 
             }
         } catch (RepositoryException repositoryException) {
-            logger.error("Repository Exception {}", repositoryException);
+            logger.error("Unable to save changes to JCR", repositoryException);
         }
     }
 
@@ -341,6 +341,9 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                                 //If this page is not found in the API response, delete it in AEM
                                 removeKnowledgeArticleNode(session, articlePage.adaptTo(Node.class));
                             }
+                        } else {
+                            //If this page was missing an article ID delete it
+                            removeKnowledgeArticleNode(session, articlePage.adaptTo(Node.class));
                         }
                     }
                 }
