@@ -3,40 +3,144 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:lastModified="{Date}2022-08-11T20:33:04.698Z"
-        cq:lastModifiedBy="abcummins"
-        cq:lastReplicated="{Date}2022-08-18T16:31:29.682Z"
-        cq:lastReplicatedBy="nkevin"
+        cq:lastModified="{Date}2022-10-13T12:41:47.849-04:00"
+        cq:lastModifiedBy="admin"
+        cq:lastReplicated="{Date}2022-10-03T18:26:31.106Z"
+        cq:lastReplicatedBy="abcummins"
         cq:lastReplicationAction="Activate"
         cq:template="/conf/solidigm/settings/wcm/templates/flexible-content-page"
         jcr:isCheckedOut="{Boolean}true"
         jcr:mixinTypes="[mix:versionable]"
         jcr:primaryType="cq:PageContent"
-        jcr:uuid="96da60a0-00e5-4df3-a716-b0360666606d"
+        jcr:uuid="4838d1ac-1ccc-420a-8577-56a5685d9f11"
         sling:resourceType="solidigm/components/page/flexibleContent">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="solidigm/components/container"
             layout="responsiveGrid">
-            <experiencefragment-header
-                jcr:lastModified="{Date}2022-08-11T20:32:46.117Z"
-                jcr:lastModifiedBy="abcummins"
+            <header
+                jcr:created="{Date}2022-07-28T20:30:44.350Z"
+                jcr:createdBy="nkevin"
+                jcr:lastModified="{Date}2022-10-13T12:40:27.126-04:00"
+                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="solidigm/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/solidigm/language-masters/en/site/header/master"/>
+                sling:resourceType="solidigm/components/header"
+                dashboard="/content/solidigm/language-masters/en/my-solidigm"
+                greeting="Hello"
+                homepage="/content/solidigm/language-masters/en/homepage"
+                homepageLabel="Home"
+                navItemLink3="/content/solidigm/language-masters/en/partners-page--lp-"
+                navItemTitle1="Products"
+                navItemTitle2="Support"
+                navItemTitle3="Partners"
+                navItemTitle4="About"
+                placeholderText="Type your search term here"
+                searchResultsPage="/content/solidigm/language-masters/en/search-results-page"
+                settings="https://solidigm.oktapreview.com/enduser/settings">
+                <subNavItems1 jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Data Center"
+                        link="/content/solidigm/language-masters/en/products/data-center"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Client Solutions"
+                        link="/content/solidigm/language-masters/en/products/client-product-category"/>
+                </subNavItems1>
+                <subNavItems2 jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Help Center"
+                        link="/content/solidigm/language-masters/en/support-page"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Support Community"
+                        link="/content/solidigm/language-masters/en/support-page"/>
+                </subNavItems2>
+                <subNavItems4 jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Who We Are"
+                        link="/content/solidigm/language-masters/en/who-we-are"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Our Team"
+                        link="/content/solidigm/language-masters/en/our-team"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        label="Careers"
+                        link="/content/solidigm/language-masters/en/careers-page"/>
+                    <item3
+                        jcr:primaryType="nt:unstructured"
+                        label="Technology"
+                        link="/content/solidigm/language-masters/en/blog"/>
+                </subNavItems4>
+                <langItems jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Chinese"
+                        link="/content/solidigm/language-masters/zh/homepage"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="English"
+                        link="/content/solidigm/us/en/homepage"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        label="German"
+                        link="/content/solidigm/language-masters/de/homepage"/>
+                    <item3
+                        jcr:primaryType="nt:unstructured"
+                        label="Korean"
+                        link="/content/solidigm/language-masters/ko/homepage"/>
+                    <item4
+                        jcr:primaryType="nt:unstructured"
+                        label="Japanese"
+                        link="/content/solidigm/language-masters/ja/homepage"/>
+                </langItems>
+            </header>
             <container
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="solidigm/components/container"
                 editable="{Boolean}true"
                 layout="responsiveGrid"/>
-            <experiencefragment
-                jcr:created="{Date}2022-07-05T14:27:26.477-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2022-08-11T20:33:04.694Z"
-                jcr:lastModifiedBy="abcummins"
+            <footer
+                jcr:created="{Date}2022-07-28T20:31:56.987Z"
+                jcr:createdBy="nkevin"
+                jcr:lastModified="{Date}2022-10-13T12:41:47.846-04:00"
+                jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="solidigm/components/experiencefragment"
-                fragmentVariationPath="/content/experience-fragments/solidigm/language-masters/en/site/footer/master"/>
+                sling:resourceType="solidigm/components/footer"
+                copyright="&lt;p> © Solidigm 2022. All rights reserved.&lt;/p>&#xd;&#xa;"
+                disclaimer="&lt;p>All information provided is subject to change at any time, without notice. Solidigm™ may make changes to manufacturing life cycle, specifications, and product descriptions at any time, without notice. The information herein is provided &amp;quot;as-is&amp;quot; and Solidigm does not make any representations or warranties whatsoever regarding accuracy of the information, nor on the product features, availability, functionality, or compatibility of the products listed. Please contact system vendor for more information on specific products or systems. Solidigm classifications are for informational purposes only and consist of Export Control Classification Numbers (ECCN) and Harmonized Tariff Schedule (HTS) numbers. Any use made of Solidigm classifications are without recourse to Solidigm and shall not be construed as a representation or warranty regarding the proper ECCN or HTS. Your company as an importer and/or exporter is responsible for determining the correct classification of your transaction.&lt;/p>&#xd;&#xa;&lt;p> &lt;/p>&#xd;&#xa;&lt;p>Refer to the spec sheet for formal definitions of product properties and features.&lt;/p>&#xd;&#xa;&lt;p> &lt;/p>&#xd;&#xa;&lt;p>Solidigm™ technologies may require enabled hardware, software, or service activation. // No product or component can be absolutely secure. // Your costs and results may vary. // Performance varies by use, configuration, and other factors. // Other names and brands may be claimed as property of others. // See our complete legal Notices and Disclaimers. // Solidigm is committed to respecting human rights and avoiding complicity in human rights abuses. Solidigm products and software are intended only to be used in applications that do not cause or contribute to a violation of an internationally recognized human right.&lt;br />&#xd;&#xa;&lt;/p>&#xd;&#xa;"
+                facebook="https://www.facebook.com/Solidigm/"
+                homePage="/content/solidigm/language-masters/en/homepage"
+                linkedIn="https://www.linkedin.com/company/solidigmtechnology/"
+                placeholderText="Search by keyword, model number, or phrase"
+                searchResultsPage="/content/solidigm/us/en/search-results-page"
+                searchTags="[solidigm:articles/categories/innovation,solidigm:articles/categories/product-support,solidigm:articles/categories/sk-hynix,solidigm:articles/categories/intel,solidigm:articles/categories/leadership,solidigm:articles/categories/data-centers]"
+                searchTitle="Looking for something else?"
+                textIsRich="[true,true,true]"
+                trademark="&lt;p>“Solidigm” is a trademark of SK hynix NAND Product Solutions Corp. (d/b/a Solidigm). “Intel” is a registered trademark of Intel Corporation. Other names and brands may be claimed as the property of others.&lt;/p>&#xd;&#xa;"
+                trustArc="https://trustarc.com/">
+                <links jcr:primaryType="nt:unstructured">
+                    <item0
+                        jcr:primaryType="nt:unstructured"
+                        label="Newsroom"
+                        link="https://news.solidigm.com/"/>
+                    <item1
+                        jcr:primaryType="nt:unstructured"
+                        label="Partners"
+                        link="/content/solidigm/language-masters/en/partners-page--lp-"/>
+                    <item2
+                        jcr:primaryType="nt:unstructured"
+                        label="Terms of Use"
+                        link="/content/solidigm/language-masters/en/terms-of-use"/>
+                    <item3
+                        jcr:primaryType="nt:unstructured"
+                        label="Privacy"
+                        link="https://www.solidigm.com/content/dam/solidigm/en/site/home/documents/privacy_policy.pdf"/>
+                </links>
+            </footer>
         </root>
         <cq:responsive jcr:primaryType="nt:unstructured">
             <breakpoints jcr:primaryType="nt:unstructured">

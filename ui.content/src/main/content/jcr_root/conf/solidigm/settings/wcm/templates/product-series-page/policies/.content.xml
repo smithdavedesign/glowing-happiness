@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:lastModified="{Date}2022-09-01T16:04:36.944-04:00"
         cq:lastModifiedBy="admin"
+        cq:lastReplicated="{Date}2022-10-03T18:26:33.325Z"
+        cq:lastReplicatedBy="abcummins"
+        cq:lastReplicationAction="Activate"
         cq:policy="solidigm/components/page/policy"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[cq:ReplicationStatus,mix:versionable]"
         jcr:primaryType="nt:unstructured"
+        jcr:uuid="5ab326bc-d7a1-4760-84fc-b3e53b145533"
         sling:resourceType="wcm/core/components/policies/mappings">
         <root
             cq:policy="solidigm/components/container/policy_1574694950110"
