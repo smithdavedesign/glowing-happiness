@@ -2,6 +2,7 @@ package com.solidigm.core.services.impl;
 
 import com.day.cq.wcm.api.Page;
 import com.day.cq.wcm.api.PageManager;
+import com.day.cq.wcm.api.WCMException;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -9,17 +10,14 @@ import com.microsoft.aad.msal4j.*;
 import com.solidigm.core.beans.KnowledgeArticle;
 import com.solidigm.core.services.ProcessDynamicsArticles;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.apache.sling.api.resource.LoginException;
-import org.apache.sling.api.resource.Resource;
-import org.apache.sling.api.resource.ResourceResolver;
-import org.apache.sling.api.resource.ResourceResolverFactory;
-import org.json.JSONObject;
+import org.apache.sling.api.resource.*;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.slf4j.Logger;
@@ -28,7 +26,6 @@ import org.slf4j.LoggerFactory;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 @Component(service = ProcessDynamicsArticles.class, immediate = true)
@@ -40,172 +37,39 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
     @Reference
     private transient ResourceResolverFactory resolverFactory;
 
-    @Override
-    public String aquireToken(
-    ) throws UnsupportedEncodingException {
+    /**
+     * Parse the JsonObject and return the map of Articles within with keys matching the ID
+     * @param articleJson
+     * @return Map<String, KnowledgeArticle>
+     */
+    private Map<String, KnowledgeArticle> parseKnowledgeArticleResponse(JsonObject articleJson) {
+        Map<String, KnowledgeArticle> knowledgeArticleMap = new HashMap<>();
+        JsonArray knowledgeArticles = articleJson.getAsJsonArray("value");
 
-        String authority = "https://login.microsoftonline.com/4bb44aac-867a-4be0-aa34-30794e8470dd/oauth2/v2.0/token";
-        String clientId = "15f378d9-a589-4b3c-a376-17ed6d19cb35";
-        String clientSecret = "jvWWmvXelW3~Zm7.EKk50Z3v7.imK6_~1n";
-        Set<String> SCOPE = Collections.singleton("https://nand.crm.dynamics.com/.default");
-        IAuthenticationResult result = null;
-        String accessToken = null;
-
-        try {
-
-            // This is the secret that is created in the Azure portal when registering the application
-            IClientCredential credential = ClientCredentialFactory.createFromSecret(clientSecret);
-            ConfidentialClientApplication cca =
-                    ConfidentialClientApplication
-                            .builder(clientId, credential)
-                            .authority(authority)
-                            .build();
-
-            // Client credential requests will by default try to look for a valid token in the
-            // in-memory token cache. If found, it will return this token. If a token is not found, or the
-            // token is not valid, it will fall back to acquiring a token from the AAD service. Although
-            // not recommended unless there is a reason for doing so, you can skip the cache lookup
-            // by using .skipCache(true) in ClientCredentialParameters.
-            ClientCredentialParameters parameters =
-                    ClientCredentialParameters
-                            .builder(SCOPE)
-                            .skipCache(true)
-                            .build();
-
-            result = cca.acquireToken(parameters).join();
-            accessToken = result.accessToken();
-
-        } catch (Exception e) {
-            logger.error("LoginException {}", e);
-        }
-        return accessToken;
-    }
-
-    public String fetchArticles(String accessToken){
-
-        String articleJson = null;
-        try {
-            CloseableHttpClient httpClient = HttpClients.createDefault();
-            HttpGet request = new HttpGet("https://nand.crm.dynamics.com/api/data/v9.2/knowledgearticles?$filter=(statuscode%20eq%207)");
-
-            // add request headers
-            request.addHeader("Authorization", "Bearer " + accessToken.trim());
-            request.addHeader("Content-Type", "application/json");
-            request.addHeader("Accept", "application/json");
-
-            CloseableHttpResponse response = httpClient.execute(request);
-
-            HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                // return it as a String
-                articleJson = EntityUtils.toString(entity);
-            }
-
-        }catch(Exception e){
-            logger.error("LoginException {}", e);
-        }
-        return articleJson;
-    }
-
-    public List<KnowledgeArticle> parseKnowledgeArticleResponse(String articleJson)
-            throws UnsupportedEncodingException {
-
-        JSONObject result = new JSONObject();
-        List<KnowledgeArticle> knowledgeArticleList = null;
-
-        try {
-
-            if(articleJson!=null) {
-                Map<String, Object> param = new HashMap<>();
-                param.put(ResourceResolverFactory.SUBSERVICE, "knowledgeArticlesServiceUser");
-                ResourceResolver resolver = resolverFactory.getServiceResourceResolver(param);
-                //articleJson = new String(resolver.getResource("/var/dynamicarticles.json").adaptTo(InputStream.class).readAllBytes());
-
-                Gson gson = new Gson();
-                JsonObject jsonObject = gson.fromJson(articleJson, JsonObject.class);
-                JsonArray knowledgeArticles = jsonObject.getAsJsonArray("value");
-
-                knowledgeArticleList = new ArrayList<>();
-
-                for (int i = 0; i < knowledgeArticles.size(); i++) {
-                    JsonObject article = knowledgeArticles.get(i).getAsJsonObject();
-                    for (String categoryCode : article.get("nand_articlecontenttypecode").getAsString().split(",")) {
-                        KnowledgeArticle knowledgeArticle = new KnowledgeArticle();
-                        knowledgeArticle.setArticleId(article.get("knowledgearticleid").getAsString());
-                        knowledgeArticle.setTitle(article.get("title").getAsString());
-                        knowledgeArticle.setDescription(article.get("description").getAsString());
-                        knowledgeArticle.setContent(StringEscapeUtils.unescapeJava(
-                                article.get("content").getAsString().replaceAll("\"", "'")));
-                        knowledgeArticle.setCreatedOn(article.get("createdon").getAsString());
-                        knowledgeArticle.setModifiedOn(article.get("modifiedon").getAsString());
-                        knowledgeArticle.setCategoryCode(categoryCode);
-                        knowledgeArticleList.add(knowledgeArticle);
-                    }
-                }
-            }
-        } catch (Exception e) {
-            logger.error("LoginException {}", e);
-        }
-        return knowledgeArticleList;
-    }
-
-    public String processKnowledgeArticleList(List<KnowledgeArticle> knowledgeArticleList)
-            throws UnsupportedEncodingException, LoginException {
-
-        /* Configure ResourceResolver object with the help of apache sling service user Mapper Amendment */
-        /* Also create the systemuser configured in resource resolver setup with right permissions to access apps, etc and content folder */
-
-        Map<String, Object> param = new HashMap<>();
-        param.put(ResourceResolverFactory.SUBSERVICE, "knowledgeArticlesServiceUser");
-        ResourceResolver resolver = resolverFactory.getServiceResourceResolver(param);
-        Session session = resolver.adaptTo(Session.class);
-
-        try {
-            String path = "/content/solidigm/language-masters/en/support-page";
-            Resource resource = resolver.getResource(path);
-
-            /*Delete article pages that no longer exist in dynamics */
-            List<Resource> removeArticleNodeList = buildArticleNodeList(resource.adaptTo(Page.class));
-            /* if (!removeArticleNodeList.isEmpty() && !knowledgeArticleList.isEmpty()) {
-                for (int i = 0; i < removeArticleNodeList.size(); i++) {
-                    for (KnowledgeArticle knowledgeArticle : knowledgeArticleList) {
-                        if (removeArticleNodeList.get(i).equals(knowledgeArticle.getArticleId())) {
-                            removeArticleNodeList.remove(i);
-                        }
-                    }
-                }
-            } */
-            //TODO: uncommment above to not totally rewrite all articles
-            if (!removeArticleNodeList.isEmpty()) {
-                for (Resource articleResource : removeArticleNodeList) {
-                    Node removeArticleNode = articleResource.adaptTo(Node.class);
-                    if (removeArticleNode != null) {
-                        removeKnowledgeArticleNode(session, removeArticleNode);
-                    }
-                }
-            }
-
-            /*Add or modify article pages */
-            for (KnowledgeArticle knowledgeArticle : knowledgeArticleList) {
-                addKnowledgeArticleNode(resolverFactory, knowledgeArticle);
-            }
-            session.save();
-            session.logout();
-        } catch (Exception e) {
-            logger.error("LoginException {}", e);
+        for (int i = 0; i < knowledgeArticles.size(); i++) {
+            JsonObject article = knowledgeArticles.get(i).getAsJsonObject();
+            KnowledgeArticle knowledgeArticle = new KnowledgeArticle();
+            knowledgeArticle.setArticleId(article.get("knowledgearticleid").getAsString());
+            knowledgeArticle.setTitle(article.get("title").getAsString());
+            knowledgeArticle.setDescription(article.get("description").getAsString());
+            knowledgeArticle.setContent(StringEscapeUtils.unescapeJava(
+                    article.get("content").getAsString().replaceAll("\"", "'")));
+            knowledgeArticle.setCreatedOn(article.get("createdon").getAsString());
+            knowledgeArticle.setModifiedOn(article.get("modifiedon").getAsString());
+            knowledgeArticle.setCategoryCode(article.get("nand_articlecontenttypecode").getAsString().split(",")[0]);
+            knowledgeArticleMap.put(knowledgeArticle.getArticleId(), knowledgeArticle);
         }
 
-        return "Success";
+        return knowledgeArticleMap;
     }
 
-
-    private String addKnowledgeArticleNode(ResourceResolverFactory resolverFactory, KnowledgeArticle knowledgeArticle) throws LoginException {
-
-        Map<String, Object> param = new HashMap<>();
-        param.put(ResourceResolverFactory.SUBSERVICE, "knowledgeArticlesServiceUser");
-        ResourceResolver resolver = resolverFactory.getServiceResourceResolver(param);
-        Session session = resolver.adaptTo(Session.class);
-
+    /**
+     * Creates new KA page or updates an existing KA page with the content in the knowledge article param
+     * @param knowledgeArticle - Object containing content for KA page
+     * @param resolver - a signed-in resolver with write properties in /content/solidigm
+     * @param session - The session being used for this KA processing step
+     */
+    private void addKnowledgeArticleNode(KnowledgeArticle knowledgeArticle, ResourceResolver resolver, Session session) {
         try {
             if (session != null) {
 
@@ -238,7 +102,7 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                                 String template = "/conf/solidigm/settings/wcm/templates/flexible-content-page";
                                 String renderer = "solidigm/components/page/flexibleContent";
 
-                                createKnowledgeArticlePage(resolver, pagePath, pageName, pageTitle, template, renderer);
+                                createKnowledgeArticlePage(resolver, session, pagePath, pageName, pageTitle, template, renderer);
                             }
 
                             articleNode = jcrContent.getNode(knowledgeArticleName);
@@ -306,34 +170,16 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
 
             }
         } catch (RepositoryException repositoryException) {
-            logger.error("Repository Exception {}", repositoryException);
-        } catch (Exception e) {
-            logger.error("LoginException {}", e);
+            logger.error("Unable to save changes to JCR", repositoryException);
         }
-        session.logout();
-        return null;
     }
 
-    public List<Resource> buildArticleNodeList(Page rootPage) {
-        List<Resource> articleNodeList = new ArrayList<>();
-
-        try {
-            if (rootPage != null) {
-                for (Iterator<Page> categoryIterator = rootPage.listChildren(); categoryIterator.hasNext(); ) {
-                    Page categoryPage = categoryIterator.next();
-                    for (Iterator<Page> articleIterator = categoryPage.listChildren(); articleIterator.hasNext(); ) {
-                        Page articlePage = articleIterator.next();
-                        articleNodeList.add(articlePage.adaptTo(Resource.class));
-                    }
-                }
-            }
-        } catch (Exception e) {
-            logger.error("LoginException {}", e);
-        }
-        return articleNodeList;
-    }
-
-    public String removeKnowledgeArticleNode(Session session, Node knowledgeArticleNode) {
+    /**
+     * Removes the specified KA node from the JCR
+     * @param session - the signed-in Session being used for this KA processing step
+     * @param knowledgeArticleNode - Node to be deleted
+     */
+    private void removeKnowledgeArticleNode(Session session, Node knowledgeArticleNode) {
         try {
             if (knowledgeArticleNode != null) {
                 knowledgeArticleNode.remove();
@@ -341,26 +187,30 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
                 session.refresh(true);
             }
 
-        } catch (Exception e) {
-            logger.error("LoginException {}", e);
+        } catch (RepositoryException e) {
+            logger.error("Unable to save JCR changes: Deleting KA node", e);
         }
-        return "Success";
     }
 
-    public String createKnowledgeArticlePage(ResourceResolver resourceResolver, String path, String pageName, String pageTitle, String template, String renderer) throws LoginException {
-
+    /**
+     * Creates a KA page with the properties specified in the params
+     * @param resolver - a signed-in Resource Resolver with permission to write to /content/solidigm
+     * @param session - the signed-in Session being used for this KA processing step
+     * @param path - The path to create the new page
+     * @param pageName - the name of the new page
+     * @param pageTitle - The title of the new page
+     * @param template - the template to use for the new page
+     * @param renderer - The page renderer component to use for the new page
+     */
+    public void createKnowledgeArticlePage(ResourceResolver resolver, Session session, String path, String pageName, String pageTitle, String template, String renderer) {
         Page articlePage = null;
-        Map<String, Object> param = new HashMap<>();
-        param.put(ResourceResolverFactory.SUBSERVICE, "knowledgeArticlesServiceUser");
-        ResourceResolver resolver = resolverFactory.getServiceResourceResolver(param);
-        Session session = resolver.adaptTo(Session.class);
 
         try {
             if (session != null) {
 
                 // Create Page
                 logger.info("Creating new page: " + pageName + "; at: " + path);
-                PageManager pageManager = resourceResolver.adaptTo(PageManager.class);
+                PageManager pageManager = resolver.adaptTo(PageManager.class);
                 articlePage = pageManager.create(path, pageName, template, pageTitle);
                 Node pageNode = articlePage.adaptTo(Node.class);
 
@@ -376,16 +226,137 @@ public class ProcessDynamicsArticlesImpl implements ProcessDynamicsArticles {
 
             }
 
-        } catch (Exception e) {
-            logger.error("LoginException {}", e);
+        } catch (RepositoryException e) {
+            logger.error("Error saving changes to the JCR", e);
+        } catch (WCMException e) {
+            logger.error("Error creating page", e);
         }
-        session.logout();
-        return "Success";
     }
 
-    public void processArticles(String articleJson) throws UnsupportedEncodingException, LoginException {
-        List<KnowledgeArticle> KnowledgeArticleList = parseKnowledgeArticleResponse(articleJson);
-        processKnowledgeArticleList(KnowledgeArticleList);
+    public String acquireToken() {
+
+        String authority = "https://login.microsoftonline.com/4bb44aac-867a-4be0-aa34-30794e8470dd/oauth2/v2.0/token";
+        String clientId = "15f378d9-a589-4b3c-a376-17ed6d19cb35";
+        String clientSecret = "jvWWmvXelW3~Zm7.EKk50Z3v7.imK6_~1n";
+        Set<String> SCOPE = Collections.singleton("https://nand.crm.dynamics.com/.default");
+        IAuthenticationResult result = null;
+        String accessToken = null;
+
+        try {
+
+            // This is the secret that is created in the Azure portal when registering the application
+            IClientCredential credential = ClientCredentialFactory.createFromSecret(clientSecret);
+            ConfidentialClientApplication cca =
+                    ConfidentialClientApplication
+                            .builder(clientId, credential)
+                            .authority(authority)
+                            .build();
+
+            // Client credential requests will by default try to look for a valid token in the
+            // in-memory token cache. If found, it will return this token. If a token is not found, or the
+            // token is not valid, it will fall back to acquiring a token from the AAD service. Although
+            // not recommended unless there is a reason for doing so, you can skip the cache lookup
+            // by using .skipCache(true) in ClientCredentialParameters.
+            ClientCredentialParameters parameters =
+                    ClientCredentialParameters
+                            .builder(SCOPE)
+                            .build();
+
+            result = cca.acquireToken(parameters).join();
+            accessToken = result.accessToken();
+
+        } catch (Exception e) {
+            logger.error("Error acquiring token from microsoft", e);
+        }
+        return accessToken;
+    }
+
+    public String fetchArticles(String accessToken){
+
+        String articleJson = null;
+        try {
+            CloseableHttpClient httpClient = HttpClients.createDefault();
+            HttpGet request = new HttpGet("https://nand.crm.dynamics.com/api/data/v9.2/knowledgearticles?$filter=(statuscode%20eq%207%20and%20nand_articleclassificationcode%20eq%20971470001%20and%20content%20ne%20null)");
+
+            // add request headers
+            request.addHeader("Authorization", "Bearer " + accessToken.trim());
+            request.addHeader("Content-Type", "application/json");
+            request.addHeader("Accept", "application/json");
+
+            CloseableHttpResponse response = httpClient.execute(request);
+
+            HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                // return it as a String
+                articleJson = EntityUtils.toString(entity);
+            }
+
+        }catch(Exception e){
+            logger.error("Error fetching articles", e);
+        }
+        return articleJson;
+    }
+
+    public void processArticles(String articleJson) {
+        Map<String, Object> param = new HashMap<>();
+        param.put(ResourceResolverFactory.SUBSERVICE, "knowledgeArticlesServiceUser");
+        ResourceResolver resolver = null;
+        try {
+            resolver = resolverFactory.getServiceResourceResolver(param);
+        } catch (LoginException e) {
+            logger.error("Unable to sign in Knowledge Articles Service User");
+            return;
+        }
+        Session session = resolver.adaptTo(Session.class);
+
+        if (articleJson != null) {
+            Gson gson = new Gson();
+            JsonObject jsonObject = gson.fromJson(articleJson, JsonObject.class);
+            Map<String, KnowledgeArticle> knowledgeArticles = parseKnowledgeArticleResponse(jsonObject);
+
+            Page rootPage = resolver.getResource("/content/solidigm/language-masters/en/support-page").adaptTo(Page.class);
+            if (rootPage != null) {
+                //Update KA's existing in AEM
+                for (Iterator<Page> categoryIterator = rootPage.listChildren(); categoryIterator.hasNext(); ) {
+                    Page categoryPage = categoryIterator.next();
+                    for (Iterator<Page> articleIterator = categoryPage.listChildren(); articleIterator.hasNext(); ) {
+                        Page articlePage = articleIterator.next();
+                        ValueMap articleProperties = articlePage.getContentResource().getValueMap();
+                        String articlePageID = articleProperties.get("articleId", String.class);
+                        if (StringUtils.isNotEmpty(articlePageID)) {
+                            if (knowledgeArticles.containsKey(articlePageID)) {
+                                KnowledgeArticle knowledgeArticle = knowledgeArticles.get(articlePageID);
+                                String pageLastModified = articleProperties.get("articleModifiedOn", String.class);
+
+                                //If this page has been corrupted or is out of date, update it
+                                if (StringUtils.isEmpty(pageLastModified) ||
+                                        !pageLastModified.equals(knowledgeArticle.getModifiedOn())) {
+                                    removeKnowledgeArticleNode(session, articlePage.adaptTo(Node.class));
+                                    addKnowledgeArticleNode(knowledgeArticle, resolver, session);
+                                }
+
+                                //Remove KA from map so that it is not added as a new page later
+                                knowledgeArticles.remove(articlePageID);
+                            } else {
+                                //If this page is not found in the API response, delete it in AEM
+                                removeKnowledgeArticleNode(session, articlePage.adaptTo(Node.class));
+                            }
+                        } else {
+                            //If this page was missing an article ID delete it
+                            removeKnowledgeArticleNode(session, articlePage.adaptTo(Node.class));
+                        }
+                    }
+                }
+            }
+
+            //Add any pages that don't exist yet in AEM
+            for (Map.Entry<String, KnowledgeArticle> entry : knowledgeArticles.entrySet()) {
+                KnowledgeArticle knowledgeArticle = entry.getValue();
+                addKnowledgeArticleNode(knowledgeArticle, resolver, session);
+            }
+        }
+
+        session.logout();
     }
 
 }
