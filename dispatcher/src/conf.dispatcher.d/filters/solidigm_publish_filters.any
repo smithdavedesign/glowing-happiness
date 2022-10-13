@@ -30,5 +30,7 @@
 
 /0122 { /type "allow" /method "GET" /url "/bin/solidigm/modelList" }
 
+/0123 { /type "allow" /method "GET" /url "/bin/solidigm/supportArticlesServlet" }
+
 # Allow AEM WCM Core Components sitemaps
 /0123 { /type "allow" /method "GET" /path "/content/*" /selectors '(sitemap-index|sitemap)' /extension "xml" }
