@@ -1,13 +1,9 @@
 package com.solidigm.core.servlets;
 
-//import com.microsoft.aad.msal4j.IAuthenticationResult;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
-import org.apache.sling.api.resource.LoginException;
-import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.servlets.annotations.SlingServletPaths;
-import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
@@ -33,24 +29,18 @@ public class ProcessDynamicsArticles extends SlingAllMethodsServlet {
     com.solidigm.core.services.ProcessDynamicsArticles processDynamicsArticles;
 
     protected void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws IOException {
+        String accessToken = processDynamicsArticles.acquireToken();
 
-        try {
-            String accessToken = processDynamicsArticles.aquireToken();
+        if(accessToken!=null) {
+            response.getWriter().println("Successfully established the connection with Token number: " + accessToken);
 
-            if(accessToken!=null) {
-                response.getWriter().println("Successfully established the connection with Token number: " + accessToken);
-
-                String articleJson = processDynamicsArticles.fetchArticles(accessToken);
-                if(articleJson!=null) {
-                    response.getWriter().println("Received these knowledge articles:");
-                    response.getWriter().println(articleJson);
-                    processDynamicsArticles.processArticles(articleJson);
-                    response.getWriter().println("Successfully processed Dynamics article pages");
-                }
+            String articleJson = processDynamicsArticles.fetchArticles(accessToken);
+            if(articleJson!=null) {
+                response.getWriter().println("Received these knowledge articles:");
+                response.getWriter().println(articleJson);
+                processDynamicsArticles.processArticles(articleJson);
+                response.getWriter().println("Successfully processed Dynamics article pages");
             }
-        } catch (IOException | LoginException e) {
-            response.getWriter().println("Issue in processing the Dynamics articles. Please check logs for more details");
-            LOG.error("Exception", e);
         }
     }
 }

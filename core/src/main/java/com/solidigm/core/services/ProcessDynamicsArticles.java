@@ -1,15 +1,23 @@
 package com.solidigm.core.services;
 
-//import com.microsoft.aad.msal4j.IAuthenticationResult;
-
-import org.apache.sling.api.resource.LoginException;
-
-import java.io.UnsupportedEncodingException;
-
 public interface ProcessDynamicsArticles {
-    String aquireToken() throws UnsupportedEncodingException;
-//    String getKnowledgeArticles(String accessToken);
+    /**
+     * Fetches the API token from microsoft
+     * @return String
+     */
+    String acquireToken();
+
+    /**
+     * Fetches the API response JSON and returns it as a String
+     * @param accessToken - The login token acquired from Microsoft
+     * @return
+     */
     String fetchArticles(String accessToken);
-    void processArticles(String articleJson) throws UnsupportedEncodingException, LoginException;
+
+    /**
+     * Takes the KA's API response JSON and processes it. Updating, creating, and deleting KA pages in AEM
+     * @param articleJson
+     */
+    void processArticles(String articleJson);
 }
 
