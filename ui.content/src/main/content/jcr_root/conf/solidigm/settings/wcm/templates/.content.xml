@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:rep="internal"
-    cq:lastReplicated="{Date}2022-10-03T18:26:28.634Z"
-    cq:lastReplicatedBy="abcummins"
-    cq:lastReplicationAction="Activate"
-    jcr:mixinTypes="[cq:ReplicationStatus,rep:AccessControllable]"
+    jcr:mixinTypes="[rep:AccessControllable]"
     jcr:primaryType="cq:Page">
-    <article-page/>
-    <event-page/>
     <spa-next-remote-page/>
     <spa-remote-page/>
     <page-content/>
     <xf-web-variation/>
     <rep:policy/>
     <flexible-content-page/>
-    <product-detail-page--pdp-/>
-    <product-category-page/>
-    <product-series-page/>
-    <chinese-flexible-content/>
-    <root-page/>
 </jcr:root>
