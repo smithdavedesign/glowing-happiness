@@ -124,6 +124,11 @@ RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/products/client/synergy.html [PT,L]
 
+# https://www.solidigm.com/en/synergy.html -- > https://www.solidigm.com/us/en/synergy.html
+RewriteCond %{REQUEST_URI} ^/en/synergy(\.html)?$ [NC]
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /content/solidigm/us/en/products/client/synergy.html [R=301,L]
+
 # Redirect Japanese sites
 # https://www.solidigmtechnology.jp/ja.html --> redirect Japanese homepage
 RewriteCond %{REQUEST_URI} ^/ja(\.html)?$ [NC]
