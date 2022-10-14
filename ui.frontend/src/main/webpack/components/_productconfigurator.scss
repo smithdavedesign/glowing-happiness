@@ -7,6 +7,13 @@
         }
     }
 
+    .model-list__filters {
+        margin-bottom: $spacing-sm-mobile;
+        @media (min-width: $desktop) {
+            margin-bottom: $spacing-sm-desktop;
+        }
+    }
+
     .model-list__filters__bottom-row {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
