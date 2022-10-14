@@ -46,11 +46,20 @@ window.addEventListener('DOMContentLoaded', async function () {
             product.variants.forEach((opt) => {
                 optionsContainer.innerHTML += `<li class='cmp-custom-select__option ${
                     opt.variationID === variant.variationID && 'cmp-custom-select__option--selected'
-                }'>${opt.specsList[0]}, ${opt.specsList[1]}, ${opt.specsList[2]}</li>`;
+                }' data-variation-id="${opt.variationID}">${opt.specsList[0]}, ${
+                    opt.specsList[1]
+                }, ${opt.specsList[2]}</li>`;
             });
 
             selectInput.addEventListener('change', function (e) {
-                renderProductData(product.title, e.target.value);
+                const variationId = [
+                    ...e.target.parentElement.querySelectorAll('.cmp-custom-select__options li'),
+                ]
+                    .find((option) => {
+                        return option.textContent === e.target.value;
+                    })
+                    .getAttribute('data-variation-id');
+                renderProductData(product.title, variationId);
             });
 
             select.querySelector('label').textContent += ' ' + product.title;
