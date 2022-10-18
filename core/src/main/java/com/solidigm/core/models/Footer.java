@@ -115,14 +115,23 @@ public interface Footer extends ComponentExporter {
      */
     default List<Link> getLinks() {
         throw new UnsupportedOperationException();
+    }    
+
+    /**
+     * Returns List of Tag labels to display
+     *
+     * @return List<callToActionButton>
+     */
+    default List<String> getTagLabels() {
+        throw new UnsupportedOperationException();
     }
 
     /**
-     * Returns List of authored searchable tags
+     * Returns Boolean whether the footer has content to display
      *
-     * @return String[]
+     * @return Boolean
      */
-    default String[] getSearchTags() {
+    default Boolean hasContent() {
         throw new UnsupportedOperationException();
     }
 }

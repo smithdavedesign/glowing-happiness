@@ -4,9 +4,6 @@
     <jcr:content
         cq:lastModified="{Date}2022-06-28T10:40:46.961-04:00"
         cq:lastModifiedBy="admin"
-        cq:lastReplicated="{Date}2022-10-03T18:26:30.274Z"
-        cq:lastReplicatedBy="abcummins"
-        cq:lastReplicationAction="Activate"
         cq:templateType="/conf/solidigm/settings/wcm/template-types/page"
         jcr:description="My Site Page Template"
         jcr:primaryType="cq:PageContent"
