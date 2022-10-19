@@ -103,6 +103,7 @@
 .kb-button{
     @include solidigm-btn-base();
     width: 100%;
+    color: $white !important;
 
     @media (min-width: $desktop) {
         min-width: vwDesktop(390);
