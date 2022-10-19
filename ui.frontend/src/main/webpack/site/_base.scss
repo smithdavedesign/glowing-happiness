@@ -98,17 +98,7 @@ button {
 }
 
 .solidigm-btn {
-    border-radius: $border-radius-md;
-    border: 1px solid $solidigm-purple;
-    color: $white;
-    background: $solidigm-purple;
-    padding: 12px 24px;
-    display: inline-block;
-    transition: background 0.15s;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include solidigm-btn-base();
 
     &:hover,
     &:focus {

@@ -41,3 +41,28 @@
         }
     }
 }
+
+@mixin solidigm-btn-base(){
+    border-radius: $border-radius-md-mobile;
+    font-family: $body-font;
+    border: vwMobile(1) solid $solidigm-purple;
+    color: $white;
+    background: $solidigm-purple;
+    padding: vwMobile(12) vwMobile(24);
+    display: inline-block;
+    transition: background 0.15s;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: vwMobile(14);
+    letter-spacing: vwMobile(-0.17);
+
+    @media (min-width: $desktop){
+        border-radius: $border-radius-md-desktop;
+        padding: vwDesktop(12) vwDesktop(24);
+        border: vwDesktop(1) solid $solidigm-purple;
+        font-size: vwDesktop(14);
+        letter-spacing: vwDesktop(-0.17);
+    }
+}
