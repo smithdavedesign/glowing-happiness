@@ -1,5 +1,6 @@
 package com.solidigm.core.servlets;
 
+import com.solidigm.core.services.DynamicsArticlesService;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
@@ -26,19 +27,19 @@ public class ProcessDynamicsArticles extends SlingAllMethodsServlet {
     protected static final Logger LOG = LoggerFactory.getLogger(ProcessDynamicsArticles.class);
 
     @Reference
-    com.solidigm.core.services.ProcessDynamicsArticles processDynamicsArticles;
+    DynamicsArticlesService dynamicsArticlesService;
 
     protected void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response) throws IOException {
-        String accessToken = processDynamicsArticles.acquireToken();
+        String accessToken = dynamicsArticlesService.acquireToken();
 
         if(accessToken!=null) {
             response.getWriter().println("Successfully established the connection with Token number: " + accessToken);
 
-            String articleJson = processDynamicsArticles.fetchArticles(accessToken);
+            String articleJson = dynamicsArticlesService.fetchArticles(accessToken);
             if(articleJson!=null) {
                 response.getWriter().println("Received these knowledge articles:");
                 response.getWriter().println(articleJson);
-                processDynamicsArticles.processArticles(articleJson);
+                dynamicsArticlesService.processArticles(articleJson);
                 response.getWriter().println("Successfully processed Dynamics article pages");
             }
         }

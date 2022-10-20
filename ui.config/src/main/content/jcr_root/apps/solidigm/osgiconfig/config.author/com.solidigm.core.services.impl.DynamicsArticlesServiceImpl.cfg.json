@@ -1,0 +1,16 @@
+{
+  "getSupportPagePath": "/content/solidigm/language-masters/en/support-page",
+  "getSupportIndexPages": [
+    "support--index---performance-,971470001",
+    "support--index---warranty---rma-,971470002",
+    "support--index---product-doc---cert--,971470003",
+    "support--index---trouble----error-msgs-,971470004",
+    "support--index---installation---compatibility-,971470005",
+    "support--index---maintenance---tools-,971470006"
+  ],
+  "getAuthority": "https://login.microsoftonline.com/4bb44aac-867a-4be0-aa34-30794e8470dd/oauth2/v2.0/token",
+  "getClientId": "15f378d9-a589-4b3c-a376-17ed6d19cb35",
+  "getClientSecret": "{d7e5bd9b789f21a5ddcd2ba1c7568dcbd4a45f19b02525e13cd2a1a4db1e92d226fc626f56e373981b9e62f77484b3701496f61cf27bea6599153b1fb60ed1d4}",
+  "getApiUrl": "https://nand.crm.dynamics.com/api/data/v9.2/knowledgearticles?$filter=(statuscode%20eq%207%20and%20nand_articleclassificationcode%20eq%20971470001%20and%20content%20ne%20null)",
+  "getRunOnSave": "false"
+}
