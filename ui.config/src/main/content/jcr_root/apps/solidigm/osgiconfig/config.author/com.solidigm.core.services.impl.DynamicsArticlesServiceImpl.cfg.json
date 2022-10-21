@@ -1,12 +1,13 @@
 {
   "getSupportPagePath": "/content/solidigm/language-masters/en/support-page",
   "getSupportIndexPages": [
-    "support--index---performance-,971470001",
-    "support--index---warranty---rma-,971470002",
-    "support--index---product-doc---cert--,971470003",
-    "support--index---trouble----error-msgs-,971470004",
-    "support--index---installation---compatibility-,971470005",
-    "support--index---maintenance---tools-,971470006"
+    "performance,971470001",
+    "warranty-rma,971470002",
+    "product-doc-cert,971470003",
+    "trouble-error-msgs,971470004",
+    "installation-compatibility,971470005",
+    "maintenance-tools,971470006",
+    "drivers-downloads,971470007"
   ],
   "getAuthority": "https://login.microsoftonline.com/4bb44aac-867a-4be0-aa34-30794e8470dd/oauth2/v2.0/token",
   "getClientId": "15f378d9-a589-4b3c-a376-17ed6d19cb35",
