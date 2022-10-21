@@ -11,7 +11,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface DynamicsArticlesServiceConfig {
     @AttributeDefinition(
             name = "Support Page Path",
-            description = "Path to the support page to put Knowledge Articles from Dynamics sync under.")
+            description = "Path to the support page in AEM within the US English language master that contains support index pages (e.g., Performance) that Knowledge Articles from Dynamics are created under.")
     String getSupportPagePath() default "/content/solidigm/language-masters/en/support-page";
 
     @AttributeDefinition(
