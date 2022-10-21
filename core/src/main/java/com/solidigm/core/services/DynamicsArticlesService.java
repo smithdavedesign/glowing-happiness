@@ -1,6 +1,6 @@
 package com.solidigm.core.services;
 
-public interface ProcessDynamicsArticles {
+public interface DynamicsArticlesService {
     /**
      * Fetches the API token from microsoft
      * @return String
