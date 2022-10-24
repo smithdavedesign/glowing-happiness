@@ -15,10 +15,6 @@ pipelines:
              - git merge develop --log=9999
              - echo "Push changes to adobe-develop"
              - git push origin adobe-develop
-             - echo "Update adobe-stage branch with adobe-develop"
-             - git checkout adobe-stage
-             - git merge adobe-develop
-             - git push origin adobe-stage
       adobe-develop:
         - step:
            name: Sync Bitbucket repo with AEM repo
@@ -41,4 +37,4 @@ pipelines:
              - git remote update
              - git checkout origin/adobe-stage
              - echo "Push changes to Adobe Cloud Manager"
-             - git push -f -v sync adobe-stage
+             - git push -v sync HEAD:adobe-stage

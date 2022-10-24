@@ -98,4 +98,154 @@
     @media (min-width: $desktop) {
         line-height: $line-height-base-desktop;
     }
+
+    table {
+        width: 100%;
+    }
+
+    div:has(table) {
+        overflow-x: auto;
+    }
+}
+
+.kb-button {
+    @include solidigm-btn-base();
+    width: 100%;
+    color: $white !important;
+
+    @media (min-width: $desktop) {
+        min-width: vwDesktop(390);
+        width: max-content;
+    }
+
+    &:hover,
+    &:focus {
+        background: $solidigm-purple-light;
+    }
+
+    &::before {
+        content: '';
+        height: vwMobile(18);
+        width: vwMobile(18);
+        margin-right: $spacing-xs-mobile;
+        @include svg_icon(download);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+
+        @media (min-width: $desktop) {
+            height: vwDesktop(18);
+            width: vwDesktop(18);
+            margin-right: $spacing-xs-desktop;
+        }
+    }
+}
+
+// KBA styling. !important is used to override the inline stylings the markup comes with.
+.knowledgearticletext {
+    & > * > * + *,
+    & + * {
+        margin-top: $spacing-2xl-mobile;
+        @media (min-width: $desktop) {
+            margin-top: $spacing-xl-desktop;
+        }
+    }
+}
+
+.text.cmp-article-richtext {
+    & > div:not(:has(> *)),
+    & p:not(:has(> *)) {
+        display: none;
+    }
+
+    a {
+        color: $solidigm-purple !important;
+        text-decoration: none !important;
+    }
+
+    table {
+        width: 100% !important;
+        margin-left: 0 !important;
+
+        a {
+            font-family: $body-font !important;
+            color: $solidigm-purple !important;
+        }
+    }
+
+    table:not([class]),
+    table.Table,
+    table.MsoTableGrid {
+        border: vwMobile(1) solid $grey !important;
+        @media (min-width: $desktop) {
+            border: vwDesktop(1) solid $grey !important;
+        }
+
+        tr {
+            &:not(:last-child) {
+                border-bottom: vwMobile(1) solid $grey !important;
+                @media (min-width: $desktop) {
+                    border-bottom: vwDesktop(1) solid $grey !important;
+                }
+            }
+        }
+
+        td {
+            padding: $spacing-sm-mobile !important;
+            @media (min-width: $desktop) {
+                padding: $spacing-sm-desktop !important;
+            }
+
+            &:not(:last-child) {
+                border-right: vwMobile(1) solid $grey !important;
+                @media (min-width: $desktop) {
+                    border-right: vwDesktop(1) solid $grey !important;
+                }
+            }
+        }
+    }
+
+    & > div > br:first-child:not(:has(+ br)) {
+        display: none;
+    }
+
+    & > div > img,
+    & > div p > img {
+        width: 100% !important;
+        object-fit: cover;
+        height: vwMobile(185) !important;
+
+        @media (min-width: $desktop) {
+            height: vwDesktop(550) !important;
+        }
+    }
+
+    p {
+        margin-left: 0 !important;
+    }
+
+    li::marker {
+        font-family: $body-font !important;
+        color: $grey !important;
+    }
+
+    p,
+    span {
+        line-height: $line-height-base-mobile;
+        font-family: $body-font !important;
+        font-size: $font-size-base-mobile !important;
+        color: $grey !important;
+
+        @media (min-width: $desktop) {
+            font-size: $font-size-base-desktop !important;
+            line-height: $line-height-base-desktop;
+        }
+
+        & * {
+            font-size: $font-size-base-mobile !important;
+            @media (min-width: $desktop) {
+                font-size: $font-size-base-desktop !important;
+            }
+        }
+    }
 }

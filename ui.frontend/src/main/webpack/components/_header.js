@@ -51,9 +51,13 @@ let lastScrollTop = 0;
 const delta = 5;
 const navbarHeight = $('.header__navigation-bar').outerHeight();
 
-$(window).scroll(function () {
-    didScroll = true;
-});
+window.addEventListener(
+    'scroll',
+    function () {
+        didScroll = true;
+    },
+    { passive: true }
+);
 
 setInterval(function () {
     if (didScroll) {
@@ -64,7 +68,7 @@ setInterval(function () {
 }, 250);
 
 function hasScrolled() {
-    const scrollTop = $(this).scrollTop();
+    const scrollTop = window.scrollY;
 
     // Make sure they scroll more than delta.
     if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
