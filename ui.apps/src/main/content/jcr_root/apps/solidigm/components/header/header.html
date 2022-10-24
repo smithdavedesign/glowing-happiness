@@ -904,7 +904,7 @@
 </div>
 <script>
   function trustArcRegionalScript() {
-    function regionalCharMapping() {
+    function regionalCharMapping() { //  might want to refractor this in the future, as I dont belive this is the best way to check for current lang site a user is on.
       let regionalHost = window.location.host;
       regionalHost = regionalHost.split(".")[1];
       switch (regionalHost) {
@@ -916,6 +916,9 @@
           break;
         case "de":
           regionalHost = "de";
+          break;
+          case "cn":
+          regionalHost = "zh";
           break;
         case undefined:
           regionalHost = "en";
