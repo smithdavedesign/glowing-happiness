@@ -33,4 +33,6 @@
 /0123 { /type "allow" /method "GET" /url "/bin/solidigm/supportArticlesServlet" }
 
 # Allow AEM WCM Core Components sitemaps
-/0123 { /type "allow" /method "GET" /path "/content/*" /selectors '(sitemap-index|sitemap)' /extension "xml" }
+/0124 { /type "allow" /method "GET" /path "/content/*" /selectors '(sitemap-index|sitemap)' /extension "xml" }
+
+/0125 { /type "allow" /method "GET" /path "/content/dam/solidigm/robots.txt" /extension "txt" }
