@@ -13,93 +13,90 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/-->
-<template
-    data-sly-template.head="${ @ page, pwa }"
-    data-sly-use.headlibRenderer="headlibs.html"
-    data-sly-use.headResources="head.resources.html"
->
+<template data-sly-template.head="${ @ page, pwa }" data-sly-use.headlibRenderer="headlibs.html"
+    data-sly-use.headResources="head.resources.html">
     <meta charset="UTF-8" />
     <title>${page.title}${page.brandSlug ? ' | ' : ''}${page.brandSlug}</title>
     <meta data-sly-test.keywords="${page.keywords}" name="keywords" content="${keywords}" />
-    <meta
-        data-sly-test.description="${page.description || properties['jcr:description']}"
-        name="description"
-        content="${description}"
-    />
-    <meta
-        data-sly-test.templateName="${page.templateName}"
-        name="template"
-        content="${templateName}"
-    />
+    <meta data-sly-test.description="${page.description || properties['jcr:description']}" name="description"
+        content="${description}" />
+    <meta data-sly-test.templateName="${page.templateName}" name="template" content="${templateName}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-        data-sly-test="${page.robotsTags}"
-        name="robots"
-        content="${page.robotsTags @ join=', '}"
-    />
+    <meta data-sly-test="${page.robotsTags}" name="robots" content="${page.robotsTags @ join=', '}" />
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/favicon.ico"
-    />
+    <link rel="icon" type="image/png"
+        href="/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/favicon.ico" />
 
     <meta itemprop="name" content="${page.title}" />
-    <meta
-        itemprop="image"
-        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}"
-    />
+    <meta itemprop="image"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}" />
 
     <meta property="twitter:card" content="summary" />
     <meta property="twitter:title" content="${page.title}" />
-    <meta
-        name="twitter:image"
-        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}"
-    />
+    <meta name="twitter:image"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}" />
 
-    <meta
-        property="og:image"
-        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-fb-image.jpg' @ join = ''}"
-    />
+    <meta property="og:image"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-fb-image.jpg' @ join = ''}" />
 
     <meta property="og:title" content="${page.title}" />
     <meta property="og:type" content="website" />
-    <meta
-        property="og:image"
-        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}"
-    />
+    <meta property="og:image"
+        content="${properties['teaserImage'] ? ['https://www.solidigm.com', properties['teaserImage']] : 'https://www.solidigm.com/etc.clientlibs/solidigm/clientlibs/clientlib-site/resources/images/sol-tw-image.jpg' @ join = ''}" />
     <script src="https://assets.adobedtm.com/3d3c565ce7f5/f4c31831b5e5/launch-7696aa10ee97.min.js" async></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != "dataLayer" ? "&l=" + l : "";
+            j.async = true;
+            j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-K8L34MF");
+    </script>
+    <!-- End Google Tag Manager -->
+    <!--
+      Start of global snippet: Please do not remove
+      Place this snippet between the <head> and </head> tags on every page of your site.
+      -->
+    <!-- Global site tag (gtag.js) - Google Marketing Platform -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=DC-12037423"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "DC-12037423");
+    </script>
+    <!-- End of global snippet: Please do not remove -->
 
     <sly data-sly-test="${pwa.enabled}">
         <link rel="manifest" href="${pwa.manifestPath}" crossorigin="use-credentials" />
         <meta name="theme-color" content="${pwa.themeColor}" />
         <link rel="apple-touch-icon" href="${pwa.iconPath}" />
-        <sly
-            data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
-            data-sly-call="${clientlib.css @ categories='core.wcm.components.page.v2.pwa'}"
-        ></sly>
+        <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+            data-sly-call="${clientlib.css @ categories='core.wcm.components.page.v2.pwa'}"></sly>
         <meta name="cq:sw_path" content="${pwa.serviceWorkerPath @ context ='text'}" />
     </sly>
     <sly data-sly-include="head.links.html"></sly>
     <sly data-sly-include="head.socialmedia.html"></sly>
     <sly data-sly-include="customheaderlibs.html"></sly>
-    <sly
-        data-sly-call="${headlibRenderer.headlibs @
+    <sly data-sly-call="${headlibRenderer.headlibs @
                                 designPath                = page.designPath,
                                 staticDesignPath          = page.staticDesignPath,
                                 clientLibCategories       = page.clientLibCategories,
                                 clientLibCategoriesJsHead = page.clientLibCategoriesJsHead,
-                                hasCloudconfigSupport     = page.hasCloudconfigSupport}"
-    ></sly>
-    <sly
-        data-sly-test.appResourcesPath="${page.appResourcesPath}"
-        data-sly-call="${headResources.favicons @ path = appResourcesPath}"
-    ></sly>
-    <sly data-sly-list="${page.htmlPageItems}"
-        ><script
-            data-sly-test="${item.location.name == 'header'}"
-            data-sly-element="${item.element.name @ context='unsafe'}"
-            data-sly-attribute="${item.attributes}"
-        ></script>
+                                hasCloudconfigSupport     = page.hasCloudconfigSupport}"></sly>
+    <sly data-sly-test.appResourcesPath="${page.appResourcesPath}"
+        data-sly-call="${headResources.favicons @ path = appResourcesPath}"></sly>
+    <sly data-sly-list="${page.htmlPageItems}">
+        <script data-sly-test="${item.location.name == 'header'}"
+            data-sly-element="${item.element.name @ context='unsafe'}" data-sly-attribute="${item.attributes}"></script>
     </sly>
 </template>
