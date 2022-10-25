@@ -86,7 +86,7 @@ RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 RewriteCond %{REQUEST_URI} ^.*/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 # RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/us/us/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/us/en/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^.*/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
