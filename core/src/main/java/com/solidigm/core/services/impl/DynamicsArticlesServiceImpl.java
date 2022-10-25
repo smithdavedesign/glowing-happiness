@@ -94,6 +94,7 @@ public class DynamicsArticlesServiceImpl implements DynamicsArticlesService {
             knowledgeArticle.setCreatedOn(article.get("createdon").getAsString());
             knowledgeArticle.setModifiedOn(article.get("modifiedon").getAsString());
             knowledgeArticle.setCategoryCode(article.get("nand_articlecontenttypecode").getAsString().split(",")[0]);
+            knowledgeArticle.setArticlePublicId(article.get("articlepublicnumber").getAsString());
             knowledgeArticleMap.put(knowledgeArticle.getArticleId(), knowledgeArticle);
         }
 
@@ -118,19 +119,17 @@ public class DynamicsArticlesServiceImpl implements DynamicsArticlesService {
 
                     if (knowledgeArticle != null) {
                         String articleCategory = articleCategories.get(knowledgeArticle.getCategoryCode());
-                        if (jcrContent.hasNode(articleCategory)) {
+                        if (articleCategory != null && jcrContent != null && jcrContent.hasNode(articleCategory)) {
                             jcrContent = jcrContent.getNode(articleCategory);
-                            String knowledgeArticleName = knowledgeArticle.getTitle().replaceAll("[^a-zA-Z\\d\\s]", "").toLowerCase();
-                            knowledgeArticleName = knowledgeArticleName.replaceAll("\\s", "-");
+                            String knowledgeArticleName = knowledgeArticle.getArticlePublicId();
                             Node articleNode = null;
                             if (!jcrContent.hasNode(knowledgeArticleName)) {
                                 String pagePath = jcrContent.getPath();
-                                String pageName = knowledgeArticleName;
                                 String pageTitle = knowledgeArticle.getTitle();
                                 String template = SolidigmConstants.FLEXIBLE_CONTENT_PAGE_TEMPLATE;
                                 String renderer = "solidigm/components/page/flexibleContent";
 
-                                createKnowledgeArticlePage(resolver, session, pagePath, pageName, pageTitle, template, renderer);
+                                createKnowledgeArticlePage(resolver, session, pagePath, knowledgeArticleName, pageTitle, template, renderer);
                             }
 
                             articleNode = jcrContent.getNode(knowledgeArticleName);
@@ -151,46 +150,50 @@ public class DynamicsArticlesServiceImpl implements DynamicsArticlesService {
                                     session.save();
                                     session.refresh(true);
 
+                                    /* Used standard parsys with content-page type */
+                                    Node responsiveNode = articleJcrNode.getNode("root/container");
+                                    Node textNode = null;
+
+                                    /* Set Article Title */
+                                    if (!responsiveNode.hasNode("title")) {
+                                        textNode = responsiveNode.addNode("title");
+                                    }
+
+                                    textNode = responsiveNode.getNode("title");
+                                    textNode.setProperty("sling:resourceType",
+                                                         "solidigm/components/knowledgearticletext");
+
+                                    textNode.setProperty("text",
+                                                         "<h2>" + knowledgeArticle.getTitle().toString() + "<h2>");
+
+                                    /*Set Article Description*/
+                                    if (!responsiveNode.hasNode("articleDescription")) {
+                                        textNode = responsiveNode.addNode("articleDescription");
+                                    }
+
+                                    textNode = responsiveNode.getNode("articleDescription");
+
+                                    textNode.setProperty("sling:resourceType",
+                                                         "solidigm/components/knowledgearticletext");
+                                    textNode.setProperty("text",
+                                                         "<h3>" + knowledgeArticle.getDescription()
+                                                                 .toString() + "<h3>");
+
+                                    /*Set Article Content*/
+                                    if (!responsiveNode.hasNode("articleContent")) {
+                                        textNode = responsiveNode.addNode("articleContent");
+                                    }
+
+                                    textNode = responsiveNode.getNode("articleContent");
+
+                                    textNode.setProperty("sling:resourceType",
+                                                         "solidigm/components/knowledgearticletext");
+                                    textNode.setProperty("text", knowledgeArticle.getContent().toString());
+
+                                    session.save();
+                                    session.refresh(true);
+
                                 }
-
-                                /* Used standard parsys with content-page type */
-                                Node responsiveNode = articleJcrNode.getNode("root/container");
-                                Node textNode = null;
-
-                                /* Set Article Title */
-                                if (!responsiveNode.hasNode("title")) {
-                                    textNode = responsiveNode.addNode("title");
-                                }
-
-                                textNode = responsiveNode.getNode("title");
-                                textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
-
-                                textNode.setProperty("text", "<h2>" + knowledgeArticle.getTitle().toString() + "<h2>");
-
-                                /*Set Article Description*/
-                                if (!responsiveNode.hasNode("articleDescription")) {
-                                    textNode = responsiveNode.addNode("articleDescription");
-                                }
-
-                                textNode = responsiveNode.getNode("articleDescription");
-
-                                textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
-                                textNode.setProperty("text",
-                                                     "<h3>" + knowledgeArticle.getDescription().toString() + "<h3>");
-
-                                /*Set Article Content*/
-                                if (!responsiveNode.hasNode("articleContent")) {
-                                    textNode = responsiveNode.addNode("articleContent");
-                                }
-
-                                textNode = responsiveNode.getNode("articleContent");
-
-                                textNode.setProperty("sling:resourceType", "solidigm/components/knowledgearticletext");
-                                textNode.setProperty("text", knowledgeArticle.getContent().toString());
-
-                                session.save();
-                                session.refresh(true);
-
                             }
                         }
                     }
