@@ -3,16 +3,13 @@ package com.solidigm.core.services.impl;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.metatype.annotations.Designate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.solidigm.core.services.BrightcoveVideoService;
 import com.solidigm.core.services.BrightcoveVideoServiceConfig;
-import com.solidigm.core.services.DynamicsArticlesServiceConfig;
 
 @Component(service = BrightcoveVideoService.class, immediate = true)
 @Designate(ocd = BrightcoveVideoServiceConfig.class)
-public class BrightcoveVideoServiceConfigImpl {
+public class BrightcoveVideoServiceImpl implements BrightcoveVideoService {
 
     private String accountId;
     private String playerId;
