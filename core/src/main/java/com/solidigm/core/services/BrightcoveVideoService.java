@@ -1,11 +1,11 @@
 package com.solidigm.core.services;
 
-public class BrightcoveVideoService {
+public interface BrightcoveVideoService {
     /**
      * Returns the default video to play if no id is entered by component author
      * @return String
      */
-    String getVideoPlayerId();
+    String getVideoId();
 
     /**
      * Returns Brightcove account id
@@ -14,8 +14,10 @@ public class BrightcoveVideoService {
     String getAccountId();
 
     /**
-     * Takes the KA's API response JSON and processes it. Updating, creating, and deleting KA pages in AEM
-     * @param articleJson
+     * Returns id for video player
+     * @return String
      */
-    void processArticles(String articleJson);
+    String getPlayerId();
+
+
 }

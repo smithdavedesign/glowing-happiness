@@ -14,14 +14,14 @@ public @interface BrightcoveVideoServiceConfig {
     String getAccountId();
 
     @AttributeDefinition(
-      name = "Video Player ID",
+      name = "Player ID",
       description = "ID for video player")
-    String getVideoPlayerId();
+    String getPlayerId();
 
     @AttributeDefinition(
-      name = "Client ID",
-      description = "Brightcove client ID from the Brightcove API Authentication page")
-    String getClientId();
+      name = "Video ID",
+      description = "ID for default video to play if component author does not specify")
+    String getVideoId();
 
 
 
