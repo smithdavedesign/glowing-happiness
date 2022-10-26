@@ -4,10 +4,12 @@ window.addEventListener('DOMContentLoaded', function () {
             const modal = document.getElementById(btn.getAttribute('data-modal-target'));
             const closeBtn = modal.querySelector('.cmp-modal__close-btn');
             const iframe = modal.querySelector('iframe');
+            const brightcoveVideo = modal.querySelector("video-js");
 
-            if (!iframe.getAttribute('src')) {
+            if (iframe && !iframe.getAttribute('src')) {
                 iframe.setAttribute('src', iframe.getAttribute('data-src'));
             }
+            brightcoveVideo?.player?.play();
 
             modal.showModal();
             document.body.overflow = 'hidden';
@@ -20,6 +22,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     iframe.setAttribute('data-src', currentSrc);
                     iframe.setAttribute('src', '');
                 }
+                brightcoveVideo?.player?.pause();
                 modal.close();
                 document.body.overflow = 'visible';
             }
