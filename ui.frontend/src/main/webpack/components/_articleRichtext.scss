@@ -108,38 +108,7 @@
     }
 }
 
-.kb-button {
-    @include solidigm-btn-base();
-    width: 100%;
-    color: $white !important;
 
-    @media (min-width: $desktop) {
-        min-width: vwDesktop(390);
-        width: max-content;
-    }
-
-    &:hover,
-    &:focus {
-        background: $solidigm-purple-light;
-    }
-
-    &::before {
-        content: '';
-        height: vwMobile(18);
-        width: vwMobile(18);
-        margin-right: $spacing-xs-mobile;
-        @include svg_icon(download);
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-
-        @media (min-width: $desktop) {
-            height: vwDesktop(18);
-            width: vwDesktop(18);
-            margin-right: $spacing-xs-desktop;
-        }
-    }
-}
 
 // KBA styling. !important is used to override the inline stylings the markup comes with.
 .knowledgearticletext {
@@ -245,6 +214,38 @@
             font-size: $font-size-base-mobile !important;
             @media (min-width: $desktop) {
                 font-size: $font-size-base-desktop !important;
+            }
+        }
+    }
+    .kb-button {
+        @include solidigm-btn-base();
+        width: 100%;
+        color: $white !important;
+    
+        @media (min-width: $desktop) {
+            min-width: vwDesktop(390);
+            width: max-content;
+        }
+    
+        &:hover,
+        &:focus {
+            background: $solidigm-purple-light;
+        }
+    
+        &::before {
+            content: '';
+            height: vwMobile(18);
+            width: vwMobile(18);
+            margin-right: $spacing-xs-mobile;
+            @include svg_icon(download);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+    
+            @media (min-width: $desktop) {
+                height: vwDesktop(18);
+                width: vwDesktop(18);
+                margin-right: $spacing-xs-desktop;
             }
         }
     }
