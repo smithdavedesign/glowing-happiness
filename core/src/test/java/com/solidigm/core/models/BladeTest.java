@@ -2,12 +2,17 @@ package com.solidigm.core.models;
 
 import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.beans.Link;
+import com.solidigm.core.services.BrightcoveVideoService;
+
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -16,13 +21,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(AemContextExtension.class)
 public class BladeTest {
+
     private final AemContext ctx = new AemContext();
+
+    @Mock
+    BrightcoveVideoService brightcoveVideoService;
 
     @BeforeEach
     public void setUp() throws FileNotFoundException {
         //Load ctx for bladeModel
+        MockitoAnnotations.initMocks(this);
         ctx.addModelsForClasses(Blade.class);
         ctx.load().json("/com/solidigm/core/models/BladeTest.json", "/content");
+        Mockito.when(brightcoveVideoService.getAccountId()).thenReturn("account");
+        Mockito.when(brightcoveVideoService.getPlayerId()).thenReturn("player");
+        ctx.registerService(
+          BrightcoveVideoService.class, brightcoveVideoService, org.osgi.framework.Constants.SERVICE_RANKING,
+          Integer.MAX_VALUE);
     }
 
     @Test

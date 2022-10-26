@@ -111,5 +111,6 @@ public class BladeImpl implements Blade {
         if (hasContentValue && StringUtils.isEmpty(altText)) {
             altText = ImageUtil.getAltTextFromDAM(request.getResourceResolver(), imageReference);
         }
+
     }
 }
