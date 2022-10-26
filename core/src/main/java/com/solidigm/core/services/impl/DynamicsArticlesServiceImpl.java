@@ -121,7 +121,7 @@ public class DynamicsArticlesServiceImpl implements DynamicsArticlesService {
                         String articleCategory = articleCategories.get(knowledgeArticle.getCategoryCode());
                         if (articleCategory != null && jcrContent != null && jcrContent.hasNode(articleCategory)) {
                             jcrContent = jcrContent.getNode(articleCategory);
-                            String knowledgeArticleName = knowledgeArticle.getArticlePublicId();
+                            String knowledgeArticleName = knowledgeArticle.getArticlePublicId().toLowerCase();
                             Node articleNode = null;
                             if (!jcrContent.hasNode(knowledgeArticleName)) {
                                 String pagePath = jcrContent.getPath();
