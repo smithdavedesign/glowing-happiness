@@ -82,13 +82,20 @@
                                                     fieldLabel="Image Alt Text"
                                                     emptyText="Leave blank to use the Alt Text stored in the DAM"
                                                     name="./altText" />
-                                            <video
+                                            <youtubeUrl
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="The URL of the video to embed. The URL will be checked against supported processors for a match."
-                                                    fieldLabel="Video"
-                                                    emptyText="URL to embeddable video"
-                                                    name="./url" />
+                                                    fieldDescription="The URL of the youtube video to embed"
+                                                    fieldLabel="Youtube URL"
+                                                    emptyText="URL to youtube video"
+                                                    name="./youtubeUrl" />
+                                            <brightcoveId
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldDescription="The URL of the Brightcove video to embed"
+                                                fieldLabel="Brightcove video ID"
+                                                emptyText="Brightcove video ID"
+                                                name="./brightcoveId" />
                                             <type
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="/libs/granite/ui/components/coral/foundation/form/hidden"
