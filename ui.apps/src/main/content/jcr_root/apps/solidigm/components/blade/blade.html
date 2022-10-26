@@ -56,14 +56,14 @@
     <div class="cmp-modal__iframe-container">
         <div class="video-js-container">
             <video-js
-              data-account="6272332767001"
-              data-player="5ukNGR047"
+refere              data-account="${blade.accountId}"
+              data-player="${blade.playerId}"
               data-embed="default"
               controls=""
               class="vjs-fluid"
-              data-video-id="6273773612001"
+              data-video-id="${blade.brightcoveId}"
             ></video-js>
         </div>
-        <script src="//players.brightcove.net/6272332767001/5ukNGR047_default/index.min.js"></script>
+        <script src="//players.brightcove.net/${blade.brightcoveId}/5ukNGR047_default/index.min.js"></script>
     </div>
 </dialog>
