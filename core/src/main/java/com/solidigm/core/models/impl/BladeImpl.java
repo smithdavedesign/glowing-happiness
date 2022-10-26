@@ -76,6 +76,12 @@ public class BladeImpl implements Blade {
     @ValueMapValue
     private String brightcoveId;
 
+    @Getter
+    private String accountId;
+
+    @Getter
+    private String playerId;
+
     private Boolean hasContentValue;
 
     private Boolean showVideoValue;
@@ -97,6 +103,8 @@ public class BladeImpl implements Blade {
 
     @PostConstruct
     private void initModel() {
+        playerId = service.getPlayerId();
+        accountId = service.getAccountId();
         modalID = String.valueOf(Math.abs(request.getResource().getPath().hashCode()));
         hasContentValue = !StringUtils.isEmpty(imageReference);
         showVideoValue = !StringUtils.isEmpty(youtubeUrl) || !StringUtils.isEmpty(brightcoveId);
