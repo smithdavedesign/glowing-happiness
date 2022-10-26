@@ -13,21 +13,15 @@ public class BrightcoveVideoServiceImpl implements BrightcoveVideoService {
 
     private String accountId;
     private String playerId;
-    private String videoId;
 
     @Activate
     public void activate(BrightcoveVideoServiceConfig config) {
         accountId = config.getAccountId();
         playerId = config.getPlayerId();
-        videoId = config.getVideoId();
     }
 
     public String getAccountId() {
         return accountId;
-    }
-
-    public String getVideoId() {
-        return videoId;
     }
 
     public String getPlayerId() {

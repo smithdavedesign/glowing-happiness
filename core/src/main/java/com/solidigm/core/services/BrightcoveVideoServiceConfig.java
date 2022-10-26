@@ -18,10 +18,6 @@ public @interface BrightcoveVideoServiceConfig {
       description = "ID for video player")
     String getPlayerId();
 
-    @AttributeDefinition(
-      name = "Video ID",
-      description = "ID for default video to play if component author does not specify")
-    String getVideoId();
 
 
 
