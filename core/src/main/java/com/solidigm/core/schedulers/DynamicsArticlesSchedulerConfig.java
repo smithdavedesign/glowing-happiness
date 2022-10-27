@@ -12,7 +12,7 @@ public @interface DynamicsArticlesSchedulerConfig {
     @AttributeDefinition(
             name = "Cron Schedule",
             description = "Cron schedule that determines when Knowledge Articles from Dynamics will sync with AEM automatically if enabled.")
-    String getSchedulerExpression() default "0 20 * * *";
+    String getSchedulerExpression() default "0 20 * * * ?";
 
     @AttributeDefinition(
             name = "Enable Scheduler",
