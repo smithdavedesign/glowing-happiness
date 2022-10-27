@@ -18,3 +18,43 @@
 </sly>
 
 <sly data-sly-resource="${'contexthub' @ resourceType='granite/contexthub/components/contexthub'}"/>
+<script>
+  function trustArcRegionalScript() {
+    function regionalCharMapping() { //  might want to refractor this in the future, as I dont belive this is the best way to check for current lang site a user is on.
+      let regionalHost = window.location.host;
+      regionalHost = regionalHost.split(".");
+      regionalHost = regionalHost[regionalHost.length - 1];
+      switch (regionalHost) {
+        case "jp":
+          regionalHost = "ja";
+          break;
+        case "kr":
+          regionalHost = "ko";
+          break;
+        case "de":
+          regionalHost = "de";
+          break;
+          case "cn":
+          regionalHost = "zh";
+          break;
+        case undefined:
+          regionalHost = "en";
+          break;
+        default:
+          regionalHost = "en";
+      }
+      return regionalHost;
+    }
+    let head = document.getElementsByTagName("head")[0];
+    let script = document.createElement("script");
+    let countryCode = regionalCharMapping();
+    script.type = "text/javascript";
+    script.async = "async";
+    script.crossOrigin = "";
+    script.src =
+      "//consent.trustarc.com/notice?domain=solidigm.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1&language=" +
+      countryCode;
+    head.appendChild(script);
+  }
+  trustArcRegionalScript();
+</script>
