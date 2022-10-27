@@ -82,13 +82,13 @@
                                                     fieldLabel="Image Alt Text"
                                                     emptyText="Leave blank to use the Alt Text stored in the DAM"
                                                     name="./altText" />
-                                            <youtubeUrl
+                                            <video
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                                                     fieldDescription="The URL of the youtube video to embed"
                                                     fieldLabel="Youtube URL"
                                                     emptyText="URL to youtube video"
-                                                    name="./youtubeUrl" />
+                                                    name="./url" />
                                             <brightcoveId
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"

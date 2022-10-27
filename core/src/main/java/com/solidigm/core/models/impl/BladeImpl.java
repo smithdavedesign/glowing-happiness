@@ -70,10 +70,6 @@ public class BladeImpl implements Blade {
 
     @Getter
     @ValueMapValue
-    private String youtubeUrl;
-
-    @Getter
-    @ValueMapValue
     private String brightcoveId;
 
     @Getter
@@ -85,6 +81,9 @@ public class BladeImpl implements Blade {
     private Boolean hasContentValue;
 
     private Boolean showVideoValue;
+
+    @ValueMapValue
+    private String url;
 
     @Override
     public String getExportedType() {
@@ -107,10 +106,14 @@ public class BladeImpl implements Blade {
         accountId = service.getAccountId();
         modalID = String.valueOf(Math.abs(request.getResource().getPath().hashCode()));
         hasContentValue = !StringUtils.isEmpty(imageReference);
-        showVideoValue = !StringUtils.isEmpty(youtubeUrl) || !StringUtils.isEmpty(brightcoveId);
+        showVideoValue = !StringUtils.isEmpty(url) || !StringUtils.isEmpty(brightcoveId);
         if (hasContentValue && StringUtils.isEmpty(altText)) {
             altText = ImageUtil.getAltTextFromDAM(request.getResourceResolver(), imageReference);
         }
 
+    }
+
+    public boolean isBrightcovePresent(){
+        return !StringUtils.isEmpty(brightcoveId);
     }
 }
