@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:mix="http://www.jcp.org/jcr/mix/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:deviceGroups="[mobile/groups/responsive]"
+        cq:lastModified="{Date}2022-10-27T16:06:17.764-04:00"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/solidigm/settings/wcm/templates/product-detail-page--pdp-1"
+        jcr:isCheckedOut="{Boolean}true"
+        jcr:mixinTypes="[mix:versionable]"
+        jcr:primaryType="cq:PageContent"
+        jcr:uuid="24218fd6-3472-4622-90d0-a1ef5b7377ed"
+        sling:resourceType="solidigm/components/page/productDataPage">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="solidigm/components/container"
+            layout="responsiveGrid">
+            <header
+                jcr:created="{Date}2022-10-13T14:25:56.106-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-10-13T14:25:56.106-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/header"/>
+            <container_2089249899
+                jcr:created="{Date}2022-10-27T15:43:20.817-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-10-27T16:07:51.440-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/container"
+                editable="{Boolean}true"/>
+            <container
+                jcr:created="{Date}2022-10-27T14:48:39.059-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-10-27T14:48:39.059-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/container"
+                editable="{Boolean}true"/>
+            <footer
+                jcr:created="{Date}2022-10-13T14:25:59.738-04:00"
+                jcr:createdBy="admin"
+                jcr:lastModified="{Date}2022-10-13T14:25:59.738-04:00"
+                jcr:lastModifiedBy="admin"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="solidigm/components/footer"/>
+        </root>
+        <cq:responsive jcr:primaryType="nt:unstructured">
+            <breakpoints jcr:primaryType="nt:unstructured">
+                <phone
+                    jcr:primaryType="nt:unstructured"
+                    title="Smaller Screen"
+                    width="{Long}768"/>
+                <tablet
+                    jcr:primaryType="nt:unstructured"
+                    title="Tablet"
+                    width="{Long}1200"/>
+            </breakpoints>
+        </cq:responsive>
+    </jcr:content>
+</jcr:root>
