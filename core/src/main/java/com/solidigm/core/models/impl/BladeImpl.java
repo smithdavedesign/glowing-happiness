@@ -113,7 +113,8 @@ public class BladeImpl implements Blade {
 
     }
 
-    public boolean isBrightcovePresent(){
+    @Override
+    public Boolean isBrightcovePresent(){
         return !StringUtils.isEmpty(brightcoveId);
     }
 }

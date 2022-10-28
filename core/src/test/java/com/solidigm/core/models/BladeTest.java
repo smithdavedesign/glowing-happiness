@@ -194,4 +194,20 @@ public class BladeTest {
         Blade blade = ctx.request().adaptTo(Blade.class);
         assertFalse(blade.showVideo());
     }
+
+    @Test
+    void testIsBrightcovePresentTrue(){
+        //Brightcove ID and youtube URL present, return true
+        ctx.currentResource("/content/bladeAuthored");
+        Blade blade = ctx.request().adaptTo(Blade.class);
+        assertTrue(blade.isBrightcovePresent());
+    }
+
+    @Test
+    void testIsBrightcovePresentFalse(){
+        //Only youtube URL present, return false
+        ctx.currentResource("/content/bladeAuthoredYoutubeOnly");
+        Blade blade = ctx.request().adaptTo(Blade.class);
+        assertFalse(blade.isBrightcovePresent());
+    }
 }

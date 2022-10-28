@@ -9,6 +9,48 @@
     "title": "Test Title",
     "imageReference": "/content/image"
   },
+  "bladeAuthoredYoutubeOnly": {
+    "jcr:primaryType": "nt:unstructured",
+    "jcr:createdBy": "admin",
+    "description": "Test Description",
+    "jcr:lastModifiedBy": "admin",
+    "jcr:created": "Thu Jun 23 2022 10:57:01 GMT-0400",
+    "imageReference": "/image/reference",
+    "altText": "Test Alt Text",
+    "title": "Test Title",
+    "youtubeUrl": "Test youtube URL",
+    "type": "url",
+    "jcr:lastModified": "Fri Jun 24 2022 15:05:08 GMT-0400",
+    "sling:resourceType": "solidigm/components/blade",
+    "callToActions": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "label": "First Button",
+        "buttonStyle": "transparent",
+        "link": "/first/link"
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "label": "Second Button",
+        "buttonStyle": "",
+        "link": "https://second/link"
+      }
+    },
+    "bullets": {
+      "jcr:primaryType": "nt:unstructured",
+      "item0": {
+        "jcr:primaryType": "nt:unstructured",
+        "label": "First Bullet",
+        "link": "/first/bullet"
+      },
+      "item1": {
+        "jcr:primaryType": "nt:unstructured",
+        "label": "Second Bullet",
+        "link": "https://secondBullet"
+      }
+    }
+  },
   "bladeAuthored": {
     "jcr:primaryType": "nt:unstructured",
     "jcr:createdBy": "admin",
