@@ -5,52 +5,74 @@
           extraClientlibs="[core.wcm.components.embed.v1.editor]"
           helpPath="https://www.adobe.com/go/aem_cmp_embed_v2"
           trackingFeature="core-components:embed:v2">
+
     <content
-            jcr:primaryType="nt:unstructured">
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
             <tabs
-                    jcr:primaryType="nt:unstructured">
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                size="L">
                 <items jcr:primaryType="nt:unstructured">
-                    <thumbnail
-                            jcr:primaryType="nt:unstructured"
-                            jcr:title="Thumbnail Image"
-                            sling:resourceType="granite/ui/components/coral/foundation/container"
-                            sling:orderBefore="styletab"
-                            margin="{Boolean}true">
+                    <urlTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Video Link"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
                         <items jcr:primaryType="nt:unstructured">
-                            <columns
-                                    jcr:primaryType="nt:unstructured"
-                                    sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
-                                    margin="{Boolean}true">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
                                 <items jcr:primaryType="nt:unstructured">
-                                    <column
-                                            jcr:primaryType="nt:unstructured"
-                                            sling:resourceType="granite/ui/components/coral/foundation/container">
-                                        <items jcr:primaryType="nt:unstructured">
-                                            <thumbnailImage
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
-                                                    autoStart="{Boolean}false"
-                                                    class="cq-droptarget"
-                                                    fileNameParameter="./thumbnailImageName"
-                                                    fileReferenceParameter="./thumbnailImageReference"
-                                                    mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
-                                                    name="./thumbnailImage"
-                                                    uploadUrl="${suffix.path}"
-                                                    useHTML5="{Boolean}true"
-                                                    required="{Boolean}true" />
-                                            <thumbnailAltText
-                                                    jcr:primaryType="nt:unstructured"
-                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldLabel="Thumbnail Image Alt Text"
-                                                    emptyText="Leave blank to use the Alt Text stored in the DAM"
-                                                    name="./thumbnailAltText" />
-                                        </items>
-                                    </column>
+                                    <video
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="The URL of the youtube video to embed"
+                                        fieldLabel="Youtube URL"
+                                        emptyText="URL to youtube video"
+                                        name="./url" />
+                                    <brightcoveId
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldDescription="The URL of the Brightcove video to embed"
+                                        fieldLabel="Brightcove video ID"
+                                        emptyText="Brightcove video ID"
+                                        name="./brightcoveId" />
                                 </items>
-                            </columns>
+                            </column>
                         </items>
-                    </thumbnail>
+                    </urlTab>
+                    <thumbnailTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Thumbnail Image"
+                        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+                        <items jcr:primaryType="nt:unstructured">
+                            <column
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <thumbnailImage
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                                        autoStart="{Boolean}false"
+                                        class="cq-droptarget"
+                                        fileNameParameter="./thumbnailImageName"
+                                        fileReferenceParameter="./thumbnailImageReference"
+                                        mimeTypes="[image/gif,image/jpeg,image/png,image/tiff,image/svg+xml]"
+                                        name="./thumbnailImage"
+                                        uploadUrl="${suffix.path}"
+                                        useHTML5="{Boolean}true"
+                                        required="{Boolean}true" />
+                                    <thumbnailAltText
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                        fieldLabel="Thumbnail Image Alt Text"
+                                        emptyText="Leave blank to use the Alt Text stored in the DAM"
+                                        name="./thumbnailAltText" />
+                                </items>
+                            </column>
+                        </items>
+                    </thumbnailTab>
                 </items>
             </tabs>
         </items>
