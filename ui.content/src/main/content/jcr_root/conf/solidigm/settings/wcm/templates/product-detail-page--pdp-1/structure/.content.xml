@@ -3,7 +3,7 @@
     jcr:primaryType="cq:Page">
     <jcr:content
         cq:deviceGroups="[mobile/groups/responsive]"
-        cq:lastModified="{Date}2022-10-28T11:34:51.042-04:00"
+        cq:lastModified="{Date}2022-10-28T14:40:25.653-04:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/solidigm/settings/wcm/templates/product-detail-page--pdp-1"
         jcr:isCheckedOut="{Boolean}true"
@@ -22,7 +22,7 @@
                 sling:resourceType="solidigm/components/experiencefragment"
                 fragmentVariationPath="/content/experience-fragments/solidigm/language-masters/en/site/header/master"/>
             <container_2089249899
-                cq:styleIds="[1659661995868,1659662044179,1659662074005]"
+                cq:styleIds="[1659661995868,1659662074005]"
                 jcr:created="{Date}2022-10-27T15:43:20.817-04:00"
                 jcr:createdBy="admin"
                 jcr:lastModified="{Date}2022-10-28T11:34:55.111-04:00"
