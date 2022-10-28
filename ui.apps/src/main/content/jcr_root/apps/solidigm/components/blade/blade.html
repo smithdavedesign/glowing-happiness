@@ -18,7 +18,7 @@
 
     <div class="cmp-blade__content">
         <h2 class="cmp-blade__title">${blade.title} Brightcove present: ${blade.isBrightcovePresent}</h2>
-        <p ata-sly-test.description="${blade.description}" class="cmp-blade__description" style="white-space: pre-line;">
+        <p data-sly-test.description="${blade.description}" class="cmp-blade__description" style="white-space: pre-line;">
             ${blade.description} </p>
         <ul class="cmp-blade__list" data-sly-list.bullet="${blade.bullets}">
             <li>
@@ -55,18 +55,5 @@
                       data-video-id="${blade.brightcoveId}"></video-js>
         </div>
         <script src="//players.brightcove.net/${blade.accountId}/${blade.playerId}_default/index.min.js"></script>
-    </div>
-    <div class="cmp-modal__iframe-container">
-        <div class="video-js-container">
-            <video-js
-                data-account="6272332767001"
-                data-player="5ukNGR047"
-                data-embed="default"
-                controls=""
-                class="vjs-fluid"
-                data-video-id="6273773612001"
-            ></video-js>
-        </div>
-        <script src="//players.brightcove.net/6272332767001/5ukNGR047_default/index.min.js"></script>
     </div>
 </dialog>
