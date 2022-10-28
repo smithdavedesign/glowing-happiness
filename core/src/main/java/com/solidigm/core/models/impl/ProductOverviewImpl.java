@@ -58,6 +58,10 @@ public class ProductOverviewImpl implements ProductOverview {
     @Getter
     private String supportPage;
 
+    @ValueMapValue
+    @Getter
+    private String distributorPage;
+
     @Getter
     private List<String> interfaces;
 
@@ -66,9 +70,6 @@ public class ProductOverviewImpl implements ProductOverview {
 
     @Getter
     private List<String> capacities;
-
-    @Getter
-    private String distributorPage;
 
     @Override
     public String getExportedType() {
@@ -87,7 +88,7 @@ public class ProductOverviewImpl implements ProductOverview {
         formFactors = product.getFormFactors();
         capacities = product.getCapacities();
 
-        if(currentPage != null) {
+        if(currentPage != null && distributorPage == null) {
             distributorPage = SolidigmUtils.getSiteRoot(currentPage.getPath()).concat(DISTRIBUTOR_PAGE);
         }
     }
