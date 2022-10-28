@@ -1,0 +1,5 @@
+{
+  "getSchedulerExpression": "0 20 * * * ?",
+  "getEnableScheduler": "true",
+  "getRunOnSave": "true"
+}
