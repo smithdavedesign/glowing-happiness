@@ -2,10 +2,10 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
     jcr:primaryType="cq:Template">
     <jcr:content
-        cq:lastModified="{Date}2022-10-27T16:32:32.629-04:00"
+        cq:lastModified="{Date}2022-10-28T13:24:18.296-04:00"
         cq:lastModifiedBy="admin"
         cq:templateType="/conf/solidigm/settings/wcm/template-types/page"
         jcr:primaryType="cq:PageContent"
-        jcr:title="Product Detail Page (PDP) v.20"
+        jcr:title="Product Detail Page (PDP) v2.0"
         status="enabled"/>
 </jcr:root>

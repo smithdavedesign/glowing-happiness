@@ -35,6 +35,11 @@
                                                                 fieldLabel="Extra Info"
                                                                 fieldDescription="Optional information to be displayed separately from the product description. E.g. Formerly manufactured by Intel Corporation"
                                                                 rows="{Long}3" />
+                                                        <distributorPage
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                                name="./distributorPage"
+                                                                fieldLabel="Authorized Distributor Link" />
                                                 </items>
                                         </column>
                                 </items>
