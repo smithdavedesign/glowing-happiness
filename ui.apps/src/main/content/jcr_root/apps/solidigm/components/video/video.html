@@ -11,22 +11,20 @@
             width="1440"
         />
         <button class="cmp-video__play-btn" alt="Play video"></button>
-        <!-- @TODO conditionally show Brightcove or Youtube -->
         <div class="cmp-video__video">
             <!-- Brightcove Video -->
-            <div class="video-js-container">
-                <video-js
-                    data-account="6272332767001"
-                    data-player="5ukNGR047"
-                    data-embed="default"
-                    controls=""
-                    class="vjs-fluid"
-                    data-video-id="6273773612001"
-                ></video-js>
+            <div data-sly-test="${video.isBrightcovePresent}" class="video-js-container">
+                <video-js data-account="${video.accountId}"
+                          data-player="${video.playerId}"
+                          data-embed="default"
+                          controls=""
+                          class="vjs-fluid"
+                          data-video-id="${video.brightcoveId}"></video-js>
             </div>
-            <script src="//players.brightcove.net/6272332767001/5ukNGR047_default/index.min.js"></script>
+            <script src="//players.brightcove.net/${video.accountId}/${video.playerId}_default/index.min.js"></script>
             <!-- Youtube Video -->
             <sly
+                data-sly-test="${!video.isBrightcovePresent}"
                 data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}"
             ></sly>
         </div>
