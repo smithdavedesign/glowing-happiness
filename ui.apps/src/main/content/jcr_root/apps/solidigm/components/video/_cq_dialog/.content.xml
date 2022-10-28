@@ -16,7 +16,7 @@
                     <items jcr:primaryType="nt:unstructured">
                         <text
                             jcr:primaryType="nt:unstructured"
-                            jcr:title="Text"
+                            jcr:title="Video"
                             sling:resourceType="granite/ui/components/coral/foundation/container"
                             margin="{Boolean}true">
                             <items jcr:primaryType="nt:unstructured">

@@ -77,4 +77,8 @@ public class VideoImpl implements Video {
             thumbnailAltText = ImageUtil.getAltTextFromDAM(resourceResolver, thumbnailImageReference);
         }
     }
+
+    public boolean isBrightcovePresent(){
+        return !StringUtils.isEmpty(brightcoveId);
+    }
 }
