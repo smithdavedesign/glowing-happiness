@@ -5,6 +5,7 @@ import java.util.Date;
 public class KnowledgeArticle {
 
     private String articleId;
+    private String articlePublicId;
     private String title;
     private String description;
     private String content;
@@ -75,5 +76,13 @@ public class KnowledgeArticle {
 
     public void setCategoryCode(String categoryCode) {
         this.categoryCode = categoryCode;
+    }
+
+    public String getArticlePublicId() {
+        return articlePublicId;
+    }
+
+    public void setArticlePublicId(String articlePublicId) {
+        this.articlePublicId = articlePublicId;
     }
 }
