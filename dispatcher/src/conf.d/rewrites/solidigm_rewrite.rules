@@ -235,6 +235,14 @@ RewriteCond %{REQUEST_URI} ^/en/products(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
 RewriteRule ^.*$ /us/en/products/data-center.html [R=301,L]
 
+RewriteCond %{REQUEST_URI} ^/en/about-us/careers(\.html)?$ [NC]
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /us/en/who-we-are/careers-page.html [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/en//about-us(\.html)?$ [NC]
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /us/en/who-we-are.html [R=301,L]
+
 # reconstitute shortened URLs
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/content
