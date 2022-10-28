@@ -205,7 +205,7 @@
             line-height: $line-height-base-desktop;
         }
 
-        & * {
+        *:not(h1, h2, h3, h4, h5, h6) {
             font-size: $font-size-base-mobile !important;
             @media (min-width: $desktop) {
                 font-size: $font-size-base-desktop !important;
