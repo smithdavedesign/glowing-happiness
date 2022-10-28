@@ -5,8 +5,12 @@ import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.io.FileNotFoundException;
+
+import com.solidigm.core.services.BrightcoveVideoService;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,11 +18,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class VideoTest {
     private final AemContext ctx = new AemContext();
 
+    @Mock
+    BrightcoveVideoService brightcoveVideoService;
+
     @BeforeEach
     public void setUp() throws FileNotFoundException {
+        MockitoAnnotations.initMocks(this);
         //Load ctx for VideoModel
         ctx.addModelsForClasses(Video.class);
         ctx.load().json("/com/solidigm/core/models/VideoTest.json", "/content");
+        ctx.registerService(
+          BrightcoveVideoService.class, brightcoveVideoService, org.osgi.framework.Constants.SERVICE_RANKING,
+          Integer.MAX_VALUE);
     }
 
     @Test

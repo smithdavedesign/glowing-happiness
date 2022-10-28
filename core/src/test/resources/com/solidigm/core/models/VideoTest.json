@@ -9,6 +9,8 @@
     "thumbnailImageReference": "/content/image"
   },
   "videoAuthored": {
+    "youtubeUrl": "Test youtube URL",
+    "brightcoveId": "Test brightcove ID",
     "jcr:primaryType": "nt:unstructured",
     "sling:resourceType": "solidigm/components/video",
     "thumbnailImageReference": "/content/image",
