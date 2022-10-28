@@ -52,9 +52,16 @@ public class VideoImpl implements Video {
     @Getter
     private String playerId;
 
+    @ValueMapValue
+    private String url;
+
+    @Getter
+    @ValueMapValue
+    private String brightcoveId;
+
     @Override
     public Boolean hasContent() {
-        return StringUtils.isNotEmpty(thumbnailImageReference);
+        return  StringUtils.isNotEmpty(url) || StringUtils.isNotEmpty(brightcoveId);
     }
 
     @Override
