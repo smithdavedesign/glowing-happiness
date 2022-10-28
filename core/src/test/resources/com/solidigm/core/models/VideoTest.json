@@ -16,6 +16,13 @@
     "thumbnailImageReference": "/content/image",
     "thumbnailAltText": "Test Alt Text"
   },
+  "videoAuthoredYoutubeOnly": {
+    "youtubeUrl": "Test youtube URL",
+    "jcr:primaryType": "nt:unstructured",
+    "sling:resourceType": "solidigm/components/video",
+    "thumbnailImageReference": "/content/image",
+    "thumbnailAltText": "Test Alt Text"
+  },
   "image": {
     "jcr:content": {
       "metadata": {

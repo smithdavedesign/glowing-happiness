@@ -78,7 +78,8 @@ public class VideoImpl implements Video {
         }
     }
 
-    public boolean isBrightcovePresent(){
+    @Override
+    public Boolean isBrightcovePresent(){
         return !StringUtils.isEmpty(brightcoveId);
     }
 }

@@ -77,4 +77,20 @@ public class VideoTest {
         Video video = ctx.request().adaptTo(Video.class);
         assertEquals(expected, video.getThumbnailAltText());
     }
+
+    @Test
+    void testIsBrightcovePresentTrue(){
+        //Brightcove ID and youtube URL present, return true
+        ctx.currentResource("/content/videoAuthored");
+        Video video = ctx.request().adaptTo(Video.class);
+        assertTrue(video.isBrightcovePresent());
+    }
+
+    @Test
+    void testIsBrightcovePresentFalse(){
+        //Only youtube URL present, return false
+        ctx.currentResource("/content/videoAuthoredYoutubeOnly");
+        Video video = ctx.request().adaptTo(Video.class);
+        assertFalse(video.isBrightcovePresent());
+    }
 }

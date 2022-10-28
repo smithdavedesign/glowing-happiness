@@ -33,8 +33,6 @@ public class BladeTest {
         MockitoAnnotations.initMocks(this);
         ctx.addModelsForClasses(Blade.class);
         ctx.load().json("/com/solidigm/core/models/BladeTest.json", "/content");
-        Mockito.when(brightcoveVideoService.getAccountId()).thenReturn("account");
-        Mockito.when(brightcoveVideoService.getPlayerId()).thenReturn("player");
         ctx.registerService(
           BrightcoveVideoService.class, brightcoveVideoService, org.osgi.framework.Constants.SERVICE_RANKING,
           Integer.MAX_VALUE);
