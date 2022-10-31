@@ -9,11 +9,20 @@
         height: 100%;
     }
 
-    iframe {
+    .cmp-video__video {
         display: none;
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        & > * {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
     }
 
-    button {
+    .cmp-video__play-btn {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -30,10 +39,16 @@
         }
     }
 
-    .cmp-embed{
+    .cmp-embed {
         height: 100%;
     }
+
     @media (min-width: $desktop) {
         height: vwDesktop(550);
+    }
+
+    video-js{
+        padding-top: 0px !important;
+        height: 100% !important;
     }
 }

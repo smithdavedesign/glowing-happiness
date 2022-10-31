@@ -16,26 +16,26 @@ public class OrderingSpec {
 
     @Getter
     @Inject
-    @Named("./CCATS/value")
+    @Named("./PCode/value")
     private String ccats;
 
     @Getter
     @Inject
-    @Named("./ECCN/value")
+    @Named("./ECC/value")
     private String eccn;
 
     @Getter
     @Inject
-    @Named("./US HTS/value")
+    @Named("./HTS/value")
     private String ushts;
 
     @Getter
     @Inject
-    @Named("./Ordering Code/value")
+    @Named("./OrderingCode/value")
     private String orderingCode;
 
     @Getter
     @Inject
-    @Named("./Shipping Media/value")
+    @Named("./ShippingMedia/value")
     private String shippingMedia;
 }

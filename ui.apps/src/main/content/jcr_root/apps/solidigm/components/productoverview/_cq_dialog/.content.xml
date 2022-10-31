@@ -35,6 +35,13 @@
                                                                 fieldLabel="Extra Info"
                                                                 fieldDescription="Optional information to be displayed separately from the product description. E.g. Formerly manufactured by Intel Corporation"
                                                                 rows="{Long}3" />
+                                                        <distributorPage
+                                                                jcr:primaryType="nt:unstructured"
+                                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                                name="./distributorPage"
+                                                                fieldLabel="Authorized Distributor Link"
+                                                                fieldDescription="Optional authorized dealer field to change from default destination of authorized-dealers"
+                                                                rootPath="/content/solidigm" />
                                                 </items>
                                         </column>
                                 </items>
