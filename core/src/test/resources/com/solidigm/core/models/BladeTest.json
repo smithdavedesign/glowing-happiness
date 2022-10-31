@@ -61,7 +61,7 @@
     "altText": "Test Alt Text",
     "title": "Test Title",
     "youtubeUrl": "Test youtube URL",
-    "brightcoveId": "Test brightcove ID",
+    "brightcoveVideoId": "Test brightcove ID",
     "type": "url",
     "jcr:lastModified": "Fri Jun 24 2022 15:05:08 GMT-0400",
     "sling:resourceType": "solidigm/components/blade",

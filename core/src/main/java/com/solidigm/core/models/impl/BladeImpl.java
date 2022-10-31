@@ -36,7 +36,7 @@ public class BladeImpl implements Blade {
     static final String RESOURCE_TYPE = "solidigm/components/blade";
 
     @OSGiService
-    BrightcoveVideoService service;
+    BrightcoveVideoService brightcoveVideoService;
 
     @SlingObject
     SlingHttpServletRequest request;
@@ -70,13 +70,13 @@ public class BladeImpl implements Blade {
 
     @Getter
     @ValueMapValue
-    private String brightcoveId;
+    private String brightcoveVideoId;
 
     @Getter
-    private String accountId;
+    private String brightcoveAccountId;
 
     @Getter
-    private String playerId;
+    private String brightcovePlayerId;
 
     private Boolean hasContentValue;
 
@@ -102,11 +102,11 @@ public class BladeImpl implements Blade {
 
     @PostConstruct
     private void initModel() {
-        playerId = service.getPlayerId();
-        accountId = service.getAccountId();
+        brightcovePlayerId = brightcoveVideoService.getPlayerId();
+        brightcoveAccountId = brightcoveVideoService.getAccountId();
         modalID = String.valueOf(Math.abs(request.getResource().getPath().hashCode()));
         hasContentValue = !StringUtils.isEmpty(imageReference);
-        showVideoValue = !StringUtils.isEmpty(url) || !StringUtils.isEmpty(brightcoveId);
+        showVideoValue = !StringUtils.isEmpty(url) || !StringUtils.isEmpty(brightcoveVideoId);
         if (hasContentValue && StringUtils.isEmpty(altText)) {
             altText = ImageUtil.getAltTextFromDAM(request.getResourceResolver(), imageReference);
         }
@@ -115,6 +115,6 @@ public class BladeImpl implements Blade {
 
     @Override
     public Boolean isBrightcovePresent(){
-        return !StringUtils.isEmpty(brightcoveId);
+        return !StringUtils.isEmpty(brightcoveVideoId);
     }
 }

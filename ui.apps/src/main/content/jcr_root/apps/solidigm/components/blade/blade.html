@@ -47,13 +47,13 @@
          data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}"></div>
     <div class="cmp-modal__iframe-container" data-sly-test="${blade.isBrightcovePresent}">
         <div class="video-js-container">
-            <video-js data-account="${blade.accountId}"
-                      data-player="${blade.playerId}"
+            <video-js data-account="${blade.brightcoveAccountId}"
+                      data-player="${blade.brightcovePlayerId}"
                       data-embed="default"
                       controls=""
                       class="vjs-fluid"
-                      data-video-id="${blade.brightcoveId}"></video-js>
+                      data-video-id="${blade.brightcoveVideoId}"></video-js>
         </div>
-        <script src="//players.brightcove.net/${blade.accountId}/${blade.playerId}_default/index.min.js"></script>
+        <script src="//players.brightcove.net/${blade.brightcoveAccountId}/${blade.brightcovePlayerId}_default/index.min.js"></script>
     </div>
 </dialog>
