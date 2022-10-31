@@ -85,14 +85,14 @@
                                             <video
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                    fieldDescription="The URL of the youtube video to embed"
-                                                    fieldLabel="Youtube URL"
-                                                    emptyText="URL to youtube video"
+                                                    fieldDescription="The URL of the YouTube video to embed"
+                                                    fieldLabel="YouTube URL"
+                                                    emptyText="URL to YouTube video"
                                                     name="./url" />
                                             <brightcoveId
                                                 jcr:primaryType="nt:unstructured"
                                                 sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                                                fieldDescription="The ID of the Brightcove video to embed. If both Youtube and Brightcove are entered, the Brightcove video will display."
+                                                fieldDescription="The ID of the Brightcove video to embed. If both YouTube and Brightcove are entered, the Brightcove video will display."
                                                 fieldLabel="Brightcove video ID"
                                                 emptyText="Brightcove video ID"
                                                 name="./brightcoveVideoId" />
