@@ -1,6 +1,7 @@
 package com.solidigm.core.services;
 
 import org.osgi.service.metatype.annotations.AttributeDefinition;
+import org.osgi.service.metatype.annotations.AttributeType;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 @ObjectClassDefinition(
@@ -10,13 +11,15 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 public @interface BrightcoveVideoServiceConfig {
     @AttributeDefinition(
       name = "Account ID",
-      description = "Brightcove publisher ID")
-    String getAccountId();
+      description = "Brightcove publisher ID",
+      type = AttributeType.STRING)
+    String getAccountId() default "6272332767001";
 
     @AttributeDefinition(
       name = "Player ID",
-      description = "ID for video player")
-    String getPlayerId();
+      description = "ID for video player",
+      type = AttributeType.STRING)
+    String getPlayerId() default "5ukNGR047";
 
 
 
