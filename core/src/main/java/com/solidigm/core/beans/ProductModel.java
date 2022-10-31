@@ -79,7 +79,6 @@ public class ProductModel {
                     //Add variation to product model map of variations
                     unsortedVariations.put(variation.getVariationID(),
                                            new VariationSortable(variation, variation.getCapacityRaw()));
-                    //variations.put(variation.getVariationID(), variation);
                 }
             }
         }
@@ -91,13 +90,14 @@ public class ProductModel {
             capacities.add(capacity.getCapacity());
         }
 
-
-        // Sort variation into order
+        // Sort variation hashmap into order
+        // Use LinkedHashMap to maintain order
+        LinkedHashMap<String, ProductVariation> linkedVariations = new LinkedHashMap<>();
         List<VariationSortable> variationsSortable = new ArrayList<>(unsortedVariations.values());
         variationsSortable.sort(new VariationSortable.SortVariations());
         for (VariationSortable variation : variationsSortable) {
-            variations.put(variation.getVariation().getVariationID(), variation.getVariation());
+            linkedVariations.put(variation.getVariation().getVariationID(), variation.getVariation());
         }
-        int i = 0;
+        variations = linkedVariations;
     }
 }
