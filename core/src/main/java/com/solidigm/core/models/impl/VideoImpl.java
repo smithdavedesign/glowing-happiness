@@ -36,7 +36,7 @@ public class VideoImpl implements Video {
     ResourceResolver resourceResolver;
 
     @OSGiService
-    BrightcoveVideoService service;
+    BrightcoveVideoService brightcoveVideoService;
 
     @ValueMapValue
     @Getter
@@ -47,21 +47,21 @@ public class VideoImpl implements Video {
     private String thumbnailAltText;
 
     @Getter
-    private String accountId;
+    private String brightcoveAccountId;
 
     @Getter
-    private String playerId;
+    private String brightcovePlayerId;
 
     @ValueMapValue
     private String url;
 
     @Getter
     @ValueMapValue
-    private String brightcoveId;
+    private String brightcoveVideoId;
 
     @Override
     public Boolean hasContent() {
-        return  StringUtils.isNotEmpty(url) || StringUtils.isNotEmpty(brightcoveId);
+        return  StringUtils.isNotEmpty(url) || StringUtils.isNotEmpty(brightcoveVideoId);
     }
 
     @Override
@@ -71,8 +71,8 @@ public class VideoImpl implements Video {
 
     @PostConstruct
     private void initModel() {
-        playerId = service.getPlayerId();
-        accountId = service.getAccountId();
+        brightcovePlayerId = brightcoveVideoService.getPlayerId();
+        brightcoveAccountId = brightcoveVideoService.getAccountId();
         if(StringUtils.isEmpty(thumbnailAltText) && StringUtils.isNotEmpty(thumbnailImageReference)) {
             thumbnailAltText = ImageUtil.getAltTextFromDAM(resourceResolver, thumbnailImageReference);
         }
@@ -80,6 +80,6 @@ public class VideoImpl implements Video {
 
     @Override
     public Boolean isBrightcovePresent(){
-        return !StringUtils.isEmpty(brightcoveId);
+        return !StringUtils.isEmpty(brightcoveVideoId);
     }
 }

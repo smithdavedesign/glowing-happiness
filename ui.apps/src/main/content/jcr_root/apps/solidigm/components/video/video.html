@@ -14,14 +14,14 @@
         <div class="cmp-video__video">
             <!-- Brightcove Video -->
             <div data-sly-test="${video.isBrightcovePresent}" class="video-js-container">
-                <video-js data-account="${video.accountId}"
-                          data-player="${video.playerId}"
+                <video-js data-account="${video.brightcoveAccountId}"
+                          data-player="${video.brightcovePlayerId}"
                           data-embed="default"
                           controls=""
                           class="vjs-fluid"
-                          data-video-id="${video.brightcoveId}"></video-js>
+                          data-video-id="${video.brightcoveVideoId}"></video-js>
             </div>
-            <script src="//players.brightcove.net/${video.accountId}/${video.playerId}_default/index.min.js"></script>
+            <script src="//players.brightcove.net/${video.brightcoveAccountId}/${video.brightcovePlayerId}_default/index.min.js"></script>
             <!-- Youtube Video -->
             <sly
                 data-sly-test="${!video.isBrightcovePresent}"

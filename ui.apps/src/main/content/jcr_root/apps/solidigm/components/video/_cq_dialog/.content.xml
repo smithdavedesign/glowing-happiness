@@ -42,7 +42,7 @@
                                                     fieldDescription="The ID of the Brightcove video to embed. If both Youtube and Brightcove are entered, the Brightcove video will display."
                                                     fieldLabel="Brightcove video ID"
                                                     emptyText="Brightcove video ID"
-                                                    name="./brightcoveId" />
+                                                    name="./brightcoveVideoId" />
                                                 <thumbnailImage
                                                     jcr:primaryType="nt:unstructured"
                                                     fieldLabel="Thumbnail Image"
