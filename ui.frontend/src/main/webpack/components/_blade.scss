@@ -238,7 +238,8 @@
             height: 0;
             position: relative;
 
-            iframe {
+            iframe,
+            .video-js-container {
                 position: absolute;
                 height: 100%;
                 width: 100%;
@@ -290,7 +291,8 @@ body.overlay {
     }
 }
 
-iframe {
+iframe,
+.video-js-container {
     height: 100%;
     width: 100%;
 }
