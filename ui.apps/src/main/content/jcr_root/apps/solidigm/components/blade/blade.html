@@ -5,27 +5,22 @@
 
 
     <!--Video-->
-    <div class="cmp-blade__media cmp-blade__media--video media-with-corner"
-         data-sly-test.showVideo="${blade.showVideo}">
-        <img src="${blade.imageReference}" alt="${blade.altText}" />
+    <div class="cmp-blade__media cmp-blade__media--video media-with-corner" data-sly-test.showVideo="${blade.showVideo}">
+        <img src="${blade.imageReference}" alt="${blade.altText}"/>
         <button data-modal-target="blade-modal-${blade.modalID}" aria-label="Play video"></button>
     </div>
 
     <!-- Image -->
-    <div class="cmp-blade__media media-with-corner"
-         data-sly-test="${!showVideo}">
-        <img src="${blade.imageReference}" alt="${blade.altText}" />
+    <div class="cmp-blade__media media-with-corner" data-sly-test="${!showVideo}">
+        <img src="${blade.imageReference}" alt="${blade.altText}"/>
     </div>
 
-    
 
     <div class="cmp-blade__content">
         <h2 class="cmp-blade__title">${blade.title}</h2>
-        <p ata-sly-test.description="${blade.description}" class="cmp-blade__description" style="white-space: pre-line;">
-            ${blade.description}
-        </p>
-        <ul class="cmp-blade__list"
-            data-sly-list.bullet="${blade.bullets}">
+        <p data-sly-test.description="${blade.description}" class="cmp-blade__description" style="white-space: pre-line;">
+            ${blade.description} </p>
+        <ul class="cmp-blade__list" data-sly-list.bullet="${blade.bullets}">
             <li>
                 <a data-sly-test.link="${bullet.link}" href="${bullet.link}" target="${bullet.target}">
                     ${bullet.label}
@@ -33,9 +28,10 @@
                 <span data-sly-test.link="${!bullet.link}">${bullet.label}</span>
             </li>
         </ul>
-        <div class="cmp-blade__cta-container"
-             data-sly-list.callToAction="${blade.callToActions}">
-            <a href="${callToAction.link}" target="${callToAction.target}" class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline solidigm-btn--outline-dark'}">
+        <div class="cmp-blade__cta-container" data-sly-list.callToAction="${blade.callToActions}">
+            <a href="${callToAction.link}"
+               target="${callToAction.target}"
+               class="solidigm-btn ${callToAction.buttonStyle == 'opaque' ? '' : 'solidigm-btn--outline solidigm-btn--outline-dark'}">
                 ${callToAction.label}
             </a>
         </div>
@@ -45,13 +41,19 @@
 
 
 <dialog id="blade-modal-${blade.modalID}" class="cmp-modal cmp-modal__video">
-    <button
-        class="cmp-modal__close-btn"
-        aria-label="Close video modal"
-        onclick="this.closest('dialog').close('close')"
-    ></button>
+    <button class="cmp-modal__close-btn" aria-label="Close video modal" onclick="this.closest('dialog').close('close')"></button>
     <div class="cmp-modal__iframe-container"
-    data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}">
-        
+         data-sly-test="${!blade.isBrightcovePresent}"
+         data-sly-resource="${ '.' @ resourceType='solidigm/components/embed', wcmmode='disabled'}"></div>
+    <div class="cmp-modal__iframe-container" data-sly-test="${blade.isBrightcovePresent}">
+        <div class="video-js-container">
+            <video-js data-account="${blade.brightcoveAccountId}"
+                      data-player="${blade.brightcovePlayerId}"
+                      data-embed="default"
+                      controls=""
+                      class="vjs-fluid"
+                      data-video-id="${blade.brightcoveVideoId}"></video-js>
+        </div>
+        <script src="//players.brightcove.net/${blade.brightcoveAccountId}/${blade.brightcovePlayerId}_default/index.min.js"></script>
     </div>
 </dialog>
