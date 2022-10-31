@@ -1,6 +1,8 @@
 <div
     class="cmp-similar-products"
     data-sly-use.similarProducts="com.solidigm.core.models.SimilarProducts"
+    data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+    data-sly-test.hasContent="${similarProducts.similarProducts}"
 >
     <h2 class="cmp-similar-products__title">${'Compare Similar Products' @ i18n}</h2>
     <div
@@ -40,3 +42,5 @@
         </div>
     </div>
 </div>
+<sly data-sly-call="${template.placeholder @ isEmpty=!hasContent, classAppend='cmp-title'}"></sly>
+

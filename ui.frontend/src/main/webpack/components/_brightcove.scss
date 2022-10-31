@@ -1,0 +1,39 @@
+// Overrides styles for the Brightcove Video-js player
+
+.vjs-dock-text {
+    display: none !important;
+}
+
+.vjs-big-play-button {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.vjs-big-play-button {
+    position: absolute;
+    top: 50% !important;
+    left: 50% !important;
+    height: vwMobile(50) !important;
+    width: vwMobile(70) !important;
+    transform: translate(-50%, -50%) !important;
+    background: url('../resources/images/video-icon.svg') !important;
+    background-size: 100% 100% !important;
+    margin: 0 !important;
+
+    .vjs-icon-placeholder {
+        display: none;
+    }
+
+    @media (min-width: $desktop) {
+        height: vwDesktop(50) !important;
+        width: vwDesktop(70) !important;
+    }
+}
+
+.video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $solidigm-purple;
+}
