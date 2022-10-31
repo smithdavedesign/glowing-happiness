@@ -22,7 +22,7 @@ public class CapacitySortable {
     public static class SortCapacities implements Comparator<CapacitySortable> {
         public int compare(CapacitySortable a, CapacitySortable b)
         {
-            return a.getRawCapacity() - b.getRawCapacity();
+            return b.getRawCapacity() - a.getRawCapacity();
         }
     }
 }
