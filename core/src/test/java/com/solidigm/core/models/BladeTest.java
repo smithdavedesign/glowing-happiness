@@ -2,12 +2,17 @@ package com.solidigm.core.models;
 
 import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.beans.Link;
+import com.solidigm.core.services.BrightcoveVideoService;
+
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -16,13 +21,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(AemContextExtension.class)
 public class BladeTest {
+
     private final AemContext ctx = new AemContext();
+
+    @Mock
+    BrightcoveVideoService brightcoveVideoService;
 
     @BeforeEach
     public void setUp() throws FileNotFoundException {
         //Load ctx for bladeModel
+        MockitoAnnotations.initMocks(this);
         ctx.addModelsForClasses(Blade.class);
         ctx.load().json("/com/solidigm/core/models/BladeTest.json", "/content");
+        ctx.registerService(
+          BrightcoveVideoService.class, brightcoveVideoService, org.osgi.framework.Constants.SERVICE_RANKING,
+          Integer.MAX_VALUE);
     }
 
     @Test
@@ -178,5 +191,21 @@ public class BladeTest {
         ctx.currentResource("/content/bladeAltTextFromDAM");
         Blade blade = ctx.request().adaptTo(Blade.class);
         assertFalse(blade.showVideo());
+    }
+
+    @Test
+    void testIsBrightcovePresentTrue(){
+        //Brightcove ID and youtube URL present, return true
+        ctx.currentResource("/content/bladeAuthored");
+        Blade blade = ctx.request().adaptTo(Blade.class);
+        assertTrue(blade.isBrightcovePresent());
+    }
+
+    @Test
+    void testIsBrightcovePresentFalse(){
+        //Only youtube URL present, return false
+        ctx.currentResource("/content/bladeAuthoredYoutubeOnly");
+        Blade blade = ctx.request().adaptTo(Blade.class);
+        assertFalse(blade.isBrightcovePresent());
     }
 }

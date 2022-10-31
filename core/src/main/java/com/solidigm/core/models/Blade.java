@@ -92,4 +92,11 @@ public interface Blade extends ComponentExporter {
     default Boolean hasContent() {
         throw new UnsupportedOperationException();
     }
+
+    /**
+     * Returns Boolean whether a Brightcove video ID is present
+     *
+     * @return Boolean
+     */
+    default Boolean isBrightcovePresent(){throw new UnsupportedOperationException();}
 }

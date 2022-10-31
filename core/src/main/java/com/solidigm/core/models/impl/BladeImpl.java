@@ -5,6 +5,7 @@ import com.adobe.cq.export.json.ExporterConstants;
 import com.solidigm.core.beans.CallToActionButton;
 import com.solidigm.core.beans.Link;
 import com.solidigm.core.models.Blade;
+import com.solidigm.core.services.BrightcoveVideoService;
 import com.solidigm.core.utils.ImageUtil;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
@@ -14,6 +15,7 @@ import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -32,6 +34,9 @@ import java.util.List;
 )
 public class BladeImpl implements Blade {
     static final String RESOURCE_TYPE = "solidigm/components/blade";
+
+    @OSGiService
+    BrightcoveVideoService brightcoveVideoService;
 
     @SlingObject
     SlingHttpServletRequest request;
@@ -63,12 +68,22 @@ public class BladeImpl implements Blade {
     @ChildResource(name = "callToActions")
     private List<CallToActionButton> callToActions;
 
+    @Getter
     @ValueMapValue
-    private String url;
+    private String brightcoveVideoId;
+
+    @Getter
+    private String brightcoveAccountId;
+
+    @Getter
+    private String brightcovePlayerId;
 
     private Boolean hasContentValue;
 
     private Boolean showVideoValue;
+
+    @ValueMapValue
+    private String url;
 
     @Override
     public String getExportedType() {
@@ -87,11 +102,19 @@ public class BladeImpl implements Blade {
 
     @PostConstruct
     private void initModel() {
+        brightcovePlayerId = brightcoveVideoService.getPlayerId();
+        brightcoveAccountId = brightcoveVideoService.getAccountId();
         modalID = String.valueOf(Math.abs(request.getResource().getPath().hashCode()));
         hasContentValue = !StringUtils.isEmpty(imageReference);
-        showVideoValue = !StringUtils.isEmpty(url);
+        showVideoValue = !StringUtils.isEmpty(url) || !StringUtils.isEmpty(brightcoveVideoId);
         if (hasContentValue && StringUtils.isEmpty(altText)) {
             altText = ImageUtil.getAltTextFromDAM(request.getResourceResolver(), imageReference);
         }
+
+    }
+
+    @Override
+    public Boolean isBrightcovePresent(){
+        return !StringUtils.isEmpty(brightcoveVideoId);
     }
 }
