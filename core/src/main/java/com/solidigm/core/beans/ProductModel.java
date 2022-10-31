@@ -8,10 +8,7 @@ import org.apache.sling.models.annotations.Model;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class ProductModel {
@@ -50,6 +47,7 @@ public class ProductModel {
         interfaces = new ArrayList<>();
         variations = new HashMap<>();
         Map<String, CapacitySortable> unsortedCapacities = new HashMap<>();
+        Map<String, VariationSortable> unsortedVariations = new HashMap<>();
 
         if (resource != null) {
             for (Resource variationResource : resource.getChildren()) {
@@ -79,7 +77,9 @@ public class ProductModel {
                                            new CapacitySortable(variation.getCapacityRaw(), variation.getCapacity()));
 
                     //Add variation to product model map of variations
-                    variations.put(variation.getVariationID(), variation);
+                    unsortedVariations.put(variation.getVariationID(),
+                                           new VariationSortable(variation, variation.getCapacityRaw()));
+                    //variations.put(variation.getVariationID(), variation);
                 }
             }
         }
@@ -90,5 +90,14 @@ public class ProductModel {
         for (CapacitySortable capacity : capacitiesSortable) {
             capacities.add(capacity.getCapacity());
         }
+
+
+        // Sort variation into order
+        List<VariationSortable> variationsSortable = new ArrayList<>(unsortedVariations.values());
+        variationsSortable.sort(new VariationSortable.SortVariations());
+        for (VariationSortable variation : variationsSortable) {
+            variations.put(variation.getVariation().getVariationID(), variation.getVariation());
+        }
+        int i = 0;
     }
 }
