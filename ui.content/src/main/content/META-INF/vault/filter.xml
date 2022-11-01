@@ -5,5 +5,5 @@
     <filter root="/content/solidigm" mode="merge"/>
     <filter root="/content/dam/solidigm/asset.jpg" mode="merge"/>
     <filter root="/content/experience-fragments/solidigm" mode="merge"/>
-    <filter root="/etc/map" mode="update"/>
+    <filter root="/etc/map" mode="replace"/>
 </workspaceFilter>
