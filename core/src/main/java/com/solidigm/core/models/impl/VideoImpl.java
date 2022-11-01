@@ -3,6 +3,7 @@ package com.solidigm.core.models.impl;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.solidigm.core.models.Video;
+import com.solidigm.core.services.BrightcoveVideoService;
 import com.solidigm.core.utils.ImageUtil;
 import lombok.Getter;
 import org.apache.commons.lang.StringUtils;
@@ -12,6 +13,7 @@ import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
@@ -33,6 +35,9 @@ public class VideoImpl implements Video {
     @SlingObject
     ResourceResolver resourceResolver;
 
+    @OSGiService
+    BrightcoveVideoService brightcoveVideoService;
+
     @ValueMapValue
     @Getter
     private String thumbnailImageReference;
@@ -41,9 +46,22 @@ public class VideoImpl implements Video {
     @Getter
     private String thumbnailAltText;
 
+    @Getter
+    private String brightcoveAccountId;
+
+    @Getter
+    private String brightcovePlayerId;
+
+    @ValueMapValue
+    private String url;
+
+    @Getter
+    @ValueMapValue
+    private String brightcoveVideoId;
+
     @Override
     public Boolean hasContent() {
-        return StringUtils.isNotEmpty(thumbnailImageReference);
+        return  StringUtils.isNotEmpty(url) || StringUtils.isNotEmpty(brightcoveVideoId);
     }
 
     @Override
@@ -53,8 +71,15 @@ public class VideoImpl implements Video {
 
     @PostConstruct
     private void initModel() {
+        brightcovePlayerId = brightcoveVideoService.getPlayerId();
+        brightcoveAccountId = brightcoveVideoService.getAccountId();
         if(StringUtils.isEmpty(thumbnailAltText) && StringUtils.isNotEmpty(thumbnailImageReference)) {
             thumbnailAltText = ImageUtil.getAltTextFromDAM(resourceResolver, thumbnailImageReference);
         }
+    }
+
+    @Override
+    public Boolean isBrightcovePresent(){
+        return !StringUtils.isEmpty(brightcoveVideoId);
     }
 }

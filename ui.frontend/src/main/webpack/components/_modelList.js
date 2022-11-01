@@ -28,6 +28,7 @@
             element: interfaceSelect,
             optionsContainer: interfaceOptionsContainer,
             anyLabel: modelList.getAttribute('data-interface-any-label'),
+            anyLabelKey: "Any Interface",
         };
 
         const formFactorSelect = modelList.querySelector('#form-factor');
@@ -38,6 +39,7 @@
             element: formFactorSelect,
             optionsContainer: formFactorOptionsContainer,
             anyLabel: modelList.getAttribute('data-form-factor-any-label'),
+            anyLabelKey: "Any Form Factor",
         };
 
         const capacitySelect = modelList.querySelector('#capacity');
@@ -47,6 +49,7 @@
             element: capacitySelect,
             optionsContainer: capacityOptionsContainer,
             anyLabel: modelList.getAttribute('data-capacity-any-label'),
+            anyLabelKey: "Any Capacity",
         };
 
         const data = await getData();
@@ -157,7 +160,7 @@
                     return otherSelects.reduce((acc, curr) => {
                         if (!acc) return false;
 
-                        return combination[curr.key] === (curr.element.value || curr.anyLabel);
+                        return combination[curr.key] === (curr.element.value || curr.anyLabelKey);
                     }, true);
                 })
                 .map((combination) => combination[target.key]);
