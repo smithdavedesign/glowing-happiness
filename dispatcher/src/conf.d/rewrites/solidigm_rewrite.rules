@@ -83,30 +83,31 @@ RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 
 # AEM Core Component XML sitemap
+# Static XML sitemap rules are commented out.  Uncomment if needed.
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-# RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/us/en/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/us/en/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
-# RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/kr/ko/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/kr/ko/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.cn$
-# RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/cn/zh/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/cn/zh/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
-# RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/jp/ja/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/jp/ja/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
-# RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/de/de/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/de/de/sitemap.xml [PT,L]
 
 # Synergy Page Rules /Synergy.html
 RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
