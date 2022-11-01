@@ -22,23 +22,23 @@ RewriteRule ^.*$ /de/de/homepage.html [R=301,L]
 # root redirects
 RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /content/solidigm/us/en/homepage.html [PT,L]
+RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.kr$
-RewriteRule ^.*$ /content/solidigm/kr/ko/homepage.html [PT,L]
+RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.cn$
-RewriteRule ^.*$ /content/solidigm/cn/zh/homepage.html [PT,L]
+RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.jp$
-RewriteRule ^.*$ /content/solidigm/jp/ja/homepage.html [PT,L]
+RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/$
 RewriteCond %{SERVER_NAME} ^.*\.de$
-RewriteRule ^.*$ /content/solidigm/de/de/homepage.html [PT,L]
+RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
 
 # my-solidigm redirects after Okta login
 RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$ [NC]
@@ -83,30 +83,33 @@ RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 
 # AEM Core Component XML sitemap
-# Static XML sitemap rules are commented out.  Uncomment if needed.
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
-RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
+# Use (forward) sling mapping rules instead that match sitemap.xml and map to /content/solidigm/<country>/<language>.sitemap.xml.
+# The sling mapping rule for regular content pages doesn't work when using the rewrite rules here that contain /<country>/<language>.
+# Static XML sitemap rules (ending in "sitemap.xml") are commented out.  Uncomment if needed.
+
+# RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
+# RewriteCond %{SERVER_NAME} ^.*\.com$
+# RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
 # RewriteRule ^.*$ /content/solidigm/us/en/sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
-RewriteCond %{SERVER_NAME} ^.*\.kr$
-RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
+# RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
+# RewriteCond %{SERVER_NAME} ^.*\.kr$
+# RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
 # RewriteRule ^.*$ /content/solidigm/kr/ko/sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
-RewriteCond %{SERVER_NAME} ^.*\.cn$
-RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
+# RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
+# RewriteCond %{SERVER_NAME} ^.*\.cn$
+# RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
 # RewriteRule ^.*$ /content/solidigm/cn/zh/sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
-RewriteCond %{SERVER_NAME} ^.*\.jp$
-RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
+# RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
+# RewriteCond %{SERVER_NAME} ^.*\.jp$
+# RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
 # RewriteRule ^.*$ /content/solidigm/jp/ja/sitemap.xml [PT,L]
 
-RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
-RewriteCond %{SERVER_NAME} ^.*\.de$
-RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
+# RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
+# RewriteCond %{SERVER_NAME} ^.*\.de$
+# RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
 # RewriteRule ^.*$ /content/solidigm/de/de/sitemap.xml [PT,L]
 
 # Synergy Page Rules /Synergy.html
