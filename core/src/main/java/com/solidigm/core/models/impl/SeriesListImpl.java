@@ -60,7 +60,6 @@ public class SeriesListImpl implements SeriesList {
             while(children.hasNext()){
                 Page child = children.next();
                 seriesPages.add(new ProductSeriesPage(request.getResourceResolver(), child.getPath()));
-
             }
         }
     }
