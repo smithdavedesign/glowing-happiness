@@ -25,6 +25,7 @@ public class ConvertPDPServlet extends SlingSafeMethodsServlet {
     protected void doGet(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws IOException {
         pdpConversion.convertPDP();
-        resp.getWriter().println("Hello world");
+        String responseCheck = pdpConversion.checkPages();
+        resp.getWriter().println(responseCheck);
     }
 }

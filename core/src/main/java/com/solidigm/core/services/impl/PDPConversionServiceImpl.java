@@ -29,19 +29,14 @@ public class PDPConversionServiceImpl implements PDPConversionService {
 
     private static String TOP_CONTAINER = "container_2089249899";
 
-    /**
-     * Paths I have in my content hierarchy but don't appear to be live in other languages
-     *  "/products/data-center/ssd-d7-series", "/products/data-center/ssd-d5-series",
-     *             "/products/data-center/ssd-3-series", "/products/client-product-category/d6/p44",
-     *             "/products/client-product-category/d6/p31", "/products/client-product-category/d6/p41",
-     *             "/products/client-product-category/d6/p670", "/products/client-product-category/d6/p660",
-     */
-
     private static ArrayList<String> PRODUCT_PATHS = new ArrayList<>(Arrays.asList(
             "/products/data-center/d7", "/products/data-center/d5", "/products/data-center/d3",
             "/products/client/d6/p44", "/products/client/d6/p31",
             "/products/client/d6/p41", "/products/client/d6/670p",
-            "/products/client/d6/660p"
+            "/products/client/d6/660p", "/products/data-center/ssd-d7-series", "/products/data-center/ssd-d5-series",
+            "/products/data-center/ssd-3-series", "/products/client-product-category/d6/p44",
+            "/products/client-product-category/d6/p31", "/products/client-product-category/d6/p41",
+            "/products/client-product-category/d6/p670", "/products/client-product-category/d6/p660"
     ));
 
     @Reference
@@ -49,9 +44,17 @@ public class PDPConversionServiceImpl implements PDPConversionService {
 
     private static final Logger logger = LoggerFactory.getLogger(PDPConversionServiceImpl.class);
 
-    @Override
-    public void convertPDP() {
+    private void moveContent(Session session, String srcPath, String destPath){
+        // Move Node
+        try {
+            session.removeItem(destPath);
+            session.move(srcPath, destPath);
+        } catch (RepositoryException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    private ResourceResolver getResolver(){
         // Get resource resolver
         Map<String, Object> param = new HashMap<>();
         param.put(ResourceResolverFactory.SUBSERVICE, "knowledgeArticlesServiceUser");
@@ -60,6 +63,17 @@ public class PDPConversionServiceImpl implements PDPConversionService {
             resolver = resolverFactory.getServiceResourceResolver(param);
         } catch (LoginException e) {
             logger.error("Unable to sign in Knowledge Articles Service User");
+            return null;
+        }
+        return resolver;
+    }
+
+    @Override
+    public void convertPDP() {
+
+        // Get resource resolver
+        ResourceResolver resolver = getResolver();
+        if (resolver == null){
             return;
         }
 
@@ -67,11 +81,7 @@ public class PDPConversionServiceImpl implements PDPConversionService {
         PageManager page = resolver.adaptTo(PageManager.class);
         Session session = resolver.adaptTo(Session.class);
 
-        int iter = 0;
         for (String root : LANGUAGE_PATHS){
-            if (iter > 0){
-                break;
-            }
 
             for (String path : PRODUCT_PATHS){
 
@@ -144,20 +154,47 @@ public class PDPConversionServiceImpl implements PDPConversionService {
                     }
                 }
             }
-            iter += 1;
         }
     }
 
-    private void moveContent(Session session, String srcPath, String destPath){
-        // Move Node
-        try {
-            session.removeItem(destPath);
-            session.move(srcPath, destPath);
-        } catch (RepositoryException e) {
-            throw new RuntimeException(e);
+    @Override
+    public String checkPages(){
+
+        // Get resource resolver
+        ResourceResolver resolver = getResolver();
+        if (resolver == null){
+            return null;
         }
+
+        String sanityCheck = "***********Converted pages:**********\n\n";
+
+        for (String root : LANGUAGE_PATHS){
+            for (String path : PRODUCT_PATHS) {
+                // Get page resource
+                Resource resource = resolver.getResource(root + path);
+                if (resource == null){
+                    continue;
+                }
+
+                // Iterate through children pages
+                for (Resource child : resource.getChildren()){
+                    // Skip parent's jcr:content
+                    if (!child.getResourceType().equals("cq:Page")){
+                        continue;
+                    }
+                    boolean correctTemplate = child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(TEMPLATE_PATH);
+                    boolean linkInPath = (child.getChild("jcr:content/root/container/quicklinks/links/item0") != null);
+                    boolean productImageInPath = (child.getChild("jcr:content/root/container_2089249899/productphotogallery") != null);
+                    if (correctTemplate && linkInPath && productImageInPath){
+                        sanityCheck += ("Successful: " + child.getPath() + "\n");
+                    }
+                    else {
+                        sanityCheck += "*****UNSUCCESSFUL: " + child.getPath() + "\n";
+                    }
+                }
+            }
+        }
+        sanityCheck += "Check complete.";
+        return sanityCheck;
     }
-
-
-
 }
