@@ -6,50 +6,18 @@
     <form id="search-form" data-results-per-page="10">
         <label class="sr-only" for="search-bar">${'Search' @ i18n}</label>
         <input class="solidigm-input solidigm-input--underline" name="query" id="search-bar" />
-        <span class="cmp-search-results__filter-label hidden">${'Filter by Type' @ i18n}</span>
-        <div class="cmp-search-results__filters hidden">
+        <span class="cmp-search-results__filter-label">${'Filter by Type' @ i18n}</span>
+        <div class="cmp-search-results__filters"
+             data-sly-list.filter="${searchResults.filters}">
             <input
                 class="cmp-search-results__filter cmp-search-results__filter--selected"
-                value="all"
+                value="${filter.id}"
                 name="filter"
                 type="checkbox"
-                id="search-all"
+                id="search-${filter.id}"
             />
-            <label for="search-all">
-                <span>${'All ({0})' @ i18n}</span>
-            </label>
-
-            <input
-                class="cmp-search-results__filter"
-                value="products"
-                name="filter"
-                type="checkbox"
-                id="search-products"
-            />
-            <label for="search-products">
-                <span>Products (27)</span>
-            </label>
-
-            <input
-                class="cmp-search-results__filter"
-                value="support"
-                name="filter"
-                type="checkbox"
-                id="search-support"
-            />
-            <label for="search-support">
-                <span>Support (10)</span>
-            </label>
-
-            <input
-                class="cmp-search-results__filter"
-                value="posts"
-                name="filter"
-                type="checkbox"
-                id="search-posts"
-            />
-            <label for="search-posts">
-                <span>Posts (6)</span>
+            <label for="search-${filter.id}">
+                <span>${filter.label} ${'Placeholder ({0})' @ i18n}</span>
             </label>
         </div>
     </form>
