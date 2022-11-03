@@ -41,6 +41,7 @@ public class SearchResultsImpl implements SearchResults {
     @Source("script-bindings")
     Page currentPage;
 
+    @Inject
     @ChildResource
     @Getter
     private List<Filter> filters;
