@@ -31,6 +31,8 @@ public class PDPConversionServiceImpl implements PDPConversionService {
 
     private static String TOP_CONTAINER = "container_2089249899";
 
+    private static String TEMP_PAGE_NAME = "tempPage";
+
     private static ArrayList<String> PRODUCT_PATHS = new ArrayList<>(Arrays.asList(
             "/products/data-center/d7", "/products/data-center/d5", "/products/data-center/d3",
             "/products/client/d6/p44", "/products/client/d6/p31",
@@ -81,7 +83,7 @@ public class PDPConversionServiceImpl implements PDPConversionService {
         }
 
         // Get variables that stay the same across the for loops
-        PageManager page = resolver.adaptTo(PageManager.class);
+        PageManager pageManager = resolver.adaptTo(PageManager.class);
         Session session = resolver.adaptTo(Session.class);
 
         for (String root : LANGUAGE_PATHS){
@@ -103,11 +105,10 @@ public class PDPConversionServiceImpl implements PDPConversionService {
                     }
 
                     // Create temporary new page to copy content onto
-                    String pageName = "tempPage";
-                    String newPagePath = root + path + "/" + pageName;
+                    String newPagePath = root + path + "/" + TEMP_PAGE_NAME;
                     try {
-                        page.create(root + path, pageName,
-                                TEMPLATE_PATH, pageName);
+                        pageManager.create(root + path, TEMP_PAGE_NAME,
+                                TEMPLATE_PATH, TEMP_PAGE_NAME);
                     } catch (WCMException e) {
                         throw new RuntimeException(e);
                     }
