@@ -20,26 +20,25 @@ RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /de/de/homepage.html [R=301,L]
 
 # root redirects
-# Use root Sling mapping rules instead (or if using these, add the country/language in each redirect)
-# RewriteCond %{REQUEST_URI} ^/$
-# RewriteCond %{SERVER_NAME} ^.*\.com$
-# RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /content/solidigm/us/en/homepage.html [PT,L]
 
-# RewriteCond %{REQUEST_URI} ^/$
-# RewriteCond %{SERVER_NAME} ^.*\.kr$
-# RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.kr$
+RewriteRule ^.*$ /content/solidigm/kr/ko/homepage.html [PT,L]
 
-# RewriteCond %{REQUEST_URI} ^/$
-# RewriteCond %{SERVER_NAME} ^.*\.cn$
-# RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.cn$
+RewriteRule ^.*$ /content/solidigm/cn/zh/homepage.html [PT,L]
 
-# RewriteCond %{REQUEST_URI} ^/$
-# RewriteCond %{SERVER_NAME} ^.*\.jp$
-# RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^.*$ /content/solidigm/jp/ja/homepage.html [PT,L]
 
-# RewriteCond %{REQUEST_URI} ^/$
-# RewriteCond %{SERVER_NAME} ^.*\.de$
-# RewriteRule ^.*$ /content/solidigm/homepage.html [PT,L]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{SERVER_NAME} ^.*\.de$
+RewriteRule ^.*$ /content/solidigm/de/de/homepage.html [PT,L]
 
 # my-solidigm redirects after Okta login
 RewriteCond %{REQUEST_URI} ^/my-solidigm(\.html)?$ [NC]
