@@ -27,6 +27,8 @@ public class PDPConversionServiceImpl implements PDPConversionService {
 
     private static String TEMPLATE_PATH = "/conf/solidigm/settings/wcm/templates/product-detail-page--pdp-1";
 
+    private static String OLD_TEMPLATE = "/conf/solidigm/settings/wcm/templates/product-detail-page--pdp-";
+
     private static String TOP_CONTAINER = "container_2089249899";
 
     private static ArrayList<String> PRODUCT_PATHS = new ArrayList<>(Arrays.asList(
@@ -36,7 +38,8 @@ public class PDPConversionServiceImpl implements PDPConversionService {
             "/products/client/d6/660p", "/products/data-center/ssd-d7-series", "/products/data-center/ssd-d5-series",
             "/products/data-center/ssd-3-series", "/products/client-product-category/d6/p44",
             "/products/client-product-category/d6/p31", "/products/client-product-category/d6/p41",
-            "/products/client-product-category/d6/p670", "/products/client-product-category/d6/p660"
+            "/products/client-product-category/d6/p670", "/products/client-product-category/d6/p660",
+            "/products/client/d6"
     ));
 
     @Reference
@@ -93,12 +96,9 @@ public class PDPConversionServiceImpl implements PDPConversionService {
 
                 // Iterate through children pages
                 for (Resource child : resource.getChildren()){
-                    // Skip parent's jcr:content
-                    if (!child.getResourceType().equals("cq:Page")){
-                        continue;
-                    }
-                    // Check if already changed
-                    if (child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(TEMPLATE_PATH)){
+                    // Skip parent's jcr:content or any child page that shouldn't be changed
+                    if (!child.getResourceType().equals("cq:Page")
+                            || !child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(OLD_TEMPLATE)){
                         continue;
                     }
 
@@ -179,7 +179,8 @@ public class PDPConversionServiceImpl implements PDPConversionService {
                 // Iterate through children pages
                 for (Resource child : resource.getChildren()){
                     // Skip parent's jcr:content
-                    if (!child.getResourceType().equals("cq:Page")){
+                    if (!child.getResourceType().equals("cq:Page")
+                            || child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(OLD_TEMPLATE)){
                         continue;
                     }
                     boolean correctTemplate = child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(TEMPLATE_PATH);
