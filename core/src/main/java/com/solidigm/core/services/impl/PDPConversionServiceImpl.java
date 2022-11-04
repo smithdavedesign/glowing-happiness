@@ -179,8 +179,11 @@ public class PDPConversionServiceImpl implements PDPConversionService {
                 // Iterate through children pages
                 for (Resource child : resource.getChildren()){
                     // Skip parent's jcr:content
-                    if (!child.getResourceType().equals("cq:Page")
-                            || child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(OLD_TEMPLATE)){
+                    if (!child.getResourceType().equals("cq:Page")){
+                        continue;
+                    }
+                    if (!child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(TEMPLATE_PATH)
+                            && !child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(OLD_TEMPLATE)){
                         continue;
                     }
                     boolean correctTemplate = child.getChild("jcr:content").getValueMap().get("cq:template", String.class).equals(TEMPLATE_PATH);
