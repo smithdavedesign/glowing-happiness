@@ -83,30 +83,32 @@ RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 
 # AEM Core Component XML sitemap
+# Static XML sitemap rules (ending in "sitemap.xml") are commented out.  Uncomment if needed.
+
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-# RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/us/en/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/us/en.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/us/en/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.kr$
-# RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/kr/ko/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/kr/ko.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/kr/ko/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.cn$
-# RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/cn/zh/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/cn/zh.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/cn/zh/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
-# RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/jp/ja/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/jp/ja.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/jp/ja/sitemap.xml [PT,L]
 
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
-# RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
-RewriteRule ^.*$ /content/solidigm/de/de/sitemap.xml [PT,L]
+RewriteRule ^.*$ /content/solidigm/de/de.sitemap.xml [PT,L]
+# RewriteRule ^.*$ /content/solidigm/de/de/sitemap.xml [PT,L]
 
 # Synergy Page Rules /Synergy.html
 RewriteCond %{REQUEST_URI} ^/synergy(\.html)?$ [NC]
@@ -138,116 +140,118 @@ RewriteRule ^.*$ /content/solidigm/us/en/products/client/synergy.html [R=301,L]
 # https://www.solidigmtechnology.jp/ja.html --> redirect Japanese homepage
 RewriteCond %{REQUEST_URI} ^/ja(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
-RewriteRule ^.*$ /jp/ja/homepage.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/jp/ja/homepage.html [R=301,L]
 
-# https://www.solidigmtechnology.jp/ja/products/client-products.html --> https://www.solidigmtechnology.jp/jp/ja/products/client.html
+# https://www.solidigmtechnology.jp/ja/products/client-products.html --> https://www.solidigmtechnology.jp/content/solidigm/jp/ja/products/client.html
 RewriteCond %{REQUEST_URI} ^/ja/products/client-products(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.jp$
-RewriteRule ^.*$ /jp/ja/products/client.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/jp/ja/products/client.html [R=301,L]
 
-# https://www.solidigm.com/en/support.html -- > https://www.solidigm.com/us/en/support-page.html
+# https://www.solidigm.com/en/support.html -- > https://www.solidigm.com/content/solidigm/us/en/support-page.html
 RewriteCond %{REQUEST_URI} ^/en/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/support-page.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/support-page.html [R=301,L]
 
 # v1.5 rewrite rules 301
 RewriteCond %{REQUEST_URI} ^/en/products/client-products/ssd-p41-plus-series(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/client/d6/p41.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/client/d6/p41.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/client-products/ssd-670p-series(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/client/d6/670p.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/client/d6/670p.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/client-products/ssd-660p-series(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/client/d6/660p.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/client/d6/660p.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d7-series(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d7.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d7.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d5-series(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d5.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d5.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d3-series(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d3.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d3.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d7-series/ssd-d7-p5600-series-1-6tb-2-5in-pcie-4-0-x4-3d3-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d7/p5600.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d7/p5600.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d7-series/ssd-d7-p5510-series-7-68tb-2-5in-pcie-4-0-x4-3d4-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d7/p5510.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d7/p5510.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d7-series/ssd-d7-p5500-series-7-68tb-2-5in-pcie-4-0-x4-3d3-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d7/p5500.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d7/p5500.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d7-series/ssd-dc-p4610-series-1-6tb-2-5in-pcie-3-1-x4-3d2-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d7/p4610.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d7/p4610.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d7-series/ssd-dc-p4511-series-1-0tb-m-2-110mm-pcie-3-1-x4-3d2-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d7/p4511.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d7/p4511.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d5-series/ssd-d5-p5316-series-30-72tb-2-5in-pcie-4-0-x4-3d4-qlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d5/p5316.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d5/p5316.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d5-series/ssd-d5-p4420-series-7-68tb-2-5in-pcie-3-1-x4-3d2-qlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d5/p4420.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d5/p4420.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d5-series/ssd-d5-p4326-series-15-36tb-2-5in-pcie-3-1-x4-3d2-qlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d5/p4326.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d5/p4326.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d5-series/ssd-d5-p4320-series-7-68tb-2-5in-pcie-3-1-x4-3d2-qlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d5/p4320.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d5/p4320.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d3-series/ssd-d3-s4620-series-480gb-2-5in-sata-6gb-s-3d4-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d3/s4620.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d3/s4620.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d3-series/ssd-d3-s4610-series-240gb-2-5in-sata-6gb-s-3d2-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d3/s4610.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d3/s4610.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d3-series/ssd-d3-s4520-series-480gb-2-5in-sata-6gb-s-3d4-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d3/s4520.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d3/s4520.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products/data-center/ssd-d3-series/ssd-d3-s4510-series-960gb-2-5in-sata-6gb-s-3d2-tlc(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center/d3/s4510.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center/d3/s4510.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/products(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/products/data-center.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/products/data-center.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/about-us/careers(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/who-we-are/careers-page.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/who-we-are/careers-page.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/about-us(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/who-we-are.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/who-we-are.html [R=301,L]
 
 RewriteCond %{REQUEST_URI} ^/en/about-us/our-team(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
-RewriteRule ^.*$ /us/en/our-team.html [R=301,L]
+RewriteRule ^.*$ /content/solidigm/us/en/our-team.html [R=301,L]
 
 # reconstitute shortened URLs
+# Add the country/language back in.  They are needed to cache pages separately for each country/language because
+# the Sling (reverse) mapping (link rewriting) rules remove /content/solidigm/<country>/<language> from internal links.
 RewriteCond %{REQUEST_URI} !^/apps
 RewriteCond %{REQUEST_URI} !^/content
 RewriteCond %{REQUEST_URI} !^/etc
@@ -260,4 +264,65 @@ RewriteCond %{REQUEST_URI} !^/system
 RewriteCond %{REQUEST_URI} !^/dispatcher
 RewriteCond %{REQUEST_URI} !^/saml_login
 RewriteCond %{REQUEST_URI} !^/saml_logout
-RewriteRule ^/(.*)$ /content/solidigm/$1 [PT,L]
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^/(.*)$ /content/solidigm/us/en/$1 [PT,L]
+
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/crx
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/dispatcher
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/saml_logout
+RewriteCond %{SERVER_NAME} ^.*\.kr$
+RewriteRule ^/(.*)$ /content/solidigm/kr/ko/$1 [PT,L]
+
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/crx
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/dispatcher
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/saml_logout
+RewriteCond %{SERVER_NAME} ^.*\.cn$
+RewriteRule ^/(.*)$ /content/solidigm/cn/zh/$1 [PT,L]
+
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/crx
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/dispatcher
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/saml_logout
+RewriteCond %{SERVER_NAME} ^.*\.jp$
+RewriteRule ^/(.*)$ /content/solidigm/jp/ja/$1 [PT,L]
+
+RewriteCond %{REQUEST_URI} !^/apps
+RewriteCond %{REQUEST_URI} !^/content
+RewriteCond %{REQUEST_URI} !^/etc
+RewriteCond %{REQUEST_URI} !^/libs
+RewriteCond %{REQUEST_URI} !^/bin
+RewriteCond %{REQUEST_URI} !^/tmp
+RewriteCond %{REQUEST_URI} !^/var
+RewriteCond %{REQUEST_URI} !^/crx
+RewriteCond %{REQUEST_URI} !^/system
+RewriteCond %{REQUEST_URI} !^/dispatcher
+RewriteCond %{REQUEST_URI} !^/saml_login
+RewriteCond %{REQUEST_URI} !^/saml_logout
+RewriteCond %{SERVER_NAME} ^.*\.de$
+RewriteRule ^/(.*)$ /content/solidigm/de/de/$1 [PT,L]

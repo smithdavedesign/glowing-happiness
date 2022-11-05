@@ -1,6 +1,6 @@
 /* Search Component */
 
-footer.footer{
+footer.footer {
     padding-left: $spacing-lg-mobile;
     padding-right: $spacing-lg-mobile;
     @media (min-width: $desktop) {
@@ -81,12 +81,11 @@ footer.footer{
     position: relative;
 
     @media (min-width: $desktop) {
-        padding: $spacing-6xl-desktop $spacing-4xl-desktop $spacing-7xl-desktop
-            $spacing-4xl-desktop;
+        padding: $spacing-6xl-desktop $spacing-4xl-desktop $spacing-7xl-desktop $spacing-4xl-desktop;
     }
 
     &::before {
-        content: "";
+        content: '';
         height: 100%;
         width: 200vw;
         background: $off-white;
@@ -132,7 +131,7 @@ footer.footer{
     }
 
     &::before {
-        content: "";
+        content: '';
         height: 100%;
         width: 200vw;
         background: $solidigm-purple;
@@ -183,7 +182,7 @@ footer.footer{
     svg {
         width: auto;
         height: vwMobile(22);
-        
+
         @media (min-width: $desktop) {
             height: vwDesktop(22);
         }
@@ -198,7 +197,7 @@ footer.footer{
 
     @media (min-width: $desktop) {
         flex-direction: row;
-        gap: $spacing-4xl-desktop;
+        gap: $spacing-base-desktop $spacing-4xl-desktop;
         margin: 0;
     }
 }
@@ -214,14 +213,19 @@ footer.footer{
     text-transform: uppercase;
     color: $white;
 
+    p {
+        display: inline;
+    }
+
     @media (min-width: $desktop) {
+        display: flex;
         gap: $spacing-sm-desktop;
         font-size: $font-size-sm-desktop;
         letter-spacing: vwDesktop(0.5);
         line-height: vwDesktop(15);
     }
 
-    &[target="_blank"] {
+    &[target='_blank'] {
         position: relative;
         margin-right: $spacing-2xl-mobile;
 
@@ -230,7 +234,7 @@ footer.footer{
         }
 
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             height: vwMobile(14);
             width: vwMobile(14);
@@ -239,6 +243,7 @@ footer.footer{
             transform: translateY(-50%);
             @include svg_icon(new-tab);
             background-repeat: no-repeat;
+            background-size: contain;
 
             @media (min-width: $desktop) {
                 height: vwDesktop(14);
@@ -273,7 +278,7 @@ footer.footer{
     display: block;
     width: vwMobile(78);
     height: vwMobile(16);
-    background-image: url("../resources/images/trustarc-logo.png");
+    background-image: url('../resources/images/trustarc-logo.png');
     background-position: right;
     background-size: contain;
     background-repeat: no-repeat;
