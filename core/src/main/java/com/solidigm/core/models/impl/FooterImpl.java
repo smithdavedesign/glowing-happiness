@@ -85,6 +85,12 @@ public class FooterImpl implements Footer{
     @ValueMapValue(name = "linkedIn")
     private String linkedInLink;
 
+    @ValueMapValue(name = "twitter")
+    private String twitterLink;
+
+    @ValueMapValue(name = "youTube")
+    private String youTubeLink;
+
     @ValueMapValue(name = "trustArc")
     private String trustArcLink;
 
@@ -101,6 +107,12 @@ public class FooterImpl implements Footer{
     private Link linkedIn;
 
     @Getter
+    private Link twitter;
+
+    @Getter
+    private Link youTube;
+
+    @Getter
     private Link trustArc;
 
     @Getter
@@ -114,11 +126,15 @@ public class FooterImpl implements Footer{
         facebook = new Link();
         linkedIn = new Link();
         trustArc = new Link();
+        twitter = new Link();
+        youTube = new Link();
 
         homePage.setLink(homePageLink);
         facebook.setLink(facebookLink);
         linkedIn.setLink(linkedInLink);
         trustArc.setLink(trustArcLink);
+        twitter.setLink(twitterLink);
+        youTube.setLink(youTubeLink);
 
         if (searchTags == null || searchTags.length == 0){
             return;
