@@ -100,6 +100,24 @@ public interface Footer extends ComponentExporter {
     }
 
     /**
+     * Returns Link for the Twitter link of the footer
+     *
+     * @return Link
+     */
+    default Link getTwitter() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
+     * Returns Link for the YouTube link of the footer
+     *
+     * @return Link
+     */
+    default Link getYouTube() {
+        throw new UnsupportedOperationException();
+    }
+
+    /**
      * Returns Link for the TrustArc link of the Footer
      *
      * @return Link

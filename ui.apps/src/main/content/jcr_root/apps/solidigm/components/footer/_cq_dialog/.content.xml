@@ -250,6 +250,20 @@
                                                     fieldLabel="LinkedIn Link"
                                                     required="{Boolean}true"
                                                     name="./linkedIn" />
+                                            <twitter
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="URL of external Twitter page"
+                                                    fieldLabel="Twitter Link"
+                                                    required="{Boolean}true"
+                                                    name="./twitter" />
+                                            <youTube
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                    fieldDescription="URL of external YouTube page"
+                                                    fieldLabel="YouTube Link"
+                                                    required="{Boolean}true"
+                                                    name="./youTube" />
                                             <trustArc
                                                     jcr:primaryType="nt:unstructured"
                                                     sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
