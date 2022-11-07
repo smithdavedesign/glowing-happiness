@@ -19,6 +19,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.day.cq.tagging.Tag;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -150,11 +151,24 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
                 SearchResultItem resultPage = new SearchResultItem(hit.getPath(), req.getResourceResolver());
                 JsonObject resultObject = new JsonObject();
 
+                //populate tags
+                JsonArray tagArray = new JsonArray();
+                Tag[] tagsFromResult = resultPage.getTags();
+                if(tagsFromResult.length != 0){
+                    for (Tag tag : tagsFromResult) {
+                        JsonObject tagItem = new JsonObject();
+                        tagItem.addProperty("text", tag.getTitle());
+                        tagItem.addProperty("url", "placeholder.com");
+                        tagArray.add(tagItem);
+                    }
+                }
+
                 //Serialize search result to JSON
                 resultObject.addProperty("title", resultPage.getTitle());
                 resultObject.addProperty("description", resultPage.getDescription());
                 resultObject.addProperty("url", resultPage.getUrl());
                 resultObject.addProperty("urlLabel", resourceResolver.map(hit.getPath()));
+                resultObject.add("tags", tagArray);
 
                 JsonObject imageProps = new JsonObject();
                 imageProps.addProperty("url", resultPage.getImage());

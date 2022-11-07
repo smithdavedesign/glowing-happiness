@@ -35,18 +35,17 @@ window.addEventListener('DOMContentLoaded', async function () {
         }
 
         function resultToHtml(result) {
-            // const tagsHtml = result.tags
-            //     .map(
-            //         (tag) => `
-            //         <li>
-            //             <a href="${tag.url}">${tag.text}</a>
-            //         </li>
-            //     `
-            //     )
-            //     .join('');
+             const tagsHtml = result.tags
+                 .map(
+                     (tag) => `
+                     <li>
+                         <a href="${tag.url}">${tag.text}</a>
+                     </li>
+                 `
+                 )
+                 .join('');
 
-            //TODO: replace with real link
-            var tagsHtml = "";
+
             return `
             <li class="cmp-search-results__result">
             <div class="cmp-search-results__result-img">
@@ -58,7 +57,7 @@ window.addEventListener('DOMContentLoaded', async function () {
                 <p class="cmp-search-results__result-description">
                     ${result.description}
                 </p>
-                <div class="cmp-search-results__tags hidden">
+                <div class="cmp-search-results__tags">
                     <span>Tags:</span>
                     <ul>
                         ${tagsHtml}
