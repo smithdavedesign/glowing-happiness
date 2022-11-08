@@ -53,6 +53,9 @@ public class TaggedArticlesImpl implements TaggedArticles {
     @Getter
     private List<Tag> dropdownTags;
 
+    @Getter
+    private String displayTag;
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
@@ -72,8 +75,11 @@ public class TaggedArticlesImpl implements TaggedArticles {
         String[] selectors = request.getRequestPathInfo().getSelectors();
         if(selectors.length > 0) {
             selectorTag = TagUtil.decodeID(selectors[0]);
+            String[] tagArr = selectorTag.split("/");
+            displayTag = tagArr[tagArr.length-1];
         } else {
             selectorTag = "";
+            displayTag = "";
         }
 
         //Get all article categories tags for the dropdown menu
