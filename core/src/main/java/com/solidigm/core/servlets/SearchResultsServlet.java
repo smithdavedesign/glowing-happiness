@@ -20,6 +20,7 @@ import org.osgi.service.component.propertytypes.ServiceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.day.cq.tagging.Tag;
+import com.solidigm.core.utils.TagUtil;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -158,7 +159,7 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
                     for (Tag tag : tagsFromResult) {
                         JsonObject tagItem = new JsonObject();
                         tagItem.addProperty("text", tag.getTitle());
-                        tagItem.addProperty("url", "placeholder.com");
+                        tagItem.addProperty("url", "tag-results-page." + TagUtil.encodeID(tag.getTagID())+ ".html");
                         tagArray.add(tagItem);
                     }
                 }
