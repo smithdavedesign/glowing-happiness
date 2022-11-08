@@ -31,49 +31,42 @@
     }
 
     &__filter {
-        & + label {
-            border-radius: $border-radius-md-mobile;
-            background: #f9f9f9;
-            font-family: $font-size-xs-mobile;
-            padding: $spacing-sm-mobile $spacing-xl-mobile;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            @media (min-width: $desktop) {
-                font-family: $font-size-xs-desktop;
-                border-radius: $border-radius-md-desktop;
-                padding: $spacing-sm-desktop $spacing-xl-desktop;
-            }
-
-            span {
-                position: relative;
-                width: max-content;
-                display: block;
-            }
+        border-radius: $border-radius-md-mobile;
+        background: #f9f9f9;
+        font-family: $font-size-xs-mobile;
+        padding: $spacing-sm-mobile $spacing-xl-mobile;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: max-content;
+        display: block;
+        @media (min-width: $desktop) {
+            font-family: $font-size-xs-desktop;
+            border-radius: $border-radius-md-desktop;
+            padding: $spacing-sm-desktop $spacing-xl-desktop;
         }
 
-        &--selected + label {
+        &--selected  {
             background: $solidigm-purple;
             color: $white;
 
-            span {
-                &::before {
-                    content: '';
-                    @include svg_icon(checkmark);
-                    background-repeat: no-repeat;
-                    height: vwMobile(13);
-                    width: vwMobile(17);
-                    background-size: 100%;
-                    background-position: 0 50%;
-                    display: inline-block;
-                    margin-right: $spacing-3xs-mobile;
+            &::before {
+                content: "";
+                @include svg_icon(checkmark);
+                background-repeat: no-repeat;
+                height: vwMobile(13);
+                width: vwMobile(17);
+                background-size: 100%;
+                background-position: 0 50%;
+                display: inline-block;
+                margin-right: $spacing-3xs-mobile;
 
-                    @media (min-width: $desktop) {
-                        height: vwDesktop(13);
-                        width: vwDesktop(17);
-                        background-size: 100%;
-                        margin-right: $spacing-3xs-desktop;
-                    }
+                @media (min-width: $desktop) {
+                    height: vwDesktop(13);
+                    width: vwDesktop(17);
+                    background-size: 100%;
+                    margin-right: $spacing-3xs-desktop;
                 }
             }
         }

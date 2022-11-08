@@ -9,16 +9,13 @@
         <span class="cmp-search-results__filter-label">${'Filter by Type' @ i18n}</span>
         <div class="cmp-search-results__filters"
              data-sly-list.filter="${searchResults.filters}">
-            <input
-                class="cmp-search-results__filter cmp-search-results__filter--selected"
-                value="${filter.id}"
-                name="filter"
-                type="checkbox"
-                id="search-${filter.id}"
-            />
-            <label for="search-${filter.id}">
-                <span>${filter.label} ${'Placeholder ({0})' @ i18n}</span>
-            </label>
+             <button
+                type="button"
+                class="cmp-search-results__filter"
+                data-filter="${filter.filterPath}"
+             >
+                ${filter.label} ${'Placeholder ({0})' @ i18n}
+             </button>
         </div>
     </form>
     <div class="cmp-search-results__total">
