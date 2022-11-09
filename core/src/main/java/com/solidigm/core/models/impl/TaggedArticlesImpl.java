@@ -11,6 +11,7 @@ import com.solidigm.core.utils.TagUtil;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -65,7 +66,8 @@ public class TaggedArticlesImpl implements TaggedArticles {
     @PostConstruct
     private void initModel() {
         //Init variables
-        TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
+        ResourceResolver resourceResolver = request.getResourceResolver();
+        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
         dropdownTags = new ArrayList<>();
 
         //Set localized root path
@@ -78,12 +80,15 @@ public class TaggedArticlesImpl implements TaggedArticles {
         if(selectors.length > 0) {
             selectorTag = TagUtil.decodeID(selectors[0]);
             //using tag manager use selector to get tag and display tag
-            Tag tag = Objects.requireNonNull(tagManager).resolve(selectorTag);
-            displayTag = tag.getTitle();
+            if (tagManager != null) {
+                Tag tag = tagManager.resolve(selectorTag);
+                displayTag = tag.getTitle();
+            }
         } else {
             selectorTag = "";
             displayTag = "";
         }
+
 
         //Get all article categories tags for the dropdown menu
         Resource categoriesResource = request.getResourceResolver().getResource(SOLIDIGM_ARTICLE_CATEGORY_TAGS);

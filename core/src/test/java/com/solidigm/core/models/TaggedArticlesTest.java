@@ -23,25 +23,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TaggedArticlesTest {
     private final AemContext ctx = new AemContext();
 
-    @Mock
-    private TagManager mockTagManager;
 
     @BeforeEach
     public void setUp() throws Exception {
         //Load ctx for TaggedArticles Model
-        MockitoAnnotations.initMocks(this);
         ctx.addModelsForClasses(TaggedArticles.class);
         ctx.load().json("/com/solidigm/core/models/TaggedArticlesTest.json", "/content");
-        TagManager tagManager = ctx.resourceResolver().adaptTo(TagManager.class);
-        Tag intel = tagManager.createTag("intel", "Intel", "description");
-        Mockito.when(mockTagManager.resolve("solidigm:products/intel")).thenReturn(intel);
     }
 
     @Test
     void testGetSelectorTag() {
-        String expected = "solidigm:products/intel";
+        String expected = "solidigm:articles";
         ctx.currentResource("/content/solidigm/us/en/taggedArticles");
-        ctx.requestPathInfo().setSelectorString("solidigm%3Aproducts--intel");
+        ctx.requestPathInfo().setSelectorString("solidigm%3Aarticles");
         TaggedArticles taggedArticles = ctx.request().adaptTo(TaggedArticles.class);
         assertEquals(expected, taggedArticles.getSelectorTag());
     }
