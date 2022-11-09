@@ -3,7 +3,6 @@ package com.solidigm.core.models.impl;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
 import com.day.cq.search.PredicateGroup;
-import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
@@ -27,7 +26,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.jcr.Session;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

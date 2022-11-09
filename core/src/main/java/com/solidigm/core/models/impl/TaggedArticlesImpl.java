@@ -22,7 +22,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static com.solidigm.core.utils.SolidigmConstants.SOLIDIGM_ARTICLE_CATEGORY_TAGS;
 
