@@ -21,6 +21,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.solidigm.core.utils.SolidigmConstants.SOLIDIGM_ARTICLE_CATEGORY_TAGS;
 
@@ -64,6 +65,7 @@ public class TaggedArticlesImpl implements TaggedArticles {
     @PostConstruct
     private void initModel() {
         //Init variables
+        TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
         dropdownTags = new ArrayList<>();
 
         //Set localized root path
@@ -75,8 +77,9 @@ public class TaggedArticlesImpl implements TaggedArticles {
         String[] selectors = request.getRequestPathInfo().getSelectors();
         if(selectors.length > 0) {
             selectorTag = TagUtil.decodeID(selectors[0]);
-            String[] tagArr = selectorTag.split("/");
-            displayTag = tagArr[tagArr.length-1];
+            //using tag manager use selector to get tag and display tag
+            Tag tag = Objects.requireNonNull(tagManager).resolve(selectorTag);
+            displayTag = tag.getTitle();
         } else {
             selectorTag = "";
             displayTag = "";
@@ -84,7 +87,6 @@ public class TaggedArticlesImpl implements TaggedArticles {
 
         //Get all article categories tags for the dropdown menu
         Resource categoriesResource = request.getResourceResolver().getResource(SOLIDIGM_ARTICLE_CATEGORY_TAGS);
-        TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
         if(categoriesResource != null) {
             for(Resource categoryResource : categoriesResource.getChildren()){
                 dropdownTags.add(categoryResource.adaptTo(Tag.class));

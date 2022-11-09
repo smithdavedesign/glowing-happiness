@@ -1,11 +1,19 @@
 package com.solidigm.core.models;
 
+import com.day.cq.tagging.InvalidTagFormatException;
 import com.day.cq.tagging.Tag;
+import com.day.cq.tagging.TagManager;
+
+import io.wcm.testing.mock.aem.MockTagManager;
 import io.wcm.testing.mock.aem.junit5.AemContext;
 import io.wcm.testing.mock.aem.junit5.AemContextExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
 
 import java.util.List;
 
@@ -15,11 +23,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TaggedArticlesTest {
     private final AemContext ctx = new AemContext();
 
+    @Mock
+    private TagManager mockTagManager;
+
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws Exception {
         //Load ctx for TaggedArticles Model
+        MockitoAnnotations.initMocks(this);
         ctx.addModelsForClasses(TaggedArticles.class);
         ctx.load().json("/com/solidigm/core/models/TaggedArticlesTest.json", "/content");
+        TagManager tagManager = ctx.resourceResolver().adaptTo(TagManager.class);
+        Tag intel = tagManager.createTag("intel", "Intel", "description");
+        Mockito.when(mockTagManager.resolve("solidigm:products/intel")).thenReturn(intel);
     }
 
     @Test
