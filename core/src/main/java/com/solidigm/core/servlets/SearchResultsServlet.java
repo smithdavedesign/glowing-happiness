@@ -81,6 +81,7 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
         ResourceResolver resourceResolver = req.getResourceResolver();
 
         //Get request params
+        String[] rootPathArr = req.getRequestParameter("rootPath").getString().split(",");
         RequestParameter rootPathParam = req.getRequestParameter("rootPath");
         RequestParameter pageParam = req.getRequestParameter("currentPage");
         RequestParameter resultsPerPageParam = req.getRequestParameter("resultsPerPage");
@@ -91,7 +92,6 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
             resp.sendError(400, "Bad request: missing root path");
             return;
         }
-        String rootPath = rootPathParam.getString();
 
         //Verify and process page param
         int page = DEFAULT_PAGE;
@@ -126,7 +126,20 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
 
         //Build the search query
         Map<String, String> queryMap = new HashMap<>();
-        queryMap.put("path", rootPath);
+        //iterate through list of paths. If we have multiple paths then we are using filters. Skip the first element in the array since that is the root path.
+        if(rootPathArr.length > 1) {
+            for (int i =1; i < rootPathArr.length; i++) {
+                if(StringUtils.isNotEmpty(rootPathArr[i])) {
+                    queryMap.put("1_group." + (i) + "_path", rootPathArr[i]);
+                }
+            }
+            queryMap.put("1_group.p.or", "true");
+        }
+        //if our array is only 1 element, user has not selected filters yet
+        else{
+            queryMap.put("path", rootPathArr[0]);
+
+        }
         queryMap.put("type", "cq:Page");
         queryMap.put("fulltext", queryText);
         queryMap.put("group.p.or", "true");

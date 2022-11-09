@@ -2,6 +2,10 @@ package com.solidigm.core.models.impl;
 
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.day.cq.search.PredicateGroup;
+import com.day.cq.search.Query;
+import com.day.cq.search.QueryBuilder;
+import com.day.cq.search.result.SearchResult;
 import com.day.cq.wcm.api.Page;
 import com.solidigm.core.beans.Filter;
 import com.solidigm.core.models.SearchResults;
@@ -10,16 +14,23 @@ import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.request.RequestParameter;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Source;
 import org.apache.sling.models.annotations.injectorspecific.ChildResource;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.jcr.Session;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Model(
         adaptables = {Resource.class, SlingHttpServletRequest.class},
@@ -40,6 +51,11 @@ public class SearchResultsImpl implements SearchResults {
     @Inject
     @Source("script-bindings")
     Page currentPage;
+
+    @OSGiService
+    QueryBuilder builder;
+
+    private Session session;
 
     @Inject
     @ChildResource
@@ -68,6 +84,27 @@ public class SearchResultsImpl implements SearchResults {
         RequestParameter queryParameter = request.getRequestParameterMap().getValue("query");
         if (queryParameter != null) {
             query = queryParameter.toString();
+            //iterate through filters and return counts of hits in each filter
+            ResourceResolver resourceResolver = request.getResourceResolver();
+            session = resourceResolver.adaptTo(Session.class);
+            Map<String, String> map = new HashMap<String, String>();
+            for(Filter filter : filters){
+                map.put("path", filter.getFilterPath());
+                map.put("type", "cq:Page");
+                map.put("fulltext", query);
+                map.put("group.p.or", "true");
+                map.put("group.1_property", "jcr:content/hideInNav");
+                map.put("group.1_property.operation", "unequals");
+                map.put("group.1_property.value", "true");
+                map.put("group.2_property", "jcr:content/hideInNav");
+                map.put("group.2_property.operation", "exists");
+                map.put("group.2_property.value", "false");
+                map.put("p.limit", "-1");
+                map.put("p.offset", "0");
+                SearchResult result = builder.createQuery(PredicateGroup.create(map), session).getResult();
+                filter.setCount(Math.toIntExact(result.getTotalMatches()));
+            }
         }
+
     }
 }

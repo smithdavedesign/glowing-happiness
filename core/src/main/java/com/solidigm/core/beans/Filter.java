@@ -1,6 +1,8 @@
 package com.solidigm.core.beans;
 
 import lombok.Getter;
+import lombok.Setter;
+
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
@@ -20,6 +22,10 @@ public class Filter {
 
     @Getter
     private String id;
+
+    @Getter
+    @Setter
+    private int count;
 
     @PostConstruct
     private void init() {
