@@ -9,6 +9,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.solidigm.core.beans.ArticlePage;
 import com.solidigm.core.utils.ImageUtil;
+import com.solidigm.core.utils.TagUtil;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -111,7 +113,7 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         }
 
         //Verify and set tag param
-        String tag = tagParam == null ? "" : tagParam.getString();
+        String tag = tagParam == null ? "" : TagUtil.decodeID(tagParam.getString());
 
         //Build the articles query
         Map<String, String> queryMap = new HashMap<>();

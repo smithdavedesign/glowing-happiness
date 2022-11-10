@@ -190,7 +190,6 @@ window.addEventListener('DOMContentLoaded', async () => {
             new Set(product.orderingSpecs.map((specs) => specs.ushts))
         ).join(', ');
     }
-
     let selectedProduct;
     function handleSelectChange() {
         const interface = interfaceSelect.value;
@@ -200,6 +199,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         if (!interface || !formFactor || !capacity) {
             compareButton.setAttribute('disabled', '');
         } else {
+            productConfigurator.classList.remove('cmp-product-configurator--inactive');
             const productResult = data.filters.find((result) => {
                 return (
                     result.interface === interface &&

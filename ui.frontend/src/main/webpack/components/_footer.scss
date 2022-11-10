@@ -199,6 +199,7 @@ footer.footer {
         flex-direction: row;
         gap: $spacing-base-desktop $spacing-4xl-desktop;
         margin: 0;
+        flex-wrap: wrap;
     }
 }
 

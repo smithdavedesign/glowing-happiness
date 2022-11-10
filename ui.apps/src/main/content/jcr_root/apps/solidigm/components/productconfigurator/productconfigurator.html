@@ -1,46 +1,42 @@
-<div class="cmp-product-configurator"
+<div class="cmp-product-configurator cmp-product-configurator--inactive"
      data-sly-use.productConfigurator="com.solidigm.core.models.ProductConfigurator"
      data-path="${productConfigurator.path}">
-    <div class="model-list__filters">
-        <span>${'Configure By' @ i18n}</span>
-        <sly
-            data-sly-use.component="solidigm/components/customselect/customselect.html"
-            data-sly-call="${component.customSelect @
-                                placeholder='Interface',
-                                label='Interface',
-                                id='interface',
-                                name='interface',
-                                srOnly=true}"
-        />
-        <div class="model-list__filters__bottom-row">
-            <sly
-                data-sly-use.component="solidigm/components/customselect/customselect.html"
-                data-sly-call="${component.customSelect @
-                                placeholder='Form Factor',
-                                label='Form Factor',
-                                id='form-factor',
-                                name='form-factor',
-                                srOnly=true}"
-            />
-            <sly
-                data-sly-use.component="solidigm/components/customselect/customselect.html"
-                data-sly-call="${component.customSelect @
-                                placeholder='Capacity',
-                                label='Capacity',
-                                id='capacity',
-                                name='capacity',
-                                srOnly=true}"
-            />
-            <button disabled class="solidigm-btn cmp-product-configurator__add-to-compare-btn">
-                ${'Add to Compare' @ i18n}
-            </button>
-        </div>
-
-    </div>
     <div
             class="cmp-product-tabs"
             id="configurator"
         >
+            <div class="model-list__filters">
+                <span>${'To view specs' @ i18n}</span>
+                <sly
+                    data-sly-use.component="solidigm/components/customselect/customselect.html"
+                    data-sly-call="${component.customSelect @
+                                        placeholder='Select Interface',
+                                        label='Interface',
+                                        id='interface',
+                                        name='interface',
+                                        srOnly=true}"
+                />
+                <div class="model-list__filters__bottom-row">
+                    <sly
+                        data-sly-use.component="solidigm/components/customselect/customselect.html"
+                        data-sly-call="${component.customSelect @
+                                        placeholder='Select Form Factor',
+                                        label='Form Factor',
+                                        id='form-factor',
+                                        name='form-factor',
+                                        srOnly=true}"
+                    />
+                    <sly
+                        data-sly-use.component="solidigm/components/customselect/customselect.html"
+                        data-sly-call="${component.customSelect @
+                                        placeholder='Select Capacity',
+                                        label='Capacity',
+                                        id='capacity',
+                                        name='capacity',
+                                        srOnly=true}"
+                    />
+                </div>
+            </div>
             <div class="cmp-product-tabs__navigation">
                 <div class="cmp-product-tabs__tablist" role="tablist" aria-label="Product Details">
                     <button
@@ -112,7 +108,7 @@
                     aria-label="Download specs sheet"
                 ></a>
             </div>
-            <div>
+            <div class="cmp-product-tabs__tabs">
                 <div
                     class="cmp-product-tabs__tab-panel"
                     role="tabpanel"
@@ -120,7 +116,7 @@
                     aria-labelledby="tab-by-the-numbers"
                     id="panel-by-the-numbers"
                 >
-                    <div class="cmp-product-tabs__side-panel">
+                    <div class="cmp-product-tabs__side-panel">s
                         <dl
                             class="cmp-product-tabs__key-val"
                             data-sly-list.attribute="${productConfigurator.attributes}"
@@ -293,6 +289,11 @@
                         </dl>
                     </div>
                 </div>
+            </div>
+            <div class="cmp-product-configurator__add-to-compare-btn-container">
+                <button disabled class="solidigm-btn cmp-product-configurator__add-to-compare-btn">
+                        ${'Add to Compare' @ i18n}
+                </button>
             </div>
         </div>
 </div>

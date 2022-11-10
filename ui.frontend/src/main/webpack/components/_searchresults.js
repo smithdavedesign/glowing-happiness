@@ -19,6 +19,7 @@ window.addEventListener('DOMContentLoaded', async function () {
         let currentPage =
             Number.parseInt(new URLSearchParams(window.location.search).get('page')) || 1;
         let totalPages = null;
+        let currentFilters = (new URLSearchParams(window.location.search).get('filters') || "").split(",");
 
         async function fetchResults(
             rootPath,
@@ -27,26 +28,26 @@ window.addEventListener('DOMContentLoaded', async function () {
             filter = '',
             resultsPerPage = 10
         ) {
+            const path = [rootPath, ...currentFilters].join(",");
             const request = await fetch(
-                `/bin/solidigm/search?rootPath=${rootPath}&query=${query}&currentPage=${currentPage}&resultsPerPage=${resultsPerPage}&filter=${filter}`
+                `/bin/solidigm/search?rootPath=${path}&query=${query}&currentPage=${currentPage}&resultsPerPage=${resultsPerPage}&filter=${filter}`
             );
             const response = await request.json();
             return response;
         }
 
         function resultToHtml(result) {
-            // const tagsHtml = result.tags
-            //     .map(
-            //         (tag) => `
-            //         <li>
-            //             <a href="${tag.url}">${tag.text}</a>
-            //         </li>
-            //     `
-            //     )
-            //     .join('');
+             const tagsHtml = result.tags
+                 .map(
+                     (tag) => `
+                     <li>
+                         <a href="${tag.url}">${tag.text}</a>
+                     </li>
+                 `
+                 )
+                 .join('');
 
-            //TODO: replace with real link
-            var tagsHtml = "";
+
             return `
             <li class="cmp-search-results__result">
             <div class="cmp-search-results__result-img">
@@ -58,7 +59,7 @@ window.addEventListener('DOMContentLoaded', async function () {
                 <p class="cmp-search-results__result-description">
                     ${result.description}
                 </p>
-                <div class="cmp-search-results__tags hidden">
+                <div class="cmp-search-results__tags">
                     <span>Tags:</span>
                     <ul>
                         ${tagsHtml}
@@ -149,6 +150,7 @@ window.addEventListener('DOMContentLoaded', async function () {
             var url = new URL(window.location);
             var search_params = url.searchParams;
             search_params.set('page', page);
+            search_params.set("filters", currentFilters.join(","))
             url.search = search_params.toString();
             const new_url = url.toString();
             window.history.pushState(null, '', new_url);
@@ -163,5 +165,26 @@ window.addEventListener('DOMContentLoaded', async function () {
         nextPageBtn.addEventListener('click', () => navigateToPage(currentPage + 1));
         firstPageBtn.addEventListener('click', () => navigateToPage(1));
         lastPageBtn.addEventListener('click', () => navigateToPage(totalPages));
+
+        const filterButtons = searchResult.querySelectorAll(".cmp-search-results__filter");
+
+        const selectedFilterClass = 'cmp-search-results__filter--selected'
+        filterButtons.forEach(filterButton => {
+            const selectedFilter = filterButton.getAttribute("data-filter");
+            if(currentFilters.includes(selectedFilter)){
+                filterButton.classList.add(selectedFilterClass)
+            }
+
+            filterButton.addEventListener("click", function(){
+                filterButton.classList.toggle(selectedFilterClass);
+                if(currentFilters.includes(selectedFilter)){
+                    currentFilters = currentFilters.filter(filter => filter !== selectedFilter);
+                } else {
+                    currentFilters.push(selectedFilter)
+                }
+
+                navigateToPage(1)
+            })
+        })
     }
 });
