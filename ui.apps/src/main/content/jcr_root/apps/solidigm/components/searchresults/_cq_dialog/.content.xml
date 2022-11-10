@@ -32,10 +32,6 @@
                                                                         sling:resourceType="granite/ui/components/coral/foundation/container"
                                                                         name="./filters">
                                                                         <items jcr:primaryType="nt:unstructured">
-                                                                                <column
-                                                                                        jcr:primaryType="nt:unstructured"
-                                                                                        sling:resourceType="granite/ui/components/coral/foundation/container">
-                                                                                        <items jcr:primaryType="nt:unstructured">
                                                                                                 <label
                                                                                                         jcr:primaryType="nt:unstructured"
                                                                                                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
@@ -49,8 +45,6 @@
                                                                                                         fieldLabel="Filter Path"
                                                                                                         rootPath="/content/solidigm"
                                                                                                         required="{Boolean}true" />
-                                                                                        </items>
-                                                                                </column>
                                                                         </items>
                                                                 </field>
                                                         </filters>

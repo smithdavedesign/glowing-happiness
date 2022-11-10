@@ -23,7 +23,7 @@
         data-servlet-path="${taggedArticles.rootPath}"
         data-selector-tag="${taggedArticles.selectorTag}"
     >
-        <h2>${'Posts Tagged “{0}”' @ format=[taggedArticles.selectorTag],i18n}</h2>
+        <h2>${'Posts Tagged “{0}”' @ format=[taggedArticles.displayTag],i18n}</h2>
     </div>
     <div class="cmp-tagged-articles__articles-container"></div>
     <button class="solidigm-btn cmp-tagged-articles__load-more-btn">${'Load More' @ i18n}</button>

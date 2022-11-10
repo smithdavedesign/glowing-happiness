@@ -11,6 +11,7 @@ import com.solidigm.core.utils.TagUtil;
 import lombok.Getter;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
@@ -53,6 +54,9 @@ public class TaggedArticlesImpl implements TaggedArticles {
     @Getter
     private List<Tag> dropdownTags;
 
+    @Getter
+    private String displayTag;
+
     @Override
     public String getExportedType() {
         return RESOURCE_TYPE;
@@ -61,6 +65,8 @@ public class TaggedArticlesImpl implements TaggedArticles {
     @PostConstruct
     private void initModel() {
         //Init variables
+        ResourceResolver resourceResolver = request.getResourceResolver();
+        TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
         dropdownTags = new ArrayList<>();
 
         //Set localized root path
@@ -72,13 +78,19 @@ public class TaggedArticlesImpl implements TaggedArticles {
         String[] selectors = request.getRequestPathInfo().getSelectors();
         if(selectors.length > 0) {
             selectorTag = TagUtil.decodeID(selectors[0]);
+            //using tag manager use selector to get tag and display tag
+            if (tagManager != null) {
+                Tag tag = tagManager.resolve(selectorTag);
+                displayTag = tag.getTitle();
+            }
         } else {
             selectorTag = "";
+            displayTag = "";
         }
+
 
         //Get all article categories tags for the dropdown menu
         Resource categoriesResource = request.getResourceResolver().getResource(SOLIDIGM_ARTICLE_CATEGORY_TAGS);
-        TagManager tagManager = request.getResourceResolver().adaptTo(TagManager.class);
         if(categoriesResource != null) {
             for(Resource categoryResource : categoriesResource.getChildren()){
                 dropdownTags.add(categoryResource.adaptTo(Tag.class));
