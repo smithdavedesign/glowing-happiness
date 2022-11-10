@@ -1,6 +1,0 @@
-{
-  "resource.resolver.mapping": [
-    "/:/"
-  ],
-  "resource.resolver.map.location": "/etc/map.dev.publish"
-}
