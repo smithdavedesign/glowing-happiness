@@ -6,11 +6,11 @@
             id="configurator"
         >
             <div class="model-list__filters">
-                <span>${'Configure By' @ i18n}</span>
+                <span>${'To view specs' @ i18n}</span>
                 <sly
                     data-sly-use.component="solidigm/components/customselect/customselect.html"
                     data-sly-call="${component.customSelect @
-                                        placeholder='Interface',
+                                        placeholder='Select Interface',
                                         label='Interface',
                                         id='interface',
                                         name='interface',
@@ -20,7 +20,7 @@
                     <sly
                         data-sly-use.component="solidigm/components/customselect/customselect.html"
                         data-sly-call="${component.customSelect @
-                                        placeholder='Form Factor',
+                                        placeholder='Select Form Factor',
                                         label='Form Factor',
                                         id='form-factor',
                                         name='form-factor',
@@ -29,7 +29,7 @@
                     <sly
                         data-sly-use.component="solidigm/components/customselect/customselect.html"
                         data-sly-call="${component.customSelect @
-                                        placeholder='Capacity',
+                                        placeholder='Select Capacity',
                                         label='Capacity',
                                         id='capacity',
                                         name='capacity',
@@ -116,7 +116,7 @@
                     aria-labelledby="tab-by-the-numbers"
                     id="panel-by-the-numbers"
                 >
-                    <div class="cmp-product-tabs__side-panel">
+                    <div class="cmp-product-tabs__side-panel">s
                         <dl
                             class="cmp-product-tabs__key-val"
                             data-sly-list.attribute="${productConfigurator.attributes}"
