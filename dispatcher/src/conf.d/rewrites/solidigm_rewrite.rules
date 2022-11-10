@@ -82,6 +82,10 @@ RewriteCond %{REQUEST_URI} ^/support(\.html)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.de$
 RewriteRule ^.*$ /content/solidigm/de/de/support-page.html [PT,L]
 
+RewriteCond %{REQUEST_URI} ^/support-page(\.html)?$ [NC]
+RewriteCond %{SERVER_NAME} ^.*\.com$
+RewriteRule ^.*$ /content/solidigm/us/en/support-page.html [PT,L]
+
 # AEM Core Component XML sitemap
 RewriteCond %{REQUEST_URI} ^/sitemap(\.xml)?$ [NC]
 RewriteCond %{SERVER_NAME} ^.*\.com$
