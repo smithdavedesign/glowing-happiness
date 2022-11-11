@@ -24,9 +24,9 @@ public class TaggedArticlesTest {
 
     @Test
     void testGetSelectorTag() {
-        String expected = "solidigm:articles";
+        String expected = "solidigm:products/intel";
         ctx.currentResource("/content/solidigm/us/en/taggedArticles");
-        ctx.requestPathInfo().setSelectorString("solidigm%3Aarticles");
+        ctx.requestPathInfo().setSelectorString("solidigm%3Aproducts--intel");
         TaggedArticles taggedArticles = ctx.request().adaptTo(TaggedArticles.class);
         assertEquals(expected, taggedArticles.getSelectorTag());
     }
