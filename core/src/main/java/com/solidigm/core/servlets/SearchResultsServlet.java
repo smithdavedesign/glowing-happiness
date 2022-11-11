@@ -19,8 +19,6 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.day.cq.tagging.Tag;
-import com.solidigm.core.utils.TagUtil;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
@@ -81,7 +79,6 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
         ResourceResolver resourceResolver = req.getResourceResolver();
 
         //Get request params
-        String[] rootPathArr = req.getRequestParameter("rootPath").getString().split(",");
         RequestParameter rootPathParam = req.getRequestParameter("rootPath");
         RequestParameter pageParam = req.getRequestParameter("currentPage");
         RequestParameter resultsPerPageParam = req.getRequestParameter("resultsPerPage");
@@ -92,6 +89,7 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
             resp.sendError(400, "Bad request: missing root path");
             return;
         }
+        String rootPath = rootPathParam.getString();
 
         //Verify and process page param
         int page = DEFAULT_PAGE;
@@ -126,20 +124,7 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
 
         //Build the search query
         Map<String, String> queryMap = new HashMap<>();
-        //iterate through list of paths. If we have multiple paths then we are using filters. Skip the first element in the array since that is the root path.
-        if(rootPathArr.length > 1) {
-            for (int i =1; i < rootPathArr.length; i++) {
-                if(StringUtils.isNotEmpty(rootPathArr[i])) {
-                    queryMap.put("1_group." + (i) + "_path", rootPathArr[i]);
-                }
-            }
-            queryMap.put("1_group.p.or", "true");
-        }
-        //if our array is only 1 element, user has not selected filters yet
-        else{
-            queryMap.put("path", rootPathArr[0]);
-
-        }
+        queryMap.put("path", rootPath);
         queryMap.put("type", "cq:Page");
         queryMap.put("fulltext", queryText);
         queryMap.put("group.p.or", "true");
@@ -165,24 +150,11 @@ public class SearchResultsServlet extends SlingSafeMethodsServlet {
                 SearchResultItem resultPage = new SearchResultItem(hit.getPath(), req.getResourceResolver());
                 JsonObject resultObject = new JsonObject();
 
-                //populate tags
-                JsonArray tagArray = new JsonArray();
-                Tag[] tagsFromResult = resultPage.getTags();
-                if(tagsFromResult.length != 0){
-                    for (Tag tag : tagsFromResult) {
-                        JsonObject tagItem = new JsonObject();
-                        tagItem.addProperty("text", tag.getTitle());
-                        tagItem.addProperty("url", "tag-results-page." + TagUtil.encodeID(tag.getTagID())+ ".html");
-                        tagArray.add(tagItem);
-                    }
-                }
-
                 //Serialize search result to JSON
                 resultObject.addProperty("title", resultPage.getTitle());
                 resultObject.addProperty("description", resultPage.getDescription());
                 resultObject.addProperty("url", resultPage.getUrl());
                 resultObject.addProperty("urlLabel", resourceResolver.map(hit.getPath()));
-                resultObject.add("tags", tagArray);
 
                 JsonObject imageProps = new JsonObject();
                 imageProps.addProperty("url", resultPage.getImage());
