@@ -1,81 +1,46 @@
 <div
-    class="cmp-search-results"
-    data-sly-use.searchResults="com.solidigm.core.models.SearchResults"
-    data-path="${searchResults.rootPath}"
+  class="cmp-search-results"
+  data-sly-use.searchResults="com.solidigm.core.models.SearchResults"
+  data-path="${searchResults.rootPath}"
 >
     <form id="search-form" data-results-per-page="10">
         <label class="sr-only" for="search-bar">${'Search' @ i18n}</label>
         <input class="solidigm-input solidigm-input--underline" name="query" id="search-bar" />
-        <span class="cmp-search-results__filter-label hidden">${'Filter by Type' @ i18n}</span>
-        <div class="cmp-search-results__filters hidden">
-            <input
-                class="cmp-search-results__filter cmp-search-results__filter--selected"
-                value="all"
-                name="filter"
-                type="checkbox"
-                id="search-all"
-            />
-            <label for="search-all">
-                <span>${'All ({0})' @ i18n}</span>
-            </label>
-
-            <input
-                class="cmp-search-results__filter"
-                value="products"
-                name="filter"
-                type="checkbox"
-                id="search-products"
-            />
-            <label for="search-products">
-                <span>Products (27)</span>
-            </label>
-
-            <input
-                class="cmp-search-results__filter"
-                value="support"
-                name="filter"
-                type="checkbox"
-                id="search-support"
-            />
-            <label for="search-support">
-                <span>Support (10)</span>
-            </label>
-
-            <input
-                class="cmp-search-results__filter"
-                value="posts"
-                name="filter"
-                type="checkbox"
-                id="search-posts"
-            />
-            <label for="search-posts">
-                <span>Posts (6)</span>
-            </label>
+        <span class="cmp-search-results__filter-label">${'Filter by Type' @ i18n}</span>
+        <div class="cmp-search-results__filters"
+             data-sly-list.filter="${searchResults.filters}">
+            <button
+              type="button"
+              class="cmp-search-results__filter"
+              data-filter="${filter.filterPath}"
+            >
+                ${filter.label} (${filter.count})
+            </button>
         </div>
     </form>
     <div class="cmp-search-results__total">
         <p
-            data-results-template="${'Showing {0} of {1} results' @ i18n}"
+          data-results-template="${'Showing {0} of {1} results' @ i18n}"
         ></p>
     </div>
     <ul
-        class="cmp-search-results__results-container"
+      class="cmp-search-results__results-container"
     >
     </ul>
     <nav
-        role="navigation"
-        aria-label="Pagination Navigation"
-        class="cmp-search-results__pagination"
+      role="navigation"
+      aria-label="Pagination Navigation"
+      class="cmp-search-results__pagination"
     >
         <ul>
             <li>
                 <button
-                    class="cmp-search-results__double-arrow cmp-search-results__first-page"
+                  class="cmp-search-results__double-arrow cmp-search-results__first-page"
                 ></button>
             </li>
             <li>
                 <button
-                    class="cmp-search-results__arrow cmp-search-results__previous-page"
+                  class="cmp-search-results__arrow cmp-search-results__previous-page"
                 ></button>
             </li>
 
@@ -84,7 +49,7 @@
             </li>
             <li>
                 <button
-                    class="cmp-search-results__double-arrow cmp-search-results__last-page"
+                  class="cmp-search-results__double-arrow cmp-search-results__last-page"
                 ></button>
             </li>
         </ul>

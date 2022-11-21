@@ -9,6 +9,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.solidigm.core.beans.ArticlePage;
 import com.solidigm.core.utils.ImageUtil;
+import com.solidigm.core.utils.TagUtil;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -70,7 +72,7 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
-            final SlingHttpServletResponse resp) throws ServletException, IOException {
+      final SlingHttpServletResponse resp) throws ServletException, IOException {
         ResourceResolver resourceResolver = req.getResourceResolver();
 
         //Get request params
@@ -111,7 +113,7 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
         }
 
         //Verify and set tag param
-        String tag = tagParam == null ? "" : tagParam.getString();
+        String tag = tagParam == null ? "" : TagUtil.decodeID(tagParam.getString());
 
         //Build the articles query
         Map<String, String> queryMap = new HashMap<>();
@@ -176,14 +178,14 @@ public class TaggedArticlesServlet extends SlingSafeMethodsServlet {
                             TagManager tagManager = resourceResolver.adaptTo(TagManager.class);
                             if (tagManager != null) {
                                 resultProps.addProperty("categoryTag",
-                                                        tagManager.resolve(articlePage.getArticleCategory()).getTitle());
+                                  tagManager.resolve(articlePage.getArticleCategory()).getTitle());
                             }
 
                             //Get alt text from DAM if it is not set for page
                             if (StringUtils.isEmpty(articlePage.getTeaserImageAltText())
-                                    && StringUtils.isNotEmpty(articlePage.getTeaserImage())) {
+                                  && StringUtils.isNotEmpty(articlePage.getTeaserImage())) {
                                 resultProps.addProperty("altText", ImageUtil.getAltTextFromDAM(resourceResolver,
-                                                                                               articlePage.getTeaserImage()));
+                                  articlePage.getTeaserImage()));
                             } else {
                                 resultProps.addProperty("altText", articlePage.getTeaserImageAltText());
                             }

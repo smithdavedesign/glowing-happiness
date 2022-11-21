@@ -96,7 +96,6 @@ exports.config = {
         if (['url', 'refresh', 'click', 'call'].includes(commandName)) {
             // Handle AEM Survey dialog
             if($('#omg_surveyContainer').isExisting()) {
-                console.log('Detected presence of the AEM Survey Dialog! Refreshing the page to get rid of it.');
                 browser.refresh();
             }
         }

@@ -76,8 +76,6 @@ class OnboardingDialogHandler {
 
         this.browser.config.beforeCommand.push(function() {
             if($('coral-overlay[class*="onboarding"]').isDisplayedInViewport()) {
-                console.log('User Onboarding Dialog is present, closing it.');
-                // console.log(arguments);
                 browser.keys('Escape');
                 $('coral-overlay[class*="onboarding"]').waitForDisplayed({reverse: true});
             }
